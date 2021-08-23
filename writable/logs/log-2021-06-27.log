@@ -1,0 +1,319 @@
+CRITICAL - 2021-06-27 01:06:30 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:06:30 --> Undefined offset: 1
+#0 D:\projects\gtren\app\Views\commerce\home.php(93): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'D:\\projects\\gtr...', 93, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/home', Array, true)
+#4 D:\projects\gtren\app\Controllers\Product.php(49): view('commerce/home', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->commerce()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-06-27 01:06:59 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:07:00 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:07:07 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:07:08 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:07:09 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:07:12 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:07:58 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:08:08 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:08:16 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:08:25 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:08:33 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:09:01 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:11:28 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:11:28 --> Undefined offset: 1
+#0 D:\projects\gtren\app\Views\commerce\home.php(93): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'D:\\projects\\gtr...', 93, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/home', Array, true)
+#4 D:\projects\gtren\app\Controllers\Product.php(49): view('commerce/home', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->commerce()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-06-27 01:12:10 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:12:12 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:12:20 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:12:20 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:12:21 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:12:24 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:13:15 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:13:16 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:13:24 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:13:24 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:13:25 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:13:26 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:14:46 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:14:47 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:14:48 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:14:56 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:14:57 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:14:57 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:15:00 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:15:31 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:15:34 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:15:43 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:15:43 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:15:44 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:15:46 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:18:07 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:18:08 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:18:16 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:18:17 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:18:17 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:18:19 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:18:29 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:18:32 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:18:36 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:18:37 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:18:38 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 01:18:41 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:38:01 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:38:03 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:38:16 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:38:17 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:38:17 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:38:18 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:39:03 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:39:11 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:40:20 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:40:57 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:40:58 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:40:58 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:41:11 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:41:11 --> Call to undefined function in_groups()
+#0 D:\projects\gtren\system\View\View.php(230): include()
+#1 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 D:\projects\gtren\system\View\View.php(246): CodeIgniter\View\View->render('dashboard', Array, true)
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/produk...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Product.php(35): view('db_admin/produk...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-06-27 16:41:22 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:41:23 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:41:24 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:41:32 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:41:32 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:41:33 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:41:35 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:41:53 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:41:56 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:41:59 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:42:00 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:42:01 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:42:03 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:42:07 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:42:08 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:42:12 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:42:13 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:44:58 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:44:59 --> Call to a member function getCategory() on null
+#0 D:\projects\gtren\system\View\View.php(230): include()
+#1 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/produc...', Array, true)
+#3 D:\projects\gtren\app\Controllers\Product.php(58): view('commerce/produc...', Array)
+#4 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->detail('shop-grid-right...')
+#5 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-27 16:45:01 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:45:05 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:45:07 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:46:00 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:46:00 --> Call to a member function getCategory() on null
+#0 D:\projects\gtren\system\View\View.php(230): include()
+#1 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/produc...', Array, true)
+#3 D:\projects\gtren\app\Controllers\Product.php(58): view('commerce/produc...', Array)
+#4 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->detail('shop-grid-right...')
+#5 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-27 16:46:04 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:46:05 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:46:07 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:46:49 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:46:52 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:46:53 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:46:55 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 16:49:50 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 17:23:53 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 17:36:46 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 17:36:56 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 17:36:58 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 17:37:01 --> Call to undefined function in_groups()
+#0 D:\projects\gtren\system\View\View.php(230): include()
+#1 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 D:\projects\gtren\system\View\View.php(246): CodeIgniter\View\View->render('dashboard', Array, true)
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/produk...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Product.php(35): view('db_admin/produk...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-06-27 17:37:03 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 17:37:38 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 17:37:39 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 17:37:43 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 17:39:29 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 17:39:31 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 17:39:35 --> Toolbar collector does not exists(Myth\Auth\Collectors\Auth).please check $collectors in the Config\Toolbar.php file.
+CRITICAL - 2021-06-27 19:50:12 --> Undefined variable: product_id
+#0 D:\projects\gtren\app\Controllers\Product.php(161): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 161, Array)
+#1 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->save()
+#2 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#3 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#5 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#6 {main}
+CRITICAL - 2021-06-27 19:54:37 --> Call to undefined method CodeIgniter\HTTP\IncomingRequest::get()
+#0 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->save()
+#1 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#2 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#4 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#5 {main}
+CRITICAL - 2021-06-27 19:59:24 --> Call to undefined method CodeIgniter\HTTP\IncomingRequest::post()
+#0 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->save()
+#1 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#2 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#4 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#5 {main}
+CRITICAL - 2021-06-27 19:59:37 --> syntax error, unexpected ';', expecting ')'
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 D:\projects\gtren\system\CodeIgniter.php(888): class_exists('\\App\\Controller...', true)
+#5 D:\projects\gtren\system\CodeIgniter.php(424): CodeIgniter\CodeIgniter->startController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-27 20:19:17 --> Call to a member function getResult() on array
+#0 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->delete('268')
+#1 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#2 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#4 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#5 {main}
+CRITICAL - 2021-06-27 20:22:04 --> syntax error, unexpected '$columnName' (T_VARIABLE), expecting ')'
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 D:\projects\gtren\system\CodeIgniter.php(888): class_exists('\\App\\Controller...', true)
+#5 D:\projects\gtren\system\CodeIgniter.php(424): CodeIgniter\CodeIgniter->startController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-27 20:22:25 --> syntax error, unexpected ';'
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 D:\projects\gtren\system\CodeIgniter.php(888): class_exists('\\App\\Controller...', true)
+#5 D:\projects\gtren\system\CodeIgniter.php(424): CodeIgniter\CodeIgniter->startController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-27 20:22:54 --> Call to a member function toArray() on array
+#0 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->delete('268')
+#1 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#2 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#4 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#5 {main}
+CRITICAL - 2021-06-27 20:23:39 --> Call to a member function toRawArray() on array
+#0 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->delete('268')
+#1 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#2 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#4 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#5 {main}
+CRITICAL - 2021-06-27 20:25:17 --> Call to undefined method App\Entities\Product::getRow()
+#0 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->delete('268')
+#1 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#2 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#4 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#5 {main}
+CRITICAL - 2021-06-27 20:28:02 --> Call to undefined method App\Entities\Product::getRow()
+#0 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->delete('268')
+#1 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#2 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#4 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#5 {main}
+CRITICAL - 2021-06-27 21:02:28 --> syntax error, unexpected '?>', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$'
+#0 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/produk...', Array, true)
+#2 D:\projects\gtren\app\Controllers\Product.php(35): view('db_admin/produk...', Array)
+#3 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#4 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#5 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#7 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#8 {main}
+CRITICAL - 2021-06-27 21:13:19 --> syntax error, unexpected end of file, expecting elseif (T_ELSEIF) or else (T_ELSE) or endif (T_ENDIF)
+#0 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 D:\projects\gtren\system\View\View.php(246): CodeIgniter\View\View->render('dashboard', Array, true)
+#2 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/produk...', Array, true)
+#3 D:\projects\gtren\app\Controllers\Product.php(35): view('db_admin/produk...', Array)
+#4 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#5 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-27 21:13:27 --> syntax error, unexpected end of file, expecting elseif (T_ELSEIF) or else (T_ELSE) or endif (T_ENDIF)
+#0 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 D:\projects\gtren\system\View\View.php(246): CodeIgniter\View\View->render('dashboard', Array, true)
+#2 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/produk...', Array, true)
+#3 D:\projects\gtren\app\Controllers\Product.php(35): view('db_admin/produk...', Array)
+#4 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#5 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-27 21:13:38 --> syntax error, unexpected 'endif' (T_ENDIF)
+#0 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 D:\projects\gtren\system\View\View.php(246): CodeIgniter\View\View->render('dashboard', Array, true)
+#2 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/produk...', Array, true)
+#3 D:\projects\gtren\app\Controllers\Product.php(35): view('db_admin/produk...', Array)
+#4 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#5 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-27 21:13:56 --> syntax error, unexpected 'endif' (T_ENDIF)
+#0 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 D:\projects\gtren\system\View\View.php(246): CodeIgniter\View\View->render('dashboard', Array, true)
+#2 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/produk...', Array, true)
+#3 D:\projects\gtren\app\Controllers\Product.php(35): view('db_admin/produk...', Array)
+#4 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#5 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}

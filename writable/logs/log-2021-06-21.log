@@ -1,0 +1,581 @@
+ERROR - 2021-06-21 00:02:21 --> Unknown column 'product_photos.photo' in 'field list'
+CRITICAL - 2021-06-21 00:02:21 --> Unknown column 'product_photos.photo' in 'field list'
+#0 D:\projects\gtren\system\Database\MySQLi\Connection.php(329): mysqli->query('SELECT `product...')
+#1 D:\projects\gtren\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `product...')
+#2 D:\projects\gtren\system\Database\BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `product...')
+#3 D:\projects\gtren\system\Database\BaseBuilder.php(1881): CodeIgniter\Database\BaseConnection->query('SELECT `product...', Array, false)
+#4 D:\projects\gtren\system\Model.php(197): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\projects\gtren\system\BaseModel.php(603): CodeIgniter\Model->doFindAll(15, 0)
+#6 D:\projects\gtren\system\BaseModel.php(1151): CodeIgniter\BaseModel->findAll(15, 0)
+#7 D:\projects\gtren\app\Controllers\Product.php(30): CodeIgniter\BaseModel->paginate(15, 'products')
+#8 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#9 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#10 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#12 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#13 {main}
+ERROR - 2021-06-21 00:06:30 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC SEPARATOR
+FROM `products`
+JOIN `product_categories` ON `product_categorie...' at line 1
+CRITICAL - 2021-06-21 00:06:30 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC SEPARATOR
+FROM `products`
+JOIN `product_categories` ON `product_categorie...' at line 1
+#0 D:\projects\gtren\system\Database\MySQLi\Connection.php(329): mysqli->query('SELECT `product...')
+#1 D:\projects\gtren\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `product...')
+#2 D:\projects\gtren\system\Database\BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `product...')
+#3 D:\projects\gtren\system\Database\BaseBuilder.php(1881): CodeIgniter\Database\BaseConnection->query('SELECT `product...', Array, false)
+#4 D:\projects\gtren\system\Model.php(197): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\projects\gtren\system\BaseModel.php(603): CodeIgniter\Model->doFindAll(15, 0)
+#6 D:\projects\gtren\system\BaseModel.php(1151): CodeIgniter\BaseModel->findAll(15, 0)
+#7 D:\projects\gtren\app\Controllers\Product.php(30): CodeIgniter\BaseModel->paginate(15, 'products')
+#8 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#9 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#10 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#12 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#13 {main}
+CRITICAL - 2021-06-21 00:06:57 --> syntax error, unexpected 'product_photos' (T_STRING), expecting ')'
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Prod...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Prod...')
+#3 D:\projects\gtren\app\Controllers\Product.php(20): spl_autoload_call('App\\Models\\Prod...')
+#4 D:\projects\gtren\system\CodeIgniter.php(903): App\Controllers\Product->__construct()
+#5 D:\projects\gtren\system\CodeIgniter.php(429): CodeIgniter\CodeIgniter->createController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-21 00:07:26 --> syntax error, unexpected ''product_photos.name'' (T_CONSTANT_ENCAPSED_STRING), expecting ')'
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Prod...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Prod...')
+#3 D:\projects\gtren\app\Controllers\Product.php(20): spl_autoload_call('App\\Models\\Prod...')
+#4 D:\projects\gtren\system\CodeIgniter.php(903): App\Controllers\Product->__construct()
+#5 D:\projects\gtren\system\CodeIgniter.php(429): CodeIgniter\CodeIgniter->createController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+ERROR - 2021-06-21 00:07:52 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC SEPARATOR
+FROM `products`
+JOIN `product_categories` ON `product_categorie...' at line 1
+CRITICAL - 2021-06-21 00:07:52 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC SEPARATOR
+FROM `products`
+JOIN `product_categories` ON `product_categorie...' at line 1
+#0 D:\projects\gtren\system\Database\MySQLi\Connection.php(329): mysqli->query('SELECT GROUP_CO...')
+#1 D:\projects\gtren\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT GROUP_CO...')
+#2 D:\projects\gtren\system\Database\BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT GROUP_CO...')
+#3 D:\projects\gtren\system\Database\BaseBuilder.php(1881): CodeIgniter\Database\BaseConnection->query('SELECT GROUP_CO...', Array, false)
+#4 D:\projects\gtren\system\Model.php(197): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\projects\gtren\system\BaseModel.php(603): CodeIgniter\Model->doFindAll(15, 0)
+#6 D:\projects\gtren\system\BaseModel.php(1151): CodeIgniter\BaseModel->findAll(15, 0)
+#7 D:\projects\gtren\app\Controllers\Product.php(30): CodeIgniter\BaseModel->paginate(15, 'products')
+#8 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#9 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#10 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#12 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#13 {main}
+ERROR - 2021-06-21 00:10:17 --> Unknown column 'cate_id' in 'field list'
+CRITICAL - 2021-06-21 00:10:17 --> Unknown column 'cate_id' in 'field list'
+#0 D:\projects\gtren\system\Database\MySQLi\Connection.php(329): mysqli->query('SELECT GROUP_CO...')
+#1 D:\projects\gtren\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT GROUP_CO...')
+#2 D:\projects\gtren\system\Database\BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT GROUP_CO...')
+#3 D:\projects\gtren\system\Database\BaseBuilder.php(1881): CodeIgniter\Database\BaseConnection->query('SELECT GROUP_CO...', Array, false)
+#4 D:\projects\gtren\system\Model.php(197): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\projects\gtren\system\BaseModel.php(603): CodeIgniter\Model->doFindAll(15, 0)
+#6 D:\projects\gtren\system\BaseModel.php(1151): CodeIgniter\BaseModel->findAll(15, 0)
+#7 D:\projects\gtren\app\Controllers\Product.php(30): CodeIgniter\BaseModel->paginate(15, 'products')
+#8 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#9 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#10 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#12 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#13 {main}
+ERROR - 2021-06-21 00:10:41 --> Unknown column 'product_photos.photo' in 'field list'
+CRITICAL - 2021-06-21 00:10:41 --> Unknown column 'product_photos.photo' in 'field list'
+#0 D:\projects\gtren\system\Database\MySQLi\Connection.php(329): mysqli->query('SELECT GROUP_CO...')
+#1 D:\projects\gtren\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT GROUP_CO...')
+#2 D:\projects\gtren\system\Database\BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT GROUP_CO...')
+#3 D:\projects\gtren\system\Database\BaseBuilder.php(1881): CodeIgniter\Database\BaseConnection->query('SELECT GROUP_CO...', Array, false)
+#4 D:\projects\gtren\system\Model.php(197): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\projects\gtren\system\BaseModel.php(603): CodeIgniter\Model->doFindAll(15, 0)
+#6 D:\projects\gtren\system\BaseModel.php(1151): CodeIgniter\BaseModel->findAll(15, 0)
+#7 D:\projects\gtren\app\Controllers\Product.php(30): CodeIgniter\BaseModel->paginate(15, 'products')
+#8 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#9 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#10 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#12 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#13 {main}
+ERROR - 2021-06-21 00:11:00 --> Unknown column 'photo' in 'field list'
+CRITICAL - 2021-06-21 00:11:00 --> Unknown column 'photo' in 'field list'
+#0 D:\projects\gtren\system\Database\MySQLi\Connection.php(329): mysqli->query('SELECT GROUP_CO...')
+#1 D:\projects\gtren\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT GROUP_CO...')
+#2 D:\projects\gtren\system\Database\BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT GROUP_CO...')
+#3 D:\projects\gtren\system\Database\BaseBuilder.php(1881): CodeIgniter\Database\BaseConnection->query('SELECT GROUP_CO...', Array, false)
+#4 D:\projects\gtren\system\Model.php(197): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\projects\gtren\system\BaseModel.php(603): CodeIgniter\Model->doFindAll(15, 0)
+#6 D:\projects\gtren\system\BaseModel.php(1151): CodeIgniter\BaseModel->findAll(15, 0)
+#7 D:\projects\gtren\app\Controllers\Product.php(30): CodeIgniter\BaseModel->paginate(15, 'products')
+#8 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#9 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#10 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#12 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#13 {main}
+ERROR - 2021-06-21 00:11:32 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SEPARATE
+FROM `products`
+JOIN `product_categories` ON `product_categories`.`i...' at line 1
+CRITICAL - 2021-06-21 00:11:32 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SEPARATE
+FROM `products`
+JOIN `product_categories` ON `product_categories`.`i...' at line 1
+#0 D:\projects\gtren\system\Database\MySQLi\Connection.php(329): mysqli->query('SELECT GROUP_CO...')
+#1 D:\projects\gtren\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT GROUP_CO...')
+#2 D:\projects\gtren\system\Database\BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT GROUP_CO...')
+#3 D:\projects\gtren\system\Database\BaseBuilder.php(1881): CodeIgniter\Database\BaseConnection->query('SELECT GROUP_CO...', Array, false)
+#4 D:\projects\gtren\system\Model.php(197): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\projects\gtren\system\BaseModel.php(603): CodeIgniter\Model->doFindAll(15, 0)
+#6 D:\projects\gtren\system\BaseModel.php(1151): CodeIgniter\BaseModel->findAll(15, 0)
+#7 D:\projects\gtren\app\Controllers\Product.php(30): CodeIgniter\BaseModel->paginate(15, 'products')
+#8 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#9 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#10 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#12 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#13 {main}
+ERROR - 2021-06-21 00:12:17 --> Unknown column 'photo' in 'field list'
+CRITICAL - 2021-06-21 00:12:17 --> Unknown column 'photo' in 'field list'
+#0 D:\projects\gtren\system\Database\MySQLi\Connection.php(329): mysqli->query('SELECT GROUP_CO...')
+#1 D:\projects\gtren\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT GROUP_CO...')
+#2 D:\projects\gtren\system\Database\BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT GROUP_CO...')
+#3 D:\projects\gtren\system\Database\BaseBuilder.php(1881): CodeIgniter\Database\BaseConnection->query('SELECT GROUP_CO...', Array, false)
+#4 D:\projects\gtren\system\Model.php(197): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\projects\gtren\system\BaseModel.php(603): CodeIgniter\Model->doFindAll(15, 0)
+#6 D:\projects\gtren\system\BaseModel.php(1151): CodeIgniter\BaseModel->findAll(15, 0)
+#7 D:\projects\gtren\app\Controllers\Product.php(30): CodeIgniter\BaseModel->paginate(15, 'products')
+#8 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#9 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#10 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#12 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#13 {main}
+CRITICAL - 2021-06-21 00:15:21 --> syntax error, unexpected ''), products.id, products.name' (T_CONSTANT_ENCAPSED_STRING), expecting ')'
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Prod...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Prod...')
+#3 D:\projects\gtren\app\Controllers\Product.php(20): spl_autoload_call('App\\Models\\Prod...')
+#4 D:\projects\gtren\system\CodeIgniter.php(903): App\Controllers\Product->__construct()
+#5 D:\projects\gtren\system\CodeIgniter.php(429): CodeIgniter\CodeIgniter->createController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+ERROR - 2021-06-21 00:15:32 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC SEPARATOR
+FROM `products`
+JOIN `product_categories` ON `product_categorie...' at line 1
+CRITICAL - 2021-06-21 00:15:32 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC SEPARATOR
+FROM `products`
+JOIN `product_categories` ON `product_categorie...' at line 1
+#0 D:\projects\gtren\system\Database\MySQLi\Connection.php(329): mysqli->query('SELECT GROUP_CO...')
+#1 D:\projects\gtren\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT GROUP_CO...')
+#2 D:\projects\gtren\system\Database\BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT GROUP_CO...')
+#3 D:\projects\gtren\system\Database\BaseBuilder.php(1881): CodeIgniter\Database\BaseConnection->query('SELECT GROUP_CO...', Array, false)
+#4 D:\projects\gtren\system\Model.php(197): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\projects\gtren\system\BaseModel.php(603): CodeIgniter\Model->doFindAll(15, 0)
+#6 D:\projects\gtren\system\BaseModel.php(1151): CodeIgniter\BaseModel->findAll(15, 0)
+#7 D:\projects\gtren\app\Controllers\Product.php(30): CodeIgniter\BaseModel->paginate(15, 'products')
+#8 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#9 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#10 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#12 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#13 {main}
+ERROR - 2021-06-21 00:15:44 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC SEPARATOR
+FROM `products`
+JOIN `product_categories` ON `product_categorie...' at line 1
+CRITICAL - 2021-06-21 00:15:44 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC SEPARATOR
+FROM `products`
+JOIN `product_categories` ON `product_categorie...' at line 1
+#0 D:\projects\gtren\system\Database\MySQLi\Connection.php(329): mysqli->query('SELECT GROUP_CO...')
+#1 D:\projects\gtren\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT GROUP_CO...')
+#2 D:\projects\gtren\system\Database\BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT GROUP_CO...')
+#3 D:\projects\gtren\system\Database\BaseBuilder.php(1881): CodeIgniter\Database\BaseConnection->query('SELECT GROUP_CO...', Array, false)
+#4 D:\projects\gtren\system\Model.php(197): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\projects\gtren\system\BaseModel.php(603): CodeIgniter\Model->doFindAll(15, 0)
+#6 D:\projects\gtren\system\BaseModel.php(1151): CodeIgniter\BaseModel->findAll(15, 0)
+#7 D:\projects\gtren\app\Controllers\Product.php(30): CodeIgniter\BaseModel->paginate(15, 'products')
+#8 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#9 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#10 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#12 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#13 {main}
+CRITICAL - 2021-06-21 00:16:44 --> syntax error, unexpected ''), products.id, products.name' (T_CONSTANT_ENCAPSED_STRING), expecting ')'
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Prod...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Prod...')
+#3 D:\projects\gtren\app\Controllers\Product.php(20): spl_autoload_call('App\\Models\\Prod...')
+#4 D:\projects\gtren\system\CodeIgniter.php(903): App\Controllers\Product->__construct()
+#5 D:\projects\gtren\system\CodeIgniter.php(429): CodeIgniter\CodeIgniter->createController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+ERROR - 2021-06-21 00:17:25 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `products`
+JOIN `product_categories` ON `product_categories`.`id` = `pro...' at line 2
+CRITICAL - 2021-06-21 00:17:25 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `products`
+JOIN `product_categories` ON `product_categories`.`id` = `pro...' at line 2
+#0 D:\projects\gtren\system\Database\MySQLi\Connection.php(329): mysqli->query('SELECT GROUP_CO...')
+#1 D:\projects\gtren\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT GROUP_CO...')
+#2 D:\projects\gtren\system\Database\BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT GROUP_CO...')
+#3 D:\projects\gtren\system\Database\BaseBuilder.php(1881): CodeIgniter\Database\BaseConnection->query('SELECT GROUP_CO...', Array, false)
+#4 D:\projects\gtren\system\Model.php(197): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\projects\gtren\system\BaseModel.php(603): CodeIgniter\Model->doFindAll(15, 0)
+#6 D:\projects\gtren\system\BaseModel.php(1151): CodeIgniter\BaseModel->findAll(15, 0)
+#7 D:\projects\gtren\app\Controllers\Product.php(30): CodeIgniter\BaseModel->paginate(15, 'products')
+#8 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#9 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#10 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#12 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#13 {main}
+CRITICAL - 2021-06-21 00:22:25 --> syntax error, unexpected '++' (T_INC), expecting ')'
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 D:\projects\gtren\system\CodeIgniter.php(888): class_exists('\\App\\Controller...', true)
+#5 D:\projects\gtren\system\CodeIgniter.php(424): CodeIgniter\CodeIgniter->startController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-21 00:22:32 --> syntax error, unexpected '++' (T_INC), expecting ')'
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 D:\projects\gtren\system\CodeIgniter.php(888): class_exists('\\App\\Controller...', true)
+#5 D:\projects\gtren\system\CodeIgniter.php(424): CodeIgniter\CodeIgniter->startController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-21 00:22:41 --> syntax error, unexpected '++' (T_INC), expecting ')'
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 D:\projects\gtren\system\CodeIgniter.php(888): class_exists('\\App\\Controller...', true)
+#5 D:\projects\gtren\system\CodeIgniter.php(424): CodeIgniter\CodeIgniter->startController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-21 00:22:50 --> syntax error, unexpected ';', expecting ')'
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 D:\projects\gtren\system\CodeIgniter.php(888): class_exists('\\App\\Controller...', true)
+#5 D:\projects\gtren\system\CodeIgniter.php(424): CodeIgniter\CodeIgniter->startController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-21 00:22:56 --> Undefined offset: 0
+#0 D:\projects\gtren\app\Controllers\Product.php(35): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'D:\\projects\\gtr...', 35, Array)
+#1 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#2 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#3 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#5 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#6 {main}
+CRITICAL - 2021-06-21 00:23:12 --> Undefined offset: 0
+#0 D:\projects\gtren\app\Controllers\Product.php(35): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'D:\\projects\\gtr...', 35, Array)
+#1 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#2 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#3 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#5 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#6 {main}
+CRITICAL - 2021-06-21 00:27:12 --> Undefined variable: categories
+#0 D:\projects\gtren\app\Views\db_admin\produk\edit_produk.php(121): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 121, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/produk...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Product.php(40): view('db_admin/produk...')
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->edit('258')
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-06-21 00:28:51 --> Undefined variable: categories
+#0 D:\projects\gtren\app\Views\db_admin\produk\edit_produk.php(121): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 121, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/produk...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Product.php(40): view('db_admin/produk...')
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->edit('258')
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-06-21 00:34:13 --> syntax error, unexpected 'return' (T_RETURN)
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 D:\projects\gtren\system\CodeIgniter.php(888): class_exists('\\App\\Controller...', true)
+#5 D:\projects\gtren\system\CodeIgniter.php(424): CodeIgniter\CodeIgniter->startController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+ERROR - 2021-06-21 00:40:19 --> Unknown column 'photo' in 'field list'
+CRITICAL - 2021-06-21 00:40:19 --> Unknown column 'photo' in 'field list'
+#0 D:\projects\gtren\system\Database\MySQLi\Connection.php(329): mysqli->query('SELECT GROUP_CO...')
+#1 D:\projects\gtren\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT GROUP_CO...')
+#2 D:\projects\gtren\system\Database\BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT GROUP_CO...')
+#3 D:\projects\gtren\system\Database\BaseBuilder.php(1881): CodeIgniter\Database\BaseConnection->query('SELECT GROUP_CO...', Array, false)
+#4 D:\projects\gtren\system\Model.php(197): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\projects\gtren\system\BaseModel.php(603): CodeIgniter\Model->doFindAll(15, 0)
+#6 D:\projects\gtren\system\BaseModel.php(1151): CodeIgniter\BaseModel->findAll(15, 0)
+#7 D:\projects\gtren\app\Controllers\Product.php(30): CodeIgniter\BaseModel->paginate(15, 'products')
+#8 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#9 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#10 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#12 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#13 {main}
+ERROR - 2021-06-21 16:43:11 --> Unknown column 'photo' in 'field list'
+CRITICAL - 2021-06-21 16:43:11 --> Unknown column 'photo' in 'field list'
+#0 D:\projects\gtren\system\Database\MySQLi\Connection.php(329): mysqli->query('SELECT GROUP_CO...')
+#1 D:\projects\gtren\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT GROUP_CO...')
+#2 D:\projects\gtren\system\Database\BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT GROUP_CO...')
+#3 D:\projects\gtren\system\Database\BaseBuilder.php(1881): CodeIgniter\Database\BaseConnection->query('SELECT GROUP_CO...', Array, false)
+#4 D:\projects\gtren\system\Model.php(197): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\projects\gtren\system\BaseModel.php(603): CodeIgniter\Model->doFindAll(15, 0)
+#6 D:\projects\gtren\system\BaseModel.php(1151): CodeIgniter\BaseModel->findAll(15, 0)
+#7 D:\projects\gtren\app\Controllers\Product.php(30): CodeIgniter\BaseModel->paginate(15, 'products')
+#8 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->index()
+#9 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#10 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#12 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#13 {main}
+CRITICAL - 2021-06-21 18:35:57 --> syntax error, unexpected '$user' (T_VARIABLE)
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('Myth\\Auth\\Contr...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('Myth\\Auth\\Contr...')
+#3 [internal function]: spl_autoload_call('Myth\\Auth\\Contr...')
+#4 D:\projects\gtren\system\CodeIgniter.php(888): class_exists('\\Myth\\Auth\\Cont...', true)
+#5 D:\projects\gtren\system\CodeIgniter.php(424): CodeIgniter\CodeIgniter->startController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-21 18:36:22 --> Undefined variable: allowRegistration
+#0 D:\projects\gtren\vendor\myth\auth\src\Controllers\AuthController.php(171): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 171, Array)
+#1 D:\projects\gtren\system\CodeIgniter.php(931): Myth\Auth\Controllers\AuthController->attemptRegister()
+#2 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#3 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#5 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#6 {main}
+CRITICAL - 2021-06-21 18:37:47 --> Object of class Myth\Auth\Controllers\AuthController could not be converted to string
+#0 D:\projects\gtren\system\CodeIgniter.php(931): Myth\Auth\Controllers\AuthController->attemptRegister()
+#1 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#2 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#4 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#5 {main}
+CRITICAL - 2021-06-21 18:47:01 --> syntax error, unexpected '$this' (T_VARIABLE)
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('Myth\\Auth\\Contr...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('Myth\\Auth\\Contr...')
+#3 [internal function]: spl_autoload_call('Myth\\Auth\\Contr...')
+#4 D:\projects\gtren\system\CodeIgniter.php(888): class_exists('\\Myth\\Auth\\Cont...', true)
+#5 D:\projects\gtren\system\CodeIgniter.php(424): CodeIgniter\CodeIgniter->startController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-21 18:52:05 --> syntax error, unexpected ';', expecting ')'
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('Myth\\Auth\\Contr...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('Myth\\Auth\\Contr...')
+#3 [internal function]: spl_autoload_call('Myth\\Auth\\Contr...')
+#4 D:\projects\gtren\system\CodeIgniter.php(888): class_exists('\\Myth\\Auth\\Cont...', true)
+#5 D:\projects\gtren\system\CodeIgniter.php(424): CodeIgniter\CodeIgniter->startController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-21 18:59:17 --> syntax error, unexpected 'if' (T_IF)
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('Myth\\Auth\\Contr...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('Myth\\Auth\\Contr...')
+#3 [internal function]: spl_autoload_call('Myth\\Auth\\Contr...')
+#4 D:\projects\gtren\system\CodeIgniter.php(888): class_exists('\\Myth\\Auth\\Cont...', true)
+#5 D:\projects\gtren\system\CodeIgniter.php(424): CodeIgniter\CodeIgniter->startController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-21 19:01:48 --> syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ')'
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('Myth\\Auth\\Contr...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('Myth\\Auth\\Contr...')
+#3 [internal function]: spl_autoload_call('Myth\\Auth\\Contr...')
+#4 D:\projects\gtren\system\CodeIgniter.php(888): class_exists('\\Myth\\Auth\\Cont...', true)
+#5 D:\projects\gtren\system\CodeIgniter.php(424): CodeIgniter\CodeIgniter->startController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-21 19:07:02 --> syntax error, unexpected 'return' (T_RETURN)
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('Myth\\Auth\\Contr...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('Myth\\Auth\\Contr...')
+#3 [internal function]: spl_autoload_call('Myth\\Auth\\Contr...')
+#4 D:\projects\gtren\system\CodeIgniter.php(888): class_exists('\\Myth\\Auth\\Cont...', true)
+#5 D:\projects\gtren\system\CodeIgniter.php(424): CodeIgniter\CodeIgniter->startController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-21 19:07:24 --> Call to undefined function Myth\Auth\Controllers\in_groups()
+#0 D:\projects\gtren\system\CodeIgniter.php(931): Myth\Auth\Controllers\AuthController->attemptLogin()
+#1 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#2 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#4 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#5 {main}
+CRITICAL - 2021-06-21 19:19:03 --> Class name must be a valid object or a string
+#0 D:\projects\gtren\system\Config\BaseService.php(263): Myth\Auth\Config\Services::activator(Object(Myth\Auth\Config\Auth), false)
+#1 D:\projects\gtren\system\Config\BaseService.php(192): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#2 D:\projects\gtren\vendor\myth\auth\src\Config\Services.php(85): CodeIgniter\Config\BaseService::getSharedInstance('activator', NULL)
+#3 D:\projects\gtren\system\Config\BaseService.php(263): Myth\Auth\Config\Services::activator()
+#4 D:\projects\gtren\system\Common.php(1063): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#5 D:\projects\gtren\vendor\myth\auth\src\Controllers\AuthController.php(191): service('activator')
+#6 D:\projects\gtren\system\CodeIgniter.php(931): Myth\Auth\Controllers\AuthController->attemptRegister()
+#7 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#10 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#11 {main}
+CRITICAL - 2021-06-21 19:19:58 --> Class name must be a valid object or a string
+#0 D:\projects\gtren\system\Config\BaseService.php(263): Myth\Auth\Config\Services::activator(Object(Myth\Auth\Config\Auth), false)
+#1 D:\projects\gtren\system\Config\BaseService.php(192): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#2 D:\projects\gtren\vendor\myth\auth\src\Config\Services.php(85): CodeIgniter\Config\BaseService::getSharedInstance('activator', NULL)
+#3 D:\projects\gtren\system\Config\BaseService.php(263): Myth\Auth\Config\Services::activator()
+#4 D:\projects\gtren\system\Common.php(1063): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#5 D:\projects\gtren\vendor\myth\auth\src\Controllers\AuthController.php(191): service('activator')
+#6 D:\projects\gtren\system\CodeIgniter.php(931): Myth\Auth\Controllers\AuthController->attemptRegister()
+#7 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#10 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#11 {main}
+CRITICAL - 2021-06-21 19:30:19 --> syntax error, unexpected '$allowedPostFields' (T_VARIABLE)
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('Myth\\Auth\\Contr...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('Myth\\Auth\\Contr...')
+#3 [internal function]: spl_autoload_call('Myth\\Auth\\Contr...')
+#4 D:\projects\gtren\system\CodeIgniter.php(888): class_exists('\\Myth\\Auth\\Cont...', true)
+#5 D:\projects\gtren\system\CodeIgniter.php(424): CodeIgniter\CodeIgniter->startController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-06-21 19:32:22 --> Class name must be a valid object or a string
+#0 D:\projects\gtren\system\Config\BaseService.php(263): Myth\Auth\Config\Services::activator(Object(Myth\Auth\Config\Auth), false)
+#1 D:\projects\gtren\system\Config\BaseService.php(192): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#2 D:\projects\gtren\vendor\myth\auth\src\Config\Services.php(85): CodeIgniter\Config\BaseService::getSharedInstance('activator', NULL)
+#3 D:\projects\gtren\system\Config\BaseService.php(263): Myth\Auth\Config\Services::activator()
+#4 D:\projects\gtren\system\Common.php(1063): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#5 D:\projects\gtren\vendor\myth\auth\src\Controllers\AuthController.php(192): service('activator')
+#6 D:\projects\gtren\system\CodeIgniter.php(931): Myth\Auth\Controllers\AuthController->attemptRegister()
+#7 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#10 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#11 {main}
+CRITICAL - 2021-06-21 19:33:08 --> Class name must be a valid object or a string
+#0 D:\projects\gtren\system\Config\BaseService.php(263): Myth\Auth\Config\Services::activator(Object(Myth\Auth\Config\Auth), false)
+#1 D:\projects\gtren\system\Config\BaseService.php(192): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#2 D:\projects\gtren\vendor\myth\auth\src\Config\Services.php(85): CodeIgniter\Config\BaseService::getSharedInstance('activator', NULL)
+#3 D:\projects\gtren\system\Config\BaseService.php(263): Myth\Auth\Config\Services::activator()
+#4 D:\projects\gtren\system\Common.php(1063): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#5 D:\projects\gtren\vendor\myth\auth\src\Controllers\AuthController.php(192): service('activator')
+#6 D:\projects\gtren\system\CodeIgniter.php(931): Myth\Auth\Controllers\AuthController->attemptRegister()
+#7 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#10 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#11 {main}
+CRITICAL - 2021-06-21 19:35:43 --> Class name must be a valid object or a string
+#0 D:\projects\gtren\system\Config\BaseService.php(263): Myth\Auth\Config\Services::activator(Object(Myth\Auth\Config\Auth), false)
+#1 D:\projects\gtren\system\Config\BaseService.php(192): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#2 D:\projects\gtren\vendor\myth\auth\src\Config\Services.php(85): CodeIgniter\Config\BaseService::getSharedInstance('activator', NULL)
+#3 D:\projects\gtren\system\Config\BaseService.php(263): Myth\Auth\Config\Services::activator()
+#4 D:\projects\gtren\system\Common.php(1063): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#5 D:\projects\gtren\vendor\myth\auth\src\Controllers\AuthController.php(192): service('activator')
+#6 D:\projects\gtren\system\CodeIgniter.php(931): Myth\Auth\Controllers\AuthController->attemptRegister()
+#7 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#10 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#11 {main}
+CRITICAL - 2021-06-21 19:39:55 --> Class 'false' not found
+#0 D:\projects\gtren\system\Config\BaseService.php(263): Myth\Auth\Config\Services::activator(Object(Myth\Auth\Config\Auth), false)
+#1 D:\projects\gtren\system\Config\BaseService.php(192): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#2 D:\projects\gtren\vendor\myth\auth\src\Config\Services.php(85): CodeIgniter\Config\BaseService::getSharedInstance('activator', NULL)
+#3 D:\projects\gtren\system\Config\BaseService.php(263): Myth\Auth\Config\Services::activator()
+#4 D:\projects\gtren\system\Common.php(1063): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#5 D:\projects\gtren\vendor\myth\auth\src\Controllers\AuthController.php(192): service('activator')
+#6 D:\projects\gtren\system\CodeIgniter.php(931): Myth\Auth\Controllers\AuthController->attemptRegister()
+#7 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#10 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#11 {main}
+CRITICAL - 2021-06-21 19:40:27 --> Class name must be a valid object or a string
+#0 D:\projects\gtren\system\Config\BaseService.php(263): Myth\Auth\Config\Services::activator(Object(Myth\Auth\Config\Auth), false)
+#1 D:\projects\gtren\system\Config\BaseService.php(192): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#2 D:\projects\gtren\vendor\myth\auth\src\Config\Services.php(85): CodeIgniter\Config\BaseService::getSharedInstance('activator', NULL)
+#3 D:\projects\gtren\system\Config\BaseService.php(263): Myth\Auth\Config\Services::activator()
+#4 D:\projects\gtren\system\Common.php(1063): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#5 D:\projects\gtren\vendor\myth\auth\src\Controllers\AuthController.php(192): service('activator')
+#6 D:\projects\gtren\system\CodeIgniter.php(931): Myth\Auth\Controllers\AuthController->attemptRegister()
+#7 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#10 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#11 {main}
+CRITICAL - 2021-06-21 19:44:17 --> Undefined constant 'Myth\Auth\Config\Myth\Auth\Authentication\Activators\EmailActivator'
+#0 D:\projects\gtren\system\Common.php(228): CodeIgniter\Config\Factories::__callStatic('config', Array)
+#1 D:\projects\gtren\vendor\myth\auth\src\Controllers\AuthController.php(29): config('Auth')
+#2 D:\projects\gtren\system\CodeIgniter.php(903): Myth\Auth\Controllers\AuthController->__construct()
+#3 D:\projects\gtren\system\CodeIgniter.php(429): CodeIgniter\CodeIgniter->createController()
+#4 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#6 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#7 {main}
+CRITICAL - 2021-06-21 19:46:41 --> Class name must be a valid object or a string
+#0 D:\projects\gtren\system\Config\BaseService.php(263): Myth\Auth\Config\Services::activator(Object(Myth\Auth\Config\Auth), false)
+#1 D:\projects\gtren\system\Config\BaseService.php(192): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#2 D:\projects\gtren\vendor\myth\auth\src\Config\Services.php(85): CodeIgniter\Config\BaseService::getSharedInstance('activator', NULL)
+#3 D:\projects\gtren\system\Config\BaseService.php(263): Myth\Auth\Config\Services::activator()
+#4 D:\projects\gtren\system\Common.php(1063): CodeIgniter\Config\BaseService::__callStatic('activator', Array)
+#5 D:\projects\gtren\vendor\myth\auth\src\Controllers\AuthController.php(192): service('activator')
+#6 D:\projects\gtren\system\CodeIgniter.php(931): Myth\Auth\Controllers\AuthController->attemptRegister()
+#7 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#10 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#11 {main}

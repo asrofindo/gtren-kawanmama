@@ -1,0 +1,11 @@
+CRITICAL - 2021-06-20 23:58:08 --> syntax error, unexpected 'return' (T_RETURN)
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Prod...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Prod...')
+#3 D:\projects\gtren\app\Controllers\Product.php(20): spl_autoload_call('App\\Models\\Prod...')
+#4 D:\projects\gtren\system\CodeIgniter.php(903): App\Controllers\Product->__construct()
+#5 D:\projects\gtren\system\CodeIgniter.php(429): CodeIgniter\CodeIgniter->createController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}

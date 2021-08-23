@@ -1,0 +1,122 @@
+CRITICAL - 2021-06-09 03:50:04 --> Declaration of Myth\Auth\Filters\LoginFilter::before(CodeIgniter\HTTP\RequestInterface $request) must be compatible with CodeIgniter\Filters\FilterInterface::before(CodeIgniter\HTTP\RequestInterface $request, $arguments = NULL)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-06-09 03:51:58 --> Declaration of Myth\Auth\Filters\LoginFilter::before(CodeIgniter\HTTP\RequestInterface $request) must be compatible with CodeIgniter\Filters\FilterInterface::before(CodeIgniter\HTTP\RequestInterface $request, $arguments = NULL)
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+ERROR - 2021-06-09 05:02:51 --> Email: sendWithMail throwed mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set()
+ERROR - 2021-06-09 05:02:51 --> Failed to send activation messaage to: imronpuji5@gmail.com
+CRITICAL - 2021-06-09 05:16:47 --> Undefined variable: config
+#0 D:\projects\gtren\app\Views\commerce\auth_commerce\login_register.php(66): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 66, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/auth_c...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Commerce.php(14): view('commerce/auth_c...')
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Commerce->Auth()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Commerce))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-06-09 05:16:48 --> Undefined variable: config
+#0 D:\projects\gtren\app\Views\commerce\auth_commerce\login_register.php(66): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 66, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/auth_c...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Commerce.php(14): view('commerce/auth_c...')
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Commerce->Auth()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Commerce))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-06-09 05:17:28 --> Undefined variable: config
+#0 D:\projects\gtren\app\Views\commerce\auth_commerce\login_register.php(66): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 66, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/auth_c...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Commerce.php(14): view('commerce/auth_c...')
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Commerce->Auth()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Commerce))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-06-09 05:20:36 --> Undefined variable: config
+#0 D:\projects\gtren\app\Views\commerce\auth_commerce\login_register.php(2): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 2, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/auth_c...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Commerce.php(14): view('commerce/auth_c...')
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Commerce->Auth()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Commerce))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-06-09 05:22:31 --> Undefined variable: config
+#0 D:\projects\gtren\app\Views\commerce\auth_commerce\login_register.php(66): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 66, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/auth_c...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Commerce.php(14): view('commerce/auth_c...')
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Commerce->Auth()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Commerce))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-06-09 05:22:53 --> Undefined variable: config
+#0 D:\projects\gtren\app\Views\commerce\auth_commerce\login_register.php(66): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 66, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/auth_c...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Commerce.php(14): view('commerce/auth_c...')
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Commerce->Auth()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Commerce))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-06-09 05:23:03 --> Undefined variable: config
+#0 D:\projects\gtren\app\Views\commerce\auth_commerce\login_register.php(66): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 66, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/auth_c...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Commerce.php(14): view('commerce/auth_c...')
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Commerce->Auth()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Commerce))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-06-09 05:23:03 --> Undefined variable: config
+#0 D:\projects\gtren\app\Views\commerce\auth_commerce\login_register.php(66): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 66, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/auth_c...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Commerce.php(14): view('commerce/auth_c...')
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Commerce->Auth()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Commerce))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-06-09 05:28:47 --> Class 'Config\Myth\Auth\Controllers\AuthController' not found
+#0 D:\projects\gtren\system\CodeIgniter.php(799): require()
+#1 D:\projects\gtren\system\CodeIgniter.php(392): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#2 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#4 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#5 {main}
+CRITICAL - 2021-06-09 05:29:08 --> Undefined class constant 'login'
+#0 D:\projects\gtren\system\CodeIgniter.php(799): require()
+#1 D:\projects\gtren\system\CodeIgniter.php(392): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#2 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#4 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#5 {main}
+ERROR - 2021-06-09 05:48:46 --> Table 'ci4.auth_groups' doesn't exist
+CRITICAL - 2021-06-09 21:43:18 --> Cannot redeclare App\Controllers\Commerce::Contact()
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}

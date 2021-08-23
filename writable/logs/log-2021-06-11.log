@@ -1,0 +1,11 @@
+CRITICAL - 2021-06-11 22:45:25 --> syntax error, unexpected '}', expecting ';'
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 D:\projects\gtren\system\CodeIgniter.php(888): class_exists('\\App\\Controller...', true)
+#5 D:\projects\gtren\system\CodeIgniter.php(424): CodeIgniter\CodeIgniter->startController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}

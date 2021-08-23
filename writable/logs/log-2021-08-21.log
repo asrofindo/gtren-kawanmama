@@ -1,0 +1,328 @@
+ERROR - 2021-08-21 06:16:31 --> [ERROR] 6 : Could not resolve host: api.pwnedpasswords.com APPPATH/ThirdParty\myth-auth\src\Exceptions\AuthException.php:55
+CRITICAL - 2021-08-21 06:16:31 --> 6 : Could not resolve host: api.pwnedpasswords.com
+#0 D:\projects\gtren\app\ThirdParty\myth-auth\src\Authentication\Passwords\PwnedValidator.php(67): Myth\Auth\Exceptions\AuthException::forHIBPCurlFail(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#1 D:\projects\gtren\app\ThirdParty\myth-auth\src\Authentication\Passwords\PasswordValidator.php(55): Myth\Auth\Authentication\Passwords\PwnedValidator->check('tahubladak', Object(Myth\Auth\Entities\User))
+#2 D:\projects\gtren\app\ThirdParty\myth-auth\src\Authentication\Passwords\ValidationRules.php(45): Myth\Auth\Authentication\Passwords\PasswordValidator->check('tahubladak', Object(Myth\Auth\Entities\User))
+#3 D:\projects\gtren\system\Validation\Validation.php(312): Myth\Auth\Authentication\Passwords\ValidationRules->strong_password('tahubladak', NULL)
+#4 D:\projects\gtren\system\Validation\Validation.php(159): CodeIgniter\Validation\Validation->processRules('password', 'password', 'tahubladak', Array, Array)
+#5 D:\projects\gtren\system\Controller.php(183): CodeIgniter\Validation\Validation->run()
+#6 D:\projects\gtren\app\ThirdParty\myth-auth\src\Controllers\AuthController.php(166): CodeIgniter\Controller->validate(Array)
+#7 D:\projects\gtren\system\CodeIgniter.php(931): Myth\Auth\Controllers\AuthController->attemptRegister()
+#8 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#9 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#11 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#12 {main}
+ERROR - 2021-08-21 06:17:14 --> [ERROR] 6 : Could not resolve host: api.pwnedpasswords.com APPPATH/ThirdParty\myth-auth\src\Exceptions\AuthException.php:55
+CRITICAL - 2021-08-21 06:17:14 --> 6 : Could not resolve host: api.pwnedpasswords.com
+#0 D:\projects\gtren\app\ThirdParty\myth-auth\src\Authentication\Passwords\PwnedValidator.php(67): Myth\Auth\Exceptions\AuthException::forHIBPCurlFail(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#1 D:\projects\gtren\app\ThirdParty\myth-auth\src\Authentication\Passwords\PasswordValidator.php(55): Myth\Auth\Authentication\Passwords\PwnedValidator->check('tahubladak123', Object(Myth\Auth\Entities\User))
+#2 D:\projects\gtren\app\ThirdParty\myth-auth\src\Authentication\Passwords\ValidationRules.php(45): Myth\Auth\Authentication\Passwords\PasswordValidator->check('tahubladak123', Object(Myth\Auth\Entities\User))
+#3 D:\projects\gtren\system\Validation\Validation.php(312): Myth\Auth\Authentication\Passwords\ValidationRules->strong_password('tahubladak123', NULL)
+#4 D:\projects\gtren\system\Validation\Validation.php(159): CodeIgniter\Validation\Validation->processRules('password', 'password', 'tahubladak123', Array, Array)
+#5 D:\projects\gtren\system\Controller.php(183): CodeIgniter\Validation\Validation->run()
+#6 D:\projects\gtren\app\ThirdParty\myth-auth\src\Controllers\AuthController.php(166): CodeIgniter\Controller->validate(Array)
+#7 D:\projects\gtren\system\CodeIgniter.php(931): Myth\Auth\Controllers\AuthController->attemptRegister()
+#8 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#9 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#11 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#12 {main}
+ERROR - 2021-08-21 06:21:16 --> [ERROR] 6 : Could not resolve host: api.pwnedpasswords.com APPPATH/ThirdParty\myth-auth\src\Exceptions\AuthException.php:55
+CRITICAL - 2021-08-21 06:21:16 --> 6 : Could not resolve host: api.pwnedpasswords.com
+#0 D:\projects\gtren\app\ThirdParty\myth-auth\src\Authentication\Passwords\PwnedValidator.php(67): Myth\Auth\Exceptions\AuthException::forHIBPCurlFail(Object(CodeIgniter\HTTP\Exceptions\HTTPException))
+#1 D:\projects\gtren\app\ThirdParty\myth-auth\src\Authentication\Passwords\PasswordValidator.php(55): Myth\Auth\Authentication\Passwords\PwnedValidator->check('tahubladak', Object(Myth\Auth\Entities\User))
+#2 D:\projects\gtren\app\ThirdParty\myth-auth\src\Authentication\Passwords\ValidationRules.php(45): Myth\Auth\Authentication\Passwords\PasswordValidator->check('tahubladak', Object(Myth\Auth\Entities\User))
+#3 D:\projects\gtren\system\Validation\Validation.php(312): Myth\Auth\Authentication\Passwords\ValidationRules->strong_password('tahubladak', NULL)
+#4 D:\projects\gtren\system\Validation\Validation.php(159): CodeIgniter\Validation\Validation->processRules('password', 'password', 'tahubladak', Array, Array)
+#5 D:\projects\gtren\system\Controller.php(183): CodeIgniter\Validation\Validation->run()
+#6 D:\projects\gtren\app\ThirdParty\myth-auth\src\Controllers\AuthController.php(166): CodeIgniter\Controller->validate(Array)
+#7 D:\projects\gtren\system\CodeIgniter.php(931): Myth\Auth\Controllers\AuthController->attemptRegister()
+#8 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#9 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#11 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#12 {main}
+CRITICAL - 2021-08-21 06:28:53 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-08-21 18:00:57 --> Trying to access array offset on value of type int
+#0 D:\projects\gtren\app\Views\commerce\account.php(106): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to acces...', 'D:\\projects\\gtr...', 106, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/accoun...', Array, true)
+#4 D:\projects\gtren\app\Controllers\User.php(43): view('commerce/accoun...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->tracking()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-08-21 22:12:42 --> Class 'App\Controllers\BannerModel' not found
+#0 D:\projects\gtren\system\CodeIgniter.php(903): App\Controllers\Offer->__construct()
+#1 D:\projects\gtren\system\CodeIgniter.php(429): CodeIgniter\CodeIgniter->createController()
+#2 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#4 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#5 {main}
+CRITICAL - 2021-08-21 22:12:53 --> Class 'App\Models\OfferModel' not found
+#0 D:\projects\gtren\system\CodeIgniter.php(903): App\Controllers\Offer->__construct()
+#1 D:\projects\gtren\system\CodeIgniter.php(429): CodeIgniter\CodeIgniter->createController()
+#2 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#4 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#5 {main}
+CRITICAL - 2021-08-21 22:13:38 --> Class 'App\Models\OfferModel' not found
+#0 D:\projects\gtren\system\CodeIgniter.php(903): App\Controllers\Offer->__construct()
+#1 D:\projects\gtren\system\CodeIgniter.php(429): CodeIgniter\CodeIgniter->createController()
+#2 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#4 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#5 {main}
+CRITICAL - 2021-08-21 22:14:25 --> Trying to get property 'photo' of non-object
+#0 D:\projects\gtren\app\Views\db_admin\offer\offer.php(79): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\projects\\gtr...', 79, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Offer.php(20): view('db_admin/offer/...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->index()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-08-21 22:17:15 --> Trying to get property 'photo' of non-object
+#0 D:\projects\gtren\app\Views\db_admin\offer\offer.php(79): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\projects\\gtr...', 79, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Offer.php(20): view('db_admin/offer/...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->index()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-08-21 22:19:38 --> Trying to get property 'id' of non-object
+#0 D:\projects\gtren\app\Views\db_admin\offer\offer.php(83): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\projects\\gtr...', 83, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Offer.php(20): view('db_admin/offer/...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->index()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-08-21 22:19:43 --> Trying to get property 'id' of non-object
+#0 D:\projects\gtren\app\Views\db_admin\offer\offer.php(83): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\projects\\gtr...', 83, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Offer.php(20): view('db_admin/offer/...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->index()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-08-21 22:21:02 --> Trying to get property 'photo' of non-object
+#0 D:\projects\gtren\app\Views\db_admin\offer\offer.php(79): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\projects\\gtr...', 79, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Offer.php(20): view('db_admin/offer/...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->index()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-08-21 22:21:15 --> Undefined offset: 0
+#0 D:\projects\gtren\app\Views\db_admin\offer\offer.php(79): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'D:\\projects\\gtr...', 79, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Offer.php(20): view('db_admin/offer/...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->index()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-08-21 22:21:42 --> Trying to get property 'title' of non-object
+#0 D:\projects\gtren\app\Views\db_admin\offer\offer.php(80): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\projects\\gtr...', 80, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Offer.php(20): view('db_admin/offer/...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->index()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-08-21 22:22:11 --> syntax error, unexpected '[', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$'
+#0 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#2 D:\projects\gtren\app\Controllers\Offer.php(20): view('db_admin/offer/...', Array)
+#3 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->index()
+#4 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#5 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#7 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#8 {main}
+CRITICAL - 2021-08-21 22:22:29 --> syntax error, unexpected '[', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$'
+#0 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#2 D:\projects\gtren\app\Controllers\Offer.php(20): view('db_admin/offer/...', Array)
+#3 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->index()
+#4 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#5 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#7 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#8 {main}
+CRITICAL - 2021-08-21 22:22:36 --> Trying to get property 'id' of non-object
+#0 D:\projects\gtren\app\Views\db_admin\offer\offer.php(83): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\projects\\gtr...', 83, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Offer.php(20): view('db_admin/offer/...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->index()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-08-21 22:22:49 --> Trying to get property 'id' of non-object
+#0 D:\projects\gtren\app\Views\db_admin\offer\offer.php(83): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\projects\\gtr...', 83, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Offer.php(20): view('db_admin/offer/...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->index()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+ERROR - 2021-08-21 22:41:22 --> Unknown column 'offers' in 'where clause'
+CRITICAL - 2021-08-21 22:41:22 --> Unknown column 'offers' in 'where clause'
+#0 D:\projects\gtren\system\Database\MySQLi\Connection.php(329): mysqli->query('SELECT *\nFROM `...')
+#1 D:\projects\gtren\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 D:\projects\gtren\system\Database\BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 D:\projects\gtren\system\Database\BaseBuilder.php(1881): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\projects\gtren\system\Model.php(197): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\projects\gtren\system\BaseModel.php(603): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\projects\gtren\app\Controllers\Offer.php(113): CodeIgniter\BaseModel->findAll()
+#7 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->search()
+#8 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#9 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#11 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#12 {main}
+CRITICAL - 2021-08-21 22:41:46 --> Undefined variable: pager
+#0 D:\projects\gtren\app\Views\db_admin\offer\offer.php(101): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 101, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Offer.php(114): view('db_admin/offer/...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->search()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-08-21 22:42:32 --> Call to a member function links() on null
+#0 D:\projects\gtren\system\View\View.php(230): include()
+#1 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#3 D:\projects\gtren\app\Controllers\Offer.php(116): view('db_admin/offer/...', Array)
+#4 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->search()
+#5 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-08-21 22:47:39 --> Undefined variable: offer
+#0 D:\projects\gtren\app\Views\db_admin\offer\edit_offer.php(11): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 11, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Offer.php(69): view('db_admin/offer/...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->edit('1')
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-08-21 22:48:10 --> Trying to get property 'title' of non-object
+#0 D:\projects\gtren\app\Views\db_admin\offer\edit_offer.php(11): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\projects\\gtr...', 11, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#4 D:\projects\gtren\app\Controllers\Offer.php(69): view('db_admin/offer/...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->edit('1')
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-08-21 22:50:59 --> Cannot use object of type CodeIgniter\Session\Session as array
+#0 D:\projects\gtren\system\View\View.php(230): include()
+#1 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#3 D:\projects\gtren\app\Controllers\Offer.php(69): view('db_admin/offer/...', Array)
+#4 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->edit('1')
+#5 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-08-21 22:51:22 --> Cannot use object of type CodeIgniter\Session\Session as array
+#0 D:\projects\gtren\system\View\View.php(230): include()
+#1 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#3 D:\projects\gtren\app\Controllers\Offer.php(69): view('db_admin/offer/...', Array)
+#4 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->edit('1')
+#5 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-08-21 22:52:49 --> Class 'App\Entities\Offer' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-08-21 22:53:10 --> Cannot use object of type App\Entities\Offer as array
+#0 D:\projects\gtren\system\View\View.php(230): include()
+#1 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#3 D:\projects\gtren\app\Controllers\Offer.php(69): view('db_admin/offer/...', Array)
+#4 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->edit('1')
+#5 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-08-21 22:54:25 --> Cannot use object of type App\Entities\Offer as array
+#0 D:\projects\gtren\system\View\View.php(230): include()
+#1 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('db_admin/offer/...', Array, true)
+#3 D:\projects\gtren\app\Controllers\Offer.php(20): view('db_admin/offer/...', Array)
+#4 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Offer->index()
+#5 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Offer))
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-08-21 23:04:41 --> syntax error, unexpected end of file
+#0 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/home', Array, true)
+#2 D:\projects\gtren\app\Controllers\Product.php(56): view('commerce/home', Array)
+#3 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->commerce()
+#4 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#5 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#7 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#8 {main}

@@ -1,0 +1,16 @@
+ERROR - 2021-07-09 09:57:18 --> Error connecting to the database: No connection could be made because the target machine actively refused it.
+
+CRITICAL - 2021-07-09 09:57:18 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it.
+
+#0 D:\projects\gtren\system\Database\BaseConnection.php(625): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\projects\gtren\system\Database\BaseBuilder.php(1981): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#2 D:\projects\gtren\system\Model.php(561): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+#3 D:\projects\gtren\system\BaseModel.php(1147): CodeIgniter\Model->countAllResults(false)
+#4 D:\projects\gtren\app\Controllers\Product.php(42): CodeIgniter\BaseModel->paginate(8, 'products')
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\Product->commerce()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}

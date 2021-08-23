@@ -1,0 +1,237 @@
+CRITICAL - 2021-07-02 00:28:26 --> Undefined variable: id
+#0 D:\projects\gtren\app\Controllers\User.php(91): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 91, Array)
+#1 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#2 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#3 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#5 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#6 {main}
+CRITICAL - 2021-07-02 00:28:41 --> count(): Parameter must be an array or an object that implements Countable
+#0 D:\projects\gtren\app\Views\commerce\account.php(128): CodeIgniter\Debug\Exceptions->errorHandler(2, 'count(): Parame...', 'D:\\projects\\gtr...', 128, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/accoun...', Array, true)
+#4 D:\projects\gtren\app\Controllers\User.php(92): view('commerce/accoun...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-07-02 00:29:24 --> Argument 1 passed to CodeIgniter\BaseModel::findAll() must be of the type int, string given, called in D:\projects\gtren\app\Controllers\User.php on line 91
+#0 D:\projects\gtren\app\Controllers\User.php(91): CodeIgniter\BaseModel->findAll('user_id', '50')
+#1 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#2 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#3 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#5 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#6 {main}
+CRITICAL - 2021-07-02 00:29:54 --> count(): Parameter must be an array or an object that implements Countable
+#0 D:\projects\gtren\app\Views\commerce\account.php(128): CodeIgniter\Debug\Exceptions->errorHandler(2, 'count(): Parame...', 'D:\\projects\\gtr...', 128, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/accoun...', Array, true)
+#4 D:\projects\gtren\app\Controllers\User.php(92): view('commerce/accoun...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-07-02 00:30:08 --> Call to a member function getResult() on null
+#0 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#1 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#2 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#4 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#5 {main}
+CRITICAL - 2021-07-02 00:30:16 --> Call to a member function get() on null
+#0 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#1 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#2 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#4 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#5 {main}
+CRITICAL - 2021-07-02 00:30:35 --> Call to a member function getRow() on null
+#0 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#1 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#2 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#4 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#5 {main}
+CRITICAL - 2021-07-02 00:32:13 --> Argument 1 passed to CodeIgniter\BaseModel::findAll() must be of the type int, string given, called in D:\projects\gtren\app\Controllers\User.php on line 91
+#0 D:\projects\gtren\app\Controllers\User.php(91): CodeIgniter\BaseModel->findAll('user_id', '50')
+#1 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#2 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#3 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#5 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#6 {main}
+ERROR - 2021-07-02 00:37:39 --> Unknown column 'deleteAt' in 'where clause'
+CRITICAL - 2021-07-02 00:37:39 --> Unknown column 'deleteAt' in 'where clause'
+#0 D:\projects\gtren\system\Database\MySQLi\Connection.php(329): mysqli->query('SELECT *\nFROM `...')
+#1 D:\projects\gtren\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 D:\projects\gtren\system\Database\BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 D:\projects\gtren\system\Database\BaseBuilder.php(1881): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\projects\gtren\system\Model.php(800): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\projects\gtren\app\Controllers\User.php(91): CodeIgniter\Model->__call('get', Array)
+#6 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#7 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#8 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#10 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#11 {main}
+ERROR - 2021-07-02 00:37:54 --> Unknown column 'delete_at' in 'where clause'
+CRITICAL - 2021-07-02 00:37:54 --> Unknown column 'delete_at' in 'where clause'
+#0 D:\projects\gtren\system\Database\MySQLi\Connection.php(329): mysqli->query('SELECT *\nFROM `...')
+#1 D:\projects\gtren\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 D:\projects\gtren\system\Database\BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 D:\projects\gtren\system\Database\BaseBuilder.php(1881): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\projects\gtren\system\Model.php(800): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\projects\gtren\app\Controllers\User.php(91): CodeIgniter\Model->__call('get', Array)
+#6 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#7 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#8 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#10 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#11 {main}
+CRITICAL - 2021-07-02 00:38:12 --> Undefined offset: 0
+#0 D:\projects\gtren\app\Views\commerce\account.php(155): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'D:\\projects\\gtr...', 155, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/accoun...', Array, true)
+#4 D:\projects\gtren\app\Controllers\User.php(92): view('commerce/accoun...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+ERROR - 2021-07-02 00:42:23 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`=` = 'billing'
+AND `deleted_at` IS NOT NULL
+AND `user_id` = '50'' at line 3
+CRITICAL - 2021-07-02 00:42:23 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`=` = 'billing'
+AND `deleted_at` IS NOT NULL
+AND `user_id` = '50'' at line 3
+#0 D:\projects\gtren\system\Database\MySQLi\Connection.php(329): mysqli->query('SELECT *\nFROM `...')
+#1 D:\projects\gtren\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 D:\projects\gtren\system\Database\BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 D:\projects\gtren\system\Database\BaseBuilder.php(1881): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\projects\gtren\system\Model.php(800): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\projects\gtren\app\Controllers\User.php(91): CodeIgniter\Model->__call('get', Array)
+#6 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#7 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#8 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#10 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#11 {main}
+CRITICAL - 2021-07-02 00:42:40 --> Undefined variable: addresses
+#0 D:\projects\gtren\app\Views\commerce\account.php(128): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 128, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/accoun...', Array, true)
+#4 D:\projects\gtren\app\Controllers\User.php(93): view('commerce/accoun...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-07-02 00:43:17 --> Undefined variable: addresses
+#0 D:\projects\gtren\app\Views\commerce\account.php(145): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 145, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/accoun...', Array, true)
+#4 D:\projects\gtren\app\Controllers\User.php(93): view('commerce/accoun...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+ERROR - 2021-07-02 00:47:24 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL
+AND `user_id` = '50'' at line 4
+CRITICAL - 2021-07-02 00:47:24 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL
+AND `user_id` = '50'' at line 4
+#0 D:\projects\gtren\system\Database\MySQLi\Connection.php(329): mysqli->query('SELECT *\nFROM `...')
+#1 D:\projects\gtren\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 D:\projects\gtren\system\Database\BaseConnection.php(647): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 D:\projects\gtren\system\Database\BaseBuilder.php(1881): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\projects\gtren\system\Model.php(800): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\projects\gtren\app\Controllers\User.php(91): CodeIgniter\Model->__call('get', Array)
+#6 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#7 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#8 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#10 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#11 {main}
+CRITICAL - 2021-07-02 00:48:57 --> Undefined variable: addresses
+#0 D:\projects\gtren\app\Views\commerce\account.php(154): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 154, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/accoun...', Array, true)
+#4 D:\projects\gtren\app\Controllers\User.php(93): view('commerce/accoun...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-07-02 00:49:50 --> Cannot use object of type stdClass as array
+#0 D:\projects\gtren\system\View\View.php(230): include()
+#1 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/accoun...', Array, true)
+#3 D:\projects\gtren\app\Controllers\User.php(93): view('commerce/accoun...', Array)
+#4 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#5 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-07-02 00:59:05 --> syntax error, unexpected ')'
+#0 D:\projects\gtren\system\Autoloader\Autoloader.php(282): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\projects\\gtr...')
+#1 D:\projects\gtren\system\Autoloader\Autoloader.php(247): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 D:\projects\gtren\system\CodeIgniter.php(888): class_exists('\\App\\Controller...', true)
+#5 D:\projects\gtren\system\CodeIgniter.php(424): CodeIgniter\CodeIgniter->startController()
+#6 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#8 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#9 {main}
+CRITICAL - 2021-07-02 01:08:36 --> Undefined variable: shipping
+#0 D:\projects\gtren\app\Views\commerce\account.php(154): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 154, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/accoun...', Array, true)
+#4 D:\projects\gtren\app\Controllers\User.php(106): view('commerce/accoun...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-07-02 01:09:28 --> Undefined variable: shipping
+#0 D:\projects\gtren\app\Views\commerce\account.php(154): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 154, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/accoun...', Array, true)
+#4 D:\projects\gtren\app\Controllers\User.php(106): view('commerce/accoun...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-07-02 01:09:46 --> Trying to get property 'id' of non-object
+#0 D:\projects\gtren\app\Views\commerce\account.php(154): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\projects\\gtr...', 154, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/accoun...', Array, true)
+#4 D:\projects\gtren\app\Controllers\User.php(106): view('commerce/accoun...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}

@@ -1,0 +1,64 @@
+CRITICAL - 2021-07-07 10:54:12 --> Undefined offset: 1
+#0 D:\projects\gtren\app\Controllers\User.php(207): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'D:\\projects\\gtr...', 207, Array)
+#1 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->save_billing('50')
+#2 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#3 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#5 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#6 {main}
+CRITICAL - 2021-07-07 10:54:55 --> Undefined offset: 1
+#0 D:\projects\gtren\app\Controllers\User.php(208): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offse...', 'D:\\projects\\gtr...', 208, Array)
+#1 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->save_billing('50')
+#2 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#3 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#5 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#6 {main}
+CRITICAL - 2021-07-07 11:15:53 --> Undefined variable: addresses
+#0 D:\projects\gtren\app\Views\commerce\account.php(326): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 326, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/accoun...', Array, true)
+#4 D:\projects\gtren\app\Controllers\User.php(108): view('commerce/accoun...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-07-07 11:16:06 --> Undefined variable: addresses
+#0 D:\projects\gtren\app\Views\commerce\account.php(326): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 326, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/accoun...', Array, true)
+#4 D:\projects\gtren\app\Controllers\User.php(108): view('commerce/accoun...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-07-07 11:16:49 --> Undefined variable: addresses
+#0 D:\projects\gtren\app\Views\commerce\account.php(326): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 326, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/accoun...', Array, true)
+#4 D:\projects\gtren\app\Controllers\User.php(108): view('commerce/accoun...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
+CRITICAL - 2021-07-07 11:17:18 --> Undefined variable: shipping
+#0 D:\projects\gtren\app\Views\commerce\account.php(326): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\projects\\gtr...', 326, Array)
+#1 D:\projects\gtren\system\View\View.php(230): include('D:\\projects\\gtr...')
+#2 D:\projects\gtren\system\View\View.php(232): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 D:\projects\gtren\system\Common.php(1250): CodeIgniter\View\View->render('commerce/accoun...', Array, true)
+#4 D:\projects\gtren\app\Controllers\User.php(108): view('commerce/accoun...', Array)
+#5 D:\projects\gtren\system\CodeIgniter.php(931): App\Controllers\User->address()
+#6 D:\projects\gtren\system\CodeIgniter.php(439): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 D:\projects\gtren\system\CodeIgniter.php(339): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\projects\gtren\public\index.php(36): CodeIgniter\CodeIgniter->run()
+#9 D:\projects\gtren\system\Commands\Server\rewrite.php(45): require_once('D:\\projects\\gtr...')
+#10 {main}
