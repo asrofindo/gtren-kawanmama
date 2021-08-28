@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UpgradesModel;
+use App\Models\UniqueCodeModel;
 use Myth\Auth\Models\UserModel;
 
 class upgrades extends BaseController
@@ -13,6 +14,7 @@ class upgrades extends BaseController
 	{
 		$this->model = new UpgradesModel();
 		$this->user = new UserModel();
+		$this->uniq = new UniqueCodeModel();
 	}
 
 	public function index()
@@ -29,27 +31,49 @@ class upgrades extends BaseController
 	{
 		$request = $this->request;
 
-		$file = $request->getFile('file');
+		if($request->getPost('type') == 'affiliate')
+		{
+			$file = $request->getFile('file');
 
-		$new_name = $file->getRandomName();
+			$new_name = $file->getRandomName();
 
-		$file->move(ROOTPATH . 'public/uploads/bukti', $new_name);
+			$file->move(ROOTPATH . 'public/uploads/bukti', $new_name);
+			
+			$data = [
+				'user_id' => $id,
+				'code' => $request->getPost('code'),
+				'status_request' => 'pending',
+				'type' => $request->getPost('type'),
+				'photo' => $new_name
+			];
 
-		$data = [
-			'user_id' => $id,
-			'code' => $request->getPost('code'),
-			'status_request' => 'pending',
-			'type' => $request->getPost('type'),
-			'photo' => $new_name
-		];
+		} else {
+
+			$code = $request->getPost('code');
+
+
+			if(!$this->uniq->where('code', $code)->find()){	
+
+			session()->setFlashdata('danger', 'Code Salah');
+			return redirect()->back();
+		
+			} 
+
+			$this->user->withGroup('stockist');	
+
+			session()->setFlashdata('success', 'Berhasil, Anda Sekarang Adalah Stockist');
+			return redirect()->back();
+
+
+		}
+
 
 		if(!$this->model->save($data)){
-			$data['upgrades'] = $this->model->findAll();
 			$data['errors']     = $this->model->errors();
 	        return view('db_admin/upgrades/upgrades', $data); 
 		} 
 
-		session()->setFlashdata('success', 'Data Berhasil Disimpan');
+		session()->setFlashdata('success', 'Data Berhasil Disimpan Tunggu Konfirmasi Dari Admin');
 		return redirect()->to(base_url('/upgrades'));
 	}
 
@@ -86,6 +110,12 @@ class upgrades extends BaseController
 			'status_request' => 'active'
 		];
 
+
+
+		$type = $this->model->find($id)->type;
+
+		$this->user->withGroup($type);
+
 		$this->model->save($data);
 
 		if(!$this->model->save($data)){
@@ -94,6 +124,9 @@ class upgrades extends BaseController
 	        return view('db_admin/upgrades/upgrades', $data); 
 		} 
 
+		if(!$this->user->save($data)){
+
+		}
 		session()->setFlashdata('success', 'Data Berhasil Diupdate');
 		return redirect()->to(base_url('/upgrades'));
 

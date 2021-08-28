@@ -3,11 +3,13 @@
 namespace App\Controllers;
 use App\Models\AccountUpgradeModel;
 use App\Models\AddressModel;
+use App\Models\UpgradesModel;
 
 class User extends BaseController
 {
 	public function __construct(){
 		$this->address = new AddressModel();
+		$this->upgrade = new UpgradesModel();
 	}
 	public function account()
 	{
@@ -151,6 +153,13 @@ class User extends BaseController
 			session()->setFlashdata('success', 'Sukses!, Silahkan menunggu proses verifikasi oleh Admin.');
 			return redirect()->back();
 		}
+
+		if($this->upgrade->where('user_id', user()->id)->findAll() && $this->upgrade->where('status_request', 'pending')->findAll()){
+
+			session()->setFlashdata('danger', 'Sedang Di Konfirmasi');
+			return view('commerce/account', $data);
+
+		}	
 
 		return view('commerce/account', $data);
 	}
