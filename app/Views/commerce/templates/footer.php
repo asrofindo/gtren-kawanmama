@@ -8,14 +8,10 @@
                             <a href="index.html"><img src="<?= base_url() ?>/frontend/imgs/theme/logo-default.png" alt="logo"></a>
                         </div>
                         <h4 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h4>
-                        <?php foreach($contacts as $contact):?>
-                            <p class="wow fadeIn animated">
-                                <strong>Address: </strong><?= $contact->address  ?>
+                         <p class="wow fadeIn animated">
                             </p>
                             <p class="wow fadeIn animated">
-                                <strong>Phone: </strong><?= $contact->phone  ?>
                             </p>
-                        <?php endforeach; ?>
                         <h4 class="mb-10 mt-20 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h4>
                         <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
                             <a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a>
