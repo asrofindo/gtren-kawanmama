@@ -7,7 +7,7 @@
         <p>Add, edit or delete a upgrade</p>
     </div>
     <div>
-        <form action="<?= base_url('upgrade/search') ?>" method="post" class="row row-cols-lg-auto g-3 align-items-center">
+        <form action="<?= base_url('upgrades/search') ?>" method="post" class="row row-cols-lg-auto g-3 align-items-center">
             <div class="col-12">
                 <input type="text" placeholder="Cari account" class="form-control bg-white" name="keyword">
             </div>
