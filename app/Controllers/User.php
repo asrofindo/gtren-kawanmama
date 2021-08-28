@@ -132,7 +132,7 @@ class User extends BaseController
 		user()->setProfile($data);
 	}
 
-	public function upgrade()
+	public function upgrade_affiliate()
 	{
 		$data['segments'] = $this->request->uri->getSegments();
 
@@ -154,17 +154,44 @@ class User extends BaseController
 			return redirect()->back();
 		}
 
-		if($this->upgrade->where('user_id', user()->id)->findAll() && $this->upgrade->where('status_request', 'pending')->findAll()){
+		$user = $this->upgrade->where('user_id', user()->id)->findAll();
 
-			session()->setFlashdata('danger', 'Sedang Di Konfirmasi');
+		if($user[0]->status_request == 'pending' && $this->request->uri->getSegments()[1] == 'affiliate'){
+
+			session()->setFlashdata('success', 'Sedang di tinjau Oleh Admin');
 			return view('commerce/account', $data);
 
-		}	
+		}
+
 
 		return view('commerce/account', $data);
 	}
 
-	public function upgradeList()
+	public function upgrade_stockist()
+	{
+		$data['segments'] = $this->request->uri->getSegments();
+
+		if ($this->request->getPost()) {
+
+			$upgrade = new AccountUpgradeModel();
+			$data = [
+				'user_id' => intval(user()->id),
+				'code'    => $this->request->getPost('code'),
+				'status'  => 'pending'
+			];
+			
+			$save = $upgrade->insert($data);
+
+			if (!$save) {
+				return redirect()->back();
+			}
+		}
+
+	
+		return view('commerce/account', $data);
+	}
+
+	public function upgrade()
 	{
 		helper(['status_upgrade_helper']);
 		$upgrade         = new \App\Models\AccountUpgradeModel();

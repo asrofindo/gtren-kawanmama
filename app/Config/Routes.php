@@ -55,8 +55,8 @@ $routes->get('address', 'User::address', ['filter' => 'login']);
 $routes->get('profile', 'User::profile', ['filter' => 'login']);
 $routes->post('profile', 'User::set_profile', ['filter' => 'login']);
 
-$routes->get('upgrade/affiliate', 'User::upgrade', ['filter' => 'login']);
-$routes->get('upgrade/stockist', 'User::upgrade', ['filter' => 'login']);
+$routes->get('upgrade/affiliate', 'User::upgrade_affiliate', ['filter' => 'login']);
+$routes->get('upgrade/stockist', 'User::upgrade_stockist', ['filter' => 'login']);
 $routes->post('track', 'User::Track', ['filter' => 'login']);
 // $routes->get('checkout', 'User::Checkout', ['filter' => 'login']);
 $routes->get('abouts', 'Commerce::Contact');
