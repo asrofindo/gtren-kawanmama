@@ -47,21 +47,21 @@ class Email extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $SMTPHost = 'smtp.gmail.com';
+	public $SMTPHost = 'server04.kendalhosting.net';
 
 	/**
 	 * SMTP Username
 	 *
 	 * @var string
 	 */
-	public $SMTPUser = 'imronpuji5@gmail.com';
+	public $SMTPUser = 'support@kawanmama.com';
 
 	/**
 	 * SMTP Password
 	 *
 	 * @var string
 	 */
-	public $SMTPPass = 'tahubladak';
+	public $SMTPPass = 'support123';
 
 	/**
 	 * SMTP Port
