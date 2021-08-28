@@ -8,7 +8,7 @@
     <div><!-- 
         <a href="#" class="btn btn-light rounded font-md">Export</a>
         <a href="#" class="btn btn-light rounded  font-md">Import</a> -->
-        <a href="<?= base_url() ?>/admin/tambahproduk" class="btn btn-primary btn-sm rounded">Create new</a>
+        <a href="<?= base_url() ?>/tambahproduk" class="btn btn-primary btn-sm rounded">Create new</a>
     </div>
 </div>
 <div class="attention">

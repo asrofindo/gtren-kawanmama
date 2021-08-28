@@ -134,7 +134,6 @@ class User extends BaseController
 	{
 		$data['segments'] = $this->request->uri->getSegments();
 
-
 		if ($this->request->getPost()) {
 
 			$upgrade = new AccountUpgradeModel();

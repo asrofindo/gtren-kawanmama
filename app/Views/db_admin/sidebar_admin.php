@@ -33,6 +33,12 @@
         </a>
     </li>
 
+    <li class="menu-item">
+        <a class="menu-link" href="<?php base_url() ?>/upgrades"> <i class="icon material-icons md-monetization_on"></i>
+            <span class="text">Upgrades Account</span>
+        </a>
+    </li>
+
     <!-- <li class="menu-item has-submenu">
         <a class="menu-link" href="page-form-product-1.html"> <i class="icon material-icons md-add_box"></i>
             <span class="text">Add product</span>

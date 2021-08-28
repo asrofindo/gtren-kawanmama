@@ -134,13 +134,15 @@
                 <div class="card-body">
                         <div class="mb-4">
                             <label class="form-label">Kategori</label>
-                            <select multiple name="category[]" class="form-select">
-                                <?php foreach ($categories as $category): ?>
-                                    <option value="<?= $category->id ?>">
-                                        <?= $category->category ?>
-                                    </option>
-                                <?php endforeach ?>
-                            </select>
+                            <?php foreach ($categories as $category): ?>
+
+                                <div class="custom-control custom-radio">
+                                  <input type="checkbox" id="customRadio1" name="category[]" value="<?= $category->id ?>" class="custom-control-input">
+                                  <label class="custom-control-label" for="customRadio1"><?= $category->category ?></label>
+                              </div>
+
+                            <?php endforeach ?>
+                          </div>
                         </div>
                     </div> <!-- row.// -->
                 </div>

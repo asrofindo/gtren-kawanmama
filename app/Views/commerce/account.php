@@ -24,7 +24,10 @@
                                     <a class="nav-link <?= ($segments[0] == "profile" ? "active" : null) ?>" id="account-detail-tab" href="<?= base_url('profile') ?>" role="tab" aria-controls="account-detail" aria-selected="true"><i class="fa fa-user-edit mr-15"></i>Account details</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link <?= ($segments[0] == "upgrade" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Upgrade Akun</a>
+                                    <a class="nav-link <?= ($segments[1] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Upgrade Affiliate</a>
+                                </li>
+                                 <li class="nav-item">
+                                    <a class="nav-link <?= ($segments[1] == "stockist" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/stockist') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Upgrade Stockist</a>
                                 </li>
                                 <li class="nav-item ">
                                     <a class="nav-link text-white" href="/logout"><i class="text-white fa fa-lock mr-15"></i>Logout</a>
@@ -397,16 +400,16 @@
                                         </div>
                                     </div>
                                 </div>
-                            <?php elseif($segments[0] == "upgrade"): ?>
+                            <?php elseif($segments[1] == "affiliate"): ?>
                                 <div class="tab-pane fade active show" id="upgrade" role="tabpanel" aria-labelledby="upgrade-tab">
                                     <div class="card">
 
                                         <div class="card-header">
                                             <h5>Upgrade Akun</h5>
                                         </div>
-                                      <!--   <div class="card-body">
+                                        <div class="card-body">
                                             <p class="pb-5 mb-20">
-                                                Silahkan masukkan kode untuk mengupgrade akun anda menjadi stokis
+                                                Silahkan 
                                             </p>
                                             <?php if(!empty(session()->getFlashdata('success'))): ?>
 
@@ -415,14 +418,20 @@
                                                 </div>
 
                                             <?php else : ?>
-                                                <div class="alert alert-warning bg-warning">
-                                                    <i class="fa fa-exclamation-triangle"></i> Kode hanya bisa didapatkan dari Admin Gtren.
+                                                <div >
                                                 </div>
                                             <?php endif ?>
-                                            <form method="post">
+                                             <?php $id = user()->id; ?>
+                                            <form method="post" action="<?= base_url()  ?>/upgrades/<?= $id  ?>" enctype="multipart/form-data">
                                                 <div class="form-group col-md-12">
-                                                    <label>Kode <span class="required">*</span></label>
-                                                    <input required class="form-control square" name="code" type="text">
+                                                    <label>Bukti Transfer <span class="required">*</span></label>
+                                                    <input required class="form-control square" name="file" type="file">
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label>Pilih Tipe Akun <span class="required">*</span></label>
+                                                    <select required="" class="form-control square" name="type" id="type">
+                                                        <option selected value="affiliate">affiliate</option>
+                                                    </select>
                                                 </div>
                                                 <div class="mb-3 form-check">
                                                     <input type="checkbox" required class="form-check-input" id="exampleCheck1">
@@ -434,8 +443,8 @@
                                                     </button>
                                                 </div>
                                             </form>
-                                        </div> -->
-                                        <div class="card-body">
+                                        </div>
+                                       <!--  <div class="card-body">
                                             <div class="sidebar">
                                                 <div class="row">
                                                     <div class="col-4">
@@ -446,7 +455,62 @@
                                                      </div>
                                                 </div>     
                                             </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            <?php elseif($segments[1] == "stockist"): ?>
+                                <div class="tab-pane fade active show" id="upgrade" role="tabpanel" aria-labelledby="upgrade-tab">
+                                    <div class="card">
+
+                                        <div class="card-header">
+                                            <h5>Upgrade Akun</h5>
                                         </div>
+                                        <div class="card-body">
+                                            <p class="pb-5 mb-20">
+                                                Silahkan 
+                                            </p>
+                                            <?php if(!empty(session()->getFlashdata('success'))): ?>
+
+                                                <div class="alert alert-success bg-success text-white">
+                                                    <?php echo session()->getFlashdata('success');?>
+                                                </div>
+
+                                            <?php else : ?>
+                                                <div >
+                                                </div>
+                                            <?php endif ?>
+                                             <?php $id = user()->id; ?>
+                                            <form method="post" action="<?= base_url()  ?>/upgrades/<?= $id  ?>">
+                                                <div class="form-group col-md-12">
+                                                    <label>Kode <span class="required">*</span></label>
+                                                    <input required class="form-control square" name="code" type="text">
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label>Pilih Tipe Akun <span class="required">*</span></label>
+                                                    <select required="" class="form-control square" name="type" id="type">
+                                                        <option selected value="affiliate">affiliate</option>
+                                                        <option selected value="stockist">Stockist</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <button type="submit" class="btn btn-sm btn-fill-out submit" name="submit" value="Submit">
+                                                        <i class="fa fa-upload"></i> Upgrade
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                       <!--  <div class="card-body">
+                                            <div class="sidebar">
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <div id="listings" class="listings">asdasd</div>
+                                                    </div>
+                                                    <div  style="height: 400px" class="col-8 ">
+                                                        <div id="map" class="map h-100 w-100" style="height: 400px"></div>
+                                                     </div>
+                                                </div>     
+                                            </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             <?php elseif($segments[0] == "account"): ?>
