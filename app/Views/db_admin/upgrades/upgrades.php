@@ -67,10 +67,17 @@
                                         <?php endif; ?>
 		                                <td><b><?= $upgrade->type ?></b></td>
 		                                <td>
+                                            <?php if($upgrade->status_request == 'pending'): ?>
 		                                    <a href="<?= base_url('upgrades/update/'.$upgrade->id) ?>" class="btn btn-brand rounded btn-sm font-sm">
 		                                        <i class="material-icons"></i>
 		                                        Verifikasi
 		                                    </a>
+                                            <?php else: ?>
+                                            <a class="btn btn-brand rounded btn-sm font-sm">
+                                                <i class="material-icons"></i>
+                                                Verified
+                                            </a>
+                                            <?php endif; ?>
 		                                  
 		                                </td>
 		                            </tr>

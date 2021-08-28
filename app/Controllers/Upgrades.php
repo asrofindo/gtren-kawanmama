@@ -86,6 +86,12 @@ class upgrades extends BaseController
 			'status_request' => 'active'
 		];
 
+
+
+		$type = $this->model->find($id)->type;
+
+		$this->user->withGroup($type);
+
 		$this->model->save($data);
 
 		if(!$this->model->save($data)){
@@ -94,6 +100,9 @@ class upgrades extends BaseController
 	        return view('db_admin/upgrades/upgrades', $data); 
 		} 
 
+		if(!$this->user->save($data)){
+
+		}
 		session()->setFlashdata('success', 'Data Berhasil Diupdate');
 		return redirect()->to(base_url('/upgrades'));
 
