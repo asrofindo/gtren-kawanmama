@@ -5,8 +5,8 @@ class AdminSeeder extends \CodeIgniter\Database\Seeder
     public function run()
     {
         $data = [
-            'group_id'  => 3,
-            'user_id'      => 50,
+            'group_id'  => 1,
+            'user_id'      => 4,
         ];
         $this->db->table('auth_groups_users')->insert($data);
     }

@@ -40,6 +40,7 @@ $routes->get('tracking', 'User::tracking', ['filter' => 'login']);
 $routes->get('billing-address', 'User::address', ['filter' => 'login']);
 $routes->post('billing-address/(:num)', 'User::save_billing/$1', ['filter' => 'login']);
 
+
 $routes->get('shipping-address', 'User::address', ['filter' => 'login']);
 $routes->post('shipping-address/(:num)', 'User::save_shipping/$1', ['filter' => 'login']);
 $routes->get('edit-billing', 'User::address', ['filter' => 'login']);
@@ -62,7 +63,6 @@ $routes->post('track', 'User::Track', ['filter' => 'login']);
 $routes->get('abouts', 'Commerce::Contact');
 $routes->get('about', 'Commerce::About');
 $routes->get('product/(:any)', 'Product::detail/$1');
-
 
 $routes->get('test', 'Testing::index');
 $routes->post('testfoto', 'Testing::testfoto');
@@ -166,7 +166,6 @@ $routes->group('', function($routes)
 	$routes->get('upgrades/edit/(:num)', 'Upgrades::edit/$1');
 	$routes->get('upgrades/update/(:num)', 'Upgrades::update/$1');
 	$routes->post('upgrades/search', 'Upgrades::search');
-
 
 }
 );

@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '4e418ea95fec10dde25060869898246c05a3f36d',
+    'reference' => '06ab4eb5116e7ecc9e430a785adef3352b33eb82',
     'name' => 'codeigniter4/framework',
   ),
   'versions' => 
@@ -51,7 +51,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '4e418ea95fec10dde25060869898246c05a3f36d',
+      'reference' => '06ab4eb5116e7ecc9e430a785adef3352b33eb82',
     ),
     'doctrine/instantiator' => 
     array (
@@ -64,12 +64,12 @@ private static $installed = array (
     ),
     'fakerphp/faker' => 
     array (
-      'pretty_version' => 'v1.14.1',
-      'version' => '1.14.1.0',
+      'pretty_version' => 'v1.15.0',
+      'version' => '1.15.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'ed22aee8d17c7b396f74a58b1e7fefa4f90d5ef1',
+      'reference' => '89c6201c74db25fa759ff16e78a4d8f32547770e',
     ),
     'kint-php/kint' => 
     array (

@@ -44,7 +44,11 @@ contact
                     <h4>Tambah contact</h4>
                     <hr>
                     <form action="<?= base_url('contact') ?>" method="post" enctype="multipart/form-data">
-                        <div class="mb-4">
+                    <div class="mb-4">
+                            <label for="contact" class="form-label">name</label>
+                            <input type="text" placeholder="Type here" name="name" class="form-control" id="contact" />
+                        </div>
+                    <div class="mb-4">
                             <label for="contact" class="form-label">phone</label>
                             <input type="text" placeholder="Type here" name="phone" class="form-control" id="contact" />
                         </div>
@@ -63,6 +67,7 @@ contact
                         <table class="table table-hover">
                             <thead>
                                 <tr>
+                                    <th>name</th>
                                     <th>phone</th>
                                     <th>address</th>
                                     <th>Action</th>
@@ -71,6 +76,7 @@ contact
                             <tbody>
                                 <?php foreach ($contacts as $contact): ?>           
 		                            <tr>
+                                        <td><b><?= $contact->name ?></b></td>
 		                                <td><b><?= $contact->phone ?></b></td>
 		                                <td><b><?= $contact->address ?></b></td>
 		                                <td>
