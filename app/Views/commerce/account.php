@@ -420,16 +420,21 @@
                                             <p class="pb-5 mb-20">
                                                 Silahkan 
                                             </p>
-                                            <?php if(!empty(session()->getFlashdata('success'))): ?>
+                                            <?php if(!empty(session()->getFlashdata('success'))){ ?>
 
                                                 <div class="alert alert-success bg-success text-white">
                                                     <?php echo session()->getFlashdata('success');?>
                                                 </div>
 
-                                            <?php else : ?>
-                                                <div >
+                                            <?php } ?>
+
+                                            <?php if(!empty(session()->getFlashdata('danger'))){ ?>
+
+                                                <div class="alert alert-danger bg-danger text-white">
+                                                    <?php echo session()->getFlashdata('danger');?>
                                                 </div>
-                                            <?php endif ?>
+
+                                            <?php } ?>
                                              <?php $id = user()->id; ?>
                                             <form method="post" action="<?= base_url()  ?>/upgrades/<?= $id  ?>" enctype="multipart/form-data">
                                                 <div class="form-group col-md-12">
@@ -478,18 +483,23 @@
                                             <p class="pb-5 mb-20">
                                                 Silahkan 
                                             </p>
-                                            <?php if(!empty(session()->getFlashdata('success'))): ?>
+                                                <?php if(!empty(session()->getFlashdata('success'))){ ?>
 
-                                                <div class="alert alert-success bg-success text-white">
-                                                    <?php echo session()->getFlashdata('success');?>
-                                                </div>
+                                                    <div class="alert alert-success bg-success text-white">
+                                                        <?php echo session()->getFlashdata('success');?>
+                                                    </div>
 
-                                            <?php else : ?>
-                                                <div >
-                                                </div>
-                                            <?php endif ?>
+                                                <?php } ?>
+
+                                                <?php if(!empty(session()->getFlashdata('danger'))){ ?>
+
+                                                    <div class="alert alert-danger bg-danger text-white">
+                                                        <?php echo session()->getFlashdata('danger');?>
+                                                    </div>
+
+                                                <?php } ?>
                                              <?php $id = user()->id; ?>
-                                            <form method="post" action="<?= base_url()  ?>/upgrades/<?= $id  ?>">
+                                            <form method="post" action="<?= base_url()  ?>/upgrades/<?= $id  ?>"  enctype="multipart/form-data">
                                                 <div class="form-group col-md-12">
                                                     <label>Kode <span class="required">*</span></label>
                                                     <input required class="form-control square" name="code" type="text">

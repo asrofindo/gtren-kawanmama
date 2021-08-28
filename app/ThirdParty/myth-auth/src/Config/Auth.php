@@ -14,7 +14,7 @@ class Auth extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $defaultUserGroup = 'admin';
+	public $defaultUserGroup = 'user';
 
 	/**
 	 * --------------------------------------------------------------------
