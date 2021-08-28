@@ -14,7 +14,7 @@ class ContactModel extends Model
 	protected $returnType           = 'App\Entities\Banner';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['address',  'phone'];
+	protected $allowedFields        = ['address',  'phone' ,'name'];
 
 	// Dates
 	protected $useTimestamps        = false;

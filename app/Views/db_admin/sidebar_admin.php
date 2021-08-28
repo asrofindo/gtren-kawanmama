@@ -48,7 +48,7 @@
         <div class="submenu">
             <a href="<?= base_url() ?>/offer">offer</a>
             <a href="<?= base_url() ?>/banner">banner</a>
-            <a href="<?= base_url() ?>/office">contact</a>
+            <a href="<?= base_url() ?>/contact">contact</a>
         </div>
     </li>
 </ul>

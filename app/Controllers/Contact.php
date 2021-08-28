@@ -15,6 +15,7 @@ class Contact extends BaseController
 
 	public function index()
 	{
+		$data['title'] = 'hallooo';
 		$data['contacts'] = $this->model->paginate(2, 'contacts');
 		$data['pager'] = $this->model->pager;
 		return view('db_admin/contact/contact', $data);
@@ -25,6 +26,7 @@ class Contact extends BaseController
 		$request = $this->request;
 	
 		$data = [
+			'name' => $request->getPost('name'),
 			'phone' => $request->getPost('phone'),
 			'address' => $request->getPost('address'),
 		];
@@ -71,6 +73,7 @@ class Contact extends BaseController
 	
 		$data = [
 			'id' => $id,
+			'name' => $request->getPost('name'),
 			'phone' => $request->getPost('phone'),
 			'address' => $request->getPost('address'),
 		];
@@ -89,8 +92,8 @@ class Contact extends BaseController
 	public function search()
 	{
 		$keyword            = $this->request->getPost('keyword');
-		$data['contacts'] = $this->model->like(['phone' => $keyword])->paginate(2, 'contacts');
-		$data['pager'] = $this->model->pager;
+		$data['contacts'] 	= $this->model->like(['name' => $keyword])->paginate(2, 'contacts');
+		$data['pager'] 		= $this->model->pager;
 
 		return view('db_admin/contact/contact', $data);;
 	}
