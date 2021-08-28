@@ -155,11 +155,14 @@ class User extends BaseController
 		}
 
 		$user = $this->upgrade->where('user_id', user()->id)->findAll();
+		if(count($user) > 0){
 
-		if($user[0]->status_request == 'pending' && $this->request->uri->getSegments()[1] == 'affiliate'){
+			if($this->request->uri->getSegments()[1] == 'affiliate' && $user[0]->status_request == 'pending'){
 
-			session()->setFlashdata('success', 'Sedang di tinjau Oleh Admin');
-			return view('commerce/account', $data);
+				session()->setFlashdata('success', 'Sedang di tinjau Oleh Admin');
+				return view('commerce/account', $data);
+
+			}
 
 		}
 
@@ -169,6 +172,7 @@ class User extends BaseController
 
 	public function upgrade_stockist()
 	{
+
 		$data['segments'] = $this->request->uri->getSegments();
 
 		if ($this->request->getPost()) {
@@ -187,7 +191,7 @@ class User extends BaseController
 			}
 		}
 
-	
+		session()->setFlashdata('', '');
 		return view('commerce/account', $data);
 	}
 

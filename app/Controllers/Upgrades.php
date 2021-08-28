@@ -15,12 +15,14 @@ class upgrades extends BaseController
 		$this->model = new UpgradesModel();
 		$this->user = new UserModel();
 		$this->uniq = new UniqueCodeModel();
+		$db      = \Config\Database::connect();
+		$this->builder = $db->table('auth_groups_users');
 	}
 
 	public function index()
 	{
 		$this->model->select('status_request, type, code, photo');
-		$this->model->select('users.username, users.id as id_user, upgrades.id as id');
+		$this->model->select('users.username, users.id as id_user, upgrades.user_id as id');
 		$this->model->join('users', 'users.id = upgrades.user_id', 'left');
 		$data['upgrades'] = $this->model->paginate(4, 'upgrades');
 		$data['pager'] = $this->model->pager;
@@ -31,8 +33,14 @@ class upgrades extends BaseController
 	{
 		$request = $this->request;
 
+
 		if($request->getPost('type') == 'affiliate')
 		{
+			if($this->model->where('user_id', user()->id)){
+
+				return redirect()->back();
+			}
+
 			$file = $request->getFile('file');
 
 			$new_name = $file->getRandomName();
@@ -40,7 +48,7 @@ class upgrades extends BaseController
 			$file->move(ROOTPATH . 'public/uploads/bukti', $new_name);
 			
 			$data = [
-				'user_id' => $id,
+				'user_id' => user()->id,
 				'code' => $request->getPost('code'),
 				'status_request' => 'pending',
 				'type' => $request->getPost('type'),
@@ -51,15 +59,13 @@ class upgrades extends BaseController
 
 			$code = $request->getPost('code');
 
-
 			if(!$this->uniq->where('code', $code)->find()){	
-
 			session()->setFlashdata('danger', 'Code Salah');
 			return redirect()->back();
 		
 			} 
 
-			$this->user->withGroup('stockist');	
+			$this->builder->insert(["user_id" => user()->id, "group_id" => 3]);
 
 			session()->setFlashdata('success', 'Berhasil, Anda Sekarang Adalah Stockist');
 			return redirect()->back();
@@ -69,12 +75,12 @@ class upgrades extends BaseController
 
 
 		if(!$this->model->save($data)){
-			$data['errors']     = $this->model->errors();
-	        return view('db_admin/upgrades/upgrades', $data); 
+			session()->setFlashdata('danger', 'Terjadi Kesalahan');
+	        return redirect()->back();
 		} 
 
 		session()->setFlashdata('success', 'Data Berhasil Disimpan Tunggu Konfirmasi Dari Admin');
-		return redirect()->to(base_url('/upgrades'));
+		return redirect()->back();
 	}
 
 	public function delete($id)
@@ -114,19 +120,15 @@ class upgrades extends BaseController
 
 		$type = $this->model->find($id)->type;
 
-		$this->user->withGroup($type);
+		$this->builder->insert(["user_id" => $id, "group_id" => 4]);
 
 		$this->model->save($data);
 
 		if(!$this->model->save($data)){
 			$data['upgrades'] = $this->model->findAll();
-			$data['errors']     = $this->model->errors();
 	        return view('db_admin/upgrades/upgrades', $data); 
 		} 
 
-		if(!$this->user->save($data)){
-
-		}
 		session()->setFlashdata('success', 'Data Berhasil Diupdate');
 		return redirect()->to(base_url('/upgrades'));
 

@@ -10,12 +10,6 @@ class CreateTableUpgrade extends Migration
 	{
 		//
 		$this->forge->addField([
-			'id' => [
-				'type'           => 'int',
-				'constraint'     => 11,
-				'unsigned'       => true,
-				'auto_increment' => true
-			],
 			'user_id' => [
 				'type'           => 'int',
 				'constraint'     => 11,
@@ -30,8 +24,7 @@ class CreateTableUpgrade extends Migration
 			'deleted_at'    => ['type' => 'datetime', 'null'      => true],
 		]);
 
-		$this->forge->addKey('id', true);
-		$this->forge->addForeignKey('user_id', 'users', 'id', 'CASCADE', 'NO ACTION');
+		$this->forge->addKey('user_id', true);
         $this->forge->createTable('upgrades', true);
 	}
 
