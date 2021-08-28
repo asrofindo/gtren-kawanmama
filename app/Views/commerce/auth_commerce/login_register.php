@@ -61,8 +61,16 @@
                                 <?php endif; ?>
 
                                     <button type="submit" class="btn btn-primary btn-block"><?=lang('Auth.loginAction')?></button>
-
+                                    
                                 </form>
+                                <hr>
+
+                                <?php if ($config->allowRegistration) : ?>
+                                    <p><a href="<?= route_to('register') ?>"><?=lang('Auth.needAnAccount')?></a></p>
+                                <?php endif; ?>
+                                <?php if ($config->activeResetter): ?>
+                                    <p><a href="<?= route_to('forgot') ?>"><?=lang('Auth.forgotYourPassword')?></a></p>
+                                <?php endif; ?>
                                 <!-- form login end -->
 
                             </div>
