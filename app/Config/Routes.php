@@ -55,8 +55,8 @@ $routes->get('address', 'User::address', ['filter' => 'login']);
 $routes->get('profile', 'User::profile', ['filter' => 'login']);
 $routes->post('profile', 'User::set_profile', ['filter' => 'login']);
 
-$routes->get('upgrade', 'User::upgrade', ['filter' => 'login']);
-$routes->post('upgrade', 'User::upgrade', ['filter' => 'login']);
+$routes->get('upgrade/affiliate', 'User::upgrade', ['filter' => 'login']);
+$routes->get('upgrade/stockist', 'User::upgrade', ['filter' => 'login']);
 $routes->post('track', 'User::Track', ['filter' => 'login']);
 // $routes->get('checkout', 'User::Checkout', ['filter' => 'login']);
 $routes->get('abouts', 'Commerce::Contact');
@@ -157,6 +157,15 @@ $routes->group('', function($routes)
 	$routes->get('contact/edit/(:num)', 'Contact::edit/$1');
 	$routes->post('contact/update/(:num)', 'Contact::update/$1');
 	$routes->post('contact/search', 'Contact::search');
+
+
+		// upgrades
+	$routes->get('upgrades', 'Upgrades::index');
+	$routes->post('upgrades/(:num)', 'Upgrades::save/$1');
+	$routes->get('upgrades/delete/(:num)', 'Upgrades::delete/$1');
+	$routes->get('upgrades/edit/(:num)', 'Upgrades::edit/$1');
+	$routes->get('upgrades/update/(:num)', 'Upgrades::update/$1');
+	$routes->post('upgrades/search', 'Upgrades::search');
 
 
 }
