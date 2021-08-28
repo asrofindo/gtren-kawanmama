@@ -24,10 +24,18 @@
                                     <a class="nav-link <?= ($segments[0] == "profile" ? "active" : null) ?>" id="account-detail-tab" href="<?= base_url('profile') ?>" role="tab" aria-controls="account-detail" aria-selected="true"><i class="fa fa-user-edit mr-15"></i>Account details</a>
                                 </li>
                                 <li class="nav-item">
+                                    <?php if(count($segments) > 1) : ?>
                                     <a class="nav-link <?= ($segments[1] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Upgrade Affiliate</a>
+                                    <?php else : ?>
+                                    <a class="nav-link <?= ($segments[0] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Upgrade Affiliate</a>    
+                                    <?php endif; ?>
                                 </li>
                                  <li class="nav-item">
-                                    <a class="nav-link <?= ($segments[1] == "stockist" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/stockist') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Upgrade Stockist</a>
+                                    <?php if(count($segments) > 1): ?>
+                                    <a class="nav-link <?= ($segments[1] == "stockist" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Upgrade Stockist</a>
+                                    <?php else : ?>
+                                    <a class="nav-link <?= ($segments[0] == "stockist" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Upgrade Stockist</a> 
+                                <?php endif; ?>
                                 </li>
                                 <li class="nav-item ">
                                     <a class="nav-link text-white" href="/logout"><i class="text-white fa fa-lock mr-15"></i>Logout</a>
@@ -400,7 +408,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            <?php elseif($segments[1] == "affiliate"): ?>
+                            
+                            <?php elseif(count($segments) > 1 && $segments[1] == "affiliate"): ?>
                                 <div class="tab-pane fade active show" id="upgrade" role="tabpanel" aria-labelledby="upgrade-tab">
                                     <div class="card">
 
@@ -458,7 +467,7 @@
                                         </div> -->
                                     </div>
                                 </div>
-                            <?php elseif($segments[1] == "stockist"): ?>
+                            <?php elseif( count($segments) > 1 && $segments[1] == "stockist"): ?>
                                 <div class="tab-pane fade active show" id="upgrade" role="tabpanel" aria-labelledby="upgrade-tab">
                                     <div class="card">
 
