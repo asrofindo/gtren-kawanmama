@@ -4,7 +4,11 @@ namespace App\Controllers;
 use App\Models\AccountUpgradeModel;
 use App\Models\AddressModel;
 use App\Models\UpgradesModel;
+<<<<<<< HEAD
 use App\Models\CategoryModel;
+=======
+use Myth\Auth\Models\UserModel;
+>>>>>>> 62306e9ba7e3c7f66cf27c11c13f6d9523538ddd
 
 class User extends BaseController
 {
@@ -13,9 +17,13 @@ class User extends BaseController
 	public function __construct(){
 		$this->address = new AddressModel();
 		$this->upgrade = new UpgradesModel();
+<<<<<<< HEAD
 
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
+=======
+		$this->User = new UserModel();
+>>>>>>> 62306e9ba7e3c7f66cf27c11c13f6d9523538ddd
 	}
 	public function account()
 	{
@@ -45,7 +53,7 @@ class User extends BaseController
 
 		$curl = curl_init();
 
-		$url = "https://api.binderbyte.com/v1/list_courier?api_key=1c276a5a2b00d61eafaa0a22a92dd95329d409678a46d1b8e580cc7c80d71c97";
+		$url = "https://api.binderbyte.com/v1/list_courier?api_key=336e8e201c4c0bf28ff277c6251c50347d2646c3caffbd36ff865ec1e11743bf";
 		
 		curl_setopt($curl, CURLOPT_URL, $url);
 		curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
@@ -63,7 +71,7 @@ class User extends BaseController
 		$awb     = $this->request->getPost('awb');
 		$courier = $this->request->getPost('courier');
 
-		$url     = "https://api.binderbyte.com/v1/track?api_key=1c276a5a2b00d61eafaa0a22a92dd95329d409678a46d1b8e580cc7c80d71c97&courier={$courier}&awb={$awb}";
+		$url     = "https://api.binderbyte.com/v1/track?api_key=336e8e201c4c0bf28ff277c6251c50347d2646c3caffbd36ff865ec1e11743bf&courier={$courier}&awb={$awb}";
 
 		curl_setopt($curl, CURLOPT_URL, $url);
 		curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
@@ -71,6 +79,11 @@ class User extends BaseController
 		$set_to_array  = json_decode($response, TRUE);
 		$data['track'] = $set_to_array;
 
+		if($data['track']['status'] == 400){
+
+			session()->setFlashdata('danger', 'Data Tidak Ditemukan');
+			return redirect()->back();
+		}
 
 		$email = \Config\Services::email();
 
@@ -78,11 +91,12 @@ class User extends BaseController
 		// $email->setHeader('Content-type', 'text/html');
 
 		$email->setFrom('team@gtren.co.id', 'Gtren Team');
-		$email->setTo('imronpuji5@gmail.com');
+		$email->setTo(user()->email);
 		// $email->setTo('pujiselamat6@gmail.com');
 		// $email->setTo('m.hilmimubarok@gmail.com');
 
 		$email->setSubject('Detail of ur track');
+
 		$msg = view('track/index', $data);
 		$email->setMessage($msg);
 
@@ -102,9 +116,13 @@ class User extends BaseController
 
 	public function address()
 	{
+<<<<<<< HEAD
 
 		$data = $this->data;
 
+=======
+	
+>>>>>>> 62306e9ba7e3c7f66cf27c11c13f6d9523538ddd
 		$data['segments'] = $this->request->uri->getSegments();
 
 		if($data['segments'][0] == 'billing-address' || $data['segments'] == 'shipping-address') {
@@ -149,41 +167,51 @@ class User extends BaseController
 		user()->setProfile($data);
 	}
 
-	public function upgrade()
+	public function upgrade_affiliate()
 	{
 		$data = $this->data;
 
 		$data['segments'] = $this->request->uri->getSegments();
+		
+		$user = $this->upgrade->where('user_id', user()->id)->findAll();
 
-		if ($this->request->getPost()) {
-
-			$upgrade = new AccountUpgradeModel();
-			$data = [
-				'user_id' => intval(user()->id),
-				'code'    => $this->request->getPost('code'),
-				'status'  => 'pending'
-			];
+		if(in_groups(4))
+		{
 			
-			$save = $upgrade->insert($data);
-
-			if (!$save) {
-				return redirect()->back();
-			}
-			session()->setFlashdata('success', 'Sukses!, Silahkan menunggu proses verifikasi oleh Admin.');
-			return redirect()->back();
-		}
-
-		if($this->upgrade->where('user_id', user()->id)->findAll() && $this->upgrade->where('status_request', 'pending')->findAll()){
-
-			session()->setFlashdata('danger', 'Sedang Di Konfirmasi');
+			session()->setFlashdata('success', 'Anda Adalah affiliate');
 			return view('commerce/account', $data);
+		}
+		
+		if(count($user) > 0)
+		{
 
-		}	
+			if($this->request->uri->getSegments()[1] == 'affiliate' && $user[0]->status_request == 'pending'){
+
+				session()->setFlashdata('success', 'Sedang di tinjau Oleh Admin');
+				return view('commerce/account', $data);
+
+			} 
+
+		}
 
 		return view('commerce/account', $data);
 	}
 
-	public function upgradeList()
+	public function upgrade_stockist()
+	{
+
+		$data['segments'] = $this->request->uri->getSegments();
+
+		if(in_groups(3))
+		{			
+			session()->setFlashdata('successs', 'Anda Adalah Stockist');
+			return view('commerce/account', $data);
+		}
+
+		return view('commerce/account', $data);
+	}
+
+	public function upgrade()
 	{
 		$data = $this->data;
 

@@ -105,6 +105,14 @@
                                                 </div>
 
                                             <?php } ?>
+                                            <?php if(!empty(session()->getFlashdata('danger'))){ ?>
+
+                                                <div class="alert alert-danger bg-danger text-white">
+                                                    <?php echo session()->getFlashdata('danger');?>
+                                                </div>
+
+                                            <?php } ?>
+
                                             <p>To track your order please enter your OrderID in the box below and press "Track" button. This was given to you on your receipt and in the confirmation email you should have received.</p>
                                             <div class="row">
                                                 <div class="col-lg-12">
@@ -386,15 +394,15 @@
                                                 <div class="row">
                                                     <div class="form-group col-md-12">
                                                         <label>Full Name <span class="required">*</span></label>
-                                                        <input required="" class="form-control square" name="fullname" type="text">
+                                                        <input required="" class="form-control square" name="fullname" type="text" value="<?= user()->username ?>">
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Username <span class="required">*</span></label>
-                                                        <input required="" class="form-control square" name=username type="text">
+                                                        <input required="" class="form-control square" name=username type="text"  value="<?= user()->username ?>">
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Email Address <span class="required">*</span></label>
-                                                        <input required="" class="form-control square" name="email" type="email">
+                                                        <input required="" class="form-control square" name="email" type="email"  value="<?= user()->email ?>">
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Current Password <span class="required">*</span></label>
@@ -420,7 +428,7 @@
                                             <p class="pb-5 mb-20">
                                                 Silahkan 
                                             </p>
-                                            <?php if(!empty(session()->getFlashdata('success'))){ ?>
+                                            <?php if($segments[1] == "affiliate" && !empty(session()->getFlashdata('success'))){ ?>
 
                                                 <div class="alert alert-success bg-success text-white">
                                                     <?php echo session()->getFlashdata('success');?>
@@ -428,7 +436,7 @@
 
                                             <?php } ?>
 
-                                            <?php if(!empty(session()->getFlashdata('danger'))){ ?>
+                                            <?php if($segments[1] == "affiliate" && !empty(session()->getFlashdata('danger'))){ ?>
 
                                                 <div class="alert alert-danger bg-danger text-white">
                                                     <?php echo session()->getFlashdata('danger');?>
@@ -483,15 +491,15 @@
                                             <p class="pb-5 mb-20">
                                                 Silahkan 
                                             </p>
-                                                <?php if(!empty(session()->getFlashdata('success'))){ ?>
+                                                <?php if( $segments[1] == "stockist" && !empty(session()->getFlashdata('successs'))){ ?>
 
                                                     <div class="alert alert-success bg-success text-white">
-                                                        <?php echo session()->getFlashdata('success');?>
+                                                        <?php echo session()->getFlashdata('successs');?>
                                                     </div>
 
                                                 <?php } ?>
 
-                                                <?php if(!empty(session()->getFlashdata('danger'))){ ?>
+                                                <?php if($segments[1] == "stockist" && !empty(session()->getFlashdata('danger'))){ ?>
 
                                                     <div class="alert alert-danger bg-danger text-white">
                                                         <?php echo session()->getFlashdata('danger');?>
