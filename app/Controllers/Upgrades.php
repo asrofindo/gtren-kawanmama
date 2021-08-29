@@ -44,12 +44,6 @@ class upgrades extends BaseController
 		if($request->getPost('type') == 'affiliate')
 		{
 
-			$file = $request->getFile('file');
-
-			$new_name = $file->getRandomName();
-
-			$file->move(ROOTPATH . 'public/uploads/bukti', $new_name);
-			
 			$data = [
 				'user_id' => user()->id,
 				'code' => $request->getPost('code'),
@@ -57,7 +51,7 @@ class upgrades extends BaseController
 				'type' => $request->getPost('type'),
 				'total' => $request->getPost('total'),
 				'bill' => $request->getPost('bill'),
-				'photo' => $new_name
+				'photo' => null
 			];
 
 			$generate = $this->generate->find()[0]['nomor'];
@@ -158,5 +152,30 @@ class upgrades extends BaseController
 		$data['pager'] = $this->model->pager;
 
 		return view('db_admin/upgrades/upgrades', $data);;
+	}
+
+	public function upload($id){
+		$file = $this->request->getFile('photo');
+
+		$new_name = $file->getRandomName();
+
+		$file->move(ROOTPATH . 'public/uploads/bukti', $new_name);
+
+		$data = [
+			"photo" => $new_name
+		];
+		
+		$upgrades = $this->db->table('upgrades');
+		$upgrades->where('user_id', $id);
+
+		if(!$upgrades->update($data))
+		{
+			session()->setFlashdata('danger', 'Data Gagal Di Upload');
+			return redirect()->back();
+		}
+
+		session()->setFlashdata('success', 'Data Berhasil Diupdate');
+		return redirect()->back();
+
 	}
 }
