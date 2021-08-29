@@ -4,11 +4,10 @@ namespace App\Controllers;
 use App\Models\AccountUpgradeModel;
 use App\Models\AddressModel;
 use App\Models\UpgradesModel;
-<<<<<<< HEAD
+
 use App\Models\CategoryModel;
-=======
+
 use Myth\Auth\Models\UserModel;
->>>>>>> 62306e9ba7e3c7f66cf27c11c13f6d9523538ddd
 
 class User extends BaseController
 {
@@ -17,13 +16,11 @@ class User extends BaseController
 	public function __construct(){
 		$this->address = new AddressModel();
 		$this->upgrade = new UpgradesModel();
-<<<<<<< HEAD
+
 
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
-=======
 		$this->User = new UserModel();
->>>>>>> 62306e9ba7e3c7f66cf27c11c13f6d9523538ddd
 	}
 	public function account()
 	{
@@ -116,13 +113,11 @@ class User extends BaseController
 
 	public function address()
 	{
-<<<<<<< HEAD
 
 		$data = $this->data;
 
-=======
+
 	
->>>>>>> 62306e9ba7e3c7f66cf27c11c13f6d9523538ddd
 		$data['segments'] = $this->request->uri->getSegments();
 
 		if($data['segments'][0] == 'billing-address' || $data['segments'] == 'shipping-address') {

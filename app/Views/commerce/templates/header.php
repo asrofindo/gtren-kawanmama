@@ -44,7 +44,7 @@
             <div class="container">
                 <div class="header-wrap header-space-between">
                     <div class="logo logo-width-1">
-                        <a href="<?= base_url() ?>"><img src="<?= base_url() ?>/frontend/imgs/theme/logo-default.png" alt="logo"></a>
+                        <a href="<?= base_url() ?>"><img class="w-50" src="<?= base_url() ?>/frontend/imgs/theme/gtren.png" alt="logo"></a>
                     </div>
                     <div class="search-style-1">
                         <form action="#">
