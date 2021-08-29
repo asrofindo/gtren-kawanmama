@@ -2,30 +2,43 @@
 
 namespace App\Controllers;
 use App\Models\OfferModel;
+use App\Models\CategoryModel;
+
 
 class Commerce extends BaseController
 {
+	protected $data;
+
+	public function __construct()
+	{		
+		$this->category = new CategoryModel();
+		$this->data['category']    = $this->category->findAll();
+
+	}
 	public function index()
 	{
 		$model = new OfferModel();
 		$data['offers'] = $model->findAll();
-
 		return view('commerce/home', $data);
 	}
 
 	public function about()
 	{
-		
+		$data=$this->data;
+		return view('commerce/about',$data);
 	}
 
 
 	public function Cart()
 	{
-		return view('commerce/cart');
+		$data=$this->data;
+		return view('commerce/cart',$data);
 	}
 
 	public function Account()
 	{	
+		$data = $this->data;
+
 		$curl = curl_init();
 
 		$url = "https://api.binderbyte.com/v1/list_courier?api_key=1c276a5a2b00d61eafaa0a22a92dd95329d409678a46d1b8e580cc7c80d71c97";
@@ -41,6 +54,8 @@ class Commerce extends BaseController
 
 	public function track()
 	{
+		$data = $this->data;
+
 		$curl    = curl_init();
 		$awb     = $this->request->getPost('awb');
 		$courier = $this->request->getPost('courier');
@@ -83,7 +98,9 @@ class Commerce extends BaseController
 
 	public function Contact()
 	{
-		return view('commerce/contact');
+		$data=$this->data;
+
+		return view('commerce/contact',$data);
 	}
 
 	public function Checkout()

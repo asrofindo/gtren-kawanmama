@@ -6,13 +6,23 @@ use App\Models\AddressModel;
 use App\Models\UpgradesModel;
 use App\Models\GenerateModel;
 use App\Models\BillModel;
+=======
+
+use App\Models\CategoryModel;
+
 use Myth\Auth\Models\UserModel;
 
 class User extends BaseController
 {
+	protected $data;
+
 	public function __construct(){
 		$this->address = new AddressModel();
 		$this->upgrade = new UpgradesModel();
+
+
+		$this->category = new CategoryModel();
+		$this->data['category']    = $this->category->findAll();
 		$this->User = new UserModel();
 		$this->generate = new GenerateModel();
 		$this->bill = new BillModel();
@@ -22,7 +32,7 @@ class User extends BaseController
 
 		helper(['greeting_helper', 'user']);
 
-
+		$data = $this->data;
 		$data['segments'] = $this->request->uri->getSegments();
 
 		return view('commerce/account', $data);
@@ -30,6 +40,8 @@ class User extends BaseController
 
 	public function orders()
 	{
+		$data = $this->data;
+
 		$data['segments'] = $this->request->uri->getSegments();
 
 		return view('commerce/account', $data);
@@ -37,6 +49,8 @@ class User extends BaseController
 
 	public function tracking()
 	{
+		$data = $this->data;
+
 		$data['segments'] = $this->request->uri->getSegments();
 
 		$curl = curl_init();
@@ -53,6 +67,8 @@ class User extends BaseController
 
 	public function track()
 	{
+		$data = $this->data;
+
 		$curl    = curl_init();
 		$awb     = $this->request->getPost('awb');
 		$courier = $this->request->getPost('courier');
@@ -102,6 +118,10 @@ class User extends BaseController
 
 	public function address()
 	{
+
+		$data = $this->data;
+
+
 	
 		$data['segments'] = $this->request->uri->getSegments();
 
@@ -116,6 +136,8 @@ class User extends BaseController
 
 	public function profile()
 	{
+		$data = $this->data;
+
 		$data['segments'] = $this->request->uri->getSegments();
 
 		return view('commerce/account', $data);
@@ -123,6 +145,8 @@ class User extends BaseController
 
 	public function set_profile()
 	{
+		$data = $this->data;
+
 		helper(['user']);
 
 		$request = $this->request;
@@ -138,6 +162,8 @@ class User extends BaseController
 
 	public function upgrade_affiliate()
 	{
+		$data = $this->data;
+
 		$data['segments'] = $this->request->uri->getSegments();
 		$data['bills'] = $this->bill->findAll();
 		$data['generate'] = $this->generate->find()[0]['nomor'];
@@ -189,6 +215,8 @@ class User extends BaseController
 
 	public function upgrade()
 	{
+		$data = $this->data;
+
 		helper(['status_upgrade_helper']);
 		$upgrade         = new \App\Models\AccountUpgradeModel();
 		$data['members'] = $upgrade->getAll();
@@ -197,6 +225,8 @@ class User extends BaseController
 
 	public function action($value, $id)
 	{
+		$data = $this->data;
+
 		$authorize = service('authorization');
 		$upgrade   = new \App\Models\AccountUpgradeModel();
 		$user      = $upgrade->getAll($id);
@@ -229,6 +259,7 @@ class User extends BaseController
 
 	public function save_billing($id)
 	{
+		$data = $this->data;
 
 		$data = [
 			'user_id'       => $id,
@@ -252,6 +283,7 @@ class User extends BaseController
 
 	public function save_shipping($id)
 	{
+		$data = $this->data;
 
 		$data = [
 			'user_id'       => $id,
@@ -275,6 +307,8 @@ class User extends BaseController
 
 	public function edit_billing($id)
 	{
+		$data = $this->data;
+
 		$user_id = user()->id;
 
 		$data = [
@@ -299,6 +333,8 @@ class User extends BaseController
 
 	public function edit_shipping($id)
 	{
+		$data = $this->data;
+
 		$user_id = user()->id;
 
 		$data = [
@@ -322,6 +358,8 @@ class User extends BaseController
 	}
 
 	public function delete($id){
+
+		$data = $this->data;
 
 		$this->address->delete($id);
 		return redirect()->back();

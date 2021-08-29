@@ -17,6 +17,7 @@ class Banner extends BaseController
 	{
 		$data['banners'] = $this->model->paginate(2, 'banners');
 		$data['pager'] = $this->model->pager;
+		
 		return view('db_admin/banner/banner', $data);
 	}
 

@@ -44,7 +44,7 @@
             <div class="container">
                 <div class="header-wrap header-space-between">
                     <div class="logo logo-width-1">
-                        <a href="index.html"><img src="<?= base_url() ?>/frontend/imgs/theme/logo-default.png" alt="logo"></a>
+                        <a href="<?= base_url() ?>"><img class="w-50" src="<?= base_url() ?>/frontend/imgs/theme/gtren.png" alt="logo"></a>
                     </div>
                     <div class="search-style-1">
                         <form action="#">
@@ -125,13 +125,9 @@
                         </a>
                         <div class="categori-dropdown-wrap categori-dropdown-active-large">
                             <ul>
-                                <li><a href="shop-grid-right.html"><i class="wowy-font-desktop"></i>Computer & Office</a></li>
-                                <li><a href="shop-grid-right.html"><i class="wowy-font-cpu"></i>Consumer Electronics</a></li>
-                                <li><a href="shop-grid-right.html"><i class="wowy-font-diamond"></i>Jewelry & Accessories</a></li>
-                                <li><a href="shop-grid-right.html"><i class="wowy-font-home"></i>Home & Garden</a></li>
-                                <li><a href="shop-grid-right.html"><i class="wowy-font-high-heels"></i>Shoes</a></li>
-                                <li><a href="shop-grid-right.html"><i class="wowy-font-teddy-bear"></i>Mother & Kids</a></li>
-                                <li><a href="shop-grid-right.html"><i class="wowy-font-kite"></i>Outdoor fun</a></li>
+                                <?php foreach ($category as $data) {?>
+                                <li><a href=""><?= $data->category ?></a></li>
+                                <?php }?>
                             </ul>
                         </div>
                     </div>
@@ -142,10 +138,10 @@
                                     <a class="active" href="<?= base_url() ?>">Home</a>
                                 </li>
                                 <li>
-                                    <a href="page-about.html">About</a>
+                                    <a href="<?= base_url()?>/about">About</a>
                                 </li>
                                 <li>
-                                    <a href="/contact">Contact</a>
+                                    <a href="<?= base_url()?>/contact">Contact</a>
                                 </li>
                             </ul>
                         </nav>
@@ -175,18 +171,6 @@
                                             <div class="shopping-cart-title">
                                                 <h4><a href="shop-product-right.html">Apple Watch Serial 7</a></h4>
                                                 <h3><span>1 × </span>$800.00</h3>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="far fa-times"></i></a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="shopping-cart-img">
-                                                <a href="shop-product-right.html"><img alt="wowy" src="<?= base_url() ?>/frontend/imgs/shop/thumbnail-4.jpg"></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="shop-product-right.html">Macbook Pro 2022</a></h4>
-                                                <h3><span>1 × </span>$3500.00</h3>
                                             </div>
                                             <div class="shopping-cart-delete">
                                                 <a href="#"><i class="far fa-times"></i></a>
@@ -249,130 +233,20 @@
                         </a>
                         <div class="categori-dropdown-wrap categori-dropdown-active-small">
                             <ul>
-                                <li><a href="shop-grid-right.html"><i class="wowy-font-dress"></i>Women's Clothing</a></li>
-                                <li><a href="shop-grid-right.html"><i class="wowy-font-tshirt"></i>Men's Clothing</a></li>
-                                <li> <a href="shop-grid-right.html"><i class="wowy-font-smartphone"></i> Cellphones</a></li>
-                                <li><a href="shop-grid-right.html"><i class="wowy-font-desktop"></i>Computer & Office</a></li>
-                                <li><a href="shop-grid-right.html"><i class="wowy-font-cpu"></i>Consumer Electronics</a></li>
-                                <li><a href="shop-grid-right.html"><i class="wowy-font-home"></i>Home & Garden</a></li>
-                                <li><a href="shop-grid-right.html"><i class="wowy-font-high-heels"></i>Shoes</a></li>
-                                <li><a href="shop-grid-right.html"><i class="wowy-font-teddy-bear"></i>Mother & Kids</a></li>
-                                <li><a href="shop-grid-right.html"><i class="wowy-font-kite"></i>Outdoor fun</a></li>
+                            <?php foreach ($category as $data) {?>
+                                <li><a href=""><?= $data->category ?></a></li>
+                            <?php }?>
                             </ul>
                         </div>
                     </div>
                     <!-- mobile menu start -->
                     <nav>
                         <ul class="mobile-menu">
-                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="index.html">Home</a>
-                                <ul class="dropdown">
-                                    <li><a href="index.html">Home 1</a></li>
-                                    <li><a href="index-2.html">Home 2</a></li>
-                                    <li><a href="index-3.html">Home 3</a></li>
-                                    <li><a href="index-4.html">Home 4</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="shop-grid-right.html">shop</a>
-                                <ul class="dropdown">
-                                    <li><a href="shop-grid-right.html">Shop Grid – Right Sidebar</a></li>
-                                    <li><a href="shop-grid-left.html">Shop Grid – Left Sidebar</a></li>
-                                    <li><a href="shop-list-right.html">Shop List – Right Sidebar</a></li>
-                                    <li><a href="shop-list-left.html">Shop List – Left Sidebar</a></li>
-                                    <li><a href="shop-fullwidth.html">Shop - Wide</a></li>
-                                    <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Single Product</a>
-                                        <ul class="dropdown">
-                                            <li><a href="shop-product-right.html">Product – Right Sidebar</a></li>
-                                            <li><a href="shop-product-left.html">Product – Left Sidebar</a></li>
-                                            <li><a href="shop-product-full.html">Product – No sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="shop-filter.html">Shop – Filter</a></li>
-                                    <li><a href="shop-wishlist.html">Shop – Wishlist</a></li>
-                                    <li><a href="shop-cart.html">Shop – Cart</a></li>
-                                    <li><a href="shop-checkout.html">Shop – Checkout</a></li>
-                                    <li><a href="shop-compare.html">Shop – Compare</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Mega menu</a>
-                                <ul class="dropdown">
-                                    <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Women's Fashion</a>
-                                        <ul class="dropdown">
-                                            <li><a href="shop-product-right.html">Dresses</a></li>
-                                            <li><a href="shop-product-right.html">Blouses & Shirts</a></li>
-                                            <li><a href="shop-product-right.html">Hoodies & Sweatshirts</a></li>
-                                            <li><a href="shop-product-right.html">Women's Sets</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Men's Fashion</a>
-                                        <ul class="dropdown">
-                                            <li><a href="shop-product-right.html">Jackets</a></li>
-                                            <li><a href="shop-product-right.html">Casual Faux Leather</a></li>
-                                            <li><a href="shop-product-right.html">Genuine Leather</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Technology</a>
-                                        <ul class="dropdown">
-                                            <li><a href="shop-product-right.html">Gaming Laptops</a></li>
-                                            <li><a href="shop-product-right.html">Ultraslim Laptops</a></li>
-                                            <li><a href="shop-product-right.html">Tablets</a></li>
-                                            <li><a href="shop-product-right.html">Laptop Accessories</a></li>
-                                            <li><a href="shop-product-right.html">Tablet Accessories</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="blog-category-fullwidth.html">Blog</a>
-                                <ul class="dropdown">
-                                    <li><a href="blog-category-grid.html">Blog Category Grid</a></li>
-                                    <li><a href="blog-category-list.html">Blog Category List</a></li>
-                                    <li><a href="blog-category-big.html">Blog Category Big</a></li>
-                                    <li><a href="blog-category-fullwidth.html">Blog Category Wide</a></li>
-                                    <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Single Product Layout</a>
-                                        <ul class="dropdown">
-                                            <li><a href="blog-post-left.html">Left Sidebar</a></li>
-                                            <li><a href="blog-post-right.html">Right Sidebar</a></li>
-                                            <li><a href="blog-post-fullwidth.html">No Sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="page-about.html">About Us</a></li>
-                                    <li><a href="page-contact.html">Contact</a></li>
-                                    <li><a href="page-account.html">My Account</a></li>
-                                    <li><a href="page-login-register.html">login/register</a></li>
-                                    <li><a href="page-purchase-guide.html">Purchase Guide</a></li>
-                                    <li><a href="page-privacy-policy.html">Privacy Policy</a></li>
-                                    <li><a href="page-terms.html">Terms of Service</a></li>
-                                    <li><a href="page-404.html">404 Page</a></li>
-                                </ul>
-                            </li>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/about">About</a></li>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/contact">Contact</a></li>
                         </ul>
                     </nav>
                     <!-- mobile menu end -->
-                </div>
-                <div class="mobile-header-info-wrap mobile-header-border">
-                    <div class="single-mobile-header-info">
-                        <a class="mobile-language-active" href="#">Language <span><i class="far fa-angle-down"></i></span></a>
-                        <div class="lang-curr-dropdown lang-dropdown-active">
-                            <ul>
-                                <li><a href="#">English</a></li>
-                                <li><a href="#">French</a></li>
-                                <li><a href="#">German</a></li>
-                                <li><a href="#">Spanish</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="single-mobile-header-info mt-30">
-                        <a target="_blank" href="page-location.html"> Our location </a>
-                    </div>
-                    <div class="single-mobile-header-info">
-                        <a href="page-login-register.html">Log In / Sign Up </a>
-                    </div>
-                    <div class="single-mobile-header-info">
-                        <a href="#">(+01) - 2345 - 6789 </a>
-                    </div>
                 </div>
                 <div class="mobile-social-icon">
                     <a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a>
