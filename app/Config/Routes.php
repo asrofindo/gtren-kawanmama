@@ -107,7 +107,7 @@ $routes->group('', ['namespace' => 'Myth\Auth\Controllers'], function($routes) {
 
 $routes->group('', function($routes)
 {
-	$routes->get('/dashboard', 'Dashboard::index', ['filter' => 'login']);
+	$routes->get('/dashboard', 'Dashboard::index', ['filter' => 'login','filter' => 'role:admin']);
 	// produk
 	$routes->get('tambahproduk', 'Product::tambah_produk');
 	$routes->post('tambahproduk', 'Product::save');
