@@ -446,7 +446,7 @@
                                             <?php if($segments[1] == "affiliate" && !empty(session()->getFlashdata('success'))){ ?>
 
                                                 <div class="alert alert-success bg-success text-white">
-                                                    <?php echo session()->getFlashdata('success');?>
+                                                    <?php echo session()->getFlashdata('success');?> <br> Link Affiliate <b><?= user()->affiliate_link ?></b>
                                                 </div>
 
                                             <?php } ?>
@@ -506,9 +506,10 @@
                                                                 <?php endif; ?>
                                                                 <td><?= $upgrade->status_request ?></td>
                                                                 <td><?= $upgrade->type ?></td>
-                                                                <td>Rp k<?= $upgrade->total ?></td>
+                                                                <td>Rp <?= $upgrade->total ?></td>
                                                                 <td><?= $upgrade->bill ?></td>
                                                                 <td>
+                                                                    <?php if($upgrade->status_request != 'active'): ?>
                                                                     <form method="post" action="<?= base_url()  ?>/upgrades/upload/<?= $id  ?>" enctype="multipart/form-data">
                                                                         <div class="form-group col-md-12">
                                                                             <input type="file" name="photo" style="width: 100px; border:none" class="is-invalid form-control">
@@ -517,6 +518,11 @@
                                                                             </button>
                                                                         </div>
                                                                     </form>
+                                                                    <?php else: ?>
+                                                                        <button type="submit" class="btn btn-sm btn-fill-out submit" name="submit" value="Submit">
+                                                                            <i class="fa fa-send"></i> Verified
+                                                                        </button>
+                                                                    <?php endif; ?>
                                                                 </td>
 
                                                             </tr>

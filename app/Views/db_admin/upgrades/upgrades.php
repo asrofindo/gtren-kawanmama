@@ -50,6 +50,7 @@
                                     <th>Name</th> 
                                     <th>status</th>
                                     <th>type</th>
+                                    <th>Affiliate Link</th>
                                     <th>Bank Transfer</th>
                                     <th>Total</th>
                                     <th>Action</th>
@@ -66,6 +67,7 @@
                                             <td><b class="badge rounded-pill alert-success"><?= $upgrade->status_request ?></b></td>
                                         <?php endif; ?>
                                         <td><b><?= $upgrade->type ?></b></td>
+                                        <td><b><?= $upgrade->affiliate_link ?></b></td>
                                         <td><b><?= $upgrade->bill ?></b></td>
 		                                <td><b>Rp <?= $upgrade->total ?></b></td>
 		                                <td>
