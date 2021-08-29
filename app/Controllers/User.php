@@ -4,6 +4,8 @@ namespace App\Controllers;
 use App\Models\AccountUpgradeModel;
 use App\Models\AddressModel;
 use App\Models\UpgradesModel;
+use App\Models\GenerateModel;
+use App\Models\BillModel;
 use Myth\Auth\Models\UserModel;
 
 class User extends BaseController
@@ -12,6 +14,8 @@ class User extends BaseController
 		$this->address = new AddressModel();
 		$this->upgrade = new UpgradesModel();
 		$this->User = new UserModel();
+		$this->generate = new GenerateModel();
+		$this->bill = new BillModel();
 	}
 	public function account()
 	{
@@ -101,17 +105,10 @@ class User extends BaseController
 	
 		$data['segments'] = $this->request->uri->getSegments();
 
-		if($data['segments'][0] == 'billing-address' || $data['segments'] == 'shipping-address') {
-			if(count($this->address->where('type', 'billing')->where('deleted_at', null)->get()->getResultArray()) > 0){
-				return redirect()->to('/address');
-			}
-			if(count($this->address->where('type', 'shipping')->where('deleted_at', null)->get()->getResultArray()) > 0){
-				return redirect()->to('/address');
-			}
-
-		}
+		
 		$data['billing_address'] = $this->address->where('type', 'billing')->where('deleted_at', null)->where('user_id', user()->id)->get()->getResult();
 		$data['shipping_address'] = $this->address->where('type', 'shipping')->where('deleted_at', null)->where('user_id', user()->id)->get()->getResult();
+
 
 		// verif
 		return view('commerce/account', $data);
@@ -142,12 +139,16 @@ class User extends BaseController
 	public function upgrade_affiliate()
 	{
 		$data['segments'] = $this->request->uri->getSegments();
+		$data['bills'] = $this->bill->findAll();
+		$data['generate'] = $this->generate->find()[0]['nomor'];
+
+		$data['upgrades'] = $this->upgrade->where('user_id', user()->id)->findAll();
 		
-		$user = $this->upgrade->where('user_id', user()->id)->findAll();
+		$user = $this->upgrade->where('user_id', user()->id)->find();
+
 
 		if(in_groups(4))
 		{
-			
 			session()->setFlashdata('success', 'Anda Adalah affiliate');
 			return view('commerce/account', $data);
 		}
@@ -163,6 +164,11 @@ class User extends BaseController
 			} 
 
 		}
+		if($this->generate->find()[0]['nomor'] == 999){
+			$this->generate->save(['id' => 1, 'nomor' => 1]);
+		}
+
+		
 
 		return view('commerce/account', $data);
 	}

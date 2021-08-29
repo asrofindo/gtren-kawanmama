@@ -4,28 +4,28 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UpgradesModel extends Model
+class GenerateModel extends Model
 {
 	protected $DBGroup              = 'default';
-	protected $table                = 'upgrades';
+	protected $table                = 'generate';
 	protected $primaryKey           = 'id';
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;
-	protected $returnType           = 'App\Entities\Upgrades';
-	protected $useSoftDeletes       = true;
+	protected $returnType           = 'array';
+	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['user_id', 'code', 'status_request', 'type', 'photo', 'total', 'bill'];
+	protected $allowedFields        = ['nomor'];
 
 	// Dates
-	protected $useTimestamps        = true;
+	protected $useTimestamps        = false;
 	protected $dateFormat           = 'datetime';
 	protected $createdField         = 'created_at';
 	protected $updatedField         = 'updated_at';
 	protected $deletedField         = 'deleted_at';
 
+	// Validation
 	protected $validationRules      = [];
 	protected $validationMessages   = [];
-
 	protected $skipValidation       = false;
 	protected $cleanValidationRules = true;
 
@@ -39,6 +39,4 @@ class UpgradesModel extends Model
 	protected $afterFind            = [];
 	protected $beforeDelete         = [];
 	protected $afterDelete          = [];
-
-	
 }

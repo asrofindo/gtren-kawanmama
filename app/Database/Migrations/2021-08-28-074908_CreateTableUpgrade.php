@@ -19,6 +19,8 @@ class CreateTableUpgrade extends Migration
 			'status_request'=> ['type' => 'varchar', 'constraint'     => 255],
 			'photo'=> ['type' => 'text', 'null' => true],
 			'type'          => ['type' => 'varchar', 'constraint' => 255],
+			'total'          => ['type' => 'varchar', 'constraint' => 255],
+			'bill'          => ['type' => 'varchar', 'constraint' => 255],
 			'created_at'    => ['type' => 'datetime', 'null'      => true],
 			'updated_at'    => ['type' => 'datetime', 'null'      => true],
 			'deleted_at'    => ['type' => 'datetime', 'null'      => true],
