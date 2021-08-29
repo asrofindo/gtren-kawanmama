@@ -15,7 +15,8 @@ class Contact extends BaseController
 
 	public function index()
 	{
-		$data['title'] = 'hallooo';
+		$data['title']='Contact | Gtren';
+
 		$data['contacts'] = $this->model->paginate(2, 'contacts');
 		$data['pager'] = $this->model->pager;
 		return view('db_admin/contact/contact', $data);
@@ -59,7 +60,8 @@ class Contact extends BaseController
 	public function edit($id)
 	{
 		$data['contact'] = $this->model->find($id);
-		
+		$data['title']='Contact | Gtren';
+
 		return view('db_admin/contact/edit_contact', $data);
 
 	}
@@ -91,6 +93,7 @@ class Contact extends BaseController
 
 	public function search()
 	{
+		$data['title']='Contact | Gtren';
 		$keyword            = $this->request->getPost('keyword');
 		$data['contacts'] 	= $this->model->like(['name' => $keyword])->paginate(2, 'contacts');
 		$data['pager'] 		= $this->model->pager;

@@ -15,9 +15,11 @@ class Banner extends BaseController
 
 	public function index()
 	{
+		$data['title']='Benner | Gtren';
+
 		$data['banners'] = $this->model->paginate(2, 'banners');
 		$data['pager'] = $this->model->pager;
-		
+
 		return view('db_admin/banner/banner', $data);
 	}
 

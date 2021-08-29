@@ -5,6 +5,7 @@ use CodeIgniter\Session\Session;
 use Myth\Auth\Config\Auth as AuthConfig;
 use Myth\Auth\Entities\User;
 use Myth\Auth\Models\UserModel;
+use App\Models\CategoryModel;
 
 class AuthController extends Controller
 {
@@ -21,9 +22,11 @@ class AuthController extends Controller
 	protected $session;
 
 	protected $helpers = ['auth'];
-
+	protected $data;
 	public function __construct()
 	{
+		$this->category = new CategoryModel();
+		$this->data['category']    = $this->category->findAll();
 		// Most services in this controller require
 		// the session to be started - so fire it up!
 		$this->session = service('session');

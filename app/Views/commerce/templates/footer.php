@@ -5,7 +5,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="widget-about font-md mb-md-5">
                         <div class="logo logo-width-1 wow fadeIn animated">
-                            <a href="index.html"><img src="<?= base_url() ?>/frontend/imgs/theme/logo-default.png" alt="logo"></a>
+                            <a href="index.html" class="w-25"><img src="<?= base_url() ?>/frontend/imgs/theme/gtren.png" alt="logo"></a>
                         </div>
     
                         <h4 class="mb-10 mt-20 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h4>

@@ -25,6 +25,7 @@ class Commerce extends BaseController
 	public function about()
 	{
 		$data=$this->data;
+		$data['title']='About | Gtren';
 		return view('commerce/about',$data);
 	}
 
@@ -32,12 +33,15 @@ class Commerce extends BaseController
 	public function Cart()
 	{
 		$data=$this->data;
+		$data['title']='Cart | Gtren';
 		return view('commerce/cart',$data);
 	}
 
 	public function Account()
 	{	
 		$data = $this->data;
+		
+		$data['title']='Account | Gtren';
 
 		$curl = curl_init();
 
@@ -55,6 +59,7 @@ class Commerce extends BaseController
 	public function track()
 	{
 		$data = $this->data;
+		$data['title']='Track | Gtren';
 
 		$curl    = curl_init();
 		$awb     = $this->request->getPost('awb');
@@ -99,6 +104,7 @@ class Commerce extends BaseController
 	public function Contact()
 	{
 		$data=$this->data;
+		$data['title']='Contact | Gtren';
 
 		return view('commerce/contact',$data);
 	}
@@ -116,6 +122,7 @@ class Commerce extends BaseController
 
 	public function Courier()
 	{
+		
 		$url="https://api.binderbyte.com/v1/list_courier?api_key=1c276a5a2b00d61eafaa0a22a92dd95329d409678a46d1b8e580cc7c80d71c97";
  
 		$curl = curl_init();
