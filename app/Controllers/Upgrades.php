@@ -32,7 +32,7 @@ class upgrades extends BaseController
 	public function save($id)
 	{
 		$request = $this->request;
-
+		$segment['segments'] = $request->uri->getSegments();
 
 		if($request->getPost('type') == 'affiliate')
 		{
@@ -58,16 +58,26 @@ class upgrades extends BaseController
 		} else {
 
 			$code = $request->getPost('code');
+			$unique_id = $this->uniq->where('code', $code)->find();
 
-			if(!$this->uniq->where('code', $code)->find()){	
-			session()->setFlashdata('danger', 'Code Salah');
-			return redirect()->back();
-		
+			if(!$unique_id)
+			{	
+				session()->setFlashdata('danger', 'Code Salah');
+				return redirect()->back();
 			} 
 
-			$this->builder->insert(["user_id" => user()->id, "group_id" => 3]);
+			if($unique_id[0]->used > 0)
+			{	
+				session()->setFlashdata('danger', 'Code Sudah Digunakan');
+				return redirect()->back();
+			} 
 
-			session()->setFlashdata('success', 'Berhasil, Anda Sekarang Adalah Stockist');
+
+			$this->builder->insert(["user_id" => user()->id, "group_id" => 3]);
+			
+			$this->uniq->save(["id" => $unique_id[0]->id, "used" => user()->id]);
+
+			session()->setFlashdata('successs', 'Berhasil, Anda Sekarang Adalah Stockist');
 			return redirect()->back();
 
 

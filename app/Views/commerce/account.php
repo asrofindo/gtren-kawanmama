@@ -420,7 +420,7 @@
                                             <p class="pb-5 mb-20">
                                                 Silahkan 
                                             </p>
-                                            <?php if(!empty(session()->getFlashdata('success'))){ ?>
+                                            <?php if($segments[1] == "affiliate" && !empty(session()->getFlashdata('success'))){ ?>
 
                                                 <div class="alert alert-success bg-success text-white">
                                                     <?php echo session()->getFlashdata('success');?>
@@ -428,7 +428,7 @@
 
                                             <?php } ?>
 
-                                            <?php if(!empty(session()->getFlashdata('danger'))){ ?>
+                                            <?php if($segments[1] == "affiliate" && !empty(session()->getFlashdata('danger'))){ ?>
 
                                                 <div class="alert alert-danger bg-danger text-white">
                                                     <?php echo session()->getFlashdata('danger');?>
@@ -483,15 +483,15 @@
                                             <p class="pb-5 mb-20">
                                                 Silahkan 
                                             </p>
-                                                <?php if(!empty(session()->getFlashdata('success'))){ ?>
+                                                <?php if( $segments[1] == "stockist" && !empty(session()->getFlashdata('successs'))){ ?>
 
                                                     <div class="alert alert-success bg-success text-white">
-                                                        <?php echo session()->getFlashdata('success');?>
+                                                        <?php echo session()->getFlashdata('successs');?>
                                                     </div>
 
                                                 <?php } ?>
 
-                                                <?php if(!empty(session()->getFlashdata('danger'))){ ?>
+                                                <?php if($segments[1] == "stockist" && !empty(session()->getFlashdata('danger'))){ ?>
 
                                                     <div class="alert alert-danger bg-danger text-white">
                                                         <?php echo session()->getFlashdata('danger');?>

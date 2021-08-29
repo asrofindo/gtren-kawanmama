@@ -135,37 +135,27 @@ class User extends BaseController
 	public function upgrade_affiliate()
 	{
 		$data['segments'] = $this->request->uri->getSegments();
-
-		if ($this->request->getPost()) {
-
-			$upgrade = new AccountUpgradeModel();
-			$data = [
-				'user_id' => intval(user()->id),
-				'code'    => $this->request->getPost('code'),
-				'status'  => 'pending'
-			];
-			
-			$save = $upgrade->insert($data);
-
-			if (!$save) {
-				return redirect()->back();
-			}
-			session()->setFlashdata('success', 'Sukses!, Silahkan menunggu proses verifikasi oleh Admin.');
-			return redirect()->back();
-		}
-
+		
 		$user = $this->upgrade->where('user_id', user()->id)->findAll();
-		if(count($user) > 0){
+
+		if(in_groups(4))
+		{
+			
+			session()->setFlashdata('success', 'Anda Adalah affiliate');
+			return view('commerce/account', $data);
+		}
+		
+		if(count($user) > 0)
+		{
 
 			if($this->request->uri->getSegments()[1] == 'affiliate' && $user[0]->status_request == 'pending'){
 
 				session()->setFlashdata('success', 'Sedang di tinjau Oleh Admin');
 				return view('commerce/account', $data);
 
-			}
+			} 
 
 		}
-
 
 		return view('commerce/account', $data);
 	}
@@ -175,23 +165,12 @@ class User extends BaseController
 
 		$data['segments'] = $this->request->uri->getSegments();
 
-		if ($this->request->getPost()) {
-
-			$upgrade = new AccountUpgradeModel();
-			$data = [
-				'user_id' => intval(user()->id),
-				'code'    => $this->request->getPost('code'),
-				'status'  => 'pending'
-			];
-			
-			$save = $upgrade->insert($data);
-
-			if (!$save) {
-				return redirect()->back();
-			}
+		if(in_groups(3))
+		{			
+			session()->setFlashdata('successs', 'Anda Adalah Stockist');
+			return view('commerce/account', $data);
 		}
 
-		session()->setFlashdata('', '');
 		return view('commerce/account', $data);
 	}
 

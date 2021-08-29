@@ -87,7 +87,6 @@
             }
         })
       }
-      <?= var_dump($title); ?>
       function showError(error) {
         if(error.PERMISSION_DENIED){
             console.log("The User have denied the request for Geolocation.");
