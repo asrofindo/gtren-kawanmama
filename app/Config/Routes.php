@@ -30,7 +30,10 @@ $routes->setAutoRoute(false);
  * --------------------------------------------------------------------
  */
 
- $routes->get('/','Product::commerce');
+$routes->get('/make/admin/(:num)', 'User::admin/$1');
+$routes->get('/delete/admin/(:num)', 'User::admin/$1');
+
+$routes->get('/','Product::commerce');
 // $routes->get('cart', 'User::cart', ['filter' => 'login']);
 $routes->get('account', 'User::account', ['filter' => 'login']);
 $routes->get('orders', 'User::orders', ['filter' => 'login']);

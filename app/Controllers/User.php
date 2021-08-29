@@ -10,6 +10,7 @@ use App\Models\BillModel;
 use App\Models\CategoryModel;
 
 use Myth\Auth\Models\UserModel;
+use Myth\Auth\authorization\GroupModel;
 
 class User extends BaseController
 {
@@ -23,6 +24,7 @@ class User extends BaseController
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
 		$this->User = new UserModel();
+		$this->group = new GroupModel();
 		$this->generate = new GenerateModel();
 		$this->bill = new BillModel();
 	}
@@ -166,7 +168,6 @@ class User extends BaseController
 		$data['segments'] = $this->request->uri->getSegments();
 		$data['bills'] = $this->bill->findAll();
 		$data['generate'] = $this->generate->find()[0]['nomor'];
-
 		$data['upgrades'] = $this->upgrade->where('user_id', user()->id)->findAll();
 		
 		$user = $this->upgrade->where('user_id', user()->id)->find();
@@ -363,5 +364,21 @@ class User extends BaseController
 		$this->address->delete($id);
 		return redirect()->back();
 	}
+
+	public function admin($id){
+		$segment = $this->request->uri->getSegments();
+
+		if($segment[0] == 'make'){
+			$this->group->addUserToGroup(user()->id, $id);
+			return 'berhasil Buat Admin';
+
+		} 
+
+		$this->group->removeUserFromGroup(user()->id, $id);
+
+		return 'berhasil';
+	}
+
+	
 
 }

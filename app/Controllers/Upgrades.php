@@ -26,7 +26,7 @@ class upgrades extends BaseController
 	public function index()
 	{
 		$this->model->select('status_request, type, code, photo, total, bill');
-		$this->model->select('users.username, users.id as id_user, upgrades.user_id as id');
+		$this->model->select('users.username, users.affiliate_link, users.id as id_user, upgrades.user_id as id');
 		$this->model->join('users', 'users.id = upgrades.user_id', 'left');
 		$data['upgrades'] = $this->model->paginate(4, 'upgrades');
 		$data['pager'] = $this->model->pager;
@@ -123,17 +123,23 @@ class upgrades extends BaseController
 	{
 		
 		$request = $this->request;
+		$this->group->addUserToGroup($id, 4);
 
 		$data = [
 			'status_request' => 'active'
 		];
 
-		$this->group->addUserToGroup($id, 4);
 
 		$upgrades = $this->db->table('upgrades');
 		$upgrades->where('user_id', $id);
 		$upgrades->update($data);
+
+		$users = $this->db->table('users');
+		$users->where('id', $id);
+		$users->update(['affiliate_link' => base_url('/src/'. $id)]);
 		
+
+
 		$data['upgrades'] = $this->model->findAll();
 	
 		session()->setFlashdata('success', 'Data Berhasil Diupdate');
