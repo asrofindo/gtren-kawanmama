@@ -4,12 +4,14 @@ namespace App\Controllers;
 use App\Models\AccountUpgradeModel;
 use App\Models\AddressModel;
 use App\Models\UpgradesModel;
+use Myth\Auth\Models\UserModel;
 
 class User extends BaseController
 {
 	public function __construct(){
 		$this->address = new AddressModel();
 		$this->upgrade = new UpgradesModel();
+		$this->User = new UserModel();
 	}
 	public function account()
 	{
