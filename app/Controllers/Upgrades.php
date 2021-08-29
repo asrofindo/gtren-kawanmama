@@ -32,14 +32,9 @@ class upgrades extends BaseController
 	public function save($id)
 	{
 		$request = $this->request;
-		$segment['segments'] = $request->uri->getSegments();
 
 		if($request->getPost('type') == 'affiliate')
 		{
-			if($this->model->where('user_id', user()->id)){
-
-				return redirect()->back();
-			}
 
 			$file = $request->getFile('file');
 
