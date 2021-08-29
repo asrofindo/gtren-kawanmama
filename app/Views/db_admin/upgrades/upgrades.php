@@ -48,24 +48,26 @@
                                 <tr>   
                                     <th>Bukti TF</th>
                                     <th>Name</th> 
-                                    <th>code</th>
                                     <th>status</th>
                                     <th>type</th>
+                                    <th>Bank Transfer</th>
+                                    <th>Total</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($upgrades as $upgrade): ?>           
+                                <?php foreach ($upgrades as $upgrade): ?>  
 		                            <tr>
                                         <td><img style="width:100px; height:80px" class="w-10 d-inline-block p-0" src="<?= base_url()  ?>/uploads/bukti/<?= $upgrade->photo ?>"></td>
 		                                <td><b><?= $upgrade->username ?></b></td>
-                                        <td><b><?= $upgrade->code ?></b></td>
                                         <?php if($upgrade->status_request == 'pending'): ?>
                                             <td><b class="badge rounded-pill alert-warning"><?= $upgrade->status_request ?></b></td>
                                         <?php else: ?>
                                             <td><b class="badge rounded-pill alert-success"><?= $upgrade->status_request ?></b></td>
                                         <?php endif; ?>
-		                                <td><b><?= $upgrade->type ?></b></td>
+                                        <td><b><?= $upgrade->type ?></b></td>
+                                        <td><b><?= $upgrade->bill ?></b></td>
+		                                <td><b>Rp <?= $upgrade->total ?></b></td>
 		                                <td>
                                             <?php if($upgrade->status_request == 'pending'): ?>
 		                                    <a href="<?= base_url('upgrades/update/'.$upgrade->id) ?>" class="btn btn-brand rounded btn-sm font-sm">

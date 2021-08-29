@@ -5,7 +5,9 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\UpgradesModel;
 use App\Models\UniqueCodeModel;
+use App\Models\GenerateModel;
 use Myth\Auth\Models\UserModel;
+use Myth\Auth\Authorization\GroupModel;
 
 class upgrades extends BaseController
 {
@@ -15,13 +17,15 @@ class upgrades extends BaseController
 		$this->model = new UpgradesModel();
 		$this->user = new UserModel();
 		$this->uniq = new UniqueCodeModel();
-		$db      = \Config\Database::connect();
-		$this->builder = $db->table('auth_groups_users');
+		$this->generate = new GenerateModel();
+		$this->group = new GroupModel();
+		$this->db      = \Config\Database::connect();
+		$this->builder = $this->db->table('auth_groups_users');
 	}
 
 	public function index()
 	{
-		$this->model->select('status_request, type, code, photo');
+		$this->model->select('status_request, type, code, photo, total, bill');
 		$this->model->select('users.username, users.id as id_user, upgrades.user_id as id');
 		$this->model->join('users', 'users.id = upgrades.user_id', 'left');
 		$data['upgrades'] = $this->model->paginate(4, 'upgrades');
@@ -33,22 +37,26 @@ class upgrades extends BaseController
 	{
 		$request = $this->request;
 
+		if($this->model->where('user_id', $id)->find()){
+			session()->setFlashdata('success', 'Menunggu persetujuan Admin');
+			return redirect()->back();
+		}
 		if($request->getPost('type') == 'affiliate')
 		{
 
-			$file = $request->getFile('file');
-
-			$new_name = $file->getRandomName();
-
-			$file->move(ROOTPATH . 'public/uploads/bukti', $new_name);
-			
 			$data = [
 				'user_id' => user()->id,
 				'code' => $request->getPost('code'),
 				'status_request' => 'pending',
 				'type' => $request->getPost('type'),
-				'photo' => $new_name
+				'total' => $request->getPost('total'),
+				'bill' => $request->getPost('bill'),
+				'photo' => null
 			];
+
+			$generate = $this->generate->find()[0]['nomor'];
+
+			$this->generate->save(['id' => 1, 'nomor' => $generate + 1]);
 
 		} else {
 
@@ -68,7 +76,7 @@ class upgrades extends BaseController
 			} 
 
 
-			$this->builder->insert(["user_id" => user()->id, "group_id" => 3]);
+			$this->group->addUserToGroup(user()->id, 3);
 			
 			$this->uniq->save(["id" => $unique_id[0]->id, "used" => user()->id]);
 
@@ -117,23 +125,17 @@ class upgrades extends BaseController
 		$request = $this->request;
 
 		$data = [
-			'id' => $id,
 			'status_request' => 'active'
 		];
 
+		$this->group->addUserToGroup($id, 4);
 
-
-		$type = $this->model->find($id)->type;
-
-		$this->builder->insert(["user_id" => $id, "group_id" => 4]);
-
-		$this->model->save($data);
-
-		if(!$this->model->save($data)){
-			$data['upgrades'] = $this->model->findAll();
-	        return view('db_admin/upgrades/upgrades', $data); 
-		} 
-
+		$upgrades = $this->db->table('upgrades');
+		$upgrades->where('user_id', $id);
+		$upgrades->update($data);
+		
+		$data['upgrades'] = $this->model->findAll();
+	
 		session()->setFlashdata('success', 'Data Berhasil Diupdate');
 		return redirect()->to(base_url('/upgrades'));
 
@@ -144,11 +146,36 @@ class upgrades extends BaseController
 	{
 		$keyword            = $this->request->getPost('keyword');
 		$this->model->select('status_request, type, code, photo');
-		$this->model->select('users.username, users.id as id_user, upgrades.id as id');
+		$this->model->select('users.username, users.id as id_user, upgrades.user_id as id');
 		$this->model->join('users', 'users.id = upgrades.user_id', 'left');
 		$data['upgrades'] = $this->model->like(['username' => $keyword])->paginate(2, 'upgrades');
 		$data['pager'] = $this->model->pager;
 
 		return view('db_admin/upgrades/upgrades', $data);;
+	}
+
+	public function upload($id){
+		$file = $this->request->getFile('photo');
+
+		$new_name = $file->getRandomName();
+
+		$file->move(ROOTPATH . 'public/uploads/bukti', $new_name);
+
+		$data = [
+			"photo" => $new_name
+		];
+		
+		$upgrades = $this->db->table('upgrades');
+		$upgrades->where('user_id', $id);
+
+		if(!$upgrades->update($data))
+		{
+			session()->setFlashdata('danger', 'Data Gagal Di Upload');
+			return redirect()->back();
+		}
+
+		session()->setFlashdata('success', 'Data Berhasil Diupdate');
+		return redirect()->back();
+
 	}
 }

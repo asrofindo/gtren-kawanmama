@@ -168,6 +168,7 @@ $routes->group('', function($routes)
 	$routes->get('upgrades/delete/(:num)', 'Upgrades::delete/$1');
 	$routes->get('upgrades/edit/(:num)', 'Upgrades::edit/$1');
 	$routes->get('upgrades/update/(:num)', 'Upgrades::update/$1');
+	$routes->post('upgrades/upload/(:num)', 'Upgrades::upload/$1');
 	$routes->post('upgrades/search', 'Upgrades::search');
 
 }

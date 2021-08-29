@@ -36,6 +36,7 @@
             <span class="text">Dashboard</span>
         </a>
     </li>
+
     <?php if(in_groups(1)): ?>
     <li class="menu-item has-submenu" >
         <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>

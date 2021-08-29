@@ -12,7 +12,7 @@ class AddressModel extends Model
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;
 	protected $returnType           = 'App\Entities\Address';
-	protected $useSoftDeletes       = true;
+	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
 	protected $allowedFields        = ['user_id', 'provinsi', 'kabupaten', 'kecamatan', 'kode_pos', 'detail_alamat', 'type'];
 

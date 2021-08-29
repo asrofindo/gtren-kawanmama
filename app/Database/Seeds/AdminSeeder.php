@@ -6,7 +6,7 @@ class AdminSeeder extends \CodeIgniter\Database\Seeder
     {
         $data = [
             'group_id'  => 1,
-            'user_id'      => 4,
+            'user_id'      => 1,
         ];
         $this->db->table('auth_groups_users')->insert($data);
     }

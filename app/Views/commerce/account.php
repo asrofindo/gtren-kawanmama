@@ -149,8 +149,12 @@
                                                 Tambah Address
                                               </button>
                                               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                <li><a class="dropdown-item" href="<?php base_url() ?>/billing-address">Billing</a></li>
-                                                <li><a class="dropdown-item" href="<?php base_url() ?>/shipping-address">Shipping</a></li>
+                                                <?php if(count($billing_address) < 1):  ?>
+                                                    <li><a class="dropdown-item" href="<?php base_url() ?>/billing-address">Billing</a></li>
+                                                <?php endif ?>
+                                                <?php if(count($shipping_address) < 1):  ?>
+                                                    <li><a class="dropdown-item" href="<?php base_url() ?>/shipping-address">Shipping</a></li>
+                                                <?php endif ?>
                                               </ul>
                                             </div>
                                     </div>
@@ -415,8 +419,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                </div>
-                            
+                                </div>                        
                             <?php elseif(count($segments) > 1 && $segments[1] == "affiliate"): ?>
                                 <div class="tab-pane fade active show" id="upgrade" role="tabpanel" aria-labelledby="upgrade-tab">
                                     <div class="card">
@@ -425,9 +428,21 @@
                                             <h5>Upgrade Akun</h5>
                                         </div>
                                         <div class="card-body">
+                                            <?php if(count($upgrades) < 1): ?>
                                             <p class="pb-5 mb-20">
-                                                Silahkan 
+                                                 Username Kamu <b><?= user()->username; ?></b>
                                             </p>
+                                                <p class="pb-5 mb-20">
+                                                     Biaya Affiliate : Rp <b><?= 50000 ?></b>
+                                                </p>
+                                                <p class="pb-5 mb-20">
+                                                    <?php $kode = 50000 + $generate; ?>
+                                                    Kode Unik : <b><?= substr($kode, 2, 5) ?></b>
+                                                </p>
+                                                <p class="pb-5 mb-20">
+                                                     Total Tagihan : Rp <b><?= 50000 + $generate ?></b>
+                                                </p>
+                                            <?php endif; ?>
                                             <?php if($segments[1] == "affiliate" && !empty(session()->getFlashdata('success'))){ ?>
 
                                                 <div class="alert alert-success bg-success text-white">
@@ -443,28 +458,72 @@
                                                 </div>
 
                                             <?php } ?>
-                                             <?php $id = user()->id; ?>
-                                            <form method="post" action="<?= base_url()  ?>/upgrades/<?= $id  ?>" enctype="multipart/form-data">
-                                                <div class="form-group col-md-12">
-                                                    <label>Bukti Transfer <span class="required">*</span></label>
-                                                    <input required class="form-control square" name="file" type="file">
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label>Pilih Tipe Akun <span class="required">*</span></label>
-                                                    <select required="" class="form-control square" name="type" id="type">
-                                                        <option selected value="affiliate">affiliate</option>
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3 form-check">
-                                                    <input type="checkbox" required class="form-check-input" id="exampleCheck1">
-                                                    <label class="form-check-label" for="exampleCheck1">Saya benar telah mendapatkan kode dari admin</label>
-                                                  </div>
-                                                <div class="col-md-12">
-                                                    <button type="submit" class="btn btn-sm btn-fill-out submit" name="submit" value="Submit">
-                                                        <i class="fa fa-upload"></i> Upgrade
-                                                    </button>
-                                                </div>
-                                            </form>
+                                            <?php $id = user()->id; ?>
+                                            <?php if(count($upgrades) < 1): ?>
+                                                <form method="post" action="<?= base_url()  ?>/upgrades/<?= $id  ?>" enctype="multipart/form-data">
+                                                    <div class="form-group col-md-12">
+                                                        <input  value="<?= 50000 + $generate ?>" required class="form-control square" name="total" id="total" style="display: none;" type="text">
+                                                    </div>
+                                                    <div class="form-group col-md-12">
+                                                        <input type="text" name="type" value="affiliate" style="display: none;">
+                                                        <input type="text" name="code" value="<?= substr($kode, 2, 5) ?>" style="display: none">
+                                                    </div>
+                                                     <div class="form-group col-md-12">
+                                                        <label>Transfer Bank<span class="required">*</span></label>
+                                                        <select required="" class="form-control square" name="bill" id="bill">
+                                                            <?php foreach($bills as $bill): ?>
+                                                                <option selected value="<?= $bill->bank_name  ?> - <?= $bill->bank_number?>">
+                                                                    <?= $bill->bank_name  ?> - <?= $bill->bank_number  ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <button type="submit" class="btn btn-sm btn-fill-out submit" name="submit" value="Submit">
+                                                            <i class="fa fa-send"></i> Bayar
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            <?php else: ?>
+                                               <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>photo</th>
+                                                            <th>status</th>
+                                                            <th>Type</th>
+                                                            <th>Total</th>
+                                                            <th>bill</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php foreach($upgrades as $upgrade): ?>
+                                                            <tr>
+                                                                <td>
+                                                                <?php if(strlen($upgrade->photo) > 5): ?>
+                                                                    <img style="width:100px" class="img-responsive circle" src="<?php base_url() ?>/uploads/bukti/<?= $upgrade->photo ?>"></td>
+                                                                <?php else: ?>
+                                                                    Upload Bukti Foto
+                                                                <?php endif; ?>
+                                                                <td><?= $upgrade->status_request ?></td>
+                                                                <td><?= $upgrade->type ?></td>
+                                                                <td>Rp k<?= $upgrade->total ?></td>
+                                                                <td><?= $upgrade->bill ?></td>
+                                                                <td>
+                                                                    <form method="post" action="<?= base_url()  ?>/upgrades/upload/<?= $id  ?>" enctype="multipart/form-data">
+                                                                        <div class="form-group col-md-12">
+                                                                            <input type="file" name="photo" style="width: 100px; border:none" class="is-invalid form-control">
+                                                                            <button type="submit" class="btn btn-sm btn-fill-out submit" name="submit" value="Submit">
+                                                                                <i class="fa fa-send"></i> Bayar
+                                                                            </button>
+                                                                        </div>
+                                                                    </form>
+                                                                </td>
+
+                                                            </tr>
+                                                        <?php endforeach; ?>
+                                                    </tbody>
+                                                </table>
+                                            <?php endif; ?>
                                         </div>
                                        <!--  <div class="card-body">
                                             <div class="sidebar">
