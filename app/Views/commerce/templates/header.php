@@ -44,7 +44,7 @@
             <div class="container">
                 <div class="header-wrap header-space-between">
                     <div class="logo logo-width-1">
-                        <a href="<?= base_url() ?>"><img class="w-50" src="<?= base_url() ?>/frontend/imgs/theme/gtren.png" alt="logo"></a>
+                        <a href="<?= base_url() ?>"><img class="w-25" src="<?= base_url() ?>/frontend/imgs/theme/gtren.png" alt="logo"></a>
                     </div>
                     <div class="search-style-1">
                         <form action="#">
@@ -117,7 +117,7 @@
             <div class="container">
                 <div class="header-wrap header-space-between position-relative main-nav">
                     <div class="logo logo-width-1 d-block d-lg-none">
-                        <a href="index.html"><img src="<?= base_url() ?>/frontend/imgs/theme/logo-white.png" alt="logo"></a>
+                        <a href="index.html" class="w-50"><img src="<?= base_url() ?>/frontend/imgs/theme/gtren-t.png" alt="logo"></a>
                     </div>
                     <div class="main-categori-wrap d-none d-lg-block">
                         <a class="categori-button-active" href="#">
@@ -210,7 +210,7 @@
         <div class="mobile-header-wrapper-inner">
             <div class="mobile-header-top">
                 <div class="mobile-header-logo">
-                    <a href="index.html"><img src="<?= base_url() ?>/frontend/imgs/theme/logo-default.png" alt="logo"></a>
+                    <a href="index.html" class="w-50"><img src="<?= base_url() ?>/frontend/imgs/theme/gtren.png" alt="logo"></a>
                 </div>
                 <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                     <button class="close-style search-close">
