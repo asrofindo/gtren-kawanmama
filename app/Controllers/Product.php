@@ -15,17 +15,21 @@ use App\Libraries\Slug;
 class Product extends BaseController
 {
 	protected $category;
+	protected $data;
 
 	public function __construct()
 	{
 		helper(['form', 'url']);
 
 		$this->model    = new ProductModel();
-		$this->category = new CategoryModel();
 		$this->photo    = new ProductPhoto();
 		$this->banner    = new BannerModel();
 		$this->offer    = new OfferModel();
 		$this->contact    = new ContactModel();
+		
+		$this->category = new CategoryModel();
+		$this->data['category']    = $this->category->findAll();
+
 	}
 
 	public function index()
@@ -42,7 +46,7 @@ class Product extends BaseController
 
 	public function commerce()
 	{
-		
+		$data = $this->data;
 		$data['products']   = $this->model->paginate(8, 'products');
 		
 		$data['kategori'] = $this->category->findAll();
@@ -63,6 +67,8 @@ class Product extends BaseController
 
 	public function detail($slug)
 	{
+		$data = $this->data;
+
 		$data['product'] = $this->model->where('slug', $slug)->first();
 
 		// dd($data['product']);

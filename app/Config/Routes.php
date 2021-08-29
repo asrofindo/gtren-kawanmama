@@ -30,7 +30,7 @@ $routes->setAutoRoute(false);
  * --------------------------------------------------------------------
  */
 
- $routes->get('/', 'Product::commerce');
+ $routes->get('/','Product::commerce');
 // $routes->get('cart', 'User::cart', ['filter' => 'login']);
 $routes->get('account', 'User::account', ['filter' => 'login']);
 $routes->get('orders', 'User::orders', ['filter' => 'login']);
@@ -60,8 +60,10 @@ $routes->get('upgrade/affiliate', 'User::upgrade', ['filter' => 'login']);
 $routes->get('upgrade/stockist', 'User::upgrade', ['filter' => 'login']);
 $routes->post('track', 'User::Track', ['filter' => 'login']);
 // $routes->get('checkout', 'User::Checkout', ['filter' => 'login']);
-$routes->get('abouts', 'Commerce::Contact');
+$routes->get('contact', 'Commerce::Contact');
 $routes->get('about', 'Commerce::About');
+$routes->get('cart', 'Commerce::cart');
+
 $routes->get('product/(:any)', 'Product::detail/$1');
 
 $routes->get('test', 'Testing::index');
@@ -121,6 +123,7 @@ $routes->group('', function($routes)
     $routes->get('category', 'Category::index');
     $routes->get('category/edit/(:num)', 'Category::edit/$1');
     $routes->post('category/save', 'Category::save/$1');
+	$routes->post('category/save', 'Category::save');
     $routes->get('category/edit/(:num)', 'Category::edit/$1');
 
 	// order

@@ -40,10 +40,10 @@ class Category extends BaseController
 		// Notif
 		if($save) {
 	        session()->setFlashdata('success', 'Data Berhasil Disimpan');
-	        return redirect()->to(base_url('admin/category'));
+	        return redirect()->to(base_url('category'));
 	    } else {
 	        session()->setFlashdata('danger', 'Data Gagal Disimpan');
-	        return redirect()->to(base_url('admin/category')); 
+	        return redirect()->to(base_url('category')); 
 	    }
 
 	}

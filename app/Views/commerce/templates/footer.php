@@ -7,11 +7,7 @@
                         <div class="logo logo-width-1 wow fadeIn animated">
                             <a href="index.html"><img src="<?= base_url() ?>/frontend/imgs/theme/logo-default.png" alt="logo"></a>
                         </div>
-                        <h4 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h4>
-                         <p class="wow fadeIn animated">
-                            </p>
-                            <p class="wow fadeIn animated">
-                            </p>
+    
                         <h4 class="mb-10 mt-20 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h4>
                         <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
                             <a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a>
@@ -22,23 +18,17 @@
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3">
-                    <h5 class="widget-title mb-30 wow fadeIn animated">About</h5>
+                    <h5 class="widget-title mb-30 wow fadeIn animated">Web</h5>
                     <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Delivery Information</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms &amp; Conditions</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="<?= base_url()?>/about">About Us</a></li>
+                        <li><a href="<?= base_url()?>/contact">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2  col-md-3">
-                    <h5 class="widget-title mb-30 wow fadeIn animated">My Account</h5>
+                    <h5 class="widget-title mb-30 wow fadeIn animated">Account</h5>
                     <ul class="footer-list wow fadeIn animated">
-                        <li><a href="#">Sign In</a></li>
-                        <li><a href="#">View Cart</a></li>
-                        <li><a href="#">Track My Order</a></li>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Order</a></li>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Register</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4">

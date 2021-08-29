@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> Gtren</title>
+    <title> ggg </title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -87,7 +87,6 @@
             }
         })
       }
-      <?= var_dump($title); ?>
       function showError(error) {
         if(error.PERMISSION_DENIED){
             console.log("The User have denied the request for Geolocation.");
