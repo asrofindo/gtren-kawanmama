@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> ggg </title>
+    <title><?php if(isset($title)){echo $title;}else{echo 'Gtren';}?></title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
