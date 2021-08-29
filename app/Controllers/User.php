@@ -10,7 +10,6 @@ use App\Models\BillModel;
 use App\Models\CategoryModel;
 
 use Myth\Auth\Models\UserModel;
-use Myth\Auth\authorization\GroupModel;
 
 class User extends BaseController
 {
@@ -24,7 +23,6 @@ class User extends BaseController
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
 		$this->User = new UserModel();
-		$this->group = new GroupModel();
 		$this->generate = new GenerateModel();
 		$this->bill = new BillModel();
 	}
