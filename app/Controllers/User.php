@@ -35,7 +35,7 @@ class User extends BaseController
 
 		$curl = curl_init();
 
-		$url = "https://api.binderbyte.com/v1/list_courier?api_key=1c276a5a2b00d61eafaa0a22a92dd95329d409678a46d1b8e580cc7c80d71c97";
+		$url = "https://api.binderbyte.com/v1/list_courier?api_key=336e8e201c4c0bf28ff277c6251c50347d2646c3caffbd36ff865ec1e11743bf";
 		
 		curl_setopt($curl, CURLOPT_URL, $url);
 		curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
@@ -51,7 +51,7 @@ class User extends BaseController
 		$awb     = $this->request->getPost('awb');
 		$courier = $this->request->getPost('courier');
 
-		$url     = "https://api.binderbyte.com/v1/track?api_key=1c276a5a2b00d61eafaa0a22a92dd95329d409678a46d1b8e580cc7c80d71c97&courier={$courier}&awb={$awb}";
+		$url     = "https://api.binderbyte.com/v1/track?api_key=336e8e201c4c0bf28ff277c6251c50347d2646c3caffbd36ff865ec1e11743bf&courier={$courier}&awb={$awb}";
 
 		curl_setopt($curl, CURLOPT_URL, $url);
 		curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
@@ -59,6 +59,11 @@ class User extends BaseController
 		$set_to_array  = json_decode($response, TRUE);
 		$data['track'] = $set_to_array;
 
+		if($data['track']['status'] == 400){
+
+			session()->setFlashdata('danger', 'Data Tidak Ditemukan');
+			return redirect()->back();
+		}
 
 		$email = \Config\Services::email();
 
@@ -66,11 +71,12 @@ class User extends BaseController
 		// $email->setHeader('Content-type', 'text/html');
 
 		$email->setFrom('team@gtren.co.id', 'Gtren Team');
-		$email->setTo('imronpuji5@gmail.com');
+		$email->setTo(user()->email);
 		// $email->setTo('pujiselamat6@gmail.com');
 		// $email->setTo('m.hilmimubarok@gmail.com');
 
 		$email->setSubject('Detail of ur track');
+
 		$msg = view('track/index', $data);
 		$email->setMessage($msg);
 
@@ -90,8 +96,7 @@ class User extends BaseController
 
 	public function address()
 	{
-
-		
+	
 		$data['segments'] = $this->request->uri->getSegments();
 
 		if($data['segments'][0] == 'billing-address' || $data['segments'] == 'shipping-address') {
