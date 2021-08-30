@@ -2,7 +2,7 @@
 <?php $this->section('content') ?>
 <div class="content-header">
     <div>
-        <h2 class="content-title card-title">Data Produk</h2>
+        <h2 class="content-title card-title">Produk Stokis</h2>
         <!-- <p>Lorem ipsum dolor sit amet.</p> -->
     </div>
     <div><!-- 
@@ -70,6 +70,7 @@
                     </div>
                     <div class="col-lg-2 col-sm-2 col-4 col-price"> <span><?= "Rp. ". number_format($product->sell_price) ?></span> </div>
                      <div class="col-lg-2 col-sm-2 col-4 col-price"> <span><?= "Rp. ". number_format($product->fixed_price) ?></span> </div>
+                     <div class="col-lg-2 col-sm-2 col-4 col-price"> <span><?= $product->jumlah ? $product->jumlah : 0?></span> </div>
                     <div class="col-lg-2 col-sm-2 col-4 col-status">
                         <?php $categories = $product->getCategory($product->categories); ?>
 
@@ -86,7 +87,7 @@
                         <div class="dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="<?= base_url('products/edit/'.$product->id)  ?>">Edit info</a>
+                                <a class="dropdown-item" href="<?= base_url('products/stockist/edit/' .$product->product_id)  ?>">Edit info</a>
                                 <a class="dropdown-item text-danger" href="<?= base_url('products/delete/'.$product->id)  ?>">Delete</a>
                                 <a class="dropdown-item text-danger" href="<?= base_url('products/update/stock/'.$product->id)  ?>">Update Produk</a>
                             </div>

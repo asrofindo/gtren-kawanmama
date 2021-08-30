@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\UpgradesModel;
 use App\Models\UniqueCodeModel;
 use App\Models\GenerateModel;
+use App\Models\DistributorModel;
 use Myth\Auth\Models\UserModel;
 use Myth\Auth\Authorization\GroupModel;
 
@@ -18,6 +19,7 @@ class upgrades extends BaseController
 		$this->user = new UserModel();
 		$this->uniq = new UniqueCodeModel();
 		$this->generate = new GenerateModel();
+		$this->distributor = new DistributorModel();
 		$this->group = new GroupModel();
 		$this->db      = \Config\Database::connect();
 		$this->builder = $this->db->table('auth_groups_users');
@@ -61,9 +63,11 @@ class upgrades extends BaseController
 		} else {
 
 			$code = $request->getPost('code');
+			$username = $request->getPost('username');
 			$unique_id = $this->uniq->where('code', $code)->find();
+			$unique_username = $this->uniq->where('username', $username)->find();
 
-			if(!$unique_id)
+			if(!$unique_id && !$unique_username)
 			{	
 				session()->setFlashdata('danger', 'Code Salah');
 				return redirect()->back();
@@ -77,7 +81,8 @@ class upgrades extends BaseController
 
 
 			$this->group->addUserToGroup(user()->id, 3);
-			
+			$this->group->addUserToGroup(user()->id, 4);
+			$this->distributor->save(['user_id' => user()->id, 'locate' => null]);
 			$this->uniq->save(["id" => $unique_id[0]->id, "used" => user()->id]);
 
 			session()->setFlashdata('successs', 'Berhasil, Anda Sekarang Adalah Stockist');

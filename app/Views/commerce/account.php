@@ -428,7 +428,7 @@
                                             <h5>Upgrade Akun</h5>
                                         </div>
                                         <div class="card-body">
-                                            <?php if(count($upgrades) < 1): ?>
+                                            <?php if(count($upgrades) < 1 && !in_groups(4) ): ?>
                                             <p class="pb-5 mb-20">
                                                  Username Kamu <b><?= user()->username; ?></b>
                                             </p>
@@ -459,7 +459,7 @@
 
                                             <?php } ?>
                                             <?php $id = user()->id; ?>
-                                            <?php if(count($upgrades) < 1): ?>
+                                            <?php if(count($upgrades) < 1 && !in_groups(4)): ?>
                                                 <form method="post" action="<?= base_url()  ?>/upgrades/<?= $id  ?>" enctype="multipart/form-data">
                                                     <div class="form-group col-md-12">
                                                         <input  value="<?= 50000 + $generate ?>" required class="form-control square" name="total" id="total" style="display: none;" type="text">
@@ -483,7 +483,7 @@
                                                         </button>
                                                     </div>
                                                 </form>
-                                            <?php else: ?>
+                                            <?php elseif(count($upgrades) > 1 && !in_groups(4)): ?>
                                                <table class="table">
                                                     <thead>
                                                         <tr>
@@ -553,9 +553,6 @@
                                             <h5>Upgrade Akun</h5>
                                         </div>
                                         <div class="card-body">
-                                            <p class="pb-5 mb-20">
-                                                Silahkan 
-                                            </p>
                                                 <?php if( $segments[1] == "stockist" && !empty(session()->getFlashdata('successs'))){ ?>
 
                                                     <div class="alert alert-success bg-success text-white">
@@ -572,17 +569,15 @@
 
                                                 <?php } ?>
                                              <?php $id = user()->id; ?>
+                                            <?php if(!in_groups(3)): ?>
                                             <form method="post" action="<?= base_url()  ?>/upgrades/<?= $id  ?>"  enctype="multipart/form-data">
                                                 <div class="form-group col-md-12">
                                                     <label>Kode <span class="required">*</span></label>
                                                     <input required class="form-control square" name="code" type="text">
                                                 </div>
-                                                <div class="form-group col-md-12">
-                                                    <label>Pilih Tipe Akun <span class="required">*</span></label>
-                                                    <select required="" class="form-control square" name="type" id="type">
-                                                        <option selected value="affiliate">affiliate</option>
-                                                        <option selected value="stockist">Stockist</option>
-                                                    </select>
+                                                 <div class="form-group col-md-12">
+                                                    <label>Username <span class="required">*</span></label>
+                                                    <input required class="form-control square" name="username" type="text">
                                                 </div>
                                                 <div class="col-md-12">
                                                     <button type="submit" class="btn btn-sm btn-fill-out submit" name="submit" value="Submit">
@@ -590,6 +585,9 @@
                                                     </button>
                                                 </div>
                                             </form>
+                                            <?php else: ?>
+                                                <b>Silahkan Kunjungi <a href="<?= base_url('/dashboard') ?>">Dashboard</a></b>
+                                            <?php endif; ?>
                                         </div>
                                        <!--  <div class="card-body">
                                             <div class="sidebar">

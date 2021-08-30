@@ -108,18 +108,22 @@ $routes->group('', ['namespace' => 'Myth\Auth\Controllers'], function($routes) {
 
 $routes->group('', function($routes)
 {
-	$routes->get('/dashboard', 'Dashboard::index', ['filter' => 'login']);
+	$routes->get('/dashboard', 'Dashboard::index', ['filter' => 'login','filter' => 'role:admin,stockist']);
 	// produk
-	$routes->get('tambahproduk', 'Product::tambah_produk');
-	$routes->post('tambahproduk', 'Product::save');
+	$routes->get('tambahproduk', 'Product::tambah_produk', ['filter' => 'login','filter' => 'role:admin']);
+	$routes->post('tambahproduk', 'Product::save', ['filter' => 'login','filter' => 'role:admin']);
 	$routes->get('saveproduk', 'Product::save');
-	$routes->get('products/delete/(:num)', 'Product::delete/$1');
-	$routes->get('products/edit/(:num)', 'Product::edit/$1');
+	$routes->get('products/stockist', 'Product::stockist');
+	$routes->get('products/stockist/edit/(:num)', 'Product::edit_distributor_produk/$1');
+	$routes->post('products/stockist/edit/(:num)', 'Product::edit_distributor_produk/$1');
+	$routes->get('products/update/stock/(:num)', 'Product::update_stock/$1');
+	$routes->get('products/delete/(:num)', 'Product::delete/$1', ['filter' => 'login','filter' => 'role:admin']);
+	$routes->get('products/edit/(:num)', 'Product::edit/$1', ['filter' => 'login','filter' => 'role:admin, stockist']);
 	$routes->get('products', 'Product::index');
 	$routes->post('products/search', 'Product::search');
-	$routes->post('updateproduk/(:any)', 'Product::update/$1');
-	$routes->get('products/delete_photo/(:num)/(:any)', 'Product::delete_photo/$1/$2');
-	$routes->get('products/delete_category/(:num)/(:any)', 'Product::delete_category/$1/$2');
+	$routes->post('updateproduk/(:any)', 'Product::update/$1', ['filter' => 'login','filter' => 'role:admin']);
+	$routes->get('products/delete_photo/(:num)/(:any)', 'Product::delete_photo/$1/$2', ['filter' => 'login','filter' => 'role:admin']);
+	$routes->get('products/delete_category/(:num)/(:any)', 'Product::delete_category/$1/$2', ['filter' => 'login','filter' => 'role:admin']);
 
 	// kategori
  //    $routes->get('kategori/(:alpha)/(:num)', 'Admin::kategori/$1/$2');
