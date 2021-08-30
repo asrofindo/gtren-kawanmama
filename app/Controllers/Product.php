@@ -31,7 +31,6 @@ class Product extends BaseController
 		
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
-
 	}
 
 	public function index()
@@ -78,7 +77,6 @@ class Product extends BaseController
 		// dd($data['categories']);
 
 		return view('commerce/home', $data);
-
 	}
 
 	public function detail($slug)
@@ -118,8 +116,6 @@ class Product extends BaseController
 
 			return view('db_admin/produk/edit_produk', $product);
 		}
-		
-
 	}
 
 	public function edit_distributor_produk($id)
@@ -159,8 +155,6 @@ class Product extends BaseController
 
 			return view('db_stokis/edit_produk', $product);
 		}
-		
-
 	}
 
 	public function update($id)
@@ -402,10 +396,6 @@ class Product extends BaseController
 
 			return redirect()->back()->withInput()->with('errors', $this->model->errors());
         }
-
-
-
-
 	}
 
 	public function tambah_produk()
@@ -441,7 +431,6 @@ class Product extends BaseController
   		if($this->model->save($data)){
   			return redirect()->back();
   		}
-
 	}
 
 	public function delete_category($id, $category)
@@ -459,8 +448,6 @@ class Product extends BaseController
   		if($this->model->save($data)){
   			return redirect()->back();
   		}
-
-
 	}
 
 	public function update_stock($id){
@@ -477,5 +464,7 @@ class Product extends BaseController
 		    return redirect()->back();
 		}
 	}
+
+
 
 }

@@ -2,8 +2,8 @@
 
 <?php $this->section('content') ?>
 <div class="tab-pane fade active show" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
-    <div class="row">        
-        <div class="card col-6">
+    <div class="row" style="padding:20px">        
+        <div class="card col-lg-6 ">
              <?php if(!empty(session()->getFlashdata('success'))){ ?>
                 <div class="alert alert-success bg-success text-white">
                     <?php echo session()->getFlashdata('success');?>
@@ -90,33 +90,6 @@
                         </div>
                     </form>
                 <?php endif; ?>    
-            </div>
-        </div>
-        <div class="card col-lg-3 h-50">
-            <div class="card-header">
-                <h5>UI Toko</h5>
-            </div>
-            <div class="card-body">
-                 <form method="post" action="/distributor">
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <label>Provinsi<span class="required">*</span></label>
-                                <select required="" class="form-control square" name="provinsi" id="provinsi">
-                                    
-                                </select>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label>Kabupaten<span class="required">*</span></label>
-                                 <select required="" class="form-control square" name="kabupaten" id="kabupaten">
-                                    
-                                </select>
-                            </div>
-
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Save</button>
-                            </div>
-                        </div>
-                    </form>
             </div>
         </div>
     </div>
