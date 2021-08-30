@@ -450,6 +450,16 @@ class Product extends BaseController
   		}
 	}
 
+	public function productByCategory($id)
+	{
+		$data = $this->data;
+		$category =new \App\Entities\category();
+		$id=(int)$id;
+		$data['products']= $category->getProduct([$id]);;
+		
+		return view('commerce/product_category',$data);
+	}
+	
 	public function update_stock($id){
 		$data = [
 			'distributor_id' => user()->id,
@@ -466,5 +476,12 @@ class Product extends BaseController
 	}
 
 
+	public function search(){
+		$data = $this->data;
 
+		$request=$this->request->getVar('search');
+		$data['products'] = $this->model->like('name', $request)->paginate(8, 'products');
+		$data['pager']      = $this->model->pager;
+		return view('commerce/product_search', $data);
+	}
 }

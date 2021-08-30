@@ -68,6 +68,7 @@ $routes->get('about', 'Commerce::About');
 $routes->get('cart', 'Commerce::cart');
 
 $routes->get('product/(:any)', 'Product::detail/$1');
+$routes->get('category/product/(:any)', 'Product::productByCategory/$1');
 
 $routes->get('test', 'Testing::index');
 $routes->post('testfoto', 'Testing::testfoto');
@@ -120,6 +121,7 @@ $routes->group('', function($routes)
 	$routes->get('products/edit/(:num)', 'Product::edit/$1', ['filter' => 'login','filter' => 'role:admin, stockist']);
 	$routes->get('products', 'Product::index');
 	$routes->post('products/search', 'Product::search');
+	$routes->get('products/search', 'Product::search');
 	$routes->post('updateproduk/(:any)', 'Product::update/$1', ['filter' => 'login','filter' => 'role:admin']);
 	$routes->get('products/delete_photo/(:num)/(:any)', 'Product::delete_photo/$1/$2', ['filter' => 'login','filter' => 'role:admin']);
 	$routes->get('products/delete_category/(:num)/(:any)', 'Product::delete_category/$1/$2', ['filter' => 'login','filter' => 'role:admin']);

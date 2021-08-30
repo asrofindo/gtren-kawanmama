@@ -47,8 +47,8 @@
                         <a href="<?= base_url() ?>"><img class="w-25" src="<?= base_url() ?>/frontend/imgs/theme/gtren.png" alt="logo"></a>
                     </div>
                     <div class="search-style-1">
-                        <form action="#">
-                            <input type="text" placeholder="Cari Produk" class="rounded-3">
+                        <form action="<?= base_url() ?>/products/search" method="get">
+                            <input type="text" placeholder="Cari Produk" name="search" class="rounded-3">
                             <button type="submit"> <i class="far fa-search"></i> </button>
                         </form>
                     </div>
@@ -123,10 +123,10 @@
                         <a class="categori-button-active" href="#">
                             <span class="fa fa-list"></span> Browse Categories <i class="down far fa-chevron-down"></i> <i class="up far fa-chevron-up"></i>
                         </a>
-                        <div class="categori-dropdown-wrap categori-dropdown-active-large">
+                        <div class="categori-dropdown-wrap categori-dropdown-active-large" style="z-index:1000;">
                             <ul>
                                 <?php foreach ($category as $data) {?>
-                                <li><a href=""><?= $data->category ?></a></li>
+                                <li><a href="<?= base_url() ?>/category/product/<?= $data->id?>"><?= $data->category ?></a></li>
                                 <?php }?>
                             </ul>
                         </div>
@@ -221,8 +221,8 @@
             </div>
             <div class="mobile-header-content-area">
                 <div class="mobile-search search-style-3 mobile-header-border">
-                    <form action="#">
-                        <input type="text" placeholder="Search…">
+                    <form action="<?= base_url() ?>/products/search" method="get">
+                        <input type="text" placeholder="Search…" name="search">
                         <button type="submit"> <i class="far fa-search"></i> </button>
                     </form>
                 </div>
