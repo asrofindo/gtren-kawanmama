@@ -94,6 +94,11 @@
             <a href="<?= base_url() ?>/products/stockist">Product Stockist</a>
         </div>
     </li>
+    <li class="menu-item" >
+        <a class="menu-link" href="<?php base_url() ?>/distributor"> <i class="icon material-icons md-store"></i>
+            <span class="text">Setting Toko</span>
+        </a>
+    </li>
     <?php endif ?>
 
 </ul>
