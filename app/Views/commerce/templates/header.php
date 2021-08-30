@@ -123,10 +123,10 @@
                         <a class="categori-button-active" href="#">
                             <span class="fa fa-list"></span> Browse Categories <i class="down far fa-chevron-down"></i> <i class="up far fa-chevron-up"></i>
                         </a>
-                        <div class="categori-dropdown-wrap categori-dropdown-active-large">
+                        <div class="categori-dropdown-wrap categori-dropdown-active-large" style="z-index:1000;">
                             <ul>
                                 <?php foreach ($category as $data) {?>
-                                <li><a href=""><?= $data->category ?></a></li>
+                                <li><a href="<?= base_url() ?>/category/product/<?= $data->id?>"><?= $data->category ?></a></li>
                                 <?php }?>
                             </ul>
                         </div>

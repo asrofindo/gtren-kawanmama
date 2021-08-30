@@ -404,8 +404,15 @@ class Product extends BaseController
   		if($this->model->save($data)){
   			return redirect()->back();
   		}
-
-
 	}
 
+	public function productByCategory($id)
+	{
+		$data = $this->data;
+		$category =new \App\Entities\category();
+		$id=(int)$id;
+		$data['products']= $category->getProduct([$id]);;
+		
+		return view('commerce/product_category',$data);
+	}
 }

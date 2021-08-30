@@ -68,6 +68,7 @@ $routes->get('about', 'Commerce::About');
 $routes->get('cart', 'Commerce::cart');
 
 $routes->get('product/(:any)', 'Product::detail/$1');
+$routes->get('category/product/(:any)', 'Product::productByCategory/$1');
 
 $routes->get('test', 'Testing::index');
 $routes->post('testfoto', 'Testing::testfoto');
