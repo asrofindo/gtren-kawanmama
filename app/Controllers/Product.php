@@ -461,7 +461,6 @@ class Product extends BaseController
   		}
 	}
 
-<<<<<<< HEAD
 	public function productByCategory($id)
 	{
 		$data = $this->data;
@@ -471,7 +470,7 @@ class Product extends BaseController
 		
 		return view('commerce/product_category',$data);
 	}
-=======
+	
 	public function update_stock($id){
 		$data = [
 			'distributor_id' => user()->id,
@@ -487,5 +486,4 @@ class Product extends BaseController
 		}
 	}
 
->>>>>>> 9bff9b3bdad41a42442fa6a808c4702d07fa3846
 }
