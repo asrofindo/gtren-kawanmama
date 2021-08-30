@@ -201,6 +201,8 @@ class User extends BaseController
 
 	public function upgrade_stockist()
 	{
+		$data = $this->data;
+
 
 		$data['segments'] = $this->request->uri->getSegments();
 
@@ -215,6 +217,7 @@ class User extends BaseController
 
 	public function upgrade()
 	{
+		
 		$data = $this->data;
 
 		helper(['status_upgrade_helper']);

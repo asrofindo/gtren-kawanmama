@@ -17,6 +17,7 @@ class CreateTableUniqueCode extends Migration
 				'auto_increment' => true
 			],
 			'code'       => ['type' => 'text', 'constraint' => null],
+			'username'   => ['type' => 'text', 'constraint' => null],
 			'created_at'  => ['type' => 'datetime', 'null'      => true],
 			'updated_at'  => ['type' => 'datetime', 'null'      => true],
 			'deleted_at'  => ['type' => 'datetime', 'null'      => true],

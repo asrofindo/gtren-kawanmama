@@ -9,6 +9,7 @@ use App\Models\ProductPhoto;
 use App\Models\CategoryModel;
 use App\Models\OfferModel;
 use App\Models\ContactModel;
+use App\Models\ProductDistributorModel;
 use App\Libraries\Slug;
 
 
@@ -26,6 +27,7 @@ class Product extends BaseController
 		$this->banner    = new BannerModel();
 		$this->offer    = new OfferModel();
 		$this->contact    = new ContactModel();
+		$this->productDistributor = new ProductDistributorModel();
 		
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
@@ -37,11 +39,25 @@ class Product extends BaseController
 
 
 		$data['categories'] = $this->category->findAll();
+
 		$data['products']   = $this->model->paginate(15, 'products');
 		
 		$data['pager']      = $this->model->pager;
-		
 		return view('db_admin/produk/produk_list', $data);
+	}
+
+
+	public function stockist()
+	{
+
+		
+		$data['categories'] = $this->category->findAll();
+		$this->model->select('products.id as id, name, description, categories, photos, slug, fixed_price, sell_price');
+		$this->model->select('product_distributor.id as id_pd, product_distributor.product_id, product_distributor.distributor_id, product_distributor.jumlah ');
+		$this->model->join('product_distributor', 'product_distributor.product_id = products.id ', 'right');
+		$data['products']   = $this->model->paginate(4, 'products');
+		$data['pager']    = $this->model->pager;
+		return view('db_stokis/products', $data);
 	}
 
 	public function commerce()
@@ -85,10 +101,8 @@ class Product extends BaseController
 
 		$categories_id = $this->model->find($id)->categories; //[1,2,3]
 		$product['product_categories'] = $product['product']->getCategory($categories_id); //[adasdad,asdasd,asdasd]
-
 		$id_categories = [];
 		
-
 		foreach($product['product_categories'] as $c ){
 			array_push($id_categories, $c->id);
 		}
@@ -103,6 +117,47 @@ class Product extends BaseController
 			$product['categories'] = $this->category->findAll(); //[4,5]
 
 			return view('db_admin/produk/edit_produk', $product);
+		}
+		
+
+	}
+
+	public function edit_distributor_produk($id)
+
+	{
+		if($this->request->getPost('jumlah')){
+			$this->productDistributor->save(['id' => $this->request->getPost('pd_id'), 'jumlah' => $this->request->getPost('jumlah')]);
+			session()->setFlashdata('success', 'Berhasil Menambah Stock');
+	        return redirect()->back();
+
+		}
+
+		$db = \Config\Database::connect();
+		$builder = $db->table('categories');
+		$this->model->select('products.id as id, name, description, categories, photos, slug, fixed_price, sell_price');
+		$this->model->select('product_distributor.id as pd_id, product_distributor.product_id, product_distributor.jumlah');
+		$product['product'] = $this->model->join('product_distributor', 'products.id = product_distributor.product_id', 'right')->find($id);
+
+		$categories_id = $this->model->find($id)->categories; //[1,2,3]
+		$product['product_categories'] = $product['product']->getCategory($categories_id); //[adasdad,asdasd,asdasd]
+
+		$id_categories = [];
+		
+
+		foreach($product['product_categories'] as $c ){
+			array_push($id_categories, $c->id);
+		}
+
+		$categories = $builder->whereNotIn('id', $id_categories);
+		if(count($id_categories) != 0) {
+			$product['categories'] = $categories->get()->getResult(); //[4,5]
+			return view('db_stokis/edit_produk', $product);
+
+		} 
+		else {
+			$product['categories'] = $this->category->findAll(); //[4,5]
+
+			return view('db_stokis/edit_produk', $product);
 		}
 		
 
@@ -406,6 +461,21 @@ class Product extends BaseController
   		}
 
 
+	}
+
+	public function update_stock($id){
+		$data = [
+			'distributor_id' => user()->id,
+			'product_id' => $id
+		];
+		if($this->productDistributor->where('product_id', $id)->find()){
+			session()->setFlashdata('danger', 'produk sudah ada');
+		    return redirect()->back();
+		}
+		if($this->productDistributor->save($data)){
+			session()->setFlashdata('success', 'Stock Berhasil Di Update');
+		    return redirect()->back();
+		}
 	}
 
 }

@@ -84,6 +84,17 @@
         </a>
     </li>
     <?php endif; ?>
+    <?php if(in_groups(3)): ?>
+    <li class="menu-item has-submenu" >
+        <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
+            <span class="text">Update Stock</span>
+        </a>
+        <div class="submenu">
+            <a href="<?= base_url() ?>/products">Product List</a>
+            <a href="<?= base_url() ?>/products/stockist">Product Stockist</a>
+        </div>
+    </li>
+    <?php endif ?>
 
 </ul>
 <hr>
