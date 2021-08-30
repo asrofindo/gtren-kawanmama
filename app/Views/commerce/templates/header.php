@@ -47,8 +47,8 @@
                         <a href="<?= base_url() ?>"><img class="w-25" src="<?= base_url() ?>/frontend/imgs/theme/gtren.png" alt="logo"></a>
                     </div>
                     <div class="search-style-1">
-                        <form action="#">
-                            <input type="text" placeholder="Cari Produk" class="rounded-3">
+                        <form action="<?= base_url() ?>/products/search" method="get">
+                            <input type="text" placeholder="Cari Produk" name="search" class="rounded-3">
                             <button type="submit"> <i class="far fa-search"></i> </button>
                         </form>
                     </div>
@@ -221,8 +221,8 @@
             </div>
             <div class="mobile-header-content-area">
                 <div class="mobile-search search-style-3 mobile-header-border">
-                    <form action="#">
-                        <input type="text" placeholder="Search…">
+                    <form action="<?= base_url() ?>/products/search" method="get">
+                        <input type="text" placeholder="Search…" name="search">
                         <button type="submit"> <i class="far fa-search"></i> </button>
                     </form>
                 </div>

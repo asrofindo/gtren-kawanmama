@@ -486,4 +486,12 @@ class Product extends BaseController
 		}
 	}
 
+	public function search(){
+		$data = $this->data;
+
+		$request=$this->request->getVar('search');
+		$data['products'] = $this->model->like('name', $request)->paginate(8, 'products');
+		$data['pager']      = $this->model->pager;
+		return view('commerce/product_search', $data);
+	}
 }
