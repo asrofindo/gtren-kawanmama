@@ -9,6 +9,7 @@ use App\Models\ProductPhoto;
 use App\Models\CategoryModel;
 use App\Models\OfferModel;
 use App\Models\ContactModel;
+use App\Models\DistributorModel;
 use App\Models\AddressModel;
 use App\Models\ProductDistributorModel;
 use App\Libraries\Slug;
@@ -27,6 +28,7 @@ class Product extends BaseController
 		$this->photo    = new ProductPhoto();
 		$this->banner    = new BannerModel();
 		$this->offer    = new OfferModel();
+		$this->distributor = new DistributorModel();
 		$this->contact    = new ContactModel();
 		$this->address    = new AddressModel();
 		$this->productDistributor = new ProductDistributorModel();
@@ -98,7 +100,9 @@ class Product extends BaseController
 
 		if(user()->id){		
 			$data['address'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find();
-
+			if(count($data['address']) == 0){
+				return redirect()->to('/address');
+			}
 			$kecamatan = $data['address'][0]->kecamatan;
 			$kabupaten = $data['address'][0]->kabupaten;
 			$provinsi = $data['address'][0]->provinsi;
@@ -505,11 +509,13 @@ class Product extends BaseController
 	
 	public function update_stock($id){
 		
+		$distributor_id = $this->distributor->where('user_id', user()->id)->first();
+
 		$data = [
-			'distributor_id' => user()->id,
+			'distributor_id' => $distributor_id['id'],
 			'product_id' => $id
 		];
-		dd(user());
+
 		if($this->productDistributor->where('product_id', $id)->find()){
 			session()->setFlashdata('danger', 'produk sudah ada');
 		    return redirect()->back();

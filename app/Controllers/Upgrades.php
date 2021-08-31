@@ -85,6 +85,10 @@ class upgrades extends BaseController
 			$this->distributor->save(['user_id' => user()->id, 'locate' => null]);
 			$this->uniq->save(["id" => $unique_id[0]->id, "used" => user()->id]);
 
+			$users = $this->db->table('users');
+			$users->where('id', user()->id);
+			$users->update(['affiliate_link' => '/src/'. user()->id]);
+
 			session()->setFlashdata('successs', 'Berhasil, Anda Sekarang Adalah Stockist');
 			return redirect()->back();
 
@@ -141,7 +145,7 @@ class upgrades extends BaseController
 
 		$users = $this->db->table('users');
 		$users->where('id', $id);
-		$users->update(['affiliate_link' => base_url('/src/'. $id)]);
+		$users->update(['affiliate_link' => '/src/'. $id]);
 		
 
 
