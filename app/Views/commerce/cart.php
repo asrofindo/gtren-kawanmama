@@ -36,19 +36,19 @@
                                 <td class="price" data-title="Price"><span><?= $cart->sell_price; ?></span></td>
                                 <td class="text-center" data-title="Stock">
                                     <div class="detail-qty border radius  m-auto">
-                                        <a href="#" class="qty-down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                        <a href="<?= base_url() ?>/cart/substruct/<?= $cart->id ?>" style="width:100px"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
                                         <span class="qty-val"><?= $cart->amount ?></span>
-                                        <a href="#" class="qty-up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                                        <a href="<?= base_url() ?>/cart/add/<?= $cart->id ?>" ><i class="fa fa-caret-up" aria-hidden="true"></i></a>
                                     </div>
                                 </td>
                                 <td class="text-right" data-title="Cart">
                                     <span><?= $cart->total; ?></span>
                                 </td>
-                                <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fa fa-trash-alt"></i></a></td>
+                                <td class="action" data-title="Remove"><a href="<?= base_url() ?>/cart/delete/<?= $cart->id ?>" class="text-muted"><i class="fa fa-trash-alt"></i></a></td>
                                 <?php endforeach ?>
                                 <tr>
                                 <td colspan="6" class="text-end">
-                                    <a href="#" class="text-muted"> <i class="fa fa-times-circle"></i> Clear Cart</a>
+                                    <a href="<?= base_url() ?>/cart/delete/all" class="text-muted"> <i class="fa fa-times-circle"></i> Clear Cart</a>
                                 </td>
                             </tr>
                         </tbody>
