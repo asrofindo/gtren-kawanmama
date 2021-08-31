@@ -67,6 +67,8 @@ $routes->get('contact', 'Commerce::Contact');
 $routes->get('about', 'Commerce::About');
 $routes->get('cart', 'Commerce::cart');
 $routes->post('cart', 'Cart::save');
+$routes->get('cart/delete/(:num)', 'Cart::delete/$1');
+$routes->get('cart/delete/all', 'Cart::delete_all');
 $routes->get('cart/add/(:num)', 'Cart::add/$1');
 $routes->get('cart/substruct/(:num)', 'Cart::substruct/$1');
 

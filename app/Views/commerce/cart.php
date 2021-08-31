@@ -44,11 +44,11 @@
                                 <td class="text-right" data-title="Cart">
                                     <span><?= $cart->total; ?></span>
                                 </td>
-                                <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fa fa-trash-alt"></i></a></td>
+                                <td class="action" data-title="Remove"><a href="<?= base_url() ?>/cart/delete/<?= $cart->id ?>" class="text-muted"><i class="fa fa-trash-alt"></i></a></td>
                                 <?php endforeach ?>
                                 <tr>
                                 <td colspan="6" class="text-end">
-                                    <a href="#" class="text-muted"> <i class="fa fa-times-circle"></i> Clear Cart</a>
+                                    <a href="<?= base_url() ?>/cart/delete/all" class="text-muted"> <i class="fa fa-times-circle"></i> Clear Cart</a>
                                 </td>
                             </tr>
                         </tbody>
