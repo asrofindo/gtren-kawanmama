@@ -294,13 +294,13 @@
                         </div>
                         <div class="row">
                         <?php  foreach ($products as $product): ?>
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                            <div class="col-lg-4 col-md-4 col-12 col-sm-6">
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.html">
+                                            <a href="<?= base_url('product/'. $product->slug)?>">
                                                 <?php for($i = 0; $i < 2; $i++): ?>
-                                                    <img class="<?= $i == 0 ? 'default-img' : 'hover-img'  ?>" src="<?= base_url() ?>/uploads/product_photos/<?= $product->photos[$i] ?>" alt="">
+                                                    <img class="<?= $i == 0 ? 'default-img' : 'hover-img'  ?>" src="<?=$product->photos[$i]?>" alt="">
                                                 <?php endfor ?>
                                             </a>
                                         </div>
@@ -309,7 +309,7 @@
                                     <div class="product-content-wrap">
                                         <div class="product-category">
                                             <?php $categories = $product->getCategory($product->categories); ?>
-                                            
+
                                             <?php foreach($categories as $category): ?>
                                                 <a href="<?= base_url('product/category/'. strtolower($category->category) ) ?>">
                                                 <?= $category->category ?>
@@ -357,7 +357,8 @@
                             <ul class="categor-list">
                                 <?php foreach ($kategory  as $data) {?>
                                         <li class="cat-item text-muted"><a href="<?= base_url() ?>/category/product/<?= $data->id?>"><?= $data->category ?></a></li>
-                                 <?php }?>
+  
+                                        <?php }?>
                                     <li><a href="<?= base_url() ?>/category/product/<?= $data->id?>"><?= $data->category ?></a></li>
                             </ul>
                         </div>

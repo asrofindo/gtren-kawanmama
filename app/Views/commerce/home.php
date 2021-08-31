@@ -1,6 +1,6 @@
-
     <?= $this->extend('commerce/templates/index') ?>
     <?= $this->section('content') ?>
+
         <!-- <div class="container"> -->
             <section class="home-slider bg-grey-9 position-relative">
                 <div class="hero-slider-1 style-2 dot-style-1 dot-style-1-position-1">
@@ -10,13 +10,13 @@
                             <div class="slider-1-height-2 slider-animated-1">
                                 <div class="hero-slider-content-2">
                                     <h4 class="animated"><?= $banner->offer ?></h4>
-                                    <h2 class="animated fw-900"><?= $banner->title ?></h2>
+                                    <h2 class="animated fw-900"><?= $banner->title?></h2>
                                     <h1 class="animated fw-900 text-brand"><?= $banner->sub_title ?></h1>
                                     <p class="animated"><?= $banner->description ?></p>
                                     <a class="animated btn btn-default btn-rounded" href="shop-product-right.html"> DISCOVER NOW <i class="fa fa-arrow-right"></i> </a>
                                 </div>
                                 <div class="single-slider-img single-slider-img-1">
-                                    <img class="animated" src="<?= base_url() ?>/uploads/banner/<?= $banner->photo  ?>" alt="">
+                                    <img class="animated" src="<?= base_url() ?>/uploads/banner/<?= $banner->photo?>" alt="">
                                 </div>
                             </div>
                         </div>
@@ -37,9 +37,9 @@
                         <div class="product-cart-wrap mb-30">
                             <div class="product-img-action-wrap">
                                 <div class="product-img product-img-zoom">
-                                    <a href="shop-product-right.html">
+                                    <a href="<?= base_url('product/'. $product->slug)?>">
                                         <?php for($i = 0; $i < 2; $i++): ?>
-                                            <img class="<?= $i == 0 ? 'default-img' : 'hover-img'  ?>" src="<?= $product->photos[$i] ?>" alt="">
+                                            <img class="<?= $i == 0 ? 'default-img' : 'hover-img'  ?>" src="<?= $product->photos[$i]?>" alt="">
                                         <?php endfor ?>
                                     </a>
                                 </div>
@@ -158,7 +158,7 @@
                                 <div class="carausel-4-columns-cover arrow-center position-relative">
                                     <div class="slider-arrow slider-arrow-2 carausel-4-columns-arrow" id="carausel-4-columns-<?= $ka->id ?>-arrows"></div>
                                     <div class="carausel-4-columns carausel-arrow-center" id="carausel-4-columns-<?= $ka->id ?>">
-            <?php $ids = [intval($ka->id)]; foreach($ka->getProduct($ids) as $p): ?>
+                                        <?php $ids = [intval($ka->id)]; foreach($ka->getProduct($ids) as $p): ?>
                                         <div class="product-cart-wrap mb-30">
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img product-img-zoom">

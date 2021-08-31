@@ -92,7 +92,6 @@ class Product extends BaseController
 		$ex=array_map('intval', $data['product']->categories);
 	
 		$data['products']= $category->getProduct($ex);
-
 		return view('commerce/product_detail', $data);
 	}
 
