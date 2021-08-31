@@ -100,14 +100,17 @@ class Cart extends BaseController
 		->join('products', 'products.id = product_id', 'left')
 		->join('users', 'users.id = distributor_id', 'left')
 		->join('address', 'address.user_id = distributor_id', 'left')->where('type', 'distributor')
-		->where('distributor_id', user()->id)
+		->where('cart_item.user_id', user()->id)
 		->find();
+		if(count($data['carts']) > 0){			
+			for($i = 0; count($data['carts']) > $i; $i++){			
+				array_push($data['carts_id'], $data['carts'][$i]->id);
+			}
 
-		for($i = 0; count($data['carts']) > $i; $i++){			
-			array_push($data['carts_id'], $data['carts'][$i]->id);
+			$this->cart->whereIn('id', $data['carts_id'])->delete();
+			return redirect()->back();
 		}
 
-		$this->cart->whereIn('id', $data['carts_id'])->delete();
 		return redirect()->back();
 	}
 }

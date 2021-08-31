@@ -41,7 +41,7 @@ class Commerce extends BaseController
 		->join('users', 'users.id = distributor_id', 'left')
 		->join('address', 'address.user_id = distributor_id', 'left')
 		->where('type', 'distributor')
-		->where('distributor_id', user()->id)
+		->where('cart_item.user_id', user()->id)
 		->find();
 
 		$sumTotal = 0;
