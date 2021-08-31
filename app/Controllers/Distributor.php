@@ -10,7 +10,7 @@ class Distributor extends BaseController
 	}
 	public function index()
 	{	
-		$data['address'] = $this->address->where('user_id', user()->id)->find();
+		$data['address'] = $this->address->where('user_id', user()->id)->where('type', 'distributor')->find();
 		return view('db_stokis/distributor', $data);
 	}
 
