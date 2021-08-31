@@ -19,7 +19,6 @@ class Cart extends BaseController
 		$price = $this->request->getPost('price_sell');
 		$total = $amount * $price;
 		
-
 		$data = [
 			"product_id" => $product_id,
 			"distributor_id" => $distributor_id,
@@ -27,13 +26,12 @@ class Cart extends BaseController
 			"amount" => $amount,
 			"total" => $total
 		];
+		dd($data);
 		$transaksi = $this->cart->select('user_id, product_id, distributor_id, total, amount, id')
 		->where('user_id', user()->id)
 		->where('product_id', $product_id)
 		->where('distributor_id', $distributor_id)->find();
-		
-		dd($data);
-		
+				
 		// $this->cart->select('transaksi.cart_id, transaksi.status');
 		// $transaksi = $this->cart->join('transaksi.cart_id', 'id = transaksi.cart_id', 'left')->where('status', 'pending');
 		
