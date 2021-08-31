@@ -504,14 +504,17 @@ class Product extends BaseController
 	}
 	
 	public function update_stock($id){
+		
 		$data = [
 			'distributor_id' => user()->id,
 			'product_id' => $id
 		];
+		dd(user());
 		if($this->productDistributor->where('product_id', $id)->find()){
 			session()->setFlashdata('danger', 'produk sudah ada');
 		    return redirect()->back();
 		}
+		dd($this->productDistributor->save($data));
 		if($this->productDistributor->save($data)){
 			session()->setFlashdata('success', 'Stock Berhasil Di Update');
 		    return redirect()->back();
