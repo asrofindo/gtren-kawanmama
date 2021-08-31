@@ -501,10 +501,10 @@
             <ul class="list-group">
                 <?php foreach($product_distributors as $distributor): ?>  
                     <form method="post" action="<?= base_url('/cart'); ?>" id="forms">
-                        <input type="text" value="" name="amount" id="amount">
-                        <input type="text" value="" name="price_sell" id="price_sell">
-                        <input type="text" value="<?= $distributor->product_id ?>" name="product_id">
-                        <input type="text" value="<?= $distributor->distributor_id ?>" name="distributor_id">
+                        <input style="display: none" type="text" value="" name="amount" id="amount">
+                        <input style="display: none" type="text" value="" name="price_sell" id="price_sell">
+                        <input style="display: none" type="text" value="<?= $distributor->product_id ?>" name="product_id">
+                        <input style="display: none" type="text" value="<?= $distributor->distributor_id ?>" name="distributor_id">
                         <li type="submit" class="list-group-item d-flex justify-content-between align-items-center h-50">
                             <?= $distributor->username ?>
                             <div class="image-parent">
