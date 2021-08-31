@@ -30,7 +30,7 @@ class Product extends BaseController
 		$this->productDistributor = new ProductDistributorModel();
 		
 		$this->category = new CategoryModel();
-		$this->data['category']    = $this->category->findAll();
+		$this->data['category']  = $this->category->findAll();
 
 	}
 
@@ -63,7 +63,7 @@ class Product extends BaseController
 	public function commerce()
 	{
 		$data = $this->data;
-		$data['products']   = $this->model->paginate(8, 'products');
+		$data['products']   = $this->model->orderBy('id', 'desc')->paginate(8, 'products');
 		
 		$data['kategori'] = $this->category->findAll();
 
@@ -83,11 +83,16 @@ class Product extends BaseController
 
 	public function detail($slug)
 	{
-		$data = $this->data;
+		$data['category'] = $this->category->findAll();
+		$data['kategory'] = $this->category->findAll();
 
 		$data['product'] = $this->model->where('slug', $slug)->first();
 
-		// dd($data['product']);
+		$category = $category =new \App\Entities\category();
+		$ex=array_map('intval', $data['product']->categories);
+	
+		$data['products']= $category->getProduct($ex);
+
 		return view('commerce/product_detail', $data);
 	}
 

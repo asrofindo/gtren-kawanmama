@@ -76,7 +76,6 @@ class ProductModel extends Model
 
 	public function getProductWithCategory()
 	{
-
 		$this->join('product_categories', 'product_categories.id = products.category_id');
 		$query = $this->select(' products.id, products.name, products.description, products.slug, products.fixed_price, products.sell_price, products.affiliate_commission, products.stockist_commission, products.updated_at, product_categories.category');
 		return $query;

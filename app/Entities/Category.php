@@ -19,7 +19,7 @@ class Category extends Entity
 	{
 		$product = new ProductModel();
 
-		$data = $product->whereIn('categories', $value)->findAll(10);
+		$data = $product->whereIn('categories', $value)->findAll(20);
 		return $data;
 	}
 }
