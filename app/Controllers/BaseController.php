@@ -22,6 +22,8 @@ use Psr\Log\LoggerInterface;
 
 class BaseController extends Controller
 {
+
+
 	/**
 	 * Instance of the main Request object.
 	 *
@@ -47,6 +49,7 @@ class BaseController extends Controller
 	 */
 	public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
 	{
+
 		// Do Not Edit This Line
 		parent::initController($request, $response, $logger);
 

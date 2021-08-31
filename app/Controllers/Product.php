@@ -58,7 +58,7 @@ class Product extends BaseController
 		$data['categories'] = $this->category->findAll();
 		$this->model->select('products.id as id, name, description, categories, photos, slug, fixed_price, sell_price');
 		$this->model->select('product_distributor.id as id_pd, product_distributor.product_id, product_distributor.distributor_id, product_distributor.jumlah ');
-		$this->model->join('product_distributor', 'product_distributor.product_id = products.id ', 'right');
+		$this->model->join('product_distributor', 'product_distributor.product_id = products.id ', 'right')->where('distributor_id', user()->id);
 		$data['products']   = $this->model->paginate(4, 'products');
 		$data['pager']    = $this->model->pager;
 		return view('db_stokis/products', $data);
@@ -514,7 +514,7 @@ class Product extends BaseController
 			'product_id' => $id
 		];
 
-		if($this->productDistributor->where('product_id', $id)->find()){
+		if($this->productDistributor->where('product_id', $id)->where('distributor_id', user()->id)->find()){
 			session()->setFlashdata('danger', 'produk sudah ada');
 		    return redirect()->back();
 		}
