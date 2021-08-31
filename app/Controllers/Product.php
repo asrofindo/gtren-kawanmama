@@ -106,8 +106,9 @@ class Product extends BaseController
 			$kecamatan = $data['address'][0]->kecamatan;
 			$kabupaten = $data['address'][0]->kabupaten;
 			$provinsi = $data['address'][0]->provinsi;
-		$data['category'] = $this->category->findAll();
-		$data['kategory'] = $this->category->findAll();
+
+			$data['category'] = $this->category->findAll();
+			$data['kategory'] = $this->category->findAll();
 
 			$this->address->select('product_distributor.product_id, users.username, product_distributor.distributor_id, kecamatan, kabupaten, kode_pos, provinsi, type');
 			$this->address->join('users', 'users.id = user_id', 'left');
@@ -115,7 +116,6 @@ class Product extends BaseController
 
 			$index = count($data['product_distributor']);
 			$data['product_distributors'] = [];
-
 			for($i = 0; $index > $i; $i++){
 				if($data['product_distributor'][$i]->kecamatan == $kecamatan || $data['product_distributor'][$i]->kabupaten == $kabupaten || $data['product_distributor'][$i]->provinsi == $provinsi){
 					
@@ -508,10 +508,9 @@ class Product extends BaseController
 	}
 	
 	public function update_stock($id){
-		$distributor_id = $this->distributor->where('user_id', user()->id)->first();
 
 		$data = [
-			'distributor_id' => $distributor_id['id'],
+			'distributor_id' => user()->id,
 			'product_id' => $id
 		];
 
