@@ -30,7 +30,7 @@ class Product extends Entity
 	{
 		$category = new CategoryModel();
 
-		$data = $category->find($value);
+		$data = $category->orderBy('id', 'desc')->find($value);
 		return $data;
 	}
 }

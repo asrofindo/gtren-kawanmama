@@ -33,6 +33,7 @@ class Product extends BaseController
 		
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
+
 	}
 
 	public function index()
@@ -64,7 +65,7 @@ class Product extends BaseController
 	public function commerce()
 	{
 		$data = $this->data;
-		$data['products']   = $this->model->paginate(8, 'products');
+		$data['products']   = $this->model->orderBy('id', 'desc')->paginate(8, 'products');
 		
 		$data['kategori'] = $this->category->findAll();
 
@@ -86,12 +87,23 @@ class Product extends BaseController
 		$data = $this->data;
 		$product_id = $this->model->where('slug', $slug)->find()[0]->id;
 
+		$data['product'] = $this->model->where('slug', $slug)->first();
+
+
+		// dd($data['product']);
+		$category = $category =new \App\Entities\category();
+		$ex=array_map('intval', $data['product']->categories);
+	
+		$data['products']= $category->getProduct($ex);
+
 		if(user()->id){		
 			$data['address'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find();
 
 			$kecamatan = $data['address'][0]->kecamatan;
 			$kabupaten = $data['address'][0]->kabupaten;
 			$provinsi = $data['address'][0]->provinsi;
+		$data['category'] = $this->category->findAll();
+		$data['kategory'] = $this->category->findAll();
 
 			$this->address->select('product_distributor.product_id, users.username, product_distributor.distributor_id, kecamatan, kabupaten, kode_pos, provinsi, type');
 			$this->address->join('users', 'users.id = user_id', 'left');
@@ -109,17 +121,14 @@ class Product extends BaseController
 					$data['product_distributor'] = [];
 				}
 			}
-			$data['product'] = $this->model->where('slug', $slug)->first();
 			// dd($data['product']);
 			return view('commerce/product_detail', $data);
 
 		}
 
 		$data['address'] = [];
-		$data['product'] = $this->model->where('slug', $slug)->first();
 
 
-		// dd($data['product']);
 		return view('commerce/product_detail', $data);
 	}
 

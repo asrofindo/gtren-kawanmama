@@ -300,130 +300,47 @@
                             <h3 class="section-title style-1 mb-30">Related products</h3>
                         </div>
                         <div class="row">
+                        <?php  foreach ($products as $product): ?>
                             <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap small hover-up">
+                                <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.html" tabindex="0">
-                                                <img class="default-img" src="<?= base_url() ?>/frontend/imgs/shop/product-2-1.jpg" alt="">
-                                                <img class="hover-img" src="<?= base_url() ?>/frontend/imgs/shop/product-2-2.jpg" alt="">
+                                            <a href="shop-product-right.html">
+                                                <?php for($i = 0; $i < 2; $i++): ?>
+                                                    <img class="<?= $i == 0 ? 'default-img' : 'hover-img'  ?>" src="<?= base_url() ?>/uploads/product_photos/<?= $product->photos[$i] ?>" alt="">
+                                                <?php endfor ?>
                                             </a>
                                         </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn small hover-up" tabindex="0"><i class="far fa-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html" tabindex="0"><i class="far fa-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html" tabindex="0"><i class="far fa-exchange-alt"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">Hot</span>
-                                        </div>
+
                                     </div>
                                     <div class="product-content-wrap">
-                                        <h2><a href="shop-product-right.html" tabindex="0">Ulstra Bass Headphone</a></h2>
-                                        <div class="rating-result" title="90%">
+                                        <div class="product-category">
+                                            <?php $categories = $product->getCategory($product->categories); ?>
+                                            
+                                            <?php foreach($categories as $category): ?>
+                                                <a href="<?= base_url('product/category/'. strtolower($category->category) ) ?>">
+                                                <?= $category->category ?>
+                                                </a>
+                                            <?php endforeach ?>
+
+                                        </div>
+                                        <h2><a href="<?= base_url('product/'. $product->slug) ?>"><?= $product->name ?></a></h2>
+                                        <div class="rating-result" title="50%">
                                             <span>
+                                                <span>50%</span>
                                             </span>
                                         </div>
                                         <div class="product-price">
-                                            <span>$238.85 </span>
-                                            <span class="old-price">$245.8</span>
+                                            <span><?= "Rp. ". number_format($product->sell_price) ?></span>
+                                            <!-- <span class="old-price">$245.8</span> -->
+                                        </div>
+                                        <div class="product-action-1 show">
+                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="far fa-shopping-bag"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap small hover-up">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.html" tabindex="0">
-                                                <img class="default-img" src="<?= base_url() ?>/frontend/imgs/shop/product-3-1.jpg" alt="">
-                                                <img class="hover-img" src="<?= base_url() ?>/frontend/imgs/shop/product-4-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn small hover-up" tabindex="0"><i class="far fa-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html" tabindex="0"><i class="far fa-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html" tabindex="0"><i class="far fa-exchange-alt"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="sale">-12%</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <h2><a href="shop-product-right.html" tabindex="0">Smart Bluetooth Speaker</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$138.85 </span>
-                                            <span class="old-price">$145.8</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap small hover-up">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.html" tabindex="0">
-                                                <img class="default-img" src="<?= base_url() ?>/frontend/imgs/shop/product-4-1.jpg" alt="">
-                                                <img class="hover-img" src="<?= base_url() ?>/frontend/imgs/shop/product-4-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn small hover-up" tabindex="0"><i class="far fa-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html" tabindex="0"><i class="far fa-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html" tabindex="0"><i class="far fa-exchange-alt"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="new">New</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <h2><a href="shop-product-right.html" tabindex="0">HomeSpeak 12UEA Goole</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$738.85 </span>
-                                            <span class="old-price">$1245.8</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap small hover-up">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.html" tabindex="0">
-                                                <img class="default-img" src="<?= base_url() ?>/frontend/imgs/shop/product-5-1.jpg" alt="">
-                                                <img class="hover-img" src="<?= base_url() ?>/frontend/imgs/shop/product-2-5.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn small hover-up" tabindex="0"><i class="far fa-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html" tabindex="0"><i class="far fa-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html" tabindex="0"><i class="far fa-exchange-alt"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">Hot</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <h2><a href="shop-product-right.html" tabindex="0">Dadua Camera 4K 2021EF</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$89.8 </span>
-                                            <span class="old-price">$98.8</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <?php endforeach ?>
                         </div>
                     </div>
                     <div class="banner-img banner-big wow fadeIn f-none animated mt-50">
@@ -445,13 +362,10 @@
                         </div>
                         <div class="">
                             <ul class="categor-list">
-                                <li class="cat-item text-muted"><a href="shop-grid-right.html">Jacket</a>(125)</li>
-                                <li class="cat-item text-muted"><a href="shop-grid-right.html">Jeans</a>(68)</li>
-                                <li class="cat-item text-muted"><a href="shop-grid-right.html">Sweatshirts</a>(284)</li>
-                                <li class="cat-item text-muted"><a href="shop-grid-right.html">Trousers</a>(274)</li>
-                                <li class="cat-item text-muted"><a href="shop-grid-right.html">Kitwears</a>(152)</li>
-                                <li class="cat-item text-muted"><a href="shop-grid-right.html">Sportswear</a>(302)</li>
-                                <li class="cat-item text-muted"><a href="shop-grid-right.html">Accessories</a>(168)</li>
+                                <?php foreach ($kategory  as $data) {?>
+                                        <li class="cat-item text-muted"><a href="<?= base_url() ?>/category/product/<?= $data->id?>"><?= $data->category ?></a></li>
+                                 <?php }?>
+                                    <li><a href="<?= base_url() ?>/category/product/<?= $data->id?>"><?= $data->category ?></a></li>
                             </ul>
                         </div>
                     </div>

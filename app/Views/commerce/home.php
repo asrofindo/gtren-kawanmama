@@ -1,7 +1,6 @@
 
     <?= $this->extend('commerce/templates/index') ?>
     <?= $this->section('content') ?>
-
         <!-- <div class="container"> -->
             <section class="home-slider bg-grey-9 position-relative">
                 <div class="hero-slider-1 style-2 dot-style-1 dot-style-1-position-1">
