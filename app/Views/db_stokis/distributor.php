@@ -19,7 +19,7 @@
             </div>
             <div class="card-body">
                 <?php $id = user()->id; ?>
-                <?php if(count($address) > 1): ?>
+                <?php if(count($address) == 0): ?>
                     <form method="post" action="/distributor">
                         <div class="row">
                             <div class="form-group col-md-12">
