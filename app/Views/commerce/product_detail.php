@@ -4,7 +4,8 @@
     <div class="container">
         <div class="breadcrumb">
             <a href="index.html" rel="nofollow">Home</a>
-            <span></span> <?= $product->getCategory($product->categories)[0]->category ?>
+
+            <span></span> <?= $product->getCategory($product->categories)[0]->category; ?>
             <span></span> <?= $product->name ?>
         </div>
     </div>
@@ -63,7 +64,8 @@
                                 </div>
                                 <div class="clearfix product-price-cover">
                                     <div class="product-price primary-color float-left">
-                                        <ins><span class="text-brand"><?= "Rp. ". number_format($product->sell_price) ?></span></ins>
+                                        <ins><span class="text-brand "><?= "Rp. ". number_format($product->sell_price) ?></span></ins>
+                                        <input style="display: none" type="" id="price" value="<?= $product->sell_price; ?>" name="">
                                     </div>
                                 </div>
                                 <div class="bt-1 border-color-1 mt-15 mb-15"></div>
@@ -103,14 +105,19 @@
                                 </div> -->
                                 <!-- <div class="bt-1 border-color-1 mt-30 mb-30"></div> -->
                                 <div class="detail-extralink">
-                                    <div class="detail-qty border radius">
-                                        <a href="#" class="qty-down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-                                        <span class="qty-val">1</span>
-                                        <a href="#" class="qty-up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                                    </div>
-                                    <div class="product-extra-link2">
-                                        <button type="submit" class="button button-add-to-cart">Add to cart</button>
-                                    </div>
+                                        <div class="detail-qty border radius">
+                                            <a href="#" class="qty-down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                            <span class="qty-val">1</span>
+                                            <a href="#" class="qty-up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                                        </div>
+                                        <div class="product-extra-link2">
+                                           <?php if(count($address) > 0): ?>
+                                                <button data-toggle="modal" data-target="#exampleModalCenter" type="submit" class="button button-add-to-cart btn-store">Add to cart</button>
+                                            <?php endif; ?>
+                                            <?php if(count($address) == 0 ): ?>
+                                                <button data-toggle="modal" data-target="#exampleModalCenter" type="submit" class="button button-add-to-cart btn-store">Add to cart</button>
+                                            <?php endif; ?>
+                                        </div>
                                 </div>
                                 <!-- <ul class="product-meta font-xs color-grey mt-50">
                                     <li class="mb-5">SKU: <a href="#">FWM15VKT</a></li>
@@ -374,7 +381,7 @@
                                 <div id="slider-range"></div>
                                 <div class="price_slider_amount">
                                     <div class="label-input">
-                                        <span>Range:</span><input type="text" id="amount" name="price" placeholder="Add Your Price" />
+                                        <span>Range:</span><input type="text" name="price" placeholder="Add Your Price" />
                                     </div>
                                 </div>
                             </div>
@@ -482,4 +489,69 @@
         </div>
     </div>
 </section>
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Pilih Distributor</h4>
+          </div>
+          <div class="modal-body">
+            <ul class="list-group">
+                <?php foreach($product_distributors as $distributor): ?>  
+                    <form method="post" action="<?= base_url('/cart'); ?>" id="forms">
+                        <input style="display: none" type="text" value="" name="amount" id="amount">
+                        <input style="display: none" type="text" value="" name="price_sell" id="price_sell">
+                        <input style="display: none" type="text" value="<?= $distributor->product_id ?>" name="product_id">
+                        <input style="display: none" type="text" value="<?= $distributor->distributor_id ?>" name="distributor_id">
+                        <li type="submit" class="list-group-item d-flex justify-content-between align-items-center h-50">
+                            <?= $distributor->username ?>
+                            <div class="image-parent">
+                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/don_quixote.jpg" class="img-fluid rounded" style="height:60px" alt="quixote">
+                            </div>
+                        </li>
+                    </form>
+                <?php endforeach; ?>
+            </ul>
+          </div>
+        </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+ 
+        // get Edit Product
+        $('.btn-store').on('click',function(){
+            // get data from button edit
+           
+            // Call Modal Edit
+
+            const val = $('.qty-val')
+            const price = $('#price')
+            $('#amount').val(val[0].innerHTML);
+            $('#price_sell').val(price.val());
+            $('#myModal').modal('show');
+        });
+
+         
+    });
+
+    $(function(){
+    console.log('ready');
+
+    $('.list-group li').click(function(e) {
+        e.preventDefault()
+
+        $that = $(this);
+
+        $that.parent().find('li').removeClass('active');
+        $that.addClass('active');
+        $('#forms').submit();
+    });
+})
+</script>
 <?= $this->endSection() ?>

@@ -66,6 +66,7 @@ $routes->post('track', 'User::Track', ['filter' => 'login']);
 $routes->get('contact', 'Commerce::Contact');
 $routes->get('about', 'Commerce::About');
 $routes->get('cart', 'Commerce::cart');
+$routes->post('cart', 'Cart::save');
 
 $routes->get('product/(:any)', 'Product::detail/$1');
 $routes->get('category/product/(:any)', 'Product::productByCategory/$1');
@@ -174,6 +175,15 @@ $routes->group('', function($routes)
 		// upgrades
 	$routes->get('upgrades', 'Upgrades::index');
 	$routes->post('upgrades/(:num)', 'Upgrades::save/$1');
+	$routes->get('upgrades/delete/(:num)', 'Upgrades::delete/$1');
+	$routes->get('upgrades/edit/(:num)', 'Upgrades::edit/$1');
+	$routes->get('upgrades/update/(:num)', 'Upgrades::update/$1');
+	$routes->post('upgrades/upload/(:num)', 'Upgrades::upload/$1');
+	$routes->post('upgrades/search', 'Upgrades::search');
+
+	$routes->get('distributor', 'Distributor::index');
+	$routes->post('distributor', 'Distributor::save');
+	$routes->post('distributor/(:num)', 'Distributor::edit/$1');
 	$routes->get('upgrades/delete/(:num)', 'Upgrades::delete/$1');
 	$routes->get('upgrades/edit/(:num)', 'Upgrades::edit/$1');
 	$routes->get('upgrades/update/(:num)', 'Upgrades::update/$1');

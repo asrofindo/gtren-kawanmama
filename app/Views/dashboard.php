@@ -49,7 +49,7 @@
     </li>
     <?php endif ?>
 
-    <?php if(in_groups(1)): ?>
+    <?php if(in_groups(1) || in_groups(3)): ?>
     <li class="menu-item has-submenu">
         <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-shopping_cart"></i>
             <span class="text">Orders</span>
@@ -93,6 +93,11 @@
             <a href="<?= base_url() ?>/products">Product List</a>
             <a href="<?= base_url() ?>/products/stockist">Product Stockist</a>
         </div>
+    </li>
+    <li class="menu-item" >
+        <a class="menu-link" href="<?php base_url() ?>/distributor"> <i class="icon material-icons md-store"></i>
+            <span class="text">Setting Toko</span>
+        </a>
     </li>
     <?php endif ?>
 
