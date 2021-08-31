@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class CartItem extends Model
+class CartItemModel extends Model
 {
 	protected $DBGroup              = 'default';
-	protected $table                = 'cartitems';
+	protected $table                = 'cart_item';
 	protected $primaryKey           = 'id';
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;
 	protected $returnType           = 'object';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['user_id', 'product_id', 'total'];
+	protected $allowedFields        = ['user_id', 'product_id','amount', 'distributor_id', 'total'];
 
 	// Dates
 	protected $useTimestamps        = false;

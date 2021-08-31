@@ -16,7 +16,7 @@ class ProductSeeder extends Seeder
 			$data = [
 				'name'                 => $name,
 				'description'          => static::faker()->realText(200, 2),
-				'categories' => implode(",", [rand(10, 11), rand(10, 11), rand(10, 11)]),
+				'categories' => implode(",", [rand(1, 5), rand(1, 5), rand(1, 5)]),
 				'slug' => $slug->slugify($name),
 				'photos' => implode(",", [static::faker()->imageUrl(640, 480, 'product', true), static::faker()->imageUrl(640, 480, 'product', true), static::faker()->imageUrl(640, 480, 'product', true), static::faker()->imageUrl(640, 480, 'product', true), static::faker()->imageUrl(640, 480, 'product', true)]),
 				'fixed_price'          => static::faker()->numberBetween(10000, 500000),

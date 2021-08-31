@@ -9,6 +9,7 @@ use App\Models\ProductPhoto;
 use App\Models\CategoryModel;
 use App\Models\OfferModel;
 use App\Models\ContactModel;
+use App\Models\AddressModel;
 use App\Models\ProductDistributorModel;
 use App\Libraries\Slug;
 
@@ -27,6 +28,7 @@ class Product extends BaseController
 		$this->banner    = new BannerModel();
 		$this->offer    = new OfferModel();
 		$this->contact    = new ContactModel();
+		$this->address    = new AddressModel();
 		$this->productDistributor = new ProductDistributorModel();
 		
 		$this->category = new CategoryModel();
@@ -82,8 +84,40 @@ class Product extends BaseController
 	public function detail($slug)
 	{
 		$data = $this->data;
+		$product_id = $this->model->where('slug', $slug)->find()[0]->id;
 
+		if(user()->id){		
+			$data['address'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find();
+
+			$kecamatan = $data['address'][0]->kecamatan;
+			$kabupaten = $data['address'][0]->kabupaten;
+			$provinsi = $data['address'][0]->provinsi;
+
+			$this->address->select('product_distributor.product_id, users.username, product_distributor.distributor_id, kecamatan, kabupaten, kode_pos, provinsi, type');
+			$this->address->join('users', 'users.id = user_id', 'left');
+			$data['product_distributor'] = $this->address->join('product_distributor', 'address.user_id = product_distributor.distributor_id', 'left')->where('type', 'distributor')->where('product_id', $product_id)->find();
+
+			$index = count($data['product_distributor']);
+			$data['product_distributors'] = [];
+
+			for($i = 0; $index > $i; $i++){
+				if($data['product_distributor'][$i]->kecamatan == $kecamatan || $data['product_distributor'][$i]->kabupaten == $kabupaten || $data['product_distributor'][$i]->provinsi == $provinsi){
+					
+					array_push($data['product_distributors'], $data['product_distributor'][$i]);
+				}
+				else {
+					$data['product_distributor'] = [];
+				}
+			}
+			$data['product'] = $this->model->where('slug', $slug)->first();
+			// dd($data['product']);
+			return view('commerce/product_detail', $data);
+
+		}
+
+		$data['address'] = [];
 		$data['product'] = $this->model->where('slug', $slug)->first();
+
 
 		// dd($data['product']);
 		return view('commerce/product_detail', $data);
@@ -484,4 +518,6 @@ class Product extends BaseController
 		$data['pager']      = $this->model->pager;
 		return view('commerce/product_search', $data);
 	}
+
+
 }

@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class CartModel extends Model
+class TransaksiModel extends Model
 {
 	protected $DBGroup              = 'default';
-	protected $table                = 'carts';
+	protected $table                = 'transaksis';
 	protected $primaryKey           = 'id';
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;

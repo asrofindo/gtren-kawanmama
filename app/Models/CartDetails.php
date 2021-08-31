@@ -11,10 +11,10 @@ class CartDetails extends Model
 	protected $primaryKey           = 'id';
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;
-	protected $returnType           = 'array';
+	protected $returnType           = 'object';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = [];
+	protected $allowedFields        = ['cart_item_id', 'distributor_id'];
 
 	// Dates
 	protected $useTimestamps        = false;

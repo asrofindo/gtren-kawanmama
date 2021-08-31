@@ -66,6 +66,7 @@ $routes->post('track', 'User::Track', ['filter' => 'login']);
 $routes->get('contact', 'Commerce::Contact');
 $routes->get('about', 'Commerce::About');
 $routes->get('cart', 'Commerce::cart');
+$routes->post('cart', 'Cart::save');
 
 $routes->get('product/(:any)', 'Product::detail/$1');
 $routes->get('category/product/(:any)', 'Product::productByCategory/$1');

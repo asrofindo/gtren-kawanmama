@@ -26,66 +26,27 @@
                             </tr>
                         </thead>
                         <tbody>
+                                <?php foreach($carts as $cart): ?>
                             <tr>
-                                <td class="image product-thumbnail"><img src="<?php base_url() ?>/frontend/imgs/shop/product-1-2.jpg" alt="#"></td>
+                                <td class="image product-thumbnail"><img src="<?= $cart->photos[2] ?>" alt="#"></td>
                                 <td class="product-des product-name">
-                                    <p class="product-name"><a href="shop-product-right.html">J.Crew Mercantile Women's Short-Sleeve</a></p>
-                                    <p class="font-xs">Maboriosam in a tonto nesciung eget<br> distingy magndapibus.
-                                    </p>
+                                    <p class="product-name"><a href="shop-product-right.html"><?= $cart->name; ?></a></p>
+
                                 </td>
-                                <td class="price" data-title="Price"><span>$65.00 </span></td>
+                                <td class="price" data-title="Price"><span><?= $cart->sell_price; ?></span></td>
                                 <td class="text-center" data-title="Stock">
                                     <div class="detail-qty border radius  m-auto">
                                         <a href="#" class="qty-down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-                                        <span class="qty-val">1</span>
+                                        <span class="qty-val"><?= $cart->amount ?></span>
                                         <a href="#" class="qty-up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
                                     </div>
                                 </td>
                                 <td class="text-right" data-title="Cart">
-                                    <span>$65.00 </span>
+                                    <span><?= $cart->total; ?></span>
                                 </td>
                                 <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fa fa-trash-alt"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="image"><img src="<?php base_url() ?>/frontend/imgs/shop/product-11-2.jpg" alt="#"></td>
-                                <td class="product-des">
-                                    <p class="product-name"><a href="shop-product-right.html">Amazon Essentials Women's Tank</a></p>
-                                    <p class="font-xs">Sit at ipsum amet clita no est,<br> sed amet sadipscing et gubergren</p>
-                                </td>
-                                <td class="price" data-title="Price"><span>$75.00 </span></td>
-                                <td class="text-center" data-title="Stock">
-                                    <div class="detail-qty border radius  m-auto">
-                                        <a href="#" class="qty-down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-                                        <span class="qty-val">2</span>
-                                        <a href="#" class="qty-up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                                    </div>
-                                </td>
-                                <td class="text-right" data-title="Cart">
-                                    <span>$150.00 </span>
-                                </td>
-                                <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fa fa-trash-alt"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="image"><img src="<?php base_url() ?>/frontend/imgs/shop/product-6-1.jpg" alt="#"></td>
-                                <td class="product-des">
-                                    <p class="product-name"><a href="shop-product-right.html">Amazon Brand - Daily Ritual Women's Jersey </a></p>
-                                    <p class="font-xs">Erat amet et et amet diam et et.<br> Justo amet at dolore
-                                    </p>
-                                </td>
-                                <td class="price" data-title="Price"><span>$62.00 </span></td>
-                                <td class="text-center" data-title="Stock">
-                                    <div class="detail-qty border radius  m-auto">
-                                        <a href="#" class="qty-down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-                                        <span class="qty-val">1</span>
-                                        <a href="#" class="qty-up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
-                                    </div>
-                                </td>
-                                <td class="text-right" data-title="Cart">
-                                    <span>$62.00 </span>
-                                </td>
-                                <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fa fa-trash-alt"></i></a></td>
-                            </tr>
-                            <tr>
+                                <?php endforeach ?>
+                                <tr>
                                 <td colspan="6" class="text-end">
                                     <a href="#" class="text-muted"> <i class="fa fa-times-circle"></i> Clear Cart</a>
                                 </td>
@@ -94,6 +55,28 @@
                     </table>
                 </div>
 
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="border p-md-4 p-30 border-radius-10 cart-totals">
+                    <div class="heading_s1 mb-3">
+                        <h4>Cart Totals</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+  
+                                <tr>
+                                    <td class="cart_total_label">Shipping</td>
+                                    <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Free Shipping</td>
+                                </tr>
+                                <tr>
+                                    <td class="cart_total_label">Total</td>
+                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand"><?= $total;  ?></span></strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="#" class="btn btn-rounded"> <i class="fa fa-share-square mr-10"></i> Proceed To CheckOut</a>
+                </div>
             </div>
         </div>
     </div>
