@@ -520,7 +520,6 @@ class Product extends BaseController
 			session()->setFlashdata('danger', 'produk sudah ada');
 		    return redirect()->back();
 		}
-		dd($this->productDistributor->save($data));
 		if($this->productDistributor->save($data)){
 			session()->setFlashdata('success', 'Stock Berhasil Di Update');
 		    return redirect()->back();
