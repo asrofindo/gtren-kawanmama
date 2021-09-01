@@ -45,10 +45,10 @@ class Comment extends BaseController
 		// Notif
 		if($save) {
 	        session()->setFlashdata('success', 'Data Berhasil Disimpan');
-	        return redirect()->to(base_url('category'));
+	        return redirect();
 	    } else {
 	        session()->setFlashdata('danger', 'Data Gagal Disimpan');
-	        return redirect()->to(base_url('category')); 
+	        return redirect(); 
 	    }
 
 	}

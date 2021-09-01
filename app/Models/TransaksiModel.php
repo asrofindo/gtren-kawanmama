@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class TransaksiModel extends Model
 {
 	protected $DBGroup              = 'default';
-	protected $table                = 'transaksis';
+	protected $table                = 'transaksi';
 	protected $primaryKey           = 'id';
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;

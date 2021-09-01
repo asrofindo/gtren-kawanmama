@@ -67,7 +67,7 @@ class upgrades extends BaseController
 			$unique_id = $this->uniq->where('code', $code)->find();
 			$unique_username = $this->uniq->where('username', $username)->find();
 
-			if(!$unique_id && !$unique_username)
+			if(!$unique_id || !$unique_username)
 			{	
 				session()->setFlashdata('danger', 'Code Salah');
 				return redirect()->back();
