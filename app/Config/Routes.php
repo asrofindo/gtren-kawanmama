@@ -189,10 +189,11 @@ $routes->group('', function($routes)
 	$routes->post('distributor', 'Distributor::save');
 	$routes->post('distributor/(:num)', 'Distributor::edit/$1');
 
-	$routes->get('checkout', 'Transaksi::save');
+	$routes->get('checkout', 'Transaksi::index');
 
 }
 );
+
 
 /*
  * --------------------------------------------------------------------
