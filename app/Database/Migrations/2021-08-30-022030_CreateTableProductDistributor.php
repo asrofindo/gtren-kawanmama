@@ -22,7 +22,7 @@ class CreateTableProductDistributor extends Migration
 
 		$this->forge->addKey('id', true);
 
-		$this->forge->addForeignKey('distributor_id', 'distributor', 'user_id', 'CASCADE', 'NO ACTION');
+		$this->forge->addForeignKey('distributor_id', 'distributor', 'id', 'CASCADE', 'NO ACTION');
 		
         $this->forge->createTable('product_distributor', true);
 	}

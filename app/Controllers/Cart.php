@@ -27,6 +27,7 @@ class Cart extends BaseController
 			"amount" => $amount,
 			"total" => $total
 		];
+
 		$transaksi = $this->cart->select('user_id, product_id, distributor_id, total, amount, id')
 		->where('user_id', user()->id)
 		->where('product_id', $product_id)
@@ -37,6 +38,7 @@ class Cart extends BaseController
 		// $transaksi = $this->cart->join('transaksi.cart_id', 'id = transaksi.cart_id', 'left')->where('status', 'pending');
 
 		if(count($transaksi) == 0){
+
 			$this->cart->save($data);
 			return redirect()->to('/cart');
 		} else {
@@ -46,7 +48,7 @@ class Cart extends BaseController
 				"distributor_id" => $distributor_id,
 				"user_id" => user()->id,
 				"amount" => $amount + $transaksi[0]->amount,
-				"total" => $total + ($total / $transaksi->amount)
+				"total" => $transaksi[0]->total * ($amount + $transaksi[0]->amount)
 			];
 			
 			$this->cart->where('user_id', user()->id)

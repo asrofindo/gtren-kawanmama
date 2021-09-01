@@ -57,8 +57,11 @@ class Product extends BaseController
 		
 		$data['categories'] = $this->category->findAll();
 		$this->model->select('products.id as id, name, description, categories, photos, slug, fixed_price, sell_price');
-		$this->model->select('product_distributor.id as id_pd, product_distributor.product_id, product_distributor.distributor_id, product_distributor.jumlah ');
-		$this->model->join('product_distributor', 'product_distributor.product_id = products.id ', 'right')->where('distributor_id', user()->id);
+		$this->model->select('product_distributor.id as id_pd, product_distributor.product_id, product_distributor.distributor_id, product_distributor.jumlah, distributor.id');
+		$this->model->select('distributor.id as d_id');
+		$this->model->join('product_distributor', 'product_distributor.product_id = products.id ', 'right');
+		$data['products'] = $this->model->join('distributor', 'distributor.id = product_distributor.distributor_id ', 'right')->where('distributor.user_id', user()->id );
+
 		$data['products']   = $this->model->paginate(4, 'products');
 		$data['pager']    = $this->model->pager;
 		return view('db_stokis/products', $data);
@@ -98,7 +101,10 @@ class Product extends BaseController
 	
 		$data['products']= $category->getProduct($ex);
 
-		if(user()->id){		
+		$data['category'] = $this->category->findAll();
+		$data['kategory'] = $this->category->findAll();
+		
+		if(user() != null){		
 			$data['address'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find();
 			if(count($data['address']) == 0){
 				return redirect()->to('/address');
@@ -107,12 +113,11 @@ class Product extends BaseController
 			$kabupaten = $data['address'][0]->kabupaten;
 			$provinsi = $data['address'][0]->provinsi;
 
-			$data['category'] = $this->category->findAll();
-			$data['kategory'] = $this->category->findAll();
-
-			$this->address->select('product_distributor.product_id, users.username, product_distributor.distributor_id, kecamatan, kabupaten, kode_pos, provinsi, type');
-			$this->address->join('users', 'users.id = user_id', 'left');
-			$data['product_distributor'] = $this->address->join('product_distributor', 'address.user_id = product_distributor.distributor_id', 'left')->where('type', 'distributor')->where('product_id', $product_id)->find();
+			$data['product_distributor'] = $this->address->select('users.username,  kecamatan, kabupaten, kode_pos, provinsi, type, distributor.user_id, distributor.id as distributor_id, product_distributor.product_id')
+			->join('users', 'users.id = address.user_id', 'left')
+			->where('address.type', 'distributor')
+			->join('distributor', 'distributor.user_id = users.id', 'left')
+			->join('product_distributor', 'product_distributor.distributor_id = distributor.id', 'left')->where('product_distributor.product_id', $product_id)->find();
 
 			$index = count($data['product_distributor']);
 			$data['product_distributors'] = [];
@@ -131,7 +136,7 @@ class Product extends BaseController
 		}
 
 		$data['address'] = [];
-
+		$data['product_distributors'] = [];	
 
 		return view('commerce/product_detail', $data);
 	}
@@ -508,13 +513,14 @@ class Product extends BaseController
 	}
 	
 	public function update_stock($id){
+		$distributor_id = $this->distributor->where('user_id', user()->id)->find()[0]['id'];
 
 		$data = [
-			'distributor_id' => user()->id,
+			'distributor_id' => intval($distributor_id),
 			'product_id' => $id
 		];
 
-		if($this->productDistributor->where('product_id', $id)->where('distributor_id', user()->id)->find()){
+		if($this->productDistributor->where('product_id', $id)->where('distributor_id', $distributor_id)->find()){
 			session()->setFlashdata('danger', 'produk sudah ada');
 		    return redirect()->back();
 		}

@@ -15,6 +15,7 @@ class Commerce extends BaseController
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
 		$this->cart = new CartItemModel();
+		
 	}
 
 	public function index()
@@ -36,12 +37,12 @@ class Commerce extends BaseController
 	{
 		$data=$this->data;
 		$data['title']='Cart | Gtren';
-		$data['carts'] = $this->cart->select('products.id as p_id, address.id as a_id, users.id as u_id, cart_item.id as id, products.name, products.photos, products.sell_price, users.username, address.kecamatan, address.kabupaten, address.provinsi, product_id, products.photos, amount, total, distributor_id')
+		$data['carts'] = $this->cart->select('products.id as p_id, address.id as a_id, users.id as u_id, cart_item.id as id, products.name, products.photos, products.sell_price, users.username, address.kecamatan, address.kabupaten, address.provinsi, products.affiliate_commission, products.stockist_commission, product_id, products.photos, amount, total, distributor_id')
 		->join('products', 'products.id = product_id', 'left')
-		->join('users', 'users.id = distributor_id', 'left')
-		->join('address', 'address.user_id = distributor_id', 'left')
-		->where('type', 'distributor')
+		->join('users', 'users.id = cart_item.user_id', 'left')
+		->join('address', 'address.user_id = cart_item.user_id', 'left')
 		->where('cart_item.user_id', user()->id)
+		->where('type', 'distributor')
 		->find();
 
 		$sumTotal = 0;
