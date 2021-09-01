@@ -13,11 +13,13 @@ use App\Models\DistributorModel;
 use App\Models\AddressModel;
 use App\Models\ProductDistributorModel;
 use App\Libraries\Slug;
+use App\Models\CommentModel;
 
 
 class Product extends BaseController
 {
 	protected $category;
+	protected $comment;
 	protected $data;
 
 	public function __construct()
@@ -32,7 +34,8 @@ class Product extends BaseController
 		$this->contact    = new ContactModel();
 		$this->address    = new AddressModel();
 		$this->productDistributor = new ProductDistributorModel();
-		
+		$this->comment    = new CommentModel();
+
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
 
@@ -45,7 +48,7 @@ class Product extends BaseController
 		$data['categories'] = $this->category->findAll();
 
 		$data['products']   = $this->model->paginate(15, 'products');
-		
+
 		$data['pager']      = $this->model->pager;
 		return view('db_admin/produk/produk_list', $data);
 	}
@@ -86,17 +89,13 @@ class Product extends BaseController
 
 	public function detail($slug)
 	{
-		$data = $this->data;
-		$product_id = $this->model->where('slug', $slug)->find()[0]->id;
-
 		$data['product'] = $this->model->where('slug', $slug)->first();
 
-
-		// dd($data['product']);
 		$category = $category =new \App\Entities\category();
 		$ex=array_map('intval', $data['product']->categories);
 	
 		$data['products']= $category->getProduct($ex);
+		$data['comment'] = $this->comment->where('product_id',$data['product']->id)->find();
 
 		if(user()->id){		
 			$data['address'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find();
@@ -508,12 +507,12 @@ class Product extends BaseController
 	}
 	
 	public function update_stock($id){
-
+		$dis = $this->distributor->where('user_id',user()->id)->first();
 		$data = [
-			'distributor_id' => user()->id,
+			'distributor_id' => $dis['id'],
 			'product_id' => $id
 		];
-
+		dd($data);
 		if($this->productDistributor->where('product_id', $id)->find()){
 			session()->setFlashdata('danger', 'produk sudah ada');
 		    return redirect()->back();

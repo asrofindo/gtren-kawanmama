@@ -25,7 +25,7 @@
                                         <figure class="border-radius-10">
                                             <img src="<?= $photo ?>" alt="product image">
                                         </figure>
-                                    <?php endforeach ?>
+                                        <?php endforeach ?>
                                 </div>
                                 <!-- THUMBNAILS -->
                                 <div class="slider-nav-thumbnails pl-15 pr-15">
@@ -33,7 +33,7 @@
                                         <div>
                                             <img src="<?= $photo ?>" alt="">
                                         </div>
-                                    <?php endforeach ?>
+                                        <?php endforeach ?>
                                 </div>
                             </div>
                             <!-- End Gallery -->
@@ -182,7 +182,7 @@
                                                         </div>
                                                         <div class="desc">
                                                             <div class="product-rate d-inline-block">
-                                                                <div class="product-rating" style="width:90%">
+                                                                <div class="product-rating" style="width:21%">
                                                                 </div>
                                                             </div>
                                                             <p>Great low price and works well.</p>
@@ -501,11 +501,12 @@
           <div class="modal-body">
             <ul class="list-group">
                 <?php foreach($product_distributors as $distributor): ?>  
+                    d
                     <form method="post" action="<?= base_url('/cart'); ?>" id="forms">
                         <input style="display: none" type="text" value="" name="amount" id="amount">
                         <input style="display: none" type="text" value="" name="price_sell" id="price_sell">
                         <input style="display: none" type="text" value="<?= $distributor->product_id ?>" name="product_id">
-                        <input style="display: none" type="text" value="<?= $distributor->distributor_id ?>" name="distributor_id">
+                        <input style="display: none" type="text" value="<?= $distributor->distributor_id?>" name="distributor_id">
                         <li type="submit" class="list-group-item d-flex justify-content-between align-items-center h-50">
                             <?= $distributor->username ?>
                             <div class="image-parent">

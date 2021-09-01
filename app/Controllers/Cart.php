@@ -26,7 +26,6 @@ class Cart extends BaseController
 			"amount" => $amount,
 			"total" => $total
 		];
-		dd($data);
 		$transaksi = $this->cart->select('user_id, product_id, distributor_id, total, amount, id')
 		->where('user_id', user()->id)
 		->where('product_id', $product_id)
