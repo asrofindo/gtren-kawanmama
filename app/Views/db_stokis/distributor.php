@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label>Kode Pos<span class="required">*</span></label>
-                                <input required="" class="form-control square" name="kode_pos" type="text">
+                                <input id="kode_pos" required="" class="form-control square" name="kode_pos" type="text">
                             </div>
                             <div class="form-group col-md-12">
                                 <label>Detail Alamat<span class="required">*</span></label>
@@ -98,11 +98,13 @@
 
 </script>
 <script type="text/javascript">
-    $.get( "https://api.binderbyte.com/wilayah/provinsi?api_key=a5a1a7f6f6c9392dee2d0a5183eef3065eead977634d64a845b4d1051491ae6d", function( data ) {
-        $.each(data.value, function (i, item) {
+    $.get( "https://pro.rajaongkir.com/api/province?key=bfacde03a85f108ca1e684ec9c74c3a9",
+        function( data ) {
+        $.each(data.rajaongkir.results, function (i, item) {
+            console.log(item)
             $('#provinsi').append($('<option>', { 
-                value: [item.id, item.name],
-                text : item.name
+                value: [item.province_id, item.province],
+                text : item.province
             }));
         });
     });
@@ -111,7 +113,7 @@
     $('#provinsi').change(function(data) {
         const val = data.target.value;
         const arr = val.split(',');
-        $.get( `https://api.binderbyte.com/wilayah/kabupaten?api_key=a5a1a7f6f6c9392dee2d0a5183eef3065eead977634d64a845b4d1051491ae6d&id_provinsi=${arr[0]}`, function( data ) {
+        $.get( `https://pro.rajaongkir.com/api/city?province=${arr[0]}&key=bfacde03a85f108ca1e684ec9c74c3a9`, function( data ) {
             $('#kabupaten')
             .find('option')
             .remove()
@@ -122,11 +124,12 @@
             .remove()
             .end()
 
-            $.each(data.value, function (i, item) {
+            $.each(data.rajaongkir.results, function (i, item) {
+                console.log(item)
                 $('#kabupaten')
                 .append($('<option>', { 
-                    value: [item.id, item.name],
-                    text : item.name,
+                    value: [item.city_id, item.city_name, item.postal_code],
+                    text : item.city_name,
                 }));
             });
         });
@@ -136,30 +139,24 @@
         const val = data.target.value;
         const arr = val.split(',');
 
-        $.get( `https://api.binderbyte.com/wilayah/kecamatan?api_key=a5a1a7f6f6c9392dee2d0a5183eef3065eead977634d64a845b4d1051491ae6d&id_kabupaten=${arr[0]}`, function( data ) {
+        $.get( `https://pro.rajaongkir.com/api/subdistrict?city=${arr[0]}&key=bfacde03a85f108ca1e684ec9c74c3a9`, function( data ) {
             
             $('#kecamatan')
             .find('option')
             .remove()
             .end()
+           
+           $('#kode_pos').val(arr[2]);
 
-            $.each(data.value, function (i, item) {
+            $.each(data.rajaongkir.results, function (i, item) {
+                console.log(item)
                 $('#kecamatan').append($('<option>', { 
-                    value: [item.id, item.name],
-                    text : item.name 
+                    value: [item.subdistrict_id, item.subdistrict_name],
+                    text : item.subdistrict_name 
                 }));
             });
         });
     });
 
-        if (!('remove' in Element.prototype)) {
-        Element.prototype.remove = function () {
-          if (this.parentNode) {
-            this.parentNode.removeChild(this);
-          }
-        };
-      }
-
-   
 </script>
 <?php $this->endSection(); ?>
