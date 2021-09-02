@@ -34,27 +34,38 @@ class Comment extends BaseController
 
 	public function save()
 	{
+		if (user() == null) {
+			return redirect('/login'); 
+		}
 		$data = [
 			'user_id' => $this->request->getPost('user_id'),
 			'product_id' => $this->request->getPost('product_id'),
-			'rating' => $this->request->getPost('description')
+			'rating' => $this->request->getPost('rating'),
+			'comment' => $this->request->getPost('comment')
 		];
 
 		$save = $this->model->insert($data);
 
-		// Notif
 		if($save) {
 	        session()->setFlashdata('success', 'Data Berhasil Disimpan');
-	        return redirect();
+	        return redirect()->back(); 
 	    } else {
 	        session()->setFlashdata('danger', 'Data Gagal Disimpan');
-	        return redirect(); 
+	        return redirect()->back(); 
 	    }
 
 	}
 
-	public function delete()
+	public function delete($id)
 	{
-		
+		$delete = $this->model->delete($id);
+
+		if($delete) {
+	        session()->setFlashdata('success', 'Data Berhasil Dihapus');
+	        return redirect()->back();
+	    } else {
+	        session()->setFlashdata('danger', 'Data Gagal Dihapus');
+	        return redirect()->back(); 
+	    }
 	}
 }

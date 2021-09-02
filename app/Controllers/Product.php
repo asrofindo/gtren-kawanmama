@@ -92,17 +92,20 @@ class Product extends BaseController
 
 	public function detail($slug)
 	{
+		$data= $this->data;
 		$data['product'] = $this->model->where('slug', $slug)->first();
-
+		$product_id = $data['product']->id;
+		
 		$category = $category =new \App\Entities\category();
 		$ex=array_map('intval', $data['product']->categories);
-	
 		$data['products']= $category->getProduct($ex);
-		$data['comment'] = $this->comment->where('product_id',$data['product']->id)->find();
-
+		$data['comment'] = $this->comment->select('comments.id as id ,users.id as user_id ,comments.created_at as created_at,users.username as name, users.user_image as image, comments.rating as rating, comments.comment')
+		->join('users', 'users.id = comments.user_id', 'inner')
+		->join('products', 'products.id = comments.product_id', 'inner')->where('products.slug', $slug)->findAll();
 		$data['category'] = $this->category->findAll();
 		$data['kategory'] = $this->category->findAll();
 		if(user() != null){		
+			$data['user']=user(); 
 			$data['address'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find();
 			if(count($data['address']) == 0){
 				return redirect()->to('/address');

@@ -17,7 +17,7 @@ class CommentModel extends Model
 	protected $allowedFields        = ['user_id','product_id','rating','comment'];
 
 	// Dates
-	protected $useTimestamps        = false;
+	protected $useTimestamps        = true;
 	protected $dateFormat           = 'datetime';
 	protected $createdField         = 'created_at';
 	protected $updatedField         = 'updated_at';
