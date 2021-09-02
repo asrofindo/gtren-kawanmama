@@ -65,12 +65,9 @@ class Transaksi extends BaseController
 
 		for($i = 0; count($data['carts']) > $i; $i++){
 			$sumTotal += $data['carts'][$i]->total;
-
-
-
 		}
 		$data['total'] = $sumTotal;
-		
+
 		$data['category'] = $this->category->findAll();
 		$data['address'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find();
 
