@@ -460,8 +460,12 @@
           <div class="modal-body">
             <ul class="list-group">
                 <?php foreach($product_distributors as $distributor): ?>  
-                    d
-                    <form method="post" action="<?= base_url('/cart'); ?>" id="forms">
+                    
+                    <form method="post" action="<?= base_url();?>/cart
+                    <?php if ($affiliate != null) {
+                        echo'/affiliate/'.$affiliate;
+                    } ?>
+                    " id="forms">
                         <input style="display: none" type="text" value="" name="amount" id="amount">
                         <input style="display: none" type="text" value="" name="price_sell" id="price_sell">
                         <input style="display: none" type="text" value="<?= $distributor->product_id ?>" name="product_id">

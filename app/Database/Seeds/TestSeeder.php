@@ -14,7 +14,5 @@ class TestSeeder extends Seeder
 		$this->call('UsersSeeder');
 		$this->call('BillSeeder');
 		$this->call('AuthGroupsSeeder');
-
-	
 	}
 }

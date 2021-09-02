@@ -90,12 +90,12 @@ class Product extends BaseController
 		return view('commerce/home', $data);
 	}
 
-	public function detail($slug)
+	public function detail($slug,$id=null)
 	{
 		$data= $this->data;
 		$data['product'] = $this->model->where('slug', $slug)->first();
 		$product_id = $data['product']->id;
-		
+		$data['affiliate'] = $id;
 		$category = $category =new \App\Entities\category();
 		$ex=array_map('intval', $data['product']->categories);
 		$data['products']= $category->getProduct($ex);

@@ -23,6 +23,7 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
+
 	public $baseURL = 'http://gtren.kawanmama.com';
 
 	/**
@@ -36,6 +37,7 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
+	
 	public $indexPage = '';
 
 	/**

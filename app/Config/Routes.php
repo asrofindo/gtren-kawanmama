@@ -30,6 +30,8 @@ $routes->setAutoRoute(false);
  * --------------------------------------------------------------------
  */
 
+
+$routes->get('/product/(:any)/affiliate/src/(:num)', 'Product::detail/$1/$2');
 $routes->post('/comment/save', 'Comment::save');
 $routes->get('/comment/delete/(:num)','Comment::delete/$1');
 
