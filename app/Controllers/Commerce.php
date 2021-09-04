@@ -35,6 +35,9 @@ class Commerce extends BaseController
 
 	public function Cart()
 	{
+		if (user() == null) {
+			return redirect()->to('/login');
+		}
 		$data=$this->data;
 		
 		$data['title']='Cart | Gtren';

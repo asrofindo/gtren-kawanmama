@@ -30,6 +30,11 @@ $routes->setAutoRoute(false);
  * --------------------------------------------------------------------
  */
 
+
+$routes->get('/product/(:any)/affiliate/src/(:num)', 'Product::detail/$1/$2');
+$routes->post('/comment/save', 'Comment::save');
+$routes->get('/comment/delete/(:num)','Comment::delete/$1');
+
 $routes->get('/make/admin/(:num)', 'User::admin/$1');
 $routes->get('/delete/admin/(:num)', 'User::admin/$1');
 
@@ -42,7 +47,6 @@ $routes->get('tracking', 'User::tracking', ['filter' => 'login']);
 //addresses
 $routes->get('billing-address', 'User::address', ['filter' => 'login']);
 $routes->post('billing-address/(:num)', 'User::save_billing/$1', ['filter' => 'login']);
-
 
 $routes->get('shipping-address', 'User::address', ['filter' => 'login']);
 $routes->post('shipping-address/(:num)', 'User::save_shipping/$1', ['filter' => 'login']);

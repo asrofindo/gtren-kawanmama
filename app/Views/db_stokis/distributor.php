@@ -31,7 +31,6 @@
                             <div class="form-group col-md-12">
                                 <label>Kabupaten<span class="required">*</span></label>
                                  <select required="" class="form-control square" name="kabupaten" id="kabupaten">
-                                    
                                 </select>
                             </div>
                             <div class="form-group col-md-12">

@@ -13,11 +13,13 @@ use App\Models\DistributorModel;
 use App\Models\AddressModel;
 use App\Models\ProductDistributorModel;
 use App\Libraries\Slug;
+use App\Models\CommentModel;
 
 
 class Product extends BaseController
 {
 	protected $category;
+	protected $comment;
 	protected $data;
 
 	public function __construct()
@@ -32,7 +34,8 @@ class Product extends BaseController
 		$this->contact    = new ContactModel();
 		$this->address    = new AddressModel();
 		$this->productDistributor = new ProductDistributorModel();
-		
+		$this->comment    = new CommentModel();
+
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
 
@@ -45,7 +48,7 @@ class Product extends BaseController
 		$data['categories'] = $this->category->findAll();
 
 		$data['products']   = $this->model->paginate(15, 'products');
-		
+
 		$data['pager']      = $this->model->pager;
 		return view('db_admin/produk/produk_list', $data);
 	}
@@ -87,24 +90,22 @@ class Product extends BaseController
 		return view('commerce/home', $data);
 	}
 
-	public function detail($slug)
+	public function detail($slug,$id=null)
 	{
-		$data = $this->data;
-		$product_id = $this->model->where('slug', $slug)->find()[0]->id;
-
+		$data= $this->data;
 		$data['product'] = $this->model->where('slug', $slug)->first();
-
-
-		// dd($data['product']);
+		$product_id = $data['product']->id;
+		$data['affiliate'] = $id;
 		$category = $category =new \App\Entities\category();
 		$ex=array_map('intval', $data['product']->categories);
-	
 		$data['products']= $category->getProduct($ex);
-
+		$data['comment'] = $this->comment->select('comments.id as id ,users.id as user_id ,comments.created_at as created_at,users.username as name, users.user_image as image, comments.rating as rating, comments.comment')
+		->join('users', 'users.id = comments.user_id', 'inner')
+		->join('products', 'products.id = comments.product_id', 'inner')->where('products.slug', $slug)->findAll();
 		$data['category'] = $this->category->findAll();
 		$data['kategory'] = $this->category->findAll();
-		
 		if(user() != null){		
+			$data['user']=user(); 
 			$data['address'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find();
 			if(count($data['address']) == 0){
 				return redirect()->to('/address');

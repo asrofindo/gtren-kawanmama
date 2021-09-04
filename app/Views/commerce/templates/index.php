@@ -36,10 +36,15 @@
 </head>
 <body>
         <main class="main single-page">
-                <?= $this->include('commerce/templates/header') ?>
+                <?php if (isset($category)) {
+                  echo $this->include('commerce/templates/header');
+                } ?>
 
                 <?php $this->renderSection('content') ?>
-                <?= $this->include('commerce/templates/footer') ?>
+
+                <?php if (isset($category)) {
+                  echo $this->include('commerce/templates/footer');
+                 } ?>
 
     </main>
 

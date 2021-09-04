@@ -39,6 +39,7 @@ class Transaksi extends BaseController
 		->where('address.type', 'distributor')
 		->where('cart_item.user_id', user()->id)
 		->find();
+
 		$outer_array = array();
 		$unique_array = array();
 
@@ -82,6 +83,7 @@ class Transaksi extends BaseController
 
 		$data['carts'] = $outer_array;
 		
+
 		$data['category'] = $this->category->findAll();
 		$data['address'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find();
 

@@ -4,7 +4,7 @@
     <div class="container">
         <div class="breadcrumb">
             <a href="index.html" rel="nofollow">Home</a>
-
+            
             <span></span> <?= $product->getCategory($product->categories)[0]->category; ?>
             <span></span> <?= $product->name ?>
         </div>
@@ -13,6 +13,13 @@
 <section class="mt-60 mb-60">
     <div class="container">
         <div class="row">
+            <?php if(session()->getFlashData('success')){
+                ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    Comment <?= session()->getFlashData('success')?>
+                </button>
+                </div>
+            <?php } ?>
             <div class="col-lg-9">
                 <div class="product-detail accordion-detail">
                     <div class="row mb-50">
@@ -25,7 +32,7 @@
                                         <figure class="border-radius-10">
                                             <img src="<?= $photo ?>" alt="product image">
                                         </figure>
-                                    <?php endforeach ?>
+                                        <?php endforeach ?>
                                 </div>
                                 <!-- THUMBNAILS -->
                                 <div class="slider-nav-thumbnails pl-15 pr-15">
@@ -33,7 +40,7 @@
                                         <div>
                                             <img src="<?= $photo ?>" alt="">
                                         </div>
-                                    <?php endforeach ?>
+                                        <?php endforeach ?>
                                 </div>
                             </div>
                             <!-- End Gallery -->
@@ -150,84 +157,40 @@
                                         <div class="col-lg-8">
                                             <h4 class="mb-30">Customer questions & answers</h4>
                                             <div class="comment-list">
-                                                <div class="single-comment justify-content-between d-flex">
-                                                    <div class="user justify-content-between d-flex">
-                                                        <div class="thumb text-center">
-                                                            <img src="<?= base_url() ?>/frontend/imgs/page/avatar-6.jpg" alt="">
-                                                            <h6><a href="#">Jacky Chan</a></h6>
-                                                            <p class="font-xxs">Since 2012</p>
-                                                        </div>
-                                                        <div class="desc">
-                                                            <div class="product-rate d-inline-block">
-                                                                <div class="product-rating" style="width:90%">
-                                                                </div>
+                                                <?php foreach ($comment as $data) {?>
+                                                    <div class="single-comment justify-content-between d-flex">
+                                                        <div class="user justify-content-between d-flex">
+                                                            <div class="thumb text-center">
+                                                                <img src="<?= base_url() ?>/frontend/imgs/page/<?= $data['image'] ?>" alt="">
+                                                                <h6><a href="#"><?= $data['name'] ?></a></h6>
                                                             </div>
-                                                            <p>Thank you very fast shipping from Poland only 3days.</p>
-                                                            <div class="d-flex justify-content-between">
-                                                                <div class="d-flex align-items-center">
-                                                                    <p class="font-xs mr-30">December 4, 2020 at 3:12 pm </p>
-                                                                    <a href="#" class="text-brand">Reply <i class="fa fa-arrow-right font-xs"></i> </a>
+                                                            <div class="desc">
+                                                                <div class="product-rate d-inline-block">
+                                                                    <div class="product-rating" style="width:<?= $data['rating'] ?>%">
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!--single-comment -->
-                                                <div class="single-comment justify-content-between d-flex">
-                                                    <div class="user justify-content-between d-flex">
-                                                        <div class="thumb text-center">
-                                                            <img src="<?= base_url() ?>/frontend/imgs/page/avatar-7.jpg" alt="">
-                                                            <h6><a href="#">Ana Rosie</a></h6>
-                                                            <p class="font-xxs">Since 2008</p>
-                                                        </div>
-                                                        <div class="desc">
-                                                            <div class="product-rate d-inline-block">
-                                                                <div class="product-rating" style="width:90%">
+                                                                <p><?= $data['comment']?></p>
+                                                                <div class="d-flex justify-content-between">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <p class="font-xs mr-30"><?= $data['created_at'] ?></p>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <p>Great low price and works well.</p>
-                                                            <div class="d-flex justify-content-between">
-                                                                <div class="d-flex align-items-center">
-                                                                    <p class="font-xs mr-30">December 4, 2020 at 3:12 pm </p>
-                                                                    <a href="#" class="text-brand">Reply <i class="fa fa-arrow-right font-xs"></i> </a>
-                                                                </div>
+                                                                <?php if (user()!=null) {
+                                                                 if (user()->id == $data['user_id']) { ?>
+                                                                    <a href="<?=base_url()?>/comment/delete/<?=$data['id']?>">delete</a> 
+                                                                <?php }} ?>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <!--single-comment -->
-                                                <div class="single-comment justify-content-between d-flex">
-                                                    <div class="user justify-content-between d-flex">
-                                                        <div class="thumb text-center">
-                                                            <img src="<?= base_url() ?>/frontend/imgs/page/avatar-8.jpg" alt="">
-                                                            <h6><a href="#">Steven Keny</a></h6>
-                                                            <p class="font-xxs">Since 2010</p>
-                                                        </div>
-                                                        <div class="desc">
-                                                            <div class="product-rate d-inline-block">
-                                                                <div class="product-rating" style="width:90%">
-                                                                </div>
-                                                            </div>
-                                                            <p>Authentic and Beautiful, Love these way more than ever expected They are Great earphones</p>
-                                                            <div class="d-flex justify-content-between">
-                                                                <div class="d-flex align-items-center">
-                                                                    <p class="font-xs mr-30">December 4, 2020 at 3:12 pm </p>
-                                                                    <a href="#" class="text-brand">Reply <i class="fa fa-arrow-right font-xs"></i> </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                    
+                                                <?php   }?>
                                                 <!--single-comment -->
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
                                             <h4 class="mb-30">Customer reviews</h4>
                                             <div class="d-flex mb-30">
-                                                <div class="product-rate d-inline-block mr-15">
-                                                    <div class="product-rating" style="width:90%">
-                                                    </div>
-                                                </div>
+     
                                                 <h6>4.8 out of 5</h6>
                                             </div>
                                             <div class="progress">
@@ -261,33 +224,29 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-8 col-md-12">
-                                            <form class="form-contact comment_form" action="#" id="commentForm">
-                                                <div class="row">
+                                            <div class="row">
+                                                    <form action="<?= base_url() ?>/comment/save" method="post">
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <input class="form-control" name="name" id="name" type="text" placeholder="Name">
-                                                        </div>
+                                                    <p> star</p>
+                                                    <div class="product-rate d-inline-block">
+                                                            <div class="product-rating" style="width:50%">
+                                                            </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <input class="form-control" name="email" id="email" type="email" placeholder="Email">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <input class="form-control" name="website" id="website" type="text" placeholder="Website">
+                                                            <input hidden class="form-control" name="user_id" id="email" placeholder="Email" value="<?php if (user() != null) {
+                                                            echo user()->id;} ?>">
+                                                            <input hidden class="form-control" name="product_id"  value="<?=$product->id?>">
+                                                            <input class="product-rating" type="range" min="0" max="100" name="rating"  placeholder="Rating" value="">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <button type="submit" class="button button-contactForm">Submit
-                                                        Review</button>
-                                                </div>
+                                                    <button type="submit" >Submit
+                                                    Comment</button>
                                             </form>
                                         </div>
                                     </div>
@@ -501,11 +460,16 @@
           <div class="modal-body">
             <ul class="list-group">
                 <?php foreach($product_distributors as $distributor): ?>  
-                    <form method="post" action="<?= base_url('/cart'); ?>" id="forms">
+                    
+                    <form method="post" action="<?= base_url();?>/cart
+                    <?php if ($affiliate != null) {
+                        echo'/affiliate/'.$affiliate;
+                    } ?>
+                    " id="forms">
                         <input style="display: none" type="text" value="" name="amount" id="amount">
                         <input style="display: none" type="text" value="" name="price_sell" id="price_sell">
                         <input style="display: none" type="text" value="<?= $distributor->product_id ?>" name="product_id">
-                        <input style="display: none" type="text" value="<?= $distributor->distributor_id ?>" name="distributor_id">
+                        <input style="display: none" type="text" value="<?= $distributor->distributor_id?>" name="distributor_id">
                         <li type="submit" class="list-group-item d-flex justify-content-between align-items-center h-50">
                             <?= $distributor->username ?>
                             <div class="image-parent">
