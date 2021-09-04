@@ -40,6 +40,8 @@ class Commerce extends BaseController
 			return redirect()->to('/login');
 		}
 		$data=$this->data;
+		
+		$data['title']='Cart | Gtren';
 		$data['carts'] = $this->cart->select('products.id as p_id, address.id as a_id, users.id as u_id, cart_item.id as id, products.name, products.photos, products.sell_price, users.username, address.kecamatan, address.kabupaten, address.provinsi, products.affiliate_commission, products.stockist_commission, product_id, products.photos, amount, total, distributor_id')
 		->join('products', 'products.id = product_id', 'left')
 		->join('users', 'users.id = cart_item.user_id', 'left')
