@@ -190,10 +190,11 @@ $routes->group('', function($routes)
 	$routes->post('distributor/(:num)', 'Distributor::edit/$1');
 
 	$routes->get('checkout', 'Transaksi::index');
+	$routes->post('transaksi/kurir', 'Transaksi::save_kurir');
+	$routes->post('transaksi/check', 'Transaksi::check');
 
 }
 );
-
 
 /*
  * --------------------------------------------------------------------

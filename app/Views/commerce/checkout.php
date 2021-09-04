@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+           <!--  <div class="col-md-6">
                 <div class="mb-25">
                     <h4>Billing Details</h4>
                 </div>
@@ -94,8 +94,8 @@
                         <input required="" type="text" name="email" value="<?= user()->email ?>" placeholder="Email address[0] *">
                     </div>
                 </form>
-            </div>
-            <div class="col-md-6">
+            </div> -->
+            <div class="col-md-12">
                 <div class="order_review">
                     <div class="mb-20">
                         <h4>Your Orders</h4>
@@ -104,26 +104,71 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th colspan="2">Product</th>
-                                    <th>Total</th>
+                                    <th>Photo</th>
+                                    <th>Product</th>
+                                    <th>amount</th>
+                                    <th>harga</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($carts as $cart):?>
-                                <tr>
-                                    <td class="image product-thumbnail"><img src="assets/imgs/shop/product-1-2.jpg" alt="#"></td>
-                                    <td><a href="shop-product-full.html"><?= $cart->name ?></a> <span class="product-qty">x <?= $cart->amount ?></span></td>
-                                    <td><?= $cart->total ?></td>
-                                </tr>
+                                    <?php foreach ($cart['products'] as $product): ?>
+                                        <tr style="height:30px">
+                                            <td style="width:40px; "><img src="https://png.pngtree.com/png-clipart/20190516/original/pngtree-cleaning-products-on-transparent-background-png-image_4017268.jpg" style="width:60%; height:100px"></td>
+                                            <td style="width: 100px"><?= $product->name ?></td>
+                                            <td style="width: 100px"><?= $product->amount ?></td>
+                                            <td style="width: 100px"><?= $product->sell_price ?></td>
+                                        </tr>
+                                        
+                                    <?php endforeach; ?>
+                                    <tr>
+                                        <th colspan="1"><h4>Penjual</h4></th>
+                                        <td colspan="1" class="product-subtotal">
+                                            <span class="font-xl text-brand fw-900"><?= $cart['distributor_id'];  ?></span>
+                                        </td>
+                                        <td colspan="2" class="product-subtotal" style="width:150px">
+                                            <span>
+                                                produkmu akan dikirim dari kecamatan <?= $cart['kecamatan'];  ?> <br>      
+                                                kabupaten <?= $cart['kabupaten'];  ?> 
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="1"><h4>Pilih Kurir</h4></th>
+                                        <td colspan="1" class="product-subtotal">
+                                            <span class="font-xl text-brand fw-900">
+                                                <form method="POST" action="<?= base_url()  ?>/transaksi/check">
+                                                    <input style="display: none" type="text" name="origin" value="<?= $billing->city_id ?>" >
+                                                    <input style="display: none" type="text" name="destination" value="<?= $cart['id_kota'] ?>" >
+                                                    <input style="display: none" type="text" name="distributor_id" value="<?= $cart['distributor_id'] ?>" >
+                                                    <select type="submit" name="courier" onchange="this.form.submit()">
+                                                        <option value="jne">JNE</option>
+                                                        <option value="pos">POS</option>
+                                                        <option value="jnt">JNT</option>
+                                                    </select>
+                                                </form>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            dikirim Lewat
+                                            <?= $cart['kurir'] ?>
+                                        </td>
+                                        <td>
+                                            <?= $cart['ongkir'] ?> ||
+                                            <?= $cart['etd'] ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>sub total</th>
+                                        <td colspan="3" class="product-subtotal"><span class="font-xl text-brand fw-900"><?= $cart['subtotal'][0];?></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                           
+                                        </td>
+                                    </tr>
                                 <?php endforeach; ?>
-                                <tr>
-                                    <th>Shipping</th>
-                                    <td colspan="2"><em><button class="btn-sm">JNE</button></em></td>
-                                </tr>
-                                <tr>
-                                    <th>Total</th>
-                                    <td colspan="2" class="product-subtotal"><span class="font-xl text-brand fw-900"><?= $total;  ?></span></td>
-                                </tr>
+                              
                             </tbody>
                         </table>
                     </div>
@@ -133,12 +178,13 @@
                             <h5>Payment</h5>
                         </div>
                         <div class="payment_option">
-                            <?php foreach ($bills as $bill): ?>
                             <div class="custome-radio">
-                                <input class="form-check-input" required="" type="radio" name="payment_option" id="exampleRadios3" checked="">
-                                <label class="form-check-label" for="exampleRadios3" data-bs-toggle="collapse" data-target="#bankTranfer" aria-controls="bankTranfer"><?= $bill->bank_name ?>r</label>
+                                <select name="bill">
+                                    <?php foreach ($bills as $bill): ?>
+                                            <option><?= $bill->bank_name ?> - <?= $bill->bank_number ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
-                            <?php endforeach; ?>
                         </div>
                     </div>
                     <a href="#" class="btn btn-fill-out btn-block mt-30">Place Order</a>
