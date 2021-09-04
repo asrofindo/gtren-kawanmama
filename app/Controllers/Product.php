@@ -95,7 +95,11 @@ class Product extends BaseController
 		$data= $this->data;
 		$data['product'] = $this->model->where('slug', $slug)->first();
 		$product_id = $data['product']->id;
-		$data['affiliate'] = $id;
+
+		if ($id != null && user()->affiliate_link != '/src/'.$id) {
+			return redirect()->to('/product/'.$slug);
+		}
+		$data['affiliate']= $id;
 		$category = $category =new \App\Entities\category();
 		$ex=array_map('intval', $data['product']->categories);
 		$data['products']= $category->getProduct($ex);

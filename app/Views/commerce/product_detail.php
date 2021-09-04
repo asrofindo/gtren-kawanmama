@@ -461,11 +461,11 @@
             <ul class="list-group">
                 <?php foreach($product_distributors as $distributor): ?>  
                     
-                    <form method="post" action="<?= base_url();?>/cart
-                    <?php if ($affiliate != null) {
-                        echo'/affiliate/'.$affiliate;
-                    } ?>
-                    " id="forms">
+                    <?php if ($affiliate != null) {?>
+                        <form method="post" action="<?= base_url();?>/cart/<?= $affiliate?>"id="forms">
+                    <?php }else{?>
+                        <form method="post" action="<?= base_url();?>/cart"id="forms">
+                    <?php } ?> 
                         <input style="display: none" type="text" value="" name="amount" id="amount">
                         <input style="display: none" type="text" value="" name="price_sell" id="price_sell">
                         <input style="display: none" type="text" value="<?= $distributor->product_id ?>" name="product_id">

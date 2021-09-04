@@ -31,7 +31,7 @@ $routes->setAutoRoute(false);
  */
 
 
-$routes->get('/product/(:any)/affiliate/src/(:num)', 'Product::detail/$1/$2');
+$routes->get('/product/(:any)/src/(:num)', 'Product::detail/$1/$2');
 $routes->post('/comment/save', 'Comment::save');
 $routes->get('/comment/delete/(:num)','Comment::delete/$1');
 
@@ -71,6 +71,8 @@ $routes->get('contact', 'Commerce::Contact');
 $routes->get('about', 'Commerce::About');
 $routes->get('cart', 'Commerce::cart');
 $routes->post('cart', 'Cart::save');
+$routes->post('cart/(:num)', 'Cart::save/$1');
+
 $routes->get('cart/delete/(:num)', 'Cart::delete/$1');
 $routes->get('cart/delete/all', 'Cart::delete_all');
 $routes->get('cart/add/(:num)', 'Cart::add/$1');

@@ -57,9 +57,9 @@
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="/cart">
                                     <img alt="wowy" src="<?= base_url() ?>/frontend/imgs/theme/icons/icon-cart.svg">
-                                    <span class="pro-count blue">2</span>
+                                    <!-- <span class="pro-count blue">2</span> -->
                                 </a>
-                                <div class="cart-dropdown-wrap cart-dropdown-hm2">
+                                <!-- <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                     <ul>
                                         <li>
                                             <div class="shopping-cart-img">
@@ -95,7 +95,7 @@
                                             <a href="shop-checkout.html">Checkout</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="header-action-icon-2">
                                 <?php if(!logged_in()): ?>
@@ -117,7 +117,7 @@
             <div class="container">
                 <div class="header-wrap header-space-between position-relative main-nav">
                     <div class="logo logo-width-1 d-block d-md-none">
-                        <a href="index.html" class="w-25"><img src="<?= base_url() ?>/frontend/imgs/theme/gtren-t.png" alt="logo"></a>
+                        <a href="<?= base_url()?>" class="w-25"><img src="<?= base_url()?>/frontend/imgs/theme/gtren-t.png" alt="logo"></a>
                     </div>
                     <div class="main-categori-wrap d-none d-md-block">
                         <a class="categori-button-active" href="#">
@@ -158,9 +158,9 @@
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="shop-cart.html">
                                     <img alt="wowy" src="<?= base_url() ?>/frontend/imgs/theme/icons/icon-cart-white.svg">
-                                    <span class="pro-count white">02</span>
+                                    <!-- <span class="pro-count white">02</span> -->
                                 </a>
-                                <div class="cart-dropdown-wrap cart-dropdown-hm2">
+                                <!-- <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                     <ul>
                                         <li>
                                             <div class="shopping-cart-img">
@@ -184,7 +184,7 @@
                                             <a href="shop-checkout.html">Checkout</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="header-action-icon-2">
                                 <a href="page-login-register.html">
@@ -206,17 +206,12 @@
     </header>
     <div class="mobile-header-active mobile-header-wrapper-style">
         <div class="mobile-header-wrapper-inner">
-            <div class="mobile-header-top">
-                <div class="mobile-header-logo">
-                    <a href="index.html" class="w-50"><img src="<?= base_url() ?>/frontend/imgs/theme/gtren.png" alt="logo"></a>
-                </div>
                 <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                     <button class="close-style search-close">
                         <i class="icon-top"></i>
                         <i class="icon-bottom"></i>
                     </button>
                 </div>
-            </div>
             <div class="mobile-header-content-area">
                 <div class="mobile-search search-style-3 mobile-header-border">
                     <form action="<?= base_url() ?>/products/search" method="get">

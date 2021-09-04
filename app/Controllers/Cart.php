@@ -11,7 +11,7 @@ class Cart extends BaseController
 		$this->cart = new CartItemModel();
 	}
 
-	public function save()
+	public function save($id=null)
 	{
 		$product_id = $this->request->getPost('product_id');
 		$distributor_id = $this->request->getPost('distributor_id');
@@ -26,7 +26,9 @@ class Cart extends BaseController
 			"amount" => $amount,
 			"total" => $total
 		];
-
+		if ($id!=null) {
+			$data['affiliate_link']='/src/'.$id;
+		}
 		$transaksi = $this->cart->select('user_id, product_id, distributor_id, total, amount, id')
 		->where('user_id', user()->id)
 		->where('product_id', $product_id)
@@ -35,8 +37,8 @@ class Cart extends BaseController
 		// $transaksi = $this->cart->join('transaksi.cart_id', 'id = transaksi.cart_id', 'left')->where('status', 'pending');
 		if(count($transaksi) == 0){
 			$this->cart->save($data);
-			return redirect()->to('/cart');
 
+			return redirect()->to('/cart');
 		} else {
 			$data = [
 				"id" => $transaksi[0]->id,
@@ -49,6 +51,7 @@ class Cart extends BaseController
 			$this->cart->where('user_id', user()->id)
 			->where('product_id', $product_id)
 			->where('distributor_id', $distributor_id)->replace($data);
+			return redirect()->to('/cart');
 		}
 		
 	}
