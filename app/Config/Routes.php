@@ -30,6 +30,9 @@ $routes->setAutoRoute(false);
  * --------------------------------------------------------------------
  */
 
+$routes->resource('city');
+$routes->resource('province');
+$routes->resource('subdistrict');
 
 $routes->get('/product/(:any)/src/(:num)', 'Product::detail/$1/$2');
 $routes->post('/comment/save', 'Comment::save');

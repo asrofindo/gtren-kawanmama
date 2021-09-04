@@ -654,13 +654,14 @@
 
 </script>
 <script type="text/javascript">
-    $.get( "https://pro.rajaongkir.com/api/province?key=bfacde03a85f108ca1e684ec9c74c3a9",
+    $.get( "/province",
         function( data ) {
-        $.each(data.rajaongkir.results, function (i, item) {
-            console.log(item)
+
+
+        $.each(data, function (i, item) {
             $('#provinsi').append($('<option>', { 
-                value: [item.province_id, item.province],
-                text : item.province
+                value: [item.provinsi_id, item.provinsi],
+                text : item.provinsi
             }));
         });
     });
@@ -669,7 +670,8 @@
     $('#provinsi').change(function(data) {
         const val = data.target.value;
         const arr = val.split(',');
-        $.get( `https://pro.rajaongkir.com/api/city?province=${arr[0]}&key=bfacde03a85f108ca1e684ec9c74c3a9`, function( data ) {
+        $.get( `/city/${arr[0]}`, function( data ) {
+
             $('#kabupaten')
             .find('option')
             .remove()
@@ -679,23 +681,24 @@
             .find('option')
             .remove()
             .end()
-
-            $.each(data.rajaongkir.results, function (i, item) {
+           
+            $.each(data, function (i, item) {
                 console.log(item)
                 $('#kabupaten')
                 .append($('<option>', { 
-                    value: [item.city_id, item.city_name, item.postal_code],
-                    text : item.city_name,
+                    value: [item.id_kota, item.kota, item.kode_pos],
+                    text : item.kota,
                 }));
             });
         });
     });
 
     $('#kabupaten').change(function(data) {
+
         const val = data.target.value;
         const arr = val.split(',');
 
-        $.get( `https://pro.rajaongkir.com/api/subdistrict?city=${arr[0]}&key=bfacde03a85f108ca1e684ec9c74c3a9`, function( data ) {
+        $.get( `/subdistrict/${arr[0]}`, function( data ) {
             
             $('#kecamatan')
             .find('option')
@@ -703,12 +706,11 @@
             .end()
            
            $('#kode_pos').val(arr[2]);
-
-            $.each(data.rajaongkir.results, function (i, item) {
+            $.each(data, function (i, item) {
                 console.log(item)
                 $('#kecamatan').append($('<option>', { 
-                    value: [item.subdistrict_id, item.subdistrict_name],
-                    text : item.subdistrict_name 
+                    value: [item.subsdistrict_id, item.subsdistrict_name],
+                    text : item.subsdistrict_name 
                 }));
             });
         });
