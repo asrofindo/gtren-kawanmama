@@ -61,11 +61,12 @@ class User extends BaseController
 
 		$data['details_order'] = $this->transaksi
 		->select('address.kecamatan, address.kabupaten, address.provinsi, distributor.locate as nama_toko, products.name as name, detailtransaksi.affiliate_commission, detailtransaksi.stockist_commission, detailtransaksi.status_barang, cart_item.amount, products.sell_price')
-		->join('detailtransaksi', "detailtransaksi.transaksi_id = {$transaksi_id}")
+		->join('detailtransaksi', "detailtransaksi.transaksi_id = transaksi.id")
 		->join('cart_item', "cart_item.id = detailtransaksi.cart_id")
 		->join('products', "cart_item.product_id = products.id")
 		->join('distributor', "distributor.id = cart_item.distributor_id")
 		->join('address', "address.user_id = distributor.user_id AND address.type = 'distributor'")
+		->where('transaksi.id', $transaksi_id)
 		->where('transaksi.user_id', user()->id)->findAll();
 
 		return view('commerce/detail', $data);
