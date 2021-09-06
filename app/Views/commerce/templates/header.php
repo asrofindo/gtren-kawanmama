@@ -117,7 +117,7 @@
             <div class="container">
                 <div class="header-wrap header-space-between position-relative main-nav">
                     <div class="logo logo-width-1 d-block d-md-none">
-                        <a href="<?= base_url()?>" class="w-25"><img src="<?= base_url()?>/frontend/imgs/theme/gtren-t.png" alt="logo"></a>
+                        <a href="<?= base_url()?>" class="w-25 m-1"><img src="<?= base_url()?>/frontend/imgs/theme/gtren-t.png" alt="logo"></a>
                     </div>
                     <div class="main-categori-wrap d-none d-md-block">
                         <a class="categori-button-active" href="#">
@@ -149,14 +149,14 @@
   
                     <div class="header-action-right d-block d-md-none">
                         <div class="header-action-2">
-                            <div class="header-action-icon-2">
+                            <!-- <div class="header-action-icon-2">
                                 <a href="shop-wishlist.html">
                                     <img alt="wowy" src="<?= base_url() ?>/frontend/imgs/theme/icons/icon-heart-white.svg">
                                     <span class="pro-count white">4</span>
                                 </a>
-                            </div>
+                            </div> -->
                             <div class="header-action-icon-2">
-                                <a class="mini-cart-icon" href="shop-cart.html">
+                                <a class="mini-cart-icon" href="<?= base_url() ?>/cart">
                                     <img alt="wowy" src="<?= base_url() ?>/frontend/imgs/theme/icons/icon-cart-white.svg">
                                     <!-- <span class="pro-count white">02</span> -->
                                 </a>
@@ -187,7 +187,7 @@
                                 </div> -->
                             </div>
                             <div class="header-action-icon-2">
-                                <a href="page-login-register.html">
+                                <a href="<?= base_url() ?>/account">
                                     <img alt="wowy" src="<?= base_url() ?>/frontend/imgs/theme/icons/icon-user-white.svg">
                                 </a>
                             </div>

@@ -29,7 +29,7 @@
                                 <!-- MAIN SLIDES -->
                                 <div class="product-image-slider">
                                     <?php foreach($product->photos as $photo): ?>
-                                        <figure class="border-radius-10">
+                                        <figure class="">
                                             <img src="<?= $photo ?>" alt="product image">
                                         </figure>
                                         <?php endforeach ?>
@@ -45,15 +45,29 @@
                             </div>
                             <!-- End Gallery -->
                             <div class="single-social-share clearfix mt-50 mb-15">
-                                <p class="mb-15 mt-30 font-sm"> <i class="fa fa-share-alt mr-5"></i> Share this</p>
-                                <div class="mobile-social-icon wow fadeIn  mb-sm-5 mb-md-0 animated">
-                                    <a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a class="twitter" href="#"><i class="fab fa-twitter"></i></a>
-                                    <a class="tumblr" href="#"><i class="fab fa-tumblr"></i></a>
-                                    <a class="instagram" href="#"><i class="fab fa-instagram"></i></a>
+                            <?php if ( user()!=null && user()->affiliate_link!=null ) {?>
+                                    <div class="row">
+                                        <input type="text" value="<?=base_url()?>/product/<?=$product->slug?>/src/<?=user()->id?>" id="copy" readonly />
+                                        <button type="button" onclick="copy_text()" class="btn btn-sm m-1" id="copy">Copy Link Affiliate</button>
+                                    </div>
+                                    <p class="mb-15 mt-30 font-sm"> <i class="fa fa-share-alt mr-5"></i> Share this</p>
+                                    <div class="mobile-social-icon wow fadeIn  mb-sm-5 mb-md-0 animated">
+                                        <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?=base_url()?>/product/<?=$product->slug?>/src/<?=user()->id?>"><i class="fab fa-facebook-f"></i></a>
+                                        <a class="twitter" href="https://twitter.com/share?url=<?=base_url()?>/product/<?=$product->slug?>/src/<?=user()->id?>"><i class="fab fa-twitter"></i></a>
+                                        <a class="bg-success" href="https://wa.me/?text=<?=base_url()?>/product/<?=$product->slug?>/src/<?=user()->id?>"><i class="fab fa-whatsapp"></i></a>
+                                        <a class="instagram" href="#"><i class="fab fa-instagram"></i></a>
+                                    </div>
+                                    <?php }else{?> 
+                                    <p class="mb-15 mt-30 font-sm"> <i class="fa fa-share-alt mr-5"></i> Share this</p>
+                                    <div class="mobile-social-icon wow fadeIn  mb-sm-5 mb-md-0 animated">
+                                        <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?=base_url()?>/product/<?=$product->slug?>"><i class="fab fa-facebook-f"></i></a>
+                                        <a class="twitter" href="https://twitter.com/share?url=<?=base_url()?>/product/<?=$product->slug?>"><i class="fab fa-twitter"></i></a>
+                                        <a class="bg-success" href="https://wa.me/?text=<?=base_url()?>/product/<?=$product->slug?>"><i class="fab fa-whatsapp"></i></a>
+                                        <a class="instagram" href="#"><i class="fab fa-instagram"></i></a>
+                                    </div> 
+                                    <?php }?> 
                                 </div>
                             </div>
-                        </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="detail-info">
                                 <h2 class="title-detail"><?= $product->name ?></h2>
@@ -63,10 +77,9 @@
                                     </div> -->
                                     <div class="product-rate-cover text-end">
                                         <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width:90%">
+                                            <div class="product-rating" style="width:<?=$avgrating?>%">
                                             </div>
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (25 reviews)</span>
                                     </div>
                                 </div>
                                 <div class="clearfix product-price-cover">
@@ -141,7 +154,7 @@
                                 <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Description</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews (3)</a>
+                                <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews</a>
                             </li>
                         </ul>
                         <div class="tab-content shop_info_tab entry-main-content">
@@ -220,8 +233,7 @@
                                 <!--comment form-->
                                 <div class="comment-form">
                                     <h4 class="mb-15">Add a review</h4>
-                                    <div class="product-rate d-inline-block mb-30">
-                                    </div>
+                                   
                                     <div class="row">
                                         <div class="col-lg-8 col-md-12">
                                             <div class="row">
@@ -231,17 +243,24 @@
                                                             <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
                                                         </div>
                                                     </div>
-                                                    <p> star</p>
-                                                    <div class="product-rate d-inline-block">
-                                                            <div class="product-rating" style="width:50%">
-                                                            </div>
-                                                    </div>
+                                                    <p>Rating Star</p>
+                                                    <fieldset class="rating">
+                                                        <input type="radio" id="star5" name="rating" value="100" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                                                        <input type="radio" id="star4half" name="rating" value="80 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                                        <input type="radio" id="star4" name="rating" value="80" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                                                        <input type="radio" id="star3half" name="rating" value="60 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                                                        <input type="radio" id="star3" name="rating" value="60" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                                                        <input type="radio" id="star2half" name="rating" value="40 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                                                        <input type="radio" id="star2" name="rating" value="40" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                                                        <input type="radio" id="star1half" name="rating" value="20 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                                                        <input type="radio" id="star1" name="rating" value="20" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                                                        <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                                                    </fieldset>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <input hidden class="form-control" name="user_id" id="email" placeholder="Email" value="<?php if (user() != null) {
                                                             echo user()->id;} ?>">
                                                             <input hidden class="form-control" name="product_id"  value="<?=$product->id?>">
-                                                            <input class="product-rating" type="range" min="0" max="100" name="rating"  placeholder="Rating" value="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -277,18 +296,23 @@
                                             <?php $categories = $product->getCategory($product->categories); ?>
 
                                             <?php foreach($categories as $category): ?>
-                                                <a href="<?= base_url('product/category/'. strtolower($category->category) ) ?>">
+                                                <a href="<?= base_url('category/product/'.$category->id) ?>">
                                                 <?= $category->category ?>
                                                 </a>
                                             <?php endforeach ?>
 
                                         </div>
                                         <h2><a href="<?= base_url('product/'. $product->slug) ?>"><?= $product->name ?></a></h2>
-                                        <div class="rating-result" title="50%">
-                                            <span>
-                                                <span>50%</span>
-                                            </span>
+                                        <div class="product-rate-cover">
+                                        <div class="product-rate d-inline-block">
+                                            <div class="product-rating" style="width:<?php if ($product->rating==null) {
+                                                echo '0';
+                                            }else {
+                                                echo $product->rating;
+                                            }?>%">
+                                            </div>
                                         </div>
+                                    </div>
                                         <div class="product-price">
                                             <span><?= "Rp. ". number_format($product->sell_price) ?></span>
                                             <!-- <span class="old-price">$245.8</span> -->
@@ -302,13 +326,13 @@
                     <?php endforeach ?>
                         </div>
                     </div>
-                    <div class="banner-img banner-big wow fadeIn f-none animated mt-50">
+                    <!-- <div class="banner-img banner-big wow fadeIn f-none animated mt-50">
                         <img class="border-radius-10" src="<?= base_url() ?>/frontend/imgs/banner/banner-4.png" alt="">
                         <div class="banner-text">
                             <h4 class="mb-15 mt-40 text-white">Repair Services</h4>
                             <h2 class="fw-600 mb-20 text-white">We're an Apple <br>Authorised Service Provider</h2>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-lg-3 primary-sidebar sticky-sidebar">
@@ -330,7 +354,7 @@
                         </div>
                     </div>
                     <!-- Fillter By Price -->
-                    <div class="sidebar-widget price_range range mb-30">
+                    <!-- <div class="sidebar-widget price_range range mb-30">
                         <div class="widget-header position-relative mb-20 pb-10">
                             <h5 class="widget-title mb-10">Fill by price</h5>
                             <div class="bt-1 border-color-1"></div>
@@ -372,9 +396,9 @@
                             </div>
                         </div>
                         <a href="shop-grid-right.html" class="btn btn-sm btn-default"><i class="fa fa-filter mr-5 ml-0"></i> Fillter</a>
-                    </div>
+                    </div> -->
                     <!-- Product sidebar Widget -->
-                    <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
+                    <!-- <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
                         <div class="widget-header position-relative mb-20 pb-10">
                             <h5 class="widget-title mb-10">New products</h5>
                             <div class="bt-1 border-color-1"></div>
@@ -415,7 +439,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!--Widget ads-->
                     <div class="sidebar-widget widget-ads mb-30">
                         <div class="banner-img banner-1 wow fadeIn  animated" style="visibility: visible; animation-name: fadeIn;">
@@ -428,7 +452,7 @@
                         </div>
                     </div>
                     <!--Widget categories-->
-                    <div class="sidebar-widget widget_categories mb-50 p-30 bg-grey border-radius-10">
+                    <!-- <div class="sidebar-widget widget_categories mb-50 p-30 bg-grey border-radius-10">
                         <div class="widget-header position-relative mb-20 pb-10">
                             <h5 class="widget-title mb-10">Manufacturers</h5>
                             <div class="bt-1 border-color-1"></div>
@@ -442,7 +466,7 @@
                                 <li class="cat-item text-muted"><a href="shop-grid-right.html">Prada</a>(302)</li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -477,15 +501,20 @@
                             </div>
                         </li>
                     </form>
-                <?php endforeach; ?>
-            </ul>
-          </div>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
         </div>
-  </div>
+    </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+    function copy_text() {
+            document.getElementById("copy").select();
+            document.execCommand("copy");
+            alert("Text berhasil dicopy");
+        }
     $(document).ready(function(){
  
         // get Edit Product
@@ -517,5 +546,6 @@
         $('#forms').submit();
     });
 })
+
 </script>
 <?= $this->endSection() ?>

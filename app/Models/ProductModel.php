@@ -17,7 +17,7 @@ class ProductModel extends Model
 	protected $allowedFields        = [
 		'name', 'description', 'categories',
 		'slug', 'photos', 'fixed_price', 'sell_price',
-		'affiliate_commission', 'stockist_commission'
+		'affiliate_commission', 'stockist_commission','rating'
 	];
 
 	// Dates

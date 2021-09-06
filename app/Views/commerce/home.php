@@ -52,18 +52,23 @@
                                     <?php $categories = $product->getCategory($product->categories); ?>
                                     
                                     <?php foreach($categories as $category): ?>
-                                        <a href="<?= base_url('product/category/'. strtolower($category->category) ) ?>">
+                                        <a href="<?= base_url('category/product/'.$category->id) ?>">
                                         <?= $category->category ?>
                                         </a>
                                     <?php endforeach ?>
 
                                 </div>
                                 <h2><a href="<?= base_url('product/'. $product->slug) ?>"><?= $product->name ?></a></h2>
-                                <div class="rating-result" title="50%">
-                                    <span>
-                                        <span>50%</span>
-                                    </span>
-                                </div>
+                                <div class="product-rate-cover">
+                                        <div class="product-rate d-inline-block">
+                                            <div class="product-rating" style="width:<?php if ($product->rating==null) {
+                                                echo '0';
+                                            }else {
+                                                echo $product->rating;
+                                            }?>%">
+                                            </div>
+                                        </div>
+                                    </div>
                                 <div class="product-price">
                                     <span><?= "Rp. ". number_format($product->sell_price) ?></span>
                                     <!-- <span class="old-price">$245.8</span> -->
@@ -179,11 +184,16 @@
                                                 <h2>
                                                     <a href="<?= base_url('product/'. $p->slug) ?>"><?= $p->name ?></a>
                                                 </h2>
-                                                <div class="rating-result" title="90%">
-                                                    <span>
-                                                        <span>70%</span>
-                                                    </span>
-                                                </div>
+                                                <div class="product-rate-cover">
+                                        <div class="product-rate d-inline-block">
+                                            <div class="product-rating" style="width:<?php if ($product->rating==null) {
+                                                echo '0';
+                                            }else {
+                                                echo $product->rating;
+                                            }?>%">
+                                            </div>
+                                        </div>
+                                    </div>
                                                 <div class="product-price">
                                                     <span><?= "Rp. ". number_format($p->sell_price) ?> </span>
                                                 </div>
@@ -206,7 +216,7 @@
 
 
 
-
+<!-- 
         <section class="banner-2 pt-60 pb-60">
             <div class="container">
                 <div class="banner-img banner-big wow fadeIn animated">
@@ -218,7 +228,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
     <!-- Preloader Start -->
    <!-- <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">

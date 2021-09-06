@@ -37,8 +37,8 @@
                                     <a class="nav-link <?= ($segments[0] == "stockist" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/stockist') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Upgrade Stockist</a> 
                                 <?php endif; ?>
                                 </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link text-white" href="/logout"><i class="text-white fa fa-lock mr-15"></i>Logout</a>
+                                <li class="nav-item bg-danger">
+                                    <a class="nav-link text-white" href="/logout"><i class="text-white fa fa-sign-out mr-15"></i>Logout</a>
                                 </li>
                             </ul>
                         </div>
