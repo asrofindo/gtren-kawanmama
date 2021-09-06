@@ -44,7 +44,9 @@ class Commerce extends BaseController
 		$data['title']='Cart | Gtren';
 		$data['carts'] = $this->cart->select('products.id as p_id, cart_item.id as id, products.name, products.photos, products.sell_price, products.affiliate_commission, products.stockist_commission, product_id, products.photos, amount, total, distributor_id')
           ->join('products', 'products.id = cart_item.product_id', 'left')
-          ->where('cart_item.user_id', user()->id)->find();
+          ->where('cart_item.user_id', user()->id)
+		  >where('cart_item.transaksi_id, null')
+		  ->find();
 
 		$sumTotal = 0;
 

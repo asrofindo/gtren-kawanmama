@@ -32,25 +32,15 @@ class Transaksi extends BaseController
 	{
 		$data['distributor'] = $this->distributor->findAll();
 		
-<<<<<<< HEAD
 		$data['carts'] = $this->cart->select('*, distributor.id as distributor_id')
 		->join('products', 'products.id = product_id', 'inner')
 		->join('distributor', 'distributor.id = distributor_id')
 		->join('address', 'address.user_id = distributor.user_id AND address.type = "distributor"')
 		->join('city', 'city.kode_pos = address.kode_pos')
 		->join('pengiriman', 'pengiriman.user_id = cart_item.user_id AND pengiriman.distributor_id = cart_item.distributor_id', 'left outer')
-=======
-		$data['carts'] = $this->cart->select('cart_item.distributor_id as distributor_id, pengiriman.distributor_id as ped_id,  product_id, products.name,products.id as p_id, city.id_kota, address.id as a_id, cart_item.id as id, products.name, products.photos, products.sell_price,  address.kecamatan, address.kabupaten, address.provinsi, products.affiliate_commission, products.stockist_commission, product_id, products.photos, amount, total, pengiriman.ongkir, pengiriman.etd, pengiriman.kurir')
-		->join('products','products.id = cart_item.product_id', 'inner')
-		->join('distributor', 'distributor.id = cart_item.distributor_id', 'inner')
-		->join('address', 'address.user_id = distributor.user_id', 'inner')
-		->join('city', 'city.kota = address.kabupaten', 'inner')
-		->join('pengiriman', 'cart_item.distributor_id = pengiriman.distributor_id AND cart_item.user_id = pengiriman.user_id','inner')
-		->join('subdistrict', 'subdistrict.subsdistrict_name = address.kecamatan', 'inner')
-		->where('address.type','distributor')
->>>>>>> b221775e7e5b076021dd2997052e470398db3437
 		->where('cart_item.user_id', user()->id)
 		->findAll();
+
 		$outer_array = array();
 		$unique_array = array();
 		$total = 0;
@@ -129,6 +119,7 @@ class Transaksi extends BaseController
 		->find();
 		
 		$this->transaksi->insert(["user_id" => user()->id, "status_pembayaran" => "proses", "total" => $total]);
+		
 		foreach($data['carts'] as $cart){
 			$this->detail_transaksi->save([
 				"cart_id" => $cart->cart_id, 
