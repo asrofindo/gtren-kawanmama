@@ -46,6 +46,7 @@ $routes->get('/','Product::commerce');
 // $routes->get('cart', 'User::cart', ['filter' => 'login']);
 $routes->get('account', 'User::account', ['filter' => 'login']);
 $routes->get('orders', 'User::orders', ['filter' => 'login']);
+$routes->get('detail/(:num)', 'User::order_detail/$1', ['filter' => 'login']);
 $routes->get('tracking', 'User::tracking', ['filter' => 'login']);
 
 //addresses
