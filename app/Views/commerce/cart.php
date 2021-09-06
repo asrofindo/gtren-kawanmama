@@ -75,7 +75,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="#" class="btn btn-rounded"> <i class="fa fa-share-square mr-10"></i> Proceed To CheckOut</a>
+                    <a href="<?= base_url() ?>/checkout" class="btn btn-rounded"> <i class="fa fa-share-square mr-10"></i> Proceed To CheckOut</a>
                 </div>
             </div>
         </div>

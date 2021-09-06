@@ -196,11 +196,13 @@ $routes->group('', function($routes)
 
 	$routes->get('distributor', 'Distributor::index');
 	$routes->post('distributor', 'Distributor::save');
+	$routes->post('distributor/detail', 'Distributor::save_toko');
 	$routes->post('distributor/(:num)', 'Distributor::edit/$1');
 
 	$routes->get('checkout', 'Transaksi::index');
 	$routes->post('transaksi/kurir', 'Transaksi::save_kurir');
 	$routes->post('transaksi/check', 'Transaksi::check');
+	$routes->post('transaksi/save', 'Transaksi::save_transaction');
 
 }
 );

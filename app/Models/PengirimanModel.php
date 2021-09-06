@@ -17,7 +17,7 @@ class PengirimanModel extends Model
 	protected $allowedFields        = ['distributor_id', 'user_id', 'kurir', 'etd', 'ongkir'];
 
 	// Dates
-	protected $useTimestamps        = false;
+	protected $useTimestamps        = true;
 	protected $dateFormat           = 'datetime';
 	protected $createdField         = 'created_at';
 	protected $updatedField         = 'updated_at';

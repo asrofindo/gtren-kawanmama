@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class GenerateModel extends Model
+class DetailTransaksiModel extends Model
 {
 	protected $DBGroup              = 'default';
-	protected $table                = 'generate';
+	protected $table                = 'detailtransaksi';
 	protected $primaryKey           = 'id';
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['nomor'];
+	protected $allowedFields        = ['cart_id', 'transaksi_id', 'affiliate_commission', 'stockist_commission'];
 
 	// Dates
 	protected $useTimestamps        = true;

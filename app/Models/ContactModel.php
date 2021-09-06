@@ -17,7 +17,7 @@ class ContactModel extends Model
 	protected $allowedFields        = ['address',  'phone' ,'name'];
 
 	// Dates
-	protected $useTimestamps        = false;
+	protected $useTimestamps        = true;
 	protected $dateFormat           = 'datetime';
 	protected $createdField         = 'created_at';
 	protected $updatedField         = 'updated_at';

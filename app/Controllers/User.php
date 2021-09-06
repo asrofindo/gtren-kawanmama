@@ -6,6 +6,8 @@ use App\Models\AddressModel;
 use App\Models\UpgradesModel;
 use App\Models\GenerateModel;
 use App\Models\BillModel;
+use App\Models\TransaksiModel;
+
 
 use App\Models\CategoryModel;
 
@@ -19,6 +21,7 @@ class User extends BaseController
 	public function __construct(){
 		$this->address = new AddressModel();
 		$this->upgrade = new UpgradesModel();
+		$this->transaksi = new TransaksiModel();
 
 
 		$this->category = new CategoryModel();
@@ -44,6 +47,8 @@ class User extends BaseController
 		$data = $this->data;
 
 		$data['segments'] = $this->request->uri->getSegments();
+
+		$data['transaksis'] = $this->transaksi->where('user_id', user()->id)->findAll();
 
 		return view('commerce/account', $data);
 	}

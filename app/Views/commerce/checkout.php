@@ -124,7 +124,7 @@
                                     <tr>
                                         <th colspan="1"><h4>Penjual</h4></th>
                                         <td colspan="1" class="product-subtotal">
-                                            <span class="font-xl text-brand fw-900"><?= $cart['distributor_id'];  ?></span>
+                                            <span class="font-xl text-brand fw-900"><?= $cart['locate'];  ?></span>
                                         </td>
                                         <td colspan="2" class="product-subtotal" style="width:150px">
                                             <span>
@@ -142,6 +142,7 @@
                                                     <input style="display: none" type="text" name="destination" value="<?= $cart['id_kota'] ?>" >
                                                     <input style="display: none" type="text" name="distributor_id" value="<?= $cart['distributor_id'] ?>" >
                                                     <select type="submit" name="courier" onchange="this.form.submit()">
+                                                        <option selected disabled>Pilih Kurir</option>
                                                         <option value="jne">JNE</option>
                                                         <option value="pos">POS</option>
                                                         <option value="jnt">JNT</option>
@@ -162,32 +163,34 @@
                                         <th>sub total</th>
                                         <td colspan="3" class="product-subtotal"><span class="font-xl text-brand fw-900"><?= $cart['subtotal'][0];?></span></td>
                                     </tr>
-                                    <tr>
-                                        <td colspan="4">
-                                           
-                                        </td>
-                                    </tr>
+                                    
                                 <?php endforeach; ?>
-                              
+                                    <tr>
+                                        <th><h3>Total Tagihan</h3></th>
+                                        <td><?= $total;  ?></td>
+                                    </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="bt-1 border-color-1 mt-30 mb-30"></div>
-                    <div class="payment_method">
-                        <div class="mb-25">
-                            <h5>Payment</h5>
-                        </div>
-                        <div class="payment_option">
-                            <div class="custome-radio">
-                                <select name="bill">
-                                    <?php foreach ($bills as $bill): ?>
-                                            <option><?= $bill->bank_name ?> - <?= $bill->bank_number ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                    <form action="<?= base_url() ?>/transaksi/save" method="post">
+                        <div class="payment_method">
+                            <div class="mb-25">
+                                <h5>Payment</h5>
+                            </div>
+                            <div class="payment_option">
+                                <div class="custome-radio">
+                                    <select name="bill">
+                                        <?php foreach ($bills as $bill): ?>
+                                                <option><?= $bill->bank_name ?> - <?= $bill->bank_number ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <input type="number" style="display: none" name="total" value="<?= $total;  ?>">
                             </div>
                         </div>
-                    </div>
-                    <a href="#" class="btn btn-fill-out btn-block mt-30">Place Order</a>
+                        <button type="submit" class="btn btn-fill-out btn-block mt-30">Place Order</button>
+                    </form>
                 </div>
             </div>
         </div>

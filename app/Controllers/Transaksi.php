@@ -9,6 +9,7 @@ use App\Models\BillModel;
 use App\Models\ProductModel;
 use App\Models\DistributorModel;
 use App\Models\PengirimanModel;
+use App\Models\DetailTransaksiModel;
 use App\Controllers\BaseController;
 
 class Transaksi extends BaseController
@@ -22,27 +23,27 @@ class Transaksi extends BaseController
 		$this->product = new ProductModel();
 		$this->address = new AddressModel();
 		$this->distributor = new AddressModel();
+		$this->transaksi = new TransaksiModel();
 		$this->pengirim = new PengirimanModel();
+		$this->detail_transaksi = new DetailTransaksiModel();
 	}
 
 	public function index()
 	{
 		$data['distributor'] = $this->distributor->findAll();
 		
-		$data['carts'] = $this->cart->select('cart_item.distributor_id as distributor_id, pengiriman.distributor_id as ped_id,  product_id, products.name,products.id as p_id, city.id_kota, address.id as a_id, cart_item.id as id, products.name, products.photos, products.sell_price,  address.kecamatan, address.kabupaten, address.provinsi, products.affiliate_commission, products.stockist_commission, product_id, products.photos, amount, total, pengiriman.ongkir, pengiriman.etd, pengiriman.kurir')
+		$data['carts'] = $this->cart->select('*, distributor.id as distributor_id')
 		->join('products', 'products.id = product_id', 'inner')
-		->join('distributor', 'distributor.id = cart_item.distributor_id', 'inner')
-		->join('address', 'address.user_id = distributor.user_id', 'inner')
-		->join('city', 'city.kota = address.kabupaten', 'inner')
-		->join('pengiriman', 'cart_item.distributor_id = pengiriman.distributor_id AND cart_item.user_id = pengiriman.user_id', 'left outer')
-		->join('subdistrict', 'subdistrict.subsdistrict_name = address.kecamatan', 'inner')
-		->where('address.type', 'distributor')
+		->join('distributor', 'distributor.id = distributor_id')
+		->join('address', 'address.user_id = distributor.user_id AND address.type = "distributor"')
+		->join('city', 'city.kode_pos = address.kode_pos')
+		->join('pengiriman', 'pengiriman.user_id = cart_item.user_id AND pengiriman.distributor_id = cart_item.distributor_id', 'left outer')
 		->where('cart_item.user_id', user()->id)
 		->find();
 
 		$outer_array = array();
 		$unique_array = array();
-
+		$total = 0;
 		foreach($data['carts'] as $key => $value)
 		{
 
@@ -56,6 +57,7 @@ class Transaksi extends BaseController
 		    $ongkir = $value->ongkir;
 		    $etd = $value->etd;
 		    $kurir = $value->kurir;
+		    $locate = $value->locate;
 		    if(!in_array($value->distributor_id, $unique_array))
 		    {
 		            array_push($unique_array, $fid_value);
@@ -71,19 +73,23 @@ class Transaksi extends BaseController
 		            $outer_array[$fid_value]['ongkir'] = $ongkir;
 		            $outer_array[$fid_value]['etd'] = $etd;
 		            $outer_array[$fid_value]['kurir'] = $kurir;
-
-
+		            $outer_array[$fid_value]['locate'] = $locate;
 
 		    }else{		            
 		            array_push($outer_array[$fid_value]['products'], $value);
-		            $outer_array[$fid_value]['subtotal'][0] =  $outer_array[$fid_value]['subtotal'][0]  + $subtotal;
+		            $outer_array[$fid_value]['subtotal'][0] =  $outer_array[$fid_value]['subtotal'][0]  + $subtotal;		
 
 		    }
 		}
 
-		$data['carts'] = $outer_array;
-		
 
+		$data['carts'] = $outer_array;
+
+		foreach($data['carts'] as $cart){
+			$total += $cart['subtotal'][0];
+		}
+
+		$data['total'] = $total;
 		$data['category'] = $this->category->findAll();
 		$data['address'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find();
 
@@ -99,12 +105,38 @@ class Transaksi extends BaseController
 		return view('commerce/checkout', $data);
 	}
 
+	public function save_transaction()
+	{
+		$total = $this->request->getPost('total');
+		
+		$data['carts'] = $this->cart->select('*, distributor.id as distributor_id, cart_item.id as cart_id')
+		->join('products', 'products.id = product_id', 'inner')
+		->join('distributor', 'distributor.id = distributor_id')
+		->join('address', 'address.user_id = distributor.user_id AND address.type = "distributor"')
+		->join('city', 'city.kode_pos = address.kode_pos')
+		->join('pengiriman', 'pengiriman.user_id = cart_item.user_id', 'left outer')
+		->where('cart_item.user_id', user()->id)
+		->find();
+		
+		$this->transaksi->insert(["user_id" => user()->id, "status_pembayaran" => "proses", "total" => $total]);
+		foreach($data['carts'] as $cart){
+			$this->detail_transaksi->save([
+				"cart_id" => $cart->cart_id, 
+				"affiliate_commission" => $cart->affiliate_commission, 
+				"stockist_commission" => $cart->stockist_commission, 
+				"transaksi_id" => $this->transaksi->getInsertID(), 
+			]);
+		}
+	}
+
 	public function save_kurir()
 	{
 		$city_distributor_id = $this->request->getPost('city_id');
+
 		$city_user_id = $this->address->where('user_id', user()->id)->where('address.type', 'billing')
 		->join('city', 'city.kota = kabupaten', 'right')
 		->join('subdistrict', 'subdistrict.subsdistrict_name = kecamatan', 'left')->find();
+
 
 	}
 

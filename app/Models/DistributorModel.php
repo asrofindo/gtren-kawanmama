@@ -17,7 +17,7 @@ class DistributorModel extends Model
 	protected $allowedFields        = ['user_id', 'locate'];
 
 	// Dates
-	protected $useTimestamps        = false;
+	protected $useTimestamps        = true;
 	protected $dateFormat           = 'datetime';
 	protected $createdField         = 'created_at';
 	protected $updatedField         = 'updated_at';

@@ -17,7 +17,7 @@ class CartDetails extends Model
 	protected $allowedFields        = ['cart_item_id', 'distributor_id'];
 
 	// Dates
-	protected $useTimestamps        = false;
+	protected $useTimestamps        = true;
 	protected $dateFormat           = 'datetime';
 	protected $createdField         = 'created_at';
 	protected $updatedField         = 'updated_at';
