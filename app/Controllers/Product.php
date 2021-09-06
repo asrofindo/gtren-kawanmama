@@ -106,6 +106,19 @@ class Product extends BaseController
 		$data['comment'] = $this->comment->select('comments.id as id ,users.id as user_id ,comments.created_at as created_at,users.username as name, users.user_image as image, comments.rating as rating, comments.comment')
 		->join('users', 'users.id = comments.user_id', 'inner')
 		->join('products', 'products.id = comments.product_id', 'inner')->where('products.slug', $slug)->findAll();
+		$avg=0;
+		$count=0;
+		foreach ($data['comment'] as $key => $value) {
+			$avg = $avg + $value['rating'];
+			$count = $key;
+		}
+		$data['avgrating'] = $avg / ($count+1);
+
+		$set=[
+			"rating"=>$data['avgrating']
+		];
+		$set = $this->model->update($data['product']->id,$set);
+		
 		$data['category'] = $this->category->findAll();
 		$data['kategory'] = $this->category->findAll();
 		if(user() != null){		
@@ -128,7 +141,6 @@ class Product extends BaseController
 			$data['product_distributors'] = [];
 			for($i = 0; $index > $i; $i++){
 				if($data['product_distributor'][$i]->kecamatan == $kecamatan || $data['product_distributor'][$i]->kabupaten == $kabupaten || $data['product_distributor'][$i]->provinsi == $provinsi){
-					
 					array_push($data['product_distributors'], $data['product_distributor'][$i]);
 				}
 				else {

@@ -30,16 +30,15 @@ class Transaksi extends BaseController
 		$data['distributor'] = $this->distributor->findAll();
 		
 		$data['carts'] = $this->cart->select('cart_item.distributor_id as distributor_id, pengiriman.distributor_id as ped_id,  product_id, products.name,products.id as p_id, city.id_kota, address.id as a_id, cart_item.id as id, products.name, products.photos, products.sell_price,  address.kecamatan, address.kabupaten, address.provinsi, products.affiliate_commission, products.stockist_commission, product_id, products.photos, amount, total, pengiriman.ongkir, pengiriman.etd, pengiriman.kurir')
-		->join('products', 'products.id = product_id', 'inner')
+		->join('products','products.id = cart_item.product_id', 'inner')
 		->join('distributor', 'distributor.id = cart_item.distributor_id', 'inner')
 		->join('address', 'address.user_id = distributor.user_id', 'inner')
 		->join('city', 'city.kota = address.kabupaten', 'inner')
-		->join('pengiriman', 'cart_item.distributor_id = pengiriman.distributor_id AND cart_item.user_id = pengiriman.user_id', 'left outer')
+		->join('pengiriman', 'cart_item.distributor_id = pengiriman.distributor_id AND cart_item.user_id = pengiriman.user_id','inner')
 		->join('subdistrict', 'subdistrict.subsdistrict_name = address.kecamatan', 'inner')
-		->where('address.type', 'distributor')
+		->where('address.type','distributor')
 		->where('cart_item.user_id', user()->id)
-		->find();
-
+		->findAll();
 		$outer_array = array();
 		$unique_array = array();
 

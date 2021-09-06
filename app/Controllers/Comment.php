@@ -35,7 +35,7 @@ class Comment extends BaseController
 	public function save()
 	{
 		if (user() == null) {
-			return redirect('/login'); 
+			return redirect()->to('/login'); 
 		}
 		$data = [
 			'user_id' => $this->request->getPost('user_id'),

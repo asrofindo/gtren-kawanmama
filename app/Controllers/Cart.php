@@ -58,7 +58,6 @@ class Cart extends BaseController
 
 	public function delete($id)
 	{	
-
 		$this->cart->delete($id);
 		return redirect()->back();
 	}
