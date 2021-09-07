@@ -28,8 +28,12 @@ class Member extends BaseController
 		$users->select('users.id, users.email, users.username, users.active, auth_groups_users.group_id, auth_groups.name AS role');
 		$users->join('auth_groups_users', 'auth_groups_users.user_id=users.id');
 		$users->join('auth_groups', 'auth_groups.id=auth_groups_users.group_id');
-		$users->where('auth_groups.name !=', 'user');
-		$users->where('auth_groups.name !=', 'affiliate');
+		if ($this->request->getPost('role') != null) {
+			$users->like('auth_groups.name', $this->request->getPost('role'));
+		}
+		if ($this->request->getPost('name')) {
+			$users->like('users.username', $this->request->getPost('name'));
+		}
 		$users = $users->get();
 
 
@@ -75,4 +79,31 @@ class Member extends BaseController
 
 		return view('db_admin/members/member_admin', $getUsers);
 	}
+
+	public function deleteRole($id,$role)
+	{
+		$db = db_connect();
+		$data = $db->table('auth_groups_users');
+		$r = $db->table('auth_groups')->where('name',$role)->get()->getResultArray();
+		$data->where('group_id',$r[0]['id'])->where('user_id',$id)->delete();
+
+		return redirect()->back();
+	}
+
+	public function deleteUser($id)
+	{
+		$db = db_connect();
+		$data = $db->table('users');
+		$data->where('id',$id)->delete();
+
+		return redirect()->back();
+	}
+
+	public function activeUser($id){
+		$db = db_connect();
+		$data = $db->table('users');
+		$data->where('id',$id)->update(['active'=>1]);
+
+		return redirect()->back();	}
 }
+

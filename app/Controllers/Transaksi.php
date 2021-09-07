@@ -161,6 +161,11 @@ class Transaksi extends BaseController
 	    $data['carts'] = $data_cart;
 
 		$this->transaksi->insert(["user_id" => user()->id, "status_pembayaran" => "proses", "total" => $total, "bill_id" => $bill]);
+		->join('pengiriman', 'pengiriman.user_id = cart_item.user_id AND pengiriman.distributor_id = cart_item.distributor_id', 'left outer')
+		->where('cart_item.user_id', user()->id)
+		->find();
+		$this->transaksi->insert(["user_id" => user()->id, "status_pembayaran" => "proses", "total" => $total]);
+		
 		foreach($data['carts'] as $cart){
 			$this->cart->save(["id" => $cart->cart_id, "status" => "sold"])
 			$this->detail_transaksi->save([

@@ -9,7 +9,7 @@ use Myth\Auth\Authorization\GroupModel;
 class Admin extends BaseController
 {
 	public $model;
-	public $user;
+	public $transaksi;
 
 
 	public function __construct()
@@ -17,6 +17,7 @@ class Admin extends BaseController
 	{
 		$this->user = new UserModel();
 		$this->transaksi = new TransaksiModel();
+
 	}
 	public function index()
 	{
@@ -25,6 +26,7 @@ class Admin extends BaseController
 	
 	public function produk_list()
 	{
+		
 		return view('db_admin/produk/produk_list');
 	}
 	
@@ -35,6 +37,11 @@ class Admin extends BaseController
 		$data['pager'] = $this->transaksi->paginate(5, 'orders');
 		$data['pager'] = $this->transaksi->pager;
 		return view('db_admin/order/order', $data);
+		$data['orders']= $this->transaksi->select('transaksi.id as id,users.username as name,users.email as email,transaksi.total as total,transaksi.created_at as created_at,transaksi.status_pembayaran as status')
+		->join('users', 'users.id = transaksi.user_id','inner')
+		->orderBy('transaksi.created_at', 'DESC')
+		->findAll();
+		return view('db_admin/order/order',$data);
 	}
 
 	public function order_stockist()
@@ -123,6 +130,8 @@ class Admin extends BaseController
 		$data['transaksi_id'] = $id;
 
 		return view('db_admin/order/order_detail', $data);
+		
+		return view('db_admin/order/order_detail');
 	}
 
 
