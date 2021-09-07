@@ -73,22 +73,6 @@
                             </td>
                         </tr>
                     <?php endforeach; ?>
-                    <?php foreach ($orders as $key => $value) {?>
-                        <tr>
-                            <td><?= $value->id?></td>
-                            <td><b><?= $value->name?></b></td>
-                            <td><?= $value->email?></td>
-                            <td><?= $value->total?></td>
-
-                            <td><span class="badge rounded-pill alert-success"><?= $value->status?></span></td>
-                            
-                            <td><?= $value->created_at?></td>
-                            <td class="text-end">
-                                <a href="<?= base_url()?>/order/<?= $value->id?>" class="btn btn-md rounded font-sm">Detail</a>
-                                <a href="<?= base_url()?>/order/<?= $value->id?>" class="btn btn-md rounded font-sm bg-danger">Delete</a>
-                            </td>
-                    <?php } ?>
-                    </tr>
                 </tbody>
             </table>
         </div> <!-- table-responsive //end -->

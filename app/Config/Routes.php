@@ -71,7 +71,7 @@ $routes->post('profile', 'User::set_profile', ['filter' => 'login']);
 $routes->get('upgrade/affiliate', 'User::upgrade_affiliate', ['filter' => 'login']);
 $routes->get('upgrade/stockist', 'User::upgrade_stockist', ['filter' => 'login']);
 $routes->post('track', 'User::Track', ['filter' => 'login']);
-// $routes->get('checkout', 'User::Checkout', ['filter' => 'login']);
+
 $routes->get('contact', 'Commerce::Contact');
 $routes->get('about', 'Commerce::About');
 $routes->get('cart', 'Commerce::cart');
