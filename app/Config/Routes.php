@@ -46,6 +46,7 @@ $routes->get('/','Product::commerce');
 // $routes->get('cart', 'User::cart', ['filter' => 'login']);
 $routes->get('account', 'User::account', ['filter' => 'login']);
 $routes->get('orders', 'User::orders', ['filter' => 'login']);
+$routes->get('detail/(:num)', 'User::order_detail/$1', ['filter' => 'login']);
 $routes->get('tracking', 'User::tracking', ['filter' => 'login']);
 
 //addresses
@@ -156,8 +157,11 @@ $routes->group('', function($routes)
 
 	// member g-tren
 	$routes->get('members', 'Member::index', ['as' => 'member']);
-	$routes->post('members/search', 'Member::search');
+	$routes->post('members', 'Member::index');
 
+	$routes->get('role/delete/(:any)/(:any)', 'Member::deleteRole/$1/$2');
+	$routes->get('user/delete/(:any)', 'Member::deleteUser/$1');
+	$routes->get('user/active/(:any)', 'Member::activeUser/$1');
 
 	$routes->get('user/upgrade', 'User::upgradeList');
 	$routes->get('user/action/(:alpha)/(:num)', 'User::action/$1/$2');

@@ -3,18 +3,21 @@
 namespace App\Controllers;
 use App\Models\CategoryModel;
 use Myth\Auth\Models\UserModel;
+use App\Models\TransaksiModel;
 use Myth\Auth\Authorization\GroupModel;
 
 class Admin extends BaseController
 {
 	public $model;
-	public $user;
+	public $transaksi;
 
 
 	public function __construct()
 
 	{
 		$this->user = new UserModel();
+		$this->transaksi = new TransaksiModel();
+
 	}
 	public function index()
 	{
@@ -29,11 +32,16 @@ class Admin extends BaseController
 	
 	public function order()
 	{
-		return view('db_admin/order/order');
+		$data['orders']= $this->transaksi->select('transaksi.id as id,users.username as name,users.email as email,transaksi.total as total,transaksi.created_at as created_at,transaksi.status_pembayaran as status')
+		->join('users', 'users.id = transaksi.user_id','inner')
+		->orderBy('transaksi.created_at', 'DESC')
+		->findAll();
+		return view('db_admin/order/order',$data);
 	}
 
 	public function order_detail()
 	{
+		
 		return view('db_admin/order/order_detail');
 	}
 

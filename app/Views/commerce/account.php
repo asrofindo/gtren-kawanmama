@@ -70,7 +70,7 @@
                                                                 <td><?= $transaksi->created_at;  ?></td>
                                                                 <td><?= $transaksi->status_pembayaran; ?></td>
                                                                 <td><?= $transaksi->total; ?></td>
-                                                                <td><a href="#" class="btn-small d-block">View</a></td>
+                                                                <td><a href="#" class="btn-small d-block">Detail</a></td>
                                                             </tr>
                                                         <?php endforeach; ?>
                                                     </tbody>

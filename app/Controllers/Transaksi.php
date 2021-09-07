@@ -32,18 +32,30 @@ class Transaksi extends BaseController
 	{
 		$data['distributor'] = $this->distributor->findAll();
 		
-		$data['carts'] = $this->cart->select('*, distributor.id as distributor_id')
+
+		$data['carts'] = $this->cart->select('*, distributor.id as distributor_id, detailtransaksi.id as d_id')
 		->join('products', 'products.id = product_id', 'inner')
 		->join('distributor', 'distributor.id = distributor_id')
 		->join('address', 'address.user_id = distributor.user_id AND address.type = "distributor"')
 		->join('city', 'city.kode_pos = address.kode_pos')
+		->join('detailtransaksi', 'detailtransaksi.cart_id = cart_item.id', 'left')
 		->join('pengiriman', 'pengiriman.user_id = cart_item.user_id AND pengiriman.distributor_id = cart_item.distributor_id', 'left outer')
 		->where('cart_item.user_id', user()->id)
 		->findAll();
+		foreach ($data['carts'] as $cart ) {
+	     	if($cart->d_id == null){
+     		 	
+     		 	$data['carts'] = [];
+     		 	array_push($data['carts'], $cart);
+	     	} else {
+	     		$data['carts'] = [];
+	     	}
+	    }
 
 		$outer_array = array();
 		$unique_array = array();
 		$total = 0;
+
 		foreach($data['carts'] as $key => $value)
 		{
 
@@ -114,10 +126,9 @@ class Transaksi extends BaseController
 		->join('distributor', 'distributor.id = distributor_id')
 		->join('address', 'address.user_id = distributor.user_id AND address.type = "distributor"')
 		->join('city', 'city.kode_pos = address.kode_pos')
-		->join('pengiriman', 'pengiriman.user_id = cart_item.user_id', 'left outer')
+		->join('pengiriman', 'pengiriman.user_id = cart_item.user_id AND pengiriman.distributor_id = cart_item.distributor_id', 'left outer')
 		->where('cart_item.user_id', user()->id)
 		->find();
-		
 		$this->transaksi->insert(["user_id" => user()->id, "status_pembayaran" => "proses", "total" => $total]);
 		
 		foreach($data['carts'] as $cart){

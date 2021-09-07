@@ -6,8 +6,10 @@
         <p>Add, edit or delete a Member</p>
     </div>
     <div>
-        <form method="post" action="<?= base_url('member/search') ?>">            
-            <input type="text" placeholder="Search Username" class="form-control bg-white" name="keyword">
+        <form method="post" action="<?= base_url('/members') ?>">            
+            <input type="text" placeholder="Search Username" class="form-control" name="user">
+            <input type="text" placeholder="Search role" class="form-control" name="role">
+            <button type="submit" class="btn btn-info btn-sm w-100 m-1"> search </button>
         </form>
     </div>
 </div>
@@ -81,7 +83,7 @@
                                     </div>
                                 </td>
                                 <td><b><?= $user->username ?></b></td>
-                                <td><?= $user->email  ?></td>
+                                <td ><?= $user->email  ?></td>
                                 <td><?= $user->role  ?></td>
                                 <?php if($user->active == 0) : ?>
                                     <td>non active</td>
@@ -92,9 +94,11 @@
                                     <div class="dropdown">
                                         <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">View detail</a>
-                                            <a class="dropdown-item" href="#">Edit info</a>
-                                            <a class="dropdown-item text-danger" href="#">Delete</a>
+                                        <?php if($user->active != 1) : ?>
+                                            <a onclick = "return confirm('Yakin Aktivasi Akun');" class="dropdown-item" href="<?=base_url()?>/user/active/<?=$user->id?>">Active account</a>
+                                        <?php endif ?>
+                                            <a onclick = "return confirm('Yakin Data Akan Dihapus');" class="dropdown-item text-danger" href="<?=base_url()?>/role/delete/<?=$user->id?>/<?=$user->role?>">Delete role</a>
+                                            <a onclick = "return confirm('Yakin Data Akan Dihapus');" class="dropdown-item text-danger" href="<?=base_url()?>/user/delete/<?=$user->id?>">Delete</a>
                                         </div>
                                     </div> <!-- dropdown //end -->
                                 </td>
