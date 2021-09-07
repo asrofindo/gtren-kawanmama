@@ -23,6 +23,7 @@ class ProductSeeder extends Seeder
 				'sell_price'           => static::faker()->numberBetween(10000, 900000),
 				'affiliate_commission' => static::faker()->numberBetween(10000, 20000),
 				'stockist_commission'  => static::faker()->numberBetween(10000, 20000),
+				'weight'  => static::faker()->numberBetween(1000, 2000),
 				'created_at'  => Time::now('Asia/Jakarta')
 			];
 			$this->db->table('products')->insert($data);

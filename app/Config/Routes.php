@@ -71,7 +71,7 @@ $routes->post('profile', 'User::set_profile', ['filter' => 'login']);
 $routes->get('upgrade/affiliate', 'User::upgrade_affiliate', ['filter' => 'login']);
 $routes->get('upgrade/stockist', 'User::upgrade_stockist', ['filter' => 'login']);
 $routes->post('track', 'User::Track', ['filter' => 'login']);
-// $routes->get('checkout', 'User::Checkout', ['filter' => 'login']);
+
 $routes->get('contact', 'Commerce::Contact');
 $routes->get('about', 'Commerce::About');
 $routes->get('cart', 'Commerce::cart');
@@ -153,7 +153,15 @@ $routes->group('', function($routes)
 
 	// order
 	$routes->get('order', 'Admin::order');
-	$routes->get('orderdetail', 'Admin::order_detail');
+	$routes->post('order/update/(:num)', 'Order::update/$1');
+	$routes->get('orderdetail/(:num)', 'Admin::order_detail/$1');
+
+
+	// order stockist
+		// order
+	$routes->get('order/stockist', 'Admin::order_stockist');
+	$routes->post('order/stockist/update/(:num)', 'Order::update/stockist/$1');
+	$routes->get('orderdetail/stockist/(:num)', 'Admin::order_detail/stockist/$1');
 
 	// member g-tren
 	$routes->get('members', 'Member::index', ['as' => 'member']);
