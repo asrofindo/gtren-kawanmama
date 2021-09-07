@@ -162,6 +162,7 @@ $routes->group('', function($routes)
 	$routes->get('role/delete/(:any)/(:any)', 'Member::deleteRole/$1/$2');
 	$routes->get('user/delete/(:any)', 'Member::deleteUser/$1');
 	$routes->get('user/active/(:any)', 'Member::activeUser/$1');
+	$routes->get('user/nonactive/(:any)', 'Member::nonActiveUser/$1');
 
 	$routes->get('user/upgrade', 'User::upgradeList');
 	$routes->get('user/action/(:alpha)/(:num)', 'User::action/$1/$2');

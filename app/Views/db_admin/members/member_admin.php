@@ -94,9 +94,11 @@
                                     <div class="dropdown">
                                         <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
                                         <div class="dropdown-menu">
-                                        <?php if($user->active != 1) : ?>
+                                        <?php if($user->active != 1) { ?>
                                             <a onclick = "return confirm('Yakin Aktivasi Akun');" class="dropdown-item" href="<?=base_url()?>/user/active/<?=$user->id?>">Active account</a>
-                                        <?php endif ?>
+                                        <?php }else{ ?>
+                                            <a onclick = "return confirm('Yakin Non Aktivasi Akun');" class="dropdown-item" href="<?=base_url()?>/user/nonactive/<?=$user->id?>">Non Active Account</a>
+                                        <?php } ?>
                                             <a onclick = "return confirm('Yakin Data Akan Dihapus');" class="dropdown-item text-danger" href="<?=base_url()?>/role/delete/<?=$user->id?>/<?=$user->role?>">Delete role</a>
                                             <a onclick = "return confirm('Yakin Data Akan Dihapus');" class="dropdown-item text-danger" href="<?=base_url()?>/user/delete/<?=$user->id?>">Delete</a>
                                         </div>

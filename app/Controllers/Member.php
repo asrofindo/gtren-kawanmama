@@ -103,7 +103,13 @@ class Member extends BaseController
 		$db = db_connect();
 		$data = $db->table('users');
 		$data->where('id',$id)->update(['active'=>1]);
-
-		return redirect()->back();	}
+		return redirect()->back();	
+	}
+	public function nonActiveUser($id){
+		$db = db_connect();
+		$data = $db->table('users');
+		$data->where('id',$id)->update(['active'=>0]);
+		return redirect()->back();	
+	}
 }
 
