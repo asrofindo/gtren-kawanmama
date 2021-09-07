@@ -42,21 +42,21 @@ class Commerce extends BaseController
 		$data=$this->data;
 		
 		$data['title']='Cart | Gtren';
-		$data['carts'] = $this->cart->select('*, cart_item.id as c_id, detailtransaksi.id as d_id')
+		$data['carts'] = $this->cart->select('*, cart_item.id as id, detailtransaksi.id as d_id')
 	      ->join('products', "products.id = cart_item.product_id ", 'left')
 	      ->join('detailtransaksi', "cart_item.id = detailtransaksi.cart_id ", 'left')
-	      ->where('cart_item.user_id', user()->id)->find();
-	     
-	     foreach ($data['carts'] as $cart ) {
+	      ->where('cart_item.user_id', user()->id)->findAll();
+	    $data_cart = [];
+	    
+	    foreach ($data['carts'] as $cart ) {
 	     	if($cart->d_id == null){
-     		 	$data['carts'] = [];
 
-     		 	array_push($data['carts'], $cart);
+     		 	array_push($data_cart, $cart);
 	     	} else {
 	     		$data['carts'] = [];
 	     	}
 	     }
-
+	    $data['carts'] = $data_cart;
 		$sumTotal = 0;
 
 		for($i = 0; count($data['carts']) > $i; $i++){

@@ -39,29 +39,24 @@
                     <tr>
                         <th>#ID</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Email</th>
+                        <th scope="col">Status Barang</th>
+                        <th scope="col">Status Pembayaran</th>
                         <th scope="col">Total</th>
-                        <th scope="col">Status</th>
                         <th scope="col">Date</th>
+               
                         <th scope="col" class="text-end"> Action </th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($orders as $order): ?>
                         <tr>
-                            <td><?= $order->id; ?></td>
-                            <td><b><?php echo $order->username; ?></b></td>
-                            <td><?php echo $order->email; ?></td>
-                            <td>$<?php echo $order->total ?></td>
-                            <td>
-                                <?php if($order->status_pembayaran == 'proses'): ?>
-                                    <span class="badge rounded-pill alert-warning">Pending</span>
-                                <?php else: ?>
-                                    <span class="badge rounded-pill alert-success">Verified</span>
-                                <?php endif; ?>
-                            </td>
-                            <td><?= $order->created_at; ?></td>
-                            <td class="text-end">
+                            <td><b><?php echo $order->id; ?></b></td>
+                            <td><b><?php echo $order->name; ?></b></td>
+                            <td><?php echo $order->status_barang == null ? "sedang Dikemas" : $order->status_barang; ?></td>
+                            <td><?php echo $order->status_pembayaran; ?></td>
+                            <td>$<?php echo $order->total; ?></td>
+                            <td><?php echo $order->created_at; ?></td>
+                             <td class="text-end">
                                 <div class="dropdown">
                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
                                     <div class="dropdown-menu">
@@ -71,6 +66,7 @@
                                     </div>
                                 </div> <!-- dropdown //end -->
                             </td>
+                          
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

@@ -242,6 +242,8 @@ class Product extends BaseController
 				'sell_price'           => 'required',
 				'affiliate_commission' => 'required',
 				'stockist_commission'  => 'required',
+				'stockist_commission'  => 'required',
+				'weight'  => 'required',
 				'file'                 => 'max_size[file,1024]|ext_in[file,png,jpg]',
 			],
 			[
@@ -263,6 +265,9 @@ class Product extends BaseController
     			],
     			'stockist_commission' => [
     				'required' => 'Komisi Stokis Harus Diisi'
+    			],
+    			'weight' => [
+    				'required' => 'Weight Harus Diisi'
     			],
     			'file' => [
 					'max_size' => 'Ukuran Gambar Maksimal 1Mb',
@@ -314,7 +319,8 @@ class Product extends BaseController
 				'fixed_price'          => $this->request->getPost('fixed_price'),
 				'sell_price'           => $this->request->getPost('sell_price'),
 				'affiliate_commission' => $this->request->getPost('affiliate_commission'),
-				'stockist_commission'  => $this->request->getPost('stockist_commission')
+				'stockist_commission'  => $this->request->getPost('stockist_commission'),
+				'weight'  => $this->request->getPost('weight')
 			];
 
 
@@ -381,6 +387,7 @@ class Product extends BaseController
 				'sell_price'           => 'required',
 				'affiliate_commission' => 'required',
 				'stockist_commission'  => 'required',
+				'weight'  			   => 'required',
 				'file'                 => 'uploaded[file]|max_size[file,1024]|ext_in[file,png,jpg]',
 			],
 			[
@@ -402,6 +409,9 @@ class Product extends BaseController
     			],
     			'stockist_commission' => [
     				'required' => 'Komisi Stokis Harus Diisi'
+    			],
+    			'weight' => [
+    				'required' => 'Weight Harus Diisi'
     			],
     			'file' => [
 					'uploaded' => 'Anda Harus Menyertakan Gambar Produk',
@@ -444,7 +454,8 @@ class Product extends BaseController
 				'fixed_price'          => $this->request->getPost('fixed_price'),
 				'sell_price'           => $this->request->getPost('sell_price'),
 				'affiliate_commission' => $this->request->getPost('affiliate_commission'),
-				'stockist_commission'  => $this->request->getPost('stockist_commission')
+				'stockist_commission'  => $this->request->getPost('stockist_commission'),
+				'weight'  => $this->request->getPost('weight')
 			];
 
 			$product->fill($data);

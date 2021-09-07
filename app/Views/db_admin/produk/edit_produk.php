@@ -110,6 +110,19 @@
                                 <?php endif ?>
                             </div>
                         </div>
+                        <div class="col-lg-6">
+                            <div class="mb-4">
+                                <label class="form-label">Weight</label>
+                                <?php if(isset(session('errors')['weight'])): ?>
+                                    <input name="weight" type="number" placeholder="%" class="form-control is-invalid" id="weight" value="<?= old('weight') ?? $product->weight ?>">
+                                    <div class="invalid-feedback">
+                                        <?= session('errors')['weight'] ?>
+                                    </div>
+                                <?php else: ?>
+                                    <input name="weight" type="number" placeholder="%" class="form-control" id="weight" value="<?= old('weight') ?? $product->weight ?>">
+                                <?php endif ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div> 

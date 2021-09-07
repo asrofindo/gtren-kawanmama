@@ -58,18 +58,18 @@ class User extends BaseController
 		$data = $this->data;
 
 		$data['segments'] = $this->request->uri->getSegments();
-
+		$id = user()->id;
 		$data['details_order'] = $this->transaksi
-		->select('address.kecamatan, address.kabupaten, address.provinsi, distributor.locate as nama_toko, products.name as name, detailtransaksi.affiliate_commission, detailtransaksi.stockist_commission, detailtransaksi.status_barang, cart_item.amount, products.sell_price')
+		->select('*')
 		->join('detailtransaksi', "detailtransaksi.transaksi_id = transaksi.id")
-		->join('cart_item', "cart_item.id = detailtransaksi.cart_id")
-		->join('products', "cart_item.product_id = products.id")
-		->join('distributor', "distributor.id = cart_item.distributor_id")
-		->join('address', "address.user_id = distributor.user_id AND address.type = 'distributor'")
+		->join('cart_item', "detailtransaksi.cart_id = cart_item.id AND cart_item.user_id = {$id}")
+		->join('products', 'products.id = cart_item.product_id')
+		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id')
+		->join('pengiriman', 'detailpengiriman.pengiriman_id = pengiriman.id')
 		->where('transaksi.id', $transaksi_id)
-		->where('transaksi.user_id', user()->id)->findAll();
+		->find();
 
-		return view('commerce/detail', $data);
+		return view('commerce/account', $data);
 	}
 
 	

@@ -62,16 +62,11 @@
                         <h4>Cart Totals</h4>
                     </div>
                     <div class="table-responsive">
-                        <table class="table">
-  
-                                <tr>
-                                    <td class="cart_total_label">Shipping</td>
-                                    <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Free Shipping</td>
-                                </tr>
-                                <tr>
-                                    <td class="cart_total_label">Total</td>
-                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand"><?= $total;  ?></span></strong></td>
-                                </tr>
+                        <table class="table">      
+                            <tr>
+                                <td class="cart_total_label">Total</td>
+                                <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand"><?= $total;  ?></span></strong></td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>

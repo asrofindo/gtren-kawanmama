@@ -17,7 +17,7 @@
             </div>
             <div class="col-lg-6 col-md-6 ms-auto text-md-end">
                 <form action="<?= base_url() ?>/order/update/<?= $transaksi_id; ?>" method="post">       
-                    <select name="status" class="form-select d-inline-block mb-lg-0 mb-15 mw-200">
+                    <select class="form-select d-inline-block mb-lg-0 mb-15 mw-200">
                             <option selected disabled="">Change status</option>
                             <option value="proses">Awaiting payment</option>
                             <option value="confirmed">Confirmed</option>

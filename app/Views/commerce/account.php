@@ -79,6 +79,51 @@
                                         </div>
                                     </div>
                                 </div>
+                            <?php elseif($segments[0] == "detail"): ?>
+                                <div class="tab-pane fade active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="mb-0">Your Orders Detail</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Order</th>
+                                                            <th>product </th>
+                                                            <th>Date</th>
+                                                            <th>Status Barang</th>
+                                                            <th>Pengirim</th>
+                                                            <th>kurir</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php foreach($details_order as $order): ?>
+                                                            <tr>
+                                                                <td>ord<?= $order->id;  ?></td>
+                                                                <td>ord<?= $order->name;  ?></td>
+                                                                <td><?= $order->created_at;  ?></td>
+                                                                <td><?= $order->status_barang ? $order->status_barang : 'proses'; ?></td>
+                                                                <td><?= $order->kurir ?>, <?= $order->etd ?>, <?= $order->ongkir ?></td>
+                                                                <td>
+                                                                    <?php if($order->status_barang == 'delivered'): ?>
+                                                                        <a href="<?= base_url() ?>/detail/<?= $order->id ?>" class="btn-small d-block">
+                                                                            Sudah Diterima
+                                                                        </a>
+                                                                    <?php else: ?>
+                                                                        wait...    
+                                                                    <?php endif; ?>
+                                                                </td>
+                                                            </tr>
+                                                        <?php endforeach; ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             <?php elseif($segments[0] == "tracking"): ?>
                                 <div class="tab-pane fade active show" id="track-orders" role="tabpanel" aria-labelledby="track-orders-tab">
                                     <div class="card">

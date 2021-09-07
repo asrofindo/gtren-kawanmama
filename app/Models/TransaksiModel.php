@@ -14,7 +14,7 @@ class TransaksiModel extends Model
 	protected $returnType           = 'object';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['user_id', 'total', 'status_pembayaran'];
+	protected $allowedFields        = ['user_id', 'total', 'status_pembayaran', 'bill_id', 'distributor_id'];
 
 	// Dates
 	protected $useTimestamps        = true;
