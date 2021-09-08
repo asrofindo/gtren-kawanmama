@@ -39,7 +39,6 @@
                     <tr>
                         <th>#ID</th>
                         <th scope="col">Name</th>
-                        <th class="d-none d-sm-block" scope="col">Distributor</th>
                         <th scope="col">Total</th>
                         <th scope="col">Status</th>
                         <th scope="col">Date</th>
@@ -51,7 +50,6 @@
                         <tr>
                             <td><?= $order->id; ?></td>
                             <td><b><?php echo $order->username; ?></b></td>
-                            <td class="d-none d-sm-block"><?php echo $order->distributor; ?></td>
                             <td><?php echo $order->total ?></td>
                             <td>
                                 <?php if($order->status_pembayaran == 'pending' || $order->status_pembayaran == 'proses' ): ?>
