@@ -78,7 +78,7 @@
                             <a href="<?= base_url('product/category/'. strtolower($category->category) ) ?>">
                             <?= $category->category ?>
                             </a>
-                        <?php endforeach ?>
+                        <?php endforeach ?> 
                     </div>
                     <div class="col-lg-1 col-sm-2 col-4 col-date">
                         <span><?= $product->updated_at ?></span>
@@ -87,8 +87,7 @@
                         <div class="dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="<?= base_url('products/stockist/edit/' .$product->product_id)  ?>">Edit info</a>
-                                <a class="dropdown-item text-danger" href="<?= base_url('products/delete/'.$product->id)  ?>">Delete</a>
+                                <a class="dropdown-item" href="<?= base_url('products/stockist/edit/' .$product->product_id)  ?>/<?= $product->distributor_id ?>">Edit info</a>
                                 <a class="dropdown-item text-danger" href="<?= base_url('products/update/stock/'.$product->id)  ?>">Update Produk</a>
                             </div>
                         </div> 
