@@ -62,13 +62,13 @@ class Order extends BaseController
 		->find($id);
 
 		// jika barang sudah direfund atau barang tidak ditolak oleh stockist maka tidak di perbolehkan 
-		if($data['detailtransaksi']['status_barang'] == 'refund'){
-			return redirect()->back();
-		}
+		// if($data['detailtransaksi']['status_barang'] == 'refund'){
+		// 	return redirect()->back();
+		// }
 
-		if($data['detailtransaksi']['status_barang'] != 'ditolak'){
-			return redirect()->back();
-		}
+		// if($data['detailtransaksi']['status_barang'] != 'ditolak'){
+		// 	return redirect()->back();
+		// }
 		// data distributor 
 		$data['distributor'] = $this->detailtransaksi
 		->join('cart_item', 'cart_item.id = cart_id')
