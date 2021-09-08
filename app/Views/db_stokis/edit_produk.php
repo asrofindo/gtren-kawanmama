@@ -151,8 +151,8 @@
                     <h4>Tambah Stok</h4>
                 </div>
                 <div class="card-body h-100">
-                    <form method="post" action="<?php base_url('products/stockist/update'. $product->pd_id); ?>">      
-                        <input name="jumlah" type="number" placeholder="Stok Produk <?= $product->jumlah ? $product->jumlah : 0  ?> pcs" class="form-control">
+                    <form method="post" action="<?php base_url('products/stockist/update/'. $product->pd_id); ?>">      
+                        <input name="jumlah" type="number" value="<?= $product->jumlah?>" class="form-control">
                         <input style="display: none" name="pd_id" type="number" value="<?= $product->pd_id ?>" class="form-control">
                         <br>
                         <button type="submit" class="btn btn-md rounded font-sm hover-up">Publich</button>

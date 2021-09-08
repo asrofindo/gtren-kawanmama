@@ -64,7 +64,6 @@ class Product extends BaseController
 		$this->model->select('distributor.id as d_id');
 		$this->model->join('product_distributor', 'product_distributor.product_id = products.id ', 'right');
 		$data['products'] = $this->model->join('distributor', 'distributor.id = product_distributor.distributor_id ', 'left')->where('distributor.user_id', user()->id );
-
 		$data['products']   = $this->model->paginate(4, 'products');
 		$data['pager']    = $this->model->pager;
 		return view('db_stokis/products', $data);
@@ -187,20 +186,18 @@ class Product extends BaseController
 	}
 
 	public function edit_distributor_produk($id, $distributor_id)
-
 	{
-		if($this->request->getPost('jumlah')){
+		if($this->request->getPost('jumlah')!=null){
 
 			$data = [
 				"id" => $this->request->getPost('pd_id'),
 				"jumlah" => $this->request->getPost('jumlah')
 			];
-
 			$this->productDistributor->save($data);
-
+			
 			session()->setFlashdata('success', 'Berhasil Menambah Stock');
 	        return redirect()->back();
-
+			
 		}
 
 		$db = \Config\Database::connect();
