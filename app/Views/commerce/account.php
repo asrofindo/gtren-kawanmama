@@ -92,9 +92,11 @@
                                                         <tr>
                                                             <th>Order</th>
                                                             <th>product </th>
-                                                            <th>Date</th>
+                                                            <th>Jumlah </th>
                                                             <th>Status Barang</th>
                                                             <th>Pengirim</th>
+                                                            <th>Resi</th>
+                                                            <th>Date</th>
                                                             <th>Actions</th>
                                                         </tr>
                                                     </thead>
@@ -110,9 +112,11 @@
                                                                         <div class="info"><?= $order->name;  ?></div>
                                                                     </a>
                                                                 </td>
-                                                                <td><?= $order->created_at;  ?></td>
+                                                                <td><?= $order->amount;  ?></td>
                                                                 <td><?= $order->status_barang ? $order->status_barang : 'proses'; ?></td>
                                                                 <td><?= $order->kurir ?>, <?= $order->etd ?>, <?= $order->ongkir ?></td>
+                                                                <td><?= $order->resi ? $order->resi: 'proses'; ?></td>
+                                                                <td><?= $order->created_at;  ?></td>
                                                                 <td>
                                                                     <?php if($order->status_barang == 'dikirim'): ?>
                                                                         <a href="<?= base_url() ?>/detail/<?= $order->id ?>" class="btn-small d-block">

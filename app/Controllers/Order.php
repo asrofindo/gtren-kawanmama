@@ -61,13 +61,13 @@ class Order extends BaseController
 		->join('city', 'city.kode_pos = address.kode_pos')
 		->find($id);
 		// jika barang sudah direfund atau barang tidak ditolak oleh stockist maka tidak di perbolehkan 
-		// if($data['detailtransaksi']['status_barang'] == 'refund'){
-		// 	return redirect()->back();
-		// }
+		if($data['detailtransaksi']['status_barang'] == 'refund'){
+			return redirect()->back();
+		}
 
-		// if($data['detailtransaksi']['status_barang'] != 'ditolak'){
-		// 	return redirect()->back();
-		// }
+		if($data['detailtransaksi']['status_barang'] != 'ditolak'){
+			return redirect()->back();
+		}
 		// data distributor 
 		$data['distributor'] = $this->detailtransaksi
 		->join('cart_item', 'cart_item.id = cart_id')
@@ -145,5 +145,21 @@ class Order extends BaseController
 
 		return redirect()->back();
 
+	}
+
+	public function save_resi()
+	{
+		$resi = $this->request->getPost('resi');
+		$order_id = $this->request->getPost('order_id');
+
+		$data = [
+			"id" => $order_id,
+			"status_barang" => "Dikirim",
+			"resi" => $resi
+		];
+
+		$this->detailtransaksi->save($data);
+
+		return redirect()->back();
 	}
 }
