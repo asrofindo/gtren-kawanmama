@@ -114,6 +114,8 @@
                                                     <span class="badge rounded-pill alert-warning">refund</span>
                                                 <?php elseif($product->status_barang == 'ditolak'): ?>
                                                     <span class="badge rounded-pill alert-danger">ditolak</span>
+                                                <?php elseif($product->status_barang == 'diterima'): ?>
+                                                    <span class="badge rounded-pill alert-success">diterima</span>
                                                 <?php endif; ?>
 
                                             </td>
