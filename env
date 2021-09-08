@@ -38,11 +38,11 @@
 #--------------------------------------------------------------------
 
 
-#database.default.hostname = localhost
-#database.default.database = gtren
-#database.default.username = root
-#database.default.password = 
-#database.default.DBDriver = MySQLi
+ database.default.hostname = localhost
+ database.default.database = gtren
+ database.default.username = root
+ database.default.password = 
+ database.default.DBDriver = MySQLi
 # database.default.DBPrefix =
 
  # database.default.hostname = localhost
