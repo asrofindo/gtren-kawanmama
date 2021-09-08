@@ -136,7 +136,6 @@ class Product extends BaseController
 			->where('address.type', 'distributor')
 			->join('distributor', 'distributor.user_id = users.id', 'left')
 			->join('product_distributor', 'product_distributor.distributor_id = distributor.id', 'left')->where('product_distributor.product_id', $product_id)->find();
-
 			$index = count($data['product_distributor']);
 			$data['product_distributors'] = [];
 			for($i = 0; $index > $i; $i++){
@@ -196,7 +195,7 @@ class Product extends BaseController
 				"id" => $this->request->getPost('pd_id'),
 				"jumlah" => $this->request->getPost('jumlah')
 			];
-			
+
 			$this->productDistributor->save($data);
 
 			session()->setFlashdata('success', 'Berhasil Menambah Stock');
@@ -552,7 +551,8 @@ class Product extends BaseController
 	}
 	
 	public function update_stock($id){
-		dd('lklkk');
+		$distributor_id = $this->distributor->where('user_id', user()->id)->find()[0]['id'];
+
 		$data = [
 			'distributor_id' => intval($distributor_id),
 			'product_id' => $id

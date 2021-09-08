@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\CartItemModel;
+use App\Models\ProductModel;
 
 use App\Controllers\BaseController;
 
@@ -9,6 +10,7 @@ class Cart extends BaseController
 {
 	public function __construct(){
 		$this->cart = new CartItemModel();
+		$this->product = new ProductModel();
 	}
 
 	public function save($id=null)
@@ -34,10 +36,25 @@ class Cart extends BaseController
 		->where('product_id', $product_id)
 		->where('distributor_id', $distributor_id)->find();
 		
-		$this->cart->save($data);
+		if(count($transaksi) == 0){
+			$this->cart->save($data);
 
-		return redirect()->to('/cart');
-	
+			return redirect()->to('/cart');
+		} else {
+			$data = [
+				"id" => $transaksi[0]->id,
+				"product_id" => $product_id,
+				"distributor_id" => $distributor_id,
+				"user_id" => user()->id,
+				"amount" => $amount + $transaksi[0]->amount,
+				"total" => $transaksi[0]->total * ($amount + $transaksi[0]->amount)
+			];
+			$this->cart->where('user_id', user()->id)
+			->where('product_id', $product_id)
+			->where('distributor_id', $distributor_id)->replace($data);
+			return redirect()->to('/cart');
+		}
+		
 	}
 
 	public function delete($id)
