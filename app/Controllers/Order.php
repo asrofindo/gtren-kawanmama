@@ -162,4 +162,25 @@ class Order extends BaseController
 
 		return redirect()->back();
 	}
+
+	public function order_verify($id)
+	{
+		$data = [
+			"id" => $id,
+			"status_barang" => "diterima",
+		];
+
+		$this->detailtransaksi->save($data);
+
+		$transaksi_id = $this->detailtransaksi
+		->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id')
+		->where('detailtransaksi.transaksi_id', $id)->find();
+		$data = [
+			"id" => $transaksi_id,
+			"status_pembayaran" => "dibayar"
+		];
+
+		$this->model->save($data);
+		return redirect()->back();
+	}
 }
