@@ -118,14 +118,16 @@
                                                                 <td><?= $order->resi ? $order->resi: 'proses'; ?></td>
                                                                 <td><?= $order->created_at;  ?></td>
                                                                 <td>
-                                                                    <?php if($order->status_barang == 'Dikirim'): ?>
+                                                                    <?php if($order->status_barang == 'dikirim'): ?>
                                                                         <a href="<?= base_url() ?>/order/verify/<?= $order->id ?>" class="btn-small d-block">
                                                                             Sudah Diterima
                                                                         </a>
                                                                     <?php elseif($order->status_barang == 'refund'): ?>
                                                                         refund
+                                                                    <?php elseif($order->status_barang == 'diterima'): ?>
+                                                                        selesai
                                                                     <?php else: ?>
-                                                                        proses
+                                                                        pending
                                                                     <?php endif; ?>
                                                                 </td>
                                                             </tr>
