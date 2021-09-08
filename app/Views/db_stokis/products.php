@@ -66,6 +66,7 @@
                                 <th>product</th>
                                 <th class="d-none d-sm-block">harga member</th>
                                 <th >harga non member</th>
+                                <th >jumlah</th>
                                 <th class="text-end">Action</th>
                             </tr>
                         </thead>
@@ -82,6 +83,7 @@
                                 </td>
                                 <td class="d-none d-sm-block"><?= $product->sell_price ?></td>
                                 <td ><?= $product->fixed_price?></td>
+                                <td ><?= $product->jumlah?></td>
                                 <td class="text-end">
                                     <div class="dropdown">
                                         <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_vert"></i> </a>
