@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\TransaksiModel;
+use App\Models\ProductDistributorModel;
 use App\Models\DetailTransaksiModel;
 use App\Models\PengirimanModel;
 use App\Models\DetailPengirimanModel;
@@ -15,6 +16,7 @@ class Order extends BaseController
 		$this->detailtransaksi = new DetailTransaksiModel();
 		$this->pengiriman = new PengirimanModel();
 		$this->detail_pengiriman = new DetailPengirimanModel();
+		$this->product_distributor = new ProductDistributorModel();
 	}
 	public function update($id)
 	{
@@ -165,6 +167,8 @@ class Order extends BaseController
 
 	public function order_verify($id)
 	{
+
+		// ubah status detail transaksi 
 		$data = [
 			"id" => $id,
 			"status_barang" => "diterima",
@@ -172,15 +176,35 @@ class Order extends BaseController
 
 		$this->detailtransaksi->save($data);
 
+		// ubah status transaksi 
 		$transaksi_id = $this->detailtransaksi
 		->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id')
-		->where('detailtransaksi.transaksi_id', $id)->find();
+		->where('detailtransaksi.id', $id)->find();
+
 		$data = [
-			"id" => $transaksi_id,
+			"id" => $transaksi_id[0]['transaksi_id'],
 			"status_pembayaran" => "dibayar"
 		];
 
 		$this->model->save($data);
+
+
+		// ubah stok product distributor
+		$product_transaksi = $this->detailtransaksi->select('*, product_distributor.id as pd_id')
+		->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id')
+		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
+		->join('distributor', 'distributor.id = cart_item.distributor_id')
+		->join('product_distributor', 'product_distributor.distributor_id = cart_item.distributor_id AND product_distributor.product_id = cart_item.product_id')
+		->where('detailtransaksi.id', $id)->find();
+
+
+		$data = [
+			"id" => $product_transaksi[0]['pd_id'],
+			"jumlah" => $product_transaksi[0]['jumlah'] - $product_transaksi[0]['amount']
+		];
+
+		$this->product_distributor->save($data);
+
 		return redirect()->back();
 	}
 }
