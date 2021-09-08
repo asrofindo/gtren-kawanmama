@@ -63,7 +63,7 @@ class Product extends BaseController
 		$this->model->select('product_distributor.id as id_pd, product_distributor.product_id, product_distributor.distributor_id, product_distributor.jumlah, distributor.id');
 		$this->model->select('distributor.id as d_id');
 		$this->model->join('product_distributor', 'product_distributor.product_id = products.id ', 'right');
-		$data['products'] = $this->model->join('distributor', 'distributor.id = product_distributor.distributor_id ', 'right')->where('distributor.user_id', user()->id );
+		$data['products'] = $this->model->join('distributor', 'distributor.id = product_distributor.distributor_id ', 'left')->where('distributor.user_id', user()->id );
 
 		$data['products']   = $this->model->paginate(4, 'products');
 		$data['pager']    = $this->model->pager;
@@ -136,7 +136,6 @@ class Product extends BaseController
 			->where('address.type', 'distributor')
 			->join('distributor', 'distributor.user_id = users.id', 'left')
 			->join('product_distributor', 'product_distributor.distributor_id = distributor.id', 'left')->where('product_distributor.product_id', $product_id)->find();
-
 			$index = count($data['product_distributor']);
 			$data['product_distributors'] = [];
 			for($i = 0; $index > $i; $i++){
@@ -187,11 +186,18 @@ class Product extends BaseController
 		}
 	}
 
-	public function edit_distributor_produk($id)
+	public function edit_distributor_produk($id, $distributor_id)
 
 	{
 		if($this->request->getPost('jumlah')){
-			$this->productDistributor->save(['id' => $this->request->getPost('pd_id'), 'jumlah' => $this->request->getPost('jumlah')]);
+
+			$data = [
+				"id" => $this->request->getPost('pd_id'),
+				"jumlah" => $this->request->getPost('jumlah')
+			];
+
+			$this->productDistributor->save($data);
+
 			session()->setFlashdata('success', 'Berhasil Menambah Stock');
 	        return redirect()->back();
 
@@ -201,7 +207,11 @@ class Product extends BaseController
 		$builder = $db->table('categories');
 		$this->model->select('products.id as id, name, description, categories, photos, slug, fixed_price, sell_price');
 		$this->model->select('product_distributor.id as pd_id, product_distributor.product_id, product_distributor.jumlah');
-		$product['product'] = $this->model->join('product_distributor', 'products.id = product_distributor.product_id', 'right')->find($id);
+		$product['product'] = $this->model
+		->join('product_distributor', 'products.id = product_distributor.product_id', 'left')
+		->join('distributor', 'distributor.id = product_distributor.distributor_id', 'left')
+		->where('distributor.id', $distributor_id)
+		->find($id);
 
 		$categories_id = $this->model->find($id)->categories; //[1,2,3]
 		$product['product_categories'] = $product['product']->getCategory($categories_id); //[adasdad,asdasd,asdasd]

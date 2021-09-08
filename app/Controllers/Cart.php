@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\CartItemModel;
+use App\Models\ProductModel;
 
 use App\Controllers\BaseController;
 
@@ -9,6 +10,7 @@ class Cart extends BaseController
 {
 	public function __construct(){
 		$this->cart = new CartItemModel();
+		$this->product = new ProductModel();
 	}
 
 	public function save($id=null)
@@ -33,7 +35,7 @@ class Cart extends BaseController
 		->where('user_id', user()->id)
 		->where('product_id', $product_id)
 		->where('distributor_id', $distributor_id)->find();
-
+		
 		if(count($transaksi) == 0){
 			$this->cart->save($data);
 

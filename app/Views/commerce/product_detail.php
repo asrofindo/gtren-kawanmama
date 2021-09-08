@@ -482,24 +482,25 @@
             <h4 class="modal-title">Pilih Distributor</h4>
           </div>
           <div class="modal-body">
-            <ul class="list-group">
+            <ul style="z-index: -1" class="list-group">
                 <?php foreach($product_distributors as $distributor): ?>  
-                    
+
                     <?php if ($affiliate != null) {?>
-                        <form method="post" action="<?= base_url();?>/cart/<?= $affiliate?>"id="forms">
+                        <form method="post" action="<?= base_url();?>/cart/<?= $affiliate?>" >
                     <?php }else{?>
-                        <form method="post" action="<?= base_url();?>/cart"id="forms">
+                        <form method="post" action="<?= base_url();?>/cart" >
                     <?php } ?> 
-                        <input style="display: none" type="text" value="" name="amount" id="amount">
-                        <input style="display: none" type="text" value="" name="price_sell" id="price_sell">
+                        <input style="display: none" type="text" value="" name="amount" class="amount">
+                        <input style="display: none" type="text" value="" name="price_sell" class="price_sell">
                         <input style="display: none" type="text" value="<?= $distributor->product_id ?>" name="product_id">
-                        <input style="display: none" type="text" value="<?= $distributor->distributor_id?>" name="distributor_id">
-                        <li type="submit" class="list-group-item d-flex justify-content-between align-items-center h-50">
-                            <?= $distributor->username ?>
-                            <div class="image-parent">
-                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/don_quixote.jpg" class="img-fluid rounded" style="height:60px" alt="quixote">
-                            </div>
+                        <input style="display: none" type="text" value="<?= $distributor->distributor_id ?>" name="distributor_id">
+                        <li style="position: relative;" type="submit" class="list-group-item d-flex justify-content-between align-items-center h-50">
+                            <?= $distributor->username ?> <br>
+                            kecamatan : <?= $distributor->kecamatan ?> <br>
+                            kabupaten : <?= $distributor->kabupaten ?> <br>
+  
                         </li>
+                        <button class="btn-sm btn-primary" type="submit">Pilih</button>
                     </form>
                     <?php endforeach; ?>
                 </ul>
@@ -525,8 +526,14 @@
 
             const val = $('.qty-val')
             const price = $('#price')
-            $('#amount').val(val[0].innerHTML);
-            $('#price_sell').val(price.val());
+            $('.amount').each((index, obj) => {
+                $(obj).val(val[0].innerHTML);
+            })
+
+             $('.price_sell').each((index, obj) => {
+                $(obj).val( $('#price').val());
+            })
+
             $('#myModal').modal('show');
         });
 

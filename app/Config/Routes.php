@@ -130,8 +130,8 @@ $routes->group('', function($routes)
 	$routes->post('tambahproduk', 'Product::save', ['filter' => 'login','filter' => 'role:admin']);
 	$routes->get('saveproduk', 'Product::save');
 	$routes->get('products/stockist', 'Product::stockist');
-	$routes->get('products/stockist/edit/(:num)', 'Product::edit_distributor_produk/$1');
-	$routes->post('products/stockist/edit/(:num)', 'Product::edit_distributor_produk/$1');
+	$routes->get('products/stockist/edit/(:num)/(:num)', 'Product::edit_distributor_produk/$1/$2');
+	$routes->post('products/stockist/edit/(:num)/(:num)', 'Product::edit_distributor_produk/$1/$2');
 	$routes->get('products/update/stock/(:num)', 'Product::update_stock/$1');
 	$routes->get('products/delete/(:num)', 'Product::delete/$1', ['filter' => 'login','filter' => 'role:admin']);
 	$routes->get('products/edit/(:num)', 'Product::edit/$1', ['filter' => 'login','filter' => 'role:admin, stockist']);
