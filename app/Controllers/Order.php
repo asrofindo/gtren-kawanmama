@@ -180,7 +180,7 @@ class Order extends BaseController
 			"status_pembayaran" => "dibayar"
 		];
 
-		$this->transaksi->save($data);
+		$this->model->save($data);
 		return redirect()->back();
 	}
 }
