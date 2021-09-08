@@ -178,7 +178,8 @@ class Order extends BaseController
 		$data = [
 			"id" => $transaksi_id,
 			"status_pembayaran" => "dibayar"
-		]
+		];
+		
 		$this->transaksi->save()
 		return redirect()->back();
 	}
