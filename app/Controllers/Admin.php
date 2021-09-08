@@ -48,7 +48,7 @@ class Admin extends BaseController
 	{
 		$id = user()->id;
 		$data['orders'] = $this->transaksi
-		->select('*, transaksi.total as total_transaksi')
+		->select('*, transaksi.total as total_transaksi, detailtransaksi.id as id')
 		->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
 		->join("cart_item", 'cart_item.id = cart_id')
 		->join("products", 'products.id = cart_item.product_id')
@@ -72,6 +72,7 @@ class Admin extends BaseController
 		->join("bills", 'bills.id = bill_id')
 		->join("users", 'users.id = transaksi.user_id')
 		->join("cart_item", 'cart_item.id = cart_id')
+		->join('distributor', 'distributor.id = cart_item.distributor_id', 'left')
 		->join("products", 'products.id = cart_item.product_id')
 		->join("address", 'address.user_id = transaksi.user_id AND address.type = "billing"')
 		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
@@ -121,17 +122,16 @@ class Admin extends BaseController
 
 		    }else{		            
 		            array_push($outer_array[$fid_value]['products'], $value);
+		            $outer_array[$fid_value]['ongkir'] += $ongkir;
 
 		         
 		    }
 		}
-
 		$data['detail_orders'] = $outer_array;
 		$data['transaksi_id'] = $id;
 
 		return view('db_admin/order/order_detail', $data);
 		
-		return view('db_admin/order/order_detail');
 	}
 
 

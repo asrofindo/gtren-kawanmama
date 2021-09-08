@@ -52,7 +52,7 @@
                         <tr>
                             <td><b><?php echo $order->id; ?></b></td>
                             <td><b><?php echo $order->name; ?></b></td>
-                            <td><?php echo $order->status_barang == null ? "sedang Dikemas" : $order->status_barang; ?></td>
+                            <td><?php echo $order->status_barang == null ? "menunggu pengiriman" : $order->status_barang; ?></td>
                             <td><?php echo $order->status_pembayaran; ?></td>
                             <td>$<?php echo $order->total; ?></td>
                             <td><?php echo $order->created_at; ?></td>
@@ -60,9 +60,9 @@
                                 <div class="dropdown">
                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="<?= base_url() ?>/orderdetail/<?= $order->id; ?>">View detail</a>
-                                        <a class="dropdown-item" href="#">Edit info</a>
-                                        <a class="dropdown-item text-danger" href="#">Delete</a>
+                                        <a class="dropdown-item" href="<?= base_url() ?>/order/acc/<?= $order->id; ?>">Terima</a>
+                                        <a class="dropdown-item" href="#">Kirim Barang</a>
+                                        <a class="dropdown-item text-danger" href="<?= base_url() ?>/order/ignore/<?= $order->id; ?>">Tolak</a>
                                     </div>
                                 </div> <!-- dropdown //end -->
                             </td>

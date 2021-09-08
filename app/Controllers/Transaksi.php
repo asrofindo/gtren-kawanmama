@@ -160,10 +160,9 @@ class Transaksi extends BaseController
 
 	    $data['carts'] = $data_cart;
 
-		$this->transaksi->insert(["user_id" => user()->id, "status_pembayaran" => "proses", "total" => $total]);
+		$this->transaksi->insert(["user_id" => user()->id, "bill_id" => $bill, "status_pembayaran" => "proses", "total" => $total]);
 		
 		foreach($data['carts'] as $cart){
-			$this->cart->save(["id" => $cart->cart_id, "status" => "sold"]);
 			$this->detail_transaksi->save([
 				"cart_id" => $cart->cart_id, 
 				"affiliate_commission" => $cart->affiliate_commission, 

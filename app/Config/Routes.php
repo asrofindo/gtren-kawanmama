@@ -153,6 +153,7 @@ $routes->group('', function($routes)
 
 	// order
 	$routes->get('order', 'Admin::order');
+	$routes->get('order/refund/(:num)/(:num)', 'Order::order_refund/$1/$2');
 	$routes->post('order/update/(:num)', 'Order::update/$1');
 	$routes->get('orderdetail/(:num)', 'Admin::order_detail/$1');
 
@@ -161,6 +162,8 @@ $routes->group('', function($routes)
 		// order
 	$routes->get('order/stockist', 'Admin::order_stockist');
 	$routes->post('order/stockist/update/(:num)', 'Order::update/stockist/$1');
+	$routes->get('order/acc/(:num)', 'Order::order_acc/$1');
+	$routes->get('order/ignore/(:num)', 'Order::order_ignore/$1');
 	$routes->get('orderdetail/stockist/(:num)', 'Admin::order_detail/stockist/$1');
 
 	// member g-tren

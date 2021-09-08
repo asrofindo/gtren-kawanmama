@@ -114,7 +114,7 @@
                                 <?php foreach ($carts as $cart):?>
                                     <?php foreach ($cart['products'] as $product): ?>
                                         <tr style="height:30px">
-                                            <td style="width:40px; "><img src="https://png.pngtree.com/png-clipart/20190516/original/pngtree-cleaning-products-on-transparent-background-png-image_4017268.jpg" style="width:60%; height:100px"></td>
+                                            <td style="width:40px; "><img src="<?= $product->photos; ?>" style="width:60%; height:100px"></td>
                                             <td style="width: 100px"><?= $product->name ?></td>
                                             <td style="width: 100px"><?= $product->amount ?></td>
                                             <td style="width: 100px"><?= $product->sell_price ?></td>
@@ -141,8 +141,8 @@
                                                     <input style="display: none" type="text" name="origin" value="<?= $billing->city_id ?>" >
                                                     <input style="display: none" type="text" name="destination" value="<?= $cart['id_kota'] ?>" >
                                                     <input style="display: none" type="text" name="distributor_id" value="<?= $cart['distributor_id'] ?>" >
-                                                     <input style="" type="text" name="weight" value="<?= $cart['weight'][0] ?>" >
-                                                     <input style="" type="text" name="cart_id" value="<?= $cart['cart_id'][0] ?>" >
+                                                     <input style="display: none" type="text" name="weight" value="<?= $cart['weight'][0] ?>" >
+                                                     <input style="display: none" type="text" name="cart_id" value="<?= $cart['cart_id'][0] ?>" >
                                                     <select type="submit" name="courier" onchange="this.form.submit()">
                                                         <option selected disabled>Pilih Kurir</option>
                                                         <option value="jne">JNE</option>
@@ -184,7 +184,9 @@
                                 <div class="custome-radio">
                                     <select name="bill">
                                         <?php foreach ($bills as $bill): ?>
-                                                <option value="<?= $bill->id  ?>"><?= $bill->bank_name ?> - <?= $bill->bank_number ?></option>
+                                                <option value="<?= $bill->id  ?>"><?= $bill->bank_name ?> - <?= $bill->bank_number ?>
+                                                    
+                                                </option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>

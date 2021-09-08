@@ -95,7 +95,6 @@
                                                             <th>Date</th>
                                                             <th>Status Barang</th>
                                                             <th>Pengirim</th>
-                                                            <th>kurir</th>
                                                             <th>Actions</th>
                                                         </tr>
                                                     </thead>
@@ -103,17 +102,26 @@
                                                         <?php foreach($details_order as $order): ?>
                                                             <tr>
                                                                 <td>ord<?= $order->id;  ?></td>
-                                                                <td>ord<?= $order->name;  ?></td>
+                                                                <td>                                             
+                                                                    <a class="itemside" href="#">
+                                                                        <div class="left">
+                                                                            <img src="<?= $order->photos; ?>" width="40" height="40" class="img-xs" alt="Item">
+                                                                        </div>
+                                                                        <div class="info"><?= $order->name;  ?></div>
+                                                                    </a>
+                                                                </td>
                                                                 <td><?= $order->created_at;  ?></td>
                                                                 <td><?= $order->status_barang ? $order->status_barang : 'proses'; ?></td>
                                                                 <td><?= $order->kurir ?>, <?= $order->etd ?>, <?= $order->ongkir ?></td>
                                                                 <td>
-                                                                    <?php if($order->status_barang == 'delivered'): ?>
+                                                                    <?php if($order->status_barang == 'dikirim'): ?>
                                                                         <a href="<?= base_url() ?>/detail/<?= $order->id ?>" class="btn-small d-block">
                                                                             Sudah Diterima
                                                                         </a>
+                                                                    <?php elseif($order->status_barang == 'refund'): ?>
+                                                                        refund
                                                                     <?php else: ?>
-                                                                        wait...    
+                                                                        proses
                                                                     <?php endif; ?>
                                                                 </td>
                                                             </tr>

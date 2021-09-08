@@ -113,7 +113,7 @@
                                             <?= session('errors')['weight'] ?>
                                         </div>
                                     <?php else: ?>
-                                        <input name="weight" type="number" placeholder="gram" class="form-control" id="weight">
+                                        <input name="weight" type="number" placeholder="kg" class="form-control" id="weight">
                                     <?php endif ?>
                                 </div>
                             </div>

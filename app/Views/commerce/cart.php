@@ -28,7 +28,7 @@
                         <tbody>
                                 <?php foreach($carts as $cart): ?>
                             <tr>
-                                <td class="image product-thumbnail"><img src="<?= $cart->photos[2] ?>" alt="#"></td>
+                                <td class="image product-thumbnail"><img src="<?= $cart->photos ?>" alt="#"></td>
                                 <td class="product-des product-name">
                                     <p class="product-name"><a href="shop-product-right.html"><?= $cart->name; ?></a></p>
 
