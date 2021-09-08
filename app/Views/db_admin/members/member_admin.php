@@ -2,8 +2,8 @@
 <?php $this->section('content') ?>
 <div class="content-header">
     <div>
-        <h2 class="content-title card-title">Member </h2>
-        <p>Add, edit or delete a Member</p>
+        <h2 class="content-title card-title">Data Pengguna </h2>
+        <p>Add, edit or delete a Data</p>
     </div>
     <div>
         <form method="post" action="<?= base_url('/members') ?>">            

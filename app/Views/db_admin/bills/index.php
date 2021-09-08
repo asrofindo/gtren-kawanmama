@@ -2,7 +2,7 @@
 <?php $this->section('content') ?>
 <div class="content-header">
     <div>
-        <h2 class="content-title card-title">Rekening </h2>
+        <h2 class="content-title card-title">Rekening Admin</h2>
         <p>Add, edit or delete a Rekening</p>
     </div>
     <div>

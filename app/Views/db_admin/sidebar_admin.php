@@ -29,7 +29,7 @@
     </li>
     <li class="menu-item">
         <a class="menu-link" href="<?php base_url() ?>/bills"> <i class="icon material-icons md-monetization_on"></i>
-            <span class="text">Bills</span>
+            <span class="text">Rekening Admin</span>
         </a>
     </li>
 
