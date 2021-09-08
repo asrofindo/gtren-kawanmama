@@ -2,8 +2,8 @@
 <?php $this->section('content') ?>
 <div class="content-header">
     <div>
-        <h2 class="content-title card-title">Order List </h2>
-        <p>Lorem ipsum dolor sit amet.</p>
+        <h2 class="content-title card-title">Pesanan </h2>
+        <p>data semua pesanan</p>
     </div>
     <div>
         <input type="text" placeholder="Search order ID" class="form-control bg-white">
@@ -34,12 +34,12 @@
     </header> <!-- card-header end// -->
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-sm table-hover">
                 <thead>
                     <tr>
                         <th>#ID</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Email</th>
+                        <th class="d-none d-sm-block" scope="col">Distributor</th>
                         <th scope="col">Total</th>
                         <th scope="col">Status</th>
                         <th scope="col">Date</th>
@@ -51,8 +51,8 @@
                         <tr>
                             <td><?= $order->id; ?></td>
                             <td><b><?php echo $order->username; ?></b></td>
-                            <td><?php echo $order->email; ?></td>
-                            <td>$<?php echo $order->total ?></td>
+                            <td class="d-none d-sm-block"><?php echo $order->distributor; ?></td>
+                            <td><?php echo $order->total ?></td>
                             <td>
                                 <?php if($order->status_pembayaran == 'pending' || $order->status_pembayaran == 'proses' ): ?>
                                     <span class="badge rounded-pill alert-warning">Pending</span>

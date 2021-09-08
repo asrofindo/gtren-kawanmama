@@ -73,7 +73,6 @@ class Category extends BaseController
 	        session()->setFlashdata('danger', 'Data Gagal Diupdate');
 	        return redirect()->back();
 	    }
-
 	}
 
 	public function delete($id)
