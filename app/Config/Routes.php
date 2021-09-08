@@ -166,6 +166,9 @@ $routes->group('', function($routes)
 	// member g-tren
 	$routes->get('members', 'Member::index', ['as' => 'member']);
 	$routes->post('members', 'Member::index');
+	$routes->get('members/(:any)', 'Member::detail/$1');
+
+	$routes->post('add/role/(:any)', 'Member::addRole/$1');
 
 	$routes->get('role/delete/(:any)/(:any)', 'Member::deleteRole/$1/$2');
 	$routes->get('user/delete/(:any)', 'Member::deleteUser/$1');
