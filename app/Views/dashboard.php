@@ -22,7 +22,7 @@
     <div class="screen-overlay"></div>
     <aside class="navbar-aside" id="offcanvas_aside">
         <div class="aside-top">
-            <a href="index.html" class="brand-wrap">
+            <a href="<?= base_url() ?>/distributor" class="brand-wrap">
                 <img src="<?= base_url() ?>/backend/imgs/theme/logo2.png" class="logo" alt="Wowy Dashboard">
             </a>
             <div>
@@ -32,7 +32,7 @@
         <nav>
            <ul class="menu-aside">
     <li class="menu-item active">
-        <a class="menu-link" href="index.html"> <i class="icon material-icons md-home"></i>
+        <a class="menu-link" href="<?= base_url() ?>/distributor"> <i class="icon material-icons md-home"></i>
             <span class="text">Dashboard</span>
         </a>
     </li>
@@ -83,14 +83,14 @@
         </a>
     </li>
     <?php endif; ?>
-    <?php if(in_groups(3)): ?>
+    <?php if(in_groups(3) && !in_groups(1)): ?>
     <li class="menu-item has-submenu" >
         <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
-            <span class="text">Update Stock</span>
+            <span class="text">Stok</span>
         </a>
         <div class="submenu">
-            <a href="<?= base_url() ?>/products">Product List</a>
-            <a href="<?= base_url() ?>/products/stockist">Product Stockist</a>
+            <a href="<?= base_url() ?>/products/stockist">Produk Anda</a>
+            <a href="<?= base_url() ?>/products">Produk</a>
         </div>
     </li>
     <li class="menu-item" >

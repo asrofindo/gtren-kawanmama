@@ -631,7 +631,7 @@
                                                 </div>
                                             </form>
                                             <?php else: ?>
-                                                <b>Silahkan Kunjungi <a href="<?= base_url('/dashboard') ?>">Dashboard</a></b>
+                                                <a href="<?= base_url('/dashboard') ?>"><button class="btn btn-lg btn">Klik Untuk Kunjungi Dashboard</button></a>
                                             <?php endif; ?>
                                         </div>
                                        <!--  <div class="card-body">
@@ -665,6 +665,14 @@
                                                 </p>
 
                                             </div>
+                                            <?php if(in_groups(3)){?>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <a href="<?= base_url('/dashboard') ?>"><button class="btn btn-lg w-100">Klik Untuk Kunjungi Dashboard</button></a>
+                                                </div>
+                                            </div>
+                                            <?php }?>
+
                                             <div class="row my-3">
                                                 <div class="col-lg-6">
                                                     <div class="card bg-primary">

@@ -68,10 +68,10 @@ class Category extends BaseController
 		// Notif
 		if($update) {
 	        session()->setFlashdata('success', 'Data Berhasil Diupdate');
-	        return redirect()->to(base_url('admin/category'));
+	        return redirect()->back();
 	    } else {
 	        session()->setFlashdata('danger', 'Data Gagal Diupdate');
-	        return redirect()->to(base_url('admin/category')); 
+	        return redirect()->back();
 	    }
 
 	}
@@ -83,10 +83,10 @@ class Category extends BaseController
 		// Notif
 		if($delete) {
 	        session()->setFlashdata('success', 'Data Berhasil Dihapus');
-	        return redirect()->to(base_url('admin/category'));
+	        return redirect()->back();
 	    } else {
 	        session()->setFlashdata('danger', 'Data Gagal Dihapus');
-	        return redirect()->to(base_url('admin/category')); 
+	        return redirect()->back();
 	    }
 	}
 }

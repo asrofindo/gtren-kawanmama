@@ -8,7 +8,9 @@
     <div><!-- 
         <a href="#" class="btn btn-light rounded font-md">Export</a>
         <a href="#" class="btn btn-light rounded  font-md">Import</a> -->
+        <?php if(in_groups(1)){ ?>
         <a href="<?= base_url() ?>/tambahproduk" class="btn btn-primary btn-sm rounded">Create new</a>
+        <?php } ?>
     </div>
 </div>
 <div class="attention">

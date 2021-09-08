@@ -85,6 +85,8 @@ $routes->get('cart/substruct/(:num)', 'Cart::substruct/$1');
 
 $routes->get('product/(:any)', 'Product::detail/$1');
 $routes->get('category/product/(:any)', 'Product::productByCategory/$1');
+$routes->get('category/delete/(:any)', 'Category::delete/$1');
+$routes->post('category/update/(:any)', 'Category::update/$1');
 
 $routes->get('test', 'Testing::index');
 $routes->post('testfoto', 'Testing::testfoto');
@@ -133,6 +135,7 @@ $routes->group('', function($routes)
 	$routes->get('products/stockist/edit/(:num)/(:num)', 'Product::edit_distributor_produk/$1/$2');
 	$routes->post('products/stockist/edit/(:num)/(:num)', 'Product::edit_distributor_produk/$1/$2');
 	$routes->get('products/update/stock/(:num)', 'Product::update_stock/$1');
+	$routes->get('products/delete/stock/(:num)', 'Product::delete_stock/$1');
 	$routes->get('products/delete/(:num)', 'Product::delete/$1', ['filter' => 'login','filter' => 'role:admin']);
 	$routes->get('products/edit/(:num)', 'Product::edit/$1', ['filter' => 'login','filter' => 'role:admin, stockist']);
 	$routes->get('products', 'Product::index');
