@@ -5,9 +5,6 @@
         <h2 class="content-title card-title">Member </h2>
         <p>Add, edit or delete a Member</p>
     </div>
-    <div>
-        <input type="text" placeholder="Search Categories" class="form-control bg-white">
-    </div>
 </div>
 <div class="card">
     <div class="card-body">
@@ -36,7 +33,7 @@
                         
                             <div class="search-style-1 w-100">
                                 <p>Add Role</p>
-                                <form action="<?= base_url() ?>/add/role/<?= $value->id?>" method="post" class="w-100">
+                                <form action="<?= base_url() ?>/add/role/<?=$user->id?>" method="post" class="w-100">
                                     <select name="role">
                                         <?php foreach ($group as $key => $value) {?>
                                             <option value="<?= $value['id']?>"><?= $value['name']?></option>
