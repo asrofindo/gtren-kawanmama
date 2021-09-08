@@ -56,6 +56,7 @@
         </a>
         <div class="submenu">
             <a href="<?= base_url() ?>/order">Data Pesanan</a>
+            <a class="" href="<?php base_url() ?>/upgrades">Upgrade Akun</span></a>
         </div>
     </li>
     <?php endif; ?>
@@ -79,13 +80,6 @@
     </li>
     <?php endif; ?>
     
-    <?php if(in_groups(1)): ?>
-    <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/upgrades"> <i class="icon material-icons md-people"></i>
-            <span class="text">Upgrade Akun</span>
-        </a>
-    </li>
-    <?php endif; ?>
 
     <?php if(in_groups(1)): ?>
     <li class="menu-item">

@@ -22,7 +22,7 @@ class Bill extends BaseController
 			$validation->setRules(
 				[
 					'bank_name'   => 'required',
-					'bank_number' => 'required|is_unique[bills.bank_number]|max_length[16]|min_length[16]',
+					'bank_number' => 'required|is_unique[bills.bank_number]|max_length[16]|min_length[8]',
 					'owner'       => 'required'
 				],
 				[
@@ -33,7 +33,7 @@ class Bill extends BaseController
 					"required"   => "Nomor Rekening Harus Diisi",
 					"is_unique"  => "Nomor Rekening Sudah Ada",
 					"max_length" => "Nomor Rekening Tidak Boleh Lebih Dari 16",
-					"min_length" => "Nomor Rekening Tidak Boleh Kurang Dari 16"
+					"min_length" => "Nomor Rekening Tidak Boleh Kurang Dari 8"
 	        	],
 	        	"owner" => [
 	        		"required"  => "Nama Pemilik Rekening Harus Diisi"
@@ -88,7 +88,7 @@ class Bill extends BaseController
         $validation->setRules(
         	[
 	        	"bank_name"   => "required",
-				"bank_number" => "required|is_unique[bills.bank_number, id, $id]|max_length[16]|min_length[16]",
+				"bank_number" => "required|is_unique[bills.bank_number, id, $id]|max_length[16]|min_length[8]",
 				"owner"       => "required"
 	        ],
 	        [
@@ -99,7 +99,7 @@ class Bill extends BaseController
 					"required"   => "Nomor Rekening Harus Diisi",
 					"is_unique"  => "Nomor Rekening Sudah Ada",
 					"max_length" => "Nomor Rekening Tidak Boleh Lebih Dari 16",
-					"min_length" => "Nomor Rekening Tidak Boleh Kurang Dari 16"
+					"min_length" => "Nomor Rekening Tidak Boleh Kurang Dari 8"
 	        	],
 	        	"owner" => [
 	        		"required"  => "Nama Pemilik Rekening Harus Diisi"
