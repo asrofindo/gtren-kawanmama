@@ -22,7 +22,7 @@
     <div class="screen-overlay"></div>
     <aside class="navbar-aside" id="offcanvas_aside">
         <div class="aside-top">
-            <a href="<?= base_url() ?>/distributor" class="brand-wrap">
+            <a href="<?= base_url() ?>/dashboard" class="brand-wrap">
                 <img src="<?= base_url() ?>/backend/imgs/theme/logo2.png" class="logo" alt="Wowy Dashboard">
             </a>
             <div>
@@ -32,7 +32,7 @@
         <nav>
            <ul class="menu-aside">
     <li class="menu-item active">
-        <a class="menu-link" href="<?= base_url() ?>/distributor"> <i class="icon material-icons md-home"></i>
+        <a class="menu-link" href="<?= base_url() ?>/dashboard"> <i class="icon material-icons md-home"></i>
             <span class="text">Dashboard</span>
         </a>
     </li>
@@ -52,10 +52,10 @@
     <?php if(in_groups(1) || in_groups(3)): ?>
     <li class="menu-item has-submenu">
         <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-shopping_cart"></i>
-            <span class="text">Orders</span>
+            <span class="text">Pesanan</span>
         </a>
         <div class="submenu">
-            <a href="<?= base_url() ?>/order">Order list </a>
+            <a href="<?= base_url() ?>/order">Data Pesanan</a>
         </div>
     </li>
     <?php endif; ?>
@@ -64,6 +64,14 @@
     <li class="menu-item">
         <a class="menu-link" href="<?php base_url() ?>/members"> <i class="icon material-icons md-store"></i>
             <span class="text">Data Pengguna</span>
+        </a>
+    </li>
+    <?php endif; ?>
+    
+    <?php if(in_groups(1)): ?>
+    <li class="menu-item">
+        <a class="menu-link" href="<?php base_url() ?>/upgrades"> <i class="icon material-icons md-people"></i>
+            <span class="text">Upgrade Akun</span>
         </a>
     </li>
     <?php endif; ?>
@@ -76,13 +84,6 @@
     </li>
     <?php endif; ?>
 
-    <?php if(in_groups(1)): ?>
-    <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/upgrades"> <i class="icon material-icons md-monetization_on"></i>
-            <span class="text">Upgrades Account</span>
-        </a>
-    </li>
-    <?php endif; ?>
     <?php if(in_groups(3) && !in_groups(1)): ?>
     <li class="menu-item has-submenu" >
         <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>

@@ -2,7 +2,7 @@
 <?php $this->section('content') ?>
 <div class="content-header">
     <div>
-        <h2 class="content-title card-title">Order detail</h2>
+        <h2 class="content-title card-title">Detail Pesanan</h2>
 <!--         <p>Details for Order ID: 3453012</p>
  -->    </div>
 </div>

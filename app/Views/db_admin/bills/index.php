@@ -24,7 +24,7 @@
             <div class="col-md-3">
 
         <?php if (isset($bill)): ?>
-            <form method="POST" action="<?= base_url('bill/update/'.$bill->id) ?>" class="my-3">
+            <form method="POST" action="<?= base_url('bills/update/'.$bill->id) ?>" class="my-3">
                 <div class="form-group">
                     <label>Nama Bank</label>
                     <?php if(isset(session('errors')['bank_name'])): ?>
@@ -116,8 +116,8 @@
                             <td><?= $bill->bank_number ?></td>
                             <td><?= $bill->owner ?></td>
                             <td>
-                                <a class="btn btn-light rounded btn-sm font-sm" href="<?= base_url('bill/edit/'.$bill->id) ?>">Edit</a> 
-                                <a class="btn btn-brand rounded btn-sm font-sm" href="<?= base_url('bill/delete/'.$bill->id) ?>">Hapus</a>
+                                <a class="btn btn-light rounded btn-sm font-sm" href="<?= base_url('bills/edit/'.$bill->id) ?>">Edit</a> 
+                                <a class="btn btn-brand rounded btn-sm font-sm" href="<?= base_url('bills/delete/'.$bill->id) ?>">Hapus</a>
                             </td>
                         </tr>
                 
@@ -128,8 +128,8 @@
                             <td><?= $bill->bank_number ?></td>
                             <td><?= $bill->owner ?></td>
                             <td>
-                                <a class="btn btn-light rounded btn-sm font-sm" href="<?= base_url('bill/edit/'.$bill->id) ?>">Edit</a> 
-                                <a class="btn btn-brand rounded btn-sm font-sm" href="<?= base_url('bill/delete/'.$bill->id) ?>">Hapus</a>
+                                <a class="btn btn-light rounded btn-sm font-sm" href="<?= base_url('bills/edit/'.$bill->id) ?>">Edit</a> 
+                                <a class="btn btn-brand rounded btn-sm font-sm" href="<?= base_url('bills/delete/'.$bill->id) ?>">Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach;  ?>
