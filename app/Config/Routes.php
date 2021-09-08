@@ -164,6 +164,7 @@ $routes->group('', function($routes)
 	// order stockist
 		// order
 	$routes->get('order/stockist', 'Admin::order_stockist');
+	$routes->get('order/verify/(:num)', 'Order::order_verify/$1');
 	$routes->post('stockist/save/resi', 'Order::save_resi');
 	$routes->post('order/stockist/update/(:num)', 'Order::update/stockist/$1');
 	$routes->get('order/acc/(:num)', 'Order::order_acc/$1');
