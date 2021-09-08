@@ -179,8 +179,8 @@ class Order extends BaseController
 			"id" => $transaksi_id,
 			"status_pembayaran" => "dibayar"
 		];
-		
-		$this->transaksi->save()
+
+		$this->transaksi->save($data);
 		return redirect()->back();
 	}
 }
