@@ -167,7 +167,8 @@ class Transaksi extends BaseController
 				"cart_id" => $cart->cart_id, 
 				"affiliate_commission" => $cart->affiliate_commission, 
 				"distributor_id" => $cart->distributor_id, 
-				"stockist_commission" => $cart->stockist_commission, 
+				"stockist_commission" => $cart->stockist_commission +  $cart->sell_price, 
+				"admin_commission" => $cart->sell_price - ($cart->affiliate_commission + $cart->stockist_commission),
 				"transaksi_id" => $this->transaksi->getInsertID(), 
 			]);
 		}

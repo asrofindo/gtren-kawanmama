@@ -49,13 +49,24 @@
     </li>
     <?php endif ?>
 
-    <?php if(in_groups(1) || in_groups(3)): ?>
+    <?php if(in_groups(1)):?>
     <li class="menu-item has-submenu">
         <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-shopping_cart"></i>
             <span class="text">Pesanan</span>
         </a>
         <div class="submenu">
             <a href="<?= base_url() ?>/order">Data Pesanan</a>
+        </div>
+    </li>
+    <?php endif; ?>
+
+    <?php if( in_groups(3)): ?>
+    <li class="menu-item has-submenu">
+        <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-shopping_cart"></i>
+            <span class="text">Orders</span>
+        </a>
+        <div class="submenu">
+            <a href="<?= base_url() ?>/order/stockist">Order Stockist</a>
         </div>
     </li>
     <?php endif; ?>
