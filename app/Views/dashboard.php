@@ -40,11 +40,11 @@
     <?php if(in_groups(1)): ?>
     <li class="menu-item has-submenu" >
         <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
-            <span class="text">Products</span>
+            <span class="text">Produk</span>
         </a>
         <div class="submenu">
-            <a href="<?= base_url() ?>/products">Product List</a>
-            <a href="<?= base_url() ?>/category">Categories</a>
+            <a href="<?= base_url() ?>/products">Daftar Produk</a>
+            <a href="<?= base_url() ?>/category">Kategori</a>
         </div>
     </li>
     <?php endif ?>
@@ -56,7 +56,6 @@
         </a>
         <div class="submenu">
             <a href="<?= base_url() ?>/order">Order list </a>
-            <a href="<?= base_url() ?>/orderdetail">Order detail</a>
         </div>
     </li>
     <?php endif; ?>
@@ -64,7 +63,7 @@
     <?php if(in_groups(1)): ?>
     <li class="menu-item">
         <a class="menu-link" href="<?php base_url() ?>/members"> <i class="icon material-icons md-store"></i>
-            <span class="text">Member g-tren</span>
+            <span class="text">Data Pengguna</span>
         </a>
     </li>
     <?php endif; ?>
@@ -72,7 +71,7 @@
     <?php if(in_groups(1)): ?>
     <li class="menu-item">
         <a class="menu-link" href="<?php base_url() ?>/bills"> <i class="icon material-icons md-monetization_on"></i>
-            <span class="text">Bills</span>
+            <span class="text">Rekening Admin</span>
         </a>
     </li>
     <?php endif; ?>

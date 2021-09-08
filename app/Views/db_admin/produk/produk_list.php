@@ -30,7 +30,7 @@
 </div>
 <div class="card mb-4">
     <header class="card-header">
-        <div class="row align-items-center">
+        <!-- <div class="row align-items-center">
             <div class="col-md-3 col-12 me-auto mb-md-0 mb-3">
                 <select class="form-select">
                     <option selected>All category</option>
@@ -50,51 +50,70 @@
                     <option>Show all</option>
                 </select>
             </div>
-        </div>
+        </div> -->
     </header> <!-- card-header end// -->
     <div class="card-body">
-        <?php foreach ($products as $product): ?>
-            <article class="itemlist">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 col-sm-4 col-8 flex-grow-1 col-name">
-                        <a class="itemside" href="#">
-                            <div class="left">
-                                 <?php for($i = 0; $i < 1; $i++): ?>
-                                    <img class="img-sm img-thumbnail" src="<?= $product->photos[$i] ?>" alt="">
-                                <?php endfor ?>
-                            </div>
-                            <div class="info">
-                                <h6 class="mb-0"><?= $product->name ?></h6>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-2 col-sm-2 col-4 col-price"> <span><?= "Rp. ". number_format($product->sell_price) ?></span> </div>
-                     <div class="col-lg-2 col-sm-2 col-4 col-price"> <span><?= "Rp. ". number_format($product->fixed_price) ?></span> </div>
-                    <div class="col-lg-2 col-sm-2 col-4 col-status">
-                        <?php $categories = $product->getCategory($product->categories); ?>
+    <div class="col-md-12">
+                <div class="table">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    img
+                                </th>
+                                <th>product</th>
+                                <th class="d-none d-sm-block">harga member</th>
+                                <th >harga non member</th>
+                                <th class="text-end">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($products as $product): ?>
+                            <tr>
+                                <td class="text-center">
+                                    <?php for($i = 0; $i < 1; $i++): ?>
+                                        <img class="img-sm img-thumbnail" src="<?= $product->photos[$i] ?>" alt="">
+                                    <?php endfor ?>
+                                </td>
+                                <td>
+                                    <h6 class=""><?= $product->name ?></h6>
+                                </td>
+                                <td class="d-none d-sm-block"><?= $product->sell_price ?></td>
+                                <td ><?= $product->fixed_price?></td>
+          
+                                <td class="text-end">
+                                    <div class="dropdown">
+                                        <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_vert"></i> </a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="<?= base_url('products/edit/'.$product->id)  ?>">Edit info</a>
+                                            <a class="dropdown-item text-danger" href="<?= base_url('products/delete/'.$product->id)  ?>">Delete</a>
+                                        </div>
+                                    </div> <!-- dropdown //end -->
+                                </td>
+                            </tr>
+                                                           
+                        <?php endforeach  ?>
 
-                        <?php foreach($categories as $category): ?>
-                            <a href="<?= base_url('product/category/'. strtolower($category->category) ) ?>">
-                            <?= $category->category ?>
-                            </a>
-                        <?php endforeach ?>
+                        </tbody>
+
+                    </table>
+                    <div class="pagination-area mt-30 mb-50">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-start">
+                                <?php //$pager->links('users', 'product_pagination'); ?>
+                                <!-- <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                                <li class="page-item"><a class="page-link" href="#">02</a></li>
+                                <li class="page-item"><a class="page-link" href="#">03</a></li>
+                                <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                                <li class="page-item"><a class="page-link" href="#">16</a></li>
+                                <li class="page-item"><a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a></li> -->
+
+                            </ul>
+                        </nav>
                     </div>
-                    <div class="col-lg-1 col-sm-2 col-4 col-date">
-                        <span><?= $product->updated_at ?></span>
-                    </div>
-                    <div class="col-lg-2 col-sm-2 col-4 col-action text-end">
-                        <div class="dropdown">
-                            <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="<?= base_url('products/edit/'.$product->id)  ?>">Edit info</a>
-                                <a class="dropdown-item text-danger" href="<?= base_url('products/delete/'.$product->id)  ?>">Delete</a>
-                                <a class="dropdown-item text-danger" href="<?= base_url('products/update/stock/'.$product->id)  ?>">Update Produk</a>
-                            </div>
-                        </div> 
-                    </div>
-                </div> <!-- row .// -->
-            </article>
-        <?php endforeach ?>
+                </div>
+            </div>
+     
     </div> <!-- card-body end// -->
 </div> <!-- card end// -->
 <div class="pagination-area mt-30 mb-50">
