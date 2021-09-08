@@ -60,15 +60,14 @@ class Order extends BaseController
 		->join('address', 'address.user_id = users.id')
 		->join('city', 'city.kode_pos = address.kode_pos')
 		->find($id);
-
 		// jika barang sudah direfund atau barang tidak ditolak oleh stockist maka tidak di perbolehkan 
-		// if($data['detailtransaksi']['status_barang'] == 'refund'){
-		// 	return redirect()->back();
-		// }
+		if($data['detailtransaksi']['status_barang'] == 'refund'){
+			return redirect()->back();
+		}
 
-		// if($data['detailtransaksi']['status_barang'] != 'ditolak'){
-		// 	return redirect()->back();
-		// }
+		if($data['detailtransaksi']['status_barang'] != 'ditolak'){
+			return redirect()->back();
+		}
 		// data distributor 
 		$data['distributor'] = $this->detailtransaksi
 		->join('cart_item', 'cart_item.id = cart_id')
