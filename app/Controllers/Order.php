@@ -61,27 +61,29 @@ class Order extends BaseController
 		->join('city', 'city.kode_pos = address.kode_pos')
 		->find($id);
 		// jika barang sudah direfund atau barang tidak ditolak oleh stockist maka tidak di perbolehkan 
-		if($data['detailtransaksi']['status_barang'] == 'refund'){
-			return redirect()->back();
-		}
+		// if($data['detailtransaksi']['status_barang'] == 'refund'){
+		// 	return redirect()->back();
+		// }
 
-		if($data['detailtransaksi']['status_barang'] != 'ditolak'){
-			return redirect()->back();
-		}
+		// if($data['detailtransaksi']['status_barang'] != 'ditolak'){
+		// 	return redirect()->back();
+		// }
 		// data distributor 
 		$data['distributor'] = $this->detailtransaksi
 		->join('cart_item', 'cart_item.id = cart_id')
 		->join('products', 'products.id = cart_item.product_id')
-		->join('users', 'users.id = cart_item.distributor_id')
-		->join('address', 'address.user_id = users.id AND address.type = "distributor"')
+		->join('distributor', 'distributor.id = cart_item.distributor_id')
+		->join('address', 'address.user_id = distributor.user_id AND address.type = "distributor"')
 		->join('city', 'city.kode_pos = address.kode_pos')
-		->find($id);
+		->where('detailtransaksi.id', $id)
+		->find();
+
 
 		// variable untuk check raja ongkir
 		$weight = $data['detailtransaksi']['weight'] * $data['detailtransaksi']['amount'];
 		$destination = $data['detailtransaksi']['id_kota'];
 		$courier = $data['detailtransaksi']['kurir'];
-		$origin = $data['distributor']['id_kota'];
+		$origin = $data['distributor'][0]['id_kota'];
 
 		// check raja ongkir
 		$curl = curl_init();
