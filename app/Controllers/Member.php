@@ -5,7 +5,7 @@ use Myth\Auth\Models\UserModel;
 
 class Member extends BaseController
 {
-
+ protected $user;
 	public function __construct(){
 
 		$this->user = new  UserModel();
@@ -25,9 +25,10 @@ class Member extends BaseController
 		$db = \Config\Database::connect();
 		$users = $db->table('users');
 
-		$users->select('users.id, users.email, users.username, users.active, auth_groups_users.group_id, auth_groups.name AS role');
+		$users->select('users.id, users.email, users.username, users.active');
 		$users->join('auth_groups_users', 'auth_groups_users.user_id=users.id');
-		$users->join('auth_groups', 'auth_groups.id=auth_groups_users.group_id');
+		$users->join('auth_groups', 'auth_groups_users.group_id=auth_groups.id');
+		$users->groupBy('users.id');
 		if ($this->request->getPost('role') != null) {
 			$users->like('auth_groups.name', $this->request->getPost('role'));
 		}
@@ -80,6 +81,24 @@ class Member extends BaseController
 		return view('db_admin/members/member_admin', $getUsers);
 	}
 
+	public function detail($id)
+	{
+		$data['user'] = $this->user
+		->where('users.id',$id)
+		->first();
+		
+		$data['roles'] = $this->user->select('auth_groups.id,auth_groups.name')
+		->join('auth_groups_users', 'auth_groups_users.user_id=users.id')
+		->join('auth_groups', 'auth_groups.id=auth_groups_users.group_id')
+		->where('users.id',$id)->findAll();
+
+		$db = \Config\Database::connect();
+		$group = $db->table('auth_groups')->select('*');
+
+		$data['group']= $group->get()->getResultArray();
+		return view('db_admin/members/detail_member', $data);
+	}
+
 	public function deleteRole($id,$role)
 	{
 		$db = db_connect();
@@ -99,11 +118,30 @@ class Member extends BaseController
 		return redirect()->back();
 	}
 
+	public function addRole($id)
+	{
+		$db = db_connect();
+		$data = $db->table('auth_groups_users');
+		$set=[
+			'user_id'=>$id,
+			'group_id'=>$this->request->getPost('role')
+		];
+		$data->insert($set);
+
+		return redirect()->back();
+	}
+
 	public function activeUser($id){
 		$db = db_connect();
 		$data = $db->table('users');
 		$data->where('id',$id)->update(['active'=>1]);
-
-		return redirect()->back();	}
+		return redirect()->back();	
+	}
+	public function nonActiveUser($id){
+		$db = db_connect();
+		$data = $db->table('users');
+		$data->where('id',$id)->update(['active'=>0]);
+		return redirect()->back();	
+	}
 }
 

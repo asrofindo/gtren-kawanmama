@@ -169,10 +169,14 @@ $routes->group('', function($routes)
 	// member g-tren
 	$routes->get('members', 'Member::index', ['as' => 'member']);
 	$routes->post('members', 'Member::index');
+	$routes->get('members/(:any)', 'Member::detail/$1');
+
+	$routes->post('add/role/(:any)', 'Member::addRole/$1');
 
 	$routes->get('role/delete/(:any)/(:any)', 'Member::deleteRole/$1/$2');
 	$routes->get('user/delete/(:any)', 'Member::deleteUser/$1');
 	$routes->get('user/active/(:any)', 'Member::activeUser/$1');
+	$routes->get('user/nonactive/(:any)', 'Member::nonActiveUser/$1');
 
 	$routes->get('user/upgrade', 'User::upgradeList');
 	$routes->get('user/action/(:alpha)/(:num)', 'User::action/$1/$2');
