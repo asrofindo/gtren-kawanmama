@@ -25,7 +25,6 @@ class Product extends BaseController
 	public function __construct()
 	{
 		helper(['form', 'url']);
-
 		$this->model    = new ProductModel();
 		$this->photo    = new ProductPhoto();
 		$this->banner    = new BannerModel();
@@ -35,9 +34,10 @@ class Product extends BaseController
 		$this->address    = new AddressModel();
 		$this->productDistributor = new ProductDistributorModel();
 		$this->comment    = new CommentModel();
-
+		
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
+	
 
 	}
 
@@ -50,6 +50,7 @@ class Product extends BaseController
 		$data['products']   = $this->model->paginate(15, 'products');
 
 		$data['pager']      = $this->model->pager;
+	
 		return view('db_admin/produk/produk_list', $data);
 	}
 
@@ -71,7 +72,12 @@ class Product extends BaseController
 
 	public function commerce()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Lengkapi Data Nomer Telepon');
+			return redirect()->to('/profile');
+		}
 		$data = $this->data;
+
 		$data['products']   = $this->model->orderBy('id', 'desc')->paginate(8, 'products');
 		
 		$data['kategori'] = $this->category->findAll();

@@ -20,6 +20,10 @@ class User extends Entity
      */
     protected $datamap = [];
 
+    protected $attributes = [
+    	'fullname' => 'Guest',
+    	'phone'  => '000000000000',
+    ];
     /**
      * Define properties that are automatically converted to Time instances.
      */
@@ -77,10 +81,9 @@ class User extends Entity
 
     public function setProfile(array $data)
     {
-
-        $this->attributes['password_hash'] = Password::hash($data['password']);
-
-
+        $user = new UserModel;
+        $data['password'] = Password::hash($data['password']);
+        $user->update($data['id'],$data);
     }
     /**
      * Force a user to reset their password on next page refresh
