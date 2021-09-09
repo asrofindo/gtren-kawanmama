@@ -2,8 +2,8 @@
 <?php $this->section('content') ?>
 <div class="content-header">
     <div>
-        <h2 class="content-title card-title">Order List </h2>
-        <p>Lorem ipsum dolor sit amet.</p>
+        <h2 class="content-title card-title">Pesanan Masuk</h2>
+        <p>Daftar semua pesanan yang telah masuk.</p>
     </div>
     <div>
         <input type="text" placeholder="Search order ID" class="form-control bg-white">
