@@ -568,7 +568,7 @@ class Product extends BaseController
 	public function delete_stock($id){
 		$distributor_id = $this->distributor->where('user_id', user()->id)->find()[0]['id'];
 
-		$this->productDistributors->where('distributor_id',intval($distributor_id))->where('product_id',$id)->delete();
+		$this->productDistributor->where('distributor_id', $distributor_id)->where('product_id',$id)->delete();
 		session()->setFlashdata('success', 'Stock Berhasil Di Hapus');
 		return redirect()->back();
 	}

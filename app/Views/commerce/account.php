@@ -126,7 +126,7 @@
                                                                 <td><?= $order->resi ? $order->resi: 'proses'; ?></td>
                                                                 <td><?= $order->created_at;  ?></td>
                                                                 <td>
-                                                                    <?php if($order->status_barang == 'dikirim'): ?>
+                                                                    <?php if($order->status_barang == 'Dikirim'): ?>
                                                                         <a href="<?= base_url() ?>/order/verify/<?= $order->id ?>" class="btn-small d-block">
                                                                             Sudah Diterima
                                                                         </a>
