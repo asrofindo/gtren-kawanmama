@@ -14,7 +14,7 @@ class CartItemModel extends Model
 	protected $returnType           = 'object';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['user_id', 'product_id','amount', 'distributor_id','affiliate_link','total'];
+	protected $allowedFields        = ['user_id', 'product_id','amount', 'distributor_id','affiliate_link','total', 'status'];
 
 	// Dates
 	protected $useTimestamps        = true;

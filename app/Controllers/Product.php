@@ -140,7 +140,7 @@ class Product extends BaseController
 			->join('users', 'users.id = address.user_id', 'left')
 			->where('address.type', 'distributor')
 			->join('distributor', 'distributor.user_id = users.id', 'left')
-			->join('product_distributor', 'product_distributor.distributor_id = distributor.id', 'left')->where('product_distributor.product_id', $product_id)->find();
+			->join('product_distributor', 'product_distributor.distributor_id = distributor.id AND product_distributor.jumlah > 0', 'left')->where('product_distributor.product_id', $product_id)->find();
 			$index = count($data['product_distributor']);
 			$data['product_distributors'] = [];
 			for($i = 0; $index > $i; $i++){
@@ -574,7 +574,7 @@ class Product extends BaseController
 	public function delete_stock($id){
 		$distributor_id = $this->distributor->where('user_id', user()->id)->find()[0]['id'];
 
-		$this->productDistributors->where('distributor_id',intval($distributor_id))->where('product_id',$id)->delete();
+		$this->productDistributor->where('distributor_id', $distributor_id)->where('product_id',$id)->delete();
 		session()->setFlashdata('success', 'Stock Berhasil Di Hapus');
 		return redirect()->back();
 	}

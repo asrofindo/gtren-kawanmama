@@ -130,6 +130,7 @@ class Admin extends BaseController
 		    }
 		}
 		$data['detail_orders'] = $outer_array;
+
 		$data['transaksi_id'] = $id;
 
 		return view('db_admin/order/order_detail', $data);

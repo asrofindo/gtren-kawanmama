@@ -44,8 +44,7 @@ class Transaksi extends BaseController
 		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
 		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
 		->where('cart_item.user_id', user()->id)
-		->findAll();
-
+		->where('cart_item.status', null)->findAll();
 
 	 	$data_cart = [];
 		foreach ($data['carts'] as $cart ) {
@@ -103,10 +102,10 @@ class Transaksi extends BaseController
 
 		    }else{		            
 		            array_push($outer_array[$fid_value]['products'], $value);
-
+		            $weightAfter = $weight * $amount;
 		            $outer_array[$fid_value]['subtotal'][0] =  $outer_array[$fid_value]['subtotal'][0]  + $subtotal;		
 		            $outer_array[$fid_value]['cart_id'][0] =  "{$outer_array[$fid_value]['cart_id'][0]},{$cart_id}";		
-		            $outer_array[$fid_value]['weight'][0] =  $outer_array[$fid_value]['weight'][0]  + $weight;		
+		            $outer_array[$fid_value]['weight'][0] =  "{$outer_array[$fid_value]['weight'][0]}, {$weightAfter}";		
 
 		    }
 		}
@@ -124,10 +123,8 @@ class Transaksi extends BaseController
 		->where('user_id', user()->id)->where('address.type', 'billing')
 		->join('city', 'city.kota = kabupaten', 'right')
 		->join('subdistrict', 'subdistrict.subsdistrict_name = kecamatan', 'left')->first();
-
-
-		
-		$data['bills'] = $this->bill->limit(3)->find();
+	
+		$data['bills'] = $this->bill->find();
 
 		return view('commerce/checkout', $data);
 	}
@@ -146,31 +143,30 @@ class Transaksi extends BaseController
 		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
 		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
 		->where('cart_item.user_id', user()->id)
+		->where('cart_item.status', null)
 		->findAll();
 
-		$data_cart = [];
-		foreach ($data['carts'] as $cart ) {
-	     	if($cart->d_id == null){
-     		 	
-     		 	array_push($data_cart, $cart);
-	     	} else {
-	     		$data['carts'] = [];
-	     	}
-	    }
 
-	    $data['carts'] = $data_cart;
-
-		$this->transaksi->insert(["user_id" => user()->id, "bill_id" => $bill, "status_pembayaran" => "proses", "total" => $total]);
+		$this->transaksi->insert(["user_id" => user()->id, "bill_id" => $bill, "status_pembayaran" => "pending", "total" => $total]);
 		
 		foreach($data['carts'] as $cart){
-			$this->detail_transaksi->save([
+
+			$data = [
+				"id" => $cart->cart_id,
+				"status" => "checkout"
+			];
+
+			$this->cart->save($data);
+
+			$data = [
 				"cart_id" => $cart->cart_id, 
-				"affiliate_commission" => $cart->affiliate_commission, 
+				"affiliate_commission" => $cart->affiliate_link ? $cart->affiliate_commission : $cart->affiliate_link  , 
 				"distributor_id" => $cart->distributor_id, 
-				"stockist_commission" => $cart->stockist_commission +  $cart->sell_price, 
-				"admin_commission" => $cart->sell_price - ($cart->affiliate_commission + $cart->stockist_commission),
+				"stockist_commission" => $cart->stockist_commission +  $cart->fixed_price + $cart->ongkir_produk, 
+				"admin_commission" => $cart->affiliate_link ?  $cart->sell_price - $cart->fixed_price - $cart->stockist_commission - $cart->affiliate_commission : $cart->sell_price - $cart->fixed_price - $cart->stockist_commission,
 				"transaksi_id" => $this->transaksi->getInsertID(), 
-			]);
+			];
+			$this->detail_transaksi->save($data);
 		}
 	}
 
@@ -181,8 +177,6 @@ class Transaksi extends BaseController
 		$city_user_id = $this->address->where('user_id', user()->id)->where('address.type', 'billing')
 		->join('city', 'city.kota = kabupaten', 'right')
 		->join('subdistrict', 'subdistrict.subsdistrict_name = kecamatan', 'left')->find();
-
-
 	}
 
 	public function check()
@@ -193,14 +187,17 @@ class Transaksi extends BaseController
     	$courier = $r->getPost('courier'); 
     	$destination = $r->getPost('destination'); 
     	$distributor_id = $r->getPost('distributor_id'); 
-    	$weight = $r->getPost('weight'); 
+    	$weight = $r->getPost('weight');
     	$cart_id = $r->getPost('cart_id'); 
 
     	$cart_ids = explode(",",$cart_id);
-    	
-    	
+    	$weights = explode(",",$weight);
+    	$total_ongkir = 0;
+    	$data_ongkir = [];  
+    	$etd = '';
 
-   			$curl = curl_init();
+ 		for($i = 0; $i < count($weights); $i++){
+ 			$curl = curl_init();
 			curl_setopt_array($curl, array(
 			  	CURLOPT_URL => "https://pro.rajaongkir.com/api/cost",
 			  	CURLOPT_RETURNTRANSFER => true,
@@ -209,7 +206,7 @@ class Transaksi extends BaseController
 			  	CURLOPT_TIMEOUT => 100,
 			  	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			  	CURLOPT_CUSTOMREQUEST => "POST",
-			  	CURLOPT_POSTFIELDS => "origin={$origin}&originType=city&destination={$destination}&destinationType=subdistrict&weight={$weight}&courier={$courier}",
+			  	CURLOPT_POSTFIELDS => "origin={$origin}&originType=city&destination={$destination}&destinationType=subdistrict&weight={$weights[$i]}&courier={$courier}",
 			  	CURLOPT_HTTPHEADER => array(
 			    	"content-type: application/x-www-form-urlencoded",
 			    	"key: bfacde03a85f108ca1e684ec9c74c3a9"
@@ -223,6 +220,9 @@ class Transaksi extends BaseController
 
 			$ongkir = json_decode($response)->rajaongkir->results[0]->costs[0]->cost[0]->value;
 			$etd = json_decode($response)->rajaongkir->results[0]->costs[0]->cost[0]->etd;
+			array_push($data_ongkir, $ongkir);
+			$total_ongkir += $ongkir;
+ 		}
 
 		$data['carts'] = $this->cart->select('*, distributor.id as distributor_id, cart_item.id as cart_id')
 		->join('products', 'products.id = product_id', 'inner')
@@ -234,10 +234,21 @@ class Transaksi extends BaseController
 		->where('cart_item.user_id', user()->id)
 		->find();
 
-		foreach ($cart_ids as $cart_id) {
-    		if(count($this->detail_pengirim->where('cart_id', $cart_id)->find()) > 0){
-    	
-				$pengirim_id= $this->detail_pengirim->where('cart_id', $cart_id)->findAll();
+		for ($i=0; $i < count($cart_ids); $i++) {
+			if(count($this->detail_pengirim->where('cart_id', $cart_ids[$i])->find()) > 0){
+				
+				$id_detail_pengiriman = $this->detail_pengirim->where('cart_id', $cart_ids[$i])->find()[0]['id'];
+				
+				$data_ongkir_baru = 
+				[
+					"id" => $id_detail_pengiriman,
+					"ongkir_produk" => $data_ongkir[$i],
+				];
+				
+				$this->detail_pengirim->save($data_ongkir_baru);
+				
+				$pengirim_id= $this->detail_pengirim->where('cart_id', $cart_ids[$i])->findAll();
+				
 				foreach ($pengirim_id as $id) {
 
 					$id_pengiriman = $this->pengirim->find($id['pengiriman_id']);
@@ -245,27 +256,29 @@ class Transaksi extends BaseController
 					$this->pengirim->save([
 						"id" => $id_pengiriman['id'],
 						"kurir" => $courier,
-						"ongkir" => $ongkir,
+						"ongkir" => $total_ongkir,
 						"etd" => $etd ? $etd : 'Tidak temukan' 
 					]);
 
 					return redirect()->back();
-				}
-					
-    		}
+				}					
+			}
+
+			
     	}
 		
 
 		$this->pengirim->save([
 			"user_id" => user()->id,
 			"kurir" => $courier,
-			"ongkir" => $ongkir,
+			"ongkir" => $total_ongkir,
 			"etd" => $etd ? $etd : 'Tidak temukan' 
 		]);
 
-		foreach($cart_ids as $cart){
+		for($i=0; $i < count($cart_ids); $i++){
 			$this->detail_pengirim->save([
-				"cart_id" => $cart, 
+				"cart_id" => $cart_ids[$i], 
+				"ongkir_produk" => $data_ongkir[$i], 
 				"pengiriman_id" => $this->pengirim->getInsertID(), 
 			]);
 		}

@@ -14,7 +14,7 @@ class DetailPengirimanModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['cart_id', 'pengiriman_id'];
+	protected $allowedFields        = ['cart_id', 'pengiriman_id', 'ongkir_produk'];
 
 	// Dates
 	protected $useTimestamps        = true;
