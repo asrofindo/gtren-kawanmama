@@ -548,13 +548,14 @@ class Product extends BaseController
 	}
 	
 	public function update_stock($id){
+		
 		$distributor_id = $this->distributor->where('user_id', user()->id)->find()[0]['id'];
 
 		$data = [
 			'distributor_id' => intval($distributor_id),
 			'product_id' => $id
 		];
-
+		
 		if($this->productDistributor->where('product_id', $id)->where('distributor_id', $distributor_id)->find()){
 			session()->setFlashdata('danger', 'produk sudah ada');
 		    return redirect()->back();

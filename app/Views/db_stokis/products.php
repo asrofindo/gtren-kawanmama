@@ -90,7 +90,7 @@
                                         <div class="dropdown-menu">
                                             
                                             <a class="dropdown-item" href="<?= base_url('products/stockist/edit/'.$product->product_id)?>/<?= $product->d_id?>">Edit Detail</a>
-                                            <a class="dropdown-item" href="<?= base_url('products/delete/stock/'.$product->id)  ?>">Delete Stok</a>
+                                            <a class="dropdown-item" href="<?= base_url('products/delete/stock/'.$product->product_id)  ?>">Delete Stok</a>
 
                                         </div>
                                     </div> <!-- dropdown //end -->
