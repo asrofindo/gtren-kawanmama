@@ -32,7 +32,7 @@ class Member extends BaseController
 		if ($this->request->getPost('role') != null) {
 			$users->like('auth_groups.name', $this->request->getPost('role'));
 		}
-		if ($this->request->getPost('name')) {
+		if ($this->request->getPost('name') != null) {
 			$users->like('users.username', $this->request->getPost('name'));
 		}
 		$users = $users->get();

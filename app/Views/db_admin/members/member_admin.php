@@ -5,17 +5,28 @@
         <h2 class="content-title card-title">Data Pengguna </h2>
         <p>Add, edit or delete a Data</p>
     </div>
-    <div>
-        <form method="post" action="<?= base_url('/members') ?>">            
-            <input type="text" placeholder="Search Username" class="form-control" name="user">
-            <input type="text" placeholder="Search role" class="form-control" name="role">
-            <button type="submit" class="btn btn-info btn-sm w-100 m-1"> search </button>
-        </form>
-    </div>
 </div>
 <?= view('Myth\Auth\Views\_message_block') ?>
 <div class="card">
     <div class="card-body">
+        <form method="post" action="<?= base_url('/members') ?>">            
+            <div class="row gx-3">
+            <div class="col-lg-4 col-md-6 me-auto">
+                <input type="text" placeholder="Search Username..." class="form-control" name="name">
+            </div>
+            <div class="col-lg-2 col-6 col-md-3">
+                <select class="form-select"  name="role">
+                    <option>user</option>
+                    <option>admin</option>
+                    <option value="stockist">Distributor</option>
+                    <option>affiliate</option>
+                </select>
+            </div>
+            <div class="col-lg-2 col-6 col-md-3">
+                <button type="submit" class="btn btn-info btn-sm w-100 m-1">Search </button>
+            </div>
+        </form>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
