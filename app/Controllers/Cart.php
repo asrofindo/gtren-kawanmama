@@ -31,16 +31,13 @@ class Cart extends BaseController
 		if ($id!=null) {
 			$data['affiliate_link']='/src/'.$id;
 		}
-		$transaksi = $this->cart->select('user_id, product_id, distributor_id, total, amount, id')
+		$transaksi = $this->cart->select('user_id, product_id, distributor_id, total, amount, id, status')
 		->where('user_id', user()->id)
 		->where('product_id', $product_id)
+		->where('status', null)
 		->where('distributor_id', $distributor_id)->find();
-		
-		if(count($transaksi) == 0){
-			$this->cart->save($data);
 
-			return redirect()->to('/cart');
-		} else {
+		if(count($transaksi) > 0){
 			$data = [
 				"id" => $transaksi[0]->id,
 				"product_id" => $product_id,
@@ -53,7 +50,14 @@ class Cart extends BaseController
 			->where('product_id', $product_id)
 			->where('distributor_id', $distributor_id)->replace($data);
 			return redirect()->to('/cart');
-		}
+		} 
+		else {
+			$this->cart->save($data);
+
+			return redirect()->to('/cart');
+		} 
+
+		return redirect()->to('/cart');
 		
 	}
 

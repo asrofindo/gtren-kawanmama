@@ -35,6 +35,23 @@ class Order extends BaseController
 
 		$this->detailtransaksi->save($data);
 
+		
+		// ubah stok product distributor
+		$product_transaksi = $this->detailtransaksi->select('*, product_distributor.id as pd_id')
+		->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id')
+		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
+		->join('distributor', 'distributor.id = cart_item.distributor_id')
+		->join('product_distributor', 'product_distributor.distributor_id = cart_item.distributor_id AND product_distributor.product_id = cart_item.product_id')
+		->where('detailtransaksi.id', $id)->find();
+
+
+		$data = [
+			"id" => $product_transaksi[0]['pd_id'],
+			"jumlah" => $product_transaksi[0]['jumlah'] - $product_transaksi[0]['amount']
+		];
+
+		$this->product_distributor->save($data);
+
 		return redirect()->back();
 	}
 
@@ -188,23 +205,7 @@ class Order extends BaseController
 
 		$this->model->save($data);
 
-
-		// ubah stok product distributor
-		$product_transaksi = $this->detailtransaksi->select('*, product_distributor.id as pd_id')
-		->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id')
-		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
-		->join('distributor', 'distributor.id = cart_item.distributor_id')
-		->join('product_distributor', 'product_distributor.distributor_id = cart_item.distributor_id AND product_distributor.product_id = cart_item.product_id')
-		->where('detailtransaksi.id', $id)->find();
-
-
-		$data = [
-			"id" => $product_transaksi[0]['pd_id'],
-			"jumlah" => $product_transaksi[0]['jumlah'] - $product_transaksi[0]['amount']
-		];
-
-		$this->product_distributor->save($data);
-
 		return redirect()->back();
 	}
+
 }
