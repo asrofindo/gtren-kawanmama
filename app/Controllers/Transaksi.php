@@ -44,8 +44,7 @@ class Transaksi extends BaseController
 		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
 		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
 		->where('cart_item.user_id', user()->id)
-		->findAll();
-
+		->where('cart_item.status', null)->findAll();
 
 	 	$data_cart = [];
 		foreach ($data['carts'] as $cart ) {
@@ -144,21 +143,11 @@ class Transaksi extends BaseController
 		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
 		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
 		->where('cart_item.user_id', user()->id)
+		->where('cart_item.status', null)
 		->findAll();
 
-		$data_cart = [];
-		foreach ($data['carts'] as $cart ) {
-	     	if($cart->d_id == null){
-     		 	
-     		 	array_push($data_cart, $cart);
-	     	} else {
-	     		$data['carts'] = [];
-	     	}
-	    }
 
-	    $data['carts'] = $data_cart;
-
-		$this->transaksi->insert(["user_id" => user()->id, "bill_id" => $bill, "status_pembayaran" => "proses", "total" => $total]);
+		$this->transaksi->insert(["user_id" => user()->id, "bill_id" => $bill, "status_pembayaran" => "pending", "total" => $total]);
 		
 		foreach($data['carts'] as $cart){
 

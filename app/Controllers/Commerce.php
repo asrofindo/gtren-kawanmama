@@ -45,7 +45,8 @@ class Commerce extends BaseController
 		$data['carts'] = $this->cart->select('*, cart_item.id as id, detailtransaksi.id as d_id')
 	      ->join('products', "products.id = cart_item.product_id ", 'left')
 	      ->join('detailtransaksi', "cart_item.id = detailtransaksi.cart_id ", 'left')
-	      ->where('cart_item.user_id', user()->id)->findAll();
+	      ->where('cart_item.user_id', user()->id)
+	      ->where('cart_item.status', null)->findAll();
 	    $data_cart = [];
 	    
 	    foreach ($data['carts'] as $cart ) {

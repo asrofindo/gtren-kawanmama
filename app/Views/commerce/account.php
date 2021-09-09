@@ -68,7 +68,15 @@
                                                             <tr>
                                                                 <td>ord<?= $transaksi->id;  ?></td>
                                                                 <td><?= $transaksi->created_at;  ?></td>
-                                                                <td><?= $transaksi->status_pembayaran; ?></td>
+                                                                <td>
+                                                                     <?php if($transaksi->status_pembayaran == 'pending'): ?>
+                                                                        <span class="badge rounded-pill alert-warning">Menunggu Pembayaran</span>
+                                                                    <?php elseif($transaksi->status_pembayaran == 'paid'): ?>
+                                                                        <span class="badge rounded-pill alert-success">Sudah Dibayar</span>
+                                                                     <?php elseif($transaksi->status_pembayaran == 'cancel'): ?>
+                                                                        <span class="badge rounded-pill alert-danger">di gagalkan</span>
+                                                                    <?php endif; ?>
+                                                                </td>
                                                                 <td><?= $transaksi->total; ?></td>
                                                                 <td><a href="<?= base_url() ?>/detail/<?= $transaksi->id ?>" class="btn-small d-block">Detail</a></td>
                                                             </tr>
@@ -118,12 +126,14 @@
                                                                 <td><?= $order->resi ? $order->resi: 'proses'; ?></td>
                                                                 <td><?= $order->created_at;  ?></td>
                                                                 <td>
-                                                                    <?php if($order->status_barang == 'Dikirim'): ?>
+                                                                    <?php if($order->status_barang == 'dikirim'): ?>
                                                                         <a href="<?= base_url() ?>/order/verify/<?= $order->id ?>" class="btn-small d-block">
                                                                             Sudah Diterima
                                                                         </a>
-                                                                    <?php elseif($order->status_barang == 'refund'): ?>
-                                                                        refund
+                                                                    <?php elseif($order->status_barang == null): ?>
+                                                                        Menunggu Pembayaran
+                                                                    <?php elseif($order->status_pembayaran == 'pending'): ?>
+                                                                        Menunggu Pembayaran
                                                                     <?php elseif($order->status_barang == 'diterima'): ?>
                                                                         selesai
                                                                     <?php else: ?>

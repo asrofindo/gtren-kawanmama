@@ -35,7 +35,7 @@ class Order extends BaseController
 
 		$this->detailtransaksi->save($data);
 
-		
+
 		// ubah stok product distributor
 		$product_transaksi = $this->detailtransaksi->select('*, product_distributor.id as pd_id')
 		->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id')
@@ -151,7 +151,10 @@ class Order extends BaseController
 		// ubah status detail transaksi
 		$data['detailtransaksi'] = [
 			"id" => $id,
-			"status_barang" => "refund"
+			"status_barang" => "refund",
+			"stockist_commission" => null,
+			"affiliate_commission" => null,
+			"stockist_commission" => null,
 		];
 
 		$this->detailtransaksi->save($data['detailtransaksi']);

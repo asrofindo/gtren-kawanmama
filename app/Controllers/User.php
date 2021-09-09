@@ -68,7 +68,7 @@ class User extends BaseController
 		->join('pengiriman', 'detailpengiriman.pengiriman_id = pengiriman.id')
 		->where('transaksi.id', $transaksi_id)
 		->find();
-
+		
 		return view('commerce/account', $data);
 	}
 

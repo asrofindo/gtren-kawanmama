@@ -52,10 +52,10 @@
                             <td><b><?php echo $order->username; ?></b></td>
                             <td><?php echo $order->total ?></td>
                             <td>
-                                <?php if($order->status_pembayaran == 'pending' || $order->status_pembayaran == 'proses' ): ?>
-                                    <span class="badge rounded-pill alert-warning">Pending</span>
+                                <?php if($order->status_pembayaran == 'pending'): ?>
+                                    <span class="badge rounded-pill alert-warning">Menunggu Pembayaran</span>
                                 <?php elseif($order->status_pembayaran == 'paid'): ?>
-                                    <span class="badge rounded-pill alert-success">di bayar</span>
+                                    <span class="badge rounded-pill alert-success">Sudah Dibayar</span>
                                  <?php elseif($order->status_pembayaran == 'cancel'): ?>
                                     <span class="badge rounded-pill alert-danger">di gagalkan</span>
                                 <?php endif; ?>
