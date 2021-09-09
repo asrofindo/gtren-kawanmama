@@ -67,7 +67,11 @@
                                     <div class="dropdown">
                                         <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_vert"></i> </a>
                                         <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="<?= base_url('products/update/stock/'.$product->id)  ?>">Jual</a>
+                                        <?php if(in_groups(3) && !in_groups(1)){ ?>
+
+                                        <a class="dropdown-item" href="<?= base_url('products/update/stock/'.$product->id)  ?>">Jual Product</a>
+                                        <?php }?>
+
                                             <a class="dropdown-item" href="<?= base_url('products/edit/'.$product->id)  ?>">Edit info</a>
                                             <a class="dropdown-item text-danger" href="<?= base_url('products/delete/'.$product->id)  ?>">Delete</a>
                                         </div>

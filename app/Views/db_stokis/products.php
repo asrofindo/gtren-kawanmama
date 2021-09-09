@@ -66,11 +66,12 @@
                                 <th>product</th>
                                 <th class="d-none d-sm-block">harga member</th>
                                 <th >harga non member</th>
+                                <th >jumlah</th>
                                 <th class="text-end">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($products as $product): ?>
+                            <?php foreach ($products as $product): ?>
                             <tr>
                                 <td class="text-center">
                                     <?php for($i = 0; $i < 1; $i++): ?>
@@ -82,13 +83,14 @@
                                 </td>
                                 <td class="d-none d-sm-block"><?= $product->sell_price ?></td>
                                 <td ><?= $product->fixed_price?></td>
-          
+                                <td ><?= $product->jumlah?></td>
                                 <td class="text-end">
                                     <div class="dropdown">
                                         <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_vert"></i> </a>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="<?= base_url('products/stockist/edit/'.$product->id.'/'.$product->distributor_id)  ?>">Edit info</a>
-                                            <a class="dropdown-item" href="<?= base_url('products/delete/stock/'.$product->id)  ?>">Delete Stok</a>
+                                            
+                                            <a class="dropdown-item" href="<?= base_url('products/stockist/edit/'.$product->product_id)?>/<?= $product->d_id?>">Edit Detail</a>
+                                            <a class="dropdown-item" href="<?= base_url('products/delete/stock/'.$product->product_id)?>">Delete Stok</a>
 
                                         </div>
                                     </div> <!-- dropdown //end -->
