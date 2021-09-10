@@ -57,7 +57,7 @@
                             <td><b><?php echo $order->name; ?></b></td>
                             <td><?php echo $order->status_barang == null ? "menunggu pengiriman" : $order->status_barang; ?></td>
                             <td><?php echo $order->status_pembayaran; ?></td>
-                            <td>$<?php echo $order->total; ?></td>
+                            <td>$<?php echo $order->total + $order->ongkir_produk; ?></td>
                             <td><?php echo $order->resi; ?></td>
                             <td><?php echo $order->created_at; ?></td>
                             <td class="text-end">
