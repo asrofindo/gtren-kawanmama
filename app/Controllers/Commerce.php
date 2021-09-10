@@ -22,7 +22,7 @@ class Commerce extends BaseController
 	public function index()
 	{
 		if (user()!=null && user()->phone == null) {
-			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomer HP');
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor HP');
 			return redirect()->to('/profile');
 		}
 		$model = new OfferModel();
@@ -33,7 +33,7 @@ class Commerce extends BaseController
 	public function about()
 	{
 		if (user()!=null && user()->phone == null) {
-			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomer HP');
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor HP');
 			return redirect()->to('/profile');
 		}
 		$data=$this->data;
@@ -45,7 +45,7 @@ class Commerce extends BaseController
 	public function Cart($id=null)
 	{
 		if (user()!=null && user()->phone == null) {
-			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomer HP');
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor HP');
 			return redirect()->to('/profile');
 		}
 		$data['title']='Cart | Gtren';

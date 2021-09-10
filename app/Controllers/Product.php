@@ -76,7 +76,7 @@ class Product extends BaseController
 	public function commerce()
 	{
 		if (user()!=null && user()->phone == null) {
-			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomer HP');
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor HP');
 			return redirect()->to('/profile');
 		}
 		$data = $this->data;
@@ -108,7 +108,7 @@ class Product extends BaseController
 			if (empty($user)) {
 				return redirect()->to('/product/'.$slug);
 			}
-			set_cookie("affiliate",(string)$id,((3600*24)*30));
+			set_cookie("affiliate",(string)$id,(((3600*24)*30)*6));
 		}
 
 		$data['affiliate']= get_cookie('affiliate');
