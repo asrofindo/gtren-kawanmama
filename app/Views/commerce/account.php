@@ -571,7 +571,7 @@
                                                         <label>Transfer Bank<span class="required">*</span></label>
                                                         <select required="" class="form-control square" name="bill" id="bill">
                                                             <?php foreach($bills as $bill): ?>
-                                                                <option selected value="<?= $bill->bank_name  ?> - <?= $bill->bank_number?>">
+                                                                <option selected value="<?= $bill->id;  ?>">
                                                                     <?= $bill->bank_name  ?> - <?= $bill->bank_number  ?></option>
                                                             <?php endforeach; ?>
                                                         </select>

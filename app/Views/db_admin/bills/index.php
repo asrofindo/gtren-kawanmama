@@ -104,17 +104,18 @@
                     <th>Nama Bank</th>
                     <th>Nomor Rekening</th>
                     <th>Nama Pemilik</th>
+                    <th>Total</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
 
             <tbody>
                 <?php if (isset($bill)): ?>
-
                         <tr>
                             <td><?= $bill->bank_name ?></td>
                             <td><?= $bill->bank_number ?></td>
                             <td><?= $bill->owner ?></td>
+                            <td><?= $bill->total ?></td>
                             <td>
                                 <a class="btn btn-light rounded btn-sm font-sm" href="<?= base_url('bills/edit/'.$bill->id) ?>">Edit</a> 
                                 <a class="btn btn-brand rounded btn-sm font-sm" href="<?= base_url('bills/delete/'.$bill->id) ?>">Hapus</a>
@@ -127,6 +128,8 @@
                             <td><?= $bill->bank_name ?></td>
                             <td><?= $bill->bank_number ?></td>
                             <td><?= $bill->owner ?></td>
+                            <td><?= $bill->total ?></td>
+                            
                             <td>
                                 <a class="btn btn-light rounded btn-sm font-sm" href="<?= base_url('bills/edit/'.$bill->id) ?>">Edit</a> 
                                 <a class="btn btn-brand rounded btn-sm font-sm" href="<?= base_url('bills/delete/'.$bill->id) ?>">Hapus</a>

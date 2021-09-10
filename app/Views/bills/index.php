@@ -102,7 +102,8 @@
     				<th>No</th>
     				<th>Nama Bank</th>
     				<th>Nomor Rekening</th>
-    				<th>Nama Pemilik</th>
+                    <th>Nama Pemilik</th>
+    				<th>Total</th>
     				<th>Aksi</th>
     			</tr>
     		</thead>
@@ -115,7 +116,8 @@
     						<td><?= $no++ ?></td>
     						<td><?= $bill->bank_name ?></td>
     						<td><?= $bill->bank_number ?></td>
-    						<td><?= $bill->owner ?></td>
+                            <td><?= $bill->owner ?></td>
+    						<td><?= $bill->total ?></td>
     						<td><a href="<?= base_url('bill/edit/'.$bill->id) ?>">Edit</a> | <a href="<?= base_url('bill/delete/'.$bill->id) ?>">Hapus</a></td>
     					</tr>
     			

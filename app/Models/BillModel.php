@@ -14,7 +14,7 @@ class BillModel extends Model
 	protected $returnType           = 'App\Entities\Bill';
 	protected $useSoftDeletes       = true;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['bank_name', 'bank_number', 'owner'];
+	protected $allowedFields        = ['bank_name', 'bank_number', 'owner', 'total'];
 
 	// Dates
 	protected $useTimestamps        = true;

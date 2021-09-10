@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\TransaksiModel;
+use App\Models\BillModel;
 use App\Models\ProductDistributorModel;
 use App\Models\DetailTransaksiModel;
 use App\Models\PengirimanModel;
@@ -19,10 +20,17 @@ class Order extends BaseController
 		$this->detail_pengiriman = new DetailPengirimanModel();
 		$this->productdistributor = new ProductDistributorModel();
 		$this->pendapatan = new PendapatanModel();
+		$this->bills = new BillModel();
 	}
 	public function update($id)
 	{
 		$status = $this->request->getPost("status");
+		if($status == 'paid'){
+			$data['transaksi'] = $this->model->find($id);
+			$data['bills'] = $this->bills->find($data['transaksi']->bill_id);
+			
+			$this->bills->save(["id" => $data['transaksi']->bill_id, "total" => $data['bills']->total + $data['transaksi']->total]);
+		}
 		$this->model->save(["id" => $id, "status_pembayaran" => $status]);
 		return redirect()->back();
 
@@ -81,6 +89,7 @@ class Order extends BaseController
 		->join('address', 'address.user_id = users.id')
 		->join('city', 'city.kode_pos = address.kode_pos')
 		->find($id);
+
 		// jika barang sudah direfund atau barang tidak ditolak oleh stockist maka tidak di perbolehkan 
 		if($data['detailtransaksi']['status_barang'] == 'refund'){
 			return redirect()->back();
@@ -149,6 +158,17 @@ class Order extends BaseController
 		];
 
 		$this->model->save($data['transaksi']);
+
+		// Ubah total bank
+		$bill_id = $this->model->find($transaksi_id)->bill_id;
+		$total = $this->bills->find($bill_id)->total;
+
+		$data['bills'] = [
+			"id" => $bill_id,
+			"total" => $total - ($data['detailtransaksi']['total'] + $ongkir)
+		];
+
+		$this->bills->save($data['bills']);
 
 		// ubah status detail transaksi
 		$data['detailtransaksi'] = [

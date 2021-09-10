@@ -294,6 +294,7 @@ class Transaksi extends BaseController
 		->join('users', 'users.id = pendapatan.user_id')
 		->where('pendapatan.status_dana', 'distributor')
 		->find();
+		$data['bills'] = $this->bill->findAll();
 		$data['pager'] = $this->transaksi->paginate(5, 'pendapatan');
 		$data['pager'] = $this->transaksi->pager;
 		return view('db_admin/pendapatan/pendapatan_stockist', $data);
@@ -305,6 +306,8 @@ class Transaksi extends BaseController
 		->join('users', 'users.id = pendapatan.user_id AND users.affiliate_link != "null"')
 		->where('pendapatan.status_dana', 'affiliate')
 		->find();
+
+		$data['bills'] = $this->bills->findAll();
 		$data['pager'] = $this->transaksi->paginate(5, 'pendapatan');
 		$data['pager'] = $this->transaksi->pager;
 		return view('db_admin/pendapatan/pendapatan_stockist', $data);
@@ -314,12 +317,46 @@ class Transaksi extends BaseController
 	{
 		$id = $this->request->getPost('pendapatan_id');
 		$wd = $this->request->getPost('wd');
+		$bill_id = $this->request->getPost('bill');
+
 		$data_pendapatan = $this->pendapatan->find($id);
+		$data_bill = $this->bill->find($bill_id);
+		
+		if($data_bill->total == null){
+			return redirect()->back();
+		}
+
+		if($data_pendapatan->total == 0){
+			return redirect()->back();
+		}
+		
+		$this->bill->save([
+			"id" => $bill_id,
+			"total" => $data_bill->total - $wd
+		]);
 
 		$data = [
 			"id" => $id,
 			"keluar" => $data_pendapatan->keluar + $wd,
-			"total" => $data_pendapatan->total - $wd
+			"total" => $data_pendapatan->total - $wd,
+			"penarikan_dana" => $data_pendapatan->penarikan_dana - $wd
+		];
+
+		
+		$this->pendapatan->save($data);
+
+		return redirect()->back();
+	}
+
+	public function tarik_dana()
+	{
+		$id = $this->request->getPost('pendapatan_id');
+		$wd = $this->request->getPost('wd');
+		$data_pendapatan = $this->pendapatan->find($id);
+
+		$data = [
+			"id" => $id,
+			"penarikan_dana" => $wd
 		];
 
 		if($data_pendapatan->total == 0){
@@ -329,5 +366,19 @@ class Transaksi extends BaseController
 		$this->pendapatan->save($data);
 
 		return redirect()->back();
+	}
+
+	public function keuangan()
+	{
+		$data['pendapatan_seller'] = $this->pendapatan->where('user_id', user()->id)->where('status_dana', 'distributor')->find();
+		$data['pendapatan_affiliate'] = $this->pendapatan->where('user_id', user()->id)->where('status_dana', 'affiliate')->find();
+
+		$data['detailtransaksi'] = $this->detail_transaksi
+		->join('distributor', 'distributor.id = detailtransaksi.distributor_id')
+		->join('detailpengiriman', 'detailpengiriman.cart_id = detailtransaksi.cart_id')
+		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
+		->where('distributor.user_id', user()->id)->findAll();
+
+		return view('db_stokis/keuangan', $data);
 	}
 }	

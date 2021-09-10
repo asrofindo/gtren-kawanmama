@@ -41,6 +41,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Masuk</th>
                         <th scope="col">Keluar</th>
+                        <th scope="col">widthdraw</th>
                         <th scope="col">Total</th>
                         <th scope="col">Date</th>
                         <th scope="col" class="text-end"> Action </th>
@@ -54,6 +55,7 @@
                             <td><?php echo $pendapatan->masuk ?></td>
                             <td><?php echo $pendapatan->keluar ?></td>
                             <td><?php echo $pendapatan->total; ?></td>
+                            <td><?php echo $pendapatan->penarikan_dana; ?></td>
                             <td><?= $pendapatan->created_at; ?></td>
                             <td class="text-end">
                                 <div class="dropdown">
@@ -90,7 +92,12 @@
             <form action="<?php base_url()  ?>/transaksi/wd" method="post">
                 <div class="mb-4">
                     <input type="hidden" id="pendapatan_id" name="pendapatan_id">
-                    <input class="form-control" type="text" name="wd" placeholder="Masukan Jumlah Dana">
+                    <input class="form-control" type="text" name="wd" placeholder="Masukan Jumlah Dana">    <br>
+                    <select class="form-control"  name="bill">
+                        <?php foreach ($bills as $bill): ?>
+                                <option value="<?php echo $bill->id ?>"><?php echo $bill->bank_name ?> - <?php echo $bill->owner ?></option>
+                        <?php endforeach ?>
+                    </select>
                     <button class="btn-sm btn-primary" type="submit">Kirim</button>
                 </div>
             </form>

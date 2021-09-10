@@ -68,7 +68,7 @@
                                         <?php endif; ?>
                                         <td><b><?= $upgrade->type ?></b></td>
                                         <td><b><?= $upgrade->affiliate_link ?></b></td>
-                                        <td><b><?= $upgrade->bill ?></b></td>
+                                        <td><b><?= $upgrade->bank_name ?> - <?= $upgrade->owner ?></b></td>
 		                                <td><b>Rp <?= $upgrade->total ?></b></td>
 		                                <td>
                                             <?php if($upgrade->status_request == 'pending'): ?>

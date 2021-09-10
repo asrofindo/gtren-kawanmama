@@ -14,7 +14,7 @@ class PendapatanModel extends Model
 	protected $returnType           = 'object';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['user_id', 'masuk', 'keluar', 'total', 'status_dana'];
+	protected $allowedFields        = ['user_id', 'masuk', 'keluar', 'total', 'status_dana', 'penarikan_dana'];
 
 	// Dates
 	protected $useTimestamps        = false;

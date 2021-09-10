@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\UpgradesModel;
 use App\Models\UniqueCodeModel;
+use App\Models\BillModel;
 use App\Models\GenerateModel;
 use App\Models\DistributorModel;
 use Myth\Auth\Models\UserModel;
@@ -19,6 +20,7 @@ class upgrades extends BaseController
 		$this->user = new UserModel();
 		$this->uniq = new UniqueCodeModel();
 		$this->generate = new GenerateModel();
+		$this->bill = new BillModel();
 		$this->distributor = new DistributorModel();
 		$this->group = new GroupModel();
 		$this->db      = \Config\Database::connect();
@@ -27,9 +29,10 @@ class upgrades extends BaseController
 
 	public function index()
 	{
-		$this->model->select('status_request, type, code, photo, total, bill');
+		$this->model->select('status_request, type, code, photo, upgrades.total, bill, bills.total as bill_total, bills.bank_name, bills.owner');
 		$this->model->select('users.username, users.affiliate_link, users.id as id_user, upgrades.user_id as id');
 		$this->model->join('users', 'users.id = upgrades.user_id', 'left');
+		$this->model->join('bills', 'bills.id = upgrades.bill', 'outer left');
 		$data['upgrades'] = $this->model->paginate(4, 'upgrades');
 		$data['pager'] = $this->model->pager;
 		return view('db_admin/upgrades/upgrades', $data);
@@ -131,6 +134,15 @@ class upgrades extends BaseController
 	public function update($id)
 	{
 		
+		$bill_id = $this->model->where('user_id', $id)->first()->bill;
+		$total = $this->model->where('user_id', $id)->first()->total;
+		$total_bill = $this->bill->find($bill_id)->total;
+		
+		$this->bill->save([
+			"id" => $bill_id,
+			"total" => $total_bill + $total
+		]);
+
 		$request = $this->request;
 		$this->group->addUserToGroup($id, 4);
 
