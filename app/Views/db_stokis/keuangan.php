@@ -26,7 +26,6 @@
                             <th>#ID</th>
                             <th scope="col">Masuk</th>
                             <th scope="col">Keluar</th>
-                            <th scope="col">WidthDraw</th>
                             <th scope="col">Total</th>
                             <th scope="col" class="text-end"> Action </th>
                         </tr>
@@ -37,7 +36,6 @@
                                 <td class="id"><?= $seller->id; ?></td>
                                 <td><?php echo $seller->masuk ?></td>
                                 <td><?php echo $seller->keluar ?></td>
-                                <td><?php echo $seller->penarikan_dana; ?></td>
                                 <td><?php echo $seller->total; ?></td>
                                 <td class="text-end">
                                     <div class="dropdown">
@@ -55,8 +53,7 @@
         </div> <!-- card-body end// -->
     </div> <!-- card end// -->
 
-    <div class="col-md-1"></div>    
-     <div class="card mb-4 col-md-5">
+     <div class="card mb-4 col-md-6">
         <header class="card-header">
             <div class="row gx-3">
                 <div class="col-lg-4 col-md-6 me-auto">
@@ -72,7 +69,6 @@
                             <th>#ID</th>
                             <th scope="col">Masuk</th>
                             <th scope="col">Keluar</th>
-                            <th scope="col">WidthDraw</th>
                             <th scope="col">Total</th>
                         </tr>
                     </thead>
@@ -82,7 +78,6 @@
                                 <td class="id"><?= $affiliate->id; ?></td>
                                 <td><?php echo $affiliate->masuk ?></td>
                                 <td><?php echo $affiliate->keluar ?></td>
-                                <td><?php echo $affiliate->penarikan_dana; ?></td>
                                 <td><?php echo $affiliate->total; ?></td>
                                 <td class="text-end">
                                     <div class="dropdown">
