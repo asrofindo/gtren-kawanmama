@@ -23,6 +23,17 @@
                                 <li class="nav-item">
                                     <a class="nav-link <?= ($segments[0] == "profile" ? "active" : null) ?>" id="account-detail-tab" href="<?= base_url('profile') ?>" role="tab" aria-controls="account-detail" aria-selected="true"><i class="fa fa-user-edit mr-15"></i>Account details</a>
                                 </li>
+
+                            <?php if (in_groups(4)) {?>
+                                <li class="nav-item">
+                                    <?php if(count($segments) > 1) : ?>
+                                    <a class="nav-link <?= ($segments[1] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Affiliasi Anda</a>
+                                    <?php else : ?>
+                                    <a class="nav-link <?= ($segments[0] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Affiliasi Anda</a>    
+                                    <?php endif; ?>
+                                </li>
+                            <?php } ?>
+                            <?php if (!in_groups(4)) {?>
                                 <li class="nav-item">
                                     <?php if(count($segments) > 1) : ?>
                                     <a class="nav-link <?= ($segments[1] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Upgrade Affiliate</a>
@@ -30,13 +41,25 @@
                                     <a class="nav-link <?= ($segments[0] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Upgrade Affiliate</a>    
                                     <?php endif; ?>
                                 </li>
+                            <?php } ?>
+                            <?php if (!in_groups(4)) {?>
                                  <li class="nav-item">
                                     <?php if(count($segments) > 1): ?>
                                     <a class="nav-link <?= ($segments[1] == "stockist" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/stockist') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Upgrade Stockist</a>
                                     <?php else : ?>
                                     <a class="nav-link <?= ($segments[0] == "stockist" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/stockist') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Upgrade Stockist</a> 
-                                <?php endif; ?>
+                                    <?php endif; ?>
                                 </li>
+                            <?php } ?>
+                            <?php if (in_groups(4)) {?>
+                                 <li class="nav-item">
+                                    <?php if(count($segments) > 1): ?>
+                                    <a class="nav-link <?= ($segments[1] == "stockist" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/stockist') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Toko Anda</a>
+                                    <?php else : ?>
+                                    <a class="nav-link <?= ($segments[0] == "stockist" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/stockist') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Toko Anda</a> 
+                                    <?php endif; ?>
+                                </li>
+                            <?php } ?>
                                 <li class="nav-item bg-danger">
                                     <a class="nav-link text-white" href="/logout"><i class="text-white fa fa-sign-out mr-15"></i>Logout</a>
                                 </li>

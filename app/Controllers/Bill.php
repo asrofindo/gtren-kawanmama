@@ -53,7 +53,7 @@ class Bill extends BaseController
 				} else{
 
 					session()->setFlashdata('success', 'Data Berhasil Disimpan');
-					return redirect()->to(base_url('bill'));
+					return redirect()->back();
 				}
 	        } else {
 				return redirect()->back()->withInput()->with('errors', $this->model->errors());
