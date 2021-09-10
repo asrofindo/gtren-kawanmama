@@ -137,7 +137,7 @@
                                     <td><?= $detail['stockist_commission'] + $detail['admin_commission'] + $detail['affiliate_commission'] - $detail['ongkir_produk']; ?></td>
                                     <td><?php echo $detail['stockist_commission']; ?></td>
                                     <td><?php echo $detail['admin_commission']; ?></td>
-                                    <td><?php echo $detail['affiliate_commission']?></td>
+                                    <td><?php echo $detail['affiliate_commission'] ? $detail['affiliate_commission']  : '0' ; ?></td>
                                     <td><?php echo $detail['ongkir_produk']; ?></td>
                                     <td class="text-end">
                                         <div class="dropdown">
