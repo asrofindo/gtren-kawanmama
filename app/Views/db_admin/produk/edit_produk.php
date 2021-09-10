@@ -139,7 +139,7 @@
                                 <a class="d-inline btn-sm btn-primary" href="<?= base_url('/products/delete_photo')?>/<?= $product->id ?>/<?= $i ?>">Hapus</a>     
                                 <?php endif; ?>        
                                 <img
-                                  src="<?= base_url('uploads/product_photos')?>/<?= $product->photos[$i] ?>"
+                                  src="<?= base_url() ?>/public/uploads/product_photos/<?= $product->photos[$i] ?>"
                                   class="w-100 shadow-1-strong mb-4"
                                   alt="jkkj"
                                 />
