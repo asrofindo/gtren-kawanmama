@@ -314,8 +314,20 @@ class Transaksi extends BaseController
 	{
 		$id = $this->request->getPost('pendapatan_id');
 		$wd = $this->request->getPost('wd');
+		$data_pendapatan = $this->pendapatan->find($id);
 
+		$data = [
+			"id" => $id,
+			"keluar" => $wd,
+			"total" => $data_pendapatan->total - $wd
+		];
+
+		if($data_pendapatan->total == 0){
+			return redirect()->back();
+		}
 		
+		$this->pendapatan->save($data);
 
+		return redirect()->back();
 	}
-}
+}	

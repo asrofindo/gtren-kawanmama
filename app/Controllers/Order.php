@@ -238,6 +238,7 @@ class Order extends BaseController
 				"user_id" => $transaksis[0]['penjual_id'],
 				"masuk" => $transaksis[0]['stockist_commission'],
 				"keluar" => null,
+				"status_dana" => "disributor",
 				"total" => $transaksis[0]['stockist_commission'],
 			];
 
@@ -250,6 +251,7 @@ class Order extends BaseController
 				$data['pendapatan'] = [
 					"user_id" => $transaksis[0]['affiliate_link'],
 					"masuk" => $transaksis[0]['affiliate_commission'],
+					"status_dana" => "affiliate",
 					"total" => $transaksis[0]['affiliate_commission'],
 				];
 				
