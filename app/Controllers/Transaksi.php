@@ -294,7 +294,7 @@ class Transaksi extends BaseController
 		->join('users', 'users.id = pendapatan.user_id')
 		->where('pendapatan.status_dana', 'distributor')
 		->find();
-		$data['bills'] = $this->bills->findAll();
+		$data['bills'] = $this->bill->findAll();
 		$data['pager'] = $this->transaksi->paginate(5, 'pendapatan');
 		$data['pager'] = $this->transaksi->pager;
 		return view('db_admin/pendapatan/pendapatan_stockist', $data);
@@ -307,7 +307,7 @@ class Transaksi extends BaseController
 		->where('pendapatan.status_dana', 'affiliate')
 		->find();
 
-		$data['bills'] = $this->bills->findAll();
+		$data['bills'] = $this->bill->findAll();
 		$data['pager'] = $this->transaksi->paginate(5, 'pendapatan');
 		$data['pager'] = $this->transaksi->pager;
 		return view('db_admin/pendapatan/pendapatan_stockist', $data);
