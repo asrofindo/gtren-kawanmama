@@ -62,9 +62,7 @@ class Category extends BaseController
 			'category' => $this->request->getPost('category'),
 			'description' => $this->request->getPost('description')
 		];
-
 		$update = $this->model->update($id, $data);
-
 		// Notif
 		if($update) {
 	        session()->setFlashdata('success', 'Data Berhasil Diupdate');

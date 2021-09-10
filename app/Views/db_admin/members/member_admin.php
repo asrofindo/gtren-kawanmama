@@ -70,7 +70,7 @@
                                         <?php }else{ ?>
                                             <a onclick = "return confirm('Yakin Non Aktivasi Akun');" class="dropdown-item" href="<?=base_url()?>/user/nonactive/<?=$user->id?>">Non Active Account</a>
                                         <?php } ?>
-                                            <a onclick = "return confirm('Yakin Data Akan Dihapus');" class="dropdown-item text-danger" href="<?=base_url()?>/user/delete/<?=$user->id?>">Delete</a>
+                                            <!-- <a onclick = "return confirm('Yakin Data Akan Dihapus');" class="dropdown-item text-danger" href="<?=base_url()?>/user/delete/<?=$user->id?>">Delete</a> -->
                                         </div>
                                     </div> <!-- dropdown //end -->
                                 </td>
