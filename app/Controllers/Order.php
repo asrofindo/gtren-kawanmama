@@ -161,12 +161,6 @@ class Order extends BaseController
 
 		$this->detailtransaksi->save($data['detailtransaksi']);
 
-
-
-
-
-
-
 		return redirect()->back();
 
 	}
@@ -221,10 +215,10 @@ class Order extends BaseController
 		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id' )
 		->join('distributor', 'distributor.id = cart_item.distributor_id')
 		->where('detailtransaksi.id', $id)->find();
+		
 		if(count($this->pendapatan->where('user_id', $transaksis[0]['penjual_id'])->find()) > 0){
 
 			$detail_transaksi = $this->pendapatan->where('user_id', $transaksis[0]['penjual_id'])->find();
-
 			$data['pendapatan'] = [
 				"id" => $detail_transaksi[0]->id,
 				"masuk" => $detail_transaksi[0]->masuk + $transaksis[0]['stockist_commission'],

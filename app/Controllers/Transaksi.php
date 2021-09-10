@@ -318,7 +318,7 @@ class Transaksi extends BaseController
 
 		$data = [
 			"id" => $id,
-			"keluar" => $wd,
+			"keluar" => $data_pendapatan->keluar + $wd,
 			"total" => $data_pendapatan->total - $wd
 		];
 

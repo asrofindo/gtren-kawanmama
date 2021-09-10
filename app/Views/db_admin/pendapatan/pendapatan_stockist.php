@@ -89,7 +89,7 @@
           <div class="modal-body">
             <form action="<?php base_url()  ?>/transaksi/wd" method="post">
                 <div class="mb-4">
-                    <input style="display: none" type="text" id="pendapatan_id" name="pendapatan_id">
+                    <input type="hidden" id="pendapatan_id" name="pendapatan_id">
                     <input class="form-control" type="text" name="wd" placeholder="Masukan Jumlah Dana">
                     <button class="btn-sm btn-primary" type="submit">Kirim</button>
                 </div>
@@ -102,11 +102,10 @@
 
     $(document).ready(function(){
 
-        $('.btn-acc').on('click',function(){
+        $('.btn-acc').on('click',function(data){
 
-            $('.id').each((index, obj) => {
-                $('#pendapatan_id').val(obj.innerHTML);
-            })
+                let val = data.target.parentElement.parentElement.parentElement.parentElement.childNodes[1].innerHTML
+                $('#pendapatan_id').val(val);
 
             $('#myModal').modal('show');
         });

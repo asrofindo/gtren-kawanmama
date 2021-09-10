@@ -96,7 +96,7 @@
           <div class="modal-body">
             <form action="<?php base_url()  ?>/stockist/save/resi" method="post">
                 <div class="mb-4">
-                    <input style="display: none" type="text" id="order_id" name="order_id">
+                    <input type="text" id="order_id" name="order_id">
                     <input class="form-control" type="text" name="resi" placeholder="Masukan Nomor Resi">
                     <button class="btn-sm btn-primary" type="submit">Simpan</button>
                 </div>
@@ -111,9 +111,9 @@
 
         $('.btn-acc').on('click',function(){
 
-            $('.id').each((index, obj) => {
-                $('#order_id').val(obj.innerHTML);
-            })
+            let val = data.target.parentElement.parentElement.parentElement.parentElement.childNodes[1].innerHTML
+            
+            $('#order_id').val(val);
 
             $('#myModal').modal('show');
         });
