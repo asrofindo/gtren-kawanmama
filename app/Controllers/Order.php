@@ -108,7 +108,7 @@ class Order extends BaseController
 		->join('city', 'city.kode_pos = address.kode_pos')
 		->where('detailtransaksi.id', $id)
 		->find();
-
+		
 		//  ubah ongkir
 		$data['pengiriman'] = [
 			"id" => $data['detailtransaksi']['p_id'],
