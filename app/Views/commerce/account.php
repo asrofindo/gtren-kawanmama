@@ -475,11 +475,9 @@
                                         </div>
                                         <div class="card-body">
                                         <?php if( !empty(session()->getFlashdata('success'))){ ?>
-
-                                        <div class="alert alert-success bg-success text-white">
-                                            <?php echo session()->getFlashdata('success');?>
-                                        </div>
-
+                                            <div class="alert alert-success bg-success text-white">
+                                                <?php echo session()->getFlashdata('success');?>
+                                            </div>
                                         <?php } ?>
 
                                         <?php if(!empty(session()->getFlashdata('error'))){ ?>
@@ -492,13 +490,22 @@
                                             <form method="post" action="<?= base_url()?>/profile">
                                                 <div class="row">
                                                     <p>Sapaan<span class="required">*</span></p>
-                                                    <div class="form-group col-md-12">
-                                                    <select required id="inputState" class="form-control" name="greeting">
-                                                        <option selected><?= user()->greeting ?></option>
-                                                        <option>Kak</option>
-                                                        <option>Bapak</option>
-                                                        <option>ibu</option>
-                                                    </select>
+                                                    <div class="input-group">
+                                                        <div class="form-check">
+                                                        <label class="form-check-label m-2">
+                                                            <input type="radio" class="form-check-input" <?php if(user()->greeting=='Kak') echo 'checked'?> name="greeting" value="Kak" required>Kak
+                                                        </label>
+                                                        </div>
+                                                        <div class="form-check m-2">
+                                                        <label class="form-check-label">
+                                                            <input type="radio" class="form-check-input" <?php if(user()->greeting=='Pak') echo 'checked'?>  name="greeting" value="Pak" required>Pak
+                                                        </label>
+                                                        </div>
+                                                        <div class="form-check m-2">
+                                                        <label class="form-check-label">
+                                                            <input type="radio" class="form-check-input" <?php if(user()->greeting=='Bu') echo 'checked'?> name="greeting" value="Bu" required>Bu
+                                                        </label>
+                                                        </div>
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Nama Lengkap <span class="required">*</span></label>
