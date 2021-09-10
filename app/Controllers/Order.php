@@ -210,7 +210,7 @@ class Order extends BaseController
 		if(count($this->pendapatan->where('user_id', $transaksis[0]['penjual_id'])->find()) > 0){
 
 			$detail_transaksi = $this->pendapatan->where('user_id', $transaksis[0]['penjual_id'])->find();
-			dd($detail_transaksi);
+
 			$data['pendapatan'] = [
 				"id" => $detail_transaksi[0]->id,
 				"masuk" => $detail_transaksi[0]->masuk + $transaksis[0]['stockist_commission'],
