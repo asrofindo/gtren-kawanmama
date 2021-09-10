@@ -41,8 +41,8 @@
                         <th scope="col">Name</th>
                         <th scope="col">Masuk</th>
                         <th scope="col">Keluar</th>
-                        <th scope="col">widthdraw</th>
                         <th scope="col">Total</th>
+                        <th scope="col">widthdraw</th>
                         <th scope="col">Date</th>
                         <th scope="col" class="text-end"> Action </th>
                     </tr>

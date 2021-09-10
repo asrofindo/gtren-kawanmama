@@ -266,7 +266,7 @@ class Order extends BaseController
 				"user_id" => $transaksis[0]['penjual_id'],
 				"masuk" => $transaksis[0]['stockist_commission'],
 				"keluar" => null,
-				"status_dana" => "disributor",
+				"status_dana" => "distributor",
 				"total" => $transaksis[0]['stockist_commission'],
 			];
 
