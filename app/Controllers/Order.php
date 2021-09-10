@@ -210,11 +210,11 @@ class Order extends BaseController
 		if(count($this->pendapatan->where('user_id', $transaksis[0]['penjual_id'])->find()) > 0){
 
 			$detail_transaksi = $this->pendapatan->where('user_id', $transaksis[0]['penjual_id'])->find();
-	
+
 			$data['pendapatan'] = [
-				"id" => $detail_transaksi[0]['id'],
-				"masuk" => $detail_transaksi[0]['masuk'] + $transaksis[0]['stockist_commission'],
-				"total" => $detail_transaksi[0]['total'] + $transaksis[0]['stockist_commission'],
+				"id" => $detail_transaksi[0]->id,
+				"masuk" => $detail_transaksi[0]->masuk + $transaksis[0]['stockist_commission'],
+				"total" => $detail_transaksi[0]->total + $transaksis[0]['stockist_commission'],
 			];
 
 			$this->pendapatan->save($data['pendapatan']);
@@ -223,9 +223,9 @@ class Order extends BaseController
 				$detail_transaksi = $this->pendapatan->where('user_id', $transaksis[0]['affiliate_link'])->find();
 				
 				$data['pendapatan'] = [
-					"id" => $detail_transaksi['id'],
-					"masuk" => $detail_transaksi['masuk'] + $transaksis[0]['affiliate_commission'],
-					"total" => $detail_transaksi['total'] + $transaksis[0]['affiliate_commission'],
+					"id" => $detail_transaksi[0]->id,
+					"masuk" => $detail_transaksi[0]->masuk + $transaksis[0]['affiliate_commission'],
+					"total" => $detail_transaksi[0]->total + $transaksis[0]['affiliate_commission'],
 				];
 
 				$this->pendapatan->save($data['pendapatan']);
