@@ -17,7 +17,7 @@ class Order extends BaseController
 		$this->detailtransaksi = new DetailTransaksiModel();
 		$this->pengiriman = new PengirimanModel();
 		$this->detail_pengiriman = new DetailPengirimanModel();
-		$this->product_distributor = new ProductDistributorModel();
+		$this->productdistributor = new ProductDistributorModel();
 		$this->pendapatan = new PendapatanModel();
 	}
 	public function update($id)
@@ -183,6 +183,20 @@ class Order extends BaseController
 		];
 
 		$this->detailtransaksi->save($data);
+		
+		$detail = $this->detailtransaksi
+		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
+		->find($order_id);
+
+		$distributor = $this->productdistributor
+		->where('distributor_id', $detail['distributor_id'])
+		->where('product_id', $detail['product_id'])->find();
+		$this->productdistributor->save([
+			"id" => $distributor[0]->id,
+			"jumlah" => $distributor[0]->jumlah - $detail['amount']
+		]);
+
+
 
 		return redirect()->back();
 	}
