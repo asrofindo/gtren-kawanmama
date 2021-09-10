@@ -96,7 +96,7 @@
           <div class="modal-body">
             <form action="<?php base_url()  ?>/stockist/save/resi" method="post">
                 <div class="mb-4">
-                    <input type="text" id="order_id" name="order_id">
+                    <input type="hidden" id="order_id" name="order_id">
                     <input class="form-control" type="text" name="resi" placeholder="Masukan Nomor Resi">
                     <button class="btn-sm btn-primary" type="submit">Simpan</button>
                 </div>
@@ -109,7 +109,7 @@
 
     $(document).ready(function(){
 
-        $('.btn-acc').on('click',function(){
+        $('.btn-acc').on('click',function(data){
 
             let val = data.target.parentElement.parentElement.parentElement.parentElement.childNodes[1].innerHTML
             
