@@ -108,43 +108,10 @@ class Order extends BaseController
 		->where('detailtransaksi.id', $id)
 		->find();
 
-
-		// variable untuk check raja ongkir
-		$weight = $data['detailtransaksi']['weight'] * $data['detailtransaksi']['amount'];
-		$destination = $data['detailtransaksi']['id_kota'];
-		$courier = $data['detailtransaksi']['kurir'];
-		$origin = $data['distributor'][0]['id_kota'];
-
-		// check raja ongkir
-		$curl = curl_init();
-		curl_setopt_array($curl, array(
-		  	CURLOPT_URL => "https://pro.rajaongkir.com/api/cost",
-		  	CURLOPT_RETURNTRANSFER => true,
-		  	CURLOPT_ENCODING => "",
-		 	CURLOPT_MAXREDIRS => 10,
-		  	CURLOPT_TIMEOUT => 100,
-		  	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		  	CURLOPT_CUSTOMREQUEST => "POST",
-		  	CURLOPT_POSTFIELDS => "origin={$origin}&originType=city&destination={$destination}&destinationType=subdistrict&weight={$weight}&courier={$courier}",
-		  	CURLOPT_HTTPHEADER => array(
-		    	"content-type: application/x-www-form-urlencoded",
-		    	"key: bfacde03a85f108ca1e684ec9c74c3a9"
-		  	),
-		));
-
-		$response = curl_exec($curl);
-		$err = curl_error($curl);
-
-		curl_close($curl);
-
-		// hasil data yang diperoleh dari raja ongkir
-		$ongkir = json_decode($response)->rajaongkir->results[0]->costs[0]->cost[0]->value;
-		$etd = json_decode($response)->rajaongkir->results[0]->costs[0]->cost[0]->etd;
-
 		//  ubah ongkir
 		$data['pengiriman'] = [
 			"id" => $data['detailtransaksi']['p_id'],
-			"ongkir" => $data['detailtransaksi']['ongkir'] - $ongkir
+			"ongkir" => $data['detailtransaksi']['ongkir'] -  $data['detailtransaksi']['ongkir_produk']
 		];
 
 		$this->pengiriman->save($data['pengiriman']);
@@ -154,7 +121,7 @@ class Order extends BaseController
 
 		$data['transaksi'] = [
 			"id" => $transaksi_id,
-			"total" => $total - ($data['detailtransaksi']['total'] + $ongkir)
+			"total" => $total - ($data['detailtransaksi']['total'] + $data['detailtransaksi']['ongkir_produk'])
 		];
 
 		$this->model->save($data['transaksi']);
@@ -165,7 +132,7 @@ class Order extends BaseController
 
 		$data['bills'] = [
 			"id" => $bill_id,
-			"total" => $total - ($data['detailtransaksi']['total'] + $ongkir)
+			"total" => $total - ($data['detailtransaksi']['total'] + $data['detailtransaksi']['ongkir_produk'])
 		];
 
 		$this->bills->save($data['bills']);
