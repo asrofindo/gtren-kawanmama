@@ -30,7 +30,7 @@
                                 <div class="product-image-slider">
                                     <?php foreach($product->photos as $photo): ?>
                                         <figure class="">
-                                            <img src="<?= base_url() ?>/uploads/product_photos/<?= $photo ?>" alt="product image">
+                                            <img src="<?= base_url() ?>/public/uploads/product_photos/<?= $photo ?>" alt="product image">
                                         </figure>
                                         <?php endforeach ?>
                                 </div>
@@ -38,7 +38,7 @@
                                 <div class="slider-nav-thumbnails pl-15 pr-15">
                                     <?php foreach($product->photos as $photo): ?>
                                         <div>
-                                            <img src="<?= base_url() ?>/uploads/product_photos/<?= $photo ?>" alt="">
+                                            <img src="<?= base_url() ?>/public/uploads/product_photos/<?= $photo ?>" alt="">
                                         </div>
                                         <?php endforeach ?>
                                 </div>
