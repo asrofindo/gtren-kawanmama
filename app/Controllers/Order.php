@@ -212,7 +212,7 @@ class Order extends BaseController
 			$detail_transaksi = $this->pendapatan->where('user_id', $transaksis[0]['penjual_id'])->find();
 			dd($detail_transaksi);
 			$data['pendapatan'] = [
-				"id" => $detail_transaksi['id'],
+				"id" => $detail_transaksi[0]->id,
 				"masuk" => $detail_transaksi['masuk'] + $transaksis[0]['stockist_commission'],
 				"total" => $detail_transaksi['total'] + $transaksis[0]['stockist_commission'],
 			];
