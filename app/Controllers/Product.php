@@ -536,9 +536,6 @@ class Product extends BaseController
 
 	public function delete_category($id, $category)
 	{
-
-
-
 		$categories = $this->model->find($id)->categories;
 		print_r(array_filter($categories, 'strlen'));
 		unset($categories[$category]);
@@ -549,6 +546,8 @@ class Product extends BaseController
   		if($this->model->save($data)){
   			return redirect()->back();
   		}
+		  return redirect()->back();
+
 	}
 
 	public function productByCategory($id)

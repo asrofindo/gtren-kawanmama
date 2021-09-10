@@ -89,7 +89,7 @@
                                         <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_vert"></i> </a>
                                         <div class="dropdown-menu">
                                             
-                                            <a class="dropdown-item" href="<?= base_url('products/stockist/edit/'.$product->product_id)?>/<?= $product->d_id?>">Perbarui Stok</a>
+                                            <a class="dropdown-item" href="<?= base_url('products/stockist/edit/'.$product->product_id)?>/<?= $product->d_id?>">Edit Stok</a>
                                             <a class="dropdown-item" href="<?= base_url('products/delete/stock/'.$product->product_id)?>">Hapus Stok</a>
 
                                         </div>
