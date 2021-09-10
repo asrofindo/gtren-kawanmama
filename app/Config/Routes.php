@@ -229,6 +229,10 @@ $routes->group('', function($routes)
 	$routes->post('transaksi/check', 'Transaksi::check');
 	$routes->post('transaksi/save', 'Transaksi::save_transaction');
 
+	$routes->get('hutang/stockist', 'Transaksi::hutang_stockist');
+	$routes->get('hutang/affiliate', 'Transaksi::hutang_affiliate');
+	$routes->post('transaksi/wd', 'Transaksi::wd');
+
 }
 );
 

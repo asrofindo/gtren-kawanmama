@@ -6,6 +6,7 @@ use App\Models\ProductDistributorModel;
 use App\Models\DetailTransaksiModel;
 use App\Models\PengirimanModel;
 use App\Models\DetailPengirimanModel;
+use App\Models\PendapatanModel;
 use App\Controllers\BaseController;
 
 class Order extends BaseController
@@ -17,6 +18,7 @@ class Order extends BaseController
 		$this->pengiriman = new PengirimanModel();
 		$this->detail_pengiriman = new DetailPengirimanModel();
 		$this->product_distributor = new ProductDistributorModel();
+		$this->pendapatan = new PendapatanModel();
 	}
 	public function update($id)
 	{
@@ -196,19 +198,72 @@ class Order extends BaseController
 
 		$this->detailtransaksi->save($data);
 
-		// ubah status transaksi 
-		$transaksi_id = $this->detailtransaksi
+
+		// $this->model->save($data);
+
+		$transaksis = $this->detailtransaksi
+		->select('*, distributor.user_id as penjual_id, cart_item.user_id as pembeli_id')
 		->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id')
+		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id' )
+		->join('distributor', 'distributor.id = cart_item.distributor_id')
 		->where('detailtransaksi.id', $id)->find();
+		if(count($this->pendapatan->where('user_id', $transaksis[0]['penjual_id'])->find()) > 0){
 
-		$data = [
-			"id" => $transaksi_id[0]['transaksi_id'],
-			"status_pembayaran" => "dibayar"
-		];
+			$detail_transaksi = $this->pendapatan->where('user_id', $transaksis[0]['penjual_id'])->find();
+	
+			$data['pendapatan'] = [
+				"id" => $detail_transaksi[0]['id'],
+				"masuk" => $detail_transaksi[0]['masuk'] + $transaksis[0]['stockist_commission'],
+				"total" => $detail_transaksi[0]['total'] + $transaksis[0]['stockist_commission'],
+			];
 
-		$this->model->save($data);
+			$this->pendapatan->save($data['pendapatan']);
 
+			if(count($this->pendapatan->where('user_id', $transaksis[0]['affiliate_link'])->find()) > 0){
+				$detail_transaksi = $this->pendapatan->where('user_id', $transaksis[0]['affiliate_link'])->find();
+				
+				$data['pendapatan'] = [
+					"id" => $detail_transaksi['id'],
+					"masuk" => $detail_transaksi['masuk'] + $transaksis[0]['affiliate_commission'],
+					"total" => $detail_transaksi['total'] + $transaksis[0]['affiliate_commission'],
+				];
+
+				$this->pendapatan->save($data['pendapatan']);
+			}
+		}  
+
+		else {
+			
+			$data['pendapatan'] = [
+				"user_id" => $transaksis[0]['penjual_id'],
+				"masuk" => $transaksis[0]['stockist_commission'],
+				"keluar" => null,
+				"status_dana" => "disributor",
+				"total" => $transaksis[0]['stockist_commission'],
+			];
+
+			$this->pendapatan->save($data['pendapatan']);
+			
+			if($transaksis[0]['affiliate_link'] != null){
+			
+				$detail_transaksi = $this->pendapatan->where('user_id', $transaksis[0]['affiliate_link'])->find();
+			
+				$data['pendapatan'] = [
+					"user_id" => $transaksis[0]['affiliate_link'],
+					"masuk" => $transaksis[0]['affiliate_commission'],
+					"status_dana" => "affiliate",
+					"total" => $transaksis[0]['affiliate_commission'],
+				];
+				
+				$this->pendapatan->save($data['pendapatan']);
+			}
+		}
+		
+
+		// uang masuk ke dompet stockis / affiliate / admin
 		return redirect()->back();
 	}
+
+
 
 }

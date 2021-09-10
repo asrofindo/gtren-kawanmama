@@ -86,6 +86,18 @@
     </li>
     <?php endif; ?>
 
+    <?php if(in_groups(1)): ?>
+    <li class="menu-item has-submenu">
+        <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-shopping_cart"></i>
+            <span class="text">Hutang Perusahaan</span>
+        </a>
+        <div class="submenu">
+            <a href="<?= base_url() ?>/hutang/affiliate">Affiliate</a>
+            <a class="" href="<?php base_url() ?>/hutang/stockist">Stockist</span></a>
+        </div>
+    </li>
+    <?php endif; ?>
+
     <?php if(in_groups(3) && !in_groups(1)): ?>
     <li class="menu-item has-submenu" >
         <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
