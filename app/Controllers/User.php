@@ -178,13 +178,17 @@ class User extends BaseController
 
 		$request = $this->request;
 		$data = [
-			'password' => $request->getPost('password'),
-			'username' => $request->getPost('username'),
+			'id' => user()->id,
 			'fullname' => $request->getPost('fullname'),
-			'email' => $request->getPost('email')
+			'email' => $request->getPost('email'),
+			'password' => $request->getPost('password'),
+			'phone' => $request->getPost('phone'),
 		];
 
 		user()->setProfile($data);
+		session()->setFlashdata('success', 'Data sudah berhasil dimasukan');
+		return redirect()->back();
+
 	}
 
 	public function upgrade_affiliate()

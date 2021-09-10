@@ -16,10 +16,15 @@ class Commerce extends BaseController
 		$this->data['category']    = $this->category->findAll();
 		$this->cart = new CartItemModel();
 		
+
 	}
 
 	public function index()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Lengkapi Data Nomer Telepon');
+			return redirect()->to('/profile');
+		}
 		$model = new OfferModel();
 		$data['offers'] = $model->findAll();
 		return view('commerce/home', $data);
@@ -27,6 +32,10 @@ class Commerce extends BaseController
 
 	public function about()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Lengkapi Data Nomer Telepon');
+			return redirect()->to('/profile');
+		}
 		$data=$this->data;
 		$data['title']='About | Gtren';
 		return view('commerce/about',$data);
@@ -35,6 +44,10 @@ class Commerce extends BaseController
 
 	public function Cart($id=null)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Lengkapi Data Nomer Telepon');
+			return redirect()->to('/profile');
+		}
 		$data['title']='Cart | Gtren';
 		if (user() == null) {
 			return redirect()->to('/login');

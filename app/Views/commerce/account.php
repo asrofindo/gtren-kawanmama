@@ -451,11 +451,26 @@
                                             <h5>Account Details</h5>
                                         </div>
                                         <div class="card-body">
-                                            <form method="post" action="/profile">
+                                        <?php if( !empty(session()->getFlashdata('success'))){ ?>
+
+                                        <div class="alert alert-success bg-success text-white">
+                                            <?php echo session()->getFlashdata('success');?>
+                                        </div>
+
+                                        <?php } ?>
+
+                                        <?php if(!empty(session()->getFlashdata('error'))){ ?>
+
+                                        <div class="alert alert-danger bg-danger text-white">
+                                            <?php echo session()->getFlashdata('error');?>
+                                        </div>
+
+                                        <?php } ?>
+                                            <form method="post" action="<?= base_url()?>/profile">
                                                 <div class="row">
                                                     <div class="form-group col-md-12">
                                                         <label>Full Name <span class="required">*</span></label>
-                                                        <input required="" class="form-control square" name="fullname" type="text" value="<?= user()->username ?>">
+                                                        <input required="" class="form-control square" name="fullname" type="text" value="<?= user()->fullname ?>">
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Username <span class="required">*</span></label>
@@ -464,6 +479,10 @@
                                                     <div class="form-group col-md-12">
                                                         <label>Email Address <span class="required">*</span></label>
                                                         <input required="" class="form-control square" name="email" type="email"  value="<?= user()->email ?>">
+                                                    </div>
+                                                    <div class="form-group col-md-12">
+                                                        <label>Phone<span class="required">*</span></label>
+                                                        <input required="" class="form-control square" value="<?= user()->phone ?>" name="phone" type="text">
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Current Password <span class="required">*</span></label>
@@ -686,19 +705,10 @@
                                             <?php }?>
 
                                             <div class="row my-3">
-                                                <div class="col-lg-6">
-                                                    <div class="card bg-primary">
+                                                <div class="card">
+                                                    <div class="col-lg-6">
                                                         <div class="card-body">
-                                                            <h2 class="text-white">35</h2>
-                                                            <p class="text-white">Total Orders</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="card bg-danger">
-                                                        <div class="card-body">
-                                                            <h2 class="text-white">35</h2>
-                                                            <p class="text-white">Total Orders</p>
+                                                            <h2 class="">35</h2>
                                                         </div>
                                                     </div>
                                                 </div>
