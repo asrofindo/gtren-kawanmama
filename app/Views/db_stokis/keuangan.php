@@ -131,8 +131,8 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach ($detailtransaksi as $detail): ?>
                             <tr>
-                                <?php foreach ($detailtransaksi as $detail): ?>
                                     <td class="id"><?= $detail['id']; ?></td>
                                     <td><?= $detail['stockist_commission'] + $detail['admin_commission'] + $detail['affiliate_commission'] - $detail['ongkir_produk']; ?></td>
                                     <td><?php echo $detail['stockist_commission']; ?></td>
@@ -147,8 +147,8 @@
                                             </div>
                                         </div> <!-- dropdown //end -->
                                     </td>
-                                <?php endforeach ?>
                             </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div> <!-- table-responsive //end -->
