@@ -16,7 +16,7 @@
                                     <a class="animated btn btn-default btn-rounded" href="shop-product-right.html"> DISCOVER NOW <i class="fa fa-arrow-right"></i> </a>
                                 </div>
                                 <div class="single-slider-img single-slider-img-1">
-                                    <img class="animated" src="<?= base_url() ?>/uploads/banner/<?= $banner->photo?>" alt="">
+                                    <img class="animated" src="<?= base_url() ?>/public/uploads/banner/<?= $banner->photo?>" alt="">
                                 </div>
                             </div>
                         </div>
