@@ -183,6 +183,8 @@ class User extends BaseController
 			'email' => $request->getPost('email'),
 			'password' => $request->getPost('password'),
 			'phone' => $request->getPost('phone'),
+			'greeting' => $request->getPost('greeting'),
+
 		];
 
 		user()->setProfile($data);

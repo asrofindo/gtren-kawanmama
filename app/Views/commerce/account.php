@@ -491,6 +491,15 @@
                                         <?php } ?>
                                             <form method="post" action="<?= base_url()?>/profile">
                                                 <div class="row">
+                                                    <p>Sapaan<span class="required">*</span></p>
+                                                    <div class="form-group col-md-12">
+                                                    <select required id="inputState" class="form-control" name="greeting">
+                                                        <option selected><?= user()->greeting ?></option>
+                                                        <option>Kak</option>
+                                                        <option>Bapak</option>
+                                                        <option>ibu</option>
+                                                    </select>
+                                                    </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Nama Lengkap <span class="required">*</span></label>
                                                         <input required="" class="form-control square" name="fullname" type="text" value="<?= user()->fullname ?>">
