@@ -70,6 +70,7 @@
                             <th scope="col">Masuk</th>
                             <th scope="col">Keluar</th>
                             <th scope="col">Total</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
