@@ -3,8 +3,7 @@
 <div class="page-header breadcrumb-wrap">
     <div class="container">
         <div class="breadcrumb">
-            <a href="index.html" rel="nofollow">Home</a>
-            
+            <a href="index.html" rel="nofollow">Home</a>     
             <span></span> <?= $product->getCategory($product->categories)[0]->category; ?>
             <span></span> <?= $product->name ?>
         </div>
@@ -485,8 +484,8 @@
             <ul style="z-index: -1" class="list-group">
                 <?php foreach($product_distributors as $distributor): ?>  
 
-                    <?php if ($affiliate != null) {?>
-                        <form method="post" action="<?= base_url();?>/cart/<?= $affiliate?>" >
+                    <?php if (get_cookie('affiliate') != null) {?>
+                        <form method="post" action="<?= base_url();?>/cart/<?= get_cookie('affiliate')?>" >
                     <?php }else{?>
                         <form method="post" action="<?= base_url();?>/cart" >
                     <?php } ?> 

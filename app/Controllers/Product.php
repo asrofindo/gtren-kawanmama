@@ -13,6 +13,7 @@ use App\Models\DistributorModel;
 use App\Models\AddressModel;
 use App\Models\ProductDistributorModel;
 use App\Libraries\Slug;
+use Myth\Auth\Models\UserModel;
 use App\Models\CommentModel;
 
 
@@ -21,6 +22,8 @@ class Product extends BaseController
 	protected $category;
 	protected $comment;
 	protected $data;
+	protected $user;
+
 
 	public function __construct()
 	{
@@ -34,7 +37,7 @@ class Product extends BaseController
 		$this->address    = new AddressModel();
 		$this->productDistributor = new ProductDistributorModel();
 		$this->comment    = new CommentModel();
-		
+		$this->user    = new UserModel();
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
 	
@@ -89,22 +92,27 @@ class Product extends BaseController
 		$data['contacts'] = $this->contact->findAll();
 
 		$data['pager']      = $this->model->pager;
-
 		// dd($data['categories']);
-
 		return view('commerce/home', $data);
 	}
 
 	public function detail($slug,$id=null)
 	{
+		helper("cookie");
 		$data= $this->data;
 		$data['product'] = $this->model->where('slug', $slug)->first();
 		$product_id = $data['product']->id;
-
-		if ($id != null && user()->affiliate_link != '/src/'.$id) {
-			return redirect()->to('/product/'.$slug);
+		
+		if ($id != null) {
+			$user =	$this->user->where('affiliate_link','/src/'.$id)->find();
+			if (empty($user)) {
+				return redirect()->to('/product/'.$slug);
+			}
+			set_cookie("affiliate",(string)$id,((3600*24)*30));
 		}
-		$data['affiliate']= $id;
+
+		$data['affiliate']= get_cookie('affiliate');
+
 		$category = $category =new \App\Entities\category();
 		$ex=array_map('intval', $data['product']->categories);
 		$data['products']= $category->getProduct($ex);
