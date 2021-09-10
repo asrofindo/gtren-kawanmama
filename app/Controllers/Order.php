@@ -83,6 +83,7 @@ class Order extends BaseController
 		// data produk dan ongkir yang akan di refund
 		$data['detailtransaksi'] = $this->detailtransaksi->select('*, pengiriman.id as p_id')
 		->join('cart_item', 'cart_item.id = cart_id')
+		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id')
 		->join('products', 'products.id = cart_item.product_id')
 		->join('users', 'users.id = cart_item.user_id')
 		->join('pengiriman', 'pengiriman.user_id = cart_item.user_id')
