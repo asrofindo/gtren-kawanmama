@@ -73,7 +73,7 @@ class Product extends BaseController
 	public function commerce()
 	{
 		if (user()!=null && user()->phone == null) {
-			session()->setFlashdata('error', 'Lengkapi Data Nomer Telepon');
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomer HP');
 			return redirect()->to('/profile');
 		}
 		$data = $this->data;
