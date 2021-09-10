@@ -39,7 +39,7 @@
                                 <div class="product-img product-img-zoom">
                                     <a href="<?= base_url('product/'. $product->slug)?>">
                                         <?php for($i = 0; $i < 2; $i++): ?>
-                                            <img class="<?= $i == 0 ? 'default-img' : 'hover-img'  ?>" src="<?= $product->photos[$i]?>" alt="">
+                                            <img class="<?= $i == 0 ? 'default-img' : 'hover-img'  ?>" src="<?= base_url() ?>/uploads/product_photos/<?= $product->photos[$i]; ?>" alt="">
                                         <?php endfor ?>
                                     </a>
                                 </div>

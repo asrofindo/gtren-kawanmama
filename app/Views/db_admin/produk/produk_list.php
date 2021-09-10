@@ -54,7 +54,7 @@
                             <tr>
                                 <td class="text-center">
                                     <?php for($i = 0; $i < 1; $i++): ?>
-                                        <img class="img-sm img-thumbnail" src="<?= $product->photos[$i] ?>" alt="">
+                                        <img class="img-sm img-thumbnail" src="<?= base_url() ?>/uploads/product_photos/<?= $product->photos[$i] ?>" alt="">
                                     <?php endfor ?>
                                 </td>
                                 <td>

@@ -60,7 +60,7 @@ class User extends BaseController
 		$data['segments'] = $this->request->uri->getSegments();
 		$id = user()->id;
 		$data['details_order'] = $this->transaksi
-		->select('*')
+		->select('*, detailtransaksi.id as id')
 		->join('detailtransaksi', "detailtransaksi.transaksi_id = transaksi.id")
 		->join('cart_item', "detailtransaksi.cart_id = cart_item.id AND cart_item.user_id = {$id}")
 		->join('products', 'products.id = cart_item.product_id')
@@ -68,7 +68,7 @@ class User extends BaseController
 		->join('pengiriman', 'detailpengiriman.pengiriman_id = pengiriman.id')
 		->where('transaksi.id', $transaksi_id)
 		->find();
-		
+
 		return view('commerce/account', $data);
 	}
 

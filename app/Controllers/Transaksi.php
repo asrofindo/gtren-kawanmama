@@ -11,6 +11,7 @@ use App\Models\DistributorModel;
 use App\Models\PengirimanModel;
 use App\Models\DetailPengirimanModel;
 use App\Models\DetailTransaksiModel;
+use App\Models\PendapatanModel;
 use App\Controllers\BaseController;
 
 class Transaksi extends BaseController
@@ -28,6 +29,7 @@ class Transaksi extends BaseController
 		$this->pengirim = new PengirimanModel();
 		$this->detail_pengirim = new DetailPengirimanModel();
 		$this->detail_transaksi = new DetailTransaksiModel();
+		$this->pendapatan = new PendapatanModel();
 	}
 
 	public function index()
@@ -283,5 +285,37 @@ class Transaksi extends BaseController
 			]);
 		}
 		return redirect()->back();
+	}
+
+	public function hutang_stockist()
+	{
+		$data['pendapatans'] = $this->pendapatan->select('*, pendapatan.id as id')
+		->join('distributor', 'distributor.user_id = pendapatan.user_id')
+		->join('users', 'users.id = pendapatan.user_id')
+		->where('pendapatan.status_dana', 'distributor')
+		->find();
+		$data['pager'] = $this->transaksi->paginate(5, 'pendapatan');
+		$data['pager'] = $this->transaksi->pager;
+		return view('db_admin/pendapatan/pendapatan_stockist', $data);
+	}
+
+	public function hutang_affiliate()
+	{
+		$data['pendapatans'] = $this->pendapatan
+		->join('users', 'users.id = pendapatan.user_id AND users.affiliate_link != "null"')
+		->where('pendapatan.status_dana', 'affiliate')
+		->find();
+		$data['pager'] = $this->transaksi->paginate(5, 'pendapatan');
+		$data['pager'] = $this->transaksi->pager;
+		return view('db_admin/pendapatan/pendapatan_stockist', $data);
+	}
+
+	public function wd()
+	{
+		$id = $this->request->getPost('pendapatan_id');
+		$wd = $this->request->getPost('wd');
+
+		
+
 	}
 }
