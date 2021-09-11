@@ -25,11 +25,20 @@ class Dashboard extends BaseController
 		$data['admin'] = $this->model->select('sum(COALESCE(admin_commission,0)) AS admin_total')
 		->where('status_barang =', 'diterima')->find();
 
-		$data['stockist'] = $this->model->select('sum(COALESCE(stockist_commission,0)) AS stockist_total')
-		->where('status_barang =', 'diterima')->find();
+		$data['stockist'] = $this->model->select('sum(COALESCE(stockist_commission,0) - COALESCE(pendapatan.keluar,0)) AS stockist_total')
+		->join('pendapatan', 'pendapatan.user_id = detailtransaksi.distributor_id ', 'outer left')
+		->where('status_barang =', 'diterima')
+		->where('pendapatan.status_dana =', 'distributor')
+		->find();
 
-		$data['affiliate'] = $this->model->select('sum(COALESCE(affiliate_commission,0)) AS affiliate_total')
-		->where('status_barang =', 'diterima')->find();
+		$data['affiliate'] = $this->model->select('sum(COALESCE(affiliate_commission,0) - COALESCE(pendapatan.keluar,0)) AS affiliate_total')
+		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id ', 'left')
+		->join('users', 'users.affiliate_link = cart_item.affiliate_link', 'left')
+		->join('pendapatan', 'pendapatan.user_id = users.id', 'left')
+		->where('status_barang =', 'diterima')
+		->where('pendapatan.status_dana =', 'affiliate')
+		->find();
+
 		$data['bills'] = $this->bill->findAll();
 		$data['bills']   = $this->bill->paginate(4, 'bills');
 		$data['pager']    = $this->bill->pager;
