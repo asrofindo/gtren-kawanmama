@@ -3,9 +3,9 @@
 <div class="content-header">
     <div>
         <h2 class="content-title card-title">Saldo Tabungan</h2>
-        <?php if(count($pendapatan) == 0) ?>
+        <?php if(count($pendapatan) == 0): ?>
             <p>Rp 0</p>
-        <?php else : ?>
+        <?php else: ?>
             <p><?php $pendapatan[0]->total; ?></p>
         <?php endif; ?>
     </div>
