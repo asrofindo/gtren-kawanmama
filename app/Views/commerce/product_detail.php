@@ -124,7 +124,7 @@
                                 </div> -->
                                 <!-- <div class="bt-1 border-color-1 mt-30 mb-30"></div> -->
                                 <div class="detail-extralink">
-                                        <div class="detail-qty border radius">
+                                        <div class="detail-qty border radius" style="display: none">
                                             <a href="#" class="qty-down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
                                             <span class="qty-val">1</span>
                                             <a href="#" class="qty-up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
