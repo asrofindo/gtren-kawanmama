@@ -159,8 +159,6 @@
                                                                         Menunggu Pembayaran
                                                                     <?php elseif($order->status_barang == 'diterima'): ?>
                                                                         selesai
-                                                                    <?php else: ?>
-                                                                        pending
                                                                     <?php endif; ?>
                                                                 </td>
                                                             </tr>

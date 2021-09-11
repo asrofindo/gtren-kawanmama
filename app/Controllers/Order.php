@@ -243,7 +243,7 @@ class Order extends BaseController
 			if($transaksis[0]['affiliate_link'] != null){
 			
 				$detail_transaksi = $this->pendapatan->where('user_id', $transaksis[0]['affiliate_link'])->find();
-			
+
 				$data['pendapatan'] = [
 					"user_id" => $transaksis[0]['affiliate_link'],
 					"masuk" => $transaksis[0]['affiliate_commission'],

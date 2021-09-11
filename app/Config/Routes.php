@@ -235,6 +235,8 @@ $routes->group('', function($routes)
 	$routes->post('transaksi/tarik_dana', 'Transaksi::tarik_dana');
 
 	$routes->get('keuangan', 'Transaksi::keuangan');
+	$routes->get('request/wd', 'Transaksi::request_wd');
+	$routes->post('request/wd', 'Transaksi::request_wd');
 
 }
 );
