@@ -307,10 +307,9 @@ class Transaksi extends BaseController
 	{
 		$data['pendapatans'] = $this->pendapatan
 		->join('users', 'users.id = pendapatan.user_id')
-		->where('users.affiliate_link !=', null)
 		->where('pendapatan.status_dana', 'affiliate')
 		->find();
-		dd($data['pendapatans']);
+	
 		$data['bills'] = $this->bill->findAll();
 		$data['pager'] = $this->transaksi->paginate(5, 'pendapatan');
 		$data['pager'] = $this->transaksi->pager;
