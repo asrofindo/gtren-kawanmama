@@ -62,7 +62,7 @@ class Cookie extends BaseConfig
 	 *
 	 * @var boolean
 	 */
-	public $secure = false;
+	public $secure = true;
 
 	/**
 	 * --------------------------------------------------------------------------
@@ -97,7 +97,7 @@ class Cookie extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $samesite = 'Lax';
+	public $samesite = 'none';
 
 	/**
 	 * --------------------------------------------------------------------------

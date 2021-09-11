@@ -475,11 +475,9 @@
                                         </div>
                                         <div class="card-body">
                                         <?php if( !empty(session()->getFlashdata('success'))){ ?>
-
-                                        <div class="alert alert-success bg-success text-white">
-                                            <?php echo session()->getFlashdata('success');?>
-                                        </div>
-
+                                            <div class="alert alert-success bg-success text-white">
+                                                <?php echo session()->getFlashdata('success');?>
+                                            </div>
                                         <?php } ?>
 
                                         <?php if(!empty(session()->getFlashdata('error'))){ ?>
@@ -491,6 +489,24 @@
                                         <?php } ?>
                                             <form method="post" action="<?= base_url()?>/profile">
                                                 <div class="row">
+                                                    <p>Sapaan<span class="required">*</span></p>
+                                                    <div class="input-group">
+                                                        <div class="form-check">
+                                                        <label class="form-check-label m-2">
+                                                            <input type="radio" class="form-check-input" <?php if(user()->greeting=='Kak') echo 'checked'?> name="greeting" value="Kak" required>Kak
+                                                        </label>
+                                                        </div>
+                                                        <div class="form-check m-2">
+                                                        <label class="form-check-label">
+                                                            <input type="radio" class="form-check-input" <?php if(user()->greeting=='Pak') echo 'checked'?>  name="greeting" value="Pak" required>Pak
+                                                        </label>
+                                                        </div>
+                                                        <div class="form-check m-2">
+                                                        <label class="form-check-label">
+                                                            <input type="radio" class="form-check-input" <?php if(user()->greeting=='Bu') echo 'checked'?> name="greeting" value="Bu" required>Bu
+                                                        </label>
+                                                        </div>
+                                                    </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Nama Lengkap <span class="required">*</span></label>
                                                         <input required="" class="form-control square" name="fullname" type="text" value="<?= user()->fullname ?>">
@@ -543,11 +559,15 @@
                                                 </p>
                                             <?php endif; ?>
                                             <?php if($segments[1] == "affiliate" && !empty(session()->getFlashdata('success'))){ ?>
-
+                                            <?php if (!in_groups(4)) {?>
+                                                <p>Regristasi program affiliasi Anda sedang ditinjau oleh Admin</p>
+                                                <p>Mohon dilakukan pembayaran <strong>Rp <b><?= 50000 + $generate ?></b></strong></p>
+                                                <p>ke Rekening Bank <strong>BNI No.12345 A/N PT.Gtren Indonesia.</strong> </p>
+                                            <?php }else{ ?>
                                                 <div class="alert alert-success bg-success text-white">
-                                                    <?php echo session()->getFlashdata('success');?> <br> Link Affiliate <b><?= user()->affiliate_link ?></b>
+                                                     <br> Link Affiliate <b>(<?= user()->affiliate_link;?>)</b>
                                                 </div>
-
+                                            <?php } ?>
                                             <?php } ?>
 
                                             <?php if($segments[1] == "affiliate" && !empty(session()->getFlashdata('danger'))){ ?>

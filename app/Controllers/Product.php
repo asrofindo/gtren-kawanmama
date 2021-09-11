@@ -162,6 +162,8 @@ class Product extends BaseController
 			// dd($data['product']);
 			return view('commerce/product_detail', $data);
 
+		}else {
+			return redirect()->to('/login');
 		}
 
 		$data['address'] = [];
@@ -169,7 +171,6 @@ class Product extends BaseController
 
 		return view('commerce/product_detail', $data);
 	}
-
 	public function edit($id)
 
 	{
