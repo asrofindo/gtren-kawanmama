@@ -12,7 +12,7 @@ use App\Models\PengirimanModel;
 use App\Models\DetailPengirimanModel;
 use App\Models\DetailTransaksiModel;
 use App\Models\PendapatanModel;
-use App\Models\WdModel;
+use App\Models\WDModel;
 use App\Controllers\BaseController;
 
 
