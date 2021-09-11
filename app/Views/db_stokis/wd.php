@@ -3,7 +3,7 @@
 <div class="content-header">
     <div>
         <h2 class="content-title card-title">Saldo Tabungan</h2>
-        <p>Rp <?= $pendapatan; ?></p>
+        <p>Rp <?= dd($pendapatan); ?></p>
     </div>
     <div>
         <input type="text" placeholder="Search pendapatan ID" class="form-control bg-white">
