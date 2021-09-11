@@ -410,10 +410,12 @@ class Transaksi extends BaseController
 			$data['pendapatan'] = $this->pendapatan->where('user_id', user()->id)->find();
 			return view('db_stokis/wd', $data);
 		}
-		if($this->pendapatan->where('user_id', user()->id)->find()[0]->total != 0){
-			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
-			$data['pendapatan'] = $this->pendapatan->where('user_id', user()->id)->find();
-			return view('db_stokis/wd', $data);
+		if($this->pendapatan->where('user_id', user()->id)->find()){
+			if($this->pendapatan->where('user_id', user()->id)->find()[0]->total != 0){			
+				$data['wds'] = $this->wd->where('user_id', user()->id)->find();
+				$data['pendapatan'] = $this->pendapatan->where('user_id', user()->id)->find();
+				return view('db_stokis/wd', $data);
+			}
 		}
 		$this->wd->save([
 			"user_id" => $id,
