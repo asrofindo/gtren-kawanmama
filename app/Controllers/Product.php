@@ -171,7 +171,6 @@ class Product extends BaseController
 
 		return view('commerce/product_detail', $data);
 	}
-
 	public function edit($id)
 
 	{

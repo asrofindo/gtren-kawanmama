@@ -15,6 +15,8 @@ class Cart extends BaseController
 
 	public function save($id=null)
 	{
+		if (user()==null) {
+			return redirect()->to('/login');		}
 		
 		$product_id = $this->request->getPost('product_id');
 		$distributor_id = $this->request->getPost('distributor_id');
