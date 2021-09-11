@@ -559,7 +559,7 @@
                                             <?php if($segments[1] == "affiliate" && !empty(session()->getFlashdata('success'))){ ?>
                                             <?php if (!in_groups(4)) {?>
                                                 <p>Regristasi program affiliasi Anda sedang ditinjau oleh Admin</p>
-                                                <p>Mohon dilakukan pembayaran <strong>Rp <b><?= 50000 + $generate ?></b></strong></p>
+                                                <p>Mohon dilakukan pembayaran <strong>Rp <b><?= 50000 + ($generate - 1) ?></b></strong></p>
                                                 <p>ke Rekening Bank <strong><?= $bill->bank_name?> No.<?= $bill->bank_number?> A/N <?= $bill->owner?>.</strong> </p>
                                             <?php }else{ ?>
                                                 <div class="alert alert-success bg-success text-white">
