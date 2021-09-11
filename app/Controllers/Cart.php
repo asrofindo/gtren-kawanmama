@@ -73,7 +73,14 @@ class Cart extends BaseController
 	public function add($id)
 	{
 		$transaksi = $this->cart->find($id);
+		
+		$data = $this->cart->join('distributor', 'distributor.id = distributor_id')
+		->join('product_distributor', 'product_distributor.product_id = cart_item.product_id')
+		->where('cart_item.id', $id)->find();
 
+		if($data[0]->amount == $data[0]->jumlah){
+			return redirect()->back();
+		}
 		$data = [
 			"id" => $id,
 			"user_id" => user()->id,
