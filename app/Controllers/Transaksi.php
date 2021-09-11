@@ -339,7 +339,6 @@ class Transaksi extends BaseController
 		}
 
 
-		
 		$this->bill->save([
 			"id" => $bill_id,
 			"total" => $data_bill->total - $wd
@@ -351,7 +350,6 @@ class Transaksi extends BaseController
 			"total" => $data_pendapatan->total - $wd,
 			"penarikan_dana" => $data_pendapatan->penarikan_dana - $wd
 		];
-
 		
 		$this->pendapatan->save($data);
 
@@ -416,7 +414,7 @@ class Transaksi extends BaseController
 			return view('db_stokis/wd', $data);
 		}
 
-		if($this->pendapatan->where('user_id', user()->id)->find()[0]->total != 0){			
+		if($this->pendapatan->where('user_id', user()->id)->find()[0]->total == 0){			
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
 			$data['pendapatan'] = $this->pendapatan->where('user_id', user()->id)->find();
 			return view('db_stokis/wd', $data);
