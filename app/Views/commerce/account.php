@@ -558,9 +558,11 @@
                                             <?php endif; ?>
                                             <?php if($segments[1] == "affiliate" && !empty(session()->getFlashdata('success'))){ ?>
                                             <?php if (!in_groups(4)) {?>
-                                                <p>Regristasi program affiliasi Anda sedang ditinjau oleh Admin</p>
-                                                <p>Mohon dilakukan pembayaran <strong>Rp <b><?= 50000 + ($generate - 1) ?></b></strong></p>
-                                                <p>ke Rekening Bank <strong><?= $bill->bank_name?> No.<?= $bill->bank_number?> A/N <?= $bill->owner?>.</strong> </p>
+                                                <p>Registrasi program affiliasi Anda <b>Menunggu Penbayaran<b></p>
+                                                <p>Mohon dilakukan pembayaran <strong>Rp <strong><b><?= 50000 + ($generate - 1) ?></strong></b></strong></p>
+                                                <p>ke Rekening Bank Dibawah ini :<br>
+                                                <strong>
+                                                    Rekening : <?= $bill->bank_name?> <br> Nomor : <?= $bill->bank_number?> <br> A/N : <?= $bill->owner?>.</strong> </p>
                                             <?php }else{ ?>
                                                 <div class="alert alert-success bg-success text-white">
                                                      <br> Link Affiliate <b>(<?= user()->affiliate_link;?>)</b>
