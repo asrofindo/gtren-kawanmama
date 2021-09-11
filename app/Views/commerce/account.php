@@ -471,7 +471,7 @@
                                 <div class="tab-pane fade active show" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5>Account Details</h5>
+                                            <h5>Profil Saya</h5>
                                         </div>
                                         <div class="card-body">
                                         <?php if( !empty(session()->getFlashdata('success'))){ ?>
@@ -562,7 +562,7 @@
                                             <?php if (!in_groups(4)) {?>
                                                 <p>Regristasi program affiliasi Anda sedang ditinjau oleh Admin</p>
                                                 <p>Mohon dilakukan pembayaran <strong>Rp <b><?= 50000 + $generate ?></b></strong></p>
-                                                <p>ke Rekening Bank <strong>BNI No.12345 A/N PT.Gtren Indonesia.</strong> </p>
+                                                <p>ke Rekening Bank <strong><?= $bill->bank_name?> No.<?= $bill->bank_number?> A/N <?= $bill->owner?>.</strong> </p>
                                             <?php }else{ ?>
                                                 <div class="alert alert-success bg-success text-white">
                                                      <br> Link Affiliate <b>(<?= user()->affiliate_link;?>)</b>

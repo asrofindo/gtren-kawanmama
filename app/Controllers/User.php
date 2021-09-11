@@ -204,7 +204,7 @@ class User extends BaseController
 		
 		$user = $this->upgrade->where('user_id', user()->id)->find();
 
-
+		
 		if(in_groups(4))
 		{
 			session()->setFlashdata('success', 'Anda Adalah affiliate');
@@ -213,8 +213,10 @@ class User extends BaseController
 		
 		if(count($user) > 0)
 		{
-
+			
 			if($this->request->uri->getSegments()[1] == 'affiliate' && $user[0]->status_request == 'pending'){
+				$data['data'] = $this->upgrade->where('user_id', user()->id)->first();
+				$data['bill'] = $this->bill->where('id',$data['data']->bill)->first();
 
 				session()->setFlashdata('success', 'Sedang di tinjau Oleh Admin');
 				return view('commerce/account', $data);

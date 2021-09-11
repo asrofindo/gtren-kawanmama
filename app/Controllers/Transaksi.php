@@ -303,14 +303,15 @@ class Transaksi extends BaseController
 	public function hutang_affiliate()
 	{
 		$data['pendapatans'] = $this->pendapatan
-		->join('users', 'users.id = pendapatan.user_id AND users.affiliate_link != "null"')
+		->join('users', 'users.id = pendapatan.user_id')
+		->where('users.affiliate_link !=', null)
 		->where('pendapatan.status_dana', 'affiliate')
 		->find();
-
+		dd($data['pendapatans']);
 		$data['bills'] = $this->bill->findAll();
 		$data['pager'] = $this->transaksi->paginate(5, 'pendapatan');
 		$data['pager'] = $this->transaksi->pager;
-		return view('db_admin/pendapatan/pendapatan_stockist', $data);
+		return view('db_admin/pendapatan/pendapatan_affiliate', $data);
 	}
 
 	public function wd()
