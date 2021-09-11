@@ -218,24 +218,7 @@ class Order extends BaseController
 
 			$this->pendapatan->save($data['pendapatan']);
 			
-			// apakah di dalam table pendapatan terdapat affiliate yang sama
-			if($transaksis[0]['affiliate_link'] != null){
-				if(count($this->pendapatan->where('user_id', $id_affiliate[2])->where('status_dana', 'affiliate')->find()) > 0)
-				{
-					$detail_transaksi = $this->pendapatan->where('user_id', $id_affiliate[2])->where('status_dana', 'affiliate')->find();
-					
-					$data['pendapatan'] = [
-						"id" => $detail_transaksi[0]->id,
-						"masuk" => $detail_transaksi[0]->masuk + $transaksis[0]['affiliate_commission'],
-						"total" => $detail_transaksi[0]->total + $transaksis[0]['affiliate_commission'],
-					];
 
-					$this->pendapatan->save($data['pendapatan']);
-				}
-			}
-
-
-			return redirect()->back();
 		}  
 		
 
@@ -250,9 +233,26 @@ class Order extends BaseController
 			];
 			$this->pendapatan->save($data['pendapatan']);
 			
-			if($transaksis[0]['affiliate_link'] != null){
-				$id_affiliate = explode("/", $transaksis[0]['affiliate_link']); 
+		}
+		
+		if($transaksis[0]['affiliate_link'] != null){
 
+			$id_affiliate = explode("/", $transaksis[0]['affiliate_link']); 
+
+			if(count($this->pendapatan->where('user_id', $id_affiliate[2])->where('status_dana', 'affiliate')->find()) > 0)
+				{
+					$detail_transaksi = $this->pendapatan->where('user_id', $id_affiliate[2])->where('status_dana', 'affiliate')->find();
+					
+					$data['pendapatan'] = [
+						"id" => $detail_transaksi[0]->id,
+						"masuk" => $detail_transaksi[0]->masuk + $transaksis[0]['affiliate_commission'],
+						"total" => $detail_transaksi[0]->total + $transaksis[0]['affiliate_commission'],
+					];
+
+					$this->pendapatan->save($data['pendapatan']);
+				}
+
+			else {
 				$data['pendapatan'] = [
 					"user_id" => $id_affiliate[2],
 					"masuk" => $transaksis[0]['affiliate_commission'],
@@ -262,8 +262,8 @@ class Order extends BaseController
 				
 				$this->pendapatan->save($data['pendapatan']);
 			}
+
 		}
-		
 
 		// uang masuk ke dompet stockis / affiliate / admin
 		return redirect()->back();
