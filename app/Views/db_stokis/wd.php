@@ -6,7 +6,7 @@
         <?php if(count($pendapatan) == 0): ?>
             <p>Rp 0</p>
         <?php else: ?>
-            <p><?php $pendapatan[0]->total; ?></p>
+            <p>Rp <?= $pendapatan[0]->total; ?></p>
         <?php endif; ?>
     </div>
     <div>

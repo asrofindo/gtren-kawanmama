@@ -399,9 +399,9 @@ class Transaksi extends BaseController
 		$jumlah_wd = $this->request->getPost('jumlah_wd');
 		$id = user()->id;
 		$penarikan = $this->pendapatan->where('user_id', user()->id)->first();
-		
-		if(count($this->wd->where('user_id', user()->id)->where('status', 'belum')->find()) > 0){
-			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
+		$wd_belum = $this->wd->where('user_id', user()->id)->where('status', 'belum')->find();
+		if(count($wd_belum) > 0){
+			$data['wds'] = $this->wd->where('user_id', user()->id)->find();	
 			$data['pendapatan'] = $this->pendapatan->where('user_id', user()->id)->find();
 			return view('db_stokis/wd', $data);
 		}
