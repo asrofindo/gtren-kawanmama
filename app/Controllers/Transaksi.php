@@ -12,7 +12,9 @@ use App\Models\PengirimanModel;
 use App\Models\DetailPengirimanModel;
 use App\Models\DetailTransaksiModel;
 use App\Models\PendapatanModel;
+use App\Models\WdModel;
 use App\Controllers\BaseController;
+
 
 class Transaksi extends BaseController
 {
@@ -30,6 +32,7 @@ class Transaksi extends BaseController
 		$this->detail_pengirim = new DetailPengirimanModel();
 		$this->detail_transaksi = new DetailTransaksiModel();
 		$this->pendapatan = new PendapatanModel();
+		$this->wd = new WDModel();
 	}
 
 	public function index()
@@ -321,7 +324,12 @@ class Transaksi extends BaseController
 
 		$data_pendapatan = $this->pendapatan->find($id);
 		$data_bill = $this->bill->find($bill_id);
-		
+
+
+		$user_id = $this->pendapatan->find($id)->user_id;
+
+		$id_wd = $this->wd->where('user_id', $user_id)->where('status', 'belum')->find()[0];
+
 		if($data_bill->total == null){
 			return redirect()->back();
 		}
@@ -329,6 +337,8 @@ class Transaksi extends BaseController
 		if($data_pendapatan->total == 0){
 			return redirect()->back();
 		}
+
+
 		
 		$this->bill->save([
 			"id" => $bill_id,
@@ -344,6 +354,8 @@ class Transaksi extends BaseController
 
 		
 		$this->pendapatan->save($data);
+
+		$this->wd->save(["id" => $id_wd, "status" => "sudah"]);
 
 		return redirect()->back();
 	}
@@ -381,4 +393,38 @@ class Transaksi extends BaseController
 
 		return view('db_stokis/keuangan', $data);
 	}
+
+	public function request_wd()
+	{
+		$jumlah_wd = $this->request->getPost('jumlah_wd');
+		$id = user()->id;
+		$penarikan = $this->pendapatan->where('user_id', user()->id)->first();
+		
+		if(count($this->wd->where('user_id', user()->id)->where('status', 'belum')->find()) > 0){
+			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
+			$data['pendapatan'] = $this->pendapatan->where('user_id', user()->id)->find()[0]->total;
+			return view('db_stokis/wd', $data);
+		}
+		if(!$jumlah_wd > 0){
+			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
+			$data['pendapatan'] = $this->pendapatan->where('user_id', user()->id)->find()[0]->total;
+			return view('db_stokis/wd', $data);
+		}
+		if($this->pendapatan->where('user_id', user()->id)->find()[0]->total != 0){
+			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
+			$data['pendapatan'] = $this->pendapatan->where('user_id', user()->id)->find()[0]->total;
+			return view('db_stokis/wd', $data);
+		}
+		$this->wd->save([
+			"user_id" => $id,
+			"jumlah_wd" => $jumlah_wd,
+			"status" => "belum"
+		]);
+
+		$this->pendapatan->save([
+			"id" => $penarikan->id,
+			"penarikan_dana" => $jumlah_wd,
+		]);		
+		return redirect()->back();
+	}	
 }	
