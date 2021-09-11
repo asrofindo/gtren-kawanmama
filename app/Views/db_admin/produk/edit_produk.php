@@ -13,7 +13,7 @@
                 <div>
                     <?php if(in_groups(1)): ?>
                         <button class="btn btn-light rounded font-sm mr-5 text-body hover-up">Save to draft</button>
-                        <button type="submit" class="btn btn-md rounded font-sm hover-up">Publich</button>
+                        <button type="submit" class="btn btn-md rounded font-sm hover-up">Perbarui</button>
                     <?php endif; ?>
                 </div>
             </div>

@@ -576,7 +576,7 @@ class Product extends BaseController
 		}
 		if($this->productDistributor->save($data)){
 			session()->setFlashdata('success', 'Stock Berhasil Di Update');
-		    return redirect()->back();
+		    return redirect()->to('/products/stockist');
 		}
 	}
 	public function delete_stock($id){
