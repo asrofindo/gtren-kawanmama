@@ -22,9 +22,9 @@ class Dashboard extends BaseController
           + COALESCE(stockist_commission,0)
           + COALESCE(affiliate_commission,0)
           AS user_total')
-		->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id', 'left')
+		->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id', 'inner')
 		->where('transaksi.status_pembayaran', 'paid')
-		->where('status_barang =', null)->orWhere('status_barang =', 'refund')->orWhere('status_barang =', 'Dikirim')->find();
+		->where('status_barang =', null)->orWhere('status_barang =', 'refund')->orWhere('status_barang =', 'dikirim')->findAll();
 		$data['upgrades'] = $this->upgrades->select('sum(total) as total_upgrades')->where('status_request', 'active')->findAll();
 		
 		$data['admin'] = $this->model->select('sum(COALESCE(admin_commission,0)) AS admin_total')
