@@ -26,7 +26,8 @@ class Dashboard extends BaseController
 		->where('status_barang =', 'diterima')->find();
 
 		$data['stockist'] = $this->model->select('sum(COALESCE(stockist_commission,0) - COALESCE(pendapatan.keluar,0)) AS stockist_total')
-		->join('pendapatan', 'pendapatan.user_id = detailtransaksi.distributor_id ', 'outer left')
+		->join('distributor', 'distributor.id = detailtransaksi.distributor_id ', 'left')
+		->join('pendapatan', 'pendapatan.user_id = distributor.user_id ', 'left')
 		->where('status_barang =', 'diterima')
 		->where('pendapatan.status_dana =', 'distributor')
 		->find();
