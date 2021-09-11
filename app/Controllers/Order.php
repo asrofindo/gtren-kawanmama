@@ -142,6 +142,10 @@ class Order extends BaseController
 		$data['detailtransaksi'] = [
 			"id" => $id,
 			"status_barang" => "refund",
+			"stockist_commission" => null,
+			"affiliate_commission" => null,
+			"admin_commission" => null,
+			"stockist_commission" => null,
 		];
 
 		$this->detailtransaksi->save($data['detailtransaksi']);
