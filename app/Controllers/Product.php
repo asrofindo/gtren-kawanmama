@@ -155,9 +155,6 @@ class Product extends BaseController
 				if($data['product_distributor'][$i]->kecamatan == $kecamatan || $data['product_distributor'][$i]->kabupaten == $kabupaten || $data['product_distributor'][$i]->provinsi == $provinsi){
 					array_push($data['product_distributors'], $data['product_distributor'][$i]);
 				}
-				else {
-					$data['product_distributor'] = [];
-				}
 			}
 			// dd($data['product']);
 			return view('commerce/product_detail', $data);
