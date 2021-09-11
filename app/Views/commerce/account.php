@@ -559,11 +559,15 @@
                                                 </p>
                                             <?php endif; ?>
                                             <?php if($segments[1] == "affiliate" && !empty(session()->getFlashdata('success'))){ ?>
-
+                                            <?php if (!in_groups(4)) {?>
+                                                <p>Regristasi program affiliasi Anda sedang ditinjau oleh Admin</p>
+                                                <p>Mohon dilakukan pembayaran <strong>Rp <b><?= 50000 + $generate ?></b></strong></p>
+                                                <p>ke Rekening Bank <strong>BNI No.12345 A/N PT.Gtren Indonesia.</strong> </p>
+                                            <?php }else{ ?>
                                                 <div class="alert alert-success bg-success text-white">
-                                                    <?php echo session()->getFlashdata('success');?> <br> Link Affiliate <b><?= user()->affiliate_link ?></b>
+                                                     <br> Link Affiliate <b>(<?= user()->affiliate_link;?>)</b>
                                                 </div>
-
+                                            <?php } ?>
                                             <?php } ?>
 
                                             <?php if($segments[1] == "affiliate" && !empty(session()->getFlashdata('danger'))){ ?>
