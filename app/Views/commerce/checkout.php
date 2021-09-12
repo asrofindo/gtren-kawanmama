@@ -113,8 +113,9 @@
                             <tbody>
                                 <?php foreach ($carts as $cart):?>
                                     <?php foreach ($cart['products'] as $product): ?>
+                                        <?php $photo = explode(',', $product->photos); ?>
                                         <tr style="height:30px">
-                                            <td style="width:40px; "><img src="<?= $product->photos; ?>" style="width:60%; height:100px"></td>
+                                            <td style="width:40px; "><img src="<?php base_url() ?>/public/uploads/product_photos/<?= $photo[0]; ?>" style="width:60%; height:100px"></td>
                                             <td style="width: 100px"><?= $product->name ?></td>
                                             <td style="width: 100px"><?= $product->amount ?></td>
                                             <td style="width: 100px"><?= $product->sell_price ?></td>
