@@ -102,7 +102,7 @@
                                                                     <?php endif; ?>
                                                                 </td>
                                                                 <td><?= $transaksi->total; ?></td>
-                                                                <td><?= $transaksi->bank_nama; ?> - <?= $transaksi->bank_number; ?> - <?= $transaksi->owner; ?></td>
+                                                                <td><?= $transaksi->bank_name; ?> - <?= $transaksi->bank_number; ?> - <?= $transaksi->owner; ?></td>
                                                                 <td><a href="<?= base_url() ?>/detail/<?= $transaksi->id ?>" class="btn-small d-block">Detail</a></td>
                                                             </tr>
                                                         <?php endforeach; ?>
