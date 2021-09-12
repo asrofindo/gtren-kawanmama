@@ -171,10 +171,14 @@
                                         <td colspan="3" class="product-subtotal"><span><?= $cart['subtotal'][0];?></span></td>
                                     </tr>
                                     
+                                    <tr>
+                                        <th>Kode Unik</th>
+                                        <td><?= $generate[0]['nomor'];  ?></td>
+                                    </tr>
                                 <?php endforeach; ?>
                                     <tr>
                                         <th>Total Tagihan</th>
-                                        <td><?= $total;  ?></td>
+                                        <td><b><?= $total;  ?></b></td>
                                     </tr>
                             </tbody>
                         </table>

@@ -13,6 +13,7 @@ use App\Models\DetailPengirimanModel;
 use App\Models\DetailTransaksiModel;
 use App\Models\PendapatanModel;
 use App\Models\WDModel;
+use App\Models\GenerateModel;
 use App\Controllers\BaseController;
 
 
@@ -33,6 +34,7 @@ class Transaksi extends BaseController
 		$this->detail_transaksi = new DetailTransaksiModel();
 		$this->pendapatan = new PendapatanModel();
 		$this->wd = new WDModel();
+		$this->generate = new GenerateModel();
 	}
 
 	public function index()
@@ -120,7 +122,9 @@ class Transaksi extends BaseController
 			$total += $cart['subtotal'][0];
 		}
 
-		$data['total'] = $total;
+		$data['generate'] = $this->generate->find();
+		
+		$data['total'] = $total + $data['generate'][0]['nomor'];
 		$data['category'] = $this->category->findAll();
 		$data['address'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find();
 
@@ -130,7 +134,6 @@ class Transaksi extends BaseController
 		->join('subdistrict', 'subdistrict.subsdistrict_name = kecamatan', 'left')->first();
 	
 		$data['bills'] = $this->bill->find();
-
 		return view('commerce/checkout', $data);
 	}
 
@@ -173,6 +176,11 @@ class Transaksi extends BaseController
 			];
 			$this->detail_transaksi->save($data);
 		}
+
+		$data['generate'] = $this->generate->find();
+
+		$this->generate->save(["id" => 1, "nomor" => $data['generate'][0]['nomor'] + 1]);
+		
 	}
 
 	public function save_kurir()
