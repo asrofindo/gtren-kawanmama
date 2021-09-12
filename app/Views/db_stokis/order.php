@@ -118,6 +118,11 @@
             $('#myModal').modal('show');
         });
 
+         $('.close').on('click',function(data){
+
+            $('#myModal').modal('hide');
+        });
+
          
     });
 
