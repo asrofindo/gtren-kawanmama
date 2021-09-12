@@ -150,20 +150,20 @@
                                                                 <td><?= $order->amount;  ?></td>
                                                                 <td>
                                                                     <?php if($order->status_barang == null): ?>
-                                                                        <span class="badge rounded-pill alert-warning">Menunggu Konfirmasi <br> Seller </span>
+                                                                        <span class="badge rounded-pill alert-warning">Menunggu Konfirmasi Seller </span>
                                                                     <?php elseif($order->status_barang == 'dikirim'): ?>
                                                                         <span class="badge rounded-pill alert-primary">Sedang Dikirim</span>
                                                                     <?php elseif($order->status_barang == 'diterima_seller'): ?>
                                                                         <span class="badge rounded-pill alert-primary"><?= 'Penyiapan Barang'; ?></span>
                                                                     <?php elseif($order->status_barang == 'diterima_pembeli'): ?>
-                                                                        <span class="badge rounded-pill alert-success">Diterima Oleh <br> Pembeli</span>
+                                                                        <span class="badge rounded-pill alert-success">Diterima Oleh Pembeli</span>
                                                                     <?php elseif($order->status_barang == 'ditolak'): ?>
-                                                                        <span class="badge rounded-pill alert-danger">Ditolak Oleh <br> DIstributor</span>
+                                                                        <span class="badge rounded-pill alert-danger">Ditolak Oleh DIstributor</span>
                                                                     <?php elseif($order->status_barang == 'refund'): ?>
-                                                                        <span class="badge rounded-pill alert-danger">Dana <br> Dikembalikan</span>
+                                                                        <span class="badge rounded-pill alert-danger">Dana Dikembalikan</span>
                                                                     <?php endif; ?>
                                                                 </td>
-                                                                <td><?= $order->kurir ?>, <?= $order->etd ?>, <?= $order->ongkir ?></td>
+                                                                <td><?= $order->kurir ?>,Perkiraan <?= $order->etd ?></td>
                                                                 <td><?= $order->resi ? $order->resi: 'proses'; ?></td>
                                                                 <td><?= $order->created_at;  ?></td>
                                                                 <td>
