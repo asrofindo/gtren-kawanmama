@@ -154,12 +154,16 @@
                                             </span>
                                         </td>
                                         <td>
-                                            dikirim Lewat
+                                            Dikirim lewat
                                             <?= $cart['kurir'] ?>
                                         </td>
                                         <td>
-                                            <?= $cart['ongkir'] ?> ||
-                                            <?= $cart['etd'] ?>
+                                            <?= $cart['ongkir'] ?> 
+                                            <?php if($cart['etd'] == 'Tidak temukan'): ?> 
+                                                <span></span>
+                                            <?php else: ?>
+                                                <span>| Perkiraan <?= $cart['etd']; ?></span>
+                                            <?php endif; ?>    
                                         </td>
                                     </tr>
                                     <tr>
