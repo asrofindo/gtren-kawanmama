@@ -72,18 +72,19 @@
                                 <div class="tab-pane fade active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5 class="mb-0">Your Orders</h5>
+                                            <h5 class="mb-0">Pesanan Anda</h5>
                                         </div>
                                         <div class="card-body">
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <thead>
                                                         <tr>
-                                                            <th>Order</th>
-                                                            <th>Date</th>
-                                                            <th>Status</th>
-                                                            <th>Total</th>
-                                                            <th>Actions</th>
+                                                            <th>Nomor</th>
+                                                            <th>Tanggal Pemesanan</th>
+                                                            <th>Status Pembayaran</th>
+                                                            <th>Total Tagihan</th>
+                                                            <th>Pembayaran Melalui</th>
+                                                            <th>Aksi</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -101,6 +102,7 @@
                                                                     <?php endif; ?>
                                                                 </td>
                                                                 <td><?= $transaksi->total; ?></td>
+                                                                <td><?= $transaksi->bank_nama; ?> - <?= $transaksi->bank_number; ?> - <?= $transaksi->owner; ?></td>
                                                                 <td><a href="<?= base_url() ?>/detail/<?= $transaksi->id ?>" class="btn-small d-block">Detail</a></td>
                                                             </tr>
                                                         <?php endforeach; ?>
@@ -114,14 +116,14 @@
                                 <div class="tab-pane fade active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5 class="mb-0">Your Orders Detail</h5>
+                                            <h5 class="mb-0">Detail Pesanan Anda</h5>
                                         </div>
                                         <div class="card-body">
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <thead>
                                                         <tr>
-                                                            <th>Order</th>
+                                                            <th>Nomor</th>
                                                             <th>product </th>
                                                             <th>Jumlah </th>
                                                             <th>Status Barang</th>
@@ -308,7 +310,7 @@
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Kode Pos<span class="required">*</span></label>
-                                                        <input id="kode_pos" value="" required="" class="form-control square" name="kode_pos" type="hide">
+                                                        <input id="kode_pos" value="" required="" class="form-control square" name="kode_pos" type="hidden">
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Detail Alamat<span class="required">*</span></label>
@@ -353,7 +355,7 @@
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Kode Pos<span class="required">*</span></label>
-                                                        <input required="" id="kode_pos" class="form-control square" name="kode_pos" type="hide">
+                                                        <input required="" id="kode_pos" class="form-control square" name="kode_pos" type="hidden">
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Detail Alamat<span class="required">*</span></label>
@@ -399,7 +401,7 @@
                                                             </div>
                                                             <div class="form-group col-md-12">
                                                                 <label>Kode Pos<span class="required">*</span></label>
-                                                                <input value="<?= $address->kode_pos ?>" id="kode_pos" required="" class="form-control square" name="kode_pos" type="hide">
+                                                                <input value="<?= $address->kode_pos ?>" id="kode_pos" required="" class="form-control square" name="kode_pos" type="hidden">
                                                             </div>
                                                             <div class="form-group col-md-12">
                                                                 <label>Detail Alamat<span class="required">*</span></label>
@@ -448,7 +450,7 @@
                                                             </div>
                                                             <div class="form-group col-md-12">
                                                                 <label>Kode Pos<span class="required">*</span></label>
-                                                                <input value="<?= $address->kode_pos ?>" required="" class="form-control square" name="kode_pos" id="kode_pos" type="hide">
+                                                                <input value="<?= $address->kode_pos ?>" required="" class="form-control square" name="kode_pos" id="kode_pos" type="hidden">
                                                             </div>
                                                             <div class="form-group col-md-12">
                                                                 <label>Detail Alamat<span class="required">*</span></label>
