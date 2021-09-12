@@ -53,7 +53,7 @@ class User extends BaseController
 		$data['transaksis'] = $this->transaksi->select('*, transaksi.id as id,  bills.id as bill_id')
 		->join('bills', 'bills.id = transaksi.bill_id', 'inner')
 		->where('user_id', user()->id)->findAll();
-		
+		 
 		return view('commerce/account', $data);
 	}
 
