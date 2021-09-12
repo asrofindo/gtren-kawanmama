@@ -17,12 +17,12 @@
                     <table class="table shopping-summery text-center clean">
                         <thead>
                             <tr class="main-heading">
-                                <th scope="col">Media</th>
-                                <th scope="col">Contact</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
+                                <th scope="col">Foto</th>
+                                <th scope="col">Produk</th>
+                                <th scope="col">Harga</th>
+                                <th scope="col">Jumlah</th>
                                 <th scope="col">Subtotal</th>
-                                <th scope="col">Remove</th>
+                                <th scope="col">Hapus</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,7 +50,7 @@
                                 <?php endforeach ?>
                                 <tr>
                                 <td colspan="6" class="text-end">
-                                    <a href="<?= base_url() ?>/cart/delete/all" class="text-muted"> <i class="fa fa-times-circle"></i> Clear Cart</a>
+                                    <a href="<?= base_url() ?>/cart/delete/all" class="text-muted"> <i class="fa fa-times-circle"></i>Bersihkan Keranjang</a>
                                 </td>
                             </tr>
                         </tbody>
@@ -61,7 +61,7 @@
             <div class="col-lg-6 col-md-12">
                 <div class="border p-md-4 p-30 border-radius-10 cart-totals">
                     <div class="heading_s1 mb-3">
-                        <h4>Cart Totals</h4>
+                        <h4>Nilai Belanja</h4>
                     </div>
                     <div class="table-responsive">
                         <table class="table">      
@@ -72,7 +72,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="<?=base_url()?>/checkout" class="btn btn-rounded"> <i class="fa fa-share-square mr-10"></i>CheckOut</a>
+                    <a href="<?=base_url()?>/checkout" class="btn btn-rounded"> <i class="fa fa-share-square mr-10"></i>Lanjutkan</a>
                 </div>
             </div>
         </div>
