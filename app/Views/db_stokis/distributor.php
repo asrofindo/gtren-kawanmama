@@ -40,7 +40,6 @@
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
-                                <label>Kode Pos<span class="required">*</span></label>
                                 <input id="kode_pos" required="" class="form-control square" name="kode_pos" type="hidden">
                             </div>
                             <div class="form-group col-md-12">
@@ -75,7 +74,6 @@
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
-                                <label>Kode Pos<span class="required">*</span></label>
                                 <input id="kode_pos" value="<?= $address[0]->kode_pos ?>" required="" class="form-control square" name="kode_pos" type="hidden">
                             </div>
                             <div class="form-group col-md-12">
