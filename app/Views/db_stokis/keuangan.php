@@ -102,7 +102,7 @@
                         <?php foreach ($detailtransaksi as $detail): ?>
                             <tr>
                                 <td class="id"><?= $detail['id']; ?></td>
-                                <td><?= intval($detail['stockist_commission']) + intval($detail['admin_commission']) + intval($detail['affiliate_commission']) - intval($detail['ongkir_produk']); ?></td>
+                                <td><?= intval($detail['stockist_commission']); ?></td>
                           </tr>
                         <?php endforeach ?>
                     </tbody>
