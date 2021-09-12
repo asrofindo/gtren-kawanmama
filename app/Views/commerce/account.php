@@ -135,21 +135,22 @@
                                                             <th>Nomor</th>
                                                             <th>product </th>
                                                             <th>Jumlah </th>
-                                                            <th>Status Barang</th>
-                                                            <th>Pengirim</th>
+                                                            <th>Status Pengiriman</th>
+                                                            <th>Kurir</th>
                                                             <th>Resi</th>
-                                                            <th>Date</th>
-                                                            <th>Actions</th>
+                                                            <th>Tanggal</th>
+                                                            <th>Aksi</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <?php foreach($details_order as $order): ?>
+                                                            <?php $photo = explode(',', $order->photos); ?>
                                                             <tr>
                                                                 <td>ord<?= $order->id;  ?></td>
                                                                 <td>                                             
                                                                     <a class="itemside" href="#">
                                                                         <div class="left">
-                                                                            <img src="<?= $order->photos; ?>" width="40" height="40" class="img-xs" alt="Item">
+                                                                            <img src="<?= base_url()  ?>/public/uploads/product_photos/<?= $photo[0]; ?>" width="40" height="40" class="img-xs" alt="Item">
                                                                         </div>
                                                                         <div class="info"><?= $order->name;  ?></div>
                                                                     </a>
