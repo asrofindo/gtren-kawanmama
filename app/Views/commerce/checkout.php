@@ -169,7 +169,7 @@
                                     
                                 <?php endforeach; ?>
                                     <tr>
-                                        <th><h3>Total Tagihan</h3></th>
+                                        <th>Total Tagihan</th>
                                         <td><?= $total;  ?></td>
                                     </tr>
                             </tbody>
@@ -179,14 +179,16 @@
                     <form action="<?= base_url() ?>/transaksi/save" method="post">
                         <div class="payment_method">
                             <div class="mb-25">
-                                <h5>Payment</h5>
+                                <h5>Metode Pembayaran</h5>
                             </div>
                             <div class="payment_option">
                                 <div class="custome-radio">
-                                    <select name="bill">
+                                    <select name="bill" class="form-control" required>
                                         <?php foreach ($bills as $bill): ?>
-                                                <option value="<?= $bill->id  ?>"><?= $bill->bank_name ?> - <?= $bill->bank_number ?>
-                                                    
+                                                <option selected disabled>
+                                                    Pilih Bank
+                                                </option>
+                                                <option value="<?= $bill->id  ?>"><?= $bill->bank_name ?> - <?= $bill->bank_number ?> - <?= $bill->owner  ?>
                                                 </option>
                                         <?php endforeach; ?>
                                     </select>
@@ -194,7 +196,7 @@
                                 <input type="number" style="display: none" name="total" value="<?= $total;  ?>">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-fill-out btn-block mt-30">Place Order</button>
+                        <button type="submit" class="btn btn-fill-out btn-block mt-30">Pesan Sekarang</button>
                     </form>
                 </div>
             </div>
