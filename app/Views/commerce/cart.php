@@ -28,7 +28,9 @@
                         <tbody>
                                 <?php foreach($carts as $cart): ?>
                             <tr>
-                                <td class="image product-thumbnail"><img src="<?php base_url() ?>/public/uplaods/product_photos/<?= $cart->photos ?>" alt="#"></td>
+                                <?php $photo = explode(',', $cart->photos); ?>
+
+                                <td class="image product-thumbnail"><img src="<?php base_url() ?>/public/uplaods/product_photos/<?= $photo[0] ?>" alt="#"></td>
                                 <td class="product-des product-name">
                                     <p class="product-name"><a href="shop-product-right.html"><?= $cart->name; ?></a></p>
 

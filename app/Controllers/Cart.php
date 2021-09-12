@@ -115,7 +115,7 @@ class Cart extends BaseController
 		$data['carts'] = $this->cart->select('*')
 		->where('cart_item.user_id', user()->id)->where('cart_item.status ', null)
 		->find();
-
+	
 		if(count($data['carts']) > 0){			
 			for($i = 0; count($data['carts']) > $i; $i++){			
 				array_push($data['carts_id'], $data['carts'][$i]->id);
@@ -124,7 +124,7 @@ class Cart extends BaseController
 			$this->cart->whereIn('id', $data['carts_id'])->delete();
 			return redirect()->back();
 		}
-		
+
 		return redirect()->back();
 	}
 }
