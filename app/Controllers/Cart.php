@@ -111,12 +111,11 @@ class Cart extends BaseController
 	public function delete_all()
 	{	
 		$data['carts_id'] = [];
-		$data['carts'] = $this->cart->select('products.id as p_id, address.id as a_id, users.id as u_id, cart_item.id as id, products.name, products.photos, products.sell_price, users.username, address.kecamatan, address.kabupaten, address.provinsi, product_id, products.photos, amount, total, distributor_id')
-		->join('products', 'products.id = product_id', 'left')
-		->join('users', 'users.id = distributor_id', 'left')
-		->join('address', 'address.user_id = distributor_id', 'left')->where('type', 'distributor')
-		->where('cart_item.user_id', user()->id)
+		
+		$data['carts'] = $this->cart->select('*')
+		->where('cart_item.user_id', user()->id)->where('cart_item.status ', null)
 		->find();
+
 		if(count($data['carts']) > 0){			
 			for($i = 0; count($data['carts']) > $i; $i++){			
 				array_push($data['carts_id'], $data['carts'][$i]->id);
@@ -125,7 +124,7 @@ class Cart extends BaseController
 			$this->cart->whereIn('id', $data['carts_id'])->delete();
 			return redirect()->back();
 		}
-
+		
 		return redirect()->back();
 	}
 }
