@@ -95,32 +95,15 @@
                     <thead>
                         <tr>
                             <th>#ID</th>
-                            <th scope="col">Harga Jual</th>
                             <th scope="col">Komisi Distributor</th>
-                            <th scope="col">Komisi</th>
-                            <th scope="col">Affiliate Komisi</th>
-                            <th scope="col">Ongkir</th>
-                            <th scope="col" class="text-end"> Action </th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($detailtransaksi as $detail): ?>
                             <tr>
-                                    <td class="id"><?= $detail['id']; ?></td>
-                                    <td><?= intval($detail['stockist_commission']) + intval($detail['admin_commission']) + intval($detail['affiliate_commission']) - intval($detail['ongkir_produk']); ?></td>
-                                    <td><?php echo $detail['stockist_commission']; ?></td>
-                                    <td><?php echo $detail['admin_commission']; ?></td>
-                                    <td><?php echo $detail['affiliate_commission'] ? $detail['affiliate_commission']  : '0' ; ?></td>
-                                    <td><?php echo $detail['ongkir_produk']; ?></td>
-                                    <td class="text-end">
-                                        <div class="dropdown">
-                                            <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item btn-acc">TF Dana</a>
-                                            </div>
-                                        </div> <!-- dropdown //end -->
-                                    </td>
-                            </tr>
+                                <td class="id"><?= $detail['id']; ?></td>
+                                <td><?= intval($detail['stockist_commission']) + intval($detail['admin_commission']) + intval($detail['affiliate_commission']) - intval($detail['ongkir_produk']); ?></td>
+                          </tr>
                         <?php endforeach ?>
                     </tbody>
                 </table>
