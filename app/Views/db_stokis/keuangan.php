@@ -73,7 +73,7 @@
         </div> <!-- card-body end// -->
     </div>
 
-    <div class="card mb-4 col-md-12">
+    <div class="card mb-4 col-md-6">
         <header class="card-header">
             <div class="row gx-3">
                 <div class="col-lg-4 col-md-6 me-auto">
@@ -103,6 +103,44 @@
                             <tr>
                                 <td class="id"><?= $detail['id']; ?></td>
                                 <td><?= intval($detail['stockist_commission']) + intval($detail['admin_commission']) + intval($detail['affiliate_commission']) - intval($detail['ongkir_produk']); ?></td>
+                          </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div> <!-- table-responsive //end -->
+        </div> <!-- card-body end// -->
+    </div>
+
+    <div class="card mb-4 col-md-6">
+        <header class="card-header">
+            <div class="row gx-3">
+                <div class="col-lg-4 col-md-6 me-auto">
+                    <h5>Transaksi</h5>
+                </div>
+                <div class="col-lg-2 col-6 col-md-3">
+                    <select class="form-select">
+                        <option>Status</option>
+                        <option>Active</option>
+                        <option>Disabled</option>
+                        <option>Show all</option>
+                    </select>
+                </div>
+            </div>
+        </header> <!-- card-header end// -->
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-sm table-hover">
+                    <thead>
+                        <tr>
+                            <th>#ID</th>
+                            <th scope="col">Komisi Affiliate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($detailtransaksi_affiliate as $detail): ?>
+                            <tr>
+                                <td class="id"><?= $detail['id']; ?></td>
+                                <td><?=  intval($detail['affiliate_commission']); ?></td>
                           </tr>
                         <?php endforeach ?>
                     </tbody>
