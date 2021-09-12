@@ -188,10 +188,10 @@
                             <div class="payment_option">
                                 <div class="custome-radio">
                                     <select name="bill" class="form-control" required>
+                                        <option selected disabled>
+                                            Pilih Bank
+                                        </option>
                                         <?php foreach ($bills as $bill): ?>
-                                                <option selected disabled>
-                                                    Pilih Bank
-                                                </option>
                                                 <option value="<?= $bill->id  ?>"><?= $bill->bank_name ?> - <?= $bill->bank_number ?> - <?= $bill->owner  ?>
                                                 </option>
                                         <?php endforeach; ?>
