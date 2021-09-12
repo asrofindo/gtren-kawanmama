@@ -58,6 +58,7 @@ class Admin extends BaseController
 		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
 		->join('distributor', 'distributor.id = cart_item.distributor_id')
 		->where('distributor.user_id', user()->id)
+		->where('transaksi.status_pembayaran', 'paid')
 		->findAll();
 
 		$data['pager'] = $this->transaksi->paginate(5, 'orders');

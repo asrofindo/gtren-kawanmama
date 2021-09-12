@@ -60,7 +60,7 @@ class Order extends BaseController
 			"jumlah" => $product_transaksi[0]['jumlah'] - $product_transaksi[0]['amount']
 		];
 
-		$this->product_distributor->save($data);
+		$this->productdistributor->save($data);
 
 		return redirect()->back();
 	}
@@ -144,6 +144,7 @@ class Order extends BaseController
 			"status_barang" => "refund",
 			"stockist_commission" => null,
 			"affiliate_commission" => null,
+			"admin_commission" => null,
 			"stockist_commission" => null,
 		];
 
@@ -203,10 +204,13 @@ class Order extends BaseController
 		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id' )
 		->join('distributor', 'distributor.id = cart_item.distributor_id')
 		->where('detailtransaksi.id', $id)->find();
-		
+
+		$id_affiliate = explode("/", $transaksis[0]['affiliate_link']); 
+		// apakah di dalam table pendapatan terdapat seller yang sama
 		if(count($this->pendapatan->where('user_id', $transaksis[0]['penjual_id'])->find()) > 0){
 
-			$detail_transaksi = $this->pendapatan->where('user_id', $transaksis[0]['penjual_id'])->find();
+			$detail_transaksi = $this->pendapatan->where('user_id', $transaksis[0]['penjual_id'])->where('status_dana', 'distributor')->find();
+
 			$data['pendapatan'] = [
 				"id" => $detail_transaksi[0]->id,
 				"masuk" => $detail_transaksi[0]->masuk + $transaksis[0]['stockist_commission'],
@@ -214,19 +218,10 @@ class Order extends BaseController
 			];
 
 			$this->pendapatan->save($data['pendapatan']);
+			
 
-			if(count($this->pendapatan->where('user_id', $transaksis[0]['affiliate_link'])->find()) > 0){
-				$detail_transaksi = $this->pendapatan->where('user_id', $transaksis[0]['affiliate_link'])->find();
-				
-				$data['pendapatan'] = [
-					"id" => $detail_transaksi[0]->id,
-					"masuk" => $detail_transaksi[0]->masuk + $transaksis[0]['affiliate_commission'],
-					"total" => $detail_transaksi[0]->total + $transaksis[0]['affiliate_commission'],
-				];
-
-				$this->pendapatan->save($data['pendapatan']);
-			}
 		}  
+		
 
 		else {
 			
@@ -237,15 +232,30 @@ class Order extends BaseController
 				"status_dana" => "distributor",
 				"total" => $transaksis[0]['stockist_commission'],
 			];
-
 			$this->pendapatan->save($data['pendapatan']);
 			
-			if($transaksis[0]['affiliate_link'] != null){
-			
-				$detail_transaksi = $this->pendapatan->where('user_id', $transaksis[0]['affiliate_link'])->find();
+		}
+		
+		if($transaksis[0]['affiliate_link'] != null){
 
+			$id_affiliate = explode("/", $transaksis[0]['affiliate_link']); 
+
+			if(count($this->pendapatan->where('user_id', $id_affiliate[2])->where('status_dana', 'affiliate')->find()) > 0)
+				{
+					$detail_transaksi = $this->pendapatan->where('user_id', $id_affiliate[2])->where('status_dana', 'affiliate')->find();
+					
+					$data['pendapatan'] = [
+						"id" => $detail_transaksi[0]->id,
+						"masuk" => $detail_transaksi[0]->masuk + $transaksis[0]['affiliate_commission'],
+						"total" => $detail_transaksi[0]->total + $transaksis[0]['affiliate_commission'],
+					];
+
+					$this->pendapatan->save($data['pendapatan']);
+				}
+
+			else {
 				$data['pendapatan'] = [
-					"user_id" => $transaksis[0]['affiliate_link'],
+					"user_id" => $id_affiliate[2],
 					"masuk" => $transaksis[0]['affiliate_commission'],
 					"status_dana" => "affiliate",
 					"total" => $transaksis[0]['affiliate_commission'],
@@ -253,8 +263,8 @@ class Order extends BaseController
 				
 				$this->pendapatan->save($data['pendapatan']);
 			}
+
 		}
-		
 
 		// uang masuk ke dompet stockis / affiliate / admin
 		return redirect()->back();

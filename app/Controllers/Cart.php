@@ -73,7 +73,14 @@ class Cart extends BaseController
 	public function add($id)
 	{
 		$transaksi = $this->cart->find($id);
+		
+		$data = $this->cart->join('distributor', 'distributor.id = distributor_id')
+		->join('product_distributor', 'product_distributor.product_id = cart_item.product_id')
+		->where('cart_item.id', $id)->find();
 
+		if($data[0]->amount == $data[0]->jumlah){
+			return redirect()->back();
+		}
 		$data = [
 			"id" => $id,
 			"user_id" => user()->id,
@@ -104,12 +111,11 @@ class Cart extends BaseController
 	public function delete_all()
 	{	
 		$data['carts_id'] = [];
-		$data['carts'] = $this->cart->select('products.id as p_id, address.id as a_id, users.id as u_id, cart_item.id as id, products.name, products.photos, products.sell_price, users.username, address.kecamatan, address.kabupaten, address.provinsi, product_id, products.photos, amount, total, distributor_id')
-		->join('products', 'products.id = product_id', 'left')
-		->join('users', 'users.id = distributor_id', 'left')
-		->join('address', 'address.user_id = distributor_id', 'left')->where('type', 'distributor')
-		->where('cart_item.user_id', user()->id)
+		
+		$data['carts'] = $this->cart->select('*')
+		->where('cart_item.user_id', user()->id)->where('cart_item.status ', null)
 		->find();
+	
 		if(count($data['carts']) > 0){			
 			for($i = 0; count($data['carts']) > $i; $i++){			
 				array_push($data['carts_id'], $data['carts'][$i]->id);

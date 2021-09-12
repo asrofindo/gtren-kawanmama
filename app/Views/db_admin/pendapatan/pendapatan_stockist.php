@@ -43,7 +43,6 @@
                         <th scope="col">Keluar</th>
                         <th scope="col">Total</th>
                         <th scope="col">widthdraw</th>
-                        <th scope="col">Date</th>
                         <th scope="col" class="text-end"> Action </th>
                     </tr>
                 </thead>
@@ -56,7 +55,6 @@
                             <td><?php echo $pendapatan->keluar ?></td>
                             <td><?php echo $pendapatan->total; ?></td>
                             <td><?php echo $pendapatan->penarikan_dana; ?></td>
-                            <td><?= $pendapatan->created_at; ?></td>
                             <td class="text-end">
                                 <div class="dropdown">
                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
@@ -92,7 +90,9 @@
             <form action="<?php base_url()  ?>/transaksi/wd" method="post">
                 <div class="mb-4">
                     <input type="hidden" id="pendapatan_id" name="pendapatan_id">
-                    <input class="form-control" type="text" name="wd" placeholder="Masukan Jumlah Dana">    <br>
+                    <input type="hidden" name="status_dana" value="distributor">
+                    <input type="hidden" name="wd" id="wd">
+                    Total : Rp<h5 id="total_wd"> </h5>
                     <select class="form-control"  name="bill">
                         <?php foreach ($bills as $bill): ?>
                                 <option value="<?php echo $bill->id ?>"><?php echo $bill->bank_name ?> - <?php echo $bill->owner ?></option>
@@ -111,10 +111,21 @@
 
         $('.btn-acc').on('click',function(data){
 
-                let val = data.target.parentElement.parentElement.parentElement.parentElement.childNodes[1].innerHTML
-                $('#pendapatan_id').val(val);
+            let val = data.target.parentElement.parentElement.parentElement.parentElement.childNodes[1].innerHTML
+            $('#pendapatan_id').val(val);
 
-            $('#myModal').modal('show');
+            let wd = data.target.parentElement.parentElement.parentElement.parentElement.childNodes[11]
+
+            if(wd.innerHTML < 1){
+                alert('maaf kamu tidak bisa wd')
+            } else {
+                $('#wd').val(wd.innerHTML);
+
+                $("#total_wd").text(wd.innerHTML);
+
+                $('#myModal').modal('show'); 
+            }
+            
         });
 
          

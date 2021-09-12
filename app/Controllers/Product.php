@@ -144,7 +144,7 @@ class Product extends BaseController
 			$kabupaten = $data['address'][0]->kabupaten;
 			$provinsi = $data['address'][0]->provinsi;
 
-			$data['product_distributor'] = $this->address->select('users.username,  kecamatan, kabupaten, kode_pos, provinsi, type, distributor.user_id, distributor.id as distributor_id, product_distributor.product_id')
+			$data['product_distributor'] = $this->address->select('users.username,  kecamatan, kabupaten, kode_pos, provinsi, type, distributor.user_id, distributor.id as distributor_id, product_distributor.product_id, detail_alamat')
 			->join('users', 'users.id = address.user_id', 'left')
 			->where('address.type', 'distributor')
 			->join('distributor', 'distributor.user_id = users.id', 'left')
@@ -154,9 +154,6 @@ class Product extends BaseController
 			for($i = 0; $index > $i; $i++){
 				if($data['product_distributor'][$i]->kecamatan == $kecamatan || $data['product_distributor'][$i]->kabupaten == $kabupaten || $data['product_distributor'][$i]->provinsi == $provinsi){
 					array_push($data['product_distributors'], $data['product_distributor'][$i]);
-				}
-				else {
-					$data['product_distributor'] = [];
 				}
 			}
 			// dd($data['product']);

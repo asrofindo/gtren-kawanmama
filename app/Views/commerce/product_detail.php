@@ -124,17 +124,17 @@
                                 </div> -->
                                 <!-- <div class="bt-1 border-color-1 mt-30 mb-30"></div> -->
                                 <div class="detail-extralink">
-                                        <div class="detail-qty border radius">
+                                        <div class="detail-qty border radius" style="display: none">
                                             <a href="#" class="qty-down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
                                             <span class="qty-val">1</span>
                                             <a href="#" class="qty-up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
                                         </div>
                                         <div class="product-extra-link2">
                                            <?php if(count($address) > 0): ?>
-                                                <button data-toggle="modal" data-target="#exampleModalCenter" type="submit" class="button button-add-to-cart btn-store">Add to cart</button>
+                                                <button data-toggle="modal" data-target="#exampleModalCenter" type="submit" class="button button-add-to-cart btn-store">Beli</button>
                                             <?php endif; ?>
                                             <?php if(count($address) == 0 ): ?>
-                                                <button data-toggle="modal" data-target="#exampleModalCenter" type="submit" class="button button-add-to-cart btn-store">Add to cart</button>
+                                                <button data-toggle="modal" data-target="#exampleModalCenter" type="submit" class="button button-add-to-cart btn-store">Beli</button>
                                             <?php endif; ?>
                                         </div>
                                 </div>
@@ -495,8 +495,9 @@
                         <input style="display: none" type="text" value="<?= $distributor->distributor_id ?>" name="distributor_id">
                         <li style="position: relative;" type="submit" class="list-group-item d-flex justify-content-between align-items-center h-50">
                             <?= $distributor->username ?> <br>
-                            kecamatan : <?= $distributor->kecamatan ?> <br>
-                            kabupaten : <?= $distributor->kabupaten ?> <br>
+                            Alamat : <?= $distributor->detail_alamat;  ?> <br>
+                            kecamatan : <?= $distributor->kecamatan; ?> <br>
+                            kabupaten : <?= $distributor->kabupaten; ?> <br>
   
                         </li>
                         <button class="btn-sm btn-primary" type="submit">Pilih</button>
@@ -534,6 +535,11 @@
             })
 
             $('#myModal').modal('show');
+        });
+
+         $('.close').on('click',function(){
+            // get data from button edit
+            $('#myModal').modal('hide');
         });
 
          

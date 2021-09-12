@@ -13,6 +13,7 @@ use App\Models\DetailPengirimanModel;
 use App\Models\DetailTransaksiModel;
 use App\Models\PendapatanModel;
 use App\Models\WDModel;
+use App\Models\GenerateModel;
 use App\Controllers\BaseController;
 
 
@@ -33,6 +34,7 @@ class Transaksi extends BaseController
 		$this->detail_transaksi = new DetailTransaksiModel();
 		$this->pendapatan = new PendapatanModel();
 		$this->wd = new WDModel();
+		$this->generate = new GenerateModel();
 	}
 
 	public function index()
@@ -120,7 +122,9 @@ class Transaksi extends BaseController
 			$total += $cart['subtotal'][0];
 		}
 
-		$data['total'] = $total;
+		$data['generate'] = $this->generate->find();
+		
+		$data['total'] = $total + $data['generate'][0]['nomor'];
 		$data['category'] = $this->category->findAll();
 		$data['address'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find();
 
@@ -130,7 +134,6 @@ class Transaksi extends BaseController
 		->join('subdistrict', 'subdistrict.subsdistrict_name = kecamatan', 'left')->first();
 	
 		$data['bills'] = $this->bill->find();
-
 		return view('commerce/checkout', $data);
 	}
 
@@ -138,6 +141,7 @@ class Transaksi extends BaseController
 	{
 		$total = $this->request->getPost('total');
 		$bill = $this->request->getPost('bill');
+		$kode_unik = $this->request->getPost('kode_unik');
 		
 		$data['carts'] = $this->cart->select('*, distributor.id as distributor_id, detailtransaksi.id as d_id, cart_item.id as cart_id, products.stockist_commission, products.affiliate_commission')
 		->join('products', 'products.id = product_id')
@@ -152,7 +156,7 @@ class Transaksi extends BaseController
 		->findAll();
 
 
-		$this->transaksi->insert(["user_id" => user()->id, "bill_id" => $bill, "status_pembayaran" => "pending", "total" => $total]);
+		$this->transaksi->insert(["user_id" => user()->id, "kode_unik" => $kode_unik, "bill_id" => $bill, "status_pembayaran" => "pending", "total" => $total]);
 		
 		foreach($data['carts'] as $cart){
 
@@ -173,6 +177,13 @@ class Transaksi extends BaseController
 			];
 			$this->detail_transaksi->save($data);
 		}
+
+		$data['generate'] = $this->generate->find();
+
+		$this->generate->save(["id" => 1, "nomor" => $data['generate'][0]['nomor'] + 1]);
+
+		return redirect()->to('/orders');
+		
 	}
 
 	public function save_kurir()
@@ -307,10 +318,9 @@ class Transaksi extends BaseController
 	{
 		$data['pendapatans'] = $this->pendapatan
 		->join('users', 'users.id = pendapatan.user_id')
-		->where('users.affiliate_link !=', null)
 		->where('pendapatan.status_dana', 'affiliate')
 		->find();
-		dd($data['pendapatans']);
+	
 		$data['bills'] = $this->bill->findAll();
 		$data['pager'] = $this->transaksi->paginate(5, 'pendapatan');
 		$data['pager'] = $this->transaksi->pager;
@@ -322,6 +332,7 @@ class Transaksi extends BaseController
 		$id = $this->request->getPost('pendapatan_id');
 		$wd = $this->request->getPost('wd');
 		$bill_id = $this->request->getPost('bill');
+		$status_dana = $this->request->getPost('status_dana');
 
 		$data_pendapatan = $this->pendapatan->find($id);
 		$data_bill = $this->bill->find($bill_id);
@@ -329,7 +340,7 @@ class Transaksi extends BaseController
 
 		$user_id = $this->pendapatan->find($id)->user_id;
 
-		$id_wd = $this->wd->where('user_id', $user_id)->where('status', 'belum')->find()[0];
+		$id_wd = $this->wd->where('user_id', $user_id)->where('status_dana', $status_dana)->where('status', 'belum')->find()[0]['id'];
 
 		if($data_bill->total == null){
 			return redirect()->back();
@@ -354,7 +365,7 @@ class Transaksi extends BaseController
 		
 		$this->pendapatan->save($data);
 
-		$this->wd->save(["id" => $id_wd, "status" => "sudah"]);
+		$this->wd->save(["id" => $id_wd, "status" => "sudah", "bill_id" => $bill_id]);
 
 		return redirect()->back();
 	}
@@ -388,7 +399,13 @@ class Transaksi extends BaseController
 		->join('distributor', 'distributor.id = detailtransaksi.distributor_id')
 		->join('detailpengiriman', 'detailpengiriman.cart_id = detailtransaksi.cart_id')
 		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
-		->where('distributor.user_id', user()->id)->findAll();
+		->where('distributor.user_id', user()->id)->where('status_barang', 'diterima')->findAll();
+
+
+		$data['detailtransaksi_affiliate'] = $this->detail_transaksi
+		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
+		->join('users', 'users.affiliate_link = cart_item.affiliate_link')
+		->where('users.id', user()->id)->where('status_barang', 'diterima')->findAll();
 
 		return view('db_stokis/keuangan', $data);
 	}
@@ -396,34 +413,43 @@ class Transaksi extends BaseController
 	public function request_wd()
 	{
 		$jumlah_wd = $this->request->getPost('jumlah_wd');
+		$status_dana = $this->request->getPost('status_dana');
 		$id = user()->id;
-		$penarikan = $this->pendapatan->where('user_id', user()->id)->first();
-		$wd_belum = $this->wd->where('user_id', user()->id)->where('status', 'belum')->find();
+		$penarikan = $this->pendapatan->where('user_id', user()->id)->where('status_dana', $status_dana)->first();
+
+		$wd_belum = $this->wd->where('user_id', user()->id)->where('status', 'belum')->where('status_dana', $status_dana)->find();
+
+		$data['pendapatan_affiliate'] = $this->pendapatan->select('total')->where('status_dana', 'affiliate')->where('user_id', user()->id)->findAll();
+		$data['pendapatan_stockist'] = $this->pendapatan->select('sum(total) as total')->where('status_dana', 'distributor')->where('user_id', user()->id)->findAll();
+
 		if(count($wd_belum) > 0){
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();	
-			$data['pendapatan'] = $this->pendapatan->where('user_id', user()->id)->find();
+			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->findAll();
+
 			return view('db_stokis/wd', $data);
 		}
 		if(!$jumlah_wd > 0){
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
-			$data['pendapatan'] = $this->pendapatan->where('user_id', user()->id)->find();
+			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
 			return view('db_stokis/wd', $data);
 		}
 		if(count($this->pendapatan->where('user_id', user()->id)->find()) == 0 ){
-			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
+			$data['wds'] = $this->wd->select('sum(total) as total')->where('user_id', user()->id)->find();
 			$data['pendapatan'] = $this->pendapatan->where('user_id', user()->id)->find();
+
 			return view('db_stokis/wd', $data);
 		}
 
-		if($this->pendapatan->where('user_id', user()->id)->find()[0]->total == 0){			
+		if($this->pendapatan->where('user_id', user()->id)->where('status_dana', $status_dana)->find()[0]->total == 0){			
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
-			$data['pendapatan'] = $this->pendapatan->where('user_id', user()->id)->find();
+			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
 			return view('db_stokis/wd', $data);
 		}
 		$this->wd->save([
 			"user_id" => $id,
 			"jumlah_wd" => $jumlah_wd,
-			"status" => "belum"
+			"status" => "belum",
+			"status_dana" => $status_dana
 		]);
 
 		$this->pendapatan->save([
@@ -432,4 +458,15 @@ class Transaksi extends BaseController
 		]);		
 		return redirect()->back();
 	}	
+
+	public function riwayat_wd()
+	{
+		$data['wds'] = $this->wd->select('*, penarikan_dana.status as status_wd')
+		->join('bills', 'bills.id = penarikan_dana.bill_id', 'inner')
+		->join('users', 'users.id = penarikan_dana.user_id', 'inner')
+		->where('penarikan_dana.status', 'sudah')
+		->find();
+
+		return view('db_admin/pendapatan/riwayat_wd', $data);
+	}
 }	

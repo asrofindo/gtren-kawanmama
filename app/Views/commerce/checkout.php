@@ -11,7 +11,7 @@
 </div>
 <section class="mt-60 mb-60">
     <div class="container">
-        <div class="row">
+<!--         <div class="row">
             <div class="col-lg-6">
                 <div class="toggle_info">
                     <span><i class="far fa-user mr-5"></i><span class="text-muted">Already have an account?</span> <a href="#loginform" data-bs-toggle="collapse" class="collapsed" aria-expanded="false">Click here to login</a></span>
@@ -60,7 +60,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row">
             <div class="col-12">
                 <div class="divider mt-50 mb-50"></div>
@@ -98,23 +98,24 @@
             <div class="col-md-12">
                 <div class="order_review">
                     <div class="mb-20">
-                        <h4>Your Orders</h4>
+                        <h4>Pesanan Anda</h4>
                     </div>
                     <div class="table-responsive order_table text-center">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Photo</th>
-                                    <th>Product</th>
-                                    <th>amount</th>
-                                    <th>harga</th>
+                                    <th>Foto</th>
+                                    <th>Produk</th>
+                                    <th>Jumlah</th>
+                                    <th>Harga</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($carts as $cart):?>
                                     <?php foreach ($cart['products'] as $product): ?>
+                                        <?php $photo = explode(',', $product->photos); ?>
                                         <tr style="height:30px">
-                                            <td style="width:40px; "><img src="<?= $product->photos; ?>" style="width:60%; height:100px"></td>
+                                            <td style="width:40px; "><img src="<?php base_url() ?>/public/uploads/product_photos/<?= $photo[0]; ?>" style="width:60%; height:100px"></td>
                                             <td style="width: 100px"><?= $product->name ?></td>
                                             <td style="width: 100px"><?= $product->amount ?></td>
                                             <td style="width: 100px"><?= $product->sell_price ?></td>
@@ -122,9 +123,9 @@
                                         
                                     <?php endforeach; ?>
                                     <tr>
-                                        <th colspan="1"><h4>Penjual</h4></th>
+                                        <th colspan="1">Penjual</th>
                                         <td colspan="1" class="product-subtotal">
-                                            <span class="font-xl text-brand fw-900"><?= $cart['locate'];  ?></span>
+                                            <span><?= $cart['locate'];  ?></span>
                                         </td>
                                         <td colspan="2" class="product-subtotal" style="width:150px">
                                             <span>
@@ -134,7 +135,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th colspan="1"><h4>Pilih Kurir</h4></th>
+                                        <th colspan="1"> Kurir</th>
                                         <td colspan="1" class="product-subtotal">
                                             <span class="font-xl text-brand fw-900">
                                                 <form method="POST" action="<?= base_url()  ?>/transaksi/check">
@@ -153,23 +154,31 @@
                                             </span>
                                         </td>
                                         <td>
-                                            dikirim Lewat
+                                            Dikirim lewat
                                             <?= $cart['kurir'] ?>
                                         </td>
                                         <td>
-                                            <?= $cart['ongkir'] ?> ||
-                                            <?= $cart['etd'] ?>
+                                            <?= $cart['ongkir'] ?> 
+                                            <?php if($cart['etd'] == 'Tidak temukan'): ?> 
+                                                <span></span>
+                                            <?php else: ?>
+                                                <span>| Perkiraan <?= $cart['etd']; ?></span>
+                                            <?php endif; ?>    
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>sub total</th>
-                                        <td colspan="3" class="product-subtotal"><span class="font-xl text-brand fw-900"><?= $cart['subtotal'][0];?></span></td>
+                                        <td colspan="3" class="product-subtotal"><span><?= $cart['subtotal'][0];?></span></td>
                                     </tr>
                                     
+                                    <tr>
+                                        <th>Kode Unik</th>
+                                        <td><?= $generate[0]['nomor'];  ?></td>
+                                    </tr>
                                 <?php endforeach; ?>
                                     <tr>
-                                        <th><h3>Total Tagihan</h3></th>
-                                        <td><?= $total;  ?></td>
+                                        <th>Total Tagihan</th>
+                                        <td><b><?= $total;  ?></b></td>
                                     </tr>
                             </tbody>
                         </table>
@@ -178,22 +187,25 @@
                     <form action="<?= base_url() ?>/transaksi/save" method="post">
                         <div class="payment_method">
                             <div class="mb-25">
-                                <h5>Payment</h5>
+                                <h5>Metode Pembayaran</h5>
                             </div>
                             <div class="payment_option">
                                 <div class="custome-radio">
-                                    <select name="bill">
+                                    <select name="bill" class="form-control" required>
+                                        <option selected disabled>
+                                            Pilih Bank
+                                        </option>
                                         <?php foreach ($bills as $bill): ?>
-                                                <option value="<?= $bill->id  ?>"><?= $bill->bank_name ?> - <?= $bill->bank_number ?>
-                                                    
+                                                <option value="<?= $bill->id  ?>"><?= $bill->bank_name ?> - <?= $bill->bank_number ?> - <?= $bill->owner  ?>
                                                 </option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <input type="number" style="display: none" name="total" value="<?= $total;  ?>">
+                                <input type="number" style="display: none" name="kode_unik" value="<?= $generate[0]['nomor'];  ?>">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-fill-out btn-block mt-30">Place Order</button>
+                        <button type="submit" class="btn btn-fill-out btn-block mt-30">Pesan Sekarang</button>
                     </form>
                 </div>
             </div>
