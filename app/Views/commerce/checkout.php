@@ -123,9 +123,9 @@
                                         
                                     <?php endforeach; ?>
                                     <tr>
-                                        <th colspan="1">>Penjual</th>
+                                        <th colspan="1">Penjual</th>
                                         <td colspan="1" class="product-subtotal">
-                                            <span class="font-xl text-brand fw-600"><?= $cart['locate'];  ?></span>
+                                            <span><?= $cart['locate'];  ?></span>
                                         </td>
                                         <td colspan="2" class="product-subtotal" style="width:150px">
                                             <span>
@@ -164,7 +164,7 @@
                                     </tr>
                                     <tr>
                                         <th>sub total</th>
-                                        <td colspan="3" class="product-subtotal"><span class="font-xl text-brand fw-600"><?= $cart['subtotal'][0];?></span></td>
+                                        <td colspan="3" class="product-subtotal"><span><?= $cart['subtotal'][0];?></span></td>
                                     </tr>
                                     
                                 <?php endforeach; ?>
