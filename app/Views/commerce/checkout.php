@@ -104,10 +104,10 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Photo</th>
-                                    <th>Product</th>
-                                    <th>amount</th>
-                                    <th>harga</th>
+                                    <th>Foto</th>
+                                    <th>Produk</th>
+                                    <th>Jumlah</th>
+                                    <th>Harga</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -123,9 +123,9 @@
                                         
                                     <?php endforeach; ?>
                                     <tr>
-                                        <th colspan="1"><h4>Penjual</h4></th>
+                                        <th colspan="1">>Penjual</th>
                                         <td colspan="1" class="product-subtotal">
-                                            <span class="font-xl text-brand fw-900"><?= $cart['locate'];  ?></span>
+                                            <span class="font-xl text-brand fw-600"><?= $cart['locate'];  ?></span>
                                         </td>
                                         <td colspan="2" class="product-subtotal" style="width:150px">
                                             <span>
@@ -135,7 +135,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th colspan="1"><h4>Pilih Kurir</h4></th>
+                                        <th colspan="1">Pilih Kurir</th>
                                         <td colspan="1" class="product-subtotal">
                                             <span class="font-xl text-brand fw-900">
                                                 <form method="POST" action="<?= base_url()  ?>/transaksi/check">
@@ -164,7 +164,7 @@
                                     </tr>
                                     <tr>
                                         <th>sub total</th>
-                                        <td colspan="3" class="product-subtotal"><span class="font-xl text-brand fw-900"><?= $cart['subtotal'][0];?></span></td>
+                                        <td colspan="3" class="product-subtotal"><span class="font-xl text-brand fw-600"><?= $cart['subtotal'][0];?></span></td>
                                     </tr>
                                     
                                 <?php endforeach; ?>
