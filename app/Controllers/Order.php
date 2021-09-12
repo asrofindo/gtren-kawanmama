@@ -40,7 +40,7 @@ class Order extends BaseController
 	{
 		$data = [
 			"id" => $id,
-			"status_barang" => "diterima"
+			"status_barang" => "diterima_pembeli"
 		];
 
 		$this->detailtransaksi->save($data);
@@ -161,7 +161,7 @@ class Order extends BaseController
 
 		$data = [
 			"id" => $order_id,
-			"status_barang" => "Dikirim",
+			"status_barang" => "dikirim",
 			"resi" => $resi
 		];
 
@@ -190,7 +190,7 @@ class Order extends BaseController
 		// ubah status detail transaksi 
 		$data = [
 			"id" => $id,
-			"status_barang" => "diterima",
+			"status_barang" => "diterima_pembeli",
 		];
 
 		$this->detailtransaksi->save($data);

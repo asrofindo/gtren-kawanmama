@@ -133,7 +133,7 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Nomor</th>
-                                                            <th>product </th>
+                                                            <th>Produk </th>
                                                             <th>Jumlah </th>
                                                             <th>Status Pengiriman</th>
                                                             <th>Kurir</th>
@@ -156,21 +156,31 @@
                                                                     </a>
                                                                 </td>
                                                                 <td><?= $order->amount;  ?></td>
-                                                                <td><?= $order->status_barang ? $order->status_barang : 'proses'; ?></td>
+                                                                <?php if($order->status_barang == null): ?>
+                                                                    <td class="badge rounded-pill alert-warning"><?= 'Menunggu Konfirmasi Seller '; ?></td>
+                                                                <?php elseif($order->status_barang == 'dikirim'): ?>
+                                                                    <td class="badge rounded-pill alert-primary"><?= 'Sedang Dikirim'; ?></td>
+                                                                <?php elseif($order->status_barang == 'diterima_seller'): ?>
+                                                                    <td class="badge rounded-pill alert-primary"><?= 'Penyiapan Barang'; ?></td>
+                                                                <?php elseif($order->status_barang == 'diterima_pembeli'): ?>
+                                                                    <td class="badge rounded-pill alert-success"><?= 'Diterima Oleh Pembeli'; ?></td>
+                                                                <?php elseif($order->status_barang == 'ditolak'): ?>
+                                                                    <td class="badge rounded-pill alert-danger"><?= 'Ditolak Oleh DIstributor'; ?></td>
+                                                                <?php elseif($order->status_barang == 'refund'): ?>
+                                                                    <td class="badge rounded-pill alert-danger"><?= 'Dana Dikembalikan'; ?></td>
+                                                                <?php endif; ?>
                                                                 <td><?= $order->kurir ?>, <?= $order->etd ?>, <?= $order->ongkir ?></td>
                                                                 <td><?= $order->resi ? $order->resi: 'proses'; ?></td>
                                                                 <td><?= $order->created_at;  ?></td>
                                                                 <td>
-                                                                    <?php if($order->status_barang == 'Dikirim'): ?>
-                                                                        <a href="<?= base_url() ?>/order/verify/<?= $order->id ?>" class="btn-small d-block">
-                                                                            Sudah Diterima
+                                                                    <?php if($order->status_barang == 'dikirim'): ?>
+                                                                        <a class="btn btn-sm btn-primary" href="<?= base_url() ?>/order/verify/<?= $order->id ?>" class="btn-small d-block">
+                                                                            Sudah Terima Barang ?
                                                                         </a>
                                                                     <?php elseif($order->status_barang == null): ?>
-                                                                        Menunggu Pembayaran
-                                                                    <?php elseif($order->status_pembayaran == 'pending'): ?>
-                                                                        Menunggu Pembayaran
+                                                                        <td class="badge rounded-pill alert-danger"><?= 'Menunggu Konfirmasi'; ?></td>
                                                                     <?php elseif($order->status_barang == 'diterima'): ?>
-                                                                        selesai
+                                                                       <td class="badge rounded-pill alert-success"><?= 'Diterima Oleh Pembeli'; ?></td>
                                                                     <?php endif; ?>
                                                                 </td>
                                                             </tr>
