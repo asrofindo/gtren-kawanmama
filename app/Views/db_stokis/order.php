@@ -57,7 +57,7 @@
                             <td><b><?php echo $order->name; ?></b></td>
                             <td><?php echo $order->status_barang == null ? "menunggu pengiriman" : $order->status_barang; ?></td>
                             <td><?php echo $order->status_pembayaran; ?></td>
-                            <td>$<?php echo $order->total + $order->ongkir_produk; ?></td>
+                            <td>Rp<?php echo $order->total + $order->ongkir_produk; ?></td>
                             <td><?php echo $order->resi; ?></td>
                             <td><?php echo $order->created_at; ?></td>
                             <td class="text-end">
@@ -112,7 +112,7 @@
         $('.btn-acc').on('click',function(data){
 
             let val = data.target.parentElement.parentElement.parentElement.parentElement.childNodes[1].innerHTML
-            
+                
             $('#order_id').val(val);
 
             $('#myModal').modal('show');
