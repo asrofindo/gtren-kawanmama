@@ -244,14 +244,9 @@
                                             </div>
                                         <?php } ?>
                                             <div class="dropdown">
-                                              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                              <a class="btn btn-primary dropdown-toggle" href="<?php base_url() ?>/billing-address">
                                                 Tambah Alamat
-                                              </button>
-                                              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                <?php if(count($billing_address) < 1):  ?>
-                                                    <li><a class="dropdown-item" href="<?php base_url() ?>/billing-address">Billing</a></li>
-                                                <?php endif ?>
-                                              </ul>
+                                              </a>
                                             </div>
                                     </div>
                                     <div class="row">
@@ -325,7 +320,6 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-12">
-                                                        <label>Kode Pos<span class="required">*</span></label>
                                                         <input id="kode_pos" value="" required="" class="form-control square" name="kode_pos" type="hidden">
                                                     </div>
                                                     <div class="form-group col-md-12">
