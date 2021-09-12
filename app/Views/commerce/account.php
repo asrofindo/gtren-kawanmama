@@ -172,9 +172,9 @@
                                                                             Sudah Terima Barang ?
                                                                         </a>
                                                                     <?php elseif($order->status_barang == null): ?>
-                                                                        <td class="badge rounded-pill alert-danger"><?= 'Menunggu Konfirmasi'; ?></td>
+                                                                        <span class="badge rounded-pill alert-danger"><?= 'Menunggu Konfirmasi'; ?></span>
                                                                     <?php elseif($order->status_barang == 'diterima'): ?>
-                                                                       <td class="badge rounded-pill alert-success"><?= 'Diterima Oleh Pembeli'; ?></td>
+                                                                       <span class="badge rounded-pill alert-success"><?= 'Diterima Oleh Pembeli'; ?></span>
                                                                     <?php endif; ?>
                                                                 </td>
                                                             </tr>
