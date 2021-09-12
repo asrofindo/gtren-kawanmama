@@ -30,7 +30,7 @@
                             <tr>
                                 <?php $photo = explode(',', $cart->photos); ?>
 
-                                <td class="image product-thumbnail"><img src="<?php base_url() ?>/public/uplaods/product_photos/<?= $photo[0] ?>" alt="#"></td>
+                                <td class="image product-thumbnail"><img src="<?php base_url() ?>/public/uploads/product_photos/<?= $photo[0] ?>" alt="#"></td>
                                 <td class="product-des product-name">
                                     <p class="product-name"><a href="shop-product-right.html"><?= $cart->name; ?></a></p>
 
