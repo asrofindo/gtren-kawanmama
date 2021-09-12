@@ -495,7 +495,7 @@
                         <input style="display: none" type="text" value="<?= $distributor->distributor_id ?>" name="distributor_id">
                         <li style="position: relative;" type="submit" class="list-group-item d-flex justify-content-between align-items-center h-50">
                             <?= $distributor->username ?> <br>
-                            Alamat : <?= $distributor->detail_alamat;  ?>
+                            Alamat : <?= $distributor->detail_alamat;  ?> <br>
                             kecamatan : <?= $distributor->kecamatan; ?> <br>
                             kabupaten : <?= $distributor->kabupaten; ?> <br>
   
