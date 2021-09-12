@@ -30,6 +30,8 @@ class User extends BaseController
 		$this->group = new GroupModel();
 		$this->generate = new GenerateModel();
 		$this->bill = new BillModel();
+		$this->address = new AddressModel();
+
 	}
 	public function account()
 	{
@@ -191,6 +193,10 @@ class User extends BaseController
 
 		user()->setProfile($data);
 		session()->setFlashdata('success', 'Data sudah berhasil dimasukan');
+		$address = $this->address->where('user_id',user()->id);
+		if (!empty($address)) {
+			return redirect()->to('/address');
+		}
 		return redirect()->back();
 
 	}
