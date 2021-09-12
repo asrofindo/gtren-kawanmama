@@ -134,7 +134,7 @@
     </li>
     <li class="menu-item" >
         <a class="menu-link" href="<?php base_url() ?>/distributor"> <i class="icon material-icons md-store"></i>
-            <span class="text">Setting Toko</span>
+            <span class="text">Setting Distributor</span>
         </a>
     </li>
     <?php endif ?>

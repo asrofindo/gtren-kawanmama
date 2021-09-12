@@ -85,7 +85,7 @@ class upgrades extends BaseController
 
 			$this->group->addUserToGroup(user()->id, 3);
 			$this->group->addUserToGroup(user()->id, 4);
-			$this->distributor->save(['user_id' => user()->id, 'locate' => null]);
+			$this->distributor->save(['user_id' => user()->id, 'locate' => $username]);
 			$this->uniq->save(["id" => $unique_id[0]->id, "used" => user()->id]);
 
 			$users = $this->db->table('users');

@@ -15,7 +15,7 @@
                 </div>
             <?php } ?>
             <div class="card-header">
-                <h5>Tambah Alamat Distributor</h5>
+                <h5>Ubah Alamat Distributor</h5>
             </div>
             <div class="card-body">
                 <?php $id = user()->id; ?>
@@ -43,12 +43,12 @@
                                 <input id="kode_pos" required="" class="form-control square" name="kode_pos" type="hidden">
                             </div>
                             <div class="form-group col-md-12">
-                                <label>Detail Alamat<span class="required">*</span></label>
+                                <label>Kelurahan<span class="required">*</span></label>
                                 <input required="" class="form-control square" name="detail_alamat" type="text">
                             </div>
 
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Save</button>
+                                <button type="submit" class="btn btn-sm btn-primary submit" name="submit" value="Submit">simpan</button>
                             </div>
                         </div>
                     </form>
@@ -77,12 +77,12 @@
                                 <input id="kode_pos" value="<?= $address[0]->kode_pos ?>" required="" class="form-control square" name="kode_pos" type="hidden">
                             </div>
                             <div class="form-group col-md-12">
-                                <label>Detail Alamat<span class="required">*</span></label>
+                                <label>Kelurahan<span class="required">*</span></label>
                                 <input value="<?= $address[0]->detail_alamat ?>" required="" class="form-control square" name="detail_alamat" type="text">
                             </div>
 
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Ubah</button>
+                                <button type="submit" class="btn btn-sm btn-primary submit" name="submit" value="Submit">Simpan</button>
                             </div>
                         </div>
                     </form>
@@ -91,17 +91,17 @@
         </div>
         <div class="card col-lg-6">
             <div class="card-header">
-                <h5>Tambah Detail TOko</h5>
+                <h5>Setting Nama Distributor</h5>
             </div>
             <div class="card-body">
                  <form method="post" action="<?= base_url() ?>/distributor/detail">
                     <div class="row">
                          <div class="form-group col-md-12">
-                            <label>Nama Toko<span class="required">*</span></label>
+                            <label>Nama Distributor<span class="required">*</span></label>
                             <input id="Nama Toko" value="<?= $toko['locate']  ?>" required="" class="form-control square" name="name" type="text">
                         </div>
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Simpan</button>
+                            <button type="submit" class="btn btn-sm btn-primary submit" name="submit" value="Submit">Simpan</button>
                         </div>
                     </div>
                 </form>
