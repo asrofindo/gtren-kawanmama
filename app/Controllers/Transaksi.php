@@ -181,6 +181,8 @@ class Transaksi extends BaseController
 		$data['generate'] = $this->generate->find();
 
 		$this->generate->save(["id" => 1, "nomor" => $data['generate'][0]['nomor'] + 1]);
+
+		return redirect()->to('/orders');
 		
 	}
 
