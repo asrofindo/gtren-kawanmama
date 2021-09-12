@@ -11,7 +11,7 @@
 </div>
 <section class="mt-60 mb-60">
     <div class="container">
-        <div class="row">
+<!--         <div class="row">
             <div class="col-lg-6">
                 <div class="toggle_info">
                     <span><i class="far fa-user mr-5"></i><span class="text-muted">Already have an account?</span> <a href="#loginform" data-bs-toggle="collapse" class="collapsed" aria-expanded="false">Click here to login</a></span>
@@ -60,7 +60,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row">
             <div class="col-12">
                 <div class="divider mt-50 mb-50"></div>
