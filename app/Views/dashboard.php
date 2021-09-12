@@ -102,6 +102,14 @@
     </li>
     <?php endif; ?>
 
+      <?php if(in_groups(1)): ?>
+    <li class="menu-item">
+        <a class="menu-link" href="<?php base_url() ?>/riwayat/wd"> <i class="icon material-icons md-monetization_on"></i>
+            <span class="text">Riwayat Withdraw</span>
+        </a>
+    </li>
+    <?php endif; ?>
+
     <?php if(in_groups(1)): ?>
     <li class="menu-item has-submenu">
         <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-shopping_cart"></i>

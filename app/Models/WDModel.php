@@ -14,7 +14,7 @@ class WDModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['user_id', 'status', 'jumlah_wd'];
+	protected $allowedFields        = ['user_id', 'status', 'jumlah_wd', 'status_dana', 'bill_id'];
 
 	// Dates
 	protected $useTimestamps        = true;

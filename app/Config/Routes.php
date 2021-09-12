@@ -238,6 +238,8 @@ $routes->group('', function($routes)
 	$routes->get('request/wd', 'Transaksi::request_wd');
 	$routes->post('request/wd', 'Transaksi::request_wd');
 
+	$routes->get('riwayat/wd', 'Transaksi::riwayat_wd');
+
 }
 );
 
