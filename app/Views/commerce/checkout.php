@@ -98,7 +98,7 @@
             <div class="col-md-12">
                 <div class="order_review">
                     <div class="mb-20">
-                        <h4>Your Orders</h4>
+                        <h4>Pesanan Anda</h4>
                     </div>
                     <div class="table-responsive order_table text-center">
                         <table class="table">
