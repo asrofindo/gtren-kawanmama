@@ -135,7 +135,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th colspan="1">Pilih Kurir</th>
+                                        <th colspan="1"> Kurir</th>
                                         <td colspan="1" class="product-subtotal">
                                             <span class="font-xl text-brand fw-900">
                                                 <form method="POST" action="<?= base_url()  ?>/transaksi/check">
