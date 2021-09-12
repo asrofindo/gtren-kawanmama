@@ -238,6 +238,11 @@
                             <?php elseif($segments[0] == "address"): ?>
                                 <div class="tab-pane fade active show" id="address" role="tabpanel" aria-labelledby="address-tab">
                                     <div class="row mb-3">
+                                    <?php if( !empty(session()->getFlashdata('success'))){ ?>
+                                            <div class="alert alert-success bg-success text-white">
+                                                <?php echo session()->getFlashdata('success');?>
+                                            </div>
+                                        <?php } ?>
                                             <div class="dropdown">
                                               <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                                 Tambah Alamat
@@ -635,7 +640,7 @@
                                     <div class="card">
 
                                         <div class="card-header">
-                                            <h5>Upgrade Akun</h5>
+                                            <h5>Upgrade Akun Sebagai Distributor</h5>
                                         </div>
                                         <div class="card-body">
                                                 <?php if( $segments[1] == "stockist" && !empty(session()->getFlashdata('successs'))){ ?>
@@ -653,13 +658,27 @@
                                                 <?php } ?>
                                              <?php $id = user()->id; ?>
                                             <?php if(!in_groups(3)): ?>
+                                            <h5>
+                                                Untuk menjadi distributor Anda harus sudah tergabung sebagai Member Gtren. 
+                                            </h5>
+                                            <br>
+                                            <p>
+                                                A. Untuk menjadi member Gtren silakan melakukan pembelian salah satu produk yang disediakan, kemudian hubungi pengirim barang Anda!
+                                            </p>
+                                            <br>
+                                            <p>
+                                                B. Nomor MID dan username dapat anda temukan di sini <a href="https://g-tren.com/m">https://g-tren.com/m</a>
+                                            </p>
+                                            <br>
+                                            <h5>Masukan Data Nomor MID dan Username Gtren</h5>
+                                            <br>
                                             <form method="post" action="<?= base_url()  ?>/upgrades/<?= $id  ?>"  enctype="multipart/form-data">
                                                 <div class="form-group col-md-12">
-                                                    <label>Kode <span class="required">*</span></label>
+                                                    <label>No. MID<span class="required">*</span></label>
                                                     <input required class="form-control square" name="code" type="text">
                                                 </div>
                                                  <div class="form-group col-md-12">
-                                                    <label>Username <span class="required">*</span></label>
+                                                    <label>Username Gtren<span class="required">*</span></label>
                                                     <input required class="form-control square" name="username" type="text">
                                                 </div>
                                                 <div class="col-md-12">
@@ -669,9 +688,10 @@
                                                 </div>
                                             </form>
                                             <?php else: ?>
-                                                <a href="<?= base_url('/dashboard') ?>"><button class="btn btn-lg btn">Klik Untuk Kunjungi Dashboard</button></a>
+                                                <a href="<?= base_url('/dashboard') ?>"><button class="btn btn-lg btn">Klik Untuk Kunjungi Dashboard</button></a>    
                                             <?php endif; ?>
-                                        </div>
+
+                                            </div>
                                        <!--  <div class="card-body">
                                             <div class="sidebar">
                                                 <div class="row">
@@ -696,6 +716,7 @@
                                             <div class="text-center">
                                                 <img src="<?= base_url() ?>/frontend/imgs/page/avatar-1.jpg" class="img-fluid rounded-circle w-25">
                                                 <h3><?= user()->fullname ?></h3>
+                                                <h6><?= user()->email ?></h6>
                                                 <p>
                                                     <?php foreach (user()->getRoles() as $role): ?>
                                                         <?= $role ?>
@@ -704,13 +725,26 @@
 
                                             </div>
                                             <?php if(in_groups(3)){?>
-                                            <div class="row">
+                                            <div class="roe m-1">
                                                 <div class="col-12">
                                                     <a href="<?= base_url('/dashboard') ?>"><button class="btn btn-lg w-100">Klik Untuk Kunjungi Dashboard</button></a>
                                                 </div>
                                             </div>
                                             <?php }?>
-
+                                            <?php if(!in_groups(3)){?>
+                                            <div class="roe m-1">
+                                                <div class="col-12">
+                                                    <a href="<?= base_url('/upgrade/stockist') ?>"><button class="btn btn-lg w-100">klik Untuk Jadi Distributor</button></a>
+                                                </div>
+                                            </div>
+                                            <?php }?>
+                                            <?php if(!in_groups(4)){?>
+                                            <div class="roe m-1">
+                                                <div class="col-12">
+                                                    <a href="<?= base_url('/upgrade/affiliate') ?>"><button class="btn btn-lg w-100  bg-warning">klik Daftar Program Referal</button></a>
+                                                </div>
+                                            </div>
+                                            <?php }?>
                                             <div class="row my-3">
                                                 <div class="card">
                                                     <div class="col-lg-6">
