@@ -50,7 +50,9 @@ class User extends BaseController
 
 		$data['segments'] = $this->request->uri->getSegments();
 
-		$data['transaksis'] = $this->transaksi->where('user_id', user()->id)->findAll();
+		$data['transaksis'] = $this->transaksi->select('*')
+		->join('bills', 'bills.id = transaksi.bill_id', 'inner')
+		->where('user_id', user()->id)->findAll();
 
 		return view('commerce/account', $data);
 	}
