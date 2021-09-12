@@ -2,8 +2,7 @@
 <?php $this->section('content') ?>
 <div class="content-header">
     <div>
-        <h2 class="content-title card-title">Seller</h2>
-        <p>Keuangan Seller</p>
+        <h2 class="content-title card-title">Keuangan</h2>
     </div>
     <div>
         <input type="text" placeholder="Search pendapatan ID" class="form-control bg-white">
@@ -14,7 +13,7 @@
         <header class="card-header">
             <div class="row gx-3">
                 <div class="col-lg-4 col-md-6 me-auto">
-                    <h5>Seller</h5>
+                    <h5>Distributor</h5>
                 </div>
             </div>
         </header> <!-- card-header end// -->
@@ -23,28 +22,17 @@
                 <table class="table table-sm table-hover">
                     <thead>
                         <tr>
-                            <th>#ID</th>
                             <th scope="col">Masuk</th>
                             <th scope="col">Keluar</th>
                             <th scope="col">Total</th>
-                            <th scope="col" class="text-end"> Action </th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($pendapatan_seller as $seller): ?>
                             <tr>
-                                <td class="id"><?= $seller->id; ?></td>
                                 <td><?php echo $seller->masuk ?></td>
                                 <td><?php echo $seller->keluar ?></td>
                                 <td><?php echo $seller->total; ?></td>
-                                <td class="text-end">
-                                    <div class="dropdown">
-                                        <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item btn-acc">Tarik Dana</a>
-                                        </div>
-                                    </div> <!-- dropdown //end -->
-                                </td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
@@ -66,28 +54,17 @@
                 <table class="table table-sm table-hover">
                     <thead>
                         <tr>
-                            <th>#ID</th>
                             <th scope="col">Masuk</th>
                             <th scope="col">Keluar</th>
                             <th scope="col">Total</th>
-                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($pendapatan_affiliate as $affiliate): ?> 
                             <tr>
-                                <td class="id"><?= $affiliate->id; ?></td>
                                 <td><?php echo $affiliate->masuk ?></td>
                                 <td><?php echo $affiliate->keluar ?></td>
                                 <td><?php echo $affiliate->total; ?></td>
-                                <td class="text-end">
-                                    <div class="dropdown">
-                                        <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item btn-acc">TF Dana</a>
-                                        </div>
-                                    </div> <!-- dropdown //end -->
-                                </td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
@@ -118,9 +95,9 @@
                     <thead>
                         <tr>
                             <th>#ID</th>
-                            <th scope="col">Harga Produk</th>
-                            <th scope="col">seller Komisi</th>
-                            <th scope="col">Admin Komisi</th>
+                            <th scope="col">Harga Jual</th>
+                            <th scope="col">Komisi Distributor</th>
+                            <th scope="col">Komisi</th>
                             <th scope="col">Affiliate Komisi</th>
                             <th scope="col">Ongkir</th>
                             <th scope="col" class="text-end"> Action </th>

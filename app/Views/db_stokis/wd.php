@@ -22,7 +22,7 @@
 </div>
 <div class="content-header" style="justify-content: left; ">
      <div>
-        <h5 class="content-title card-title"> Seller</h5>
+        <h5 class="content-title card-title"> Distributor</h5>
         <?php if(count($pendapatan_stockist) == 0): ?>
             <p>Rp 0</p>
         <?php else: ?>
@@ -40,8 +40,9 @@
                         </div>
                         <div class="col-lg-3 col-md-2">
                             <select class="form-control bg-white" name="status_dana">
+                                <option disabled selected class="form-control bg-white">Pilih Jenis Tabungan</option>
                                 <option value="affiliate" class="form-control bg-white">Affiliate</option>
-                                <option value="distributor" class="form-control bg-white">Seller</option>
+                                <option value="distributor" class="form-control bg-white">Distributor</option>
                             </select>
                         </div>
                         <div class="col-lg-2 col-md-2 me-auto">
@@ -56,10 +57,10 @@
                     <thead>
                         <tr>
                             <th>#ID</th>
-                            <th scope="col">Jumlah Wd</th>
-                            <th scope="col">Tanggal</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Status Dana</th>
+                            <th scope="col">Jumlah Diminta</th>
+                            <th scope="col">Tanggal Permintaan</th>
+                            <th scope="col">Status Pencairan</th>
+                            <th scope="col">Jenis Tabungan</th>
                         </tr>
                     </thead>
                     <tbody>
