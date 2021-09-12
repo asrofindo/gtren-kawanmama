@@ -60,15 +60,7 @@
                                     <?php endif; ?>
                                 </li>
                             <?php } ?>
-                            <?php if (!in_groups(4)) {?>
-                                 <li class="nav-item">
-                                    <?php if(count($segments) > 1): ?>
-                                    <a class="nav-link <?= ($segments[1] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Jadi Affiliate</a>
-                                    <?php else : ?>
-                                    <a class="nav-link <?= ($segments[0] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Jadi Affiliate</a> 
-                                    <?php endif; ?>
-                                </li>
-                            <?php } ?>
+
                                 <li class="nav-item bg-danger">
                                     <a class="nav-link text-white" href="/logout"><i class="text-white fa fa-sign-out mr-15"></i>Logout</a>
                                 </li>
