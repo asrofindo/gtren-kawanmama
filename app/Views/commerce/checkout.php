@@ -142,8 +142,8 @@
                                                     <input style="display: none" type="text" name="origin" value="<?= $billing->city_id ?>" >
                                                     <input style="display: none" type="text" name="destination" value="<?= $cart['id_kota'] ?>" >
                                                     <input style="display: none" type="text" name="distributor_id" value="<?= $cart['distributor_id'] ?>" >
-                                                     <input style="display: none" type="text" name="weight" value="<?= $cart['weight'][0] ?>" >
-                                                     <input style="display: none" type="text" name="cart_id" value="<?= $cart['cart_id'][0] ?>" >
+                                                    <input style="display: none" type="text" name="weight" value="<?= $cart['weight'][0] ?>" >
+                                                    <input style="display: none" type="text" name="cart_id" value="<?= $cart['cart_id'][0] ?>" >
                                                     <select type="submit" name="courier" onchange="this.form.submit()">
                                                         <option selected disabled>Pilih Kurir</option>
                                                         <option value="jne">JNE</option>
@@ -191,13 +191,13 @@
                             </div>
                             <div class="payment_option">
                                 <div class="custome-radio">
-                                    <select name="bill" class="form-control" required>
+                                    <select name="bill" class="form-control" required="true">
                                         <option selected disabled>
                                             Pilih Bank
                                         </option>
                                         <?php foreach ($bills as $bill): ?>
-                                                <option value="<?= $bill->id  ?>"><?= $bill->bank_name ?> - <?= $bill->bank_number ?> - <?= $bill->owner  ?>
-                                                </option>
+                                            <option value="<?= $bill->id  ?>"><?= $bill->bank_name ?> - <?= $bill->bank_number ?> - <?= $bill->owner  ?>
+                                            </option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>

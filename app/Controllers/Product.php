@@ -144,7 +144,7 @@ class Product extends BaseController
 			$kabupaten = $data['address'][0]->kabupaten;
 			$provinsi = $data['address'][0]->provinsi;
 
-			$data['product_distributor'] = $this->address->select('users.username,  kecamatan, kabupaten, kode_pos, provinsi, type, distributor.user_id, distributor.id as distributor_id, product_distributor.product_id, detail_alamat')
+			$data['product_distributor'] = $this->address->select('users.username,  kecamatan, kabupaten, kode_pos, provinsi, type, distributor.user_id, distributor.id as distributor_id, product_distributor.product_id, detail_alamat, locate')
 			->join('users', 'users.id = address.user_id', 'left')
 			->where('address.type', 'distributor')
 			->join('distributor', 'distributor.user_id = users.id', 'left')

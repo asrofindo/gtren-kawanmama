@@ -244,24 +244,16 @@
                                             </div>
                                         <?php } ?>
                                             <div class="dropdown">
-                                              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Tambah Address
-                                              </button>
-                                              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                <?php if(count($billing_address) < 1):  ?>
-                                                    <li><a class="dropdown-item" href="<?php base_url() ?>/billing-address">Billing</a></li>
-                                                <?php endif ?>
-                                                <?php if(count($shipping_address) < 1):  ?>
-                                                    <li><a class="dropdown-item" href="<?php base_url() ?>/shipping-address">Shipping</a></li>
-                                                <?php endif ?>
-                                              </ul>
+                                              <a class="btn btn-primary dropdown-toggle" href="<?php base_url() ?>/billing-address">
+                                                Tambah Alamat
+                                              </a>
                                             </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="card mb-3 mb-lg-0">
                                                 <div class="card-header">
-                                                    <h5 class="mb-0">Billing Address</h5>
+                                                    <h5 class="mb-0">Alamat</h5>
                                                 </div>
                                                 <div class="card-body">
                                                     <?php foreach ($billing_address as $billing) :?>
@@ -272,14 +264,14 @@
                                                         <?php endif; ?>
                                                     <?php endforeach; ?>
                                                     <?php if($billing_address): ?>
-                                                    <a href="<?php base_url() ?>/edit-billing" class="btn-small">Edit</a>
+                                                    <a href="<?php base_url() ?>/edit-billing" class="btn-small">Ubah</a>
                                                     <a href="<?php base_url() ?>/address/delete/<?= $billing_address[0]->id ?>" class="btn-small">Hapus</a>
 
                                                     <?php endif ?>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+<!--                                         <div class="col-lg-6">
                                             <div class="card">
                                                 <div class="card-header">
                                                     <h5 class="mb-0">Shipping Address</h5>
@@ -296,14 +288,14 @@
                                                     <?php endif ?>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             <?php elseif($segments[0] == "billing-address"): ?>
                                 <div class="tab-pane fade active show" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5>Tambah Alamat Billing</h5>
+                                            <h5>Tambah Alamat</h5>
                                         </div>
                                         <div class="card-body">
                                             <?php $id = user()->id; ?>
@@ -328,53 +320,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-12">
-                                                        <label>Kode Pos<span class="required">*</span></label>
                                                         <input id="kode_pos" value="" required="" class="form-control square" name="kode_pos" type="hidden">
-                                                    </div>
-                                                    <div class="form-group col-md-12">
-                                                        <label>Detail Alamat<span class="required">*</span></label>
-                                                        <input required="" class="form-control square" name="detail_alamat" type="text">
-                                                    </div>
-
-                                                    <div class="col-md-12">
-                                                        <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Save</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php elseif($segments[0] == "shipping-address"): ?>
-                                <div class="tab-pane fade active show" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5>Tambah Alamat Shipping</h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <?php $id = user()->id; ?>
-                                            <form method="post" action="/shipping-address/<?= $id ?>">
-                                                <div class="row">
-                                                    <div class="form-group col-md-12">
-                                                        <label>Provinsi<span class="required">*</span></label>
-                                                        <select required="" class="form-control square" name="provinsi" id="provinsi">
-                                                            
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-12">
-                                                        <label>Kabupaten<span class="required">*</span></label>
-                                                         <select required="" class="form-control square" name="kabupaten" id="kabupaten">
-                                                            
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-12">
-                                                        <label>Kecamatan<span class="required">*</span></label>
-                                                         <select required="" class="form-control square" name="kecamatan" id="kecamatan">
-                                                            
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-12">
-                                                        <label>Kode Pos<span class="required">*</span></label>
-                                                        <input required="" id="kode_pos" class="form-control square" name="kode_pos" type="hidden">
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Detail Alamat<span class="required">*</span></label>
@@ -393,7 +339,7 @@
                                 <div class="tab-pane fade active show" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5>Ubah Alamat Billing</h5>
+                                            <h5>Ubah Alamat</h5>
                                         </div>
                                         <div class="card-body">
                                             <?php foreach ($billing_address as $address): ?>
