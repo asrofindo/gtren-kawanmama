@@ -202,6 +202,7 @@
                                     </select>
                                 </div>
                                 <input type="number" style="display: none" name="total" value="<?= $total;  ?>">
+                                <input type="number" style="display: none" name="kode_unik" value="<?= $generate[0]['nomor'];  ?>">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-fill-out btn-block mt-30">Pesan Sekarang</button>

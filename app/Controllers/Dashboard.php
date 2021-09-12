@@ -28,7 +28,10 @@ class Dashboard extends BaseController
 		$data['admin'] = $this->model->select('sum(COALESCE(admin_commission,0)) AS admin_total')
 		->where('status_barang =', 'diterima')->find();
 
-		$data['admin'] = [["admin_total" => $data['admin'][0]['admin_total'] + $data['upgrades'][0]->total_upgrades ]];
+		$data['kode_unik'] = $this->transaksi->select('sum(COALESCE(kode_unik,0)) AS kode_unik_admin')->find();
+		$kode_unik  = $data['kode_unik'][0]->kode_unik_admin;
+
+		$data['admin'] = [["admin_total" => $data['admin'][0]['admin_total'] + $data['upgrades'][0]->total_upgrades + $kode_unik]];
 
 		$data['stockist'] = $this->model->select('sum(COALESCE(stockist_commission,0) - COALESCE(pendapatan.keluar,0)) AS stockist_total')
 		->join('distributor', 'distributor.id = detailtransaksi.distributor_id ', 'left')

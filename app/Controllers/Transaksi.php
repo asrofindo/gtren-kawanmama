@@ -141,6 +141,7 @@ class Transaksi extends BaseController
 	{
 		$total = $this->request->getPost('total');
 		$bill = $this->request->getPost('bill');
+		$kode_unik = $this->request->getPost('kode_unik');
 		
 		$data['carts'] = $this->cart->select('*, distributor.id as distributor_id, detailtransaksi.id as d_id, cart_item.id as cart_id, products.stockist_commission, products.affiliate_commission')
 		->join('products', 'products.id = product_id')
@@ -155,7 +156,7 @@ class Transaksi extends BaseController
 		->findAll();
 
 
-		$this->transaksi->insert(["user_id" => user()->id, "bill_id" => $bill, "status_pembayaran" => "pending", "total" => $total]);
+		$this->transaksi->insert(["user_id" => user()->id, "kode_unik" => $kode_unik, "bill_id" => $bill, "status_pembayaran" => "pending", "total" => $total]);
 		
 		foreach($data['carts'] as $cart){
 
