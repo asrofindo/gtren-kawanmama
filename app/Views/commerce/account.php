@@ -308,7 +308,7 @@
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Kode Pos<span class="required">*</span></label>
-                                                        <input id="kode_pos" value="" required="" class="form-control square" name="kode_pos" type="text">
+                                                        <input id="kode_pos" value="" required="" class="form-control square" name="kode_pos" type="hide">
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Detail Alamat<span class="required">*</span></label>
@@ -353,7 +353,7 @@
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Kode Pos<span class="required">*</span></label>
-                                                        <input required="" id="kode_pos" class="form-control square" name="kode_pos" type="text">
+                                                        <input required="" id="kode_pos" class="form-control square" name="kode_pos" type="hide">
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Detail Alamat<span class="required">*</span></label>
@@ -399,7 +399,7 @@
                                                             </div>
                                                             <div class="form-group col-md-12">
                                                                 <label>Kode Pos<span class="required">*</span></label>
-                                                                <input value="<?= $address->kode_pos ?>" id="kode_pos" required="" class="form-control square" name="kode_pos" type="text">
+                                                                <input value="<?= $address->kode_pos ?>" id="kode_pos" required="" class="form-control square" name="kode_pos" type="hide">
                                                             </div>
                                                             <div class="form-group col-md-12">
                                                                 <label>Detail Alamat<span class="required">*</span></label>
@@ -448,7 +448,7 @@
                                                             </div>
                                                             <div class="form-group col-md-12">
                                                                 <label>Kode Pos<span class="required">*</span></label>
-                                                                <input value="<?= $address->kode_pos ?>" required="" class="form-control square" name="kode_pos" id="kode_pos" type="text">
+                                                                <input value="<?= $address->kode_pos ?>" required="" class="form-control square" name="kode_pos" id="kode_pos" type="hide">
                                                             </div>
                                                             <div class="form-group col-md-12">
                                                                 <label>Detail Alamat<span class="required">*</span></label>
