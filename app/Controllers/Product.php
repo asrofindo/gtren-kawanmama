@@ -159,7 +159,7 @@ class Product extends BaseController
 			}
 
 			if (empty($data['product_distributors'])) {
-				$data['product_distributor'] = $this->address->select('users.username,  kecamatan, kabupaten, kode_pos, provinsi, type, distributor.user_id, distributor.id as distributor_id, product_distributor.product_id, detail_alamat, locate')
+			$data['product_distributor'] = $this->address->select('users.username,  kecamatan, kabupaten, kode_pos, provinsi, type, distributor.user_id, distributor.id as distributor_id, product_distributor.product_id, detail_alamat, locate')
 			->join('users', 'users.id = address.user_id', 'left')
 			->join('distributor', 'distributor.user_id = users.id', 'left')
 			->join('product_distributor', 'product_distributor.distributor_id = distributor.id AND product_distributor.jumlah > 0', 'left')
@@ -169,9 +169,8 @@ class Product extends BaseController
 			->orderBy('distributor.level','ASC')
 			->find();
 			
-			dd($data['product_distributors']);
+			dd('kosong');
 			}
-			dd($data['product_distributors']);
 
 			return view('commerce/product_detail', $data);
 			
