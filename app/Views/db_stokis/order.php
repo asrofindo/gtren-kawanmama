@@ -9,6 +9,23 @@
         <input type="text" placeholder="Search order ID" class="form-control bg-white">
     </div>
 </div>
+<div class="attention">
+    <?php if(!empty(session()->getFlashdata('success'))){ ?>
+
+        <div class="alert alert-success bg-success text-white">
+            <?php echo session()->getFlashdata('success');?>
+        </div>
+
+    <?php } ?>
+
+    <?php if(!empty(session()->getFlashdata('danger'))){ ?>
+
+        <div class="alert alert-danger bg-danger text-white">
+            <?php echo session()->getFlashdata('danger');?>
+        </div>
+
+    <?php } ?>
+</div>
 <div class="card mb-4">
     <header class="card-header">
         <div class="row gx-3">
@@ -54,7 +71,7 @@
                                 <div class="dropdown">
                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="<?= base_url() ?>/order/detail/stockist/<?= $order->detail_id; ?>">Detail</a>
+                                        <a class="dropdown-item" href="<?= base_url() ?>/order/detail/stockist/<?= $order->id; ?>">Detail</a>
                                         <a class="dropdown-item btn-acc">Kirim Barang</a>
 
                                     </div>

@@ -33,7 +33,7 @@
                         <div class="text">
                             <h6 class="mb-1">Order info</h6>
                             <p class="mb-1">
-                                Shipping: <?= $order['kurir'] ?> <br> etd: <?= $order['etd'] ?> <br> ongkir: <?= $order['ongkir'] ?>
+                                Shipping: <?= $order['kurir'] ?> <br> etd: <?= $order['etd'] ?> <br> ongkir:Rp <?= number_format($order['ongkir']); ?>
                             </p>
                             <a href="#">Download info</a>
                         </div>
@@ -77,33 +77,32 @@
                                             <td>
                                                 <a class="itemside" href="#">
                                                     <div class="left">
-                                                        <img src="<?= $product->photos; ?>" width="40" height="40" class="img-xs" alt="Item">
+                                                         <?php $photo = explode(',', $product->photos); ?>
+                                                            <img src="<?php base_url() ?>/public/uploads/product_photos/<?= $photo[0]; ?>" width="40" height="40" class="img-xs" alt="Item">
                                                     </div>
                                                     <div class="info"><?= $product->name;  ?></div>
                                                 </a>
                                             </td>
                                             <td> <?= $product->resi; ?> </td>
-                                            <td> <?= $product->total / $product->amount; ?> </td>
+                                            <td> Rp <?= number_format($product->total / $product->amount); ?> </td>
                                             <td> <?= $product->amount; ?> </td>
                                             <td> 
-                                               <?php if($product->status_barang == 'pending' && $product->status_pembayaran == 'paid'): ?>
-                                                    <span class="badge rounded-pill alert-warning">Menunggu Konfirmasi Dari Admin</span>
-                                                <?php elseif($product->status_barang == 'pending' && $product->status_pembayaran == 'pending'): ?>
+                                               <?php if($product->status_barang == null && $product->status_pembayaran == 'paid'): ?>
+                                                    <span class="badge rounded-pill alert-warning">Menunggu Konfirmasi Seller</span>
+                                                <?php elseif($product->status_barang == null && $product->status_pembayaran == 'pending'): ?>
                                                     <span class="badge rounded-pill alert-warning">Menunggu pembayaran</span>
                                                 <?php elseif($product->status_barang == 'dikirim'): ?>
                                                     <span class="badge rounded-pill alert-success">Sudah Dikirim Oleh Seler</span>
-                                                 <?php elseif($product->status_pembayaran == 'paid'): ?>
-                                                    <span class="badge rounded-pill alert-warning">Menunggu Konfirmasi Dari Seller</span>
                                                 <?php elseif($product->status_barang == 'refund'): ?>
                                                     <span class="badge rounded-pill alert-warning">Dana Dikembalikan oleh user</span>
                                                 <?php elseif($product->status_barang == 'ditolak'): ?>
                                                     <span class="badge rounded-pill alert-danger">Pesanan Di Tolak Oleh distributor</span>
-                                                <?php elseif($product->status_barang == 'diterima'): ?>
-                                                    <span class="badge rounded-pill alert-success">Pesanan Di Terima oleh distributor</span>
+                                                <?php elseif($product->status_barang == 'diterima_seller'): ?>
+                                                    <span class="badge rounded-pill alert-success">Penyiapan Barang</span>
                                                 <?php endif; ?>
 
                                             </td>
-                                            <td class="text-end"> <?= $product->total;  ?> </td>
+                                            <td class="text-end">Rp <?= number_format($product->total);  ?> </td>
                                             <td class="text-end">
                                                 <div class="dropdown">
                                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
@@ -120,12 +119,12 @@
                                     <td colspan="4">
                                         <article class="float-end">
                                             <dl class="dlist">
-                                                <dt>Shipping cost:</dt>
-                                                <dd><?= $order['ongkir'];  ?></dd>
+                                                <dt>Ongkos Kirim:</dt>
+                                                <dd>Rp<?= number_format($order['ongkir']);  ?></dd>
                                             </dl>
                                             <dl class="dlist">
                                                 <dt>total tagihan:</dt>
-                                                <dd> <b class="h5"><?= $order['total_transaksi'];  ?></b> </dd>
+                                                <dd> <b class="h5">Rp<?= number_format($order['total_transaksi']);  ?></b> </dd>
                                             </dl>
                                         </article>
                                     </td>

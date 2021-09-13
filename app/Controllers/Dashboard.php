@@ -26,7 +26,7 @@ class Dashboard extends BaseController
 		$data['upgrades'] = $this->upgrades->select('sum(total) as total_upgrades')->where('status_request', 'active')->findAll();
 		
 		$data['admin'] = $this->model->select('sum(COALESCE(admin_commission,0)) AS admin_total')
-		->where('status_barang =', 'diterima')->find();
+		->where('status_barang =', 'diterima_pembeli')->find();
 
 		$data['kode_unik'] = $this->transaksi->select('sum(COALESCE(kode_unik,0)) AS kode_unik_admin')->where('status_pembayaran', 'paid')->find();
 		$kode_unik  = $data['kode_unik'][0]->kode_unik_admin;
@@ -36,7 +36,7 @@ class Dashboard extends BaseController
 		$data['stockist'] = $this->model->select('sum(COALESCE(stockist_commission,0) - COALESCE(pendapatan.keluar,0)) AS stockist_total')
 		->join('distributor', 'distributor.id = detailtransaksi.distributor_id ', 'left')
 		->join('pendapatan', 'pendapatan.user_id = distributor.user_id ', 'left')
-		->where('status_barang =', 'diterima')
+		->where('status_barang =', 'diterima_pembeli')
 		->where('pendapatan.status_dana =', 'distributor')
 		->find();
 
@@ -44,7 +44,7 @@ class Dashboard extends BaseController
 		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id ', 'left')
 		->join('users', 'users.affiliate_link = cart_item.affiliate_link', 'left')
 		->join('pendapatan', 'pendapatan.user_id = users.id', 'left')
-		->where('status_barang =', 'diterima')
+		->where('status_barang =', 'diterima_pembeli')
 		->where('pendapatan.status_dana =', 'affiliate')
 		->find();
 

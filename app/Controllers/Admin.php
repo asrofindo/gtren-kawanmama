@@ -52,7 +52,7 @@ class Admin extends BaseController
 	{
 		$id = user()->id;
 		$data['orders'] = $this->transaksi
-		->select('*, transaksi.total as total_transaksi, detailtransaksi.id as detail_id, transaksi.id as id')
+		->select('*, transaksi.total as total_transaksi, transaksi.id as id, detailtransaksi.id as detail_id, transaksi.created_at as created_at')
 		->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
 		->join("cart_item", 'cart_item.id = cart_id')
 		->join("products", 'products.id = cart_item.product_id')
@@ -292,10 +292,12 @@ class Admin extends BaseController
 		$db = \Config\Database::connect();
 		$forge = \Config\Database::forge();
 
-		$forge->dropForeignKey('detailtransaksi','detailtransaksi_transaksi_id_foreign');
+		if($forge->dropForeignKey('detailtransaksi','detailtransaksi_transaksi_id_foreign')){
+			$db->table('transaksi')->truncate();
+		}	
 
 		$db->table('detailtransaksi')->truncate();
-		$db->table('transaksi')->truncate();
+
 		$db->table('pengiriman')->truncate();
 		$db->table('detailpengiriman')->truncate();
 		$db->table('pengiriman')->truncate();
