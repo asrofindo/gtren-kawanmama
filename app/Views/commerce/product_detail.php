@@ -488,6 +488,7 @@
                     <?php }else{?>
                         <form method="post" action="<?= base_url();?>/cart" >
                     <?php } ?> 
+                        <button type="submit">
                         <input style="display: none" type="text" value="" name="amount" class="amount">
                         <input style="display: none" type="text" value="" name="price_sell" class="price_sell">
                         <input style="display: none" type="text" value="<?= $distributor->product_id ?>" name="product_id">
@@ -499,7 +500,7 @@
                             kabupaten : <?= $distributor->kabupaten; ?> <br>
   
                         </li>
-                        <button class="btn-sm btn-primary" type="submit">Pilih</button>
+                        </button>
                     </form>
                 <?php endforeach; ?>
             </ul>
