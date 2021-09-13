@@ -40,7 +40,7 @@ class Order extends BaseController
 	{
 		$data = [
 			"id" => $id,
-			"status_barang" => "diterima_pembeli"
+			"status_barang" => "diterima_seller"
 		];
 
 		$this->detailtransaksi->save($data);
@@ -176,9 +176,9 @@ class Order extends BaseController
 			$id = $data_transaksi['id'];
 
 	        array_push($amount,  $data_transaksi['amount']);
-          	if($data_transaksi['status_barang'] == 'diterima'){ 		
+          	if($data_transaksi['status_barang'] == 'diterima_seller'){ 		
 	          	$data = [
-					"id" => $id,
+					"id" => $data_transaksi['id'],
 					"resi" => $resi,
 					"status_barang" => "dikirim"
 				];
