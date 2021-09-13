@@ -187,8 +187,8 @@ class Order extends BaseController
 	          	
 				$id = $data_transaksi['id'];
 
-		        array_push($amount,  $data_transaksi['amount']);
 	          	if($data_transaksi['status_barang'] == 'diterima_seller'){ 		
+		        array_push($amount,  $data_transaksi['amount']);
 		          	$data = [
 						"id" => $data_transaksi['id'],
 						"resi" => $resi,
@@ -219,10 +219,11 @@ class Order extends BaseController
 			}
 
 			// dan yang terakhir adalah redirect back
+			session()->setFlashdata('success', 'Sukses Menginput Resi');
 			return redirect()->back();
 
 		} else {
-
+			session()->setFlashdata('danger', 'Gagal, Input Resi! Semua Barang Harus Ditolak Atau Diterima Terlebih Dahulu');
 			return redirect()->back();
 		}
 	}
