@@ -291,11 +291,6 @@ class Admin extends BaseController
 	{
 		$db = \Config\Database::connect();
 		$forge = \Config\Database::forge();
-
-		if($forge->dropForeignKey('detailtransaksi','detailtransaksi_transaksi_id_foreign')){
-			$db->table('transaksi')->truncate();
-		}	
-
 		$db->table('detailtransaksi')->truncate();
 
 		$db->table('pengiriman')->truncate();
