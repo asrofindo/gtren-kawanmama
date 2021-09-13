@@ -2,14 +2,26 @@
 <?php $this->section('content') ?>
 <div class="content-header">
     <div>
-        <h2 class="content-title card-title">Data Pengguna </h2>
-        <p>Add, edit or delete a Data</p>
+        <h2 class="content-title card-title">Data Distributor </h2>
+        <p>Data dari semua distributor</p>
     </div>
 </div>
 <?= view('Myth\Auth\Views\_message_block') ?>
 <div class="card">
     <div class="card-body">
-        </div>
+    <form method="post" action="<?= base_url('/distributor/list') ?>">            
+            <div class="row gx-3">
+            <div class="col-lg-4 col-md-6 me-auto">
+                <input type="text" placeholder="cari nama toko..." class="form-control" name="locate">
+            </div>
+
+            <div class="col-lg-2 col-6 col-md-3">
+                <button type="submit" class="btn btn-info btn-sm w-100 m-1">Cari </button>
+            </div>
+        </form>
+        <br>
+        <br>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="">
@@ -73,51 +85,5 @@
 </div> <!-- card .// -->
 <div class="pagination-area mt-30 mb-50">
 <!-- modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Masukan Nomor Resi</h4>
-          </div>
-          <div class="modal-body">
-            <form action="<?php base_url()  ?>/distributor/level/" method="post">
-                <div class="mb-4">
-                    <input  id="user_id" name="user">
-                    <select id="inputState" class="form-control">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
 
-                    </select>      
-                  <button class="btn-sm btn-primary" type="submit">Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-
-    $(document).ready(function(){
-
-        $('.btn-acc').on('click',function(data){
-
-            let val = data.target.parentElement.parentElement.parentElement.parentElement.childNodes[1].innerHTML
-                
-            $('#user_id').val(val);
-
-            $('#myModal').modal('show');
-        });
-
-         $('.close').on('click',function(data){
-
-            $('#myModal').modal('hide');
-        });
-
-         
-    });
-
-</script>
 <?php $this->endSection() ?>

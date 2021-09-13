@@ -242,6 +242,13 @@ class Admin extends BaseController
 		->orderBy('level','ASC')
 		->findAll();
 
+		if ($this->request->getPost('locate')!=null) {
+			$data['distributor']=$this->distributor->select('*,distributor.id as id')
+			->join('users', 'distributor.user_id=users.id','inner')
+			->where('locate','ASC')
+			->orderBy('level','ASC')
+			->findAll();		}
+
 		$data['pager'] = $this->transaksi->paginate(10, 'distributor');
 		$data['pager'] = $this->transaksi->pager;
 		

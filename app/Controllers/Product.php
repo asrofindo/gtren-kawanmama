@@ -218,7 +218,7 @@ class Product extends BaseController
 			$this->productDistributor->save($data);
 			
 			session()->setFlashdata('success', 'Berhasil Menambah Stock');
-	        return redirect()->back();
+	        return redirect()->to('/products/stockist');
 			
 		}
 
@@ -579,7 +579,7 @@ class Product extends BaseController
 		
 		if($this->productDistributor->where('product_id', $id)->where('distributor_id', $distributor_id)->find()){
 			session()->setFlashdata('danger', 'produk sudah ada');
-		    return redirect()->back();
+		    return redirect()->to('/products/stockist');
 		}
 		if($this->productDistributor->save($data)){
 			session()->setFlashdata('success', 'Stock Berhasil Di Update');

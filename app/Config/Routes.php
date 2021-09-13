@@ -39,6 +39,7 @@ $routes->post('/comment/save', 'Comment::save');
 $routes->get('/comment/delete/(:num)','Comment::delete/$1');
 $routes->get('/transaksi','Transaksi::transaksi');
 $routes->get('/distributor/list','Admin::member_distributor');
+$routes->post('/distributor/list','Admin::member_distributor');
 
 $routes->post('/distributor/level','Distributor::save_level');
 
