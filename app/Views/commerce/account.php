@@ -327,7 +327,7 @@
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <label>Detail Alamat<span class="required">*</span></label>
-                                                        <input required="" class="form-control square" name="detail_alamat" type="text">
+                                                        <input required=""  placeholder="Kelurahan / Desa, RT/RW, No.Rumah, Nama Jalan" class="form-control square" name="detail_alamat" type="text">
                                                     </div>
 
                                                     <div class="col-md-12">
@@ -372,7 +372,7 @@
                                                             </div>
                                                             <div class="form-group col-md-12">
                                                                 <label>Detail Alamat<span class="required">*</span></label>
-                                                                <input value="<?= $address->detail_alamat ?>" required="" class="form-control square" name="detail_alamat" type="text">
+                                                                <input value="<?= $address->detail_alamat ?>" required="" placeholder="Kelurahan / Desa, RT/RW, No.Rumah, Nama Jalan" class="form-control square" name="detail_alamat" type="text">
                                                             </div>
 
                                                             <div class="col-md-12">
