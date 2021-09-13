@@ -167,7 +167,10 @@ class Product extends BaseController
 				->where('address.type', 'distributor')
 				->join('distributor', 'distributor.user_id = users.id', 'left')
 				->join('product_distributor', 'product_distributor.distributor_id = distributor.id AND product_distributor.jumlah > 0', 'left')
-				->where('product_distributor.product_id', $product_id)->find();
+				->where('distributor.level !=', null)
+				->where('product_distributor.product_id', $product_id)
+				->orderBy('distributor.level', 'ASC')
+				->find();
 
 				$data['product_distributors']=$data['product_distributor'];
 			}
