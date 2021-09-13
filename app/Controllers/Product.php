@@ -149,7 +149,10 @@ class Product extends BaseController
 			->join('users', 'users.id = address.user_id', 'left')
 			->where('address.type', 'distributor')
 			->join('distributor', 'distributor.user_id = users.id', 'left')
-			->join('product_distributor', 'product_distributor.distributor_id = distributor.id AND product_distributor.jumlah > 0', 'left')->where('product_distributor.product_id', $product_id)->find();
+			->join('product_distributor', 'product_distributor.distributor_id = distributor.id AND product_distributor.jumlah > 0', 'left')
+			->where('product_distributor.product_id', $product_id)->find();
+			dd($data['product_distributor'],'donk');
+
 			$index = count($data['product_distributor']);
 			$data['product_distributors'] = [];
 			for($i = 0; $index > $i; $i++){
@@ -157,7 +160,18 @@ class Product extends BaseController
 					array_push($data['product_distributors'], $data['product_distributor'][$i]);
 				}
 			}
-			// dd($data['product']);
+
+			if ($data['product_distributor']==[]) {
+				$data['product_distributor'] = $this->address->select('users.username,  kecamatan, kabupaten, kode_pos, provinsi, type, distributor.user_id, distributor.id as distributor_id, product_distributor.product_id, detail_alamat, locate')
+				->join('users', 'users.id = address.user_id', 'left')
+				->where('address.type', 'distributor')
+				->join('distributor', 'distributor.user_id = users.id', 'left')
+				->join('product_distributor', 'product_distributor.distributor_id = distributor.id AND product_distributor.jumlah > 0', 'left')
+				->where('product_distributor.product_id', $product_id)->find();
+
+				$data['product_distributors']=$data['product_distributor']
+			}
+
 			return view('commerce/product_detail', $data);
 			
 		}else {
@@ -166,17 +180,7 @@ class Product extends BaseController
 		
 		$data['address'] = [];
 		$data['product_distributors'] = [];	
-		if (empty($data['product_distributors'])) {
-			$data['product_distributor'] = $this->address->select('users.username,  kecamatan, kabupaten, kode_pos, provinsi, type, distributor.user_id, distributor.id as distributor_id, product_distributor.product_id, detail_alamat, locate')
-		->join('users', 'users.id = address.user_id', 'left')
-		->join('distributor', 'distributor.user_id = users.id', 'left')
-		->join('product_distributor', 'product_distributor.distributor_id = distributor.id AND product_distributor.jumlah > 0', 'left')->where('product_distributor.product_id', $product_id)
-		->where('address.type !=', null)
-		->where('address.type', 'distributor')
 
-		->orderBy('distributor.level','ASC')
-		->find();
-		}
 
 		return view('commerce/product_detail', $data);
 	}
