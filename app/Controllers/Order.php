@@ -167,51 +167,64 @@ class Order extends BaseController
 		->join('distributor', 'distributor.id = detailtransaksi.distributor_id', 'left')
 		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
 		->where('transaksi_id', $id_transaksi)
-		->where('detailtransaksi.status_barang !=', null)
 		->where('distributor.user_id', user()->id)
 		->findAll();
 		
 		// total barang yang di beli oleh user
 		$amount = [];
+		$data_null = [];
 
-		// looping dan mengubah data resi dan status barang di dalam table detail transaksi 
-		foreach ($data_transaksis as $data_transaksi) {
-          	
-			$id = $data_transaksi['id'];
+		foreach ($data_transaksis as $t) {
+			if($t['status_barang'] == null){
+				array_push($data_null, $t);
+			}
+		}
 
-	        array_push($amount,  $data_transaksi['amount']);
-          	if($data_transaksi['status_barang'] == 'diterima_seller'){ 		
-	          	$data = [
-					"id" => $data_transaksi['id'],
-					"resi" => $resi,
-					"status_barang" => "dikirim"
-				];
+		if(count($data_null) == 0){
+			
+			// looping dan mengubah data resi dan status barang di dalam table detail transaksi 
+			foreach ($data_transaksis as $data_transaksi) {
+	          	
+				$id = $data_transaksi['id'];
+
+		        array_push($amount,  $data_transaksi['amount']);
+	          	if($data_transaksi['status_barang'] == 'diterima_seller'){ 		
+		          	$data = [
+						"id" => $data_transaksi['id'],
+						"resi" => $resi,
+						"status_barang" => "dikirim"
+					];
+		          
+		 
+					$this->detailtransaksi->save($data);
+	          	}
 	          
-	 
-				$this->detailtransaksi->save($data);
-          	}
-          
+			}
+
+			// mengurangi jumlah barang dari distributor dan data distributor
+			
+			$distributors = $this->detailtransaksi
+			->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id')
+			->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
+			->where('transaksi.id', $id_transaksi)
+			->find();
+			
+			for($i = 0; $i < count($distributors); $i++){
+				$productdistributor_id = $this->productdistributor->where('distributor_id', $distributors[$i]['distributor_id'])->where('product_id', $distributors[$i]['product_id'])->find();
+
+				$this->productdistributor->save([
+					"id" => $productdistributor_id[0]->id,
+					"jumlah" => $productdistributor_id[0]->jumlah - $amount[$i]
+				]);
+			}
+
+			// dan yang terakhir adalah redirect back
+			return redirect()->back();
+
+		} else {
+
+			return redirect()->back();
 		}
-
-		// mengurangi jumlah barang dari distributor dan data distributor
-		
-		$distributors = $this->detailtransaksi
-		->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id')
-		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
-		->where('transaksi.id', $id_transaksi)
-		->find();
-		
-		for($i = 0; $i < count($distributors); $i++){
-			$productdistributor_id = $this->productdistributor->where('distributor_id', $distributors[$i]['distributor_id'])->where('product_id', $distributors[$i]['product_id'])->find();
-
-			$this->productdistributor->save([
-				"id" => $productdistributor_id[0]->id,
-				"jumlah" => $productdistributor_id[0]->jumlah - $amount[$i]
-			]);
-		}
-
-		// dan yang terakhir adalah redirect back
-		return redirect()->back();
 	}
 
 	public function order_verify($id)
