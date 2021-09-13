@@ -176,7 +176,7 @@ class Order extends BaseController
 			$id = $data_transaksi['id'];
 
 	        array_push($amount,  $data_transaksi['amount']);
-          	if($data_transaksi['status_barang'] == 'dikirim'){ 		
+          	if($data_transaksi['status_barang'] == 'diterima'){ 		
 	          	$data = [
 					"id" => $id,
 					"resi" => $resi,
