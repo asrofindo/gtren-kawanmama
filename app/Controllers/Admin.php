@@ -84,7 +84,7 @@ class Admin extends BaseController
 		->join("address", 'address.user_id = transaksi.user_id AND address.type = "billing"')
 		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
 		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
-		->where('detailtransaksi.id', $id)->where('distributor.user_id', user()->id)->findAll();
+		->where('detailtransaksi.transaksi_id', $id)->where('distributor.user_id', user()->id)->findAll();
 
 		$outer_array = array();
 		$unique_array = array();
