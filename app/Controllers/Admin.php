@@ -52,7 +52,7 @@ class Admin extends BaseController
 	{
 		$id = user()->id;
 		$data['orders'] = $this->transaksi
-		->select('*, transaksi.total as total_transaksi, detailtransaksi.id as detail_id, transaksi.id as id')
+		->select('*, transaksi.total as total_transaksi, transaksi.id as id, detailtransaksi.id as detail_id')
 		->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
 		->join("cart_item", 'cart_item.id = cart_id')
 		->join("products", 'products.id = cart_item.product_id')
@@ -61,7 +61,7 @@ class Admin extends BaseController
 		->join('distributor', 'distributor.id = cart_item.distributor_id')
 		->join('users', 'users.id = transaksi.user_id')
 		->where('distributor.user_id', user()->id)
-		->where('transaksi.status_pembayaran', 'paid')->groupBy('transaksi.id')->orderBy('transaksi.id', 'DESC')
+		->where('transaksi.status_pembayaran', 'paid')->groupBy('transaksi.id')
 		->findAll();
 
 		$data['pager'] = $this->transaksi->paginate(5, 'orders');
@@ -84,7 +84,7 @@ class Admin extends BaseController
 		->join("address", 'address.user_id = transaksi.user_id AND address.type = "billing"')
 		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
 		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
-		->where('detailtransaksi.transaksi_id', $id)->where('distributor.user_id', user()->id)->findAll();
+		->where('detailtransaksi.id', $id)->where('distributor.user_id', user()->id)->findAll();
 
 		$outer_array = array();
 		$unique_array = array();

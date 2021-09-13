@@ -176,15 +176,16 @@ class Order extends BaseController
 			$id = $data_transaksi['id'];
 
 	        array_push($amount,  $data_transaksi['amount']);
-          
-          	$data = [
-				"id" => $id,
-				"resi" => $resi,
-				"status_barang" => "dikirim"
-			];
-          
- 
-			$this->detailtransaksi->save($data);
+          	if($data_transaksi['status_barang'] == 'dikirim'){ 		
+	          	$data = [
+					"id" => $id,
+					"resi" => $resi,
+					"status_barang" => "dikirim"
+				];
+	          
+	 
+				$this->detailtransaksi->save($data);
+          	}
           
 		}
 
