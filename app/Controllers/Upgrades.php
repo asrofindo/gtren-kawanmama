@@ -48,6 +48,7 @@ class upgrades extends BaseController
 		}
 		if($request->getPost('type') == 'affiliate')
 		{
+			
 
 			$data = [
 				'user_id' => user()->id,
@@ -58,11 +59,14 @@ class upgrades extends BaseController
 				'bill' => $request->getPost('bill'),
 				'photo' => null
 			];
+			$bill = $this->bill->where('id',$request->getPost('bill'))->first();
+			$total = $request->getPost('total');
+
+			wawoo(user()->phone,'Registrasi program affiliasi Anda menunggu pembayaran. Mohon melakukan pembayaran Rp '.$total.' ke Rekening Bank '.$bill->bank_name.' No: '.$bill->bank_number.' A/N : '.$bill->owner);
 
 			$generate = $this->generate->find()[0]['nomor'];
-
 			$this->generate->save(['id' => 1, 'nomor' => $generate + 1]);
-
+			
 		} else {
 
 			$code = $request->getPost('code');
@@ -133,7 +137,6 @@ class upgrades extends BaseController
 
 	public function update($id)
 	{
-		
 		$bill_id = $this->model->where('user_id', $id)->first()->bill;
 		$total = $this->model->where('user_id', $id)->first()->total;
 		$total_bill = $this->bill->find($bill_id)->total;
@@ -142,14 +145,13 @@ class upgrades extends BaseController
 			"id" => $bill_id,
 			"total" => $total_bill + $total
 		]);
-
+		$bill = $this->bill->find($bill_id)->bank_name;
 		$request = $this->request;
 		$this->group->addUserToGroup($id, 4);
 
 		$data = [
 			'status_request' => 'active'
 		];
-
 
 		$upgrades = $this->db->table('upgrades');
 		$upgrades->where('user_id', $id);
@@ -165,7 +167,6 @@ class upgrades extends BaseController
 	
 		session()->setFlashdata('success', 'Data Berhasil Diupdate');
 		return redirect()->to(base_url('/upgrades'));
-
 	}
 
 

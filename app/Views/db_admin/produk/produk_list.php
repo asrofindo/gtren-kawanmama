@@ -60,8 +60,8 @@
                                 <td>
                                     <h6 class=""><?= $product->name ?></h6>
                                 </td>
-                                <td class="d-none d-sm-block"><?= $product->sell_price ?></td>
-                                <td ><?= $product->fixed_price?></td>
+                                <td class="d-none d-sm-block">Rp.<?= number_format($product->sell_price); ?></td>
+                                <td >Rp.<?= number_format($product->fixed_price); ?></td>
           
                                 <td class="text-end">
                                     <div class="dropdown">

@@ -34,6 +34,7 @@ $routes->resource('city');
 $routes->resource('province');
 $routes->resource('subdistrict');
 
+$routes->get('/notif', 'Product::notif');
 $routes->get('/product/(:any)/src/(:num)', 'Product::detail/$1/$2');
 $routes->post('/comment/save', 'Comment::save');
 $routes->get('/comment/delete/(:num)','Comment::delete/$1');

@@ -162,22 +162,30 @@ class Order extends BaseController
 
 		// data dari transaksi dan detail transaksi
 		$id_transaksi = $this->model->find($order_id)->id;
-		$data_transaksis = $this->detailtransaksi->where('transaksi_id', $id_transaksi)
+ 
+		$data_transaksis = $this->detailtransaksi->select('detailtransaksi.id as id, cart_item.amount')->where('transaksi_id', $id_transaksi)
 		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
 		->findAll();
 		
 		// total barang yang di beli oleh user
-		$amount = 0;
+		$amount = [];
 
 		// looping dan mengubah data resi dan status barang di dalam table detail transaksi 
 		foreach ($data_transaksis as $data_transaksi) {
+          	
 			$id = $data_transaksi['id'];
-			$amount =+ $data_transaksi['amount'];
-			$this->detailtransaksi->save([
+
+	        array_push($amount,  $data_transaksi['amount']);
+          
+          	$data = [
 				"id" => $id,
 				"resi" => $resi,
 				"status_barang" => "dikirim"
-			]);
+			];
+          
+ 
+			$this->detailtransaksi->save($data);
+          
 		}
 
 		// mengurangi jumlah barang dari distributor dan data distributor
@@ -188,12 +196,12 @@ class Order extends BaseController
 		->where('transaksi.id', $id_transaksi)
 		->find();
 		
-		foreach($distributors as $distributor){
-			$productdistributor_id = $this->productdistributor->where('distributor_id', $distributor['distributor_id'])->where('product_id', $distributor['product_id'])->find();
+		for($i = 0; $i < count($distributors); $i++){
+			$productdistributor_id = $this->productdistributor->where('distributor_id', $distributors[$i]['distributor_id'])->where('product_id', $distributors[$i]['product_id'])->find();
 
 			$this->productdistributor->save([
 				"id" => $productdistributor_id[0]->id,
-				"jumlah" => $productdistributor_id[0]->jumlah - $amount
+				"jumlah" => $productdistributor_id[0]->jumlah - $amount[$i]
 			]);
 		}
 
