@@ -208,13 +208,13 @@ class Order extends BaseController
 			->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
 			->where('transaksi.id', $id_transaksi)
 			->find();
-			
+	
 			for($i = 0; $i < count($distributors); $i++){
 				$productdistributor_id = $this->productdistributor->where('distributor_id', $distributors[$i]['distributor_id'])->where('product_id', $distributors[$i]['product_id'])->find();
 
 				$this->productdistributor->save([
 					"id" => $productdistributor_id[0]->id,
-					"jumlah" => $productdistributor_id[0]->jumlah - $amount[$i]
+					"jumlah" => $productdistributor_id[0]->jumlah - $distributors[$i]['amount']
 				]);
 			}
 
