@@ -168,7 +168,7 @@ class Product extends BaseController
 			->where('address.type', 'distributor')
 			->orderBy('distributor.level','ASC')
 			->find();
-			
+			dd($data['product_distributors']);
 			}
 
 			return view('commerce/product_detail', $data);
