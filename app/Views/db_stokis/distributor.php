@@ -44,7 +44,7 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label>Kelurahan<span class="required">*</span></label>
-                                <input required="" class="form-control square" name="detail_alamat" type="text">
+                                <input required="" class="form-control square" placeholder="Kelurahan / Desa, RT/RW, No.Rumah, Nama Jalan" name="detail_alamat" type="text">
                             </div>
 
                             <div class="col-md-12">
@@ -78,7 +78,7 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label>Kelurahan<span class="required">*</span></label>
-                                <input value="<?= $address[0]->detail_alamat ?>" required="" class="form-control square" name="detail_alamat" type="text">
+                                <input placeholder="Kelurahan / Desa, RT/RW, No.Rumah, Nama Jalan" value="<?= $address[0]->detail_alamat ?>" required="" class="form-control square" name="detail_alamat" type="text">
                             </div>
 
                             <div class="col-md-12">

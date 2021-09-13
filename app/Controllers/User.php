@@ -158,13 +158,6 @@ class User extends BaseController
 		$data['billing_address'] = $this->address->where('type', 'billing')->where('deleted_at', null)->where('user_id', user()->id)->get()->getResult();
 		$data['shipping_address'] = $this->address->where('type', 'shipping')->where('deleted_at', null)->where('user_id', user()->id)->get()->getResult();
 
-		$data['transaksi'] = $this->transaksi->where('user_id', user()->id)
-		->join('detailtransaksi', 'detailtransaksi.transaksi_id = transaksi.id', 'left')
-		->whereNotIn('detailtransaksi.status_barang ', ['diterima_pembeli', 'refund'])
-		->find();
-		
-		$data['isAllowed'] = count($data['transaksi']) > 0 ? false : true;
-
 		// verif
 		return view('commerce/account', $data);
 	}
