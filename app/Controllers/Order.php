@@ -167,6 +167,7 @@ class Order extends BaseController
 		->join('distributor', 'distributor.id = detailtransaksi.distributor_id', 'left')
 		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
 		->where('transaksi_id', $id_transaksi)
+		->where('detailtransaksi.status_barang !=', null)
 		->where('distributor.user_id', user()->id)
 		->findAll();
 		
