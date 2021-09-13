@@ -156,31 +156,48 @@ class Order extends BaseController
 
 	public function save_resi()
 	{
+		// data yang akan di input kan ke database
 		$resi = $this->request->getPost('resi');
 		$order_id = $this->request->getPost('order_id');
 
-		$data = [
-			"id" => $order_id,
-			"status_barang" => "dikirim",
-			"resi" => $resi
-		];
-
-		$this->detailtransaksi->save($data);
-		
-		$detail = $this->detailtransaksi
+		// data dari transaksi dan detail transaksi
+		$id_transaksi = $this->model->find($order_id)->id;
+		$data_transaksis = $this->detailtransaksi->where('transaksi_id', $id_transaksi)
 		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
-		->find($order_id);
+		->findAll();
+		
+		// total barang yang di beli oleh user
+		$amount = 0;
 
-		$distributor = $this->productdistributor
-		->where('distributor_id', $detail['distributor_id'])
-		->where('product_id', $detail['product_id'])->find();
-		$this->productdistributor->save([
-			"id" => $distributor[0]->id,
-			"jumlah" => $distributor[0]->jumlah - $detail['amount']
-		]);
+		// looping dan mengubah data resi dan status barang di dalam table detail transaksi 
+		foreach ($data_transaksis as $data_transaksi) {
+			$id = $data_transaksi['id'];
+			$amount =+ $data_transaksi['amount'];
+			$this->detailtransaksi->save([
+				"id" => $id,
+				"resi" => $resi,
+				"status_barang" => "dikirim"
+			]);
+		}
 
+		// mengurangi jumlah barang dari distributor dan data distributor
+		
+		$distributors = $this->detailtransaksi
+		->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id')
+		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
+		->where('transaksi.id', $id_transaksi)
+		->find();
+		
+		foreach($distributors as $distributor){
+			$productdistributor_id = $this->productdistributor->where('distributor_id', $distributor['distributor_id'])->where('product_id', $distributor['product_id'])->find();
 
+			$this->productdistributor->save([
+				"id" => $productdistributor_id[0]->id,
+				"jumlah" => $productdistributor_id[0]->jumlah - $amount
+			]);
+		}
 
+		// dan yang terakhir adalah redirect back
 		return redirect()->back();
 	}
 
@@ -269,7 +286,5 @@ class Order extends BaseController
 		// uang masuk ke dompet stockis / affiliate / admin
 		return redirect()->back();
 	}
-
-
 
 }

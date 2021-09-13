@@ -156,6 +156,7 @@ $routes->group('', function($routes)
 
 	// order
 	$routes->get('order', 'Admin::order');
+	$routes->post('order/search', 'Admin::order_search');
 	$routes->get('order/refund/(:num)/(:num)', 'Order::order_refund/$1/$2');
 	$routes->post('order/update/(:num)', 'Order::update/$1');
 	$routes->get('orderdetail/(:num)', 'Admin::order_detail/$1');
@@ -163,6 +164,7 @@ $routes->group('', function($routes)
 
 	// order stockist
 		// order
+	$routes->get('order/detail/stockist/(:num)', 'Admin::order_detail_stockist/$1');
 	$routes->get('order/stockist', 'Admin::order_stockist');
 	$routes->get('order/verify/(:num)', 'Order::order_verify/$1');
 	$routes->post('stockist/save/resi', 'Order::save_resi');
@@ -170,6 +172,7 @@ $routes->group('', function($routes)
 	$routes->get('order/acc/(:num)', 'Order::order_acc/$1');
 	$routes->get('order/ignore/(:num)', 'Order::order_ignore/$1');
 	$routes->get('orderdetail/stockist/(:num)', 'Admin::order_detail/stockist/$1');
+
 
 	// member g-tren
 	$routes->get('members', 'Member::index', ['as' => 'member']);
@@ -239,6 +242,10 @@ $routes->group('', function($routes)
 	$routes->post('request/wd', 'Transaksi::request_wd');
 
 	$routes->get('riwayat/wd', 'Transaksi::riwayat_wd');
+
+
+	// delete all data
+	$routes->get('empty', 'Admin::empty');
 
 }
 );
