@@ -5,30 +5,25 @@
         <h2 class="content-title card-title">Pesanan </h2>
         <p>data semua pesanan</p>
     </div>
-    <div>
-        <input type="text" placeholder="Search order ID" class="form-control bg-white">
-    </div>
 </div>
 <div class="card mb-4">
     <header class="card-header">
         <div class="row gx-3">
-            <div class="col-lg-4 col-md-6 me-auto">
-                <input type="text" placeholder="Search..." class="form-control">
+            <div class="col-lg-4 col-md-12 me-auto">
+                <form method="post" action="<?php base_url() ?>/order/search">                    
+                    <input type="text" placeholder="Cari Nama" name="keyword" class="form-control">
+                    <button class="btn btn-sm btn-primary" type="submit">Cari</button>
+                </form>
             </div>
             <div class="col-lg-2 col-6 col-md-3">
-                <select class="form-select">
-                    <option>Status</option>
-                    <option>Active</option>
-                    <option>Disabled</option>
-                    <option>Show all</option>
-                </select>
-            </div>
-            <div class="col-lg-2 col-6 col-md-3">
-                <select class="form-select">
-                    <option>Show 20</option>
-                    <option>Show 30</option>
-                    <option>Show 40</option>
-                </select>
+                <form  method="post" action="<?php base_url() ?>/order/search">
+                    <select name="status" class="form-select">
+                        <option disabled>Status</option>
+                        <option value="paid">Sudah Bayar</option>
+                        <option value="pending" >Belum Bayar</option>
+                    </select>
+                    <button class="btn btn-sm btn-primary" type="submit">Cari</button>
+                </form>
             </div>
         </div>
     </header> <!-- card-header end// -->
@@ -37,19 +32,19 @@
             <table class="table table-sm table-hover">
                 <thead>
                     <tr>
-                        <th>#ID</th>
-                        <th scope="col">Name</th>
+                        <th>NO.</th>
+                        <th scope="col">Nama</th>
                         <th scope="col">Total</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Date</th>
-                        <th scope="col" class="text-end"> Action </th>
+                        <th scope="col">Status Pembayaran</th>
+                        <th scope="col">Tanggal</th>
+                        <th scope="col" class="text-end"> Aksi </th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($orders as $order): ?>
                         <tr>
                             <td><?= $order->id; ?></td>
-                            <td><b><?php echo $order->username; ?></b></td>
+                            <td><b><?php echo $order->fullname; ?></b></td>
                             <td><?php echo $order->total ?></td>
                             <td>
                                 <?php if($order->status_pembayaran == 'pending'): ?>
@@ -62,14 +57,8 @@
                             </td>
                             <td><?= $order->created_at; ?></td>
                             <td class="text-end">
-                                <div class="dropdown">
-                                    <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="<?= base_url() ?>/orderdetail/<?= $order->id; ?>">View detail</a>
-                                        <a class="dropdown-item" href="#">Edit info</a>
-                                        <a class="dropdown-item text-danger" href="#">Delete</a>
-                                    </div>
-                                </div> <!-- dropdown //end -->
+                                <a class="dropdown-item" href="<?= base_url() ?>/orderdetail/<?= $order->id; ?>">View detail</a>
+                                <!-- dropdown //end -->
                             </td>
                         </tr>
                     <?php endforeach; ?>

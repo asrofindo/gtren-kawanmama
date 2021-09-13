@@ -15,21 +15,6 @@
             <div class="col-lg-4 col-md-6 me-auto">
                 <input type="text" placeholder="Search..." class="form-control">
             </div>
-            <div class="col-lg-2 col-6 col-md-3">
-                <select class="form-select">
-                    <option>Status</option>
-                    <option>Active</option>
-                    <option>Disabled</option>
-                    <option>Show all</option>
-                </select>
-            </div>
-            <div class="col-lg-2 col-6 col-md-3">
-                <select class="form-select">
-                    <option>Show 20</option>
-                    <option>Show 30</option>
-                    <option>Show 40</option>
-                </select>
-            </div>
         </div>
     </header> <!-- card-header end// -->
     <div class="card-body">
@@ -37,15 +22,13 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>#ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Status Barang</th>
+                        <th>Nomor</th>
+                        <th>Pembeli</th>
                         <th scope="col">Status Pembayaran</th>
                         <th scope="col">Total</th>
                         <th scope="col">Resi</th>
-                        <th scope="col">Date</th>
-               
-                        <th scope="col" class="text-end"> Action </th>
+                        <th scope="col">Tanggal</th>          
+                        <th scope="col" class="text-end"> Aksi </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,9 +37,16 @@
                         
                         <tr>             
                             <td class="id"><?php echo $order->id; ?></td>
-                            <td><b><?php echo $order->name; ?></b></td>
-                            <td><?php echo $order->status_barang == null ? "menunggu pengiriman" : $order->status_barang; ?></td>
-                            <td><?php echo $order->status_pembayaran; ?></td>
+                            <td><b><?php echo $order->fullname; ?></b></td>
+                            <td>
+                                <?php if($order->status_pembayaran == 'pending'): ?>
+                                    <span class="badge rounded-pill alert-warning">Menunggu Pembayaran</span>
+                                <?php elseif($order->status_pembayaran == 'paid'): ?>
+                                    <span class="badge rounded-pill alert-success">Sudah Dibayar</span>
+                                 <?php elseif($order->status_pembayaran == 'cancel'): ?>
+                                    <span class="badge rounded-pill alert-danger">di gagalkan</span>
+                                <?php endif; ?>
+                            </td>
                             <td>Rp<?php echo $order->total + $order->ongkir_produk - $order->admin_commission - $order->affiliate_commission; ?></td>
                             <td><?php echo $order->resi; ?></td>
                             <td><?php echo $order->created_at; ?></td>
@@ -64,9 +54,9 @@
                                 <div class="dropdown">
                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="<?= base_url() ?>/order/acc/<?= $order->id; ?>">Terima</a>
+                                        <a class="dropdown-item" href="<?= base_url() ?>/order/detail/stockist/<?= $order->id; ?>">Detail</a>
                                         <a class="dropdown-item btn-acc">Kirim Barang</a>
-                                        <a class="dropdown-item text-danger" href="<?= base_url() ?>/order/ignore/<?= $order->id; ?>">Tolak</a>
+
                                     </div>
                                 </div> <!-- dropdown //end -->
                             </td>                
