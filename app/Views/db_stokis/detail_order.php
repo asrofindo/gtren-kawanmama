@@ -118,7 +118,7 @@
                                     <td colspan="4">
                                         <article class="float-end">
                                             <dl class="dlist">
-                                                <dt>Shipping cost:</dt>
+                                                <dt>Ongkos Kirim:</dt>
                                                 <dd><?= $order['ongkir'];  ?></dd>
                                             </dl>
                                             <dl class="dlist">
