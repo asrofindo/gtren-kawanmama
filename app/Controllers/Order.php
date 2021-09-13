@@ -163,7 +163,7 @@ class Order extends BaseController
 		// data dari transaksi dan detail transaksi
 		$id_transaksi = $this->model->find($order_id)->id;
  
-		$data_transaksis = $this->detailtransaksi->select('detailtransaksi.id as id, cart_item.amount')->where('transaksi_id', $id_transaksi)
+		$data_transaksis = $this->detailtransaksi->select('detailtransaksi.id as id, cart_item.amount, detailtransaksi.status_barang  as status_barang')->where('transaksi_id', $id_transaksi)
 		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
 		->findAll();
 		
