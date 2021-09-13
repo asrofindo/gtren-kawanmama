@@ -177,6 +177,7 @@ class Product extends BaseController
 		->find();
 		dd($data['product_distributor']);
 		}
+		dd($data['product_distributor']);
 
 		return view('commerce/product_detail', $data);
 	}
