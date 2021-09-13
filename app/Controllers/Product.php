@@ -217,7 +217,7 @@ class Product extends BaseController
 			$this->productDistributor->save($data);
 			
 			session()->setFlashdata('success', 'Berhasil Menambah Stock');
-	        return redirect()->back();
+	        return redirect()->to('/products/stockist');
 			
 		}
 
