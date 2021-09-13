@@ -483,7 +483,6 @@
           <div class="modal-body">
             <ul style="z-index: -1" class="list-group">
                 <?php foreach($product_distributors as $distributor): ?>  
-
                     <?php if (get_cookie('affiliate') != null) {?>
                         <form method="post" action="<?= base_url();?>/cart/<?= get_cookie('affiliate')?>" >
                     <?php }else{?>
@@ -502,8 +501,8 @@
                         </li>
                         <button class="btn-sm btn-primary" type="submit">Pilih</button>
                     </form>
-                    <?php endforeach; ?>
-                </ul>
+                <?php endforeach; ?>
+            </ul>
             </div>
         </div>
     </div>

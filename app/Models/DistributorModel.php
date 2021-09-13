@@ -14,7 +14,7 @@ class DistributorModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['user_id', 'locate'];
+	protected $allowedFields        = ['user_id','locate','level'];
 
 	// Dates
 	protected $useTimestamps        = true;

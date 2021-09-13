@@ -38,6 +38,8 @@ $routes->get('/product/(:any)/src/(:num)', 'Product::detail/$1/$2');
 $routes->post('/comment/save', 'Comment::save');
 $routes->get('/comment/delete/(:num)','Comment::delete/$1');
 $routes->get('/transaksi','Transaksi::transaksi');
+$routes->get('/distributor/list','Admin::member_distributor');
+$routes->post('/distributor/level','Distributor::save_level');
 
 $routes->get('/make/admin/(:num)', 'User::admin/$1');
 $routes->get('/delete/admin/(:num)', 'User::admin/$1');
