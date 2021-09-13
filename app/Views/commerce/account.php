@@ -243,10 +243,12 @@
                                                 <?php echo session()->getFlashdata('success');?>
                                             </div>
                                         <?php } ?>
-                                            <div class="dropdown">
-                                              <a class="btn btn-primary dropdown-toggle" href="<?php base_url() ?>/billing-address">
-                                                Tambah Alamat
-                                              </a>
+                                            <div>
+                                                <?php if($isAllowed && count($billing_address) == 0): ?>
+                                                    <a class="btn btn-primary dropdown-toggle" href="<?php base_url() ?>/billing-address">
+                                                        Tambah Alamat
+                                                    </a>
+                                                <?php endif; ?>
                                             </div>
                                     </div>
                                     <div class="row">
@@ -263,7 +265,8 @@
                                                         </address>
                                                         <?php endif; ?>
                                                     <?php endforeach; ?>
-                                                    <?php if($billing_address): ?>
+                                                    <?php if($billing_address && $isAllowed): ?>
+
                                                     <a href="<?php base_url() ?>/edit-billing" class="btn-small">Ubah</a>
                                                     <a href="<?php base_url() ?>/address/delete/<?= $billing_address[0]->id ?>" class="btn-small">Hapus</a>
 
@@ -291,7 +294,7 @@
                                         </div> -->
                                     </div>
                                 </div>
-                            <?php elseif($segments[0] == "billing-address"): ?>
+                            <?php elseif($segments[0] == "billing-address" && $isAllowed): ?>
                                 <div class="tab-pane fade active show" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
                                     <div class="card">
                                         <div class="card-header">
