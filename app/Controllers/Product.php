@@ -102,6 +102,7 @@ class Product extends BaseController
 		$data= $this->data;
 		$data['product'] = $this->model->where('slug', $slug)->first();
 		$product_id = $data['product']->id;
+
 		
 		if ($id != null) {
 			$user =	$this->user->where('affiliate_link','/src/'.$id)->find();
