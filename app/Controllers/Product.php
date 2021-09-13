@@ -161,7 +161,7 @@ class Product extends BaseController
 				}
 			}
 
-			if ($data['product_distributor']==[]) {
+			if ($data['product_distributors']==[]) {
 				$data['product_distributor'] = $this->address->select('users.username,  kecamatan, kabupaten, kode_pos, provinsi, type, distributor.user_id, distributor.id as distributor_id, product_distributor.product_id, detail_alamat, locate')
 				->join('users', 'users.id = address.user_id', 'left')
 				->where('address.type', 'distributor')
@@ -169,7 +169,7 @@ class Product extends BaseController
 				->join('product_distributor', 'product_distributor.distributor_id = distributor.id AND product_distributor.jumlah > 0', 'left')
 				->where('product_distributor.product_id', $product_id)->find();
 
-				$data['product_distributors']=$data['product_distributor']
+				$data['product_distributors']=$data['product_distributor'];
 			}
 
 			return view('commerce/product_detail', $data);
