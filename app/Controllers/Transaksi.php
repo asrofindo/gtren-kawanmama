@@ -222,7 +222,7 @@ class Transaksi extends BaseController
 			  	CURLOPT_TIMEOUT => 100,
 			  	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			  	CURLOPT_CUSTOMREQUEST => "POST",
-			  	CURLOPT_POSTFIELDS => "origin={$origin}&originType=city&destination={$destination}&destinationType=subdistrict&weight={$weights[$i]}&courier={$courier}",
+			  	CURLOPT_POSTFIELDS => `origin=$origin&originType=city&destination=$destination&destinationType=subdistrict&weight=$weights[$i]&courier=$courier`,
 			  	CURLOPT_HTTPHEADER => array(
 			    	"content-type: application/x-www-form-urlencoded",
 			    	"key: bfacde03a85f108ca1e684ec9c74c3a9"
@@ -434,7 +434,7 @@ class Transaksi extends BaseController
 			return view('db_stokis/wd', $data);
 		}
 		if(count($this->pendapatan->where('user_id', user()->id)->find()) == 0 ){
-			$data['wds'] = $this->wd->select('sum(total) as  total')->where('user_id', user()->id)->find();
+			$data['wds'] = $this->wd->select('sum(total) as total')->where('user_id', user()->id)->find();
 			$data['pendapatan'] = $this->pendapatan->where('user_id', user()->id)->find();
 
 			return view('db_stokis/wd', $data);

@@ -3,7 +3,7 @@
 <div class="content-header">
     <div>
         <h2 class="content-title card-title">Data Distributor </h2>
-        <p>Data dari semua distributor</p>
+        <p>pesanan dari provinsi yang berbeda akan dilayani oleh distributor yang memiliki level</p>
     </div>
 </div>
 <?= view('Myth\Auth\Views\_message_block') ?>
@@ -31,7 +31,7 @@
                              
                                 <th>id</th>
                                 <th>pemilik</th>
-                                <th>nama toko</th>
+                                <th>nama distributor</th>
                                 <th>level</th>
                                 <th class="text-end">Action</th>
                             </tr>
@@ -48,10 +48,16 @@
                                 <td > 
                                     <input type="hidden" id="user_id" name="user" value="<?= $value['id']?>">
                                     <select id="inputState" class="form-control" name="level">
-                                            <option><?= $value['level']  ?></option>
+                                            <option><?php if ($value['level']==null) {
+                                                echo 'Tanpa Level';
+                                            }else{
+                                                echo $value['level'];
+                                            }?></option>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
+                                            <option value="<?= null ?>">Tanpa Level</option>
+
                                     </select>  
                                 </td>
                                 <td class="text-end">

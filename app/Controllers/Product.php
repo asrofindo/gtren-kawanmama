@@ -27,7 +27,7 @@ class Product extends BaseController
 
 	public function __construct()
 	{
-		helper(['form', 'url']);
+		helper(['form', 'url','wawoo']);
 		$this->model    = new ProductModel();
 		$this->photo    = new ProductPhoto();
 		$this->banner    = new BannerModel();
@@ -555,6 +555,12 @@ class Product extends BaseController
   			return redirect()->back();
   		}
 		  return redirect()->back();
+
+	}
+
+	public function notif()
+	{
+		wawoo('081311661479','jkhnasjkdjs');
 
 	}
 
