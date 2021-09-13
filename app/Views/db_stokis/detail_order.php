@@ -77,7 +77,9 @@
                                             <td>
                                                 <a class="itemside" href="#">
                                                     <div class="left">
-                                                        <img src="<?= $product->photos; ?>" width="40" height="40" class="img-xs" alt="Item">
+                                                         <?php for($i = 0; $i < 1; $i++): ?>
+                                                            <img src="<?php base_url() ?>/public/uploads/product_photos/<?= $product->photos[$i] ?>" width="40" height="40" class="img-xs" alt="Item">
+                                                        <?php endif; ?>
                                                     </div>
                                                     <div class="info"><?= $product->name;  ?></div>
                                                 </a>
