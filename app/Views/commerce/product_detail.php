@@ -499,7 +499,7 @@
                         kabupaten : <?= $distributor->kabupaten; ?> <br>
                         
                     </li>
-                    <button class="btn btn-sm btn-primary w-100" type="submit">
+                    <button class="btn btn-sm btn-primary w-100 m-1" type="submit">
                         Pilih</button>
                     </form>
                 <?php endforeach; ?>
