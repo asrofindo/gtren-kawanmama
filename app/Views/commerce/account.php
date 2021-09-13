@@ -85,6 +85,7 @@
                                                             <th>Status Pembayaran</th>
                                                             <th>Total Tagihan</th>
                                                             <th>Pembayaran Melalui</th>
+                                                            <th>Alamat Pengiriman</th>
                                                             <th>Aksi</th>
                                                         </tr>
                                                     </thead>
@@ -104,6 +105,7 @@
                                                                 </td>
                                                                 <td><?= $transaksi->total; ?></td>
                                                                 <td><?= $transaksi->bank_name; ?> - <?= $transaksi->bank_number; ?> - <?= $transaksi->owner; ?></td>
+                                                                <td><?= $transaksi->alamat; ?></td>
                                                                 <td><a href="<?= base_url() ?>/detail/<?= $transaksi->id ?>" class="btn-small d-block">Detail</a></td>
                                                             </tr>
                                                         <?php endforeach; ?>
@@ -243,12 +245,10 @@
                                                 <?php echo session()->getFlashdata('success');?>
                                             </div>
                                         <?php } ?>
-                                            <div>
-                                                <?php if($isAllowed && count($billing_address) == 0): ?>
-                                                    <a class="btn btn-primary dropdown-toggle" href="<?php base_url() ?>/billing-address">
-                                                        Tambah Alamat
-                                                    </a>
-                                                <?php endif; ?>
+                                            <div class="dropdown">
+                                              <a class="btn btn-primary dropdown-toggle" href="<?php base_url() ?>/billing-address">
+                                                Tambah Alamat
+                                              </a>
                                             </div>
                                     </div>
                                     <div class="row">
@@ -265,8 +265,8 @@
                                                         </address>
                                                         <?php endif; ?>
                                                     <?php endforeach; ?>
-                                                    <?php if($billing_address && $isAllowed): ?>
-
+                                                    <?php if($billing_address): ?>
+                                                    
                                                     <a href="<?php base_url() ?>/edit-billing" class="btn-small">Ubah</a>
                                                     <a href="<?php base_url() ?>/address/delete/<?= $billing_address[0]->id ?>" class="btn-small">Hapus</a>
 
@@ -294,7 +294,7 @@
                                         </div> -->
                                     </div>
                                 </div>
-                            <?php elseif($segments[0] == "billing-address" && $isAllowed): ?>
+                            <?php elseif($segments[0] == "billing-address"): ?>
                                 <div class="tab-pane fade active show" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
                                     <div class="card">
                                         <div class="card-header">

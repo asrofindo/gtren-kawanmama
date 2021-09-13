@@ -155,8 +155,16 @@ class Transaksi extends BaseController
 		->where('cart_item.status', null)
 		->findAll();
 
-
-		$this->transaksi->insert(["user_id" => user()->id, "kode_unik" => $kode_unik, "bill_id" => $bill, "status_pembayaran" => "pending", "total" => $total]);
+		$data['alamat'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find()[0];
+		$alamat = "{$data['alamat']->provinsi}, {$data['alamat']->kabupaten},{$data['alamat']->kecamatan}, {$data['alamat']->kode_pos}, {$data['alamat']->detail_alamat}";
+		
+		$this->transaksi->insert([
+			"user_id" => user()->id, 
+			"kode_unik" => $kode_unik, 
+			"bill_id" => $bill, 
+			"status_pembayaran" => "pending", 
+			"total" => $total, 
+			"alamat" => $alamat]);
 		
 		foreach($data['carts'] as $cart){
 
@@ -222,7 +230,7 @@ class Transaksi extends BaseController
 			  	CURLOPT_TIMEOUT => 100,
 			  	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			  	CURLOPT_CUSTOMREQUEST => "POST",
-			  	CURLOPT_POSTFIELDS => `origin=$origin&originType=city&destination=$destination&destinationType=subdistrict&weight=$weights[$i]&courier=$courier`,
+			  	CURLOPT_POSTFIELDS => "origin={$origin}&originType=city&destination={$destination}&destinationType=subdistrict&weight={$weights[$i]}&courier={$courier}",
 			  	CURLOPT_HTTPHEADER => array(
 			    	"content-type: application/x-www-form-urlencoded",
 			    	"key: bfacde03a85f108ca1e684ec9c74c3a9"
