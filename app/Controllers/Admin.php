@@ -52,7 +52,7 @@ class Admin extends BaseController
 	{
 		$id = user()->id;
 		$data['orders'] = $this->transaksi
-		->select('*, transaksi.total as total_transaksi, transaksi.id as id, detailtransaksi.id as detail_id')
+		->select('*, transaksi.total as total_transaksi, transaksi.id as id, detailtransaksi.id as detail_id, transaksi.created_at as created_at')
 		->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
 		->join("cart_item", 'cart_item.id = cart_id')
 		->join("products", 'products.id = cart_item.product_id')
@@ -61,7 +61,7 @@ class Admin extends BaseController
 		->join('distributor', 'distributor.id = cart_item.distributor_id')
 		->join('users', 'users.id = transaksi.user_id')
 		->where('distributor.user_id', user()->id)
-		->where('transaksi.status_pembayaran', 'paid')->groupBy('transaksi.id')
+		->where('transaksi.status_pembayaran', 'paid')->groupBy('transaksi.id')->orderBy('transaksi.id', 'DESC')
 		->findAll();
 
 		$data['pager'] = $this->transaksi->paginate(5, 'orders');
