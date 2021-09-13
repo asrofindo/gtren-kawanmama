@@ -173,9 +173,9 @@ class Product extends BaseController
 		->join('product_distributor', 'product_distributor.distributor_id = distributor.id AND product_distributor.jumlah > 0', 'left')->where('product_distributor.product_id', $product_id)
 		->where('address.type !=', null)
 		->where('address.type', 'distributor')
-
 		->orderBy('distributor.level','ASC')
 		->find();
+		dd($data['product_distributor']);
 		}
 
 		return view('commerce/product_detail', $data);
