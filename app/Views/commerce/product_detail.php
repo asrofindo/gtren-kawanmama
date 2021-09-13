@@ -488,19 +488,19 @@
                     <?php }else{?>
                         <form method="post" action="<?= base_url();?>/cart" >
                     <?php } ?> 
-                        <button type="submit">
-                        <input style="display: none" type="text" value="" name="amount" class="amount">
-                        <input style="display: none" type="text" value="" name="price_sell" class="price_sell">
-                        <input style="display: none" type="text" value="<?= $distributor->product_id ?>" name="product_id">
-                        <input style="display: none" type="text" value="<?= $distributor->distributor_id ?>" name="distributor_id">
-                        <li style="position: relative;" type="submit" class="list-group-item d-flex justify-content-between align-items-center h-50">
-                            <?= $distributor->locate ?> <br>
-                            Alamat : <?= $distributor->detail_alamat;  ?> <br>
-                            kecamatan : <?= $distributor->kecamatan; ?> <br>
-                            kabupaten : <?= $distributor->kabupaten; ?> <br>
-  
-                        </li>
-                        </button>
+                    <input style="display: none" type="text" value="" name="amount" class="amount">
+                    <input style="display: none" type="text" value="" name="price_sell" class="price_sell">
+                    <input style="display: none" type="text" value="<?= $distributor->product_id ?>" name="product_id">
+                    <input style="display: none" type="text" value="<?= $distributor->distributor_id ?>" name="distributor_id">
+                    <li style="position: relative;" type="submit" class="list-group-item d-flex justify-content-between align-items-center h-50">
+                        <?= $distributor->locate ?> <br>
+                        Alamat : <?= $distributor->detail_alamat;  ?> <br>
+                        kecamatan : <?= $distributor->kecamatan; ?> <br>
+                        kabupaten : <?= $distributor->kabupaten; ?> <br>
+                        
+                    </li>
+                    <button class="btn btn-sm btn-primary w-100" type="submit">
+                        Pilih</button>
                     </form>
                 <?php endforeach; ?>
             </ul>
