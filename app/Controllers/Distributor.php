@@ -82,5 +82,15 @@ class Distributor extends BaseController
 
 	}
 
+	public function save_level()
+	{
+
+		$id=$this->request->getPost('user');
+		$this->distributor->update($id,['level'=>$this->request->getPost('level')]);
+		return redirect()->back();
+	}
+
+	
+
 
 }

@@ -483,27 +483,27 @@
           <div class="modal-body">
             <ul style="z-index: -1" class="list-group">
                 <?php foreach($product_distributors as $distributor): ?>  
-
                     <?php if (get_cookie('affiliate') != null) {?>
                         <form method="post" action="<?= base_url();?>/cart/<?= get_cookie('affiliate')?>" >
                     <?php }else{?>
                         <form method="post" action="<?= base_url();?>/cart" >
                     <?php } ?> 
-                        <input style="display: none" type="text" value="" name="amount" class="amount">
-                        <input style="display: none" type="text" value="" name="price_sell" class="price_sell">
-                        <input style="display: none" type="text" value="<?= $distributor->product_id ?>" name="product_id">
-                        <input style="display: none" type="text" value="<?= $distributor->distributor_id ?>" name="distributor_id">
-                        <li style="position: relative;" type="submit" class="list-group-item d-flex justify-content-between align-items-center h-50">
-                            <?= $distributor->locate ?> <br>
-                            Alamat : <?= $distributor->detail_alamat;  ?> <br>
-                            kecamatan : <?= $distributor->kecamatan; ?> <br>
-                            kabupaten : <?= $distributor->kabupaten; ?> <br>
-  
-                        </li>
-                        <button class="btn-sm btn-primary" type="submit">Pilih</button>
+                    <input style="display: none" type="text" value="" name="amount" class="amount">
+                    <input style="display: none" type="text" value="" name="price_sell" class="price_sell">
+                    <input style="display: none" type="text" value="<?= $distributor->product_id ?>" name="product_id">
+                    <input style="display: none" type="text" value="<?= $distributor->distributor_id ?>" name="distributor_id">
+                    <li style="position: relative;" type="submit" class="list-group-item d-flex justify-content-between align-items-center h-50">
+                        <?= $distributor->locate ?> <br>
+                        Alamat : <?= $distributor->detail_alamat;  ?> <br>
+                        kecamatan : <?= $distributor->kecamatan; ?> <br>
+                        kabupaten : <?= $distributor->kabupaten; ?> <br>
+                        
+                    </li>
+                    <button class="btn btn-sm btn-primary w-100 m-1" type="submit">
+                        Pilih</button>
                     </form>
-                    <?php endforeach; ?>
-                </ul>
+                <?php endforeach; ?>
+            </ul>
             </div>
         </div>
     </div>

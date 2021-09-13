@@ -4,12 +4,15 @@ namespace App\Controllers;
 use App\Models\CategoryModel;
 use Myth\Auth\Models\UserModel;
 use App\Models\TransaksiModel;
+use App\Models\DistributorModel;
+
 use Myth\Auth\Authorization\GroupModel;
 
 class Admin extends BaseController
 {
 	public $model;
 	public $transaksi;
+	public $distributor;
 
 
 	public function __construct()
@@ -17,6 +20,7 @@ class Admin extends BaseController
 	{
 		$this->user = new UserModel();
 		$this->transaksi = new TransaksiModel();
+		$this->distributor = new DistributorModel();
 
 	}
 	public function index()
@@ -32,6 +36,7 @@ class Admin extends BaseController
 	
 	public function order()
 	{
+
 		$data['orders'] = $this->transaksi->select('*, transaksi.id as id,transaksi.created_at')
 		->join('users', 'users.id = transaksi.user_id', 'left')
 		->orderBy('transaksi.id', 'DESC')
@@ -230,9 +235,17 @@ class Admin extends BaseController
 	// 	return view('db_admin/members/member_admin', $getUsers);
 	// }
 
-	public function member_finance()
+	public function member_distributor()
 	{
-		return view('db_admin/members/member_finance');
+		$data['distributor']=$this->distributor->select('*,distributor.id as id')
+		->join('users', 'distributor.user_id=users.id','inner')
+		->orderBy('level','ASC')
+		->findAll();
+
+		$data['pager'] = $this->transaksi->paginate(10, 'distributor');
+		$data['pager'] = $this->transaksi->pager;
+		
+		return view('db_admin/members/member_distributor',$data);
 	}
 
 	public function add_member()
