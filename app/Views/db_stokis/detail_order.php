@@ -98,8 +98,8 @@
                                                     <span class="badge rounded-pill alert-warning">Dana Dikembalikan oleh user</span>
                                                 <?php elseif($product->status_barang == 'ditolak'): ?>
                                                     <span class="badge rounded-pill alert-danger">Pesanan Di Tolak Oleh distributor</span>
-                                                <?php elseif($product->status_barang == 'diterima'): ?>
-                                                    <span class="badge rounded-pill alert-success">Pesanan Di Terima oleh distributor</span>
+                                                <?php elseif($product->status_barang == 'diterima_seller'): ?>
+                                                    <span class="badge rounded-pill alert-success">Penyiapan Barang</span>
                                                 <?php endif; ?>
 
                                             </td>
