@@ -86,14 +86,12 @@
                                             <td> <?= $product->total / $product->amount; ?> </td>
                                             <td> <?= $product->amount; ?> </td>
                                             <td> 
-                                               <?php if($product->status_barang == 'pending' && $product->status_pembayaran == 'paid'): ?>
-                                                    <span class="badge rounded-pill alert-warning">Menunggu Konfirmasi Dari Admin</span>
-                                                <?php elseif($product->status_barang == 'pending' && $product->status_pembayaran == 'pending'): ?>
+                                               <?php if($product->status_barang == null && $product->status_pembayaran == 'paid'): ?>
+                                                    <span class="badge rounded-pill alert-warning">Menunggu Konfirmasi Seller</span>
+                                                <?php elseif($product->status_barang == null && $product->status_pembayaran == 'pending'): ?>
                                                     <span class="badge rounded-pill alert-warning">Menunggu pembayaran</span>
                                                 <?php elseif($product->status_barang == 'dikirim'): ?>
                                                     <span class="badge rounded-pill alert-success">Sudah Dikirim Oleh Seler</span>
-                                                 <?php elseif($product->status_pembayaran == 'paid'): ?>
-                                                    <span class="badge rounded-pill alert-warning">Menunggu Konfirmasi Dari Seller</span>
                                                 <?php elseif($product->status_barang == 'refund'): ?>
                                                     <span class="badge rounded-pill alert-warning">Dana Dikembalikan oleh user</span>
                                                 <?php elseif($product->status_barang == 'ditolak'): ?>
