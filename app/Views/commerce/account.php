@@ -163,7 +163,7 @@
                                                                         <span class="badge rounded-pill alert-danger">Dana Dikembalikan</span>
                                                                     <?php endif; ?>
                                                                 </td>
-                                                                <td><?= $order->kurir ?>,Perkiraan <?= $order->etd ?></td>
+                                                                <td><?= $order->kurir ?>,Perkiraan <?= $order->etd ?>, <?= $order->ongkir_produk ?></td>
                                                                 <td><?= $order->resi ? $order->resi: 'proses'; ?></td>
                                                                 <td><?= $order->created_at;  ?></td>
                                                                 <td>
