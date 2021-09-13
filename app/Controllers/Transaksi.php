@@ -207,9 +207,9 @@ class Transaksi extends BaseController
 	{
 		$r = $this->request;
     	
-    	$origin = $r->getPost('origin'); 
+    	$destination = $r->getPost('origin'); 
     	$courier = $r->getPost('courier'); 
-    	$destination = $r->getPost('destination'); 
+    	$origin = $r->getPost('destination'); 
     	$distributor_id = $r->getPost('distributor_id'); 
     	$weight = $r->getPost('weight');
     	$cart_id = $r->getPost('cart_id'); 
@@ -219,6 +219,16 @@ class Transaksi extends BaseController
     	$total_ongkir = 0;
     	$data_ongkir = [];  
     	$etd = '';
+    	$address_user = $this->address->where('user_id', user()->id)->where('type', 'billing')->first();
+    	$kode_pos = $address_user->kode_pos;
+    	$kecamatan = $address_user->kecamatan;
+
+    	$subdistrict_id = $this->address->
+    	join('city', 'city.kode_pos = address.kode_pos', 'left')
+    	->join('subdistrict', 'subdistrict.city_id = city.id_kota AND subdistrict.subsdistrict_name = address.kecamatan', 'left')
+    	->where('address.type', 'billing')
+    	->where('address.user_id', user()->id)
+    	->first()->subsdistrict_id;
 
  		for($i = 0; $i < count($weights); $i++){
  			$curl = curl_init();
@@ -230,7 +240,7 @@ class Transaksi extends BaseController
 			  	CURLOPT_TIMEOUT => 100,
 			  	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			  	CURLOPT_CUSTOMREQUEST => "POST",
-			  	CURLOPT_POSTFIELDS => "origin={$origin}&originType=city&destination={$destination}&destinationType=subdistrict&weight={$weights[$i]}&courier={$courier}",
+			  	CURLOPT_POSTFIELDS => "origin={$origin}&originType=city&destination={$subdistrict_id}&destinationType=subdistrict&weight={$weights[$i]}&courier={$courier}",
 			  	CURLOPT_HTTPHEADER => array(
 			    	"content-type: application/x-www-form-urlencoded",
 			    	"key: bfacde03a85f108ca1e684ec9c74c3a9"

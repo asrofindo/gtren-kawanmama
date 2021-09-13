@@ -151,7 +151,6 @@ class Product extends BaseController
 			->join('distributor', 'distributor.user_id = users.id', 'left')
 			->join('product_distributor', 'product_distributor.distributor_id = distributor.id AND product_distributor.jumlah > 0', 'left')
 			->where('product_distributor.product_id', $product_id)->find();
-			dd($data['product_distributor'],'donk');
 
 			$index = count($data['product_distributor']);
 			$data['product_distributors'] = [];
@@ -169,7 +168,7 @@ class Product extends BaseController
 				->join('product_distributor', 'product_distributor.distributor_id = distributor.id AND product_distributor.jumlah > 0', 'left')
 				->where('product_distributor.product_id', $product_id)->find();
 
-				$data['product_distributors']=$data['product_distributor']
+				$data['product_distributors']=$data['product_distributor'];
 			}
 
 			return view('commerce/product_detail', $data);
