@@ -16,6 +16,14 @@ class Dashboard extends BaseController
 	}
 	public function index()
 	{
+
+		// mendapatakan data rekening
+		if(count($this->bill->find()) < 1){
+			$data['bills'] = [];
+			session()->setFlashdata('danger', 'Akun Bank Wajib Diisi Terlebih Dahulu');
+			return redirect()->to('/bills');
+		}
+
 		$data['segments'] = $this->request->uri->getSegments();
 
 		$data['user'] = $this->model->select('sum(COALESCE(admin_commission,0)) + sum(COALESCE(stockist_commission,0)) + sum(COALESCE(affiliate_commission,0)) as user_total')->where('status_barang', null)->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id', 'inner')
