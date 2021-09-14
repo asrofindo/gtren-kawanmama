@@ -15,10 +15,10 @@
             <div class="col-lg-8 col-md-8 ms-auto text-md-end">
                 <form action="<?= base_url() ?>/order/update/<?= $transaksi_id; ?>" method="post">       
                     <?php foreach($detail_orders as $order): ?>
-                        <?php if($order['status_pembayaran'] == null): ?>
-                            <a class="btn badge rounded-pill alert-warning">Belum Bayar</a>
-                        <?php else: ?>
+                        <?php if($order['status_pembayaran'] == 'paid'): ?>
                             <a class="btn badge rounded-pill alert-success">Sudah Bayar</a>
+                        <?php else: ?>
+                            <a class="btn badge rounded-pill alert-warning">Sudah Bayar</a>
                         <?php endif; ?>
                     <?php endforeach; ?>            
                     <select name="status" class="form-select d-inline-block mb-lg-0 mb-15 mw-200">
