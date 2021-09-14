@@ -37,8 +37,8 @@
                         <th scope="col">Total</th>
                         <th scope="col">Status Pembayaran</th>
                         <th scope="col">Alamat</th>
-                        <th scope="col">Tanggal</th>
                         <th scope="col">Batas Pesanan</th>
+                        <th scope="col">Tanggal</th>
                         <th scope="col" class="text-end"> Aksi </th>
                     </tr>
                 </thead>
@@ -61,7 +61,7 @@
                             <td><?= $order->batas_pesanan; ?></td>
                             <td><?= $order->created_at; ?></td>
                             <td class="text-end">
-                                <a class="btn btn-sm btn-primary" href="<?= base_url() ?>/orderdetail/<?= $order->id; ?>">Lihat Detail</a>
+                                <a class="btn btn-sm btn-light" href="<?= base_url() ?>/orderdetail/<?= $order->id; ?>">Lihat Detail</a>
                                 <!-- dropdown //end -->
                             </td>
                         </tr>

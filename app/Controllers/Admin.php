@@ -61,6 +61,7 @@ class Admin extends BaseController
 		->join('distributor', 'distributor.id = cart_item.distributor_id')
 		->join('users', 'users.id = transaksi.user_id')
 		->where('distributor.user_id', user()->id)
+		->where('transaksi.batas_pesanan >', date( "Y-m-d H:i:s"))
 		->where('transaksi.status_pembayaran', 'paid')->groupBy('transaksi.id')->orderBy('transaksi.id', 'DESC')
 		->findAll();
 
