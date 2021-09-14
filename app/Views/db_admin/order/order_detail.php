@@ -128,7 +128,7 @@
                                                 <?php endif; ?>
 
                                             </td>
-                                            <td class="text-end"> <?= $product->total;  ?> </td>
+                                            <td class="text-end">Rp. <?= number_format($product->total);  ?> </td>
                                             <td class="text-end">
                                                 <div class="dropdown">
                                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
