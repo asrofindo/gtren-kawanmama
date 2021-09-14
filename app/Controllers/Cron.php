@@ -13,7 +13,7 @@ class Cron extends Controller
 		$detailtransaksi = $db->table('detailtransaksi');
 		
 		$data = $builder->select('*, detailtransaksi.id as detail_id')
-		->where('batas_pesanan >', date( "Y-m-d H:i:s"))
+		->where('batas_pesanan <', date( "Y-m-d H:i:s"))
 		->join('detailtransaksi', 'detailtransaksi.transaksi_id = transaksi.id')
 		->where('status_barang', null)
 		->get()
