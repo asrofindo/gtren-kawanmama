@@ -8,6 +8,8 @@ use App\Models\GenerateModel;
 use App\Models\BillModel;
 use App\Models\TransaksiModel;
 use App\Models\CategoryModel;
+use App\Models\KonfirmasiModel;
+use App\Models\NotifModel;
 
 use Myth\Auth\Models\UserModel;
 use Myth\Auth\Authorization\GroupModel;
@@ -20,7 +22,8 @@ class User extends BaseController
 		$this->address = new AddressModel();
 		$this->upgrade = new UpgradesModel();
 		$this->transaksi = new TransaksiModel();
-
+		$this->konfirmasi = new KonfirmasiModel();
+		$this->notif = new NotifModel();
 
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
@@ -74,7 +77,49 @@ class User extends BaseController
 		return view('commerce/account', $data);
 	}
 
-	
+	public function konfirmasi($id)
+	{
+		$data = $this->data;
+
+		
+		$data['segments'] = $this->request->uri->getSegments();
+		
+		$data['transaksi'] = $this->transaksi->where('id',$id)->first();
+		
+		$data['konfirmasi'] = $this->konfirmasi->where('transaksi_id',$id)->first();
+		
+		$data['bill'] = $this->bill->where('id',$data['transaksi']->bill_id)->first();
+		if ($this->request->getPost('date')!=null) {
+			$data = [
+				'user_id' => user()->id,
+				'transaksi_id' => $id,
+				'date' => $this->request->getPost('date'),
+				'total' => $this->request->getPost('total'),
+				'bill' => $this->request->getPost('bill'),
+				'keterangan' => $this->request->getPost('keterangan'),
+			];
+			$data['konfirmasi'] = $this->konfirmasi->where('transaksi_id',$id)->first();
+
+			if ($data['konfirmasi'] ==[]) {
+				$this->konfirmasi->save($data);
+			}else{
+				$this->konfirmasi->update($data['konfirmasi']->id,$data);
+			}
+			
+			$msg = "Terimakasih Telah Konfirmasi Pembayaran\nNo. Transaksi : ".$id."\nSilahkan Tunggu Konfirmasi Dari Admin";
+			wawoo(user()->phone,$msg);
+
+			$msg="Segera Cek!\nAda *Konfirmasi Pembayaran* oleh ".user()->greeting." ".user()->fullname."\nNo. Wa: ".user()->phone."\nCek di ".base_url('admin/konfirmasi');
+			
+			$notif = $this->notif->findAll();
+			foreach ($notif as $key => $value) {
+				wawoo($value['phone'],$msg);
+			}
+
+			return redirect()->back();
+		}
+		return view('commerce/account', $data);
+	}
 
 	public function tracking()
 	{
