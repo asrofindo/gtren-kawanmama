@@ -66,7 +66,7 @@ class upgrades extends BaseController
 
 			wawoo(user()->phone,$msg);
 
-			$msg="Selamat!\nAda *upgrade affiliate* di ".base_url()."\nNama affiliate: ".user()->greeting." ".user()->fullname."\nNo. Wa. ".user()->phone;
+			$msg="Selamat!\nAda *upgrade affiliate* di ".base_url()."\nNama affiliate: ".user()->greeting." ".user()->fullname."\nNo. Wa: ".user()->phone;
 			
 			$norif = $this->notif->findAll();
 			foreach ($norif as $key => $value) {
@@ -104,7 +104,17 @@ class upgrades extends BaseController
 			$users = $this->db->table('users');
 			$users->where('id', user()->id);
 			$users->update(['affiliate_link' => '/src/'. user()->id]);
+			
+			$msg= base_url()." \n\n".user()->greeting." ".user()->fullname."\nAnda sekarang *Distributor* \nAkses Dasbor Distributor :".base_url('dashboard');
 
+			wawoo(user()->phone,$msg);
+
+			$msg="Selamat!\n".user()->greeting." ".user()->fullname." sudah jadi distributor di ".base_url()."\nNo. Wa: ".user()->phone;
+
+			$norif = $this->notif->findAll();
+			foreach ($norif as $key => $value) {
+				wawoo($value['phone'],$msg);
+			}
 			session()->setFlashdata('successs', 'Berhasil, Anda Sekarang Adalah Stockist');
 			return redirect()->back();
 
