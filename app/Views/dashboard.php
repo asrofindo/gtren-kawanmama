@@ -144,9 +144,17 @@
         </a>
     </li>
     <?php endif ?>
+    <?php if(in_groups(1)): ?>
+    <li class="menu-item">
+        <a class="menu-link" href="<?php base_url() ?>/admin/konfirmasi"> <i class="icon material-icons md-shopping_cart"></i>
+            <span class="text">Konfirmasi Pembayaran</span>
+        </a>
+    </li>
+    <?php endif; ?>
 
 </ul>
 <hr>
+
 <?php if(in_groups(1)): ?>
 <ul class="menu-aside">
     <li class="menu-item has-submenu">

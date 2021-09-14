@@ -6,6 +6,7 @@ use Myth\Auth\Models\UserModel;
 use App\Models\TransaksiModel;
 use App\Models\DistributorModel;
 use App\Models\NotifModel;
+use App\Models\KonfirmasiModel;
 
 use Myth\Auth\Authorization\GroupModel;
 
@@ -13,6 +14,7 @@ class Admin extends BaseController
 {
 	public $model;
 	public $transaksi;
+	public $konfirmasi;
 	public $distributor;
 	public $notif;
 
@@ -22,6 +24,8 @@ class Admin extends BaseController
 	{
 		$this->user = new UserModel();
 		$this->transaksi = new TransaksiModel();
+		$this->konfirmasi = new KonfirmasiModel();
+
 		$this->distributor = new DistributorModel();
 		$this->notif = new NotifModel();
 
@@ -335,6 +339,21 @@ class Admin extends BaseController
 		$db->table('cart_item')->truncate();
 		
 		return '<a href="/">Berhasil, klik untuk kembali</>';
+	}
+
+	public function admin_konfirmasi(){
+		$data['konfirmasi'] = $this->konfirmasi
+		->select('konfirmasi.id as id ,users.fullname as name,konfirmasi.date as date,konfirmasi.total as total,konfirmasi.bill as bill,konfirmasi.transaksi_id as transaksi_id,konfirmasi.keterangan as keterangan')
+		->join('users', 'users.id=konfirmasi.user_id', 'left')
+		->find();
+
+		return view('db_admin/order/konfirmasi',$data);
+	}
+
+	public function delete_konfirmasi($id){
+		$this->konfirmasi->delete($id);
+
+		return redirect()->back();
 	}
 
 }

@@ -8,7 +8,10 @@ use App\Models\DetailTransaksiModel;
 use App\Models\PengirimanModel;
 use App\Models\DetailPengirimanModel;
 use App\Models\PendapatanModel;
+use App\Models\DistributorModel;
 use App\Controllers\BaseController;
+use Myth\Auth\Models\UserModel;
+
 
 class Order extends BaseController
 {
@@ -20,19 +23,37 @@ class Order extends BaseController
 		$this->detail_pengiriman = new DetailPengirimanModel();
 		$this->productdistributor = new ProductDistributorModel();
 		$this->pendapatan = new PendapatanModel();
+		$this->distributor = new DistributorModel();
 		$this->bills = new BillModel();
+		$this->user = new UserModel();
+
 	}
 	public function update($id)
 	{
 		$status = $this->request->getPost("status");
+		$data['transaksi'] = $this->model->find($id);
+		$data['bills'] = $this->bills->find($data['transaksi']->bill_id);
 		if($status == 'paid'){
-			$data['transaksi'] = $this->model->find($id);
-			$data['bills'] = $this->bills->find($data['transaksi']->bill_id);
 			
 			$this->bills->save(["id" => $data['transaksi']->bill_id, "total" => $data['bills']->total + $data['transaksi']->total]);
 		}
 		$this->model->save(["id" => $id, "status_pembayaran" => $status, "batas_pesanan" => date( "Y-m-d H:i:s", strtotime( "+2 days" )),	
-]);
+		]);
+
+		$detail =$this->detailtransaksi->where('transaksi_id',$id)->find();
+		
+		foreach ($detail as $key => $value) {
+			$dostributor = $this->distributor->where('id',$value->distributor_id)->first();
+			$user = $this->user->where('id',$dostributor['user_id'])->first();
+			
+			$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Selamat! Anda mendapat pesanan baru,\nNo Transaksi: ".$id."\nAnda harus *menerima* atau *menolak* pesanan ini di dasbor distributor. Batas waktu 2 hari.\nSilahkan Cek Transaksi di \n".base_url('/dashboard');
+			wawoo($user->phone,$msg);
+		}
+		
+		$user = $this->user->where('id',$data['transaksi']->user_id)->first();
+		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Konfirmasi Pembayaran Anda *Telah Di Terima* \nNo Transaksi: ".$id."\nSilahkan Cek Transaksi di \n".base_url('/orders');
+		wawoo($user->phone,$msg);
+
 		return redirect()->back();
 
 	}

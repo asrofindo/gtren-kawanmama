@@ -8,22 +8,7 @@
 <div class="card mb-4">
     <header class="card-header">
         <div class="row gx-3">
-            <div class="col-lg-4 col-md-12 me-auto">
-                <form method="post" action="<?php base_url() ?>/order/search">                    
-                    <input type="text" placeholder="Cari Nama" name="keyword" class="form-control">
-                    <button class="btn btn-sm btn-primary" type="submit">Cari</button>
-                </form>
-            </div>
-            <div class="col-lg-2 col-6 col-md-3">
-                <form  method="post" action="<?php base_url() ?>/order/search">
-                    <select name="status" class="form-select">
-                        <option disabled>Status</option>
-                        <option value="paid">Sudah Bayar</option>
-                        <option value="pending" >Belum Bayar</option>
-                    </select>
-                    <button class="btn btn-sm btn-primary" type="submit">Cari</button>
-                </form>
-            </div>
+
         </div>
     </header> <!-- card-header end// -->
     <div class="card-body">
@@ -31,27 +16,32 @@
             <table class="table table-sm table-hover">
                 <thead>
                     <tr>
-                        <th>NO.</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Total</th>
-                        <th scope="col">Status Pembayaran</th>
-                        <th scope="col">Alamat</th>
-                        <th scope="col">Batas Pesanan</th>
-                        <th scope="col">Tanggal</th>
+                        <th scope="col">Nomor Transaksi</th>
+                        <th scope="col">Nama Pengirim</th>
+                        <th scope="col">Tanggal Transfer</th>
+                        <th scope="col">Jumlah Transfer</th>
+                        <th scope="col">Keterangan</th>
                         <th scope="col" class="text-end"> Aksi </th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach ($konfirmasi as $value) {?>
                         <tr>
-                            <td><?= $transaksi->id; ?></td>
-                            <td><b><?php echo $transaksi->created_at; ?></b></td>
-                            <td><?php echo $transaksi->total ?></td>
-      
-                   
+                            <td><?= $value->transaksi_id; ?></td>
+                            <td><b><?= $value->name?></b></td>
+                            <td><b><?= $value->date?></b></td>
+                            <td><?= $value->total ?></td>
+                            <td><?= $value->keterangan ?></td>
                             <td class="text-end">
-                                <!-- dropdown //end -->
+                            <div class="dropdown">
+                                        <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                        <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="<?=base_url()?>/konfirmasi/delete/<?=$value->id?>">Hapus</a>
+                                       </div>
+                                    </div>
                             </td>
                         </tr>
+                    <?php }?>
                 </tbody>
             </table>
         </div> <!-- table-responsive //end -->

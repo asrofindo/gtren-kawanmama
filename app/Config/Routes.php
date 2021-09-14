@@ -37,7 +37,6 @@ $routes->resource('cron');
 
 $routes->get('/notifikasi', 'Admin::notifikasi');
 $routes->post('/notifikasi', 'Admin::notifikasi');
-$routes->get('/konfirmasi/(:num)', 'Transaksi::konfirmasi/$1');
 
 $routes->get('/notifikasi/delete/(:num)', 'Admin::notifikasi_delete/$1');
 
@@ -59,6 +58,9 @@ $routes->get('account', 'User::account', ['filter' => 'login']);
 $routes->get('orders', 'User::orders', ['filter' => 'login']);
 $routes->get('detail/(:num)', 'User::order_detail/$1', ['filter' => 'login']);
 $routes->get('tracking', 'User::tracking', ['filter' => 'login']);
+//konfirmasi untuk admin
+$routes->get('/admin/konfirmasi','Admin::admin_konfirmasi');
+$routes->get('/konfirmasi/delete/(:num)','Admin::delete_konfirmasi/$1');
 
 //addresses
 $routes->get('billing-address', 'User::address', ['filter' => 'login']);
@@ -82,6 +84,9 @@ $routes->post('profile', 'User::set_profile', ['filter' => 'login']);
 $routes->get('upgrade/affiliate', 'User::upgrade_affiliate', ['filter' => 'login']);
 $routes->get('upgrade/stockist', 'User::upgrade_stockist', ['filter' => 'login']);
 $routes->post('track', 'User::Track', ['filter' => 'login']);
+$routes->get('/konfirmasi/(:num)', 'User::konfirmasi/$1');
+$routes->post('/konfirmasi/(:num)', 'User::konfirmasi/$1');
+
 
 $routes->get('contact', 'Commerce::Contact');
 $routes->get('about', 'Commerce::About');

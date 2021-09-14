@@ -183,6 +183,7 @@ class Transaksi extends BaseController
 				"admin_commission" => $cart->affiliate_link ?  $cart->sell_price - $cart->fixed_price - $cart->stockist_commission - $cart->affiliate_commission : $cart->sell_price - $cart->fixed_price - $cart->stockist_commission,
 				"transaksi_id" => $this->transaksi->getInsertID(), 
 			];
+
 			$this->detail_transaksi->save($data);
 		}
 
@@ -300,10 +301,7 @@ class Transaksi extends BaseController
 					return redirect()->back();
 				}					
 			}
-
-			
     	}
-		
 
 		$this->pengirim->save([
 			"user_id" => user()->id,
@@ -492,9 +490,4 @@ class Transaksi extends BaseController
 		return view('db_admin/pendapatan/riwayat_wd', $data);
 	}
 
-	public function konfirmasi($id)
-	{
-		$data['transaksi'] = $this->model->where('id',$id)->first();
-		return view('db_admin/order/konfirmasi', $data);
-	}
 }	

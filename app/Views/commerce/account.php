@@ -110,8 +110,8 @@
                                                                     <div class="dropdown">
                                                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz">...</i> </a>
                                                                     <div class="dropdown-menu">
-                                                                        <a href="<?= base_url() ?>/detail/<?= $transaksi->id ?>" class="dropdown-item">Detail</a>
-                                                                        <a href="<?= base_url() ?>/konfirmasi/<?= $transaksi->id ?>" class="dropdown-item">Konfirmasi Pembayaran</a>
+                                                                        <a href="<?= base_url() ?>/detail/<?= $transaksi->id?>" class="dropdown-item">Detail</a>
+                                                                        <a href="<?= base_url() ?>/konfirmasi/<?= $transaksi->id?>" class="dropdown-item">Konfirmasi Pembayaran</a>
                                                                     </div>
                                                                     </div> <!-- dropdown //end -->
                                                                 </td>
@@ -193,6 +193,67 @@
                                                 </table>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                            <?php elseif($segments[0] == "konfirmasi"): ?>
+                                <div class="tab-pane fade active show" id="upgrade" role="tabpanel" aria-labelledby="upgrade-tab">
+                                    <div class="card p-3">
+                                        <h3>Formulir Konfirmasi Pembayaran</h3>
+                                
+                                        <br>
+                                        <div class="row">
+                                            <h5>Nomor Transaksi : <?= $transaksi->id?></h5>
+                                            <h5>Tanggal Transaksi : <?= $transaksi->created_at?></h5>
+                                            <h5>Total Tagihan : <?= $transaksi->total?></h5>
+
+                                        </div>
+                                        <br>
+                                    <form method="post" action="<?= base_url()?>/konfirmasi/<?=$transaksi->id?>">
+                                                <div class="row">
+                                                    <?php if ($konfirmasi!=[]) {?>
+                                                        <div class="form-group col-md-12">
+                                                            <label>Tanggal Transfer <span class="required">*</span></label>
+                                                            <input required="" class="form-control square" name="date" type="date" value="<?=$konfirmasi->date?>">
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label>Jumlah Transfer <span class="required">*</span></label>
+                                                            <input required="" class="form-control square" name=total type="text"  value="<?=$konfirmasi->total?>">
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label>Bank Tujuan<span class="required">*</span></label>
+                                                            <input readonly required="" class="form-control square" name="bill" type="text"  value="<?="(".$bill->id.")-".$bill->bank_name."-".$bill->bank_number."-".$bill->owner?>">
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label>Keterangan<span class="required">*</span></label>
+                                                            <input required="" class="form-control square" name="keterangan" type="text"  value="<?=$konfirmasi->keterangan?>">
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Konfirmasi</button>
+                                                        </div>
+                                                    <?php }else{?>
+                                                        <div class="form-group col-md-12">
+                                                            <label>Tanggal Transfer <span class="required">*</span></label>
+                                                            <input required="" class="form-control square" name="date" type="date" value="">
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label>Jumlah Transfer <span class="required">*</span></label>
+                                                            <input required="" class="form-control square" name=total type="text"  value="">
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label>Bank Tujuan<span class="required">*</span></label>
+                                                            <input readonly required="" class="form-control square" name="bill" type="text"  value="<?="(".$bill->id.")-".$bill->bank_name."-".$bill->bank_number."-".$bill->owner?>">
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label>Keterangan<span class="required">*</span></label>
+                                                            <input required="" class="form-control square" name="keterangan" type="text"  value="">
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Konfirmasi</button>
+                                                        </div>
+                                                    <?php }?>
+
+                                                </div>
+                                            </form>
                                     </div>
                                 </div>
                             <?php elseif($segments[0] == "tracking"): ?>
