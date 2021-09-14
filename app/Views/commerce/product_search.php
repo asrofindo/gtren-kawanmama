@@ -9,7 +9,7 @@
                         <div class="product-cart-wrap mb-30">
                             <div class="product-img-action-wrap">
                                 <div class="product-img product-img-zoom">
-                                    <a href="shop-product-right.html">
+                                    <a href="<?= base_url('product/'. $product->slug) ?>">
                                         <?php for($i = 0; $i < 2; $i++): ?>
                                             <img class="<?= $i == 0 ? 'default-img' : 'hover-img'  ?>" src="<?= base_url() ?>/public/uploads/product_photos/<?= $product->photos[$i] ?>" alt="">
                                         <?php endfor ?>
