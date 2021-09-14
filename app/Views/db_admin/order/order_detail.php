@@ -55,7 +55,11 @@
                         <div class="text">
                             <h6 class="mb-1">Dikirim Ke</h6>
                             <p class="mb-1">
-                                <?php echo $order['alamat']; ?>
+                                <?php $alamat = explode(',', $order['alamat']); ?>
+                                <?php echo $alamat[4]; ?> <br>
+                                <?php echo $alamat[2]; ?> <br>
+                                <?php echo $alamat[1]; ?> <br>
+                                <?php echo $alamat[0]; ?> <br>
                             </p>
                         </div>
                     </article>

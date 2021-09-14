@@ -156,7 +156,7 @@ class Transaksi extends BaseController
 		->findAll();
 
 		$data['alamat'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find()[0];
-		$alamat = "{$data['alamat']->provinsi}, {$data['alamat']->kabupaten},{$data['alamat']->kecamatan}, {$data['alamat']->kode_pos}, {$data['alamat']->detail_alamat}";
+		$alamat = "{$data['alamat']->provinsi}, {$data['alamat']->kabupaten}, {$data['alamat']->kecamatan}, {$data['alamat']->kode_pos}, {$data['alamat']->detail_alamat}";
 		
 		$this->transaksi->insert([
 			"user_id" => user()->id, 
