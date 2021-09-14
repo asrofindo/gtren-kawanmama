@@ -9,6 +9,7 @@ use App\Models\BillModel;
 use App\Models\GenerateModel;
 use App\Models\DistributorModel;
 use Myth\Auth\Models\UserModel;
+use App\Models\NotifModel;
 use Myth\Auth\Authorization\GroupModel;
 
 class upgrades extends BaseController
@@ -18,6 +19,7 @@ class upgrades extends BaseController
 	{
 		$this->model = new UpgradesModel();
 		$this->user = new UserModel();
+		$this->notif = new NotifModel();
 		$this->uniq = new UniqueCodeModel();
 		$this->generate = new GenerateModel();
 		$this->bill = new BillModel();
@@ -48,8 +50,6 @@ class upgrades extends BaseController
 		}
 		if($request->getPost('type') == 'affiliate')
 		{
-			
-
 			$data = [
 				'user_id' => user()->id,
 				'code' => $request->getPost('code'),
@@ -59,13 +59,22 @@ class upgrades extends BaseController
 				'bill' => $request->getPost('bill'),
 				'photo' => null
 			];
+
 			$bill = $this->bill->where('id',$request->getPost('bill'))->first();
 			$total = $request->getPost('total');
+			$msg=base_url()." \n\n".user()->greeting." ".user()->fullname."\n"."Registrasi Program Referal *menunggu pembayaran* \nTagihan Total: ".$total."\nRekening ".$bill->bank_name."-".$bill->bank_number."-".$bill->owner;
 
-			wawoo(user()->phone,'Registrasi program affiliasi Anda menunggu pembayaran. Mohon melakukan pembayaran Rp '.$total.' ke Rekening Bank '.$bill->bank_name.' No: '.$bill->bank_number.' A/N : '.$bill->owner);
+			wawoo(user()->phone,$msg);
+
+			$msg="Selamat!\nAda *upgrade affiliate* di ".base_url()."\nNama affiliate: ".user()->greeting." ".user()->fullname."\nNo. Wa. ".user()->phone;
+			
+			$norif = $this->notif->findAll();
+			foreach ($norif as $key => $value) {
+				wawoo($value['phone'],$msg);
+			}
 
 			$generate = $this->generate->find()[0]['nomor'];
-			$this->generate->save(['id' => 1, 'nomor' => $generate + 1]);
+			// $this->generate->save(['id' => 1, 'nomor' => $generate + 1]);
 			
 		} else {
 
@@ -141,13 +150,20 @@ class upgrades extends BaseController
 		$total = $this->model->where('user_id', $id)->first()->total;
 		$total_bill = $this->bill->find($bill_id)->total;
 		
+
 		$this->bill->save([
 			"id" => $bill_id,
 			"total" => $total_bill + $total
 		]);
 		$bill = $this->bill->find($bill_id)->bank_name;
 		$request = $this->request;
-		$this->group->addUserToGroup($id, 4);
+		// $this->group->addUserToGroup($id, 4);
+
+		$user=$this->user->where('id',$id)->first();
+
+		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\nStatus Program Referal Anda *sudah aktif* \nAkses Halaman Affiliate :".base_url('upgrade/affiliate');
+
+		wawoo(user()->phone,$msg);		
 
 		$data = [
 			'status_request' => 'active'
