@@ -187,7 +187,7 @@ class Transaksi extends BaseController
 		}
 
 		$bill = $this->bill->where('id',$this->request->getPost('bill'))->first();
-		$msg = base_url()." \n\n".user()->greeting." ".user()->fullname."\n"."Pesanan Anda *menunggu pembayaran* \nTagihan Total: ".$total."\nRekening ".$bill->bank_name."-".$bill->bank_number."-".$bill->owner."\nNomor Transaksi"." \nRekening ".$bill->bank_name."-".$bill->bank_number."-".$bill->owner."\nCek Pesanan Anda Di ".base_url('/orders');
+		$msg = base_url()." \n\n".user()->greeting." ".user()->fullname."\n"."Pesanan Anda *menunggu pembayaran* \nTagihan Total: ".$total."\nNomor Transaksi : ".$this->transaksi->getInsertID()."\nRekening ".$bill->bank_name."-".$bill->bank_number."-".$bill->owner."\nCek Pesanan Anda Di ".base_url('/orders');
 
 		wawoo(user()->phone,$msg);
 
@@ -490,5 +490,11 @@ class Transaksi extends BaseController
 		->find();
 
 		return view('db_admin/pendapatan/riwayat_wd', $data);
+	}
+
+	public function konfirmasi($id)
+	{
+		$data['transaksi'] = $this->model->where('id',$id)->first();
+		return view('db_admin/order/konfirmasi', $data);
 	}
 }	

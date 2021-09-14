@@ -37,6 +37,8 @@ $routes->resource('cron');
 
 $routes->get('/notifikasi', 'Admin::notifikasi');
 $routes->post('/notifikasi', 'Admin::notifikasi');
+$routes->get('/konfirmasi/(:num)', 'Transaksi::konfirmasi/$1');
+
 $routes->get('/notifikasi/delete/(:num)', 'Admin::notifikasi_delete/$1');
 
 $routes->get('/product/(:any)/src/(:num)', 'Product::detail/$1/$2');
