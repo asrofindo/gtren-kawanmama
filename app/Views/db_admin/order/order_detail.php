@@ -10,22 +10,22 @@
     <header class="card-header">
         <div class="row align-items-center">
             <div class="col-lg-4 col-md-4 mb-lg-0 mb-15">
-                 <?php foreach($detail_orders as $order): ?>
-                    <?php if($order['status_pembayaran'] == null): ?>
-                        <a class="btn badge rounded-pill alert-warning">Belum Bayar</a>
-                    <?php else: ?>
-                        <a class="btn badge rounded-pill alert-success">Sudah Bayar</a>
-                    <?php endif; ?>
-                <?php endforeach; ?>
+                
          </div>
-            <div class="col-lg-8 col-md-6 ms-auto text-md-end">
+            <div class="col-lg-8 col-md-8 ms-auto text-md-end">
                 <form action="<?= base_url() ?>/order/update/<?= $transaksi_id; ?>" method="post">       
-                   
+                    <?php foreach($detail_orders as $order): ?>
+                        <?php if($order['status_pembayaran'] == null): ?>
+                            <a class="btn badge rounded-pill alert-warning">Belum Bayar</a>
+                        <?php else: ?>
+                            <a class="btn badge rounded-pill alert-success">Sudah Bayar</a>
+                        <?php endif; ?>
+                    <?php endforeach; ?>            
                     <select name="status" class="form-select d-inline-block mb-lg-0 mb-15 mw-200">
                         <option selected disabled="">Rubah Status Pembayaran</option>
                         <option value="paid">Sudah Bayar</option>
                     </select>
-                    <button class="btn btn-primary" type="submit">Save</button>
+                    <button class="btn btn-primary" type="submit">Simpan</button>
                     <a class="btn btn-secondary print ms-2" href="#"><i class="icon material-icons md-print"></i></a>
                 </form>
             </div>
@@ -42,9 +42,21 @@
                         <div class="text">
                             <h6 class="mb-1">Customer</h6>
                             <p class="mb-1">
-                               <?= $order['username'] ?> <br> <?= $order['email'] ?> <br>
+                               <?= $order['fullname'] ?> <br> <?= $order['email'] ?> <br> <?= $order['phone'] ?>
                             </p>
-                            <a href="#">View profile</a>
+                        </div>
+                    </article>
+                </div> <!-- col// -->
+                <div class="col-md-4">
+                    <article class="icontext align-items-start">
+                        <span class="icon icon-sm rounded-circle bg-primary-light">
+                            <i class="text-primary material-icons md-place"></i>
+                        </span>
+                        <div class="text">
+                            <h6 class="mb-1">Dikirim Ke</h6>
+                            <p class="mb-1">
+                                <?php echo $order['alamat']; ?>
+                            </p>
                         </div>
                     </article>
                 </div> <!-- col// -->
@@ -58,21 +70,6 @@
                             <p class="mb-1">
                                 Shipping: <?= $order['kurir'] ?> <br> etd: <?= $order['etd'] ?> <br> ongkir: <?= $order['ongkir'] ?>
                             </p>
-                            <a href="#">Download info</a>
-                        </div>
-                    </article>
-                </div> <!-- col// -->
-                <div class="col-md-4">
-                    <article class="icontext align-items-start">
-                        <span class="icon icon-sm rounded-circle bg-primary-light">
-                            <i class="text-primary material-icons md-place"></i>
-                        </span>
-                        <div class="text">
-                            <h6 class="mb-1">Deliver to</h6>
-                            <p class="mb-1">
-                                kabupaten: <?= $order['kabupaten'] ?> <br>kecamatan : <?= $order['kecamatan'] ?><br> kode pos : <?= $order['kode_pos'] ; ?>
-                            </p>
-                            <a href="#">View profile</a>
                         </div>
                     </article>
                 </div> <!-- col// -->
@@ -116,13 +113,13 @@
                                                 <?php elseif($product->status_pembayaran == 'pending'): ?>
                                                     <span class="badge rounded-pill alert-warning">Menunggu pembayaran</span>
                                                  <?php elseif($product->status_pembayaran == 'paid' && $product->status_barang == null): ?>
-                                                    <span class="badge rounded-pill alert-warning">Menunggu Konfirmasi Dari Seller</span>
+                                                    <span class="badge rounded-pill alert-warning">Menunggu Konfirmasi Dari DIstributor</span>
                                                 <?php elseif($product->status_barang == 'refund'): ?>
                                                     <span class="badge rounded-pill alert-warning">Dana Dikembalikan Kepada Pembeli</span>
                                                 <?php elseif($product->status_barang == 'ditolak'): ?>
                                                     <span class="badge rounded-pill alert-danger">Pesanan Di Tolak Oleh distributor</span>
-                                                <?php elseif($product->status_barang == 'diterima'): ?>
-                                                    <span class="badge rounded-pill alert-success">Pesanan Di Terima oleh distributor</span>
+                                                <?php elseif($product->status_barang == 'diterima_seller'): ?>
+                                                    <span class="badge rounded-pill alert-success">Pesanan Dalam Antrian distributor</span>
                                                 <?php endif; ?>
 
                                             </td>
