@@ -214,6 +214,7 @@ class Order extends BaseController
 		          	$data = [
 						"id" => $data_transaksi['id'],
 						"resi" => $resi,
+						"tanggal_resi" =>  date( "Y-m-d H:i:s", strtotime( "+10 days")),
 						"status_barang" => "dikirim"
 					];
 		          
@@ -256,7 +257,7 @@ class Order extends BaseController
 		// ubah status detail transaksi 
 		$data = [
 			"id" => $id,
-			"status_barang" => "diterima_pembeli",
+			"status_barang" => "diterima_pembeli", 
 		];
 
 		$this->detailtransaksi->save($data);
@@ -264,6 +265,7 @@ class Order extends BaseController
 
 		// $this->model->save($data);
 
+		
 		$transaksis = $this->detailtransaksi
 		->select('*, distributor.user_id as penjual_id, cart_item.user_id as pembeli_id')
 		->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id')

@@ -11,13 +11,22 @@
         </form>
     </div>
 </div>
-<?php if(!empty(session()->getFlashdata('success'))){ ?>
 
-    <div class="alert alert-success bg-success text-white">
-        <?php echo session()->getFlashdata('success');?>
-    </div>
+  <?php if(!empty(session()->getFlashdata('success'))){ ?>
 
-<?php } ?>
+        <div class="alert alert-success bg-success text-white">
+            <?php echo session()->getFlashdata('success');?>
+        </div>
+
+    <?php } ?>
+
+    <?php if(!empty(session()->getFlashdata('danger'))){ ?>
+
+        <div class="alert alert-danger bg-danger text-white">
+            <?php echo session()->getFlashdata('danger');?>
+        </div>
+
+    <?php } ?>
 <div class="card">
     <div class="card-body">
         <div class="row">

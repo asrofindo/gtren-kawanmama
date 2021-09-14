@@ -27,8 +27,8 @@
                 <div class="col-lg-2  col-md-3">
                     <h5 class="widget-title mb-30 wow fadeIn animated">Account</h5>
                     <ul class="footer-list wow fadeIn animated">
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Register</a></li>
+                        <li><a href="<?php base_url() ?>/login">Login</a></li>
+                        <li><a href="<?php base_url() ?>/register">Register</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4">
@@ -41,10 +41,10 @@
                                 <a href="#" class="hover-up"><img src="<?= base_url() ?>/frontend/imgs/theme/google-play.jpg" alt=""></a>
                             </div>
                         </div>
-                        <div class="col-md-4 col-lg-12">
+                       <!--  <div class="col-md-4 col-lg-12">
                             <p class="mb-20 wow fadeIn animated mt-md-3">Secured Payment Gateways</p>
                             <img class="wow fadeIn animated" src="<?= base_url() ?>/frontend/imgs/theme/payment-method.png" alt="">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 <div class="footer-bottom"></div>
             </div>
             <div class="col-lg-6">
-                <p class="float-md-left font-sm text-muted mb-0">&copy; 2021, <strong class="text-brand">Wowy</strong> - HTML Ecommerce Template </p>
+                <p class="float-md-left font-sm text-muted mb-0">&copy; 2021, <strong class="text-brand"> KDN</strong> </p>
             </div>
             <div class="col-lg-6">
                 <p class="text-lg-end text-start font-sm text-muted mb-0">

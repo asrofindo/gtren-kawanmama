@@ -126,6 +126,10 @@
                                                     <span class="badge rounded-pill alert-danger">Pesanan Di Tolak Oleh distributor</span>
                                                 <?php elseif($product->status_barang == 'diterima_seller'): ?>
                                                     <span class="badge rounded-pill alert-success">Pesanan Dalam Antrian distributor</span>
+                                                <?php elseif($product->status_barang == 'diterima_pembeli'): ?>
+                                                    <span class="badge rounded-pill alert-success">Pesanan Diterima Oleh Pembeli</span>
+                                                <?php elseif($product->status_barang == 'dipantau'): ?>
+                                                    <span class="badge rounded-pill alert-warning">Penyelesaian Admin</span>
                                                 <?php endif; ?>
 
                                             </td>
@@ -135,6 +139,9 @@
                                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
                                                     <div class="dropdown-menu">
                                                         <a class="dropdown-item" href="<?= base_url()  ?>/order/refund/<?= $transaksi_id  ?>/<?= $product->id ?>">Refund</a>
+                                                        <a class="dropdown-item" href="<?= base_url() ?>/order/verify/<?= $product->id ?>" class="btn-small d-block">
+                                                            Sudah Terima Barang ?
+                                                        </a>
                                                     </div>
                                                 </div> <!-- dropdown //end -->
                                             </td>

@@ -160,10 +160,11 @@ class AuthController extends Controller
 		// Validate here first, since some things,
 		// like the password, can only be validated properly here.
 		$rules = [
-			'username'  	=> 'required|alpha_numeric_space|min_length[3]|max_length[30]|is_unique[users.username]',
-			'email'			=> 'required|valid_email|is_unique[users.email]',
-			'password'	 	=> 'required|strong_password',
-			'pass_confirm' 	=> 'required|matches[password]',
+			'username'  	=> [
+				'rules' => 'required|alpha_numeric_space|min_length[3]|max_length[30]|is_unique[users.username]', 'errors' => ['required' => "Nama Pengguna harus di isi"]],
+			'email'			=> ['rules' =>'required|valid_email|is_unique[users.email]', 'errors' => ['required' => "Email harus di isi"]],
+			'password'	 	=> ['rules' =>'required|strong_password', 'errors' => ['required' => " Password harus di isi"]],
+			'pass_confirm' 	=> ['rules' =>'required|matches[password]', 'errors' => ['required' => " Ulangi Password harus di isi", "matches" => "Password Tidak Sama"]],
 		];
 
 		if (! $this->validate($rules))
