@@ -64,13 +64,13 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th width="20%">Product</th>
+                                <th width="20%">Produk</th>
                                 <th width="20%">Resi</th>
-                                <th width="20%">Unit Price</th>
-                                <th width="20%">Quantity</th>
-                                <th width="20%">status pemesanan</th>
+                                <th width="20%">Harga</th>
+                                <th width="20%">Jumlah Barang</th>
+                                <th width="20%">Status Pemesanan</th>
                                 <th width="20%" class="text-end">Total</th>
-                                <th width="20%" class="text-end">Action</th>
+                                <th width="20%" class="text-end">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -102,6 +102,8 @@
                                                     <span class="badge rounded-pill alert-danger">Pesanan Di Tolak Oleh distributor</span>
                                                 <?php elseif($product->status_barang == 'diterima_seller'): ?>
                                                     <span class="badge rounded-pill alert-success">Penyiapan Barang</span>
+                                                 <?php elseif($product->status_barang == 'diterima_pembeli'): ?>
+                                                    <span class="badge rounded-pill alert-success">Barang Sudah Diterima Pembeli</span>
                                                 <?php endif; ?>
 
                                             </td>

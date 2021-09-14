@@ -18,7 +18,7 @@
                         <?php if($order['status_pembayaran'] == 'paid'): ?>
                             <a class="btn badge rounded-pill alert-success">Sudah Bayar</a>
                         <?php else: ?>
-                            <a class="btn badge rounded-pill alert-warning">Sudah Bayar</a>
+                            <a class="btn badge rounded-pill alert-warning">Belum Bayar</a>
                         <?php endif; ?>
                     <?php endforeach; ?>            
                     <select name="status" class="form-select d-inline-block mb-lg-0 mb-15 mw-200">

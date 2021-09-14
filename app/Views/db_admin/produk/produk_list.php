@@ -41,11 +41,11 @@
                         <thead>
                             <tr>
                                 <th class="text-center">
-                                    img
+                                    IMG
                                 </th>
-                                <th>product</th>
-                                <th class="d-none d-sm-block">harga member</th>
-                                <th >harga non member</th>
+                                <th>Produk</th>
+                                <th class="d-none d-sm-block">Harga Jual</th>
+                                <th >Harga Member</th>
                                 <th class="text-end">Action</th>
                             </tr>
                         </thead>
