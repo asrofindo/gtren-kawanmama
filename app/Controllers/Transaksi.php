@@ -164,6 +164,7 @@ class Transaksi extends BaseController
 			"bill_id" => $bill, 
 			"status_pembayaran" => "pending", 
 			"total" => $total, 
+			"batas_pesanan" => date( "Y-m-d H:i:s", strtotime( "+2 days" )),	
 			"alamat" => $alamat]);
 		
 		foreach($data['carts'] as $cart){

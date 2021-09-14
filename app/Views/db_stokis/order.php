@@ -45,6 +45,7 @@
                         <th scope="col">Total</th>
                         <th scope="col">Resi</th>
                         <th scope="col">Alamat</th>
+                        <th scope="col">Batas Pesanan</th>          
                         <th scope="col">Tanggal</th>          
                         <th scope="col" class="text-end"> Aksi </th>
                     </tr>
@@ -68,6 +69,7 @@
                             <td>Rp<?php echo $order->total + $order->ongkir_produk - $order->admin_commission - $order->affiliate_commission; ?></td>
                             <td><?php echo $order->resi; ?></td>
                             <td><?php echo $order->alamat; ?></td>
+                            <td><?php echo $order->batas_pesanan; ?></td>
                             <td><?php echo $order->created_at; ?></td>
                             <td class="text-end">
                                 <div class="dropdown">
