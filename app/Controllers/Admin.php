@@ -178,6 +178,7 @@ class Admin extends BaseController
 		    $kode_pos = $value->kode_pos;
 		    $bank_name = $value->bank_name;
 		    $bank_number = $value->bank_number;
+		    $status_pembayaran = $value->status_pembayaran;
 		    $total_transaksi = $value->total_transaksi;
 		 
 
@@ -195,6 +196,7 @@ class Admin extends BaseController
 		            $outer_array[$fid_value]['kurir'] = $kurir;
 		            $outer_array[$fid_value]['etd'] = $etd;
 		            $outer_array[$fid_value]['ongkir'] = $ongkir;
+		            $outer_array[$fid_value]['status_pembayaran'] = $status_pembayaran;
 		            $outer_array[$fid_value]['total_transaksi'] = $total_transaksi;
 		            $outer_array[$fid_value]['bank'] = "{$bank_name} - {$bank_number} ";
 		            $outer_array[$fid_value]['products'] = $inner_array;
