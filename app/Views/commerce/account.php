@@ -106,7 +106,15 @@
                                                                 <td><?= $transaksi->total; ?></td>
                                                                 <td><?= $transaksi->bank_name; ?> - <?= $transaksi->bank_number; ?> - <?= $transaksi->owner; ?></td>
                                                                 <td><?= $transaksi->alamat; ?></td>
-                                                                <td><a href="<?= base_url() ?>/detail/<?= $transaksi->id ?>" class="btn-small d-block">Detail</a></td>
+                                                                <td>
+                                                                    <div class="dropdown">
+                                                                    <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz">...</i> </a>
+                                                                    <div class="dropdown-menu">
+                                                                        <a href="<?= base_url() ?>/detail/<?= $transaksi->id ?>" class="dropdown-item">Detail</a>
+                                                                        <a href="<?= base_url() ?>/konfirmasi/<?= $transaksi->id ?>" class="dropdown-item">Konfirmasi Pembayaran</a>
+                                                                    </div>
+                                                                    </div> <!-- dropdown //end -->
+                                                                </td>
                                                             </tr>
                                                         <?php endforeach; ?>
                                                     </tbody>
