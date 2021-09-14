@@ -19,23 +19,8 @@
                         <div class="text">
                             <h6 class="mb-1">Customer</h6>
                             <p class="mb-1">
-                               <?= $order['username'] ?> <br> <?= $order['email'] ?> <br>
+                               <?= $order['fullname'] ?> <br> <?= $order['email'] ?> <br> <?= $order['phone'] ?>
                             </p>
-                            <a href="#">View profile</a>
-                        </div>
-                    </article>
-                </div> <!-- col// -->
-                <div class="col-md-4">
-                    <article class="icontext align-items-start">
-                        <span class="icon icon-sm rounded-circle bg-primary-light">
-                            <i class="text-primary material-icons md-local_shipping"></i>
-                        </span>
-                        <div class="text">
-                            <h6 class="mb-1">Order info</h6>
-                            <p class="mb-1">
-                                Shipping: <?= $order['kurir'] ?> <br> etd: <?= $order['etd'] ?> <br> ongkir:Rp <?= number_format($order['ongkir']); ?>
-                            </p>
-                            <a href="#">Download info</a>
                         </div>
                     </article>
                 </div> <!-- col// -->
@@ -45,14 +30,32 @@
                             <i class="text-primary material-icons md-place"></i>
                         </span>
                         <div class="text">
-                            <h6 class="mb-1">Deliver to</h6>
+                            <h6 class="mb-1">Dikirim Ke</h6>
                             <p class="mb-1">
-                                kabupaten: <?= $order['kabupaten'] ?> <br>kecamatan : <?= $order['kecamatan'] ?><br> kode pos : <?= $order['kode_pos'] ; ?>
+                                <?php $alamat = explode(',', $order['alamat']); ?>
+                                <?php echo $alamat[4]; ?> <br>
+                                <?php echo $alamat[2]; ?> <br>
+                                <?php echo $alamat[1]; ?> <br>
+                                <?php echo $alamat[0]; ?> <br>
                             </p>
-                            <a href="#">View profile</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-4">
+                    <article class="icontext align-items-start">
+                        <span class="icon icon-sm rounded-circle bg-primary-light">
+                            <i class="text-primary material-icons md-local_shipping"></i>
+                        </span>
+                        <div class="text">
+                            <h6 class="mb-1">Order info</h6>
+                            <p class="mb-1">
+                                Shipping: <?= $order['kurir'] ?> <br> etd: <?= $order['etd'] ?> <br> ongkir:Rp <?= number_format($order['ongkir']); ?> <br>
+                                 Bank : <?php echo $order['bank']; ?>
+                            </p>
                         </div>
                     </article>
                 </div> <!-- col// -->
+               <!-- col// -->
             <?php endforeach; ?>
         </div> <!-- row // -->
         <div class="row">

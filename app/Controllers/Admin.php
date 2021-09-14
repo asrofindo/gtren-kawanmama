@@ -123,6 +123,9 @@ class Admin extends BaseController
 		    $email = $value->email;
 		    $kurir = $value->kurir;
 		    $ongkir = $value->ongkir;
+		    $fullname = $value->fullname;
+		    $phone = $value->phone;
+		    $alamat = $value->alamat;
 		    $etd = $value->etd;
 		    $kabupaten = $value->kabupaten;
 		    $kode_pos = $value->kode_pos;
@@ -141,6 +144,9 @@ class Admin extends BaseController
 		            $outer_array[$fid_value]['kabupaten'] = $kabupaten;
 		            $outer_array[$fid_value]['kode_pos'] = $kode_pos;
 		            $outer_array[$fid_value]['username'] = $username;
+		            $outer_array[$fid_value]['fullname'] = $fullname;
+		            $outer_array[$fid_value]['phone'] = $phone;
+		            $outer_array[$fid_value]['alamat'] = $alamat;
 		            $outer_array[$fid_value]['email'] = $email;
 		            $outer_array[$fid_value]['kurir'] = $kurir;
 		            $outer_array[$fid_value]['etd'] = $etd;
