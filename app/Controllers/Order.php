@@ -31,7 +31,8 @@ class Order extends BaseController
 			
 			$this->bills->save(["id" => $data['transaksi']->bill_id, "total" => $data['bills']->total + $data['transaksi']->total]);
 		}
-		$this->model->save(["id" => $id, "status_pembayaran" => $status]);
+		$this->model->save(["id" => $id, "status_pembayaran" => $status, "batas_pesanan" => date( "Y-m-d H:i:s", strtotime( "+2 days" )),	
+]);
 		return redirect()->back();
 
 	}
