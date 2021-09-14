@@ -72,7 +72,7 @@
                         <div class="text">
                             <h6 class="mb-1">Order info</h6>
                             <p class="mb-1">
-                                Shipping: <?= $order['kurir'] ?> <br> etd: <?= $order['etd'] ?> <br> ongkir: <?= $order['ongkir'] ?> <br>
+                                Shipping: <?= $order['kurir'] ?> <br> etd: <?= $order['etd'] ?> <br> ongkir: Rp. <?= number_format($order['ongkir']) ?> <br>
                                 Bank : <?php echo $order['bank']; ?>
                             </p>
                         </div>
@@ -108,7 +108,7 @@
                                                 </a>
                                             </td>
                                             <td> <?= $product->locate; ?> </td>
-                                            <td> <?= $product->total / $product->amount; ?> </td>
+                                            <td> Rp. <?= number_format($product->total / $product->amount); ?> </td>
                                             <td> <?= $product->amount; ?> </td>
                                             <td> 
                                                <?php if($product->status_barang == 'pending' && $product->status_pembayaran == 'paid'): ?>
@@ -144,12 +144,12 @@
                                     <td colspan="4">
                                         <article class="float-end">
                                             <dl class="dlist">
-                                                <dt>Shipping cost:</dt>
-                                                <dd><?= $order['ongkir'];  ?></dd>
+                                                <dt>Ongkos Kirim:</dt>
+                                                <dd>Rp. <?= number_format($order['ongkir']);  ?></dd>
                                             </dl>
                                             <dl class="dlist">
                                                 <dt>total tagihan:</dt>
-                                                <dd> <b class="h5"><?= $order['total_transaksi'];  ?></b> </dd>
+                                                <dd> <b class="h5">Rp. <?= number_format($order['total_transaksi']);  ?></b> </dd>
                                             </dl>
                                         </article>
                                     </td>
