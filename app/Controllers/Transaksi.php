@@ -186,10 +186,13 @@ class Transaksi extends BaseController
 			$this->detail_transaksi->save($data);
 		}
 
+		$bill = $this->bill->where('id',$this->request->getPost('bill'))->first();
+		$msg = base_url()." \n\n".user()->greeting." ".user()->fullname."\n"."Pesanan Anda *menunggu pembayaran* \nTagihan Total: ".$total."\nRekening ".$bill->bank_name."-".$bill->bank_number."-".$bill->owner."\nNomor Transaksi"." \nRekening ".$bill->bank_name."-".$bill->bank_number."-".$bill->owner."\nCek Pesanan Anda Di ".base_url('/orders');
+
+		wawoo(user()->phone,$msg);
+
 		$data['generate'] = $this->generate->find();
-
 		$this->generate->save(["id" => 1, "nomor" => $data['generate'][0]['nomor'] + 1]);
-
 		return redirect()->to('/orders');
 		
 	}
@@ -293,7 +296,7 @@ class Transaksi extends BaseController
 						"ongkir" => $total_ongkir,
 						"etd" => $etd ? $etd : 'Tidak temukan' 
 					]);
-
+				
 					return redirect()->back();
 				}					
 			}
@@ -316,6 +319,7 @@ class Transaksi extends BaseController
 				"pengiriman_id" => $this->pengirim->getInsertID(), 
 			]);
 		}
+		
 		return redirect()->back();
 	}
 
