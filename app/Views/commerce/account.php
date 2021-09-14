@@ -163,13 +163,15 @@
                                                                         <span class="badge rounded-pill alert-danger">Ditolak Oleh DIstributor</span>
                                                                     <?php elseif($order->status_barang == 'refund'): ?>
                                                                         <span class="badge rounded-pill alert-danger">Dana Dikembalikan</span>
+                                                                    <?php elseif($order->status_barang == 'dipantau'): ?>
+                                                                        <span class="badge rounded-pill alert-danger">Penyelesaian Admin</span>
                                                                     <?php endif; ?>
                                                                 </td>
                                                                 <td><?= $order->kurir ?>,Perkiraan <?= $order->etd ?>, <?= $order->ongkir_produk ?></td>
                                                                 <td><?= $order->resi ? $order->resi: 'proses'; ?></td>
                                                                 <td><?= $order->created_at;  ?></td>
                                                                 <td>
-                                                                    <?php if($order->status_barang == 'dikirim'): ?>
+                                                                    <?php if($order->status_barang == 'dikirim' || $order->status_barang == 'dipantau'): ?>
                                                                         <a class="btn btn-sm btn-primary" href="<?= base_url() ?>/order/verify/<?= $order->id ?>" class="btn-small d-block">
                                                                             Sudah Terima Barang ?
                                                                         </a>

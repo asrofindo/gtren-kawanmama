@@ -14,7 +14,7 @@ class DetailTransaksiModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['cart_id', 'transaksi_id', 'affiliate_commission', 'stockist_commission', 'distributor_id', 'status_barang', 'admin_commission', 'resi', 'kode_unik'];
+	protected $allowedFields        = ['cart_id', 'transaksi_id', 'affiliate_commission', 'stockist_commission', 'distributor_id', 'status_barang', 'admin_commission', 'resi', 'kode_unik', 'tanggal_resi'];
 
 	// Dates
 	protected $useTimestamps        = true;
