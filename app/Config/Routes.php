@@ -34,6 +34,7 @@ $routes->resource('city');
 $routes->resource('province');
 $routes->resource('subdistrict');
 $routes->resource('cron');
+$routes->resource('wacron');
 
 $routes->get('/notifikasi', 'Admin::notifikasi');
 $routes->post('/notifikasi', 'Admin::notifikasi');
