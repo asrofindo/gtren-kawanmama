@@ -40,6 +40,8 @@ class Dashboard extends BaseController
 		->where('pendapatan.status_dana =', 'distributor')
 		->find();
 
+		// jika user role nya adalah stockist
+
 		$data['affiliate'] = $this->model->select('sum(COALESCE(affiliate_commission,0) - COALESCE(pendapatan.keluar,0)) AS affiliate_total')
 		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id ', 'left')
 		->join('users', 'users.affiliate_link = cart_item.affiliate_link', 'left')
@@ -48,6 +50,25 @@ class Dashboard extends BaseController
 		->where('pendapatan.status_dana =', 'affiliate')
 		->find();
 
+		if(in_groups(3)){
+
+			$data['stockist'] = $this->model->select('sum(COALESCE(stockist_commission,0) - COALESCE(pendapatan.keluar,0)) AS stockist_total')
+			->join('distributor', 'distributor.id = detailtransaksi.distributor_id ', 'left')
+			->join('pendapatan', 'pendapatan.user_id = distributor.user_id ', 'left')
+			->where('status_barang =', 'diterima_pembeli')
+			->where('pendapatan.status_dana =', 'distributor')
+			->where('distributor.user_id', user()->id)
+			->find();
+
+			$data['affiliate'] = $this->model->select('sum(COALESCE(affiliate_commission,0) - COALESCE(pendapatan.keluar,0)) AS affiliate_total')
+			->join('cart_item', 'cart_item.id = detailtransaksi.cart_id ', 'left')
+			->join('users', 'users.affiliate_link = cart_item.affiliate_link', 'left')
+			->join('pendapatan', 'pendapatan.user_id = users.id', 'left')
+			->where('status_barang =', 'diterima_pembeli')
+			->where('pendapatan.status_dana =', 'affiliate')
+			->where('users.id', user()->id)
+			->find();
+		}
 		$data['bills'] = $this->bill->findAll();
 		$data['bills']   = $this->bill->paginate(4, 'bills');
 		$data['pager']    = $this->bill->pager;

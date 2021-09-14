@@ -173,20 +173,22 @@
             <?= $this->renderSection('content') ?>
             <?php if(isset($segments)): ?>
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="card card-body mb-4">
-                        <article class="icontext">
-                            <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-monetization_on"></i></span>
-                            <div class="text">
-                                <h6 class="mb-1 card-title">Dana User</h6>
-                                <span>$<?= $user[0]['user_total'] ;?></span>
-                               <!--  <span class="text-sm">
-                                    Shipping fees are not included
-                                </span> -->
-                            </div>
-                        </article>
+                <?php if(in_groups(1)): ?>
+                    <div class="col-lg-3">
+                        <div class="card card-body mb-4">
+                            <article class="icontext">
+                                <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-monetization_on"></i></span>
+                                <div class="text">
+                                    <h6 class="mb-1 card-title">Dana User</h6>
+                                    <span>$<?= $user[0]['user_total'] ;?></span>
+                                   <!--  <span class="text-sm">
+                                        Shipping fees are not included
+                                    </span> -->
+                                </div>
+                            </article>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
                 <div class="col-lg-3">
                     <div class="card card-body mb-4">
                         <article class="icontext">
@@ -215,6 +217,7 @@
                         </article>
                     </div>
                 </div>
+                <?php if(in_groups(1)): ?>
                 <div class="col-lg-3">
                     <div class="card card-body mb-4">
                         <article class="icontext">
@@ -229,45 +232,47 @@
                         </article>
                     </div>
                 </div>
-
+                <?php endif; ?>
                 <!-- Table -->
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="table-responsive">
-                                    <table class="table table-hover table-bordered table-stripped">
-                                        <thead>
-                                            <tr>
-                                                <th>Nama Bank</th>
-                                                <th>Nomor Rekening</th>
-                                                <th>Nama Pemilik</th>
-                                                <th>Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach($bills as $bill):  ?>
+                <?php if(in_groups(1)): ?>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-bordered table-stripped">
+                                            <thead>
                                                 <tr>
-                                                    <td><?= $bill->bank_name ?></td>
-                                                    <td><?= $bill->bank_number ?></td>
-                                                    <td><?= $bill->owner ?></td>
-                                                    <td><?= $bill->total ?></td>
+                                                    <th>Nama Bank</th>
+                                                    <th>Nomor Rekening</th>
+                                                    <th>Nama Pemilik</th>
+                                                    <th>Total</th>
                                                 </tr>
-                                            <?php endforeach;  ?>
-                                        </tbody>  
-                                    </table>
-                                </div>
-                            </div> <!-- .col// -->
-                        </div> <!-- .row // -->
-                    </div> <!-- card body .// -->
-                    <div class="pagination-area mt-30 mb-50">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-start">
-                                <?= $pager->links('bills', 'product_pagination'); ?>
-                            </ul>
-                        </nav>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach($bills as $bill):  ?>
+                                                    <tr>
+                                                        <td><?= $bill->bank_name ?></td>
+                                                        <td><?= $bill->bank_number ?></td>
+                                                        <td><?= $bill->owner ?></td>
+                                                        <td><?= $bill->total ?></td>
+                                                    </tr>
+                                                <?php endforeach;  ?>
+                                            </tbody>  
+                                        </table>
+                                    </div>
+                                </div> <!-- .col// -->
+                            </div> <!-- .row // -->
+                        </div> <!-- card body .// -->
+                        <div class="pagination-area mt-30 mb-50">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-start">
+                                    <?= $pager->links('bills', 'product_pagination'); ?>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
             <?php endif ?>
         </section> <!-- content-main end// -->
