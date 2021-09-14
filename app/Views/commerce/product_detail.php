@@ -44,7 +44,7 @@
                             </div>
                             <!-- End Gallery -->
                             <div class="single-social-share clearfix mt-50 mb-15">
-                            <?php if ( user()!=null && user()->affiliate_link!=null ) {?>
+                            <?php if ( user()!=null && user()->affiliate_link!=null && in_groups(4)) {?>
                                     <div class="row">
                                         <input type="text" value="<?=base_url()?>/product/<?=$product->slug?>/src/<?=user()->id?>" id="copy" readonly />
                                         <button type="button" onclick="copy_text()" class="btn btn-sm m-1" id="copy">Copy Link Affiliate</button>

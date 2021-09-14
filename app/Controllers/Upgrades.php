@@ -68,8 +68,8 @@ class upgrades extends BaseController
 
 			$msg="Selamat!\nAda *upgrade affiliate* di ".base_url()."\nNama affiliate: ".user()->greeting." ".user()->fullname."\nNo. Wa: ".user()->phone;
 			
-			$norif = $this->notif->findAll();
-			foreach ($norif as $key => $value) {
+			$notif = $this->notif->findAll();
+			foreach ($notif as $key => $value) {
 				wawoo($value['phone'],$msg);
 			}
 
@@ -111,10 +111,12 @@ class upgrades extends BaseController
 
 			$msg="Selamat!\n".user()->greeting." ".user()->fullname." sudah jadi distributor di ".base_url()."\nNo. Wa: ".user()->phone;
 
-			$norif = $this->notif->findAll();
-			foreach ($norif as $key => $value) {
+			$notif = $this->notif->findAll();
+			
+			foreach ($notif as $key => $value) {
 				wawoo($value['phone'],$msg);
 			}
+
 			session()->setFlashdata('successs', 'Berhasil, Anda Sekarang Adalah Stockist');
 			return redirect()->back();
 
