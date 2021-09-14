@@ -156,7 +156,7 @@
         <div class="submenu">
             <a href="<?= base_url() ?>/offer">offer</a>
             <a href="<?= base_url() ?>/banner">banner</a>
-            <a href="<?= base_url() ?>/office">contact</a>
+            <a href="<?= base_url() ?>/notifikasi">notifikasi</a>
         </div>
     </li>
 </ul>

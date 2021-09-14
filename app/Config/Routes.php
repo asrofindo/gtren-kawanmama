@@ -35,7 +35,10 @@ $routes->resource('province');
 $routes->resource('subdistrict');
 $routes->resource('cron');
 
-$routes->get('/notif', 'Product::notif');
+$routes->get('/notifikasi', 'Admin::notifikasi');
+$routes->post('/notifikasi', 'Admin::notifikasi');
+$routes->get('/notifikasi/delete/(:num)', 'Admin::notifikasi_delete/$1');
+
 $routes->get('/product/(:any)/src/(:num)', 'Product::detail/$1/$2');
 $routes->post('/comment/save', 'Comment::save');
 $routes->get('/comment/delete/(:num)','Comment::delete/$1');

@@ -5,6 +5,7 @@ use App\Models\CategoryModel;
 use Myth\Auth\Models\UserModel;
 use App\Models\TransaksiModel;
 use App\Models\DistributorModel;
+use App\Models\NotifModel;
 
 use Myth\Auth\Authorization\GroupModel;
 
@@ -13,6 +14,7 @@ class Admin extends BaseController
 	public $model;
 	public $transaksi;
 	public $distributor;
+	public $notif;
 
 
 	public function __construct()
@@ -21,13 +23,33 @@ class Admin extends BaseController
 		$this->user = new UserModel();
 		$this->transaksi = new TransaksiModel();
 		$this->distributor = new DistributorModel();
+		$this->notif = new NotifModel();
+
 
 	}
 	public function index()
 	{
 		return view('db_admin/produk/tambah_produk');
 	}
-	
+
+	public function notifikasi()
+	{
+		if ($this->request->getPost('name')!=null) {
+			$set=[
+				'name'=>$this->request->getPost('name'),
+				'phone'=>$this->request->getPost('phone'),
+			];
+			$this->notif->save($set);
+		}
+		$data['contacts']=$this->notif->find();
+		return view('db_admin/contact/notif',$data);
+	}
+	public function notifikasi_delete($id)
+	{
+
+		$data['contacts']=$this->notif->delete($id);
+		return redirect()->back();
+	}
 	public function produk_list()
 	{
 		
