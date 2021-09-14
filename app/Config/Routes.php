@@ -33,7 +33,8 @@ $routes->setAutoRoute(false);
 $routes->resource('city');
 $routes->resource('province');
 $routes->resource('subdistrict');
-$routes->resource('cron');
+
+$routes->get('/cron', 'Cron::check');
 
 $routes->get('/notif', 'Product::notif');
 $routes->get('/product/(:any)/src/(:num)', 'Product::detail/$1/$2');

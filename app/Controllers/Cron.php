@@ -1,22 +1,19 @@
 <?php
 
 namespace App\Controllers;
-use CodeIgniter\RESTful\ResourceController;
+use CodeIgniter\Controller;
 
-
-class Cron extends ResourceController
+class Cron extends Controller
 {
 
-	protected $format    = 'json';
-
-    public function index()
+    public function check()
     {
     	$db      = \Config\Database::connect();
 		$builder = $db->table('transaksi');
 		$detailtransaksi = $db->table('detailtransaksi');
 		
 		$data = $builder->select('*, detailtransaksi.id as detail_id')
-		->where('batas_pesanan <', date( "Y-m-d H:i:s"))
+		->where('batas_pesanan >', date( "Y-m-d H:i:s"))
 		->join('detailtransaksi', 'detailtransaksi.transaksi_id = transaksi.id')
 		->where('status_barang', null)
 		->get()
@@ -28,7 +25,7 @@ class Cron extends ResourceController
 			$detailtransaksi->update(['status_barang' => "ditolak"]);
 		}
 
-		 return $this->respond($data);
+		 return $data;
 		
     }
 }
