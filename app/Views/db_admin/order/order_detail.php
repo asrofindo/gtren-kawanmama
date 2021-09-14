@@ -9,20 +9,21 @@
 <div class="card">
     <header class="card-header">
         <div class="row align-items-center">
-            <div class="col-lg-6 col-md-6 mb-lg-0 mb-15">
-                <span>
-<!--                     <i class="material-icons md-calendar_today"></i> <b>Wed, Aug 13, 2020, 4:34PM</b>
- -->                </span> <br>
-<!--                 <small class="text-muted">Order ID: 3453012</small>
- -->            </div>
-            <div class="col-lg-6 col-md-6 ms-auto text-md-end">
+            <div class="col-lg-4 col-md-4 mb-lg-0 mb-15">
+                 <?php foreach($detail_orders as $order): ?>
+                    <?php if($order['status_pembayaran'] == null): ?>
+                        <a class="btn badge rounded-pill alert-warning">Belum Bayar</a>
+                    <?php else: ?>
+                        <a class="btn badge rounded-pill alert-success">Sudah Bayar</a>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+         </div>
+            <div class="col-lg-8 col-md-6 ms-auto text-md-end">
                 <form action="<?= base_url() ?>/order/update/<?= $transaksi_id; ?>" method="post">       
+                   
                     <select name="status" class="form-select d-inline-block mb-lg-0 mb-15 mw-200">
-                            <option selected disabled="">Change status</option>
-                            <option value="pending">Menunggu Pembayaran</option>
-                            <option value="paid">Sudah Bayar</option>
-                            <option value="cancel">di Gagalkan</option>
-
+                        <option selected disabled="">Rubah Status Pembayaran</option>
+                        <option value="paid">Sudah Bayar</option>
                     </select>
                     <button class="btn btn-primary" type="submit">Save</button>
                     <a class="btn btn-secondary print ms-2" href="#"><i class="icon material-icons md-print"></i></a>
