@@ -118,7 +118,7 @@
                                             <td style="width:40px; "><img src="<?php base_url() ?>/public/uploads/product_photos/<?= $photo[0]; ?>" style="width:60%; height:100px"></td>
                                             <td style="width: 100px"><?= $product->name ?></td>
                                             <td style="width: 100px"><?= $product->amount ?></td>
-                                            <td style="width: 100px"><?= $product->sell_price ?></td>
+                                            <td style="width: 100px">Rp. <?= number_format($product->sell_price) ?></td>
                                         </tr>
                                         
                                     <?php endforeach; ?>
@@ -158,7 +158,7 @@
                                             <?= $cart['kurir'] ?>
                                         </td>
                                         <td>
-                                            <?= $cart['ongkir'] ?> 
+                                            Rp. <?= number_format($cart['ongkir']); ?> 
                                             <?php if($cart['etd'] == 'Tidak temukan'): ?> 
                                                 <span></span>
                                             <?php else: ?>
@@ -168,7 +168,7 @@
                                     </tr>
                                     <tr>
                                         <th>sub total</th>
-                                        <td colspan="3" class="product-subtotal"><span><?= $cart['subtotal'][0];?></span></td>
+                                        <td colspan="3" class="product-subtotal"><span>Rp. <?= number_format($cart['subtotal'][0]);?></span></td>
                                     </tr>
                                     
                                     <tr>
@@ -178,7 +178,7 @@
                                 <?php endforeach; ?>
                                     <tr>
                                         <th>Total Tagihan</th>
-                                        <td><b><?= $total;  ?></b></td>
+                                        <td><b>Rp. <?= number_format($total);  ?></b></td>
                                     </tr>
                             </tbody>
                         </table>
