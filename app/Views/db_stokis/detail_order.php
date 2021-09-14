@@ -102,6 +102,8 @@
                                                     <span class="badge rounded-pill alert-danger">Pesanan Di Tolak Oleh distributor</span>
                                                 <?php elseif($product->status_barang == 'diterima_seller'): ?>
                                                     <span class="badge rounded-pill alert-success">Penyiapan Barang</span>
+                                                 <?php elseif($product->status_barang == 'diterima_pembeli'): ?>
+                                                    <span class="badge rounded-pill alert-success">Barang Sudah Diterima Pembeli</span>
                                                 <?php endif; ?>
 
                                             </td>
