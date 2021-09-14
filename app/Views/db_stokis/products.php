@@ -34,12 +34,14 @@
     <header class="card-header">
         <div class="row align-items-center">
             <div class="col-md-3 col-12 me-auto mb-md-0 mb-3">
-                <select class="form-select">
-                    <option selected>All category</option>
-                    <?php foreach ($categories as $category): ?>
-                        <option value="<?= $category->id ?>"><?= $category->category ?></option>
-                    <?php endforeach ?>
-                </select>
+                <form method="post" action="<?php base_url() ?>/search">
+                    <select class="form-select" name="keyword">
+                        <option selected>All category</option>
+                        <?php foreach ($categories as $category): ?>
+                            <option value="<?= $category->id ?>"><?= $category->category ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </form>
             </div>
             <div class="col-md-2 col-6">
                 <input type="date" value="02.05.2021" class="form-control">
