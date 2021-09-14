@@ -106,15 +106,7 @@
                                                                 <td><?= $transaksi->total; ?></td>
                                                                 <td><?= $transaksi->bank_name; ?> - <?= $transaksi->bank_number; ?> - <?= $transaksi->owner; ?></td>
                                                                 <td><?= $transaksi->alamat; ?></td>
-                                                                <td>
-                                                                    <div class="dropdown">
-                                                                    <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz">...</i> </a>
-                                                                    <div class="dropdown-menu">
-                                                                        <a href="<?= base_url() ?>/detail/<?= $transaksi->id ?>" class="dropdown-item">Detail</a>
-                                                                        <a href="<?= base_url() ?>/konfirmasi/<?= $transaksi->id ?>" class="dropdown-item">Konfirmasi Pembayaran</a>
-                                                                    </div>
-                                                                    </div> <!-- dropdown //end -->
-                                                                </td>
+                                                                <td><a href="<?= base_url() ?>/detail/<?= $transaksi->id ?>" class="btn-small d-block">Detail</a></td>
                                                             </tr>
                                                         <?php endforeach; ?>
                                                     </tbody>
@@ -487,22 +479,29 @@
                                                         <label>Nama Lengkap <span class="required">*</span></label>
                                                         <input required="" class="form-control square" name="fullname" type="text" value="<?= user()->fullname ?>">
                                                     </div>
-                                                    <div class="form-group col-md-12">
-                                                        <label>Username <span class="required">*</span></label>
-                                                        <input required="" class="form-control square" name=username type="text"  value="<?= user()->username ?>">
-                                                    </div>
-                                                    <div class="form-group col-md-12">
-                                                        <label>Email Address <span class="required">*</span></label>
-                                                        <input required="" class="form-control square" name="email" type="email"  value="<?= user()->email ?>">
-                                                    </div>
+                                                    <?php if(user()->phone > 0): ?>
+                                                        <div class="form-group col-md-12">
+                                                            <label>Username <span class="required">*</span></label>
+                                                            <input required="" class="form-control square" name=username type="text"  value="<?= user()->username ?>">
+                                                        </div>
+                                                    <?php endif; ?>
+
+                                                    <?php if(user()->phone > 0): ?>
+                                                        <div class="form-group col-md-12">
+                                                            <label>Email Address <span class="required">*</span></label>
+                                                            <input required="" class="form-control square" name="email" type="email"  value="<?= user()->email ?>">
+                                                        </div>
+                                                    <?php endif; ?>
                                                     <div class="form-group col-md-12">
                                                         <label>Nomer Hp<span class="required">*</span></label>
                                                         <input required="" class="form-control square" value="<?= user()->phone ?>" name="phone" type="text">
                                                     </div>
-                                                    <div class="form-group col-md-12">
-                                                        <label>Password Saat ini <span class="required">*</span></label>
-                                                        <input required="" class="form-control square" name="password" type="password">
-                                                    </div>
+                                                    <?php if(user()->phone > 0): ?>
+                                                        <div class="form-group col-md-12">
+                                                            <label>Password Saat ini <span class="required">*</span></label>
+                                                            <input required="" class="form-control square" name="password" type="password">
+                                                        </div>
+                                                    <?php endif; ?>
                                                     <div class="col-md-12">
                                                         <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Save</button>
                                                     </div>

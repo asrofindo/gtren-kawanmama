@@ -121,7 +121,7 @@
                     </div>
                     <div class="main-categori-wrap d-none d-md-block">
                         <a class="categori-button-active" href="#">
-                            <span class="fa fa-list"></span> Browse Categories <i class="down far fa-chevron-down"></i> <i class="up far fa-chevron-up"></i>
+                            <span class="fa fa-list"></span> Kategori Produk <i class="down far fa-chevron-down"></i> <i class="up far fa-chevron-up"></i>
                         </a>
                         <div class="categori-dropdown-wrap categori-dropdown-active-large" style="z-index:1000;">
                             <ul>
@@ -215,14 +215,14 @@
             <div class="mobile-header-content-area">
                 <div class="mobile-search search-style-3 mobile-header-border">
                     <form action="<?= base_url() ?>/products/search" method="get">
-                        <input type="text" placeholder="Search…" name="search">
+                        <input type="text" placeholder="Cari" name="search">
                         <button type="submit"> <i class="far fa-search"></i> </button>
                     </form>
                 </div>
                 <div class="mobile-menu-wrap mobile-header-border">
                     <div class="main-categori-wrap mobile-header-border">
                         <a class="categori-button-active-2" href="#">
-                            <span class="far fa-bars"></span> Browse Categories <i class="down far fa-chevron-down"></i>
+                            <span class="far fa-bars"></span> Kategori Produk <i class="down far fa-chevron-down"></i>
                         </a>
                         <div class="categori-dropdown-wrap categori-dropdown-active-small">
                             <ul>

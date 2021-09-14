@@ -23,7 +23,7 @@
                             <div class="padding_eight_all bg-white">
                                 <?= view('Myth\Auth\Views\_message_block') ?>
                                 <div class="heading_s1">
-                                    <h3 class="mb-30">Create an Account</h3>
+                                    <h3 class="mb-30">Daftar Pengguna Baru</h3>
                                 </div>
                                <!--  <p class="mb-50 font-sm">
                                     Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our privacy policy
@@ -37,8 +37,8 @@
                                         <label for="email"><?=lang('Auth.email')?></label>
                                         <input type="email" class="form-control <?php if(session('errors.email')) : ?>is-invalid<?php endif ?>"
                                                name="email" aria-describedby="emailHelp" placeholder="<?=lang('Auth.email')?>" value="<?= old('email') ?>">
-                                        <small id="emailHelp" class="form-text text-muted"><?=lang('Auth.weNeverShare')?></small>
-                                    </div>
+<!--                                         <small id="emailHelp" class="form-text text-muted"><?=lang('Auth.weNeverShare')?></small>
+ -->                                    </div>
 
                                     <div class="form-group">
                                         <label for="username"><?=lang('Auth.username')?></label>
