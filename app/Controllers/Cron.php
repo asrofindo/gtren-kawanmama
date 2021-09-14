@@ -42,16 +42,17 @@ class Cron extends ResourceController
 		->get()
 		->getResult();
 
-		$data_admin = $db->table('users')
-		->join('auth_groups_users','auth_groups_users.user_id = users.id', 'left')
-		->where('group_id', 1)->get()->getResult();
+		// $data_admin = $db->table('users')
+		// ->join('auth_groups_users','auth_groups_users.user_id = users.id', 'left')
+		// ->where('group_id', 1)->get()->getResult();
 
-		foreach ($data_admin as $d) {
-			wawoo($d->phone, 'Ada User Yang Belum Konfirmasi');
-		}
+		// foreach ($data_admin as $d) {
+			
+		// }
 
 
 		foreach ($data as $d) {
+			
 			wawoo($d->phone, 'Harap Konfirmasi Barang');
 
 			$detailtransaksi->where('id', $d->detail_id);
