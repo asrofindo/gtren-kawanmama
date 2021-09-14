@@ -178,11 +178,21 @@ class User extends BaseController
 		helper(['user']);
 
 		$request = $this->request;
+		if(user()->phone){
+			$data = [
+				'id' => user()->id,
+				'fullname' => $request->getPost('fullname'),
+				'email' => $request->getPost('email'),
+				'password' => $request->getPost('password'),
+				'phone' => $request->getPost('phone'),
+				'greeting' => $request->getPost('greeting'),
+
+			];
+		}
+
 		$data = [
 			'id' => user()->id,
 			'fullname' => $request->getPost('fullname'),
-			'email' => $request->getPost('email'),
-			'password' => $request->getPost('password'),
 			'phone' => $request->getPost('phone'),
 			'greeting' => $request->getPost('greeting'),
 

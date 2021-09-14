@@ -5,7 +5,7 @@
     <section class="content-main mt-80 mb-80">
         <div class="card mx-auto card-login">
             <div class="card-body">
-                <h4 class="card-title mb-4">Sign in</h4>
+                <h4 class="card-title mb-4">Masuk</h4>
                 <form action="<?= route_to('login') ?>" method="post">
                     <?= csrf_field() ?>
                     <?php if ($config->validFields === ['email']): ?>
