@@ -158,18 +158,19 @@ class Transaksi extends BaseController
 		foreach ($data['carts'] as $c) {
 
 			if($c->pengiriman_id == null){
-				session()->setFlashdata('danger', 'Data Tidak Lengkap');
+				session()->setFlashdata('danger', 'Anda Harus Memilih Kurir');
 				return redirect()->back();
 			}
-			if($c->pengiriman_id == null || $bill == null){
-				session()->setFlashdata('danger', 'Data Tidak Lengkap');
+
+			if($c->pengiriman_id == null && $bill == null){
+				session()->setFlashdata('danger', 'Anda Harus Memilih Kurir Dan Metode Pembayaran');
 				return redirect()->back();
 			}
 
 		}
 
 		if($bill == null){
-			session()->setFlashdata('danger', 'Belum Memilih Bank ');
+			session()->setFlashdata('danger', 'Anda Harus Memilih Metode Pembayaran');
 			return redirect()->back();
 		}
 		$data['alamat'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find()[0];
