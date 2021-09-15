@@ -383,9 +383,14 @@
                             <?php elseif($segments[0] == "address"): ?>
                                 <div class="tab-pane fade active show" id="address" role="tabpanel" aria-labelledby="address-tab">
                                     <div class="row mb-3">
-                                    <?php if( !empty(session()->getFlashdata('success'))){ ?>
+                                        <?php if( !empty(session()->getFlashdata('success'))){ ?>
                                             <div class="alert alert-success bg-success text-white">
                                                 <?php echo session()->getFlashdata('success');?>
+                                            </div>
+                                        <?php } ?>
+                                        <?php if( !empty(session()->getFlashdata('warning'))){ ?>
+                                            <div class="alert alert-warning bg-warning text-white">
+                                                <?php echo session()->getFlashdata('warning');?>
                                             </div>
                                         <?php } ?>
                                             <div class="dropdown">
