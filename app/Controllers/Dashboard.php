@@ -18,11 +18,12 @@ class Dashboard extends BaseController
 	{
 
 		// mendapatakan data rekening
-		// if(count($this->bill->find()) < 1){
-		// 	$data['bills'] = [];
-		// 	session()->setFlashdata('danger', 'Akun Bank Wajib Diisi Terlebih Dahulu');
-		// 	return redirect()->to('/bills');
-		// }
+
+		if(count($this->bill->find()) < 1){
+			$data['bills'] = [];
+			session()->setFlashdata('danger', 'Akun Bank Wajib Diisi Terlebih Dahulu');
+			return redirect()->to('/bills');
+		}
 
 		$data['segments'] = $this->request->uri->getSegments();
 

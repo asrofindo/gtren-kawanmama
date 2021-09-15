@@ -31,12 +31,22 @@
         </div>
         <nav>
            <ul class="menu-aside">
+
+    <?php if(in_groups(1)): ?>
     <li class="menu-item active">
-        <a class="menu-link" href="<?= base_url() ?>/dashboard"> <i class="icon material-icons md-home"></i>
-            <span class="text">Dashboard</span>
+        <a class="menu-link" href="<?= base_url() ?>/admin"> <i class="icon material-icons md-home"></i>
+            <span class="text">Dashboard Admin</span>
         </a>
     </li>
+    <?php endif; ?>
 
+    <?php if(in_groups(3)): ?>
+    <li class="menu-item active">
+        <a class="menu-link" href="<?= base_url() ?>/seller"> <i class="icon material-icons md-home"></i>
+            <span class="text">Dashboard Seller</span>
+        </a>
+    </li>
+    <?php endif; ?>
     <?php if(in_groups(1)): ?>
     <li class="menu-item has-submenu" >
         <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
@@ -179,7 +189,113 @@
         <!-- header -->
         <section class="content-main">
             <?= $this->renderSection('content') ?>
-            <?php if(isset($segments)): ?>
+
+            <?php if(isset($segments) && $segments[0] == 'admin'): ?>
+            <div class="row">
+                <?php if(in_groups(1)): ?>
+                    <div class="col-lg-3">
+                        <div class="card card-body mb-4">
+                            <article class="icontext">
+                                <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-monetization_on"></i></span>
+                                <div class="text">
+                                    <h6 class="mb-1 card-title">Dana User</h6>
+                                    <span>$<?= $user[0]->user_total; ;?></span>
+                                   <!--  <span class="text-sm">
+                                        Shipping fees are not included
+                                    </span> -->
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <div class="col-lg-3">
+                    <div class="card card-body mb-4">
+                        <article class="icontext">
+                            <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
+                            <div class="text">
+                                <h6 class="mb-1 card-title">Dana Seller</h6> 
+                                <span><?= $stockist[0]->stockist_total ;?></span>
+                                <!-- <span class="text-sm">
+                                    Excluding orders in transit
+                                </span> -->
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card card-body mb-4">
+                        <article class="icontext">
+                            <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-qr_code"></i></span>
+                            <div class="text">
+                                <h6 class="mb-1 card-title">Dana Affiliate</h6> 
+                                <span><?= $affiliate[0]->affiliate_total ;?></span>
+                            <!--     <span class="text-sm">
+                                    In 19 Categories
+                                </span> -->
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <?php if(in_groups(1)): ?>
+                <div class="col-lg-3">
+                    <div class="card card-body mb-4">
+                        <article class="icontext">
+                            <span class="icon icon-sm rounded-circle bg-info-light"><i class="text-info material-icons md-shopping_basket"></i></span>
+                            <div class="text">
+                                <h6 class="mb-1 card-title">Dana Admin</h6>
+                                <span><?= $admin[0]['admin_total'] ;?></span>
+                               <!--  <span class="text-sm">
+                                    Based in your local time.
+                                </span> -->
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <?php endif; ?>
+                <!-- Table -->
+                <?php if(in_groups(1)): ?>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-bordered table-stripped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nama Bank</th>
+                                                    <th>Nomor Rekening</th>
+                                                    <th>Nama Pemilik</th>
+                                                    <th>Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach($bills as $bill):  ?>
+                                                    <tr>
+                                                        <td><?= $bill->bank_name ?></td>
+                                                        <td><?= $bill->bank_number ?></td>
+                                                        <td><?= $bill->owner ?></td>
+                                                        <td><?= $bill->total ?></td>
+                                                    </tr>
+                                                <?php endforeach;  ?>
+                                            </tbody>  
+                                        </table>
+                                    </div>
+                                </div> <!-- .col// -->
+                            </div> <!-- .row // -->
+                        </div> <!-- card body .// -->
+                        <div class="pagination-area mt-30 mb-50">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-start">
+                                    <?= $pager->links('bills', 'product_pagination'); ?>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <?php endif ?>
+
+            <?php if(isset($segments) && $segments[0] == 'seller'): ?>
             <div class="row">
                 <?php if(in_groups(1)): ?>
                     <div class="col-lg-3">
