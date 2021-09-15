@@ -18,11 +18,11 @@ class Dashboard extends BaseController
 	{
 
 		// mendapatakan data rekening
-		if(count($this->bill->find()) < 1){
-			$data['bills'] = [];
-			session()->setFlashdata('danger', 'Akun Bank Wajib Diisi Terlebih Dahulu');
-			return redirect()->to('/bills');
-		}
+		// if(count($this->bill->find()) < 1){
+		// 	$data['bills'] = [];
+		// 	session()->setFlashdata('danger', 'Akun Bank Wajib Diisi Terlebih Dahulu');
+		// 	return redirect()->to('/bills');
+		// }
 
 		$data['segments'] = $this->request->uri->getSegments();
 
@@ -39,7 +39,7 @@ class Dashboard extends BaseController
 		$data['kode_unik'] = $this->transaksi->select('sum(COALESCE(kode_unik,0)) AS kode_unik_admin')->where('status_pembayaran', 'paid')->find();
 		$kode_unik  = $data['kode_unik'][0]->kode_unik_admin;
 
-		$data['admin'] = [["admin_total" => $data['admin'][0]['admin_total'] + $data['upgrades'][0]->total_upgrades + $kode_unik]];
+		$data['admin'] = [["admin_total" => $data['admin'][0]->admin_total + $data['upgrades'][0]->total_upgrades + $kode_unik]];
 
 		$data['stockist'] = $this->model->select('sum(COALESCE(stockist_commission,0) - COALESCE(pendapatan.keluar,0)) AS stockist_total')
 		->join('distributor', 'distributor.id = detailtransaksi.distributor_id ', 'left')
