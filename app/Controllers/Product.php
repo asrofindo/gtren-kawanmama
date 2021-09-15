@@ -178,7 +178,8 @@ class Product extends BaseController
 			return view('commerce/product_detail', $data);
 			
 		}else {
-			return redirect()->to('/login');
+			
+			return view('commerce/product_detail', $data);
 		}
 		
 		$data['address'] = [];
