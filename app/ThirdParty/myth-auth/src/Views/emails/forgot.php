@@ -1,7 +1,5 @@
-<p>Someone requested a password reset at this email address for <?= site_url() ?>.</p>
-
 <p>Seseorang meminta RESET PASSWORD dengan email ini di website,</p>
-<p>Untuk melakukan RESET PASSWORD silakan gunakan KOKDE TOKEN ini:</p>
+<p>Untuk melakukan RESET PASSWORD silakan gunakan KODE TOKEN ini:</p>
 
 <p>Kode Token: <?= $hash ?></p>
 
