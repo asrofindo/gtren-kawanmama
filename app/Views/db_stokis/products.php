@@ -5,13 +5,6 @@
         <h2 class="content-title card-title">Produk Anda</h2>
         <!-- <p>Lorem ipsum dolor sit amet.</p> -->
     </div>
-    <div><!-- 
-        <a href="#" class="btn btn-light rounded font-md">Export</a>
-        <a href="#" class="btn btn-light rounded  font-md">Import</a> -->
-        <?php if(in_groups(1)){?>
-        <a href="<?= base_url() ?>/tambahproduk" class="btn btn-primary btn-sm rounded">Create new</a>
-        <?php } ?>
-    </div>
 </div>
 <div class="attention">
     <?php if(!empty(session()->getFlashdata('success'))){ ?>
@@ -33,27 +26,16 @@
 <div class="card mb-4">
     <header class="card-header">
         <div class="row align-items-center">
-            <div class="col-md-3 col-12 me-auto mb-md-0 mb-3">
-                <form method="post" action="<?php base_url() ?>/search">
-                    <select class="form-select" name="keyword">
-                        <option selected>All category</option>
-                        <?php foreach ($categories as $category): ?>
-                            <option value="<?= $category->id ?>"><?= $category->category ?></option>
-                        <?php endforeach ?>
-                    </select>
-                </form>
-            </div>
-            <div class="col-md-2 col-6">
-                <input type="date" value="02.05.2021" class="form-control">
-            </div>
-            <div class="col-md-2 col-6">
-                <select class="form-select">
-                    <option selected>Status</option>
-                    <option>Active</option>
-                    <option>Disabled</option>
-                    <option>Show all</option>
-                </select>
-            </div>
+            <div class="col-md-12 col-12 me-auto mb-md-0 mb-3">
+                <form method="POST" action="<?= base_url() ?>/products/search">
+                <div class="row gx-3">
+                    <div class="col-lg-3 col-md-2">
+                        <input name="keyword" type="text" placeholder="Cari Produk..." class="form-control bg-white">
+                    </div>
+                    <div class="col-lg-6 col-md-2 me-auto">
+                        <button type="submit" class="btn btn-primary btn-sm rounded">Cari</button>
+                    </div>
+                </div>
         </div>
     </header> <!-- card-header end// -->
     <div class="card-body">
@@ -63,13 +45,13 @@
                         <thead>
                             <tr>
                                 <th class="text-center">
-                                    img
+                                    Foto
                                 </th>
-                                <th>product</th>
-                                <th class="d-none d-sm-block">harga member</th>
-                                <th >harga non member</th>
-                                <th >jumlah</th>
-                                <th class="text-end">Action</th>
+                                <th>Produk</th>
+                                <th class="d-none d-sm-block">Harga Member Gtren</th>
+                                <th >Harga Jual</th>
+                                <th >Stock Yang Anda Punya</th>
+                                <th class="text-end">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -77,14 +59,14 @@
                             <tr>
                                 <td class="text-center">
                                     <?php for($i = 0; $i < 1; $i++): ?>
-                                        <img class="img-sm img-thumbnail" src="<?= $product->photos[$i] ?>" alt="">
+                                        <img class="img-sm img-thumbnail" src="<?php base_url() ?>/public/uploads/product_photos/<?= $product->photos[$i] ?>" alt="">
                                     <?php endfor ?>
                                 </td>
                                 <td>
                                     <h6 class=""><?= $product->name ?></h6>
                                 </td>
-                                <td class="d-none d-sm-block"><?= $product->sell_price ?></td>
-                                <td ><?= $product->fixed_price?></td>
+                                <td >Rp. <?= number_format($product->fixed_price) ;?></td>
+                                <td class="d-none d-sm-block">Rp. <?=  number_format($product->sell_price); ?></td>
                                 <td ><?= $product->jumlah?></td>
                                 <td class="text-end">
                                     <div class="dropdown">
