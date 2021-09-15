@@ -141,6 +141,7 @@ class Transaksi extends BaseController
 	{
 		$total = $this->request->getPost('total');
 		$bill = $this->request->getPost('bill');
+
 		$kode_unik = $this->request->getPost('kode_unik');
 		
 		$data['carts'] = $this->cart->select('*, distributor.id as distributor_id, detailtransaksi.id as d_id, cart_item.id as cart_id, products.stockist_commission, products.affiliate_commission')
@@ -154,7 +155,18 @@ class Transaksi extends BaseController
 		->where('cart_item.user_id', user()->id)
 		->where('cart_item.status', null)
 		->findAll();
+		foreach ($data['carts'] as $c) {
+			if($c->pengiriman_id == null && $bill == null){
+				session()->setFlashdata('danger', 'Data Tidak Lengkap');
+				return redirect()->back();
+			}
 
+		}
+
+		if($bill == null){
+			session()->setFlashdata('danger', 'Belum Memilih Bank ');
+			return redirect()->back();
+		}
 		$data['alamat'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find()[0];
 		$alamat = "{$data['alamat']->provinsi}, {$data['alamat']->kabupaten}, {$data['alamat']->kecamatan}, {$data['alamat']->kode_pos}, {$data['alamat']->detail_alamat}";
 		
