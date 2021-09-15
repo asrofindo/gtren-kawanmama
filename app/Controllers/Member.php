@@ -2,12 +2,13 @@
 
 namespace App\Controllers;
 use Myth\Auth\Models\UserModel;
+use App\Models\RekeningModel;
 
 class Member extends BaseController
 {
  protected $user;
 	public function __construct(){
-
+		$this->rekening = new  RekeningModel();
 		$this->user = new  UserModel();
 	}
 	public function index()
@@ -95,7 +96,10 @@ class Member extends BaseController
 		$db = \Config\Database::connect();
 		$group = $db->table('auth_groups')->select('*');
 
+		$data['rekening'] = $this->rekening->where('user_id',$id)->find();
+
 		$data['group']= $group->get()->getResultArray();
+
 		return view('db_admin/members/detail_member', $data);
 	}
 
