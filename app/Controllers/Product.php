@@ -609,9 +609,10 @@ class Product extends BaseController
 		session()->setFlashdata('success', 'Stock Berhasil Di Hapus');
 		return redirect()->back();
 	}
+
 	public function search(){
 		$data = $this->data;
-		$request = $this->request->getPost('keyword');
+		$request = $this->request->getVar('search');
 		if(in_groups(3)){
 			$data['products'] = $this->model
 			->join('product_distributor', 'product_distributor.product_id = products.id', 'left')
@@ -623,13 +624,20 @@ class Product extends BaseController
 			return view('db_stokis/products', $data);
 		}
 
-		$request=$this->request->getVar('search');
 		$data['products'] = $this->model->like('name', $request)->paginate(8, 'products');
 		$data['pager']      = $this->model->pager;
 
 		return view('commerce/product_search', $data);
 	}
 
+	public function search_p(){
+		$data = $this->data;
+		$request = $this->request->getVar('search');
 
 
+		$data['products'] = $this->model->like('name', $request)->paginate(8, 'products');
+		$data['pager']      = $this->model->pager;
+
+		return view('commerce/product_search', $data);
+	}
 }

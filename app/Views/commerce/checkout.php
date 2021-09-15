@@ -9,7 +9,7 @@
         </div>
     </div>
 </div>
-<section class="mt-60 mb-60">
+<section class="mt-50 mb-50">
     <div class="container">
 <!--         <div class="row">
             <div class="col-lg-6">
@@ -62,11 +62,6 @@
             </div>
         </div> -->
         <div class="row">
-            <div class="col-12">
-                <div class="divider mt-50 mb-50"></div>
-            </div>
-        </div>
-        <div class="row">
            <!--  <div class="col-md-6">
                 <div class="mb-25">
                     <h4>Billing Details</h4>
@@ -104,6 +99,16 @@
             <?php } ?>
 
             <div class="col-md-12">
+                <?php if(!empty(session()->getFlashdata('expidisi'))){ ?>
+                <div class="alert alert-success bg-warning text-white">
+                    <?php echo session()->getFlashdata('expidisi');?>
+                </div>
+                <?php } ?>
+                <?php if(!empty(session()->getFlashdata('rekening'))){ ?>
+                <div class="alert alert-success bg-warning text-white">
+                    <?php echo session()->getFlashdata('rekening');?>
+                </div>
+                <?php } ?>
                 <div class="order_review">
                     <div class="mb-20">
                         <h4>Pesanan Anda</h4>
@@ -144,7 +149,7 @@
                                     </tr>
                                     <tr>
                                         <th colspan="1"> Kurir</th>
-                                        <td colspan="1" class="product-subtotal">
+                                        <td colspan="1" class="product-subtotal bg-warning">
                                             <span class="font-xl text-brand fw-900">
                                                 <form method="POST" action="<?= base_url()  ?>/transaksi/check">
                                                     <input style="display: none" type="text" name="origin" value="<?= $billing->city_id ?>" >
@@ -152,8 +157,8 @@
                                                     <input style="display: none" type="text" name="distributor_id" value="<?= $cart['distributor_id'] ?>" >
                                                     <input style="display: none" type="text" name="weight" value="<?= $cart['weight'][0] ?>" >
                                                     <input style="display: none" type="text" name="cart_id" value="<?= $cart['cart_id'][0] ?>" >
-                                                    <select type="submit" name="courier" onchange="this.form.submit()">
-                                                        <option selected disabled>Pilih Kurir</option>
+                                                    <select type="submit" name="courier" onchange="this.form.submit()" class="bg-light">
+                                                        <option selected disabled>Pilih Kurir...</option>
                                                         <option value="jne">JNE</option>
                                                         <option value="pos">POS</option>
                                                         <option value="jnt">JNT</option>
@@ -165,7 +170,7 @@
                                             Dikirim lewat
                                             <?= $cart['kurir'] ?>
                                         </td>
-                                        <td>
+                                        <td >
                                             Rp. <?= number_format($cart['ongkir']); ?> 
                                             <?php if($cart['etd'] == 'Tidak temukan'): ?> 
                                                 <span></span>
@@ -194,12 +199,12 @@
                     <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                     <form action="<?= base_url() ?>/transaksi/save" method="post">
                         <div class="payment_method">
-                            <div class="mb-25">
+                            <div class="mb-25 bg-warning">
                                 <h5>Metode Pembayaran</h5>
                             </div>
                             <div class="payment_option">
-                                <div class="custome-radio">
-                                    <select name="bill" class="form-control" required="true">
+                                <div class="custome-radio ">
+                                    <select name="bill" class="form-control bg-light" required="true">
                                         <option selected disabled>
                                             Pilih Bank
                                         </option>

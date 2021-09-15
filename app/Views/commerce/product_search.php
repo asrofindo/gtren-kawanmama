@@ -43,9 +43,7 @@
                                     <span><?= "Rp. ". number_format($product->sell_price) ?></span>
                                     <!-- <span class="old-price">$245.8</span> -->
                                 </div>
-                                <div class="product-action-1 show">
-                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="far fa-shopping-bag"></i></a>
-                                </div>
+                        
                             </div>
                         </div>
                     </div>

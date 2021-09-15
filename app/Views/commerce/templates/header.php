@@ -47,7 +47,7 @@
                         <a href="<?= base_url() ?>"><img class="w-25" src="<?= base_url() ?>/frontend/imgs/theme/gtren.png" alt="logo"></a>
                     </div>
                     <div class="search-style-1 w-100">
-                        <form action="<?= base_url() ?>/products/search" method="get" class="w-100">
+                        <form action="<?= base_url() ?>/products/search_p" method="get" class="w-100">
                             <input type="text" placeholder="Cari Produk" name="search" class="rounded-3">
                             <button type="submit"> <i class="far fa-search"></i> </button>
                         </form>

@@ -119,8 +119,6 @@ $routes->get('bills/edit/(:num)', 'Bill::edit/$1');
 $routes->post('bills/update/(:num)', 'Bill::update/$1');
 $routes->get('bills/delete/(:num)', 'Bill::delete/$1');
 
-
-
 $routes->group('', ['namespace' => 'Myth\Auth\Controllers'], function($routes) {
     // Login/out
     $routes->get('login', 'AuthController::login', ['as' => 'login']);
@@ -142,9 +140,6 @@ $routes->group('', ['namespace' => 'Myth\Auth\Controllers'], function($routes) {
     $routes->post('reset-password', 'AuthController::attemptReset');
 });
 
-
-
-
 $routes->group('', function($routes)
 {
 	$routes->get('/admin', 'Dashboard::index', ['filter' => 'login','filter' => 'role:admin']);
@@ -163,6 +158,9 @@ $routes->group('', function($routes)
 	$routes->get('products/edit/(:num)', 'Product::edit/$1', ['filter' => 'login','filter' => 'role:admin, stockist']);
 	$routes->get('products', 'Product::index');
 	$routes->post('products/search', 'Product::search');
+	$routes->get('products/search_p', 'Product::search_p');
+	$routes->post('products/search_p', 'Product::search_p');
+
 	$routes->get('products/search', 'Product::search');
 	$routes->post('updateproduk/(:any)', 'Product::update/$1', ['filter' => 'login','filter' => 'role:admin']);
 	$routes->get('products/delete_photo/(:num)/(:any)', 'Product::delete_photo/$1/$2', ['filter' => 'login','filter' => 'role:admin']);

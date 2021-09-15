@@ -1,11 +1,12 @@
 <p>Someone requested a password reset at this email address for <?= site_url() ?>.</p>
 
-<p>To reset the password use this code or URL and follow the instructions.</p>
+<p>Seseorang meminta RESET PASSWORD dengan email ini di website,</p>
+<p>Untuk melakukan RESET PASSWORD silakan gunakan KOKDE TOKEN ini:</p>
 
-<p>Your Code: <?= $hash ?></p>
+<p>Kode Token: <?= $hash ?></p>
 
-<p>Visit the <a href="<?= base_url('reset-password') . '?token=' . $hash ?>">Reset Form</a>.</p>
+<p>Klik <a href="<?= base_url('reset-password') . '?token=' . $hash ?>">Halaman Reset Password</a>.</p>
 
 <br>
 
-<p>If you did not request a password reset, you can safely ignore this email.</p>
+<p>Jika Anda tidak merasa meminta reset password, hiraukan email ini.</p>

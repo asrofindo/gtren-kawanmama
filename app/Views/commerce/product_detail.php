@@ -155,7 +155,7 @@
                     <div class="tab-style3">
                         <ul class="nav nav-tabs text-uppercase">
                             <li class="nav-item">
-                                <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Deskripsi Produ</a>
+                                <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Deskripsi Produk</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Ulasan</a>
@@ -292,9 +292,7 @@
                                             <span><?= "Rp. ". number_format($product->sell_price) ?></span>
                                             <!-- <span class="old-price">$245.8</span> -->
                                         </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="far fa-shopping-bag"></i></a>
-                                        </div>
+                                
                                     </div>
                                 </div>
                             </div>

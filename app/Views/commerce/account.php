@@ -232,7 +232,7 @@
                                                         <input required="" class="form-control square" name="number" type="text" value="">
                                                     </div> 
                                                     <div class="col-md-12">
-                                                        <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Save</button>
+                                                        <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Simpan</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -479,7 +479,7 @@
                                                     </div>
 
                                                     <div class="col-md-12">
-                                                        <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Save</button>
+                                                        <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Simpan</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -649,9 +649,8 @@
                                                         </div>
                                                     
                                                     <div class="col-md-12" style="display: flex; justify-content: space-between; align-items: center;">
-                                                        <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Save</button>
+                                                        <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Simpan</button>
                                                         <a href="<?php base_url() ?>/forgot" class="badge alert-danger" style="font-size: 13px">Ganti Password Mu</a>
-
                                                     </div>
                                                 </div>
                                             </form>
@@ -821,7 +820,7 @@
                                             </p>
                                             <br>
                                             <p>
-                                                B. Nomor MID dan username dapat anda temukan di sini <a href="https://g-tren.com/m">https://g-tren.com/m</a>
+                                                B. Nomor MID dan username dapat anda temukan di sini <a href="https://g-tren.com/m" target="_blank">https://g-tren.com/m</a>
                                             </p>
                                             <br>
                                             <h5>Masukan Data Nomor MID dan Username Gtren</h5>
@@ -841,10 +840,10 @@
                                                     </button>
                                                 </div>
                                             </form>
+
                                             <?php else: ?>
                                                 <a href="<?= base_url('/seller') ?>"><button class="btn btn-lg btn">Klik Untuk Kunjungi Dashboard</button></a>    
                                             <?php endif; ?>
-
                                             </div>
                                        <!--  <div class="card-body">
                                             <div class="sidebar">
