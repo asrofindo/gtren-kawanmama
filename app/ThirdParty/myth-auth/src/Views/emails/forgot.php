@@ -1,5 +1,5 @@
 <p>Seseorang meminta RESET PASSWORD dengan email ini di website,</p>
-<p>Untuk melakukan RESET PASSWORD silakan gunakan KOKDE TOKEN ini:</p>
+<p>Untuk melakukan RESET PASSWORD silakan gunakan KODE TOKEN ini:</p>
 
 <p>Kode Token: <?= $hash ?></p>
 
