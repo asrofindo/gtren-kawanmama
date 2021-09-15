@@ -431,14 +431,13 @@ class Transaksi extends BaseController
 	public function keuangan()
 	{
 		
-		if(in_groups(3)){
-			$data['pendapatan_seller'] = $this->pendapatan->where('user_id', user()->id)->where('status_dana', 'distributor')->find();
-			$data['detailtransaksi'] = $this->detail_transaksi
-			->join('distributor', 'distributor.id = detailtransaksi.distributor_id')
-			->join('detailpengiriman', 'detailpengiriman.cart_id = detailtransaksi.cart_id')
-			->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
-			->where('distributor.user_id', user()->id)->where('status_barang', 'diterima')->findAll();
-		}
+
+		$data['pendapatan_seller'] = $this->pendapatan->where('user_id', user()->id)->where('status_dana', 'distributor')->find();
+		$data['detailtransaksi'] = $this->detail_transaksi
+		->join('distributor', 'distributor.id = detailtransaksi.distributor_id')
+		->join('detailpengiriman', 'detailpengiriman.cart_id = detailtransaksi.cart_id')
+		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
+		->where('distributor.user_id', user()->id)->where('status_barang', 'diterima_pembeli')->findAll();
 
 
 		$data['pendapatan_affiliate'] = $this->pendapatan->where('user_id', user()->id)->where('status_dana', 'affiliate')->find();
