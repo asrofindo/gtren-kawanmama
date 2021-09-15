@@ -161,7 +161,7 @@ class Transaksi extends BaseController
 				session()->setFlashdata('danger', 'Data Tidak Lengkap');
 				return redirect()->back();
 			}
-			if($c->pengiriman_id == null && $bill == null){
+			if($c->pengiriman_id == null || $bill == null){
 				session()->setFlashdata('danger', 'Data Tidak Lengkap');
 				return redirect()->back();
 			}
