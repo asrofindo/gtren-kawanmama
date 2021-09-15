@@ -15,7 +15,7 @@
             <?php if(session()->getFlashData('success')){
                 ?>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    Comment <?= session()->getFlashData('success')?>
+                    Komentar <?= session()->getFlashData('success')?>
                 </button>
                 </div>
             <?php } ?>
@@ -47,9 +47,9 @@
                             <?php if ( user()!=null && user()->affiliate_link!=null && in_groups(4)) {?>
                                     <div class="row">
                                         <input type="text" value="<?=base_url()?>/product/<?=$product->slug?>/src/<?=user()->id?>" id="copy" readonly />
-                                        <button type="button" onclick="copy_text()" class="btn btn-sm m-1" id="copy">Copy Link Affiliate</button>
+                                        <button type="button" onclick="copy_text()" class="btn btn-sm m-1" id="copy">Salin Link Affiliate</button>
                                     </div>
-                                    <p class="mb-15 mt-30 font-sm"> <i class="fa fa-share-alt mr-5"></i> Share this</p>
+                                    <p class="mb-15 mt-30 font-sm"> <i class="fa fa-share-alt mr-5"></i> bagikan produk ini</p>
                                     <div class="mobile-social-icon wow fadeIn  mb-sm-5 mb-md-0 animated">
                                         <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?=base_url()?>/product/<?=$product->slug?>/src/<?=user()->id?>"><i class="fab fa-facebook-f"></i></a>
                                         <a class="twitter" href="https://twitter.com/share?url=<?=base_url()?>/product/<?=$product->slug?>/src/<?=user()->id?>"><i class="fab fa-twitter"></i></a>
@@ -57,7 +57,7 @@
                                         <a class="instagram" href="#"><i class="fab fa-instagram"></i></a>
                                     </div>
                                     <?php }else{?> 
-                                    <p class="mb-15 mt-30 font-sm"> <i class="fa fa-share-alt mr-5"></i> Share this</p>
+                                    <p class="mb-15 mt-30 font-sm"> <i class="fa fa-share-alt mr-5"></i> bagikan produk ini</p>
                                     <div class="mobile-social-icon wow fadeIn  mb-sm-5 mb-md-0 animated">
                                         <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?=base_url()?>/product/<?=$product->slug?>"><i class="fab fa-facebook-f"></i></a>
                                         <a class="twitter" href="https://twitter.com/share?url=<?=base_url()?>/product/<?=$product->slug?>"><i class="fab fa-twitter"></i></a>
@@ -155,10 +155,10 @@
                     <div class="tab-style3">
                         <ul class="nav nav-tabs text-uppercase">
                             <li class="nav-item">
-                                <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Description</a>
+                                <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Deskripsi Produ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews</a>
+                                <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Ulasan</a>
                             </li>
                         </ul>
                         <div class="tab-content shop_info_tab entry-main-content">
@@ -172,7 +172,6 @@
                                 <div class="comments-area">
                                     <div class="row">
                                         <div class="col-lg-8">
-                                            <h4 class="mb-30">Customer questions & answers</h4>
                                             <div class="comment-list">
                                                 <?php foreach ($comment as $data) {?>
                                                     <div class="single-comment justify-content-between d-flex">
@@ -204,39 +203,12 @@
                                                 <!--single-comment -->
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <h4 class="mb-30">Customer reviews</h4>
-                                            <div class="d-flex mb-30">
-     
-                                                <h6>4.8 out of 5</h6>
-                                            </div>
-                                            <div class="progress">
-                                                <span>5 star</span>
-                                                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
-                                            </div>
-                                            <div class="progress">
-                                                <span>4 star</span>
-                                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                            </div>
-                                            <div class="progress">
-                                                <span>3 star</span>
-                                                <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
-                                            </div>
-                                            <div class="progress">
-                                                <span>2 star</span>
-                                                <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
-                                            </div>
-                                            <div class="progress mb-30">
-                                                <span>1 star</span>
-                                                <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
-                                            </div>
-                                            <a href="#" class="font-xs text-muted">How are ratings calculated?</a>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <!--comment form-->
                                 <div class="comment-form">
-                                    <h4 class="mb-15">Add a review</h4>
+                                    <h4 class="mb-15">Tambah Komentar</h4>
                                    
                                     <div class="row">
                                         <div class="col-lg-8 col-md-12">
@@ -247,7 +219,7 @@
                                                             <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
                                                         </div>
                                                     </div>
-                                                    <p>Rating Star</p>
+                                                    <p>Peringkat bintang</p>
                                                     <fieldset class="rating">
                                                         <input type="radio" id="star5" name="rating" value="100" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
                                                         <input type="radio" id="star4half" name="rating" value="80 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
@@ -268,8 +240,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                    <button type="submit" >Submit
-                                                    Comment</button>
+                                                    <button type="submit" >Tambah komentar</button>
                                             </form>
                                         </div>
                                     </div>
@@ -279,7 +250,7 @@
                     </div>
                     <div class="row mt-60">
                         <div class="col-12">
-                            <h3 class="section-title style-1 mb-30">Related products</h3>
+                            <h3 class="section-title style-1 mb-30">Produk-produk terkait</h3>
                         </div>
                         <div class="row">
                         <?php  foreach ($products as $product): ?>
@@ -344,7 +315,7 @@
                     <!--Widget categories-->
                     <div class="sidebar-widget widget_categories mb-30 p-30 bg-grey border-radius-10">
                         <div class="widget-header position-relative mb-20 pb-10">
-                            <h5 class="widget-title mb-10">Categories</h5>
+                            <h5 class="widget-title mb-10">Kategori</h5>
                             <div class="bt-1 border-color-1"></div>
                         </div>
                         <div class="">
