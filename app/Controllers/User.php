@@ -60,6 +60,13 @@ class User extends BaseController
 		return view('commerce/account', $data);
 	}
 
+	public function affiliate()
+	{
+		$data = $this->data;
+		 
+		return view('db_affiliate/market_affiliate', $data);
+	}
+
 	public function order_detail($transaksi_id)
 	{
 		$data = $this->data;

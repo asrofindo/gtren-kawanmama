@@ -148,6 +148,7 @@ $routes->group('', ['namespace' => 'Myth\Auth\Controllers'], function($routes) {
 $routes->group('', function($routes)
 {
 	$routes->get('/admin', 'Dashboard::index', ['filter' => 'login','filter' => 'role:admin']);
+	$routes->get('/affiliate', 'Dashboard::index', ['filter' => 'login','filter' => 'role:affiliate']);
 	$routes->get('/seller', 'Dashboard::index', ['filter' => 'login','filter' => 'role:stockist, admin']);
 	// produk
 	$routes->get('tambahproduk', 'Product::tambah_produk', ['filter' => 'login','filter' => 'role:admin']);
@@ -269,6 +270,10 @@ $routes->group('', function($routes)
 	// delete all data
 	$routes->get('empty', 'Admin::empty');
 
+
+	// affiliate
+
+	$routes->get('/market/affiliate', 'User::affiliate');
 }
 );
 

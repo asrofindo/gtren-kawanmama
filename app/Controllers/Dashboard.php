@@ -59,7 +59,7 @@ class Dashboard extends BaseController
 		->where('pendapatan.status_dana =', 'affiliate')
 		->find();
 
-		if(in_groups(3)){
+		if(in_groups(3,4)){
 
 			$data['stockist'] = $this->model->select('sum(COALESCE(stockist_commission,0) - COALESCE(pendapatan.keluar,0)) AS stockist_total')
 			->join('distributor', 'distributor.id = detailtransaksi.distributor_id ', 'left')
