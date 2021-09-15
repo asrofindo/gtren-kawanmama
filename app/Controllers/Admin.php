@@ -63,9 +63,10 @@ class Admin extends BaseController
 	public function order()
 	{
 
-		$data['orders'] = $this->transaksi->select('*,group_concat(detailtransaksi.status_barang) as status_barang, transaksi.id as id,transaksi.created_at')
+		$data['orders'] = $this->transaksi->select('*, group_concat(detailtransaksi.status_barang),transaksi.id as id,transaksi.created_at')
 		->join('users', 'users.id = transaksi.user_id', 'left')
 		->join('detailtransaksi', 'detailtransaksi.transaksi_id = transaksi.id', 'left')
+         ->groupBy('detailtransaksi.transaksi_id')
 		->orderBy('transaksi.id', 'DESC')
 		->find(); 
 
@@ -110,11 +111,10 @@ class Admin extends BaseController
 		->join("cart_item", 'cart_item.id = cart_id')
 		->join('distributor', 'distributor.id = cart_item.distributor_id', 'left')
 		->join("products", 'products.id = cart_item.product_id')
-		->join("address", 'address.user_id = transaksi.user_id AND address.type = "billing"')
 		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
 		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
 		->where('detailtransaksi.transaksi_id', $id)->where('distributor.user_id', user()->id)->findAll();
-
+	
 		$outer_array = array();
 		$unique_array = array();
 
@@ -124,7 +124,7 @@ class Admin extends BaseController
 		    $inner_array = array();
 
 		    $fid_value = $value->user_id;
-		    $kecamatan = $value->kecamatan;
+		  
 		    $username = $value->username;
 		    $email = $value->email;
 		    $kurir = $value->kurir;
@@ -133,8 +133,7 @@ class Admin extends BaseController
 		    $phone = $value->phone;
 		    $alamat = $value->alamat;
 		    $etd = $value->etd;
-		    $kabupaten = $value->kabupaten;
-		    $kode_pos = $value->kode_pos;
+		 
 		    $bank_name = $value->bank_name;
 		    $bank_number = $value->bank_number;
 		    $total_transaksi = $value->total_transaksi;
@@ -146,9 +145,9 @@ class Admin extends BaseController
 		            array_push($inner_array, $value);
 		           
 		            $outer_array[$fid_value]['user_id'] = $fid_value;
-		            $outer_array[$fid_value]['kecamatan'] = $kecamatan;
-		            $outer_array[$fid_value]['kabupaten'] = $kabupaten;
-		            $outer_array[$fid_value]['kode_pos'] = $kode_pos;
+		         
+		          
+		           
 		            $outer_array[$fid_value]['username'] = $username;
 		            $outer_array[$fid_value]['fullname'] = $fullname;
 		            $outer_array[$fid_value]['phone'] = $phone;
@@ -188,11 +187,10 @@ class Admin extends BaseController
 		->join("cart_item", 'cart_item.id = cart_id')
 		->join('distributor', 'distributor.id = cart_item.distributor_id', 'left')
 		->join("products", 'products.id = cart_item.product_id')
-		->join("address", 'address.user_id = transaksi.user_id AND address.type = "billing"')
 		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
 		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
 		->where('detailtransaksi.transaksi_id', $id)->findAll();
-
+	
 		$outer_array = array();
 		$unique_array = array();
 
@@ -202,7 +200,7 @@ class Admin extends BaseController
 		    $inner_array = array();
 
 		    $fid_value = $value->user_id;
-		    $kecamatan = $value->kecamatan;
+		  
 		    $fullname = $value->fullname;
 		    $phone = $value->phone;
 		    $alamat = $value->alamat;
@@ -210,8 +208,8 @@ class Admin extends BaseController
 		    $kurir = $value->kurir;
 		    $ongkir = $value->ongkir;
 		    $etd = $value->etd;
-		    $kabupaten = $value->kabupaten;
-		    $kode_pos = $value->kode_pos;
+		   
+		    
 		    $bank_name = $value->bank_name;
 		    $bank_number = $value->bank_number;
 		    $status_pembayaran = $value->status_pembayaran;
@@ -224,10 +222,10 @@ class Admin extends BaseController
 		            array_push($inner_array, $value);
 		           
 		            $outer_array[$fid_value]['user_id'] = $fid_value;
-		            $outer_array[$fid_value]['kecamatan'] = $kecamatan;
+		           
 		            $outer_array[$fid_value]['alamat'] = $alamat;
-		            $outer_array[$fid_value]['kabupaten'] = $kabupaten;
-		            $outer_array[$fid_value]['kode_pos'] = $kode_pos;
+		           
+		           
 		            $outer_array[$fid_value]['fullname'] = $fullname;
 		            $outer_array[$fid_value]['phone'] = $phone;
 		            $outer_array[$fid_value]['email'] = $email;
