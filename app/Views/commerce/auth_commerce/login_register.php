@@ -60,7 +60,7 @@
                                     </div>
                                 <?php endif; ?>
 
-                                    <button type="submit" class="btn btn-primary btn-block"><?=lang('Auth.loginAction')?></button>
+                                    <button type="submit" class="btn btn-primary btn-block">masuk</button>
                                     
                                 </form>
                                 <hr>

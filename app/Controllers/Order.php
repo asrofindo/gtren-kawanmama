@@ -11,6 +11,7 @@ use App\Models\PendapatanModel;
 use App\Models\DistributorModel;
 use App\Controllers\BaseController;
 use Myth\Auth\Models\UserModel;
+use App\Models\NotifModel;
 
 
 class Order extends BaseController
@@ -26,6 +27,8 @@ class Order extends BaseController
 		$this->distributor = new DistributorModel();
 		$this->bills = new BillModel();
 		$this->user = new UserModel();
+		$this->notif = new NotifModel();
+
 
 	}
 	public function update($id)
@@ -53,6 +56,12 @@ class Order extends BaseController
 		$user = $this->user->where('id',$data['transaksi']->user_id)->first();
 		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Konfirmasi Pembayaran Anda *Telah Di Terima* \nNo Transaksi: ".$id."\nSilahkan Cek Transaksi di \n".base_url('/orders');
 		wawoo($user->phone,$msg);
+
+		$msg="Selamat!\n\nPesanan No.".$id." sudah dibayar.\n"."Cek di ".base_url('/admin');
+		$notif = $this->notif->findAll();
+		foreach ($notif as $key => $value) {
+			wawoo($value['phone'],$msg);
+		}
 
 		return redirect()->back();
 
