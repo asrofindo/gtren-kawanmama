@@ -3,7 +3,7 @@
 <div class="page-header breadcrumb-wrap">
     <div class="container">
         <div class="breadcrumb">
-            <a href="<?php base_url() ?>" rel="nofollow">Home</a>
+            <a href="<?= base_url()?>">Home</a>
             <span></span> Pages
             <span></span> Login / Register
         </div>

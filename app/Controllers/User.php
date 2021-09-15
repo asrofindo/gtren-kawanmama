@@ -244,8 +244,10 @@ class User extends BaseController
 
 		user()->setProfile($data);
 		session()->setFlashdata('success', 'Data sudah berhasil dimasukan');
-		$address = $this->address->where('user_id',user()->id)->find();
-		if ($address==[]) {
+		$address = $this->address->where('user_id',user()->id)->where('type','billing')->first();
+		if ($address == null) {
+
+			session()->setFlashdata('warning', 'Anda harus menambahkan alamat!');
 			return redirect()->to('/address');
 		}
 		return redirect()->back();
