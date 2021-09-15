@@ -793,10 +793,17 @@
                                                 <h3><?= user()->fullname ?></h3>
                                                 <h6><?= user()->email ?></h6>
                                                 <p>
-                                                    <?php foreach (user()->getRoles() as $role): ?>
-                                                        <?= $role ?>
-                                                    <?php endforeach ?>
+                                                    <?php if (in_groups(1)) {
+                                                        echo user()->getRoles()[1];
+                                                    }elseif(in_groups(3)){
+                                                        echo user()->getRoles()[3];
+                                                    }elseif(in_groups(4)){
+                                                        echo user()->getRoles()[4];
+                                                    }elseif(in_groups(5)){
+                                                        echo user()->getRoles()[5];
+                                                    }?>
                                                 </p>
+                                               
 
                                             </div>
                                             <?php if(in_groups(3)){?>
@@ -820,15 +827,7 @@
                                                 </div>
                                             </div>
                                             <?php }?>
-                                            <div class="row my-3">
-                                                <div class="card">
-                                                    <div class="col-lg-6">
-                                                        <div class="card-body">
-                                                            <h2 class="">35</h2>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        
                                         </div>
                                     </div>
                                 </div>
