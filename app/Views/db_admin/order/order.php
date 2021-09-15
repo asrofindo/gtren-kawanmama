@@ -61,10 +61,19 @@
                             <td>
                                 <?php $i = 0;  foreach ($status_barang as $s): ?>
                                     <?php if($s == 'ditolak'): ?>
-                                        <span class="badge  rounded-pill alert-warning"><?php echo "{$i++} Barang Di Tolak"; ?></span>
+                                        <span class="badge  rounded-pill alert-warning"><?php echo "tolak"; ?></span>
                                     <?php endif; ?>
                                     <?php if($s == 'refund'): ?>
-                                        <span class="badge  rounded-pill alert-warning"><?php echo "{$i++} Barang Di Refund "; ?></span>
+                                        <span class="badge  rounded-pill alert-warning"><?php echo "refund"; ?></span>
+                                    <?php endif; ?>
+                                    <?php if($s == 'diterima_seller'): ?>
+                                        <span class="badge  rounded-pill alert-warning"><?php echo "dikonfirmasi"; ?></span>
+                                    <?php endif; ?>
+                                    <?php if($s == 'diterima_pembeli'): ?>
+                                        <span class="badge  rounded-pill alert-warning"><?php echo "selesai"; ?></span>
+                                    <?php endif; ?>
+                                    <?php if($s == 'dipantau'): ?>
+                                        <span class="badge  rounded-pill alert-warning"><?php echo "dipantau"; ?></span>
                                     <?php endif; ?>
                                 <?php endforeach ?>
                             </td>
