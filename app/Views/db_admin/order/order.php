@@ -67,10 +67,10 @@
                                         <span class="badge  rounded-pill alert-warning"><?php echo "refund"; ?></span>
                                     <?php endif; ?>
                                     <?php if($s == 'diterima_seller'): ?>
-                                        <span class="badge  rounded-pill alert-warning"><?php echo "dikonfirmasi"; ?></span>
+                                        <span class="badge  rounded-pill alert-primary"><?php echo "dikonfirmasi"; ?></span>
                                     <?php endif; ?>
                                     <?php if($s == 'diterima_pembeli'): ?>
-                                        <span class="badge  rounded-pill alert-warning"><?php echo "selesai"; ?></span>
+                                        <span class="badge  rounded-pill alert-success"><?php echo "selesai"; ?></span>
                                     <?php endif; ?>
                                     <?php if($s == 'dipantau'): ?>
                                         <span class="badge  rounded-pill alert-warning"><?php echo "dipantau"; ?></span>
