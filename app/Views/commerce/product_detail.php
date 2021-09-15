@@ -130,12 +130,17 @@
                                             <a href="#" class="qty-up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
                                         </div>
                                         <div class="product-extra-link2">
-                                           <?php if(count($address) > 0): ?>
-                                                <button data-toggle="modal" data-target="#exampleModalCenter" type="submit" class="button button-add-to-cart btn-store">Beli</button>
-                                            <?php endif; ?>
-                                            <?php if(count($address) == 0 ): ?>
-                                                <button data-toggle="modal" data-target="#exampleModalCenter" type="submit" class="button button-add-to-cart btn-store">Beli</button>
-                                            <?php endif; ?>
+                                            <?php if (user()!=null) {?>
+                                                <?php if(count($address) > 0): ?>
+                                                     <button data-toggle="modal" data-target="#exampleModalCenter" type="submit" class="button button-add-to-cart btn-store">Beli</button>
+                                                 <?php endif; ?>
+                                                 <?php if(count($address) == 0 ): ?>
+                                                     <button data-toggle="modal" data-target="#exampleModalCenter" type="submit" class="button button-add-to-cart btn-store">Beli</button>
+                                                 <?php endif; ?>
+                                            <?php }else{?>
+                                                <a href="<?=base_url()?>/login"><button class="button btn-sm button-add-to-cart btn-store">Beli</button></a>
+                                            <?php }?>
+
                                         </div>
                                 </div>
                                 <!-- <ul class="product-meta font-xs color-grey mt-50">
@@ -481,6 +486,7 @@
             <h4 class="modal-title">Pilih Distributor</h4>
           </div>
           <div class="modal-body">
+              <?php if (user() !=null) {?>
             <ul style="z-index: -1" class="list-group">
                 <?php foreach($product_distributors as $distributor): ?>  
                     <?php if (get_cookie('affiliate') != null) {?>
@@ -504,6 +510,7 @@
                     </form>
                 <?php endforeach; ?>
             </ul>
+            <?php }?>
             </div>
         </div>
     </div>
