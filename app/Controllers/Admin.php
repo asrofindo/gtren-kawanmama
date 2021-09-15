@@ -328,17 +328,19 @@ class Admin extends BaseController
 
 	public function empty()
 	{
-		$db = \Config\Database::connect();
-		$forge = \Config\Database::forge();
-		$db->table('detailtransaksi')->truncate();
-		$db->table('transaksi')->truncate();
-		$db->table('pengiriman')->truncate();
-		$db->table('detailpengiriman')->truncate();
-		$db->table('pengiriman')->truncate();
-		$db->table('bills')->truncate();
-		$db->table('cart_item')->truncate();
-		$db->table('upgrades')->truncate();
-		$db->table('pendapatan')->truncate();
+		if(in_groups(1)){
+			$db = \Config\Database::connect();
+			$forge = \Config\Database::forge();
+			$db->table('detailtransaksi')->truncate();
+			$db->table('transaksi')->truncate();
+			$db->table('pengiriman')->truncate();
+			$db->table('detailpengiriman')->truncate();
+			$db->table('pengiriman')->truncate();
+			$db->table('bills')->truncate();
+			$db->table('cart_item')->truncate();
+			$db->table('upgrades')->truncate();
+			$db->table('pendapatan')->truncate();
+		}
 		
 		return redirect()->back();
 	}

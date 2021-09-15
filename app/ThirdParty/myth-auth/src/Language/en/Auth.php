@@ -26,9 +26,9 @@ return [
     'errorSendingActivation'    => 'Failed to send activation message to: {0}',
 
     // Login
-    'badAttempt'                => 'Unable to log you in. Please check your credentials.',
-    'loginSuccess'              => 'Welcome back!',
-    'invalidPassword'           => 'Unable to log you in. Please check your password.',
+    'badAttempt'                => 'Tidak bisa masuk. Cek kembali username dan password anda.',
+    'loginSuccess'              => 'Selamat Datang!',
+    'invalidPassword'           => 'Tidak bisa masuk. Cek kembali password anda.',
 
     // Forgotten Passwords
     'forgotDisabled'            => 'Reseting password option has been disabled.',
@@ -80,9 +80,9 @@ return [
     'loginTitle'                => 'Login',
     'loginAction'               => 'Masuk',
     'rememberMe'                => 'Simpan Password',
-    'needAnAccount'             => 'Pengguna Baru - Daftar Disini?',
+    'needAnAccount'             => 'Pengguna Baru ? - Daftar Disini',
     'forgotYourPassword'        => 'Lupa Password?',
-    'password'                  => 'Buat Password Baru',
+    'password'                  => 'Password',
     'repeatPassword'            => 'Ulangi Password',
     'emailOrUsername'           => 'Email atau username',
     'username'                  => 'Username',
