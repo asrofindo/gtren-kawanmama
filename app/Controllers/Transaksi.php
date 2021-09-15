@@ -376,7 +376,7 @@ class Transaksi extends BaseController
 		$data_bill = $this->bill->find($bill_id);
 
 
-		$user_id = $this->pendapatan->find($id)->user_id;
+		$user_id = $this->pendapatan->first($id)->user_id;
 
 		$id_wd = $this->wd->where('user_id', $user_id)->where('status_dana', $status_dana)->where('status', 'belum')->find()[0]['id'];
 
