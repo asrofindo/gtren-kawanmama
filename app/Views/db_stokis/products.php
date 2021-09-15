@@ -5,13 +5,6 @@
         <h2 class="content-title card-title">Produk Anda</h2>
         <!-- <p>Lorem ipsum dolor sit amet.</p> -->
     </div>
-    <div><!-- 
-        <a href="#" class="btn btn-light rounded font-md">Export</a>
-        <a href="#" class="btn btn-light rounded  font-md">Import</a> -->
-        <?php if(in_groups(1)){?>
-        <a href="<?= base_url() ?>/tambahproduk" class="btn btn-primary btn-sm rounded">Create new</a>
-        <?php } ?>
-    </div>
 </div>
 <div class="attention">
     <?php if(!empty(session()->getFlashdata('success'))){ ?>
@@ -44,15 +37,6 @@
                 </form>
             </div>
             <div class="col-md-2 col-6">
-                <input type="date" value="02.05.2021" class="form-control">
-            </div>
-            <div class="col-md-2 col-6">
-                <select class="form-select">
-                    <option selected>Status</option>
-                    <option>Active</option>
-                    <option>Disabled</option>
-                    <option>Show all</option>
-                </select>
             </div>
         </div>
     </header> <!-- card-header end// -->
@@ -63,13 +47,13 @@
                         <thead>
                             <tr>
                                 <th class="text-center">
-                                    img
+                                    Foto
                                 </th>
                                 <th>product</th>
-                                <th class="d-none d-sm-block">harga member</th>
-                                <th >harga non member</th>
-                                <th >jumlah</th>
-                                <th class="text-end">Action</th>
+                                <th class="d-none d-sm-block">Harga Member</th>
+                                <th >Harga Jual</th>
+                                <th >Jumlah</th>
+                                <th class="text-end">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -77,14 +61,14 @@
                             <tr>
                                 <td class="text-center">
                                     <?php for($i = 0; $i < 1; $i++): ?>
-                                        <img class="img-sm img-thumbnail" src="<?= $product->photos[$i] ?>" alt="">
+                                        <img class="img-sm img-thumbnail" src="<?php base_url() ?>/public/uploads/product_photos/<?= $product->photos[$i] ?>" alt="">
                                     <?php endfor ?>
                                 </td>
                                 <td>
                                     <h6 class=""><?= $product->name ?></h6>
                                 </td>
-                                <td class="d-none d-sm-block"><?= $product->sell_price ?></td>
-                                <td ><?= $product->fixed_price?></td>
+                                <td class="d-none d-sm-block">Rp. <?=  number_format($product->sell_price); ?></td>
+                                <td >Rp. <?= number_format($product->fixed_price) ;?></td>
                                 <td ><?= $product->jumlah?></td>
                                 <td class="text-end">
                                     <div class="dropdown">
