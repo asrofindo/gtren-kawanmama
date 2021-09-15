@@ -643,8 +643,10 @@
                                                             <input required="" class="form-control square" name="password" type="password">
                                                         </div>
                                                     
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-12" style="display: flex; justify-content: space-between; align-items: center;">
                                                         <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Save</button>
+                                                        <a href="<?php base_url() ?>/forgot" class="badge alert-danger" style="font-size: 13px">Ganti Password Mu</a>
+
                                                     </div>
                                                 </div>
                                             </form>
