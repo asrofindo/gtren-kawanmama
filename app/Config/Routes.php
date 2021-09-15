@@ -56,6 +56,10 @@ $routes->get('/delete/admin/(:num)', 'User::admin/$1');
 $routes->get('/','Product::commerce');
 // $routes->get('cart', 'User::cart', ['filter' => 'login']);
 $routes->get('account', 'User::account', ['filter' => 'login']);
+$routes->get('rekening', 'User::rekening', ['filter' => 'login']);
+$routes->post('rekening', 'User::rekening', ['filter' => 'login']);
+$routes->get('rekening/delete/(:num)', 'User::rekening_delete/$1', ['filter' => 'login']);
+
 $routes->get('orders', 'User::orders', ['filter' => 'login']);
 $routes->get('detail/(:num)', 'User::order_detail/$1', ['filter' => 'login']);
 $routes->get('tracking', 'User::tracking', ['filter' => 'login']);

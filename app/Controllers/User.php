@@ -10,6 +10,7 @@ use App\Models\TransaksiModel;
 use App\Models\CategoryModel;
 use App\Models\KonfirmasiModel;
 use App\Models\NotifModel;
+use App\Models\RekeningModel;
 
 use Myth\Auth\Models\UserModel;
 use Myth\Auth\Authorization\GroupModel;
@@ -20,6 +21,7 @@ class User extends BaseController
 
 	public function __construct(){
 		$this->address = new AddressModel();
+		$this->rekening = new RekeningModel();
 		$this->upgrade = new UpgradesModel();
 		$this->transaksi = new TransaksiModel();
 		$this->konfirmasi = new KonfirmasiModel();
@@ -105,7 +107,7 @@ class User extends BaseController
 			}else{
 				$this->konfirmasi->update($data['konfirmasi']->id,$data);
 			}
-			
+
 			$msg = "Terimakasih Telah Konfirmasi Pembayaran\nNo. Transaksi : ".$id."\nSilahkan Tunggu Konfirmasi Dari Admin";
 			wawoo(user()->phone,$msg);
 
@@ -366,6 +368,12 @@ class User extends BaseController
 	        return view('/address', $data); 
 	    }
 	    session()->setFlashdata('success', 'Data Berhasil Disimpan');
+
+		if ($this->rekening->where('user_id',user()->id)->find()==[]) {
+			session()->setFlashdata('danger', 'Masukan Data Rekening Anda');
+			return redirect()->to('/rekening');
+		}
+
 	    return redirect()->to(base_url('/address'));
 	}
 
@@ -467,6 +475,37 @@ class User extends BaseController
 		return 'berhasil';
 	}
 
+	public function rekening()
+	{
+		$data = $this->data;
+
+		if ($this->request->getPost('number')!=null) {
+			$set=[
+				'user_id'=> user()->id,
+				'bank'=> $this->request->getPost('bank'),
+				'number'=> $this->request->getPost('number'),
+				'owner'=> $this->request->getPost('owner'),
+			];
+			$this->rekening->save($set);
+			session()->setFlashdata('success', 'data berhasil disimpan');
+
+		}
+
+		$data['segments'] = $this->request->uri->getSegments();
+		$data['rekening'] = $this->rekening->where('user_id',user()->id)->find();
+		
+		return view('commerce/account', $data);
+	}
+
+	public function rekening_delete($id)
+	{
+		$data = $this->data;
+
+		$this->rekening->delete($id);
+		session()->setFlashdata('success', 'data berhasil dihapus');
+
+		return redirect()->back();
+	}
 	
 
 }

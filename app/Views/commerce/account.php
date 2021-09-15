@@ -15,6 +15,9 @@
                                     <a class="nav-link <?= ($segments[0] == "orders" ? "active" : null) ?>" id="orders-tab" href="<?= base_url('orders') ?>"><i class="fa fa-shopping-basket mr-15"></i>Pembelian</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link <?= ($segments[0] == "rekening" ? "active" : null) ?>" id="rekening-tab" href="<?= base_url('rekening') ?>"><i class="fa fa-money-bill mr-15"></i>Rekening Anda</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link <?= ($segments[0] == "tracking" ? "active" : null) ?>" id="track-orders-tab" href="<?= base_url('tracking') ?>" role="tab" aria-controls="track-orders" aria-selected="false"><i class="fa fa-paper-plane mr-15"></i>Track Your Order</a>
                                 </li>
                                 <li class="nav-item">
@@ -197,6 +200,77 @@
                                         </div>
                                     </div>
                                 </div>
+                            <?php elseif($segments[0] == "rekening"): ?>
+                                <div class="tab-pane fade active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="mb-0">Rekening Anda</h5>
+                                        </div>
+                                        <?php if(!empty(session()->getFlashdata('success'))){ ?>
+                                                <div class="alert alert-success bg-success text-white m-3">
+                                                    <?php echo session()->getFlashdata('success');?>
+                                                </div>
+                                        <?php } ?>
+                                        <?php if(!empty(session()->getFlashdata('danger'))){ ?>
+                                                <div class="alert alert-success bg-warning text-white m-3">
+                                                    <?php echo session()->getFlashdata('danger');?>
+                                                </div>
+                                        <?php } ?>
+                                        <form method="post" action="<?= base_url()?>/rekening">
+                                                <div class="row m-2">
+                                                   
+                                                    <div class="form-group col-md-12">
+                                                        <label>Nama <span class="required">*</span></label>
+                                                        <input required="" class="form-control square" name="owner" type="text" value="">
+                                                    </div>   
+                                                    <div class="form-group col-md-12">
+                                                        <label>Nama Bank <span class="required">*</span></label>
+                                                        <input required="" class="form-control square" name="bank" type="text" value="">
+                                                    </div> 
+                                                    <div class="form-group col-md-12">
+                                                        <label>Nomor Rekening<span class="required">*</span></label>
+                                                        <input required="" class="form-control square" name="number" type="text" value="">
+                                                    </div> 
+                                                    <div class="col-md-12">
+                                                        <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Save</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Bank </th>
+                                                            <th>No Rekening </th>
+                                                            <th>Nama</th>
+                                                            <th>Aksi</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php foreach ($rekening as $key => $value) {?>
+                                                            <tr>
+                                                                <td>
+                                                                    <?= $value->bank?>
+                                                                </td>
+                                                                <td>
+                                                                    <?= $value->number?>    
+                                                                </td>
+                                                                <td>                                             
+                                                                    <?= $value->owner?>
+                                                                </td>
+                                                                <td>      
+                                                                    <a href="<?=base_url()?>/rekening/delete/<?= $value->id?>">hapus</a>                                       
+                                                                </td>
+                                                            </tr>
+                                                        <?php }?>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             <?php elseif($segments[0] == "konfirmasi"): ?>
                                 <div class="tab-pane fade active show" id="upgrade" role="tabpanel" aria-labelledby="upgrade-tab">
                                     <div class="card p-3">
@@ -266,11 +340,9 @@
                                         </div>
                                         <div class="card-body contact-from-area">
                                             <?php if(!empty(session()->getFlashdata('success'))){ ?>
-
                                                 <div class="alert alert-success bg-success text-white">
                                                     <?php echo session()->getFlashdata('success');?>
                                                 </div>
-
                                             <?php } ?>
                                             <?php if(!empty(session()->getFlashdata('danger'))){ ?>
 
