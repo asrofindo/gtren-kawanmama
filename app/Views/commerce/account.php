@@ -18,7 +18,7 @@
                                     <a class="nav-link <?= ($segments[0] == "rekening" ? "active" : null) ?>" id="rekening-tab" href="<?= base_url('rekening') ?>"><i class="fa fa-money-bill mr-15"></i>Rekening Anda</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link <?= ($segments[0] == "tracking" ? "active" : null) ?>" id="track-orders-tab" href="<?= base_url('tracking') ?>" role="tab" aria-controls="track-orders" aria-selected="false"><i class="fa fa-paper-plane mr-15"></i>Track Your Order</a>
+                                    <a class="nav-link <?= ($segments[0] == "tracking" ? "active" : null) ?>" id="track-orders-tab" href="<?= base_url('tracking') ?>" role="tab" aria-controls="track-orders" aria-selected="false"><i class="fa fa-paper-plane mr-15"></i>Cek Pesanan</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link <?= ($segments[0] == "address" || $segments[0] == "billing-address" || $segments[0] == "shipping-address" || $segments[0] == "edit-billing" || $segments[0] == "edit-shipping" ? "active" : null) ?>" id="address-tab" href="<?= base_url('address') ?>" role="tab" aria-controls="address" aria-selected="true"><i class="fa fa-map-marked mr-15"></i>Alamat</a>
@@ -59,7 +59,7 @@
                                     <?php if(count($segments) > 1): ?>
                                     <a class="nav-link <?= ($segments[1] == "stockist" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/stockist') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Toko Anda</a>
                                     <?php else : ?>
-                                    <a class="nav-link <?= ($segments[0] == "stockist" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/stockist') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Toko Anda</a> 
+                                    <a class="nav-link <?= ($segments[0] == "stockist" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/stockist') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-store mr-15"></i>Toko Anda</a> 
                                     <?php endif; ?>
                                 </li>
                             <?php } ?>
