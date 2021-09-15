@@ -100,7 +100,7 @@
                             <div class="header-action-icon-2">
                                 <?php if(!logged_in()): ?>
                                     <a href="<?= route_to('login') ?>">
-                                        <button class="btn btn-primary btn-sm">Login</button>
+                                        <button class="btn btn-primary btn-sm">Masuk</button>
                                     </a>
                                 <?php else: ?>
                                 <a href="/account">
