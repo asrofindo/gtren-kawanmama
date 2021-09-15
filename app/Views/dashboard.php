@@ -96,7 +96,7 @@
 
     <?php if(in_groups(1)): ?>
     <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/bills"> <i class="icon material-icons md-monetization_on"></i>
+        <a class="menu-link" href="<?php base_url() ?>/bills"> <i class="icon material-icons md-account_balance"></i>
             <span class="text">Rekening Admin</span>
         </a>
     </li>
@@ -112,7 +112,7 @@
 
       <?php if(in_groups(3)): ?>
     <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/request/wd"> <i class="icon material-icons md-monetization_on"></i>
+        <a class="menu-link" href="<?php base_url() ?>/request/wd"> <i class="icon material-icons md-account_balance_wallet"></i>
             <span class="text">Penarikan Dana</span>
         </a>
     </li>
@@ -120,7 +120,7 @@
 
       <?php if(in_groups(1)): ?>
     <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/riwayat/wd"> <i class="icon material-icons md-monetization_on"></i>
+        <a class="menu-link" href="<?php base_url() ?>/riwayat/wd"> <i class="icon material-icons md-assignment"></i>
             <span class="text">Riwayat Withdraw</span>
         </a>
     </li>
@@ -128,7 +128,7 @@
 
     <?php if(in_groups(1)): ?>
     <li class="menu-item has-submenu">
-        <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-shopping_cart"></i>
+        <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-work"></i>
             <span class="text">Hutang Perusahaan</span>
         </a>
         <div class="submenu">
@@ -156,7 +156,7 @@
     <?php endif ?>
     <?php if(in_groups(1)): ?>
     <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/admin/konfirmasi"> <i class="icon material-icons md-shopping_cart"></i>
+        <a class="menu-link" href="<?php base_url() ?>/admin/konfirmasi"> <i class="icon material-icons md-payment"></i>
             <span class="text">Konfirmasi Pembayaran</span>
         </a>
     </li>
@@ -175,7 +175,7 @@
             <a href="<?= base_url() ?>/offer">offer</a>
             <a href="<?= base_url() ?>/banner">banner</a>
             <a href="<?= base_url() ?>/notifikasi">notifikasi</a>  
-            <a  href="<?php base_url() ?>/empty"> <i class="icon material-icons md-monetization_on"></i>
+            <a  href="<?php base_url() ?>/empty">
                 <span class="text">Hancurkan Transaksi</span>
             </a>
     
