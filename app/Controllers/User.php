@@ -118,8 +118,7 @@ class User extends BaseController
 			$msg = "Terimakasih Telah Konfirmasi Pembayaran\nNo. Transaksi : ".$id."\nSilahkan Tunggu Konfirmasi Dari Admin";
 			wawoo(user()->phone,$msg);
 
-			$msg="Segera Cek!\nAda *Konfirmasi Pembayaran* oleh ".user()->greeting." ".user()->fullname."\nNo. Wa: ".user()->phone."\nCek di ".base_url('admin/konfirmasi');
-			
+			$msg="Segera Cek!\nAda *Konfirmasi Pembayaran* oleh ".user()->greeting." ".user()->fullname."\nNo. Wa: ".user()->phone."\nCek di ".base_url('admin/konfirmasi');			
 			$notif = $this->notif->findAll();
 			foreach ($notif as $key => $value) {
 				wawoo($value['phone'],$msg);
@@ -242,7 +241,21 @@ class User extends BaseController
 			'greeting' => $request->getPost('greeting'),
 		];
 
-		user()->setProfile($data);
+		if (user()->phone==null) {
+			user()->setProfile($data);
+			
+			$msg = "Nomor WA ini telah didaftarkan oleh ".user()->greeting." ".user()->fullname."\ndi ".base_url()."\nJika Anda bukan ".user()->greeting." ".user()->fullname." silakan hubungi kami untuk PENGHAPUSAN DATA : \n[link kontak ".base_url()."/contact]";
+			wawoo($data['phone'],$msg);
+
+			$msg="Selamat!\nAda *user baru* di ".base_url()."\nNama User :".user()->greeting." ".user()->fullname."\nNo. Wa: ".$data['phone'];			
+			$notif = $this->notif->findAll();
+
+			foreach ($notif as $key => $value) {
+				wawoo($value['phone'],$msg);
+			}
+		}else{
+			user()->setProfile($data);
+		}
 		session()->setFlashdata('success', 'Data sudah berhasil dimasukan');
 		$address = $this->address->where('user_id',user()->id)->where('type','billing')->first();
 		if ($address == null) {
@@ -250,6 +263,7 @@ class User extends BaseController
 			session()->setFlashdata('warning', 'Anda harus menambahkan alamat!');
 			return redirect()->to('/address');
 		}
+		
 		return redirect()->back();
 
 	}
