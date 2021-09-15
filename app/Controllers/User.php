@@ -233,13 +233,12 @@ class User extends BaseController
 			'password' => $request->getPost('password'),
 			'phone' => $request->getPost('phone'),
 			'greeting' => $request->getPost('greeting'),
-
 		];
 
 		user()->setProfile($data);
 		session()->setFlashdata('success', 'Data sudah berhasil dimasukan');
-		$address = $this->address->where('user_id',user()->id);
-		if (!empty($address)) {
+		$address = $this->address->where('user_id',user()->id)->find();
+		if ($address==[]) {
 			return redirect()->to('/address');
 		}
 		return redirect()->back();
