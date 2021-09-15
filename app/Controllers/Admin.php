@@ -306,8 +306,10 @@ class Admin extends BaseController
 		$status = $this->request->getPost('status');	
 		if($status){
 			
-			$data['orders'] = $this->transaksi->select("*, transaksi.id as id, transaksi.created_at")
+			$data['orders'] = $this->transaksi->select("*, GROUP_CONCAT(detailtransaksi.status_barang) as status_barang, transaksi.id as id, transaksi.created_at")
 			->join('users', 'users.id = transaksi.user_id', 'left')
+			->join('detailtransaksi', 'detailtransaksi.transaksi_id = transaksi.id', 'left')
+			->groupBy('detailtransaksi.transaksi_id')
 			->like('transaksi.status_pembayaran', $status)
 			->orderBy('transaksi.id', 'DESC')->find();
 
