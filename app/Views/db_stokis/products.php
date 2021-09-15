@@ -47,10 +47,10 @@
                                 <th class="text-center">
                                     Foto
                                 </th>
-                                <th>product</th>
-                                <th class="d-none d-sm-block">Harga Member</th>
+                                <th>Produk</th>
+                                <th class="d-none d-sm-block">Harga Member Gtren</th>
                                 <th >Harga Jual</th>
-                                <th >Jumlah</th>
+                                <th >Stock Yang Anda Punya</th>
                                 <th class="text-end">Aksi</th>
                             </tr>
                         </thead>
