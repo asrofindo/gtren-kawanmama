@@ -210,7 +210,10 @@ class User extends BaseController
 		
 		$data['billing_address'] = $this->address->where('type', 'billing')->where('deleted_at', null)->where('user_id', user()->id)->get()->getResult();
 		$data['shipping_address'] = $this->address->where('type', 'shipping')->where('deleted_at', null)->where('user_id', user()->id)->get()->getResult();
-
+		
+		if ($data['billing_address']==[]) {
+			session()->setFlashdata('warning', 'Anda harus menambahkan alamat!');
+		}
 		// verif
 		return view('commerce/account', $data);
 	}
