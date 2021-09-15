@@ -412,16 +412,18 @@ class Transaksi extends BaseController
 
 	public function keuangan()
 	{
-		$data['pendapatan_seller'] = $this->pendapatan->where('user_id', user()->id)->where('status_dana', 'distributor')->find();
+		
+		if(in_groups(3)){
+			$data['pendapatan_seller'] = $this->pendapatan->where('user_id', user()->id)->where('status_dana', 'distributor')->find();
+			$data['detailtransaksi'] = $this->detail_transaksi
+			->join('distributor', 'distributor.id = detailtransaksi.distributor_id')
+			->join('detailpengiriman', 'detailpengiriman.cart_id = detailtransaksi.cart_id')
+			->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
+			->where('distributor.user_id', user()->id)->where('status_barang', 'diterima')->findAll();
+		}
+
+
 		$data['pendapatan_affiliate'] = $this->pendapatan->where('user_id', user()->id)->where('status_dana', 'affiliate')->find();
-
-		$data['detailtransaksi'] = $this->detail_transaksi
-		->join('distributor', 'distributor.id = detailtransaksi.distributor_id')
-		->join('detailpengiriman', 'detailpengiriman.cart_id = detailtransaksi.cart_id')
-		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
-		->where('distributor.user_id', user()->id)->where('status_barang', 'diterima')->findAll();
-
-
 		$data['detailtransaksi_affiliate'] = $this->detail_transaksi
 		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
 		->join('users', 'users.affiliate_link = cart_item.affiliate_link')
@@ -441,21 +443,21 @@ class Transaksi extends BaseController
 
 		$data['pendapatan_affiliate'] = $this->pendapatan->select('total')->where('status_dana', 'affiliate')->where('user_id', user()->id)->findAll();
 		$data['pendapatan_stockist'] = $this->pendapatan->select('sum(total) as total')->where('status_dana', 'distributor')->where('user_id', user()->id)->findAll();
-
 		if(count($wd_belum) > 0){
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();	
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->findAll();
-
+		
 			return view('db_stokis/wd', $data);
 		}
 		if(!$jumlah_wd > 0){
+
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
 			return view('db_stokis/wd', $data);
 		}
 		if(count($this->pendapatan->where('user_id', user()->id)->find()) == 0 ){
-			$data['wds'] = $this->wd->select('sum(total) as total')->where('user_id', user()->id)->find();
-			$data['pendapatan'] = $this->pendapatan->where('user_id', user()->id)->find();
+			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
+			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
 
 			return view('db_stokis/wd', $data);
 		}

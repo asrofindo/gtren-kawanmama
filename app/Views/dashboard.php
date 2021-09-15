@@ -47,6 +47,19 @@
         </a>
     </li>
     <?php endif; ?>
+
+    <?php if(in_groups(4)): ?>
+    <li class="menu-item active">
+        <a class="menu-link" href="<?= base_url() ?>/affiliate"> <i class="icon material-icons md-home"></i>
+            <span class="text">Dashboard Affiliate</span>
+        </a>
+    </li>
+    <li class="menu-item">
+        <a class="menu-link" href="<?= base_url() ?>/ market/affiliate"> <i class="icon material-icons md-assignment"></i>
+            <span class="text">Market Affiliate</span>
+        </a>
+    </li>
+    <?php endif; ?>
     <?php if(in_groups(1)): ?>
     <li class="menu-item has-submenu" >
         <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
@@ -101,8 +114,7 @@
         </a>
     </li>
     <?php endif; ?>
-
-    <?php if(in_groups(3)): ?>
+    <?php if(in_groups(3) || in_groups(4)): ?>
     <li class="menu-item">
         <a class="menu-link" href="<?php base_url() ?>/keuangan"> <i class="icon material-icons md-monetization_on"></i>
             <span class="text">Keuangan</span>
@@ -110,7 +122,7 @@
     </li>
     <?php endif; ?>
 
-      <?php if(in_groups(3)): ?>
+      <?php if(in_groups(3) || in_groups(4)): ?>
     <li class="menu-item">
         <a class="menu-link" href="<?php base_url() ?>/request/wd"> <i class="icon material-icons md-account_balance_wallet"></i>
             <span class="text">Penarikan Dana</span>
@@ -211,7 +223,6 @@
                             </article>
                         </div>
                     </div>
-                <?php endif; ?>
                 <div class="col-lg-3">
                     <div class="card card-body mb-4">
                         <article class="icontext">
@@ -240,7 +251,6 @@
                         </article>
                     </div>
                 </div>
-                <?php if(in_groups(1)): ?>
                 <div class="col-lg-3">
                     <div class="card card-body mb-4">
                         <article class="icontext">
@@ -255,9 +265,7 @@
                         </article>
                     </div>
                 </div>
-                <?php endif; ?>
                 <!-- Table -->
-                <?php if(in_groups(1)): ?>
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
@@ -401,6 +409,25 @@
                         </div>
                     </div>
                 <?php endif; ?>
+            </div>
+            <?php endif ?>
+
+              <?php if(isset($segments) && $segments[0] == 'affiliate'): ?>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="card card-body mb-4">
+                        <article class="icontext">
+                            <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-qr_code"></i></span>
+                            <div class="text">
+                                <h6 class="mb-1 card-title">Dana Affiliate</h6> 
+                                <span><?= number_format($affiliate[0]->affiliate_total) ;?></span>
+                            <!--     <span class="text-sm">
+                                    In 19 Categories
+                                </span> -->
+                            </div>
+                        </article>
+                    </div>
+                </div>
             </div>
             <?php endif ?>
         </section> <!-- content-main end// -->

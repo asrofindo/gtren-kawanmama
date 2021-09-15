@@ -20,16 +20,18 @@
         <?php endif; ?>
     </div>
 </div>
-<div class="content-header" style="justify-content: left; ">
-     <div>
-        <h5 class="content-title card-title"> Distributor</h5>
-        <?php if(count($pendapatan_stockist) == 0): ?>
-            <p>Rp 0</p>
-        <?php else: ?>
-            <p>Rp <?= $pendapatan_stockist[0]->total; ?></p>
-        <?php endif; ?>
+<?php if(in_groups(3)): ?>
+    <div class="content-header" style="justify-content: left; ">
+         <div>
+            <h5 class="content-title card-title"> Distributor</h5>
+            <?php if(count($pendapatan_stockist) == 0): ?>
+                <p>Rp 0</p>
+            <?php else: ?>
+                <p>Rp <?= $pendapatan_stockist[0]->total; ?></p>
+            <?php endif; ?>
+        </div>
     </div>
-</div>
+<?php endif; ?>
 <div class="row">
     <div class="card mb-4 col-md-12">
         <header class="card-header">
@@ -42,7 +44,7 @@
                             <select class="form-control bg-white" name="status_dana">
                                 <option disabled selected class="form-control bg-white">Pilih Jenis Tabungan</option>
                                 <option value="affiliate" class="form-control bg-white">Affiliate</option>
-                                <option value="distributor" class="form-control bg-white">Distributor</option>
+                                <?php if(in_groups(3)): ?><option value="distributor" class="form-control bg-white">Distributor</option><?php endif; ?>
                             </select>
                         </div>
                         <div class="col-lg-2 col-md-2 me-auto">

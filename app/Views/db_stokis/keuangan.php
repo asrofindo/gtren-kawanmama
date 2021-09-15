@@ -4,44 +4,43 @@
     <div>
         <h2 class="content-title card-title">Keuangan</h2>
     </div>
-    <div>
-        <input type="text" placeholder="Search pendapatan ID" class="form-control bg-white">
-    </div>
+  
 </div>
 <div class="row">
-    <div class="card mb-4 col-md-6">
-        <header class="card-header">
-            <div class="row gx-3">
-                <div class="col-lg-4 col-md-6 me-auto">
-                    <h5>Distributor</h5>
+    <?php if(in_groups(3)): ?>
+        <div class="card mb-4 col-md-6">
+            <header class="card-header">
+                <div class="row gx-3">
+                    <div class="col-lg-4 col-md-6 me-auto">
+                        <h5>Distributor</h5>
+                    </div>
                 </div>
-            </div>
-        </header> <!-- card-header end// -->
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-sm table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Masuk</th>
-                            <th scope="col">Keluar</th>
-                            <th scope="col">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($pendapatan_seller as $seller): ?>
+            </header> <!-- card-header end// -->
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover">
+                        <thead>
                             <tr>
-                                <td><?php echo $seller->masuk ?></td>
-                                <td><?php echo $seller->keluar ?></td>
-                                <td><?php echo $seller->total; ?></td>
+                                <th scope="col">Masuk</th>
+                                <th scope="col">Keluar</th>
+                                <th scope="col">Total</th>
                             </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
-            </div> <!-- table-responsive //end -->
-        </div> <!-- card-body end// -->
-    </div> <!-- card end// -->
-
-     <div class="card mb-4 col-md-6">
+                        </thead>
+                        <tbody>
+                            <?php foreach ($pendapatan_seller as $seller): ?>
+                                <tr>
+                                    <td><?php echo $seller->masuk ?></td>
+                                    <td><?php echo $seller->keluar ?></td>
+                                    <td><?php echo $seller->total; ?></td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div> <!-- table-responsive //end -->
+            </div> <!-- card-body end// -->
+        </div> <!-- card end// -->
+    <?php endif; ?>
+    <div class="card mb-4 col-md-6">
         <header class="card-header">
             <div class="row gx-3">
                 <div class="col-lg-4 col-md-6 me-auto">
@@ -73,57 +72,50 @@
         </div> <!-- card-body end// -->
     </div>
 
-    <div class="card mb-4 col-md-6">
-        <header class="card-header">
-            <div class="row gx-3">
-                <div class="col-lg-4 col-md-6 me-auto">
-                    <h5>Transaksi</h5>
+    <?php if(in_groups(3)): ?>
+        <div class="card mb-4 col-md-6">
+            <header class="card-header">
+                <div class="row gx-3">
+                    <div class="col-lg-4 col-md-6 me-auto">
+                        <h5>Transaksi</h5>
+                    </div>
+                    <div class="col-lg-2 col-6 col-md-3">
+                        <select class="form-select">
+                            <option>Status</option>
+                            <option>Active</option>
+                            <option>Disabled</option>
+                            <option>Show all</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col-lg-2 col-6 col-md-3">
-                    <select class="form-select">
-                        <option>Status</option>
-                        <option>Active</option>
-                        <option>Disabled</option>
-                        <option>Show all</option>
-                    </select>
-                </div>
-            </div>
-        </header> <!-- card-header end// -->
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-sm table-hover">
-                    <thead>
-                        <tr>
-                            <th>#ID</th>
-                            <th scope="col">Komisi Distributor</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($detailtransaksi as $detail): ?>
+            </header> <!-- card-header end// -->
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover">
+                        <thead>
                             <tr>
-                                <td class="id"><?= $detail['id']; ?></td>
-                                <td><?= intval($detail['stockist_commission']); ?></td>
-                          </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
-            </div> <!-- table-responsive //end -->
-        </div> <!-- card-body end// -->
-    </div>
-
+                                <th>#ID</th>
+                                <th scope="col">Komisi Distributor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($detailtransaksi as $detail): ?>
+                                <tr>
+                                    <td class="id"><?= $detail['id']; ?></td>
+                                    <td><?= intval($detail['stockist_commission']); ?></td>
+                              </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div> <!-- table-responsive //end -->
+            </div> <!-- card-body end// -->
+        </div>
+    <?php endif; ?>
     <div class="card mb-4 col-md-6">
         <header class="card-header">
             <div class="row gx-3">
                 <div class="col-lg-4 col-md-6 me-auto">
                     <h5>Transaksi</h5>
-                </div>
-                <div class="col-lg-2 col-6 col-md-3">
-                    <select class="form-select">
-                        <option>Status</option>
-                        <option>Active</option>
-                        <option>Disabled</option>
-                        <option>Show all</option>
-                    </select>
                 </div>
             </div>
         </header> <!-- card-header end// -->
