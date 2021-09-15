@@ -131,8 +131,8 @@
                     <tbody>
                         <?php foreach ($detailtransaksi_affiliate as $detail): ?>
                             <tr>
-                                <td class="id"><?= $detail['id']; ?></td>
-                                <td><?=  intval($detail['affiliate_commission']); ?></td>
+                                <td class="id"><?= $detail->id; ?></td>
+                                <td><?=  intval($detail->affiliate_commission); ?></td>
                           </tr>
                         <?php endforeach ?>
                     </tbody>

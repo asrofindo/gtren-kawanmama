@@ -32,6 +32,20 @@
         </div>
     </div>
 <?php endif; ?>
+<?php if(!empty(session()->getFlashdata('danger'))){ ?>
+
+    <div class="alert alert-success bg-danger text-white">
+        <?php echo session()->getFlashdata('danger');?>
+    </div>
+
+<?php } ?>
+<?php if(!empty(session()->getFlashdata('success'))){ ?>
+
+    <div class="alert alert-success bg-success text-white">
+        <?php echo session()->getFlashdata('success');?>
+    </div>
+
+<?php } ?>
 <div class="row">
     <div class="card mb-4 col-md-12">
         <header class="card-header">
