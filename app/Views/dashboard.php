@@ -174,8 +174,8 @@
         <div class="submenu">
             <a href="<?= base_url() ?>/offer">offer</a>
             <a href="<?= base_url() ?>/banner">banner</a>
-            <a href="<?= base_url() ?>/notifikasi">notifikasi</a>    <li class="menu-item">
-            <a class="menu-link" href="<?php base_url() ?>/empty"> <i class="icon material-icons md-monetization_on"></i>
+            <a href="<?= base_url() ?>/notifikasi">notifikasi</a>  
+            <a  href="<?php base_url() ?>/empty"> <i class="icon material-icons md-monetization_on"></i>
                 <span class="text">Hancurkan Transaksi</span>
             </a>
     
