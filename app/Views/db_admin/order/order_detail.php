@@ -91,6 +91,7 @@
                                 <th width="20%">Unit Price</th>
                                 <th width="20%">Quantity</th>
                                 <th width="20%">status pemesanan</th>
+                                <th width="20%">Ongkir</th>
                                 <th width="20%" class="text-end">Total</th>
                                 <th width="20%" class="text-end">Action</th>
                             </tr>
@@ -133,6 +134,7 @@
                                                 <?php endif; ?>
 
                                             </td>
+                                            <td class="text-end">Rp. <?= number_format($product->ongkir_produk);  ?> </td>
                                             <td class="text-end">Rp. <?= number_format($product->total);  ?> </td>
                                             <td class="text-end">
                                                 <div class="dropdown">

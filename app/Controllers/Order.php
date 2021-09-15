@@ -123,11 +123,11 @@ class Order extends BaseController
 		->find($id);
 
 		// jika barang sudah direfund atau barang tidak ditolak oleh stockist maka tidak di perbolehkan 
-		if($data['detailtransaksi']['status_barang'] == 'refund'){
+		if($data['detailtransaksi']->status_barang == 'refund'){
 			return redirect()->back();
 		}
 
-		if($data['detailtransaksi']['status_barang'] != 'ditolak'){
+		if($data['detailtransaksi']->status_barang != 'ditolak'){
 			return redirect()->back();
 		}
 		// data distributor 
@@ -142,8 +142,8 @@ class Order extends BaseController
 		
 		//  ubah ongkir
 		$data['pengiriman'] = [
-			"id" => $data['detailtransaksi']['p_id'],
-			"ongkir" => $data['detailtransaksi']['ongkir'] -  $data['detailtransaksi']['ongkir_produk']
+			"id" => $data['detailtransaksi']->p_id,
+			"ongkir" => $data['detailtransaksi']->ongkir -  $data['detailtransaksi']->ongkir_produk
 		];
 
 		$this->pengiriman->save($data['pengiriman']);
@@ -153,7 +153,7 @@ class Order extends BaseController
 
 		$data['transaksi'] = [
 			"id" => $transaksi_id,
-			"total" => $total - ($data['detailtransaksi']['total'] + $data['detailtransaksi']['ongkir_produk'])
+			"total" => $total - ($data['detailtransaksi']->total + $data['detailtransaksi']->ongkir_produk)
 		];
 
 		$this->model->save($data['transaksi']);
@@ -164,7 +164,7 @@ class Order extends BaseController
 
 		$data['bills'] = [
 			"id" => $bill_id,
-			"total" => $total - ($data['detailtransaksi']['total'] + $data['detailtransaksi']['ongkir_produk'])
+			"total" => $total - ($data['detailtransaksi']->total + $data['detailtransaksi']->ongkir_produk)
 		];
 
 		$this->bills->save($data['bills']);
