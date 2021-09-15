@@ -26,18 +26,16 @@
 <div class="card mb-4">
     <header class="card-header">
         <div class="row align-items-center">
-            <div class="col-md-3 col-12 me-auto mb-md-0 mb-3">
-                <form method="post" action="<?php base_url() ?>/search">
-                    <select class="form-select" name="keyword">
-                        <option selected>All category</option>
-                        <?php foreach ($categories as $category): ?>
-                            <option value="<?= $category->id ?>"><?= $category->category ?></option>
-                        <?php endforeach ?>
-                    </select>
-                </form>
-            </div>
-            <div class="col-md-2 col-6">
-            </div>
+            <div class="col-md-12 col-12 me-auto mb-md-0 mb-3">
+                <form method="POST" action="<?= base_url() ?>/products/search">
+                <div class="row gx-3">
+                    <div class="col-lg-3 col-md-2">
+                        <input name="keyword" type="text" placeholder="Cari Produk..." class="form-control bg-white">
+                    </div>
+                    <div class="col-lg-6 col-md-2 me-auto">
+                        <button type="submit" class="btn btn-primary btn-sm rounded">Cari</button>
+                    </div>
+                </div>
         </div>
     </header> <!-- card-header end// -->
     <div class="card-body">
