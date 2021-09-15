@@ -63,13 +63,15 @@ class Admin extends BaseController
 	public function order()
 	{
 
-		$data['orders'] = $this->transaksi->select('*, transaksi.id as id,transaksi.created_at')
+		$data['orders'] = $this->transaksi->select('*,group_concat(detailtransaksi.status_barang) as status_barang, transaksi.id as id,transaksi.created_at')
 		->join('users', 'users.id = transaksi.user_id', 'left')
+		->join('detailtransaksi', 'detailtransaksi.transaksi_id = transaksi.id', 'left')
 		->orderBy('transaksi.id', 'DESC')
 		->find(); 
 
 		$data['pager'] = $this->transaksi->paginate(5, 'orders');
 		$data['pager'] = $this->transaksi->pager;
+
 		return view('db_admin/order/order', $data);
 
 	}

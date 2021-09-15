@@ -36,7 +36,7 @@
                         <th scope="col">Nama</th>
                         <th scope="col">Total</th>
                         <th scope="col">Status Pembayaran</th>
-                        <th scope="col">Alamat</th>
+                        <th scope="col">Perhatian Admin</th>
                         <th scope="col">Batas Pesanan</th>
                         <th scope="col">Tanggal</th>
                         <th scope="col" class="text-end"> Aksi </th>
@@ -57,7 +57,17 @@
                                     <span class="badge rounded-pill alert-danger">di gagalkan</span>
                                 <?php endif; ?>
                             </td>
-                            <td><?= $order->alamat; ?></td>
+                            <?php $status_barang = explode(',', $order->status_barang); ?>
+                            <td>
+                                <?php $i = 0;  foreach ($status_barang as $s): ?>
+                                    <?php if($s == 'ditolak'): ?>
+                                        <span class="badge  rounded-pill alert-warning"><?php echo "{$i++} Barang Di Tolak"; ?></span>
+                                    <?php endif; ?>
+                                    <?php if($s == 'refund'): ?>
+                                        <span class="badge  rounded-pill alert-warning"><?php echo "{$i++} Barang Di Refund "; ?></span>
+                                    <?php endif; ?>
+                                <?php endforeach ?>
+                            </td>
                             <td><?= $order->batas_pesanan; ?></td>
                             <td><?= $order->created_at; ?></td>
                             <td class="text-end">

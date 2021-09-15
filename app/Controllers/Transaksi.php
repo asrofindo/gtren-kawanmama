@@ -455,27 +455,40 @@ class Transaksi extends BaseController
 
 	public function request_wd()
 	{
+		// data yang akan di wd
 		$jumlah_wd = $this->request->getPost('jumlah_wd');
 		$status_dana = $this->request->getPost('status_dana');
+
+		// user id
 		$id = user()->id;
+
+		// 
 		$penarikan = $this->pendapatan->where('user_id', user()->id)->where('status_dana', $status_dana)->first();
 
+		// function untuk memperoleh wd sebelum nya
 		$wd_belum = $this->wd->where('user_id', user()->id)->where('status', 'belum')->where('status_dana', $status_dana)->find();
 
+		// function untuk memperoleh semua dana stockist atau affiliate dari table pendapatan 
 		$data['pendapatan_affiliate'] = $this->pendapatan->select('total')->where('status_dana', 'affiliate')->where('user_id', user()->id)->findAll();
 		$data['pendapatan_stockist'] = $this->pendapatan->select('sum(total) as total')->where('status_dana', 'distributor')->where('user_id', user()->id)->findAll();
+		
+		// jika ditemukan wd sebelumnya dan status nya adalah belum dikonfirmasi
 		if(count($wd_belum) > 0){
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();	
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->findAll();
 		
 			return view('db_stokis/wd', $data);
 		}
+
+		//jika jumlah wd nya tidak lebih besar dari 0 
 		if(!$jumlah_wd > 0){
 
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
 			return view('db_stokis/wd', $data);
 		}
+
+
 		if(count($this->pendapatan->where('user_id', user()->id)->find()) == 0 ){
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
@@ -488,6 +501,13 @@ class Transaksi extends BaseController
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
 			return view('db_stokis/wd', $data);
 		}
+
+		if($this->pendapatan->where('user_id', user()->id)->where('status_dana', $status_dana)->find()[0]->total > $jumlah_wd){			
+			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
+			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
+			return view('db_stokis/wd', $data);
+		}
+
 		$this->wd->save([
 			"user_id" => $id,
 			"jumlah_wd" => $jumlah_wd,
