@@ -132,7 +132,10 @@ class Transaksi extends BaseController
 		->where('user_id', user()->id)->where('address.type', 'billing')
 		->join('city', 'city.kota = kabupaten', 'right')
 		->join('subdistrict', 'subdistrict.subsdistrict_name = kecamatan', 'left')->first();
-	
+
+		session()->setFlashdata('expidisi', 'pembeli harus memillih expedisi');
+		session()->setFlashdata('rekening', 'pembeli harus memilih rekening');
+
 		$data['bills'] = $this->bill->find();
 		return view('commerce/checkout', $data);
 	}
