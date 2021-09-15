@@ -874,7 +874,7 @@
                                                     <?php if (in_groups(1)) {
                                                         echo user()->getRoles()[1];
                                                     }elseif(in_groups(3)){
-                                                        echo user()->getRoles()[3];
+                                                        echo 'distributor';
                                                     }elseif(in_groups(4)){
                                                         echo user()->getRoles()[4];
                                                     }elseif(in_groups(5)){
