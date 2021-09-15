@@ -19,6 +19,12 @@
                         <input readonly type="text" value="<?= $user->email?>" class="form-control" id="product_name" />
                     </div>
                     <div class="mb-4">
+                        <label for="product_slug" class="form-label">Rekening</label>
+                        <?php foreach ($rekening as $key => $value) {?>
+                            <h6> (<?= $value->bank?>)-<?= $value->number?>-<?= $value->owner  ?> </h6>
+                        <?php }?>
+                    </div>
+                    <div class="mb-4">
                         <label class="form-label">Roles</label>
                         <table>
                             <?php foreach ($roles as $key => $value) {?>
