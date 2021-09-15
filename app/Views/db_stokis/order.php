@@ -45,7 +45,7 @@
                         <th scope="col">Total</th>
                         <th scope="col">Resi</th>
                         <th scope="col">Alamat</th>
-                        <th scope="col">Batas Pesanan</th>          
+                        <th scope="col">Batas Terima Pesanan</th>          
                         <th scope="col">Tanggal</th>          
                         <th scope="col" class="text-end"> Aksi </th>
                     </tr>
