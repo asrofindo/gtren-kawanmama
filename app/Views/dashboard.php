@@ -392,7 +392,7 @@
                                                         <td><?= $bill->bank_name ?></td>
                                                         <td><?= $bill->bank_number ?></td>
                                                         <td><?= $bill->owner ?></td>
-                                                        <td><?= $bill->total ?></td>
+                                                        <td><?= number_format($bill->total); ?></td>
                                                     </tr>
                                                 <?php endforeach;  ?>
                                             </tbody>  
