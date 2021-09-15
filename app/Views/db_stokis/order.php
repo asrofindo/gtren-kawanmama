@@ -76,7 +76,7 @@
                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="<?= base_url() ?>/order/detail/stockist/<?= $order->id; ?>">Detail</a>
-                                        <?php if($order->status_barang == 'ditolak'): ?>
+                                        <?php if($order->status_barang == 'diterima_seller'): ?>
                                             <a class="dropdown-item btn-acc">Kirim Barang</a>
                                         <?php endif; ?>
 
