@@ -331,7 +331,7 @@ class Admin extends BaseController
 		$db = \Config\Database::connect();
 		$forge = \Config\Database::forge();
 		$db->table('detailtransaksi')->truncate();
-
+		$db->table('transaksi')->truncate();
 		$db->table('pengiriman')->truncate();
 		$db->table('detailpengiriman')->truncate();
 		$db->table('pengiriman')->truncate();

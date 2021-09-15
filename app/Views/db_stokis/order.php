@@ -66,7 +66,7 @@
                                     <span class="badge rounded-pill alert-danger">di gagalkan</span>
                                 <?php endif; ?>
                             </td>
-                            <td>Rp<?php echo $order->total + $order->ongkir_produk - $order->admin_commission - $order->affiliate_commission; ?></td>
+                            <td>Rp<?php echo number_format($order->total + $order->ongkir_produk - $order->admin_commission - $order->affiliate_commission); ?></td>
                             <td><?php echo $order->resi; ?></td>
                             <td><?php echo $order->alamat; ?></td>
                             <td><?php echo $order->batas_pesanan; ?></td>
