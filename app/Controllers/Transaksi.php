@@ -156,6 +156,11 @@ class Transaksi extends BaseController
 		->where('cart_item.status', null)
 		->findAll();
 		foreach ($data['carts'] as $c) {
+
+			if($c->pengiriman_id == null){
+				session()->setFlashdata('danger', 'Data Tidak Lengkap');
+				return redirect()->back();
+			}
 			if($c->pengiriman_id == null && $bill == null){
 				session()->setFlashdata('danger', 'Data Tidak Lengkap');
 				return redirect()->back();
