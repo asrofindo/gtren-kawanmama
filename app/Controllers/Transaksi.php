@@ -157,15 +157,15 @@ class Transaksi extends BaseController
 		->findAll();
 		foreach ($data['carts'] as $c) {
 
+			if($c->pengiriman_id == null && $bill == null){
+				session()->setFlashdata('danger', 'Anda Harus Memilih Kurir Dan Metode Pembayaran');
+				return redirect()->back();
+			}
 			if($c->pengiriman_id == null){
 				session()->setFlashdata('danger', 'Anda Harus Memilih Kurir');
 				return redirect()->back();
 			}
 
-			if($c->pengiriman_id == null && $bill == null){
-				session()->setFlashdata('danger', 'Anda Harus Memilih Kurir Dan Metode Pembayaran');
-				return redirect()->back();
-			}
 
 		}
 
