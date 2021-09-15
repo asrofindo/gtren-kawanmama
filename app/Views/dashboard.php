@@ -188,7 +188,7 @@
                                 <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-monetization_on"></i></span>
                                 <div class="text">
                                     <h6 class="mb-1 card-title">Dana User</h6>
-                                    <span>$<?= $user[0]['user_total'] ;?></span>
+                                    <span>$<?= $user[0]->user_total; ;?></span>
                                    <!--  <span class="text-sm">
                                         Shipping fees are not included
                                     </span> -->
@@ -203,7 +203,7 @@
                             <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
                             <div class="text">
                                 <h6 class="mb-1 card-title">Dana Seller</h6> 
-                                <span><?= $stockist[0]['stockist_total'] ;?></span>
+                                <span><?= $stockist[0]->stockist_total ;?></span>
                                 <!-- <span class="text-sm">
                                     Excluding orders in transit
                                 </span> -->
@@ -217,7 +217,7 @@
                             <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-qr_code"></i></span>
                             <div class="text">
                                 <h6 class="mb-1 card-title">Dana Affiliate</h6> 
-                                <span><?= $affiliate[0]['affiliate_total'] ;?></span>
+                                <span><?= $affiliate[0]->affiliate_total ;?></span>
                             <!--     <span class="text-sm">
                                     In 19 Categories
                                 </span> -->

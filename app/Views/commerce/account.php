@@ -548,29 +548,29 @@
                                                         <label>Nama Lengkap <span class="required">*</span></label>
                                                         <input required="" class="form-control square" name="fullname" type="text" value="<?= user()->fullname ?>">
                                                     </div>
-                                                    <?php if(user()->phone > 0): ?>
+                                                    
                                                         <div class="form-group col-md-12">
                                                             <label>Username <span class="required">*</span></label>
                                                             <input required="" class="form-control square" name=username type="text"  value="<?= user()->username ?>">
                                                         </div>
-                                                    <?php endif; ?>
+                                                    
 
-                                                    <?php if(user()->phone > 0): ?>
+                                                    
                                                         <div class="form-group col-md-12">
                                                             <label>Email Address <span class="required">*</span></label>
                                                             <input required="" class="form-control square" name="email" type="email"  value="<?= user()->email ?>">
                                                         </div>
-                                                    <?php endif; ?>
+                                                    
                                                     <div class="form-group col-md-12">
                                                         <label>Nomer Hp<span class="required">*</span></label>
                                                         <input required="" class="form-control square" value="<?= user()->phone ?>" name="phone" type="text">
                                                     </div>
-                                                    <?php if(user()->phone > 0): ?>
+                                                    
                                                         <div class="form-group col-md-12">
                                                             <label>Password Saat ini <span class="required">*</span></label>
                                                             <input required="" class="form-control square" name="password" type="password">
                                                         </div>
-                                                    <?php endif; ?>
+                                                    
                                                     <div class="col-md-12">
                                                         <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Save</button>
                                                     </div>

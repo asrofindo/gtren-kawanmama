@@ -223,6 +223,7 @@ class User extends BaseController
 		helper(['user']);
 
 		$request = $this->request;
+
 		$data = [
 			'id' => user()->id,
 			'fullname' => $request->getPost('fullname'),
