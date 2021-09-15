@@ -47,8 +47,7 @@
         </a>
     </li>
     <?php endif; ?>
-
-    <?php if(in_groups(4)): ?>
+    <?php if(in_groups(4) && !in_groups(3)): ?>
     <li class="menu-item active">
         <a class="menu-link" href="<?= base_url() ?>/affiliate"> <i class="icon material-icons md-home"></i>
             <span class="text">Dashboard Affiliate</span>
@@ -60,6 +59,8 @@
         </a>
     </li>
     <?php endif; ?>
+
+
     <?php if(in_groups(1)): ?>
     <li class="menu-item has-submenu" >
         <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
@@ -286,7 +287,7 @@
                                                         <td><?= $bill->bank_name ?></td>
                                                         <td><?= $bill->bank_number ?></td>
                                                         <td><?= $bill->owner ?></td>
-                                                        <td><?= $bill->total ?></td>
+                                                        <td><?= $bill->total ? $bill->total : 0;   ?></td>
                                                     </tr>
                                                 <?php endforeach;  ?>
                                             </tbody>  

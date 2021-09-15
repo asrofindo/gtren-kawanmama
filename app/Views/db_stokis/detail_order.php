@@ -112,8 +112,12 @@
                                                 <div class="dropdown">
                                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
                                                     <div class="dropdown-menu">
-                                                         <a class="dropdown-item" href="<?= base_url() ?>/order/acc/<?= $product->id; ?>">Terima</a>
-                                                        <a class="dropdown-item text-danger" href="<?= base_url() ?>/order/ignore/<?= $product->id; ?>">Tolak</a>
+                                                        <?php if($product->status_barang != 'ditolak'): ?>
+                                                            <a class="dropdown-item" href="<?= base_url() ?>/order/acc/<?= $product->id; ?>">Terima</a>
+                                                        <?php endif; ?>
+                                                        <?php if($product->status_barang == null): ?>
+                                                            <a class="dropdown-item text-danger" href="<?= base_url() ?>/order/ignore/<?= $product->id; ?>">Tolak</a>
+                                                        <?php endif; ?>
                                                     </div>
                                                 </div> <!-- dropdown //end -->
                                             </td>
