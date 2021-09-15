@@ -143,7 +143,8 @@ $routes->group('', ['namespace' => 'Myth\Auth\Controllers'], function($routes) {
 
 $routes->group('', function($routes)
 {
-	$routes->get('/dashboard', 'Dashboard::index', ['filter' => 'login','filter' => 'role:admin,stockist']);
+	$routes->get('/admin', 'Dashboard::index', ['filter' => 'login','filter' => 'role:admin']);
+	$routes->get('/seller', 'Dashboard::index', ['filter' => 'login','filter' => 'role:stockist, admin']);
 	// produk
 	$routes->get('tambahproduk', 'Product::tambah_produk', ['filter' => 'login','filter' => 'role:admin']);
 	$routes->post('tambahproduk', 'Product::save', ['filter' => 'login','filter' => 'role:admin']);
