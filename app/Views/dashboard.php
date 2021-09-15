@@ -175,7 +175,7 @@
             <a href="<?= base_url() ?>/offer">offer</a>
             <a href="<?= base_url() ?>/banner">banner</a>
             <a href="<?= base_url() ?>/notifikasi">notifikasi</a>  
-            <a  href="<?php base_url() ?>/empty">
+            <a href="<?php base_url() ?>/empty"  onclick="return confirm('Kamu Yakin ?')">
                 <span class="text">Hancurkan Transaksi</span>
             </a>
     
