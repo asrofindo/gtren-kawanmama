@@ -118,7 +118,7 @@
     						<td><?= $bill->bank_number ?></td>
                             <td><?= $bill->owner ?></td>
     						<td><?= $bill->total ?></td>
-    						<td><a href="<?= base_url('bill/edit/'.$bill->id) ?>">Edit</a> | <a href="<?= base_url('bill/delete/'.$bill->id) ?>">Hapus</a></td>
+    						<td><a href="<?= base_url('bill/edit/'.$bill->id) ?>">Edit</a></td>
     					</tr>
     			
     			<?php else: ?>
@@ -128,7 +128,7 @@
     						<td><?= $bill->bank_name ?></td>
     						<td><?= $bill->bank_number ?></td>
     						<td><?= $bill->owner ?></td>
-    						<td><a href="<?= base_url('bill/edit/'.$bill->id) ?>">Edit</a> | <a href="<?= base_url('bill/delete/'.$bill->id) ?>">Hapus</a></td>
+    						<td><a href="<?= base_url('bill/edit/'.$bill->id) ?>">Edit</a></td>
     					</tr>
     				<?php endforeach;  ?>
     			<?php endif ?>

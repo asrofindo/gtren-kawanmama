@@ -96,7 +96,7 @@
 
     <?php if(in_groups(1)): ?>
     <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/bills"> <i class="icon material-icons md-monetization_on"></i>
+        <a class="menu-link" href="<?php base_url() ?>/bills"> <i class="icon material-icons md-account_balance"></i>
             <span class="text">Rekening Admin</span>
         </a>
     </li>
@@ -112,7 +112,7 @@
 
       <?php if(in_groups(3)): ?>
     <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/request/wd"> <i class="icon material-icons md-monetization_on"></i>
+        <a class="menu-link" href="<?php base_url() ?>/request/wd"> <i class="icon material-icons md-account_balance_wallet"></i>
             <span class="text">Penarikan Dana</span>
         </a>
     </li>
@@ -120,7 +120,7 @@
 
       <?php if(in_groups(1)): ?>
     <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/riwayat/wd"> <i class="icon material-icons md-monetization_on"></i>
+        <a class="menu-link" href="<?php base_url() ?>/riwayat/wd"> <i class="icon material-icons md-assignment"></i>
             <span class="text">Riwayat Withdraw</span>
         </a>
     </li>
@@ -128,7 +128,7 @@
 
     <?php if(in_groups(1)): ?>
     <li class="menu-item has-submenu">
-        <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-shopping_cart"></i>
+        <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-work"></i>
             <span class="text">Hutang Perusahaan</span>
         </a>
         <div class="submenu">
@@ -156,7 +156,7 @@
     <?php endif ?>
     <?php if(in_groups(1)): ?>
     <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/admin/konfirmasi"> <i class="icon material-icons md-shopping_cart"></i>
+        <a class="menu-link" href="<?php base_url() ?>/admin/konfirmasi"> <i class="icon material-icons md-payment"></i>
             <span class="text">Konfirmasi Pembayaran</span>
         </a>
     </li>
@@ -174,7 +174,11 @@
         <div class="submenu">
             <a href="<?= base_url() ?>/offer">offer</a>
             <a href="<?= base_url() ?>/banner">banner</a>
-            <a href="<?= base_url() ?>/notifikasi">notifikasi</a>
+            <a href="<?= base_url() ?>/notifikasi">notifikasi</a>  
+            <a  href="<?php base_url() ?>/empty">
+                <span class="text">Hancurkan Transaksi</span>
+            </a>
+    
         </div>
     </li>
 </ul>
@@ -199,7 +203,7 @@
                                 <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-monetization_on"></i></span>
                                 <div class="text">
                                     <h6 class="mb-1 card-title">Dana User</h6>
-                                    <span>$<?= $user[0]->user_total; ;?></span>
+                                    <span><?= number_format($user[0]->user_total); ;?></span>
                                    <!--  <span class="text-sm">
                                         Shipping fees are not included
                                     </span> -->
@@ -214,7 +218,7 @@
                             <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
                             <div class="text">
                                 <h6 class="mb-1 card-title">Dana Seller</h6> 
-                                <span><?= $stockist[0]->stockist_total ;?></span>
+                                <span><?= number_format($stockist[0]->stockist_total) ;?></span>
                                 <!-- <span class="text-sm">
                                     Excluding orders in transit
                                 </span> -->
@@ -228,7 +232,7 @@
                             <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-qr_code"></i></span>
                             <div class="text">
                                 <h6 class="mb-1 card-title">Dana Affiliate</h6> 
-                                <span><?= $affiliate[0]->affiliate_total ;?></span>
+                                <span><?= number_format($affiliate[0]->affiliate_total) ;?></span>
                             <!--     <span class="text-sm">
                                     In 19 Categories
                                 </span> -->
@@ -243,7 +247,7 @@
                             <span class="icon icon-sm rounded-circle bg-info-light"><i class="text-info material-icons md-shopping_basket"></i></span>
                             <div class="text">
                                 <h6 class="mb-1 card-title">Dana Admin</h6>
-                                <span><?= $admin[0]['admin_total'] ;?></span>
+                                <span><?= number_format($admin[0]['admin_total']) ;?></span>
                                <!--  <span class="text-sm">
                                     Based in your local time.
                                 </span> -->
@@ -304,7 +308,7 @@
                                 <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-monetization_on"></i></span>
                                 <div class="text">
                                     <h6 class="mb-1 card-title">Dana User</h6>
-                                    <span>$<?= $user[0]->user_total; ;?></span>
+                                    <span><?= number_format($user[0]->user_total); ;?></span>
                                    <!--  <span class="text-sm">
                                         Shipping fees are not included
                                     </span> -->
@@ -319,7 +323,7 @@
                             <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
                             <div class="text">
                                 <h6 class="mb-1 card-title">Dana Seller</h6> 
-                                <span><?= $stockist[0]->stockist_total ;?></span>
+                                <span><?= number_format($stockist[0]->stockist_total) ;?></span>
                                 <!-- <span class="text-sm">
                                     Excluding orders in transit
                                 </span> -->
@@ -333,7 +337,7 @@
                             <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-qr_code"></i></span>
                             <div class="text">
                                 <h6 class="mb-1 card-title">Dana Affiliate</h6> 
-                                <span><?= $affiliate[0]->affiliate_total ;?></span>
+                                <span><?= number_format($affiliate[0]->affiliate_total) ;?></span>
                             <!--     <span class="text-sm">
                                     In 19 Categories
                                 </span> -->
@@ -348,7 +352,7 @@
                             <span class="icon icon-sm rounded-circle bg-info-light"><i class="text-info material-icons md-shopping_basket"></i></span>
                             <div class="text">
                                 <h6 class="mb-1 card-title">Dana Admin</h6>
-                                <span><?= $admin[0]['admin_total'] ;?></span>
+                                <span><?= number_format($admin[0]['admin_total']) ;?></span>
                                <!--  <span class="text-sm">
                                     Based in your local time.
                                 </span> -->
