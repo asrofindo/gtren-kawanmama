@@ -338,6 +338,7 @@ class Admin extends BaseController
 		$db->table('bills')->truncate();
 		$db->table('cart_item')->truncate();
 		$db->table('upgrades')->truncate();
+		$db->table('pendapatan')->truncate();
 		
 		return redirect()->back();
 	}
