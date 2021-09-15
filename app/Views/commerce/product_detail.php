@@ -216,7 +216,7 @@
                                                     <form action="<?= base_url() ?>/comment/save" method="post">
                                                     <div class="col-12">
                                                         <div class="form-group">
-                                                            <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
+                                                            <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Tulis Komentar..."></textarea>
                                                         </div>
                                                     </div>
                                                     <p>Peringkat bintang</p>

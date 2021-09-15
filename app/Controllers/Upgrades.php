@@ -111,8 +111,7 @@ class upgrades extends BaseController
 
 			$msg="Selamat!\n".user()->greeting." ".user()->fullname." sudah jadi distributor di ".base_url()."\nNo. Wa: ".user()->phone;
 
-			$notif = $this->notif->findAll();
-			
+			$notif = $this->notif->findAll();			
 			foreach ($notif as $key => $value) {
 				wawoo($value['phone'],$msg);
 			}
