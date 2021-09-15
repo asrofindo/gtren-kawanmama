@@ -339,7 +339,7 @@ class Admin extends BaseController
 		$db->table('cart_item')->truncate();
 		$db->table('upgrades')->truncate();
 		
-		return '<a href="/">Berhasil, klik untuk kembali</>';
+		return redirect()->back();
 	}
 
 	public function admin_konfirmasi(){
