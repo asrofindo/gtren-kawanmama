@@ -27,7 +27,7 @@ class Dashboard extends BaseController
 
 		$data['segments'] = $this->request->uri->getSegments();
 
-		$data['user'] = $this->model->select('sum(COALESCE(admin_commission,0)) + sum(COALESCE(stockist_commission,0)) + sum(COALESCE(affiliate_commission,0)) as user_total')->where('status_barang', null)->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id', 'inner')
+		$data['user'] = $this->model->select('sum(COALESCE(admin_commission,0)) + sum(COALESCE(stockist_commission,0)) + sum(COALESCE(affiliate_commission,0)) as user_total')->where('status_barang', null)->orWhere('status_barang =', 'ditolak')->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id', 'inner')
 		->where('transaksi.status_pembayaran', 'paid')
          ->where('status_barang =', null)->orWhere('status_barang =', 'refund')->orWhere('status_barang =', 'dikirim')
           ->findAll();
