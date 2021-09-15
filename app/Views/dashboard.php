@@ -31,12 +31,22 @@
         </div>
         <nav>
            <ul class="menu-aside">
+
+    <?php if(in_groups(1)): ?>
     <li class="menu-item active">
-        <a class="menu-link" href="<?= base_url() ?>/dashboard"> <i class="icon material-icons md-home"></i>
-            <span class="text">Dashboard</span>
+        <a class="menu-link" href="<?= base_url() ?>/admin"> <i class="icon material-icons md-home"></i>
+            <span class="text">Dashboard Admin</span>
         </a>
     </li>
+    <?php endif; ?>
 
+    <?php if(in_groups(3)): ?>
+    <li class="menu-item active">
+        <a class="menu-link" href="<?= base_url() ?>/seller"> <i class="icon material-icons md-home"></i>
+            <span class="text">Dashboard Seller</span>
+        </a>
+    </li>
+    <?php endif; ?>
     <?php if(in_groups(1)): ?>
     <li class="menu-item has-submenu" >
         <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
