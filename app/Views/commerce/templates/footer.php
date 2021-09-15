@@ -4,11 +4,11 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="widget-about font-md mb-md-5">
-                        <div class="logo logo-width-1 wow fadeIn animated">
+                        <!-- <div class="logo logo-width-1 wow fadeIn animated">
                             <a href="index.html" class="w-25"><img src="<?= base_url() ?>/frontend/imgs/theme/gtren.png" alt="logo"></a>
-                        </div>
+                        </div> -->
     
-                        <h4 class="mb-10 mt-20 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h4>
+                        <h4 class="mb-10 mt-20 fw-600 text-grey-4 wow fadeIn animated">Social Media</h4>
                         <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
                             <a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a>
                             <a class="twitter" href="#"><i class="fab fa-twitter"></i></a>
@@ -18,28 +18,39 @@
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3">
-                    <h5 class="widget-title mb-30 wow fadeIn animated">Web</h5>
+                    <h5 class="widget-title mb-30 wow fadeIn animated">Halaman</h5>
                     <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
                         <li><a href="<?= base_url()?>/about">About Us</a></li>
                         <li><a href="<?= base_url()?>/contact">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2  col-md-3">
-                    <h5 class="widget-title mb-30 wow fadeIn animated">Account</h5>
+                    <h5 class="widget-title mb-30 wow fadeIn animated">Dashboard</h5>
                     <ul class="footer-list wow fadeIn animated">
-                        <li><a href="<?php base_url() ?>/login">Login</a></li>
-                        <li><a href="<?php base_url() ?>/register">Register</a></li>
+                        <?php if (user()==null) {?>
+                            <li><a href="<?php base_url() ?>/login">Login</a></li>
+                            <li><a href="<?php base_url() ?>/register">Register</a></li>
+                        <?php }else{ ?>
+                            <li><a href="<?php base_url() ?>/account">Profile</a></li>
+                            <?php if (in_groups(1)) {?>
+                                <li><a href="<?php base_url() ?>/admin">Dashboard</a></li>
+                            <?php }?>
+                            <?php if (in_groups(3)) {?>
+                                <li><a href="<?php base_url() ?>/seller">Toko Anda</a></li>
+                            <?php }?>
+                     
+                        <?php } ?>
                     </ul>
                 </div>
                 <div class="col-lg-4">
-                    <h5 class="widget-title mb-30 wow fadeIn animated">Download Our App</h5>
+                    <h5 class="widget-title mb-30 wow fadeIn animated">Unduh Aplikasi</h5>
                     <div class="row">
                         <div class="col-md-8 col-lg-12">
                             <p class="wow fadeIn animated">From App Store or Google Play</p>
-                            <div class="download-app wow fadeIn animated">
+                            <!-- <div class="download-app wow fadeIn animated">
                                 <a href="#" class="hover-up mb-sm-4"><img src="<?= base_url() ?>/frontend/imgs/theme/app-store.jpg" alt=""></a>
                                 <a href="#" class="hover-up"><img src="<?= base_url() ?>/frontend/imgs/theme/google-play.jpg" alt=""></a>
-                            </div>
+                            </div> -->
                         </div>
                        <!--  <div class="col-md-4 col-lg-12">
                             <p class="mb-20 wow fadeIn animated mt-md-3">Secured Payment Gateways</p>

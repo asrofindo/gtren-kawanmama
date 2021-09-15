@@ -623,14 +623,14 @@
                                                     
                                                         <div class="form-group col-md-12">
                                                             <label>Username <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name=username type="text"  value="<?= user()->username ?>">
+                                                            <input readonly required="" class="form-control square" name=username type="text"  value="<?= user()->username ?>">
                                                         </div>
                                                     
 
                                                     
                                                         <div class="form-group col-md-12">
                                                             <label>Email Address <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="email" type="email"  value="<?= user()->email ?>">
+                                                            <input readonly required="" class="form-control square" name="email" type="email"  value="<?= user()->email ?>">
                                                         </div>
                                                     
                                                     <div class="form-group col-md-12">
@@ -837,7 +837,7 @@
                                                 </div>
                                             </form>
                                             <?php else: ?>
-                                                <a href="<?= base_url('/dashboard') ?>"><button class="btn btn-lg btn">Klik Untuk Kunjungi Dashboard</button></a>    
+                                                <a href="<?= base_url('/seller') ?>"><button class="btn btn-lg btn">Klik Untuk Kunjungi Dashboard</button></a>    
                                             <?php endif; ?>
 
                                             </div>
@@ -883,7 +883,7 @@
                                             <?php if(in_groups(3)){?>
                                             <div class="roe m-1">
                                                 <div class="col-12">
-                                                    <a href="<?= base_url('/dashboard') ?>"><button class="btn btn-lg w-100">Klik Untuk Kunjungi Dashboard</button></a>
+                                                    <a href="<?= base_url('/seller') ?>"><button class="btn btn-lg w-100">Klik Untuk Kunjungi Dashboard</button></a>
                                                 </div>
                                             </div>
                                             <?php }?>
