@@ -86,12 +86,12 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th width="20%">Product</th>
+                                <th width="20%">Produk</th>
                                 <th width="20%">Seller</th>
-                                <th width="20%">Unit Price</th>
+                                <th width="20%">Harga</th>
+                                <th width="20%">Ongkir</th>
                                 <th width="20%">Quantity</th>
                                 <th width="20%">status pemesanan</th>
-                                <th width="20%">Ongkir</th>
                                 <th width="20%" class="text-end">Total</th>
                                 <th width="20%" class="text-end">Action</th>
                             </tr>
@@ -111,6 +111,7 @@
                                             </td>
                                             <td> <?= $product->locate; ?> </td>
                                             <td> Rp. <?= number_format($product->total / $product->amount); ?> </td>
+                                            <td class="text-end">Rp. <?= number_format($product->ongkir_produk);  ?> </td>
                                             <td> <?= $product->amount; ?> </td>
                                             <td> 
                                                <?php if($product->status_barang == 'pending' && $product->status_pembayaran == 'paid'): ?>
@@ -134,7 +135,6 @@
                                                 <?php endif; ?>
 
                                             </td>
-                                            <td class="text-end">Rp. <?= number_format($product->ongkir_produk);  ?> </td>
                                             <td class="text-end">Rp. <?= number_format($product->total);  ?> </td>
                                             <td class="text-end">
                                                 <div class="dropdown">
