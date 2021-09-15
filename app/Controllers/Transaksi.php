@@ -481,7 +481,7 @@ class Transaksi extends BaseController
 
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
-			session()->setFlashdata('danger', 'Data Tidak Benar');
+
 			return view('db_stokis/wd', $data);
 		}
 
