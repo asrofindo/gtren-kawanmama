@@ -57,7 +57,12 @@
                                     <span class="badge rounded-pill alert-danger">di gagalkan</span>
                                 <?php endif; ?>
                             </td>
-                            <td><?= $order->alamat; ?></td>
+                            <?php $status_barang = explode(',', $order->status_barang); ?>
+                            <?php foreach ($status_barang as $s): ?>
+                                <?php if($s == 'refund'): ?>
+                                    <td><?php echo $s; ?></td>
+                                <?php endif; ?>
+                            <?php endforeach ?>
                             <td><?= $order->batas_pesanan; ?></td>
                             <td><?= $order->created_at; ?></td>
                             <td class="text-end">
