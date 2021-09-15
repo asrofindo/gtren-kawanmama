@@ -127,7 +127,6 @@
                             <td><?= $bill->total ?></td>
                             <td>
                                 <a class="btn btn-light rounded btn-sm font-sm" href="<?= base_url('bills/edit/'.$bill->id) ?>">Edit</a> 
-                                <a class="btn btn-brand rounded btn-sm font-sm" href="<?= base_url('bills/delete/'.$bill->id) ?>">Hapus</a>
                             </td>
                         </tr>
                 
@@ -141,7 +140,6 @@
                             
                             <td>
                                 <a class="btn btn-light rounded btn-sm font-sm" href="<?= base_url('bills/edit/'.$bill->id) ?>">Edit</a> 
-                                <a class="btn btn-brand rounded btn-sm font-sm" href="<?= base_url('bills/delete/'.$bill->id) ?>">Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach;  ?>
