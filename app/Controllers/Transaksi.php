@@ -473,7 +473,7 @@ class Transaksi extends BaseController
 		if(count($wd_belum) > 0){
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();	
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->findAll();
-		
+			session()->setFlashdata('danger', 'Anda Harus Menunggu Pencairan Dana Sebelumnya');
 			return view('db_stokis/wd', $data);
 		}
 
@@ -482,6 +482,7 @@ class Transaksi extends BaseController
 
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
+			session()->setFlashdata('danger', 'Data Tidak Benar');
 			return view('db_stokis/wd', $data);
 		}
 
@@ -496,12 +497,14 @@ class Transaksi extends BaseController
 		if($this->pendapatan->where('user_id', user()->id)->where('status_dana', $status_dana)->find()[0]->total == 0){			
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
+			session()->setFlashdata('danger', 'Dana Tidak Cukup');
 			return view('db_stokis/wd', $data);
 		}
 
 		if($this->pendapatan->where('user_id', user()->id)->where('status_dana', $status_dana)->find()[0]->total < $jumlah_wd){			
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
+			session()->setFlashdata('danger', 'Dana Tidak Cukup');
 			return view('db_stokis/wd', $data);
 		}
 
@@ -516,6 +519,8 @@ class Transaksi extends BaseController
 			"id" => $penarikan->id,
 			"penarikan_dana" => $jumlah_wd,
 		]);		
+
+		session()->setFlashdata('success', 'Sukses Meminta Pencairan Dana Mohon Ditunggu');
 		return redirect()->back();
 	}	
 
