@@ -342,7 +342,7 @@ class Admin extends BaseController
 			$db->table('pendapatan')->truncate();
 		}
 		
-		return redirect()->back();
+		return redirect()->to('/admin');
 	}
 
 	public function admin_konfirmasi(){

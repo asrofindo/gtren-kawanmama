@@ -95,6 +95,14 @@
                     </div>
                 </form>
             </div> -->
+             <?php if(!empty(session()->getFlashdata('danger'))){ ?>
+
+                <div class="alert alert-success bg-danger text-white">
+                    <?php echo session()->getFlashdata('danger');?>
+                </div>
+
+            <?php } ?>
+
             <div class="col-md-12">
                 <div class="order_review">
                     <div class="mb-20">
