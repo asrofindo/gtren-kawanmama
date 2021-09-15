@@ -87,8 +87,8 @@ class Order extends BaseController
 
 
 		$data = [
-			"id" => $product_transaksi[0]['pd_id'],
-			"jumlah" => $product_transaksi[0]['jumlah'] - $product_transaksi[0]['amount']
+			"id" => $product_transaksi[0]->pd_id,
+			"jumlah" => $product_transaksi[0]->jumlah - $product_transaksi[0]->amount
 		];
 
 		$this->productdistributor->save($data);
@@ -206,7 +206,7 @@ class Order extends BaseController
 		$data_null = [];
 
 		foreach ($data_transaksis as $t) {
-			if($t['status_barang'] == null){
+			if($t->status_barang == null){
 				array_push($data_null, $t);
 			}
 		}
@@ -216,12 +216,12 @@ class Order extends BaseController
 			// looping dan mengubah data resi dan status barang di dalam table detail transaksi 
 			foreach ($data_transaksis as $data_transaksi) {
 	          	
-				$id = $data_transaksi['id'];
+				$id = $data_transaksi->id;
 
-		        array_push($amount,  $data_transaksi['amount']);
-	          	if($data_transaksi['status_barang'] == 'diterima_seller'){ 		
+		        array_push($amount,  $data_transaksi->amount);
+	          	if($data_transaksi->status_barang == 'diterima_seller'){ 		
 		          	$data = [
-						"id" => $data_transaksi['id'],
+						"id" => $data_transaksi->id,
 						"resi" => $resi,
 						"tanggal_resi" =>  date( "Y-m-d H:i:s", strtotime( "+10 days")),
 						"status_barang" => "dikirim"
@@ -229,11 +229,8 @@ class Order extends BaseController
 		          
 		 
 					$this->detailtransaksi->save($data);
-	          	}
-	          
-			}
-
-			// mengurangi jumlah barang dari distributor dan data distributor
+                  
+                  		// mengurangi jumlah barang dari distributor dan data distributor
 			
 			$distributors = $this->detailtransaksi
 			->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id')
@@ -242,16 +239,21 @@ class Order extends BaseController
 			->find();
 	
 			for($i = 0; $i < count($distributors); $i++){
-				$productdistributor_id = $this->productdistributor->where('distributor_id', $distributors[$i]['distributor_id'])->where('product_id', $distributors[$i]['product_id'])->find();
+				$productdistributor_id = $this->productdistributor->where('distributor_id', $distributors[$i]->distributor_id)->where('product_id', $distributors[$i]->product_id)->find();
 
 				$this->productdistributor->save([
 					"id" => $productdistributor_id[0]->id,
-					"jumlah" => $productdistributor_id[0]->jumlah - $distributors[$i]['amount']
+					"jumlah" => $productdistributor_id[0]->jumlah - $distributors[$i]->amount
 				]);
 			}
 
 			// dan yang terakhir adalah redirect back
 			session()->setFlashdata('success', 'Sukses Menginput Resi');
+	          	} 
+
+			} 
+
+	
 			return redirect()->back();
 
 		} else {
@@ -282,16 +284,16 @@ class Order extends BaseController
 		->join('distributor', 'distributor.id = cart_item.distributor_id')
 		->where('detailtransaksi.id', $id)->find();
 
-		$id_affiliate = explode("/", $transaksis[0]['affiliate_link']); 
+		$id_affiliate = explode("/", $transaksis[0]->affiliate_link); 
 		// apakah di dalam table pendapatan terdapat seller yang sama
-		if(count($this->pendapatan->where('user_id', $transaksis[0]['penjual_id'])->find()) > 0){
+		if(count($this->pendapatan->where('user_id', $transaksis[0]->penjual_id)->find()) > 0){
 
-			$detail_transaksi = $this->pendapatan->where('user_id', $transaksis[0]['penjual_id'])->where('status_dana', 'distributor')->find();
+			$detail_transaksi = $this->pendapatan->where('user_id', $transaksis[0]->penjual_id)->where('status_dana', 'distributor')->find();
 
 			$data['pendapatan'] = [
 				"id" => $detail_transaksi[0]->id,
-				"masuk" => $detail_transaksi[0]->masuk + $transaksis[0]['stockist_commission'],
-				"total" => $detail_transaksi[0]->total + $transaksis[0]['stockist_commission'],
+				"masuk" => $detail_transaksi[0]->masuk + $transaksis[0]->stockist_commission,
+				"total" => $detail_transaksi[0]->total + $transaksis[0]->stockist_commission,
 			];
 
 			$this->pendapatan->save($data['pendapatan']);
@@ -303,19 +305,19 @@ class Order extends BaseController
 		else {
 			
 			$data['pendapatan'] = [
-				"user_id" => $transaksis[0]['penjual_id'],
-				"masuk" => $transaksis[0]['stockist_commission'],
+				"user_id" => $transaksis[0]->penjual_id,
+				"masuk" => $transaksis[0]->stockist_commission,
 				"keluar" => null,
 				"status_dana" => "distributor",
-				"total" => $transaksis[0]['stockist_commission'],
+				"total" => $transaksis[0]->stockist_commission,
 			];
 			$this->pendapatan->save($data['pendapatan']);
 			
 		}
 		
-		if($transaksis[0]['affiliate_link'] != null){
+		if($transaksis[0]->affiliate_link != null){
 
-			$id_affiliate = explode("/", $transaksis[0]['affiliate_link']); 
+			$id_affiliate = explode("/", $transaksis[0]->affiliate_link); 
 
 			if(count($this->pendapatan->where('user_id', $id_affiliate[2])->where('status_dana', 'affiliate')->find()) > 0)
 				{
@@ -323,8 +325,8 @@ class Order extends BaseController
 					
 					$data['pendapatan'] = [
 						"id" => $detail_transaksi[0]->id,
-						"masuk" => $detail_transaksi[0]->masuk + $transaksis[0]['affiliate_commission'],
-						"total" => $detail_transaksi[0]->total + $transaksis[0]['affiliate_commission'],
+						"masuk" => $detail_transaksi[0]->masuk + $transaksis[0]->affiliate_commission,
+						"total" => $detail_transaksi[0]->total + $transaksis[0]->affiliate_commission,
 					];
 
 					$this->pendapatan->save($data['pendapatan']);
@@ -333,9 +335,9 @@ class Order extends BaseController
 			else {
 				$data['pendapatan'] = [
 					"user_id" => $id_affiliate[2],
-					"masuk" => $transaksis[0]['affiliate_commission'],
+					"masuk" => $transaksis[0]->affiliate_commission,
 					"status_dana" => "affiliate",
-					"total" => $transaksis[0]['affiliate_commission'],
+					"total" => $transaksis[0]->affiliate_commission,
 				];
 				
 				$this->pendapatan->save($data['pendapatan']);
