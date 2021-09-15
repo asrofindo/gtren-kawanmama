@@ -124,5 +124,5 @@ nb-configuration.xml
 /phpunit*.xml
 /.phpunit.*.cache
 
-#env
+.env
 
