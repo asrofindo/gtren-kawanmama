@@ -445,7 +445,7 @@ class Transaksi extends BaseController
 		$data['detailtransaksi_affiliate'] = $this->detail_transaksi
 		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
 		->join('users', 'users.affiliate_link = cart_item.affiliate_link')
-		->where('users.id', user()->id)->where('status_barang', 'diterima')->findAll();
+		->where('users.id', user()->id)->where('status_barang', 'diterima_pembeli')->findAll();
 
 		return view('db_stokis/keuangan', $data);
 	}
