@@ -91,7 +91,7 @@ class Dashboard extends BaseController
           	
 		}
 
-		$data['pending_affiliate'] = $this->model->select('sum(COALESCE(affiliate_commission,0) - COALESCE(pendapatan.keluar,0)) AS pending_affiliate_total')
+		$data['pending_affiliate'] = $this->model->select('sum(COALESCE(affiliate_commission,0)) AS pending_affiliate_total')
       	->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id AND transaksi.status_pembayaran = "paid"')
       	->join('cart_item', 'cart_item.id = detailtransaksi.cart_id ', 'left')
       	->join('users', 'users.affiliate_link = cart_item.affiliate_link', 'left')
@@ -99,7 +99,7 @@ class Dashboard extends BaseController
 		->where('status_barang =', 'dikirim')
 		->orWhere('status_barang =', 'dipantau')
       	->findAll();
-      	
+
 		$data['bills'] = $this->bill->findAll();
 		$data['bills']   = $this->bill->paginate(4, 'bills');
 		$data['pager']    = $this->bill->pager;
