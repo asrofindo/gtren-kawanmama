@@ -114,6 +114,7 @@ class User extends BaseController
 			}else{
 				$this->konfirmasi->update($data['konfirmasi']->id,$data);
 			}
+			session()->setFlashdata('success', 'Terimakasih, Konfirmasi anda sudah kami catat. Akan dicek oleh staff kami.');
 
 			$msg = "Terimakasih Telah Konfirmasi Pembayaran\nNo. Transaksi : ".$id."\nSilahkan Tunggu Konfirmasi Dari Admin";
 			wawoo(user()->phone,$msg);

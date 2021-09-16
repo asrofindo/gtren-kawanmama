@@ -274,8 +274,12 @@
                             <?php elseif($segments[0] == "konfirmasi"): ?>
                                 <div class="tab-pane fade active show" id="upgrade" role="tabpanel" aria-labelledby="upgrade-tab">
                                     <div class="card p-3">
+                                            <?php if(!empty(session()->getFlashdata('success'))){ ?>
+                                                <div class="alert alert-success bg-success text-white">
+                                                    <?php echo session()->getFlashdata('success');?>
+                                                </div>
+                                            <?php } ?>
                                         <h3>Formulir Konfirmasi Pembayaran</h3>
-                                
                                         <br>
                                         <div class="row">
                                             <h5>Nomor Transaksi : <?= $transaksi->id?></h5>
@@ -662,7 +666,7 @@
                                     <div class="card">
 
                                         <div class="card-header">
-                                            <h5>Upgrade Akun</h5>
+                                            <h5>Dashboard Affiliate</h5>
                                         </div>
                                         <div class="card-body">
                                             <?php if(count($upgrades) < 1 && !in_groups(4) ): ?>
