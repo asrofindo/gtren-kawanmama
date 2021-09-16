@@ -1,6 +1,6 @@
 <?= $this->extend('commerce/templates/index') ?>
 <?= $this->section('content') ?>
-<div class="page-header breadcrumb-wrap">
+<!-- <div class="page-header breadcrumb-wrap">
     <div class="container">
         <div class="breadcrumb">
             <a href="<?php base_url() ?>" rel="nofollow">Home</a>
@@ -8,7 +8,7 @@
             <span></span> Checkout
         </div>
     </div>
-</div>
+</div> -->
 <section class="mt-50 mb-50">
     <div class="container">
 <!--         <div class="row">
