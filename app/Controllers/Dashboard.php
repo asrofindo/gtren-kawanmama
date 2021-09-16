@@ -83,7 +83,6 @@ class Dashboard extends BaseController
 			$data['pending_stockist'] = $this->model->select('sum(COALESCE(admin_commission,0)) + sum(COALESCE(stockist_commission,0)) + sum(COALESCE(affiliate_commission,0)) as pending_stockist_total')
 			->join('distributor', 'distributor.id = detailtransaksi.distributor_id ', 'left')
           	->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id AND transaksi.status_pembayaran = "paid"')
-          	->where('pendapatan.status_dana =', 'distributor')
 			->where('distributor.user_id', user()->id)
 			->where('status_barang =', 'dikirim')
 			->orWhere('status_barang =', 'dipantau')
