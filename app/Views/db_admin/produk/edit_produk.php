@@ -88,12 +88,12 @@
                             <div class="mb-4">
                                 <label class="form-label">Komisi Affiliate</label>
                                 <?php if(isset(session('errors')['affiliate_commission'])): ?>
-                                    <input name="affiliate_commission" type="number" placeholder="%" class="form-control is-invalid" id="product_name" value="<?= old('affiliate_commission') ?? $product->affiliate_commission ?>">
+                                    <input name="affiliate_commission" type="number" placeholder="Rp" class="form-control is-invalid" id="product_name" value="<?= old('affiliate_commission') ?? $product->affiliate_commission ?>">
                                     <div class="invalid-feedback">
                                         <?= session('errors')['affiliate_commission'] ?>
                                     </div>
                                 <?php else: ?>
-                                    <input name="affiliate_commission" type="number" placeholder="%" class="form-control" id="product_name" value="<?= old('affiliate_commission') ?? $product->affiliate_commission ?>">
+                                    <input name="affiliate_commission" type="number" placeholder="Rp" class="form-control" id="product_name" value="<?= old('affiliate_commission') ?? $product->affiliate_commission ?>">
                                 <?php endif ?>
                             </div>
                         </div>
@@ -101,12 +101,12 @@
                             <div class="mb-4">
                                 <label class="form-label">Komisi Stokis</label>
                                 <?php if(isset(session('errors')['stockist_commission'])): ?>
-                                    <input name="stockist_commission" type="number" placeholder="%" class="form-control is-invalid" id="product_name" value="<?= old('stockist_commission') ?? $product->stockist_commission ?>">
+                                    <input name="stockist_commission" type="number" placeholder="Rp" class="form-control is-invalid" id="product_name" value="<?= old('stockist_commission') ?? $product->stockist_commission ?>">
                                     <div class="invalid-feedback">
                                         <?= session('errors')['stockist_commission'] ?>
                                     </div>
                                 <?php else: ?>
-                                    <input name="stockist_commission" type="number" placeholder="%" class="form-control" id="product_name" value="<?= old('stockist_commission') ?? $product->stockist_commission ?>">
+                                    <input name="stockist_commission" type="number" placeholder="Rp" class="form-control" id="product_name" value="<?= old('stockist_commission') ?? $product->stockist_commission ?>">
                                 <?php endif ?>
                             </div>
                         </div>
@@ -114,12 +114,12 @@
                             <div class="mb-4">
                                 <label class="form-label">Weight</label>
                                 <?php if(isset(session('errors')['weight'])): ?>
-                                    <input name="weight" type="number" placeholder="%" class="form-control is-invalid" id="weight" value="<?= old('weight') ?? $product->weight ?>">
+                                    <input name="weight" type="number" placeholder="Gram" class="form-control is-invalid" id="weight" value="<?= old('weight') ?? $product->weight ?>">
                                     <div class="invalid-feedback">
                                         <?= session('errors')['weight'] ?>
                                     </div>
                                 <?php else: ?>
-                                    <input name="weight" type="number" placeholder="%" class="form-control" id="weight" value="<?= old('weight') ?? $product->weight ?>">
+                                    <input name="weight" type="number" placeholder="Gram" class="form-control" id="weight" value="<?= old('weight') ?? $product->weight ?>">
                                 <?php endif ?>
                             </div>
                         </div>
