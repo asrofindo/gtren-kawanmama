@@ -12,7 +12,9 @@ use App\Models\DistributorModel;
 use App\Controllers\BaseController;
 use Myth\Auth\Models\UserModel;
 use App\Models\NotifModel;
+use App\Models\CartItemModel;
 use App\Models\SosialModel;
+use App\Models\ProductModel;
 
 class Order extends BaseController
 {
@@ -29,6 +31,8 @@ class Order extends BaseController
 		$this->distributor = new DistributorModel();
 		$this->bills = new BillModel();
 		$this->user = new UserModel();
+		$this->cart = new CartItemModel();
+		$this->product = new ProductModel();
 		$this->notif = new NotifModel();
 
 
@@ -105,16 +109,29 @@ class Order extends BaseController
 			"status_barang" => "ditolak"
 		];
 		$detail=$this->detailtransaksi->where("id",$id)->first();
-		$transaksi=$this->model->where("transaksi_id",$detail->transaksi_id)->first();
-		$cart=$this->model->where("transaksi_id",$detail->transaksi_id)->first();
-		$user=$this->user->where('user_id',$transaksi->user_id)->first();
+		$transaksi=$this->model->where("id",$detail->transaksi_id)->first();
+		$user=$this->user->where('id',$transaksi->user_id)->first();
+
+		$product= $this->detailtransaksi->select('products.name as product')
+		->join('cart_item', 'cart_item.id = cart_id')
+		->join('products', 'products.id = cart_item.product_id')
+		->where('detailtransaksi.id',$id)
+		->first();
 
 		$msg=base_url()." \n\n"
 		.$user->greeting." ".$user->fullname.
 		"\n"."Kami informasikan, Pesanan Anda *ditolak oleh distributor* \nNo Transaksi: "
-		.$transaksi->id."\n";
+		.$transaksi->id."\n".
+		'Dengan detail product'.$product->product;
 
 		wawoo($user->phone,$msg);
+
+		$msg=base_url()." \n\n"."Pesanan ini *DITOLAK OLEH SELLER*\nSegera lakukan *REFUND* kepada pembeli.\nNo Transaksi: ".$transaksi->id."\nNama pembeli: ".$user->fullname."\nKunjungi: ".base_url('/order');
+
+		$notif = $this->notif->findAll();
+		foreach ($notif as $key => $value) {
+			wawoo($value['phone'],$msg);
+		}
 
 		$this->detailtransaksi->save($data);
 		return redirect()->back();
@@ -132,7 +149,7 @@ class Order extends BaseController
 		->join('pengiriman', 'pengiriman.user_id = cart_item.user_id')
 		->join('address', 'address.user_id = users.id')
 		->join('city', 'city.kode_pos = address.kode_pos')
-		->first($id);
+		->find($id);
 
 		// jika barang sudah direfund atau barang tidak ditolak oleh stockist maka tidak di perbolehkan 
 		if($data['detailtransaksi']->status_barang == 'refund'){
