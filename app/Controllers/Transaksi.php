@@ -318,7 +318,7 @@ class Transaksi extends BaseController
 						"etd" => $etd ? $etd : 'Tidak temukan' 
 					]);
 				
-					return redirect()->back();
+					return redirect()->to('/checkout');
 				}					
 			}
     	}
@@ -338,7 +338,7 @@ class Transaksi extends BaseController
 			]);
 		}
 		
-		return redirect()->back();
+		return redirect()->to('/checkout');
 	}
 
 	public function hutang_stockist()
