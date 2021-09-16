@@ -38,7 +38,7 @@ class Cron extends ResourceController
 		->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id', 'left')
 		->join('users', 'users.id = transaksi.user_id', 'left')
 		->where('detailtransaksi.status_barang', 'dikirim')
-		->where('tanggal_resi >', date("Y-m-d H:i:s"))
+		->where('tanggal_resi <', date("Y-m-d H:i:s"))
 		->get()
 		->getResult();
 
@@ -53,10 +53,8 @@ class Cron extends ResourceController
 
 		foreach ($data as $d) {
 
-			wawoo($d->phone, 'Harap Konfirmasi Barang');
-
 			$detailtransaksi->where('id', $d->detail_id);
-			$detailtransaksi->update(['status_barang' => "dikirim"]);
+			$detailtransaksi->update(['status_barang' => "dipantau"]);
 
 
 		}
