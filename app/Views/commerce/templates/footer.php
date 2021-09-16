@@ -1,4 +1,4 @@
-<footer class="main">
+<footer class="main ">
     <section class="section-padding-60">
         <div class="container">
             <div class="row">
@@ -21,14 +21,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-3">
+                <div class="col-lg-2 col-md-3 d-none d-sm-block">
                     <h5 class="widget-title mb-30 wow fadeIn animated">Halaman</h5>
                     <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
                         <li><a href="<?= base_url()?>/about">About Us</a></li>
                         <li><a href="<?= base_url()?>/contact">Contact Us</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2  col-md-3">
+                <div class="col-lg-2  col-md-3 d-none d-sm-block">
                     <h5 class="widget-title mb-30 wow fadeIn animated">Dashboard</h5>
                     <ul class="footer-list wow fadeIn animated">
                         <?php if (user()==null) {?>
@@ -65,7 +65,7 @@
             </div>
         </div>
     </section>
-    <div class="container pb-20 wow fadeIn animated">
+    <div class="container pb-20 wow fadeIn animated d-none d-sm-block">
         <div class="row">
             <div class="col-12 mb-20">
                 <div class="footer-bottom"></div>
