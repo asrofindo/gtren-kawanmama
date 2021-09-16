@@ -91,7 +91,7 @@ class Dashboard extends BaseController
           	
 		}
 		if(in_groups(4)){
-	
+
 			$data['pending_affiliate'] = $this->model->select('sum(COALESCE(affiliate_commission,0)) AS pending_affiliate_total')
 	      	->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id AND transaksi.status_pembayaran = "paid"')
 	      	->join('cart_item', 'cart_item.id = detailtransaksi.cart_id ', 'left')

@@ -406,6 +406,7 @@ class Transaksi extends BaseController
 		$this->pendapatan->save($data);
 
 		$this->wd->save(["id" => $id_wd, "status" => "sudah", "bill_id" => $bill_id]);
+		
 
 		return redirect()->back();
 	}
@@ -478,6 +479,7 @@ class Transaksi extends BaseController
 			session()->setFlashdata('danger', 'Dana Tidak Cukup');
 			return view('db_stokis/wd', $data);
         }
+
 		if(count($wd_belum) > 0){
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();	
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->findAll();
