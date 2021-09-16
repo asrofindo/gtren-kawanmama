@@ -23,7 +23,7 @@ class Cron extends ResourceController
 		$detailtransaksi = $db->table('detailtransaksi');
 		
 		$data = $builder->select('*, detailtransaksi.id as detail_id')
-		->where('batas_pesanan >', date( "Y-m-d H:i:s"))
+		->where('batas_pesanan <', date( "Y-m-d H:i:s"))
 		->join('detailtransaksi', 'detailtransaksi.transaksi_id = transaksi.id')
 		->where('status_barang', null)
 		->get()
@@ -40,7 +40,7 @@ class Cron extends ResourceController
 		->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id', 'left')
 		->join('users', 'users.id = transaksi.user_id', 'left')
 		->where('detailtransaksi.status_barang', 'dikirim')
-		->where('tanggal_resi >', date("Y-m-d H:i:s"))
+		->where('tanggal_resi <', date("Y-m-d H:i:s"))
 		->get()
 		->getResult();
 
@@ -55,14 +55,17 @@ class Cron extends ResourceController
 
 		foreach ($data as $d) {
 
+<<<<<<< HEAD
 
 			$user = $this->user->where('phone',$d->phone)->first(); 
 			$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Apakah anda sudah menerima barang yang dikirim oleh distributor?\nJika sudah mohon melakukan konfirmasi pembayaran supaya *dana distributor* dapat kami cairkan.\nAdmin";
 			
 			wawoo($d->phone,$msg);
 
+=======
+>>>>>>> dddc04b1d53b76f97ce011eef10b0e4fc7335325
 			$detailtransaksi->where('id', $d->detail_id);
-			$detailtransaksi->update(['status_barang' => "dikirim"]);
+			$detailtransaksi->update(['status_barang' => "dipantau"]);
 
 
 		}
