@@ -352,13 +352,13 @@ class Admin extends BaseController
 
 	public function admin_konfirmasi(){
 		$data['konfirmasi'] = $this->konfirmasi
-		->select('konfirmasi.id as id ,users.fullname as name,konfirmasi.date as date,konfirmasi.total as total,konfirmasi.bill as bill,konfirmasi.transaksi_id as transaksi_id,konfirmasi.keterangan as keterangan')
+		->select('konfirmasi.id as id ,users.fullname as name,konfirmasi.date as date,konfirmasi.total as total,konfirmasi.bill as bill,konfirmasi.transaksi_id as transaksi_id,konfirmasi.keterangan as keterangan,konfirmasi.bill as bill')
 		->join('users', 'users.id=konfirmasi.user_id', 'left')
 		->orderBy('id','DESC')
 		->find();
 		if ($this->request->getPost('name')!=null) {
 			$data['konfirmasi'] = $this->konfirmasi
-			->select('konfirmasi.id as id ,users.fullname as name,konfirmasi.date as date,konfirmasi.total as total,konfirmasi.bill as bill,konfirmasi.transaksi_id as transaksi_id,konfirmasi.keterangan as keterangan')
+			->select('konfirmasi.id as id ,users.fullname as name,konfirmasi.date as date,konfirmasi.total as total,konfirmasi.bill as bill,konfirmasi.transaksi_id as transaksi_id,konfirmasi.keterangan as keterangan,konfirmasi.bill as bill')
 			->join('users', 'users.id=konfirmasi.user_id', 'left')
 			->like('users.fullname',$this->request->getPost('name'))
 			->orderBy('id','DESC')

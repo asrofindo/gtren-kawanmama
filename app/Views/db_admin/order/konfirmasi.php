@@ -27,6 +27,7 @@
                     <tr>
                         <th scope="col">Nomor Transaksi</th>
                         <th scope="col">Nama Pengirim</th>
+                        <th scope="col">Tujuan Rekening</th>
                         <th scope="col">Tanggal Transfer</th>
                         <th scope="col">Jumlah Transfer</th>
                         <th scope="col">Keterangan</th>
@@ -38,6 +39,7 @@
                         <tr>
                             <td><?= $value->transaksi_id; ?></td>
                             <td><b><?= $value->name?></b></td>
+                            <td><b><?= $value->bill?></b></td>
                             <td><b><?= $value->date?></b></td>
                             <td><?= $value->total ?></td>
                             <td><?= $value->keterangan ?></td>
