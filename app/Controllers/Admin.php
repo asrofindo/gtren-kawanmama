@@ -6,6 +6,7 @@ use Myth\Auth\Models\UserModel;
 use App\Models\TransaksiModel;
 use App\Models\DistributorModel;
 use App\Models\NotifModel;
+use App\Models\SosialModel;
 use App\Models\KonfirmasiModel;
 
 use Myth\Auth\Authorization\GroupModel;
@@ -28,7 +29,8 @@ class Admin extends BaseController
 
 		$this->distributor = new DistributorModel();
 		$this->notif = new NotifModel();
-
+		$this->sosial = new SosialModel();
+		$this->data['sosial']    = $this->sosial->findAll();
 
 	}
 	public function index()
@@ -368,6 +370,26 @@ class Admin extends BaseController
 
 	public function delete_konfirmasi($id){
 		$this->konfirmasi->delete($id);
+
+		return redirect()->back();
+	}
+
+	public function sosial(){
+
+		if ($this->request->getPost('name')!=null) {
+			$set=[
+				'name'=>$this->request->getPost('name'),
+				'link'=>$this->request->getPost('link'),
+			];
+			$this->sosial->save($set);
+		}
+		$data['sosial']=$this->sosial->findAll();
+		return view('db_admin/banner/sosial',$data);
+	}
+
+	public function delete_sosial($id){
+		
+		$this->sosial->delete($id);
 
 		return redirect()->back();
 	}

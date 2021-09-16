@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Models\OfferModel;
 use App\Models\CategoryModel;
 use App\Models\CartItemModel;
+use App\Models\SosialModel;
 
 
 class Commerce extends BaseController
@@ -12,6 +13,8 @@ class Commerce extends BaseController
 
 	public function __construct()
 	{		
+		$this->sosial = new SosialModel();
+		$this->data['sosial']    = $this->sosial->findAll();
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
 		$this->cart = new CartItemModel();

@@ -3,11 +3,13 @@
 namespace App\Controllers;
 use Myth\Auth\Models\UserModel;
 use App\Models\RekeningModel;
-
+use App\Models\SosialModel;
 class Member extends BaseController
 {
- protected $user;
+	protected $user;
 	public function __construct(){
+		$this->sosial = new SosialModel();
+		$this->data['sosial']    = $this->sosial->findAll();
 		$this->rekening = new  RekeningModel();
 		$this->user = new  UserModel();
 	}

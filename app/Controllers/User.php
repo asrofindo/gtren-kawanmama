@@ -11,15 +11,17 @@ use App\Models\CategoryModel;
 use App\Models\KonfirmasiModel;
 use App\Models\NotifModel;
 use App\Models\RekeningModel;
-
+use App\Models\SosialModel;
 use Myth\Auth\Models\UserModel;
 use Myth\Auth\Authorization\GroupModel;
 
 class User extends BaseController
 {
 	protected $data;
-
+	
 	public function __construct(){
+		$this->sosial = new SosialModel();
+		$this->data['sosial']    = $this->sosial->findAll();
 		$this->address = new AddressModel();
 		$this->rekening = new RekeningModel();
 		$this->upgrade = new UpgradesModel();

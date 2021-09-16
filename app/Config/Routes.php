@@ -67,6 +67,9 @@ $routes->get('tracking', 'User::tracking', ['filter' => 'login']);
 $routes->get('/admin/konfirmasi','Admin::admin_konfirmasi');
 $routes->post('/admin/konfirmasi','Admin::admin_konfirmasi');
 $routes->get('/konfirmasi/delete/(:num)','Admin::delete_konfirmasi/$1');
+$routes->get('sosial', 'Admin::sosial');
+$routes->post('sosial', 'Admin::sosial');
+$routes->get('/sosial/delete/(:num)','Admin::delete_sosial/$1');
 
 //addresses
 $routes->get('billing-address', 'User::address', ['filter' => 'login']);

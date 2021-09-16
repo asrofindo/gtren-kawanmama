@@ -15,6 +15,7 @@ use App\Models\ProductDistributorModel;
 use App\Libraries\Slug;
 use Myth\Auth\Models\UserModel;
 use App\Models\CommentModel;
+use App\Models\SosialModel;
 
 
 class Product extends BaseController
@@ -23,6 +24,7 @@ class Product extends BaseController
 	protected $comment;
 	protected $data;
 	protected $user;
+	protected $sosial;
 
 
 	public function __construct()
@@ -40,7 +42,8 @@ class Product extends BaseController
 		$this->user    = new UserModel();
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
-	
+		$this->sosial = new SosialModel();
+		$this->data['sosial']    = $this->sosial->findAll();
 
 	}
 

@@ -11,6 +11,7 @@ use App\Models\DistributorModel;
 use Myth\Auth\Models\UserModel;
 use App\Models\NotifModel;
 use Myth\Auth\Authorization\GroupModel;
+use App\Models\SosialModel;
 
 class upgrades extends BaseController
 {
@@ -27,6 +28,8 @@ class upgrades extends BaseController
 		$this->group = new GroupModel();
 		$this->db      = \Config\Database::connect();
 		$this->builder = $this->db->table('auth_groups_users');
+		$this->sosial = new SosialModel();
+		$this->data['sosial']    = $this->sosial->findAll();
 	}
 
 	public function index()
