@@ -25,7 +25,7 @@ class Wacron extends ResourceController
 		->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id', 'left')
 		->join('users', 'users.id = transaksi.user_id', 'left')
 		->where('detailtransaksi.status_barang', 'dipantau')
-		->where('tanggal_resi >', date("Y-m-d H:i:s"))
+		->where('tanggal_resi <', date("Y-m-d H:i:s"))
 		->get()
 		->getResult();
 
