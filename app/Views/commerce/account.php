@@ -30,9 +30,9 @@
                             <?php if (in_groups(4)) {?>
                                 <li class="nav-item">
                                     <?php if(count($segments) > 1) : ?>
-                                    <a class="nav-link <?= ($segments[1] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Affiliasi Anda</a>
+                                    <a class="nav-link <?= ($segments[1] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Affiliasi Anda</a>
                                     <?php else : ?>
-                                    <a class="nav-link <?= ($segments[0] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Affiliasi Anda</a>    
+                                    <a class="nav-link <?= ($segments[0] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Affiliasi Anda</a>    
                                     <?php endif; ?>
                                 </li>
                             <?php } ?>
@@ -689,7 +689,6 @@
                                                 <p>Registrasi program affiliasi Anda <b>Menunggu Pembayaran<b>.</p>
                                                 <p>Mohon dilakukan pembayaran <strong>Rp <strong><b><?= 50000 + ($generate - 1) ?></strong></b></strong></p>
                                                 <p>ke Rekening Bank Dibawah ini :<br>
-                                                
                                                     Rekening : <strong><?= $bill->bank_name?></strong> <br> Nomor : <strong><?= $bill->bank_number?></strong> <br> A/N : <strong><?= $bill->owner?>.</strong> </p>
                                             <?php }else{ ?>
                                                 <div class="alert alert-success bg-success text-white">
@@ -699,7 +698,6 @@
                                             <?php } ?>
 
                                             <?php if($segments[1] == "affiliate" && !empty(session()->getFlashdata('danger'))){ ?>
-
                                                 <div class="alert alert-danger bg-danger text-white">
                                                     <?php echo session()->getFlashdata('danger');?>
                                                 </div>
