@@ -1,14 +1,14 @@
 <?= $this->extend('commerce/templates/index') ?>
 <?= $this->section('content') ?>
-<div class="page-header breadcrumb-wrap">
+<!-- <div class="page-header breadcrumb-wrap">
     <div class="container">
         <div class="breadcrumb">
-            <a href="index.html" rel="nofollow">Home</a>
+            <a href="<?php base_url() ?>" rel="nofollow">Home</a>
             <span></span> Shop
             <span></span> Checkout
         </div>
     </div>
-</div>
+</div> -->
 <section class="mt-50 mb-50">
     <div class="container">
 <!--         <div class="row">
@@ -109,7 +109,7 @@
                     <?php echo session()->getFlashdata('rekening');?>
                 </div>
                 <?php } ?>
-                <div class="order_review">
+                <div>
                     <div class="mb-20">
                         <h4>Pesanan Anda</h4>
                     </div>
@@ -128,7 +128,7 @@
                                     <?php foreach ($cart['products'] as $product): ?>
                                         <?php $photo = explode(',', $product->photos); ?>
                                         <tr>
-                                            <th><img src="<?php base_url() ?>/public/uploads/product_photos/<?= $photo[0]; ?>" style="width:50px; height:60px"></th>
+                                            <th><img src="<?php base_url() ?>/public/uploads/product_photos/<?= $photo[0]; ?>" style="width:60px; height:60px"></th>
                                             <td><?= $product->name ?></td>
                                             <td><?= $product->amount ?></td>
                                             <td>Rp. <?= number_format($product->sell_price) ?></td>
@@ -190,7 +190,7 @@
                                     </tr>
                                 <?php endforeach; ?>
                                     <tr>
-                                        <th>Total Tagihan</th>
+                                        <th>Total</th>
                                         <td><b>Rp. <?= number_format($total);  ?></b></td>
                                     </tr>
                             </tbody>
