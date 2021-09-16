@@ -118,7 +118,7 @@ class User extends BaseController
 			}
 			session()->setFlashdata('success', 'Terimakasih, Konfirmasi anda sudah kami catat. Akan dicek oleh staff kami.');
 
-			$msg = base_url()."\n".user()->greeting." ".user()->fullname."\nTerimakasih, konfirmasi pembarayan dari Anda sudah kami catat. Team Admin akan segera memferifikasi. Mohon ditunggu.\n";
+			$msg = base_url()."\n".user()->greeting." ".user()->fullname."\nTerimakasih, konfirmasi pembayaranan dari Anda sudah kami catat. Team Admin akan segera memverifikasi. Mohon ditunggu.\n";
 			wawoo(user()->phone,$msg);
 
 			$msg="Pembeli ini mengisi *KONFIRMASI PEMBAYARAN*\nSegera cek rekening!\nKunjungi: ".base_url('/admin/konfirmasi');			

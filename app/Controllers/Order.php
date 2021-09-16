@@ -175,6 +175,7 @@ class Order extends BaseController
 			"ongkir" => $data['detailtransaksi']->ongkir -  $data['detailtransaksi']->ongkir_produk
 		];
 
+		
 		$this->pengiriman->save($data['pengiriman']);
 
 		// ubah total transaksi 
@@ -207,7 +208,19 @@ class Order extends BaseController
 			"admin_commission" => null,
 			"stockist_commission" => null,
 		];
+		$transaksi = $this->model->where('id',$transaksi_id)->first();
+		$user = $this->user->where('id',$transaksi->user_id)->first();
 
+		$product= $this->detailtransaksi->select('products.name as product')
+		->join('cart_item', 'cart_item.id = cart_id')
+		->join('products', 'products.id = cart_item.product_id')
+		->where('detailtransaksi.id',$id)
+		->first();
+
+		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Pesanan Anda No Transaksi: ".$transaksi_id."\ndetail product".$product->product."\nsudah dilakukan *PENGEMBALIAN DANA*\nSilakan cek rekening Anda.\nAnda dapat melakukan pesan ulang ke distributor lain.";
+
+		wawoo($user->phone,$msg);
+		
 		$this->detailtransaksi->save($data['detailtransaksi']);
 
 		return redirect()->back();
