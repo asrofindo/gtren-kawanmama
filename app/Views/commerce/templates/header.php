@@ -117,7 +117,7 @@
             <div class="container">
                 <div class="header-wrap header-space-between position-relative main-nav">
                     <div class="logo logo-width-1 d-block d-md-none">
-                        <a href="<?= base_url()?>" class="w-25 m-1"><img src="<?= base_url()?>/frontend/imgs/theme/gtren-t.png" alt="logo"></a>
+                        <a href="<?= base_url()?>" class="w-25 m-1"><img src="<?= base_url()?>/public/frontend/imgs/theme/gtren-t.png" alt="logo"></a>
                     </div>
                     <div class="main-categori-wrap d-none d-md-block">
                         <a class="categori-button-active" href="#">

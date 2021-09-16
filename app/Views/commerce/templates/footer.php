@@ -7,13 +7,17 @@
                         <!-- <div class="logo logo-width-1 wow fadeIn animated">
                             <a href="index.html" class="w-25"><img src="<?= base_url() ?>/frontend/imgs/theme/gtren.png" alt="logo"></a>
                         </div> -->
-    
-                        <h4 class="mb-10 mt-20 fw-600 text-grey-4 wow fadeIn animated">Social Media</h4>
+                        <h4 class="mb-10 mt-20 fw-600 text-grey-4 wow fadeIn animated">Sosial Media</h4>
                         <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
-                            <a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="twitter" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="tumblr" href="#"><i class="fab fa-tumblr"></i></a>
-                            <a class="instagram" href="#"><i class="fab fa-instagram"></i></a>
+                            <?php foreach ($sosial as $key => $value) {?>
+                                <a class="<?php
+                                    if ($value->name=='youtube') {
+                                        echo 'instagram';
+                                    }else{
+                                       echo $value->name ;
+                                    }
+                                    ?>" href="<?= $value->link?>"><i class="fab fa-<?= $value->name?>"></i></a>
+                            <?php }?>
                         </div>
                     </div>
                 </div>

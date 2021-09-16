@@ -12,12 +12,14 @@ use App\Models\DistributorModel;
 use App\Controllers\BaseController;
 use Myth\Auth\Models\UserModel;
 use App\Models\NotifModel;
-
+use App\Models\SosialModel;
 
 class Order extends BaseController
 {
 	public function __construct()
 	{
+		$this->sosial = new SosialModel();
+		$this->data['sosial']    = $this->sosial->findAll();
 		$this->model = new TransaksiModel();
 		$this->detailtransaksi = new DetailTransaksiModel();
 		$this->pengiriman = new PengirimanModel();

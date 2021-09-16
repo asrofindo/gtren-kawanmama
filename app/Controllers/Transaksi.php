@@ -15,12 +15,14 @@ use App\Models\PendapatanModel;
 use App\Models\WDModel;
 use App\Models\GenerateModel;
 use App\Controllers\BaseController;
-
+use App\Models\SosialModel;
 
 class Transaksi extends BaseController
 {
 	public function __construct()
 	{
+		$this->sosial = new SosialModel();
+		$this->data['sosial']    = $this->sosial->findAll();
 		$this->model = new TransaksiModel();
 		$this->cart = new CartItemModel();
 		$this->category = new CategoryModel();

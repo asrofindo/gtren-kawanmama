@@ -30,9 +30,9 @@
                             <?php if (in_groups(4)) {?>
                                 <li class="nav-item">
                                     <?php if(count($segments) > 1) : ?>
-                                    <a class="nav-link <?= ($segments[1] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Affiliasi Anda</a>
+                                    <a class="nav-link <?= ($segments[1] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Affiliasi Anda</a>
                                     <?php else : ?>
-                                    <a class="nav-link <?= ($segments[0] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Affiliasi Anda</a>    
+                                    <a class="nav-link <?= ($segments[0] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Affiliasi Anda</a>    
                                     <?php endif; ?>
                                 </li>
                             <?php } ?>
@@ -274,8 +274,12 @@
                             <?php elseif($segments[0] == "konfirmasi"): ?>
                                 <div class="tab-pane fade active show" id="upgrade" role="tabpanel" aria-labelledby="upgrade-tab">
                                     <div class="card p-3">
+                                            <?php if(!empty(session()->getFlashdata('success'))){ ?>
+                                                <div class="alert alert-success bg-success text-white">
+                                                    <?php echo session()->getFlashdata('success');?>
+                                                </div>
+                                            <?php } ?>
                                         <h3>Formulir Konfirmasi Pembayaran</h3>
-                                
                                         <br>
                                         <div class="row">
                                             <h5>Nomor Transaksi : <?= $transaksi->id?></h5>
@@ -662,7 +666,7 @@
                                     <div class="card">
 
                                         <div class="card-header">
-                                            <h5>Upgrade Akun</h5>
+                                            <h5>Dashboard Affiliate</h5>
                                         </div>
                                         <div class="card-body">
                                             <?php if(count($upgrades) < 1 && !in_groups(4) ): ?>
@@ -685,7 +689,6 @@
                                                 <p>Registrasi program affiliasi Anda <b>Menunggu Pembayaran<b>.</p>
                                                 <p>Mohon dilakukan pembayaran <strong>Rp <strong><b><?= 50000 + ($generate - 1) ?></strong></b></strong></p>
                                                 <p>ke Rekening Bank Dibawah ini :<br>
-                                                
                                                     Rekening : <strong><?= $bill->bank_name?></strong> <br> Nomor : <strong><?= $bill->bank_number?></strong> <br> A/N : <strong><?= $bill->owner?>.</strong> </p>
                                             <?php }else{ ?>
                                                 <div class="alert alert-success bg-success text-white">
@@ -695,7 +698,6 @@
                                             <?php } ?>
 
                                             <?php if($segments[1] == "affiliate" && !empty(session()->getFlashdata('danger'))){ ?>
-
                                                 <div class="alert alert-danger bg-danger text-white">
                                                     <?php echo session()->getFlashdata('danger');?>
                                                 </div>

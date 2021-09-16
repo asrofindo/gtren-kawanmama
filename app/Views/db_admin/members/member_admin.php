@@ -40,6 +40,7 @@
                                 </th>
                                 <th>username</th>
                                 <th>email</th>
+                                <th>nomor hp</th>
                                 <th>status</th>
                                 <th class="text-end">Action</th>
                             </tr>
@@ -55,6 +56,7 @@
                                 </td>
                                 <td><b><?= $user->username ?></b></td>
                                 <td ><?= $user->email  ?></td>
+                                <td ><?= $user->phone  ?></td>
                                 <?php if($user->active == 0) : ?>
                                     <td>non active</td>
                                 <?php else : ?>

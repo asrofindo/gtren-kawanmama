@@ -3,11 +3,13 @@
 namespace App\Controllers;
 use Myth\Auth\Models\UserModel;
 use App\Models\RekeningModel;
-
+use App\Models\SosialModel;
 class Member extends BaseController
 {
- protected $user;
+	protected $user;
 	public function __construct(){
+		$this->sosial = new SosialModel();
+		$this->data['sosial']    = $this->sosial->findAll();
 		$this->rekening = new  RekeningModel();
 		$this->user = new  UserModel();
 	}
@@ -26,7 +28,7 @@ class Member extends BaseController
 		$db = \Config\Database::connect();
 		$users = $db->table('users');
 
-		$users->select('users.id, users.email, users.username, users.active');
+		$users->select('users.id, users.email, users.username,users.phone, users.active');
 		$users->join('auth_groups_users', 'auth_groups_users.user_id=users.id');
 		$users->join('auth_groups', 'auth_groups_users.group_id=auth_groups.id');
 		$users->groupBy('users.id');

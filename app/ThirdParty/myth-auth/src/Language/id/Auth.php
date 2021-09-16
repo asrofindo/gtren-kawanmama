@@ -78,7 +78,7 @@ return [
     'loginTitle'                => 'Gabung',
     'loginAction'               => 'Gabung',
     'rememberMe'                => 'Ingat saya',
-    'needAnAccount'             => 'Butuh akun?',
+    'needAnAccount'             => 'Pengguna Baru? Daftar di sini',
     'forgotYourPassword'        => 'Lupa kata sandi Anda?',
     'password'                  => 'Kata sandi',
     'repeatPassword'            => 'Ulangi kata sandi',

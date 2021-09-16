@@ -11,15 +11,17 @@ use App\Models\CategoryModel;
 use App\Models\KonfirmasiModel;
 use App\Models\NotifModel;
 use App\Models\RekeningModel;
-
+use App\Models\SosialModel;
 use Myth\Auth\Models\UserModel;
 use Myth\Auth\Authorization\GroupModel;
 
 class User extends BaseController
 {
 	protected $data;
-
+	
 	public function __construct(){
+		$this->sosial = new SosialModel();
+		$this->data['sosial']    = $this->sosial->findAll();
 		$this->address = new AddressModel();
 		$this->rekening = new RekeningModel();
 		$this->upgrade = new UpgradesModel();
@@ -114,6 +116,7 @@ class User extends BaseController
 			}else{
 				$this->konfirmasi->update($data['konfirmasi']->id,$data);
 			}
+			session()->setFlashdata('success', 'Terimakasih, Konfirmasi anda sudah kami catat. Akan dicek oleh staff kami.');
 
 			$msg = "Terimakasih Telah Konfirmasi Pembayaran\nNo. Transaksi : ".$id."\nSilahkan Tunggu Konfirmasi Dari Admin";
 			wawoo(user()->phone,$msg);
