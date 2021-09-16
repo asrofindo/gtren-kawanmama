@@ -352,7 +352,16 @@ class Admin extends BaseController
 		$data['konfirmasi'] = $this->konfirmasi
 		->select('konfirmasi.id as id ,users.fullname as name,konfirmasi.date as date,konfirmasi.total as total,konfirmasi.bill as bill,konfirmasi.transaksi_id as transaksi_id,konfirmasi.keterangan as keterangan')
 		->join('users', 'users.id=konfirmasi.user_id', 'left')
+		->orderBy('id','DESC')
 		->find();
+		if ($this->request->getPost('name')!=null) {
+			$data['konfirmasi'] = $this->konfirmasi
+			->select('konfirmasi.id as id ,users.fullname as name,konfirmasi.date as date,konfirmasi.total as total,konfirmasi.bill as bill,konfirmasi.transaksi_id as transaksi_id,konfirmasi.keterangan as keterangan')
+			->join('users', 'users.id=konfirmasi.user_id', 'left')
+			->like('users.fullname',$this->request->getPost('name'))
+			->orderBy('id','DESC')
+			->find();
+		}
 
 		return view('db_admin/order/konfirmasi',$data);
 	}

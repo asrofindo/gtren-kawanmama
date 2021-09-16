@@ -61,7 +61,6 @@ class Commerce extends BaseController
 	      ->where('cart_item.user_id', user()->id)
 	      ->where('cart_item.status', null)->findAll();
 	    $data_cart = [];
-	    
 	    foreach ($data['carts'] as $cart ) {
 	     	if($cart->d_id == null){
 

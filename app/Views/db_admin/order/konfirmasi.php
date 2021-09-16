@@ -8,10 +8,19 @@
 <div class="card mb-4">
     <header class="card-header">
         <div class="row gx-3">
-
+            <form method="POST" action="<?= base_url() ?>/admin/konfirmasi">
+                <div class="row gx-3">
+                        <div class="col-lg-3 col-md-2">
+                            <input type="text" placeholder="Cari nama..." class="form-control" name="name">
+                        </div>
+                        <div class="col-lg-2 col-md-2 me-auto">
+                            <button type="submit" class="btn btn-primary btn-sm rounded">Pencarian</button>
+                        </div>
+                </div>
         </div>
     </header> <!-- card-header end// -->
     <div class="card-body">
+            </form>
         <div class="table-responsive">
             <table class="table table-sm table-hover">
                 <thead>
