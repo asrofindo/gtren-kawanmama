@@ -59,12 +59,12 @@
                                 <label class="form-label">Harga Pokok</label>
                                 <div class="row gx-2">
                                     <?php if(isset(session('errors')['fixed_price'])): ?>
-                                        <input name="fixed_price" placeholder="$" type="text" class="form-control is-invalid" value="<?= old('fixed_price') ?? $product->fixed_price ?>">
+                                        <input name="fixed_price" placeholder="Rp" type="text" class="form-control is-invalid" value="<?= old('fixed_price') ?? $product->fixed_price ?>">
                                         <div class="invalid-feedback">
                                             <?= session('errors')['fixed_price'] ?>
                                         </div>
                                     <?php else: ?>
-                                        <input name="fixed_price" placeholder="$" type="text" class="form-control" value="<?= old('fixed_price') ?? $product->fixed_price ?>">
+                                        <input name="fixed_price" placeholder="Rp" type="text" class="form-control" value="<?= old('fixed_price') ?? $product->fixed_price ?>">
                                     <?php endif ?>
                                 </div>
                             </div>
@@ -73,12 +73,12 @@
                             <div class="mb-4">
                                 <label class="form-label">Harga Jual</label>
                                 <?php if(isset(session('errors')['sell_price'])): ?>
-                                    <input name="sell_price" placeholder="$" type="number" class="form-control is-invalid" value="<?= old('sell_price') ?? $product->sell_price ?>">
+                                    <input name="sell_price" placeholder="Rp" type="number" class="form-control is-invalid" value="<?= old('sell_price') ?? $product->sell_price ?>">
                                     <div class="invalid-feedback">
                                         <?= session('errors')['sell_price'] ?>
                                     </div>
                                 <?php else: ?>
-                                    <input name="sell_price" placeholder="$" type="number" class="form-control" value="<?= old('sell_price') ?? $product->sell_price ?>">
+                                    <input name="sell_price" placeholder="Rp" type="number" class="form-control" value="<?= old('sell_price') ?? $product->sell_price ?>">
                                 <?php endif ?>
                             </div>
                         </div>
@@ -88,38 +88,38 @@
                             <div class="mb-4">
                                 <label class="form-label">Komisi Affiliate</label>
                                 <?php if(isset(session('errors')['affiliate_commission'])): ?>
-                                    <input name="affiliate_commission" type="number" placeholder="%" class="form-control is-invalid" id="product_name" value="<?= old('affiliate_commission') ?? $product->affiliate_commission ?>">
+                                    <input name="affiliate_commission" type="number" placeholder="Rp" class="form-control is-invalid" id="product_name" value="<?= old('affiliate_commission') ?? $product->affiliate_commission ?>">
                                     <div class="invalid-feedback">
                                         <?= session('errors')['affiliate_commission'] ?>
                                     </div>
                                 <?php else: ?>
-                                    <input name="affiliate_commission" type="number" placeholder="%" class="form-control" id="product_name" value="<?= old('affiliate_commission') ?? $product->affiliate_commission ?>">
+                                    <input name="affiliate_commission" type="number" placeholder="Rp" class="form-control" id="product_name" value="<?= old('affiliate_commission') ?? $product->affiliate_commission ?>">
                                 <?php endif ?>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-4">
-                                <label class="form-label">Komisi Stokis</label>
+                                <label class="form-label">Komisi Distributor</label>
                                 <?php if(isset(session('errors')['stockist_commission'])): ?>
-                                    <input name="stockist_commission" type="number" placeholder="%" class="form-control is-invalid" id="product_name" value="<?= old('stockist_commission') ?? $product->stockist_commission ?>">
+                                    <input name="stockist_commission" type="number" placeholder="Rp" class="form-control is-invalid" id="product_name" value="<?= old('stockist_commission') ?? $product->stockist_commission ?>">
                                     <div class="invalid-feedback">
                                         <?= session('errors')['stockist_commission'] ?>
                                     </div>
                                 <?php else: ?>
-                                    <input name="stockist_commission" type="number" placeholder="%" class="form-control" id="product_name" value="<?= old('stockist_commission') ?? $product->stockist_commission ?>">
+                                    <input name="stockist_commission" type="number" placeholder="Rp" class="form-control" id="product_name" value="<?= old('stockist_commission') ?? $product->stockist_commission ?>">
                                 <?php endif ?>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-4">
-                                <label class="form-label">Weight</label>
+                                <label class="form-label">Berat(gr)</label>
                                 <?php if(isset(session('errors')['weight'])): ?>
-                                    <input name="weight" type="number" placeholder="%" class="form-control is-invalid" id="weight" value="<?= old('weight') ?? $product->weight ?>">
+                                    <input name="weight" type="number" placeholder="gram" class="form-control is-invalid" id="weight" value="<?= old('weight') ?? $product->weight ?>">
                                     <div class="invalid-feedback">
                                         <?= session('errors')['weight'] ?>
                                     </div>
                                 <?php else: ?>
-                                    <input name="weight" type="number" placeholder="%" class="form-control" id="weight" value="<?= old('weight') ?? $product->weight ?>">
+                                    <input name="weight" type="number" placeholder="gram" class="form-control" id="weight" value="<?= old('weight') ?? $product->weight ?>">
                                 <?php endif ?>
                             </div>
                         </div>
