@@ -60,7 +60,7 @@ class Order extends BaseController
 		}
 		
 		$user = $this->user->where('id',$data['transaksi']->user_id)->first();
-		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Konfirmasi Pembayaran Anda *Telah Di Terima* \nNo Transaksi: ".$id."\nSilahkan Cek Transaksi di \n".base_url('/orders');
+		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Terimakasih, Pesanan Anda *sudah dibayar* \nNo Transaksi: ".$id."\nMohon ditunggu *konfirmasi dari distributor*. \n";
 		wawoo($user->phone,$msg);
 
 		$msg="Selamat!\n\nPesanan No.".$id." sudah dibayar.\n"."Cek di ".base_url('/admin');
@@ -279,8 +279,16 @@ class Order extends BaseController
 			->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
 			->where('transaksi.id', $id_transaksi)
 			->find();
-	
+
 			for($i = 0; $i < count($distributors); $i++){
+
+				
+				$user=$this->user->where('id',$distributors[$i]->user_id)->first();
+				
+				$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Selamat! Pesanan Anda *sudah dikirim*\nNo Transaksi: ".$id."\nNomor Resi: ".$resi."\nSilahkan Cek Transaksi di \n".base_url('/dashboard');
+				
+				wawoo($user->phone,$msg);
+				
 				$productdistributor_id = $this->productdistributor->where('distributor_id', $distributors[$i]->distributor_id)->where('product_id', $distributors[$i]->product_id)->find();
 
 				$this->productdistributor->save([
@@ -294,8 +302,8 @@ class Order extends BaseController
 	          	} 
 
 			} 
+			
 
-	
 			return redirect()->back();
 
 		} else {
@@ -312,6 +320,7 @@ class Order extends BaseController
 			"id" => $id,
 			"status_barang" => "diterima_pembeli", 
 		];
+
 
 		$this->detailtransaksi->save($data);
 
@@ -386,6 +395,8 @@ class Order extends BaseController
 			}
 
 		}
+
+
 
 		// uang masuk ke dompet stockis / affiliate / admin
 		return redirect()->back();

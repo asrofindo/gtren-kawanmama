@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use CodeIgniter\RESTful\ResourceController;
+use Myth\Auth\Models\UserModel;
 
 
 class Cron extends ResourceController
@@ -11,6 +12,7 @@ class Cron extends ResourceController
 
 	public function __construct()
 	{
+		$this->user = new UserModel();
 		helper('wawoo')	;
 	}
 
@@ -53,6 +55,15 @@ class Cron extends ResourceController
 
 		foreach ($data as $d) {
 
+<<<<<<< HEAD
+
+			$user = $this->user->where('phone',$d->phone)->first(); 
+			$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Apakah anda sudah menerima barang yang dikirim oleh distributor?\nJika sudah mohon melakukan konfirmasi pembayaran supaya *dana distributor* dapat kami cairkan.\nAdmin";
+			
+			wawoo($d->phone,$msg);
+
+=======
+>>>>>>> dddc04b1d53b76f97ce011eef10b0e4fc7335325
 			$detailtransaksi->where('id', $d->detail_id);
 			$detailtransaksi->update(['status_barang' => "dipantau"]);
 
