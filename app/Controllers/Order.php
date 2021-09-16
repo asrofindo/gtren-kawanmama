@@ -12,7 +12,9 @@ use App\Models\DistributorModel;
 use App\Controllers\BaseController;
 use Myth\Auth\Models\UserModel;
 use App\Models\NotifModel;
+use App\Models\CartItemModel;
 use App\Models\SosialModel;
+use App\Models\ProductModel;
 
 class Order extends BaseController
 {
@@ -29,6 +31,8 @@ class Order extends BaseController
 		$this->distributor = new DistributorModel();
 		$this->bills = new BillModel();
 		$this->user = new UserModel();
+		$this->cart = new CartItemModel();
+		$this->product = new ProductModel();
 		$this->notif = new NotifModel();
 
 
@@ -106,13 +110,15 @@ class Order extends BaseController
 		];
 		$detail=$this->detailtransaksi->where("id",$id)->first();
 		$transaksi=$this->model->where("transaksi_id",$detail->transaksi_id)->first();
-		$cart=$this->model->where("transaksi_id",$detail->transaksi_id)->first();
+		$cart=$this->cart->where("id",$detail->cart_id)->first();
+		$product = $this->product->where("id",$cart->product_id)->first();
 		$user=$this->user->where('user_id',$transaksi->user_id)->first();
 
 		$msg=base_url()." \n\n"
 		.$user->greeting." ".$user->fullname.
 		"\n"."Kami informasikan, Pesanan Anda *ditolak oleh distributor* \nNo Transaksi: "
-		.$transaksi->id."\n";
+		.$transaksi->id."\n".
+		$product;
 
 		wawoo($user->phone,$msg);
 
