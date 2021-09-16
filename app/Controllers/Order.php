@@ -313,6 +313,7 @@ class Order extends BaseController
 			"status_barang" => "diterima_pembeli", 
 		];
 
+
 		$this->detailtransaksi->save($data);
 
 
@@ -386,6 +387,8 @@ class Order extends BaseController
 			}
 
 		}
+
+
 
 		// uang masuk ke dompet stockis / affiliate / admin
 		return redirect()->back();
