@@ -60,7 +60,7 @@ class Order extends BaseController
 		}
 		
 		$user = $this->user->where('id',$data['transaksi']->user_id)->first();
-		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Konfirmasi Pembayaran Anda *Telah Di Terima* \nNo Transaksi: ".$id."\nSilahkan Cek Transaksi di \n".base_url('/orders');
+		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Terimakasih, Pesanan Anda *sudah dibayar* \nNo Transaksi: ".$id."\nMohon ditunggu *konfirmasi dari distributor*. \n";
 		wawoo($user->phone,$msg);
 
 		$msg="Selamat!\n\nPesanan No.".$id." sudah dibayar.\n"."Cek di ".base_url('/admin');
