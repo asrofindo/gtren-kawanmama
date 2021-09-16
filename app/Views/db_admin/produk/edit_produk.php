@@ -114,7 +114,7 @@
                             <div class="mb-4">
                                 <label class="form-label">Berat(gr)</label>
                                 <?php if(isset(session('errors')['weight'])): ?>
-                                    <input name="weight" type="number" placeholder="Gram" class="form-control is-invalid" id="weight" value="<?= old('weight') ?? $product->weight ?>">
+                                    <input name="weight" type="number" placeholder="gram" class="form-control is-invalid" id="weight" value="<?= old('weight') ?? $product->weight ?>">
                                     <div class="invalid-feedback">
                                         <?= session('errors')['weight'] ?>
                                     </div>
