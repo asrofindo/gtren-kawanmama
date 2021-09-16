@@ -126,6 +126,8 @@
                                                     <span class="badge rounded-pill alert-warning">Dana Dikembalikan Kepada Pembeli</span>
                                                 <?php elseif($product->status_barang == 'ditolak'): ?>
                                                     <span class="badge rounded-pill alert-danger">Pesanan Di Tolak Oleh distributor</span>
+                                                <?php elseif($product->status_barang == 'dikirim'): ?>
+                                                    <span class="badge rounded-pill alert-success">Pesanan Di Kirim Oleh distributor</span>
                                                 <?php elseif($product->status_barang == 'diterima_seller'): ?>
                                                     <span class="badge rounded-pill alert-success">Pesanan Dalam Antrian distributor</span>
                                                 <?php elseif($product->status_barang == 'diterima_pembeli'): ?>

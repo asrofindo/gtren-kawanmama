@@ -59,8 +59,13 @@
         </a>
     </li>
     <?php endif; ?>
-
-
+    <?php if(in_groups(3,4)): ?>
+    <li class="menu-item">
+        <a class="menu-link" href="<?= base_url() ?>/ market/affiliate"> <i class="icon material-icons md-assignment"></i>
+            <span class="text">Market Affiliate</span>
+        </a>
+    </li>
+    <?php endif; ?>
     <?php if(in_groups(1)): ?>
     <li class="menu-item has-submenu" >
         <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
