@@ -109,18 +109,29 @@ class Order extends BaseController
 			"status_barang" => "ditolak"
 		];
 		$detail=$this->detailtransaksi->where("id",$id)->first();
-		$transaksi=$this->model->where("transaksi_id",$detail->transaksi_id)->first();
-		$cart=$this->cart->where("id",$detail->cart_id)->first();
-		$product = $this->product->where("id",$cart->product_id)->first();
-		$user=$this->user->where('user_id',$transaksi->user_id)->first();
+		$transaksi=$this->model->where("id",$detail->transaksi_id)->first();
+		$user=$this->user->where('id',$transaksi->user_id)->first();
+
+		$product= $this->detailtransaksi->select('products.name as product')
+		->join('cart_item', 'cart_item.id = cart_id')
+		->join('products', 'products.id = cart_item.product_id')
+		->where('detailtransaksi.id',$id)
+		->first();
 
 		$msg=base_url()." \n\n"
 		.$user->greeting." ".$user->fullname.
 		"\n"."Kami informasikan, Pesanan Anda *ditolak oleh distributor* \nNo Transaksi: "
 		.$transaksi->id."\n".
-		$product;
+		'Dengan detail product'.$product->product;
 
 		wawoo($user->phone,$msg);
+
+		$msg=base_url()." \n\n"."Pesanan ini *DITOLAK OLEH SELLER*\nSegera lakukan *REFUND* kepada pembeli.\nNo Transaksi: ".$transaksi->id."\nNama pembeli: ".$user->fullname."\nKunjungi: ".base_url('/order');
+
+		$notif = $this->notif->findAll();
+		foreach ($notif as $key => $value) {
+			wawoo($value['phone'],$msg);
+		}
 
 		$this->detailtransaksi->save($data);
 		return redirect()->back();

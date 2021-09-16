@@ -95,7 +95,7 @@ class Admin extends BaseController
 		->where('transaksi.batas_pesanan >', date( "Y-m-d H:i:s"))
 		->where('transaksi.status_pembayaran', 'paid')->groupBy('transaksi.id')->orderBy('transaksi.id', 'DESC')
 		->findAll();
-
+		
 		$data['pager'] = $this->transaksi->paginate(5, 'orders');
 		$data['pager'] = $this->transaksi->pager;
 		return view('db_stokis/order', $data);
