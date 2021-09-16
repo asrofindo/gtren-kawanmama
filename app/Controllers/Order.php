@@ -149,7 +149,7 @@ class Order extends BaseController
 		->join('pengiriman', 'pengiriman.user_id = cart_item.user_id')
 		->join('address', 'address.user_id = users.id')
 		->join('city', 'city.kode_pos = address.kode_pos')
-		->first($id);
+		->find($id);
 
 		// jika barang sudah direfund atau barang tidak ditolak oleh stockist maka tidak di perbolehkan 
 		if($data['detailtransaksi']->status_barang == 'refund'){

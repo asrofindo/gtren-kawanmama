@@ -112,10 +112,12 @@
                                                                 <td>
                                                                     <div class="dropdown">
                                                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz">...</i> </a>
-                                                                    <div class="dropdown-menu">
-                                                                        <a href="<?= base_url() ?>/detail/<?= $transaksi->id?>" class="dropdown-item">Detail</a>
-                                                                        <a href="<?= base_url() ?>/konfirmasi/<?= $transaksi->id?>" class="dropdown-item">Konfirmasi Pembayaran</a>
-                                                                    </div>
+                                                                        <div class="dropdown-menu">
+                                                                            <a href="<?= base_url() ?>/detail/<?= $transaksi->id?>" class="dropdown-item">Detail</a>
+                                                                            <?php if($transaksi->status_pembayaran != 'paid'): ?>
+                                                                                <a href="<?= base_url() ?>/konfirmasi/<?= $transaksi->id?>" class="dropdown-item">Konfirmasi Pembayaran</a>
+                                                                            <?php endif; ?>
+                                                                        </div>
                                                                     </div> <!-- dropdown //end -->
                                                                 </td>
                                                             </tr>

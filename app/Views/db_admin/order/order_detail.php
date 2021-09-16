@@ -141,7 +141,7 @@
                                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
                                                     <div class="dropdown-menu">
                                                         <?php if($product->status_barang == 'ditolak'): ?>
-                                                            <a class="dropdown-item" href="<?= base_url()  ?>/order/refund/<?= $transaksi_id  ?>/<?= $product->id ?>">Refund</a>
+                                                            <a onclick="return confirm('Apakah Anda Yakin ?')" class="dropdown-item" href="<?= base_url()  ?>/order/refund/<?= $transaksi_id  ?>/<?= $product->id ?>">Refund</a>
                                                         <?php endif; ?>
                                                         <?php if($product->status_barang == 'dipantau'): ?>
                                                             <a class="dropdown-item" href="<?= base_url() ?>/order/verify/<?= $product->id ?>" class="btn-small d-block">
