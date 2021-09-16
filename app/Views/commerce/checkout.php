@@ -128,7 +128,7 @@
                                     <?php foreach ($cart['products'] as $product): ?>
                                         <?php $photo = explode(',', $product->photos); ?>
                                         <tr>
-                                            <th><img src="<?php base_url() ?>/public/uploads/product_photos/<?= $photo[0]; ?>" style="width:50px; height:60px"></th>
+                                            <th><img src="<?php base_url() ?>/public/uploads/product_photos/<?= $photo[0]; ?>" style="width:60px; height:60px"></th>
                                             <td><?= $product->name ?></td>
                                             <td><?= $product->amount ?></td>
                                             <td>Rp. <?= number_format($product->sell_price) ?></td>
@@ -190,7 +190,7 @@
                                     </tr>
                                 <?php endforeach; ?>
                                     <tr>
-                                        <th>Total Tagihan</th>
+                                        <th>Total</th>
                                         <td><b>Rp. <?= number_format($total);  ?></b></td>
                                     </tr>
                             </tbody>
