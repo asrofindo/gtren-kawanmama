@@ -109,7 +109,7 @@
                     <?php echo session()->getFlashdata('rekening');?>
                 </div>
                 <?php } ?>
-                <div class="order_review">
+                <div>
                     <div class="mb-20">
                         <h4>Pesanan Anda</h4>
                     </div>
