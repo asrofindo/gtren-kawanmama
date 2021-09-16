@@ -56,7 +56,7 @@ class User extends BaseController
 		$data['segments'] = $this->request->uri->getSegments();
 
 		$data['transaksis'] = $this->transaksi->select('*, bills.total as total_bill, transaksi.total as total, transaksi.id as id,  bills.id as bill_id')
-		->join('bills', 'bills.id = transaksi.bill_id', 'left')->orderBy('transaksi.id')
+		->join('bills', 'bills.id = transaksi.bill_id', 'left')->orderBy('transaksi.id',"DESC")
 		->where('user_id', user()->id)->findAll();
 		 
 		return view('commerce/account', $data);
