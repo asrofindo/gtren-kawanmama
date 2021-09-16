@@ -118,10 +118,10 @@ class User extends BaseController
 			}
 			session()->setFlashdata('success', 'Terimakasih, Konfirmasi anda sudah kami catat. Akan dicek oleh staff kami.');
 
-			$msg = "Terimakasih Telah Konfirmasi Pembayaran\nNo. Transaksi : ".$id."\nSilahkan Tunggu Konfirmasi Dari Admin";
+			$msg = base_url()."\n".user()->greeting." ".user()->fullname."\nTerimakasih, konfirmasi pembarayan dari Anda sudah kami catat. Team Admin akan segera memferifikasi. Mohon ditunggu.\n";
 			wawoo(user()->phone,$msg);
 
-			$msg="Segera Cek!\nAda *Konfirmasi Pembayaran* oleh ".user()->greeting." ".user()->fullname."\nNo. Wa: ".user()->phone."\nCek di ".base_url('admin/konfirmasi');			
+			$msg="Pembeli ini mengisi *KONFIRMASI PEMBAYARAN*\nSegera cek rekening!\nKunjungi: ".base_url('/admin/konfirmasi');			
 			$notif = $this->notif->findAll();
 			foreach ($notif as $key => $value) {
 				wawoo($value['phone'],$msg);
