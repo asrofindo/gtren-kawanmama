@@ -10,7 +10,7 @@
     
                         <h4 class="mb-10 mt-20 fw-600 text-grey-4 wow fadeIn animated">Social Media</h4>
                         <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
-                            <a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="instagram" href="#"><i class="fab fa-facebook-f"></i></a>
                             <a class="twitter" href="#"><i class="fab fa-twitter"></i></a>
                             <a class="tumblr" href="#"><i class="fab fa-tumblr"></i></a>
                             <a class="instagram" href="#"><i class="fab fa-instagram"></i></a>

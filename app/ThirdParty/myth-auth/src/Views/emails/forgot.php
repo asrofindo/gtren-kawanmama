@@ -1,4 +1,4 @@
-<p>Seseorang meminta RESET PASSWORD dengan email ini di website,</p>
+<p>Seseorang meminta RESET PASSWORD dengan email ini di website <a href="<?=base_url()?>"><?=base_url()?></a></p>
 <p>Untuk melakukan RESET PASSWORD silakan gunakan KODE TOKEN ini:</p>
 
 <p>Kode Token: <?= $hash ?></p>
