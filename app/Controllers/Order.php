@@ -104,6 +104,17 @@ class Order extends BaseController
 			"id" => $id,
 			"status_barang" => "ditolak"
 		];
+		$detail=$this->detailtransaksi->where("id",$id)->first();
+		$transaksi=$this->model->where("transaksi_id",$detail->transaksi_id)->first();
+		$cart=$this->model->where("transaksi_id",$detail->transaksi_id)->first();
+		$user=$this->user->where('user_id',$transaksi->user_id)->first();
+
+		$msg=base_url()." \n\n"
+		.$user->greeting." ".$user->fullname.
+		"\n"."Kami informasikan, Pesanan Anda *ditolak oleh distributor* \nNo Transaksi: "
+		.$transaksi->id."\n";
+
+		wawoo($user->phone,$msg);
 
 		$this->detailtransaksi->save($data);
 		return redirect()->back();
@@ -112,7 +123,6 @@ class Order extends BaseController
 
 	public function order_refund($transaksi_id, $id)
 	{
-		
 		// data produk dan ongkir yang akan di refund
 		$data['detailtransaksi'] = $this->detailtransaksi->select('*, pengiriman.id as p_id')
 		->join('cart_item', 'cart_item.id = cart_id')

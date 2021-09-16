@@ -41,9 +41,9 @@ class Transaksi extends BaseController
 
 	public function index()
 	{
+		$data=$this->data;
 		$data['distributor'] = $this->distributor->findAll();
 		
-
 		$data['carts'] = $this->cart->select('*, distributor.id as distributor_id, detailtransaksi.id as d_id, cart_item.id as cart_id')
 		->join('products', 'products.id = product_id', 'inner')
 		->join('distributor', 'distributor.id = distributor_id')
@@ -230,7 +230,6 @@ class Transaksi extends BaseController
 	public function check()
 	{
 		$r = $this->request;
-    	
     	$destination = $r->getPost('origin'); 
     	$courier = $r->getPost('courier'); 
     	$origin = $r->getPost('destination'); 
