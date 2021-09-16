@@ -354,7 +354,7 @@ class Transaksi extends BaseController
 
 	public function hutang_affiliate()
 	{
-		$data['pendapatans'] = $this->pendapatan
+		$data['pendapatans'] = $this->pendapatan->select('*, pendapatan.id as id')
 		->join('users', 'users.id = pendapatan.user_id')
 		->where('pendapatan.status_dana', 'affiliate')
 		->find();
@@ -376,9 +376,10 @@ class Transaksi extends BaseController
 		$data_bill = $this->bill->find($bill_id);
 
 
-		$user_id = $this->pendapatan->first($id)->user_id;
+		$user_id = $this->pendapatan->find($id)->user_id;
 
 		$id_wd = $this->wd->where('user_id', $user_id)->where('status_dana', $status_dana)->where('status', 'belum')->find()[0]['id'];
+    
 
 		if($data_bill->total == null){
 			return redirect()->back();
@@ -431,14 +432,13 @@ class Transaksi extends BaseController
 	public function keuangan()
 	{
 		
-		if(in_groups(3)){
-			$data['pendapatan_seller'] = $this->pendapatan->where('user_id', user()->id)->where('status_dana', 'distributor')->find();
-			$data['detailtransaksi'] = $this->detail_transaksi
-			->join('distributor', 'distributor.id = detailtransaksi.distributor_id')
-			->join('detailpengiriman', 'detailpengiriman.cart_id = detailtransaksi.cart_id')
-			->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
-			->where('distributor.user_id', user()->id)->where('status_barang', 'diterima')->findAll();
-		}
+
+		$data['pendapatan_seller'] = $this->pendapatan->where('user_id', user()->id)->where('status_dana', 'distributor')->find();
+		$data['detailtransaksi'] = $this->detail_transaksi
+		->join('distributor', 'distributor.id = detailtransaksi.distributor_id')
+		->join('detailpengiriman', 'detailpengiriman.cart_id = detailtransaksi.cart_id')
+		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
+		->where('distributor.user_id', user()->id)->where('status_barang', 'diterima_pembeli')->findAll();
 
 
 		$data['pendapatan_affiliate'] = $this->pendapatan->where('user_id', user()->id)->where('status_dana', 'affiliate')->find();
@@ -470,6 +470,13 @@ class Transaksi extends BaseController
 		$data['pendapatan_stockist'] = $this->pendapatan->select('sum(total) as total')->where('status_dana', 'distributor')->where('user_id', user()->id)->findAll();
 		
 		// jika ditemukan wd sebelumnya dan status nya adalah belum dikonfirmasi
+      
+      	if($penarikan == null && $status_dana != null){
+			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
+			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
+			session()->setFlashdata('danger', 'Dana Tidak Cukup');
+			return view('db_stokis/wd', $data);
+        }
 		if(count($wd_belum) > 0){
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();	
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->findAll();
@@ -482,10 +489,10 @@ class Transaksi extends BaseController
 
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
-			session()->setFlashdata('danger', 'Data Tidak Benar');
+
 			return view('db_stokis/wd', $data);
 		}
-
+		
 
 		if(count($this->pendapatan->where('user_id', user()->id)->find()) == 0 ){
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();

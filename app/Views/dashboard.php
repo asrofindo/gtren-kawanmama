@@ -331,6 +331,20 @@
                         <article class="icontext">
                             <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
                             <div class="text">
+                                <h6 class="mb-1 card-title">Dana Pending</h6> 
+                            <span><?= number_format($pending_stockist[0]->pending_stockist_total) ;?></span>
+                                <!-- <span class="text-sm">
+                                    Excluding orders in transit
+                                </span> -->
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card card-body mb-4">
+                        <article class="icontext">
+                            <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
+                            <div class="text">
                                 <h6 class="mb-1 card-title">Dana Seller</h6> 
                                 <span><?= number_format($stockist[0]->stockist_total) ;?></span>
                                 <!-- <span class="text-sm">
@@ -392,7 +406,7 @@
                                                         <td><?= $bill->bank_name ?></td>
                                                         <td><?= $bill->bank_number ?></td>
                                                         <td><?= $bill->owner ?></td>
-                                                        <td><?= $bill->total ?></td>
+                                                        <td><?= number_format($bill->total); ?></td>
                                                     </tr>
                                                 <?php endforeach;  ?>
                                             </tbody>  
@@ -415,6 +429,20 @@
 
               <?php if(isset($segments) && $segments[0] == 'affiliate'): ?>
             <div class="row">
+                <div class="col-lg-3">
+                    <div class="card card-body mb-4">
+                        <article class="icontext">
+                            <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-qr_code"></i></span>
+                            <div class="text">
+                                <h6 class="mb-1 card-title">Dana Pending</h6> 
+                                <span><?= number_format($pending_affiliate[0]->pending_affiliate_total) ;?></span>
+                            <!--     <span class="text-sm">
+                                    In 19 Categories
+                                </span> -->
+                            </div>
+                        </article>
+                    </div>
+                </div>
                 <div class="col-lg-3">
                     <div class="card card-body mb-4">
                         <article class="icontext">

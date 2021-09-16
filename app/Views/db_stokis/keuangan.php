@@ -77,15 +77,7 @@
             <header class="card-header">
                 <div class="row gx-3">
                     <div class="col-lg-4 col-md-6 me-auto">
-                        <h5>Transaksi</h5>
-                    </div>
-                    <div class="col-lg-2 col-6 col-md-3">
-                        <select class="form-select">
-                            <option>Status</option>
-                            <option>Active</option>
-                            <option>Disabled</option>
-                            <option>Show all</option>
-                        </select>
+                        <h5>Transaksi Distributor</h5>
                     </div>
                 </div>
             </header> <!-- card-header end// -->
@@ -101,8 +93,8 @@
                         <tbody>
                             <?php foreach ($detailtransaksi as $detail): ?>
                                 <tr>
-                                    <td class="id"><?= $detail['id']; ?></td>
-                                    <td><?= intval($detail['stockist_commission']); ?></td>
+                                    <td class="id"><?= $detail->id; ?></td>
+                                    <td><?= intval($detail->stockist_commission); ?></td>
                               </tr>
                             <?php endforeach ?>
                         </tbody>
@@ -115,7 +107,7 @@
         <header class="card-header">
             <div class="row gx-3">
                 <div class="col-lg-4 col-md-6 me-auto">
-                    <h5>Transaksi</h5>
+                    <h5>Transaksi Affiliate</h5>
                 </div>
             </div>
         </header> <!-- card-header end// -->
