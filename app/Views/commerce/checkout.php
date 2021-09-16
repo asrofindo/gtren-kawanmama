@@ -127,11 +127,11 @@
                                 <?php foreach ($carts as $cart):?>
                                     <?php foreach ($cart['products'] as $product): ?>
                                         <?php $photo = explode(',', $product->photos); ?>
-                                        <tr style="height:30px">
-                                            <td style="width:40px; "><img src="<?php base_url() ?>/public/uploads/product_photos/<?= $photo[0]; ?>" style="width:60%; height:100px"></td>
-                                            <td style="width: 100px"><?= $product->name ?></td>
-                                            <td style="width: 100px"><?= $product->amount ?></td>
-                                            <td style="width: 100px">Rp. <?= number_format($product->sell_price) ?></td>
+                                        <tr>
+                                            <th><img src="<?php base_url() ?>/public/uploads/product_photos/<?= $photo[0]; ?>" style="width:100%; height:100px"></th>
+                                            <td><?= $product->name ?></td>
+                                            <td><?= $product->amount ?></td>
+                                            <td>Rp. <?= number_format($product->sell_price) ?></td>
                                         </tr>
                                         
                                     <?php endforeach; ?>
@@ -140,7 +140,7 @@
                                         <td colspan="1" class="product-subtotal">
                                             <span><?= $cart['locate'];  ?></span>
                                         </td>
-                                        <td colspan="2" class="product-subtotal" style="width:150px">
+                                        <td colspan="2" class="product-subtotal">
                                             <span>
                                                 produkmu akan dikirim dari kecamatan <?= $cart['kecamatan'];  ?> <br>      
                                                 kabupaten <?= $cart['kabupaten'];  ?> 
@@ -149,15 +149,15 @@
                                     </tr>
                                     <tr>
                                         <th colspan="1"> Kurir</th>
-                                        <td colspan="1" class="product-subtotal bg-warning">
-                                            <span class="font-xl text-brand fw-900">
+                                        <td colspan="1" class="product-subtotal bg-light">
+                                            <span class="font-xl text-brand fw-900"> 
                                                 <form method="POST" action="<?= base_url()  ?>/transaksi/check">
                                                     <input style="display: none" type="text" name="origin" value="<?= $billing->city_id ?>" >
                                                     <input style="display: none" type="text" name="destination" value="<?= $cart['id_kota'] ?>" >
                                                     <input style="display: none" type="text" name="distributor_id" value="<?= $cart['distributor_id'] ?>" >
                                                     <input style="display: none" type="text" name="weight" value="<?= $cart['weight'][0] ?>" >
                                                     <input style="display: none" type="text" name="cart_id" value="<?= $cart['cart_id'][0] ?>" >
-                                                    <select type="submit" name="courier" onchange="this.form.submit()" class="bg-light">
+                                                    <select type="submit" name="courier" onchange="this.form.submit()" >
                                                         <option selected disabled>Pilih Kurir...</option>
                                                         <option value="jne">JNE</option>
                                                         <option value="pos">POS</option>
@@ -199,7 +199,7 @@
                     <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                     <form action="<?= base_url() ?>/transaksi/save" method="post">
                         <div class="payment_method">
-                            <div class="mb-25 bg-warning">
+                            <div class="mb-25">
                                 <h5>Metode Pembayaran</h5>
                             </div>
                             <div class="payment_option">
