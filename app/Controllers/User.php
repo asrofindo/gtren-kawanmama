@@ -65,7 +65,8 @@ class User extends BaseController
 	public function affiliate()
 	{
 		$data = $this->data;
-		 
+		
+		dd($this->upgrade->find());
 		return view('db_affiliate/market_affiliate', $data);
 	}
 
@@ -91,22 +92,25 @@ class User extends BaseController
 	public function konfirmasi($id)
 	{
 		$data = $this->data;
+		$bill_id = $this->request->getPost('bill_id');
 
-		
 		$data['segments'] = $this->request->uri->getSegments();
 		
 		$data['transaksi'] = $this->transaksi->where('id',$id)->first();
 		
 		$data['konfirmasi'] = $this->konfirmasi->where('transaksi_id',$id)->first();
 		
-		$data['bill'] = $this->bill->where('id',$data['transaksi']->bill_id)->first();
+		if($bill_id == null){
+			$data['bill'] = $this->bill->where('id',$data['transaksi']->bill_id)->first();
+		}
+
 		if ($this->request->getPost('date')!=null) {
 			$data = [
 				'user_id' => user()->id,
-				'transaksi_id' => $id,
+				'transaksi_id' => $bill_id ? null : $id,
 				'date' => $this->request->getPost('date'),
 				'total' => $this->request->getPost('total'),
-				'bill' => $this->request->getPost('bill'),
+				'bill' => $this->request->getPost('bill') ? $this->request->getPost('bill') : $bill_id,
 				'keterangan' => $this->request->getPost('keterangan'),
 			];
 			$data['konfirmasi'] = $this->konfirmasi->where('transaksi_id',$id)->first();
@@ -282,7 +286,8 @@ class User extends BaseController
 		$data['bills'] = $this->bill->findAll();
 		$data['generate'] = $this->generate->find()[0]['nomor'];
 		$data['upgrades'] = $this->upgrade->where('user_id', user()->id)->findAll();
-		
+		$data['konfirmasi'] = $this->konfirmasi->where('user_id', user()->id)->where('transaksi_id', null)->first();
+
 		$user = $this->upgrade->where('user_id', user()->id)->find();
 
 		

@@ -54,13 +54,18 @@
         </a>
     </li>
     <li class="menu-item">
-        <a class="menu-link" href="<?= base_url() ?>/ market/affiliate"> <i class="icon material-icons md-assignment"></i>
+        <a class="menu-link" href="<?= base_url() ?>/market/affiliate"> <i class="icon material-icons md-assignment"></i>
             <span class="text">Market Affiliate</span>
         </a>
     </li>
     <?php endif; ?>
-
-
+    <?php if(in_groups(3,4)): ?>
+    <li class="menu-item">
+        <a class="menu-link" href="<?= base_url() ?>/market/affiliate"> <i class="icon material-icons md-assignment"></i>
+            <span class="text">Market Affiliate</span>
+        </a>
+    </li>
+    <?php endif; ?>
     <?php if(in_groups(1)): ?>
     <li class="menu-item has-submenu" >
         <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
@@ -109,8 +114,21 @@
     <?php endif; ?>
     <?php if(in_groups(3) && !in_groups(1)): ?>
     <li class="menu-item">
+<<<<<<< HEAD
         <a class="menu-link" href="<?= base_url() ?>/order/stockist"> <i class="icon material-icons md-shopping_cart"></i>
             <span class="text">Pesanan</span>
+=======
+        <a class="menu-link" href="<?php base_url() ?>/affiliate/list"> <i class="icon material-icons md-people"></i>
+            <span class="text">Data Affilite</span>
+        </a>
+    </li>
+    <?php endif; ?>
+    
+    <?php if(in_groups(1)): ?>
+    <li class="menu-item">
+        <a class="menu-link" href="<?php base_url() ?>/bills"> <i class="icon material-icons md-account_balance"></i>
+            <span class="text">Rekening Admin</span>
+>>>>>>> e0a5ad546094ce0a15d4f0fe60958e845d8a0851
         </a>
     </li>
     <?php endif; ?>
@@ -129,6 +147,30 @@
         </a>
     </li>
     <?php endif; ?>
+<<<<<<< HEAD
+=======
+
+    <?php if(in_groups(1)): ?>
+    <li class="menu-item">
+        <a class="menu-link" href="<?php base_url() ?>/riwayat/wd"> <i class="icon material-icons md-assignment"></i>
+            <span class="text">Riwayat Withdraw</span>
+        </a>
+    </li>
+    <?php endif; ?>
+
+    <?php if(in_groups(1)): ?>
+    <li class="menu-item has-submenu">
+        <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-work"></i>
+            <span class="text">Hutang Perusahaan</span>
+        </a>
+        <div class="submenu">
+            <a href="<?= base_url() ?>/hutang/affiliate">Affiliate</a>
+            <a class="" href="<?php base_url() ?>/hutang/stockist">Stockist</span></a>
+        </div>
+    </li>
+    <?php endif; ?>
+
+>>>>>>> e0a5ad546094ce0a15d4f0fe60958e845d8a0851
     <?php if(in_groups(3) && !in_groups(1)): ?>
     <li class="menu-item has-submenu" >
         <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
