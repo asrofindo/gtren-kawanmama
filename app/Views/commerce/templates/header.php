@@ -6,21 +6,14 @@
                     <div class="col-xl-3 col-lg-4">
                         <div class="header-info">
                             <ul>
-                                <li><a href="#">(+01) - 2345 - 6789</a></li>
-                                <li class="w-100"><i class="fa fa-map-marker-alt mr-5"></i><a id="location" target="_blank" href="page-location.html">Lokasi Toko Kami</a></li>
+                                <li>Distributor</li>
+                                <li>Affiliate</li>
+                                <li>Download</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-4">
-                        <!-- <div class="text-center">
-                            <div id="news-flash" class="d-inline-block">
-                                <ul>
-                                    <li><i class="fa fa-angle-double-right mr-5"></i> Get great devices up to 50% off <a class="active" href="shop-grid-right.html">View details</a></li>
-                                    <li><i class="fa fa-asterisk mr-5"></i><b>Supper Value Deals</b> - Save more with coupons</li>
-                                    <li><i class="fa fa-bell mr-5"></i> <b> Trendy 25</b> silver jewelry, save up 35% off today <a href="shop-grid-right.html">Shop now</a></li>
-                                </ul>
-                            </div>
-                        </div> -->
+                   
                     </div>
                     <div class="col-xl-3 col-lg-4">
                         <div class="header-info header-info-right">
@@ -33,7 +26,8 @@
                                         <li><a href="#">РУССКИЙ</a></li>
                                     </ul>
                                 </li> -->
-                                <li><a href="page-account.html"><i class="far fa-truck-moving"></i> Cek Pesananmu</a></li>
+                                <li><a href="<?php base_url() ?>/register"><i class="far fa"></i>Daftar</a></li>
+                                <li><a href="<?php base_url() ?>/login"><i class="far "></i>Masuk</a></li>
                             </ul>
                         </div>
                     </div>
@@ -139,10 +133,13 @@
                                 </li>
                                 
                                 <li>
-                                    <a href="<?= base_url()?>/about">About</a>
+                                    <a href="<?= base_url()?>/about">Pesanan</a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url()?>/contact">Contact</a>
+                                    <a href="<?= base_url()?>/about">Cek Pesanan</a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url()?>/contact">Program Referal</a>
                                 </li>
                             </ul>
                         </nav>
