@@ -6,8 +6,8 @@
                     <div class="col-xl-3 col-lg-4">
                         <div class="header-info">
                             <ul>
-                                <li>Distributor</li>
-                                <li>Affiliate</li>
+                                <li><a href="<?php base_url() ?>/upgrade/stockist">Distributor</a></li>
+                                <li><a href="<?php base_url() ?>/upgrade/affiliate">Affiliate</a></li>
                                 <li>Download</li>
                             </ul>
                         </div>
