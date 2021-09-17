@@ -67,6 +67,14 @@ class Member extends BaseController
 		return view('db_admin/members/member_admin', $data);
 	}
 
+
+	public function affiliate()
+	{
+		$data['affiliate'] = $this->user->where('affiliate_link !=', null)->findAll();
+
+		return view('db_admin/members/member_affiliate', $data);
+	}
+
 	public function search()
 	{
 		$db = db_connect();

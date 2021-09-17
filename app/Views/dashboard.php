@@ -136,10 +136,18 @@
     </li>
     <?php endif; ?>
 
-      <?php if(in_groups(1)): ?>
+    <?php if(in_groups(1)): ?>
     <li class="menu-item">
         <a class="menu-link" href="<?php base_url() ?>/riwayat/wd"> <i class="icon material-icons md-assignment"></i>
             <span class="text">Riwayat Withdraw</span>
+        </a>
+    </li>
+    <?php endif; ?>
+
+    <?php if(in_groups(1)): ?>
+    <li class="menu-item">
+        <a class="menu-link" href="<?php base_url() ?>/affiliate/list"> <i class="icon material-icons md-user"></i>
+            <span class="text">Data Affilite</span>
         </a>
     </li>
     <?php endif; ?>
