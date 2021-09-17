@@ -260,8 +260,8 @@
                             <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/logout">Keluar</a></li>
                         <?php } ?>
                         <?php if (user()==null) { ?>
-                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/about">About</a></li>
-                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/contact">Contact</a></li>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/login">Masuk</a></li>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/register">Daftar</a></li>
                         <?php }?>
                         </ul>
                     </nav>
