@@ -120,6 +120,7 @@
         <div class="submenu">
                 <a href="<?php base_url() ?>/members"><span class="text">Semua Pengguna</span></a> 
                 <a href="<?php base_url() ?>/distributor/list"><span class="text">Distributor</span></a>
+                <a href="<?php base_url() ?>/affiliate/list"><span class="text">Affiliate</span></a>
         </div>
     </li>
     <?php endif; ?>

@@ -86,7 +86,7 @@
                         <tbody>
                             <?php foreach ($banners as $banner): ?>           
                               <tr>
-                                  <td><img class="w-10 d-inline-block p-0" src="<?= base_url()  ?>/uploads/banner/<?= $banner->photo ?>"></td>
+                                  <td><img class="w-10 d-inline-block p-0" src="<?= base_url()  ?>/public/uploads/banner/<?= $banner->photo ?>"></td>
                                   <td><b><?= $banner->title ?></b></td>
                                   <td><b><?= $banner->sub_title ?></b></td>
                                   <td><b><?= $banner->description ?></b></td>
