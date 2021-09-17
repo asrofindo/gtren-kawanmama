@@ -190,6 +190,7 @@
     <?php endif ?>
 </ul>
 <hr>
+
 <?php if(in_groups(1)): ?>
 <ul class="menu-aside">
     <li class="menu-item has-submenu">
