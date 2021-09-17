@@ -13,7 +13,6 @@
                                     <h2 class="animated fw-900"><?= $banner->title?></h2>
                                     <h1 class="animated fw-900 text-brand"><?= $banner->sub_title ?></h1>
                                     <p class="animated"><?= $banner->description ?></p>
-                                    <a class="animated btn btn-default btn-rounded" href="shop-product-right.html"> DISCOVER NOW <i class="fa fa-arrow-right"></i> </a>
                                 </div>
                                 <div class="single-slider-img single-slider-img-1">
                                     <img class="animated" src="<?= base_url() ?>/public/uploads/banner/<?= $banner->photo?>" alt="">
@@ -133,7 +132,7 @@
                     <div class="col-lg-3 col-md-6 mb-md-3">
                         <div class="banner-left-icon d-flex align-items-center wow fadeIn animated">
                             <div class="banner-icon">
-                                <img src="<?= base_url() ?>/uploads/offer/<?php echo $offer->photo ?>" alt="">
+                                <img src="<?= base_url() ?>/public/uploads/offer/<?php echo $offer->photo ?>" alt="">
                             </div>
                             <div class="banner-text">
                                 <h3 class="icon-box-title"><?= $offer->title ?></h3>
