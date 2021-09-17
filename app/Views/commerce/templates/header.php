@@ -6,8 +6,18 @@
                     <div class="col-xl-3 col-lg-4">
                         <div class="header-info">
                             <ul>
+                                <?php if (!in_groups(3)) {?>
                                 <li><a href="<?php base_url() ?>/upgrade/stockist">Distributor</a></li>
+                                <?php }?>
+                                <?php if (in_groups(3)) {?>
+                                <li><a href="<?php base_url() ?>/seller">Distributor</a></li>
+                                <?php }?>
+                                <?php if (!in_groups(4)) {?>
                                 <li><a href="<?php base_url() ?>/upgrade/affiliate">Affiliate</a></li>
+                                <?php }?>
+                                <?php if (in_groups(4)) {?>
+                                <li><a href="<?php base_url() ?>/affiliate">Affiliate</a></li>
+                                <?php }?>
                                 <li>Download</li>
                             </ul>
                         </div>
@@ -137,13 +147,10 @@
                                 </li>
                                 
                                 <li>
-                                    <a href="<?= base_url()?>/about">Pesanan</a>
+                                    <a href="<?= base_url()?>/orders">Pesanan</a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url()?>/about">Cek Pesanan</a>
-                                </li>
-                                <li>
-                                    <a href="<?= base_url()?>/contact">Program Referal</a>
+                                    <a href="<?= base_url()?>/tracking">Cek Pesanan</a>
                                 </li>
                             </ul>
                         </nav>
