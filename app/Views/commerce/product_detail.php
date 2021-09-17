@@ -169,7 +169,7 @@
                                                     <div class="single-comment justify-content-between d-flex">
                                                         <div class="user justify-content-between d-flex">
                                                             <div class="thumb text-center">
-                                                                <img src="<?= base_url() ?>/frontend/imgs/page/<?= $data['image'] ?>" alt="">
+                                                                <img src="<?= base_url() ?>/public/frontend/imgs/page/<?= $data['image'] ?>" alt="">
                                                                 <h6><a href="#"><?= $data['name'] ?></a></h6>
                                                             </div>
                                                             <div class="desc">
