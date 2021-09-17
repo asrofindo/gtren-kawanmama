@@ -27,7 +27,7 @@
                                     </ul>
                                 </li> -->
                                 <?php if(user() != null): ?>
-                                    <li><a href="<?php base_url() ?>/account"><i class="far fa"></i><?php user()->fullname; ?></a></li>                                
+                                    <li><a href="<?php base_url() ?>/account"><i class="far fa"></i><?= user()->fullname; ?></a></li>                                
                                 <?php else: ?>
                                     <li><a href="<?php base_url() ?>/register"><i class="far fa"></i>Daftar</a></li>
                                     <li><a href="<?php base_url() ?>/login"><i class="far "></i>Masuk</a></li>
