@@ -300,7 +300,7 @@
                                 <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-monetization_on"></i></span>
                                 <div class="text">
                                     <h6 class="mb-1 card-title">Dana User</h6>
-                                    <span><?= rupiah($user[0]->user_total); ;?></span>
+                                    <span><?= rupiah($user[0]->user_total);?></span>
                                    <!--  <span class="text-sm">
                                         Shipping fees are not included
                                     </span> -->
