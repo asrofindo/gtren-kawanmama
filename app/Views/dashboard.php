@@ -11,9 +11,9 @@
     <meta property="og:type" content="">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
-    <!-- Favicon -->
+
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>/backend/imgs/theme/favico.svg">
-    <!-- Template CSS -->
+
     <link href="<?= base_url() ?>/backend/css/main.css" rel="stylesheet" type="text/css" />
 
 </head>
