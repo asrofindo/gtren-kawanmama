@@ -230,6 +230,14 @@ class Transaksi extends BaseController
 	public function check()
 	{
 		$r = $this->request;
+
+		// Query BUilder Males BIkin Model
+
+		$db      = \Config\Database::connect();
+		$builder = $db->table('api_key');
+
+		$data['apis'] = $builder->where('name', 'Raja Ongkir')->get()->getResultObject()[0];
+
     	$destination = $r->getPost('origin'); 
     	$courier = $r->getPost('courier'); 
     	$origin = $r->getPost('destination'); 
@@ -266,7 +274,7 @@ class Transaksi extends BaseController
 			  	CURLOPT_POSTFIELDS => "origin={$origin}&originType=city&destination={$subdistrict_id}&destinationType=subdistrict&weight={$weights[$i]}&courier={$courier}",
 			  	CURLOPT_HTTPHEADER => array(
 			    	"content-type: application/x-www-form-urlencoded",
-			    	"key: bfacde03a85f108ca1e684ec9c74c3a9"
+			    	"key: {$data['apis']->token}" 
 			  	),
 			));
 
