@@ -1,4 +1,4 @@
-<?php $this->extend('dashboard') ?>
+\<?php $this->extend('dashboard') ?>
 <?php $this->section('content') ?>
 <div class="content-header">
     <div>
@@ -46,26 +46,25 @@
                         </tbody>
 
                     </table>
-                    <div class="pagination-area mt-30 mb-50">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-start">
-                                <?php //$pager->links('users', 'product_pagination'); ?>
-                                <!-- <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                <li class="page-item"><a class="page-link dot" href="#">...</a></li>
-                                <li class="page-item"><a class="page-link" href="#">16</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a></li> -->
-
-                            </ul>
-                        </nav>
-                    </div>
                 </div>
             </div> <!-- .col// -->
         </div> <!-- .row // -->
     </div> <!-- card body .// -->
 </div> <!-- card .// -->
 <div class="pagination-area mt-30 mb-50">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-start">
+            <?= $pager->links('affiliate', 'product_pagination'); ?>
+            <!-- <li class="page-item active"><a class="page-link" href="#">01</a></li>
+            <li class="page-item"><a class="page-link" href="#">02</a></li>
+            <li class="page-item"><a class="page-link" href="#">03</a></li>
+            <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+            <li class="page-item"><a class="page-link" href="#">16</a></li>
+            <li class="page-item"><a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a></li> -->
+
+        </ul>
+    </nav>
+</div>
 <!-- modal -->
 
 <?php $this->endSection() ?>
