@@ -37,7 +37,7 @@
                 <tbody>
                     <?php foreach ($konfirmasi as $value) {?>
                         <tr>
-                            <td><?= $value->transaksi_id; ?></td>
+                            <td><?= $value->transaksi_id ? $value->transaksi_id : 'upgrade'  ?></td>
                             <td><b><?= $value->name?></b></td>
                             <td><b><?= $value->bill?></b></td>
                             <td><b><?= $value->date?></b></td>

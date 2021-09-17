@@ -688,10 +688,72 @@
                                             <?php endif; ?>
                                             <?php if($segments[1] == "affiliate" && !empty(session()->getFlashdata('success'))){ ?>
                                             <?php if (!in_groups(4)) {?>
-                                                <p>Registrasi program affiliasi Anda <b>Menunggu Pembayaran<b>.</p>
+
+                                                <p>Registrasi program affiliasi Anda <b><?= $konfirmasi == null ? 'Menunggu Pembayaran' : 'sedang di tinjau' ?><b>.</p>
+                                                
+                                                <?php if($konfirmasi == null): ?>
                                                 <p>Mohon dilakukan pembayaran <strong>Rp <strong><b><?= 50000 + ($generate - 1) ?></strong></b></strong></p>
                                                 <p>ke Rekening Bank Dibawah ini :<br>
-                                                    Rekening : <strong><?= $bill->bank_name?></strong> <br> Nomor : <strong><?= $bill->bank_number?></strong> <br> A/N : <strong><?= $bill->owner?>.</strong> </p>
+                                                    Rekening : <strong><?= $bill->bank_name?></strong> <br> Nomor : <strong><?= $bill->bank_number?></strong> <br> A/N : <strong><?= $bill->owner?>.</strong> 
+                                                </p>
+                                                <?php endif; ?>
+                                                    <div class="tab-pane fade active show" id="upgrade" role="tabpanel" aria-labelledby="upgrade-tab">
+                                                         <?php if(!empty(session()->getFlashdata('success'))){ ?>
+                                                            <div class="alert alert-success bg-success text-white">
+                                                                <?php echo session()->getFlashdata('success');?>
+                                                            </div>
+                                                        <?php } ?>
+                                                        <div class="card p-3">
+                                                            <h3>Formulir Konfirmasi Pembayaran Affiliate</h3>
+                                                            <br>
+
+                                                            <br>
+                                                            <?php if($konfirmasi == null): ?>
+                                                            <form method="post" action="<?= base_url()?>/konfirmasi/<?=$bill->id?>">
+                                                                <div class="row">
+                                                                    <div class="form-group col-md-12">
+                                                                        <label>Tanggal Transfer <span class="required">*</span></label>
+                                                                        <input required="" class="form-control square" name="date" type="date" value="">
+                                                                        <input style="display: none" class="form-control square" name="bill_id" type="text" value="<?= $bill->id; ?>">
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label>Jumlah Transfer <span class="required">*</span></label>
+                                                                        <input required="" class="form-control square" name=total type="text"  value="">
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label>Bank Tujuan<span class="required">*</span></label>
+                                                                        <input readonly required="" class="form-control square" name="bill" type="text"  value="<?="(".$bill->id.")-".$bill->bank_name."-".$bill->bank_number."-".$bill->owner?>">
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label>Keterangan<span class="required">*</span></label>
+                                                                        <input required="" class="form-control square" name="keterangan" type="text"  value="">
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Konfirmasi</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                            <?php else : ?>
+                                                             
+                                                                 <div class="form-group col-md-12">
+                                                                    <label>Tanggal Transfer <span class="required">*</span></label>
+                                                                    <input required="" class="form-control square" name="date" type="date" value="<?=$konfirmasi->date?>">
+                                                                </div>
+                                                                <div class="form-group col-md-12">
+                                                                    <label>Jumlah Transfer <span class="required">*</span></label>
+                                                                    <input readonly required="" class="form-control square" name=total type="text"  value="<?=$konfirmasi->total?>">
+                                                                </div>
+                                                                <div class="form-group col-md-12">
+                                                                    <label>Bank Tujuan<span class="required">*</span></label>
+                                                                    <input readonly required="" class="form-control square" name="bill" type="text"  value="<?="(".$bill->id.")-".$bill->bank_name."-".$bill->bank_number."-".$bill->owner?>">
+                                                                </div>
+                                                                <div class="form-group col-md-12">
+                                                                    <label>Keterangan<span class="required">*</span></label>
+                                                                    <input readonly required="" class="form-control square" name="keterangan" type="text"  value="<?=$konfirmasi->keterangan?>">
+                                                                </div>
+                                                            <?php endif; ?>
+                                                        </div>
+                                                    </div>
                                             <?php }else{ ?>
                                                 <div class="alert alert-success bg-success text-white">
                                                      <br> Link Affiliate <b>(<?= user()->affiliate_link;?>)</b>
@@ -730,52 +792,6 @@
                                                         </button>
                                                     </div>
                                                 </form>
-                                            <?php elseif(count($upgrades) > 0): ?>
-                                               <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>photo</th>
-                                                            <th>status</th>
-                                                            <th>Type</th>
-                                                            <th>Total</th>
-                                                            <th>bill</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php foreach($upgrades as $upgrade): ?>
-                                                            <tr>
-                                                                <td>
-                                                                <?php if(strlen($upgrade->photo) > 5): ?>
-                                                                    <img style="width:100px" class="img-responsive circle" src="<?php base_url() ?>/uploads/bukti/<?= $upgrade->photo ?>"></td>
-                                                                <?php else: ?>
-                                                                    Upload Bukti Foto
-                                                                <?php endif; ?>
-                                                                <td><?= $upgrade->status_request ?></td>
-                                                                <td><?= $upgrade->type ?></td>
-                                                                <td>Rp <?= $upgrade->total ?></td>
-                                                                <td><?= $upgrade->bill ?></td>
-                                                                <td>
-                                                                    <?php if($upgrade->status_request != 'active'): ?>
-                                                                    <form method="post" action="<?= base_url()  ?>/upgrades/upload/<?= $id  ?>" enctype="multipart/form-data">
-                                                                        <div class="form-group col-md-12">
-                                                                            <input type="file" name="photo" style="width: 100px; border:none" class="is-invalid form-control">
-                                                                            <button type="submit" class="btn btn-sm btn-fill-out submit" name="submit" value="Submit">
-                                                                                <i class="fa fa-send"></i> Bayar
-                                                                            </button>
-                                                                        </div>
-                                                                    </form>
-                                                                    <?php else: ?>
-                                                                        <button type="submit" class="btn btn-sm btn-fill-out submit" name="submit" value="Submit">
-                                                                            <i class="fa fa-send"></i> Verified
-                                                                        </button>
-                                                                    <?php endif; ?>
-                                                                </td>
-
-                                                            </tr>
-                                                        <?php endforeach; ?>
-                                                    </tbody>
-                                                </table>
                                             <?php endif; ?>
                                         </div>
                                     </div>
