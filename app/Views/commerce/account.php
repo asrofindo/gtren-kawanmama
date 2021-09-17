@@ -875,7 +875,7 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="text-center">
-                                                <img style="border : 1px solid; width:100px !important; height: 100px" src="<?= base_url() ?>/uploads/photo.svg" class="img-fluid rounded-circle w-25">
+                                                <img style="border : 1px solid; width:100px !important; height: 100px" src="<?= base_url() ?>/public/uploads/photo.svg" class="img-fluid rounded-circle w-25">
                                                 <h3><?= user()->fullname ?></h3>
                                                 <h6><?= user()->email ?></h6>
                                                 <p>
