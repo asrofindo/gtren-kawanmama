@@ -115,7 +115,7 @@
 
     <?php if(in_groups(1)): ?>
     <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/affiliate/list"> <i class="icon material-icons md-user"></i>
+        <a class="menu-link" href="<?php base_url() ?>/affiliate/list"> <i class="icon material-icons md-people"></i>
             <span class="text">Data Affilite</span>
         </a>
     </li>
