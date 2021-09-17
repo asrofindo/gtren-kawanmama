@@ -100,6 +100,15 @@ class Dashboard extends BaseController
 			->where('status_barang =', 'dikirim')
 			->orWhere('status_barang =', 'dipantau')
 	      	->findAll();
+
+	      	$data['affiliate'] = $this->model->select('sum(COALESCE(affiliate_commission,0) - COALESCE(pendapatan.keluar,0)) AS affiliate_total')
+			->join('cart_item', 'cart_item.id = detailtransaksi.cart_id ', 'left')
+			->join('users', 'users.affiliate_link = cart_item.affiliate_link', 'left')
+			->join('pendapatan', 'pendapatan.user_id = users.id', 'left')
+			->where('users.id', user()->id)
+			->where('status_barang =', 'diterima_pembeli')
+			->where('pendapatan.status_dana =', 'affiliate')
+			->find();
 		}
 
 		$data['bills'] = $this->bill->findAll();
