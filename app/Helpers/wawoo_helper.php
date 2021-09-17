@@ -3,7 +3,12 @@
 
 function wawoo($phone='+6281232312288',$message='permisi kami dari Gtren')
 {
-	$key='739d4b84b103f8a89988e0b9676e2f6958f4a097f6c06df6'; //this is demo key please change with your own key
+	$db      = \Config\Database::connect();
+	$builder = $db->table('api_key');
+
+	$api = $builder->where('name', 'woowa')->get()->getResultObject()[0];
+	
+	$key= $api->token; //this is demo key please change with your own key
 	$url='http://116.203.191.58/api/send_message';
 	$data = array(
 	"phone_no"=> $phone,

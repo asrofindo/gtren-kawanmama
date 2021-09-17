@@ -320,9 +320,7 @@
                             <ul class="categor-list">
                                 <?php foreach ($kategory  as $data) {?>
                                         <li class="cat-item text-muted"><a href="<?= base_url() ?>/category/product/<?= $data->id?>"><?= $data->category ?></a></li>
-  
                                         <?php }?>
-                                    <li><a href="<?= base_url() ?>/category/product/<?= $data->id?>"><?= $data->category ?></a></li>
                             </ul>
                         </div>
                     </div>
