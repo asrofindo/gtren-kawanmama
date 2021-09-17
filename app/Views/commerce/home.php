@@ -13,7 +13,6 @@
                                     <h2 class="animated fw-900"><?= $banner->title?></h2>
                                     <h1 class="animated fw-900 text-brand"><?= $banner->sub_title ?></h1>
                                     <p class="animated"><?= $banner->description ?></p>
-                                    <a class="animated btn btn-default btn-rounded" href="shop-product-right.html"> DISCOVER NOW <i class="fa fa-arrow-right"></i> </a>
                                 </div>
                                 <div class="single-slider-img single-slider-img-1">
                                     <img class="animated" src="<?= base_url() ?>/public/uploads/banner/<?= $banner->photo?>" alt="">
