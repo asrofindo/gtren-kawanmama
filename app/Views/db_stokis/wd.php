@@ -6,7 +6,7 @@
         <?php if(count($pendapatan) == 0): ?>
             <p>Rp 0</p>
         <?php else: ?>
-            <p>Rp <?= $pendapatan[0]->total; ?></p>
+            <p><?= rupiah($pendapatan[0]->total); ?></p>
         <?php endif; ?>
     </div>
 </div>
@@ -16,7 +16,7 @@
         <?php if(count($pendapatan_affiliate) == 0): ?>
             <p>Rp 0</p>
         <?php else: ?>
-            <p>Rp <?= $pendapatan_affiliate[0]->total; ?></p>
+            <p><?= rupiah($pendapatan_affiliate[0]->total); ?></p>
         <?php endif; ?>
     </div>
 </div>
@@ -27,7 +27,7 @@
             <?php if(count($pendapatan_stockist) == 0): ?>
                 <p>Rp 0</p>
             <?php else: ?>
-                <p>Rp <?= $pendapatan_stockist[0]->total; ?></p>
+                <p><?= rupiah($pendapatan_stockist[0]->total); ?></p>
             <?php endif; ?>
         </div>
     </div>

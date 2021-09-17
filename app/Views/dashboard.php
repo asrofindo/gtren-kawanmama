@@ -270,7 +270,7 @@
                                                         <td><?= $bill->bank_name ?></td>
                                                         <td><?= $bill->bank_number ?></td>
                                                         <td><?= $bill->owner ?></td>
-                                                        <td><?= $bill->total ? $bill->total : 0;   ?></td>
+                                                        <td><?= rupiah($bill->total)   ?></td>
                                                     </tr>
                                                 <?php endforeach;  ?>
                                             </tbody>  

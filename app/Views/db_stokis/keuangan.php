@@ -29,9 +29,9 @@
                         <tbody>
                             <?php foreach ($pendapatan_seller as $seller): ?>
                                 <tr>
-                                    <td><?php echo $seller->masuk ?></td>
-                                    <td><?php echo $seller->keluar ?></td>
-                                    <td><?php echo $seller->total; ?></td>
+                                    <td><?php echo rupiah($seller->masuk) ?></td>
+                                    <td><?php echo rupiah($seller->keluar) ?></td>
+                                    <td><?php echo rupiah($seller->total); ?></td>
                                 </tr>
                             <?php endforeach ?>
                         </tbody>
@@ -61,9 +61,9 @@
                     <tbody>
                         <?php foreach ($pendapatan_affiliate as $affiliate): ?> 
                             <tr>
-                                <td><?php echo $affiliate->masuk ?></td>
-                                <td><?php echo $affiliate->keluar ?></td>
-                                <td><?php echo $affiliate->total; ?></td>
+                                <td><?php echo rupiah($affiliate->masuk) ?></td>
+                                <td><?php echo rupiah($affiliate->keluar) ?></td>
+                                <td><?php echo rupiah($affiliate->total); ?></td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
