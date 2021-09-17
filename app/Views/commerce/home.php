@@ -89,7 +89,7 @@
                 <!--End product-grid-4-->
             </div>
         </section>
-        <section class="banners">
+<!--         <section class="banners">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
@@ -144,7 +144,7 @@
                 </div>
             </div>
         </section>
-
+ -->
          <?php foreach ($kategori as $ka): ?>
         <section class="bg-grey-9 section-padding-60 py-5 my-5">
             <div class="container">
