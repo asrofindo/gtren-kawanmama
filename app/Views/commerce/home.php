@@ -132,7 +132,7 @@
                     <div class="col-lg-3 col-md-6 mb-md-3">
                         <div class="banner-left-icon d-flex align-items-center wow fadeIn animated">
                             <div class="banner-icon">
-                                <img src="<?= base_url() ?>/uploads/offer/<?php echo $offer->photo ?>" alt="">
+                                <img src="<?= base_url() ?>/public/uploads/offer/<?php echo $offer->photo ?>" alt="">
                             </div>
                             <div class="banner-text">
                                 <h3 class="icon-box-title"><?= $offer->title ?></h3>
