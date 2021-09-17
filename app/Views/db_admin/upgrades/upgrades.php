@@ -69,7 +69,7 @@
                                         <td><b><?= $upgrade->type ?></b></td>
                                         <td><b><?= $upgrade->affiliate_link ?></b></td>
                                         <td><b><?= $upgrade->bank_name ?> - <?= $upgrade->owner ?></b></td>
-		                                <td><b>Rp <?= $upgrade->total ?></b></td>
+		                                <td><b><?= rupiah($upgrade->total) ?></b></td>
 		                                <td>
                                             <?php if($upgrade->status_request == 'pending'): ?>
 		                                    <a href="<?= base_url('upgrades/update/'.$upgrade->id) ?>" class="btn btn-brand rounded btn-sm font-sm">

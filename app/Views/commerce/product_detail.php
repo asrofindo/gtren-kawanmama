@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="clearfix product-price-cover">
                                     <div class="product-price primary-color float-left">
-                                        <ins><span class="text-brand "><?= "Rp. ". number_format($product->sell_price) ?></span></ins>
+                                        <ins><span class="text-brand "><?= rupiah($product->sell_price) ?></span></ins>
                                         <input style="display: none" type="" id="price" value="<?= $product->sell_price; ?>" name="">
                                     </div>
                                 </div>

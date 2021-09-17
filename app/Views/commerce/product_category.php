@@ -41,7 +41,7 @@
                                         </div>
                                     </div>
                                 <div class="product-price">
-                                    <span><?= "Rp. ". number_format($product->sell_price) ?></span>
+                                    <span><?= rupiah($product->sell_price) ?></span>
                                     <!-- <span class="old-price">$245.8</span> -->
                                 </div>
                              

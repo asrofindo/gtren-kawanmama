@@ -49,7 +49,7 @@
                         <div class="text">
                             <h6 class="mb-1">Order info</h6>
                             <p class="mb-1">
-                                Shipping: <?= $order['kurir'] ?> <br> etd: <?= $order['etd'] ?> <br> ongkir:Rp <?= number_format($order['ongkir']); ?> <br>
+                                Shipping: <?= $order['kurir'] ?> <br> etd: <?= $order['etd'] ?> <br> ongkir:<?= rupiah($order['ongkir']); ?> <br>
                                  Bank : <?php echo $order['bank']; ?>
                             </p>
                         </div>
@@ -87,7 +87,7 @@
                                                 </a>
                                             </td>
                                             <td> <?= $product->resi; ?> </td>
-                                            <td> Rp <?= number_format($product->total / $product->amount); ?> </td>
+                                            <td> <?= rupiah($product->total / $product->amount); ?> </td>
                                             <td> <?= $product->amount; ?> </td>
                                             <td> 
                                                <?php if($product->status_barang == null && $product->status_pembayaran == 'paid'): ?>
@@ -107,7 +107,7 @@
                                                 <?php endif; ?>
 
                                             </td>
-                                            <td class="text-end">Rp <?= number_format($product->total);  ?> </td>
+                                            <td class="text-end"><?= rupiah($product->total);  ?> </td>
                                             <td class="text-end">
                                                 <div class="dropdown">
                                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
@@ -128,11 +128,11 @@
                                         <article class="float-end">
                                             <dl class="dlist">
                                                 <dt>Ongkos Kirim:</dt>
-                                                <dd>Rp<?= number_format($order['ongkir']);  ?></dd>
+                                                <dd><?= rupiah($order['ongkir']);  ?></dd>
                                             </dl>
                                             <dl class="dlist">
                                                 <dt>total tagihan:</dt>
-                                                <dd> <b class="h5">Rp<?= number_format($order['total_transaksi']);  ?></b> </dd>
+                                                <dd> <b class="h5"><?= rupiah($order['total_transaksi']);  ?></b> </dd>
                                             </dl>
                                         </article>
                                     </td>
