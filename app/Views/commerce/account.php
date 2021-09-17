@@ -5,8 +5,8 @@
         <div class="row">
             <div class="col-lg-12 ">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="dashboard-menu">
+                    <div class="col-md-4 ">
+                        <div class="dashboard-menu d-none d-xl-block d-md-block d-lg-block">
                             <ul class="nav flex-column" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link <?= ($segments[0] == "account" ? "active" : null) ?>" id="dashboard-tab" href="<?= base_url('account') ?>" role="tab" aria-controls="dashboard" aria-selected="false"><i class="fa fa-atom mr-15"></i>Dashboard</a>

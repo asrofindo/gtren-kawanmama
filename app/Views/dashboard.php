@@ -65,8 +65,8 @@
             <span class="text">Produk</span>
         </a>
         <div class="submenu">
-            <a href="<?= base_url() ?>/products">Daftar Produk</a>
-            <a href="<?= base_url() ?>/category">Kategori</a>
+            <a href="<?= base_url()?>/products">Daftar Produk</a>
+            <a href="<?= base_url()?>/category">Kategori</a>
         </div>
     </li>
     <?php endif ?>

@@ -42,7 +42,7 @@
                                 <form action="<?= base_url() ?>/add/role/<?=$user->id?>" method="post" class="w-100">
                                     <select name="role">
                                         <?php foreach ($group as $key => $value) {?>
-                                            <?php if($value['name'] == 'stockist'); ?>
+                                            <?php if($value['name'] == 'stockist'): ?>
                                                 <option value="<?= $value['id']?>">Distributor</option>
                                             <?php endif; ?>
                                             <option value="<?= $value['id']?>"><?= $value['name']?></option>

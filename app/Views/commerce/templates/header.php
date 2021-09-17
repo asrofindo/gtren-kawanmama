@@ -137,6 +137,7 @@
                                 <li>
                                     <a class="active" href="<?= base_url() ?>">Home</a>
                                 </li>
+                                
                                 <li>
                                     <a href="<?= base_url()?>/about">About</a>
                                 </li>
@@ -220,23 +221,48 @@
                     </form>
                 </div>
                 <div class="mobile-menu-wrap mobile-header-border">
-                    <div class="main-categori-wrap mobile-header-border">
-                        <a class="categori-button-active-2" href="#">
-                            <span class="far fa-bars"></span> Kategori Produk <i class="down far fa-chevron-down"></i>
-                        </a>
-                        <div class="categori-dropdown-wrap categori-dropdown-active-small">
-                            <ul>
-                            <?php foreach ($category as $data) {?>
-                                <li><a href=""><?= $data->category ?></a></li>
-                            <?php }?>
-                            </ul>
+                    <?php if (user()==null) {?>
+                        <div class="main-categori-wrap mobile-header-border">
+                            <a class="categori-button-active-2" href="#">
+                                <span class="far fa-bars"></span> Kategori Produk <i class="down far fa-chevron-down"></i>
+                            </a>
+                            <div class="categori-dropdown-wrap categori-dropdown-active-small">
+                                <ul>
+                                <?php foreach ($category as $data) {?>
+                                    <li><a href=""><?= $data->category ?></a></li>
+                                <?php }?>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
+                    <?php }?>
                     <!-- mobile menu start -->
                     <nav>
                         <ul class="mobile-menu">
+                        <?php if (user()!=null) {?>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/account">Dashboard</a></li>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/orders">Pembelian</a></li>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/rekening">Rekening Anda</a></li>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/tracking">Cek Pesanan</a></li>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/address">Alamat</a></li>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/profile">Profile Saya</a></li>
+                            <?php if (in_groups(4)) {?>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/affiliate">Dashboard Affiliate</a></li>
+                            <?php }?>
+                            <?php if (!in_groups(4)) {?>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/upgrade/affiliate">Daftar Program Reveral</a></li>
+                            <?php }?>
+                            <?php if (in_groups(3)) {?>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/seller">Dashboard Distributor</a></li>
+                            <?php }?>
+                            <?php if (!in_groups(3)) {?>
+                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/upgrade/stockist">Jadi Distributor</a></li>
+                            <?php }?>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/logout">Keluar</a></li>
+                        <?php } ?>
+                        <?php if (user()==null) { ?>
                             <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/about">About</a></li>
                             <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/contact">Contact</a></li>
+                        <?php }?>
                         </ul>
                     </nav>
                     <!-- mobile menu end -->
