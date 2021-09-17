@@ -730,7 +730,7 @@
                                                         </button>
                                                     </div>
                                                 </form>
-                                            <?php elseif(count($upgrades) > 1 && !in_groups(4)): ?>
+                                            <?php elseif(count($upgrades) > 0): ?>
                                                <table class="table">
                                                     <thead>
                                                         <tr>
@@ -778,18 +778,6 @@
                                                 </table>
                                             <?php endif; ?>
                                         </div>
-                                       <!--  <div class="card-body">
-                                            <div class="sidebar">
-                                                <div class="row">
-                                                    <div class="col-4">
-                                                        <div id="listings" class="listings">asdasd</div>
-                                                    </div>
-                                                    <div  style="height: 400px" class="col-8 ">
-                                                        <div id="map" class="map h-100 w-100" style="height: 400px"></div>
-                                                     </div>
-                                                </div>     
-                                            </div>
-                                        </div> -->
                                     </div>
                                 </div>
                             <?php elseif( count($segments) > 1 && $segments[1] == "stockist"): ?>
@@ -913,6 +901,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             <?php endif ?>
                             
                         </div>
