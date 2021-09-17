@@ -89,61 +89,6 @@
                 <!--End product-grid-4-->
             </div>
         </section>
-        <section class="banners">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="banner-img wow fadeIn animated">
-                            <img class="border-radius-10" src="<?= base_url() ?>/frontend/imgs/banner/banner-1.png" alt="">
-                            <div class="banner-text">
-                                <span>Smart Offer</span>
-                                <h4>Save 20% on <br>iPhone 12</h4>
-                                <a href="shop-grid-right.html">Shop Now <i class="fa fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="banner-img wow fadeIn animated">
-                            <img class="border-radius-10" src="<?= base_url() ?>/frontend/imgs/banner/banner-2.png" alt="">
-                            <div class="banner-text">
-                                <span>Sale off</span>
-                                <h4>Great Camera <br>Collection</h4>
-                                <a href="shop-grid-right.html">Shop Now <i class="fa fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 d-md-none d-lg-flex">
-                        <div class="banner-img wow fadeIn animated">
-                            <img class="border-radius-10" src="<?= base_url() ?>/frontend/imgs/banner/banner-3.png" alt="">
-                            <div class="banner-text">
-                                <span>New Arrivals</span>
-                                <h4>Shop Today’s <br>Deals & Offers</h4>
-                                <a href="shop-grid-right.html">Shop Now <i class="fa fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="featured section-padding-60">
-            <div class="container">
-                <div class="row">
-                 <?php foreach ($offers as $offer): ?>
-                    <div class="col-lg-3 col-md-6 mb-md-3">
-                        <div class="banner-left-icon d-flex align-items-center wow fadeIn animated">
-                            <div class="banner-icon">
-                                <img src="<?= base_url() ?>/public/uploads/offer/<?php echo $offer->photo ?>" alt="">
-                            </div>
-                            <div class="banner-text">
-                                <h3 class="icon-box-title"><?= $offer->title ?></h3>
-                                <p><?= $offer->description ?></p>
-                            </div>
-                        </div>
-                    </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </section>
 
          <?php foreach ($kategori as $ka): ?>
         <section class="bg-grey-9 section-padding-60 py-5 my-5">
