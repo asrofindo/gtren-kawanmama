@@ -124,13 +124,6 @@
         </div>
     </li>
     <?php endif; ?>
-    <?php if(in_groups(3) && !in_groups(1)): ?>
-    <li class="menu-item">
-        <a class="menu-link" href="<?= base_url() ?>/order/stockist"> <i class="icon material-icons md-shopping_cart"></i>
-            <span class="text">Pesanan</span>
-        </a>
-    </li>
-    <?php endif; ?>
 
     <?php if(in_groups(3) || in_groups(4)): ?>
     <li class="menu-item">

@@ -3,7 +3,6 @@
 <div class="content-header">
     <div>
         <h2 class="content-title card-title">Pesanan Masuk</h2>
-        <p>Daftar semua pesanan yang telah masuk.</p>
     </div>
     <div>
         <input type="text" placeholder="Search order ID" class="form-control bg-white">
@@ -28,11 +27,6 @@
 </div>
 <div class="card mb-4">
     <header class="card-header">
-        <div class="row gx-3">
-            <div class="col-lg-4 col-md-6 me-auto">
-                <input type="text" placeholder="Search..." class="form-control">
-            </div>
-        </div>
     </header> <!-- card-header end// -->
     <div class="card-body">
         <div class="table-responsive">
