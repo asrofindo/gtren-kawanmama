@@ -114,8 +114,8 @@
                                                     <div class="dropdown-menu">
 
                                                         <?php if($product->status_barang == null): ?>
-                                                            <a class="dropdown-item text-danger" href="<?= base_url() ?>/order/ignore/<?= $product->id; ?>">Tolak</a>
-                                                            <a class="dropdown-item" href="<?= base_url() ?>/order/acc/<?= $product->id; ?>">Terima</a>
+                                                            <a onclick="return confirm('Apakah Anda Yakin Mau Menolak ?')" class="dropdown-item text-danger" href="<?= base_url() ?>/order/ignore/<?= $product->id; ?>">Tolak</a>
+                                                            <a onclick="return confirm('Apakah Anda Yakin Mau Terima ?')" class="dropdown-item" href="<?= base_url() ?>/order/acc/<?= $product->id; ?>">Terima</a>
                                                         <?php endif; ?>
                                                     </div>
                                                 </div> <!-- dropdown //end -->
