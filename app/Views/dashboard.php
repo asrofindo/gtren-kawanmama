@@ -40,49 +40,6 @@
     </li>
     <?php endif; ?>
 
-    <?php if(in_groups(1)): ?>
-    <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/bills"> <i class="icon material-icons md-account_balance"></i>
-            <span class="text">Rekening Admin</span>
-        </a>
-    </li>
-    <?php endif; ?>
-
-    <?php if(in_groups(1)): ?>
-    <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/riwayat/wd"> <i class="icon material-icons md-assignment"></i>
-            <span class="text">Riwayat Withdraw</span>
-        </a>
-    </li>
-    <?php endif; ?>
-
-    <?php if(in_groups(1)): ?>
-    <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/affiliate/list"> <i class="icon material-icons md-people"></i>
-            <span class="text">Data Affiliate</span>
-        </a>
-    </li>
-    <?php endif; ?>
-
-    <?php if(in_groups(1)): ?>
-    <li class="menu-item">
-        <a class="menu-link" href="<?= base_url() ?>/hutang/affiliate"> <i class="icon material-icons md-work"></i>
-            <span class="text">Dana Affiliate</span>
-        </a>
-    </li>
-    <?php endif; ?>
-
-    <?php if(in_groups(1)): ?>
-    <li class="menu-item">
-        <a class="menu-link" href="<?= base_url() ?>/hutang/stockist"> <i class="icon material-icons md-work"></i>
-            <span class="text">Dana Stockist</span>
-        </a>
-    </li>
-    <?php endif; ?>
-
-
-
-
     <?php if(in_groups(3)): ?>
     <li class="menu-item active">
         <a class="menu-link" href="<?= base_url() ?>/seller"> <i class="icon material-icons md-home"></i>
@@ -125,6 +82,7 @@
         </div>
     </li>
     <?php endif; ?>
+
     <?php if(in_groups(3) && !in_groups(1)): ?>
     <li class="menu-item">
         <a class="menu-link" href="<?= base_url() ?>/order/stockist"> <i class="icon material-icons md-shopping_cart"></i>
@@ -151,6 +109,38 @@
     <li class="menu-item">
         <a class="menu-link" href="<?php base_url() ?>/distributor/list"> <i class="icon material-icons md-store"></i>
             <span class="text">Data Distributor</span>
+
+    <?php if(in_groups(1)):?>
+    <li class="menu-item has-submenu">
+        <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-monetization_on"></i>
+            <span class="text">Keuangan</span>
+
+        </a>
+        <div class="submenu">
+                <a href="<?php base_url() ?>/bills"><span class="text">Rekening Admin</span></a> 
+                <a href="<?php base_url() ?>/riwayat/wd"><span class="text">Riwayat Withdraw</span></a>
+                <a href="<?php base_url() ?>/hutang/affiliate"><span class="text">Dana Affiliate</span></a> 
+                <a href="<?php base_url() ?>/hutang/stockist"><span class="text">Dana Distributor</span></a> 
+                <a href="<?php base_url() ?>/admin/konfirmasi"><span class="text">Konfirmasi Pembayaran</span></a> 
+        </div>
+    </li>
+
+    <?php endif; ?>
+
+    <li class="menu-item has-submenu">
+        <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-people"></i>
+            <span class="text">Data Member</span>
+        </a>
+        <div class="submenu">
+                <a href="<?php base_url() ?>/members"><span class="text">Semua Pengguna</span></a> 
+                <a href="<?php base_url() ?>/distributor/list"><span class="text">Distributor</span></a>
+        </div>
+    </li>
+    <?php endif; ?>
+    <?php if(in_groups(3) && !in_groups(1)): ?>
+    <li class="menu-item">
+        <a class="menu-link" href="<?= base_url() ?>/order/stockist"> <i class="icon material-icons md-shopping_cart"></i>
+            <span class="text">Pesanan</span>
         </a>
     </li>
     <?php endif; ?>
@@ -170,7 +160,6 @@
         </a>
     </li>
     <?php endif; ?>
-
     <?php if(in_groups(1)): ?>
     <li class="menu-item has-submenu">
         <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-work"></i>
@@ -199,17 +188,8 @@
         </a>
     </li>
     <?php endif ?>
-    <?php if(in_groups(1)): ?>
-    <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/admin/konfirmasi"> <i class="icon material-icons md-payment"></i>
-            <span class="text">Konfirmasi Pembayaran</span>
-        </a>
-    </li>
-    <?php endif; ?>
-
 </ul>
 <hr>
-
 <?php if(in_groups(1)): ?>
 <ul class="menu-aside">
     <li class="menu-item has-submenu">

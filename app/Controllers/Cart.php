@@ -41,14 +41,19 @@ class Cart extends BaseController
 		->where('distributor_id', $distributor_id)->find();
 
 		if(count($transaksi) > 0){
+			if ($id!=null) {
+				$data=["affiliate_link" => '/src/'.$id];
+			}
 			$data = [
 				"id" => $transaksi[0]->id,
 				"product_id" => $product_id,
+				"affiliate_link" => '/src/'.$id,
 				"distributor_id" => $distributor_id,
 				"user_id" => user()->id,
 				"amount" => $amount + $transaksi[0]->amount,
 				"total" => $transaksi[0]->total * ($amount + $transaksi[0]->amount)
 			];
+
 			$this->cart->where('user_id', user()->id)
 			->where('product_id', $product_id)
 			->where('distributor_id', $distributor_id)->replace($data);
