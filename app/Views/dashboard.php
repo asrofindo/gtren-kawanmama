@@ -98,17 +98,6 @@
         </a>
     </li>
     <?php endif; ?>
-    <?php if(in_groups(1)): ?>
-    <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/members"> <i class="icon material-icons md-people"></i>
-            <span class="text">Data Pengguna</span>
-        </a>
-    </li>
-    <?php endif; ?>
-    <?php if(in_groups(1)): ?>
-    <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/distributor/list"> <i class="icon material-icons md-store"></i>
-            <span class="text">Data Distributor</span>
 
     <?php if(in_groups(1)):?>
     <li class="menu-item has-submenu">
@@ -124,9 +113,6 @@
                 <a href="<?php base_url() ?>/admin/konfirmasi"><span class="text">Konfirmasi Pembayaran</span></a> 
         </div>
     </li>
-
-    <?php endif; ?>
-
     <li class="menu-item has-submenu">
         <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-people"></i>
             <span class="text">Data Member</span>
@@ -158,17 +144,6 @@
         <a class="menu-link" href="<?php base_url() ?>/request/wd"> <i class="icon material-icons md-account_balance_wallet"></i>
             <span class="text">Penarikan Dana</span>
         </a>
-    </li>
-    <?php endif; ?>
-    <?php if(in_groups(1)): ?>
-    <li class="menu-item has-submenu">
-        <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-work"></i>
-            <span class="text">Hutang Perusahaan</span>
-        </a>
-        <div class="submenu">
-            <a href="<?= base_url() ?>/hutang/affiliate">Affiliate</a>
-            <a class="" href="<?php base_url() ?>/hutang/stockist">Stockist</span></a>
-        </div>
     </li>
     <?php endif; ?>
 
