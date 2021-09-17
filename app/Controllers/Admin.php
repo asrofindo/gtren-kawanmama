@@ -394,4 +394,68 @@ class Admin extends BaseController
 		return redirect()->back();
 	}
 
+
+	public function api($status)
+	{
+		$db      = \Config\Database::connect();
+		$builder = $db->table('api_key');
+
+		if($status == 'add'){
+			$nama = $this->request->getPost('nama');
+			$token = $this->request->getPost('token');
+
+			$data = [
+				"name" => $nama,
+				"token" => $token
+			];
+
+			$builder->insert($data);
+			return redirect()->back();
+
+		}
+		if($status == 'edit'){
+
+			$nama = $this->request->getPost('nama');
+			$token = $this->request->getPost('token');
+			$id = $this->request->getPost('id');
+
+			$data = [
+				"name" => $nama,
+				"token" => $token
+			];
+
+			$builder->where("id", $id);
+			$builder->update($data);
+
+			$data['apis'] = $builder->get()->getResult();
+
+			return view("db_admin/api/api_key", $data);
+		}
+
+		$data['apis'] = $builder->get()->getResult();
+
+		return view("db_admin/api/api_key", $data);
+		
+	}
+
+	public function api_edit($id)
+	{
+		$db      = \Config\Database::connect();
+		$builder = $db->table('api_key');
+
+		$data['apis'] = $builder->where('id', $id)->get()->getResultObject()[0];
+
+		return view("db_admin/api/edit_api", $data);
+	}
+
+	public function api_delete($id)
+	{
+		$db      = \Config\Database::connect();
+		$builder = $db->table('api_key');
+
+		$builder->delete(["id" => $id]);
+
+		return redirect()->back();
+	}
+
 }

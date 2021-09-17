@@ -277,6 +277,13 @@ $routes->group('', function($routes)
 	// affiliate
 
 	$routes->get('/market/affiliate', 'User::affiliate');
+
+
+	// setting api
+	$routes->post('/setting/api/(:any)', 'Admin::api/$1');
+	$routes->get('/setting/api/(:any)', 'Admin::api/$1');
+	$routes->get('/api/edit/(:any)', 'Admin::api_edit/$1');
+	$routes->get('/api/delete/(:any)', 'Admin::api_delete/$1');
 }
 );
 
