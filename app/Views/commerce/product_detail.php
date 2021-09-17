@@ -1,14 +1,6 @@
 <?= $this->extend('commerce/templates/index') ?>
 <?= $this->section('content') ?>
-<div class="page-header breadcrumb-wrap">
-    <div class="container">
-        <div class="breadcrumb">
-            <a href="<?= base_url()?>" rel="nofollow">Home</a>     
-            <span></span> <?= $product->getCategory($product->categories)[0]->category; ?>
-            <span></span> <?= $product->name ?>
-        </div>
-    </div>
-</div>
+
 <section class="mt-60 mb-60">
     <div class="container">
         <div class="row">
