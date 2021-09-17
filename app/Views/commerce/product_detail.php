@@ -414,16 +414,7 @@
                         </div>
                     </div> -->
                     <!--Widget ads-->
-                    <div class="sidebar-widget widget-ads mb-30">
-                        <div class="banner-img banner-1 wow fadeIn  animated" style="visibility: visible; animation-name: fadeIn;">
-                            <img class="border-radius-10" src="<?= base_url() ?>/frontend/imgs/banner/banner-10.jpg" alt="">
-                            <div class="banner-text">
-                                <span>Gaming Area</span>
-                                <h4>Save 17% on <br>Assus Laptop</h4>
-                                <a href="shop-grid-right.html">Shop Now <i class="fa fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
+
                     <!--Widget categories-->
                     <!-- <div class="sidebar-widget widget_categories mb-50 p-30 bg-grey border-radius-10">
                         <div class="widget-header position-relative mb-20 pb-10">
