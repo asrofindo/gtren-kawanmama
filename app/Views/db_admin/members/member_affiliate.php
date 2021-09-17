@@ -2,14 +2,12 @@
 <?php $this->section('content') ?>
 <div class="content-header">
     <div>
-        <h2 class="content-title card-title">Data Distributor </h2>
-        <p>pesanan dari provinsi yang berbeda akan dilayani oleh distributor yang memiliki level</p>
+        <h2 class="content-title card-title">Data Affiliate </h2>
     </div>
 </div>
-<?= view('Myth\Auth\Views\_message_block') ?>
 <div class="card">
     <div class="card-body">
-    <form method="post" action="<?= base_url('/distributor/list') ?>">            
+   <!--  <form method="post" action="<?= base_url('/distributor/list') ?>">            
             <div class="row gx-3">
             <div class="col-lg-4 col-md-6 me-auto">
                 <input type="text" placeholder="cari nama toko..." class="form-control" name="locate">
@@ -18,7 +16,7 @@
             <div class="col-lg-2 col-6 col-md-3">
                 <button type="submit" class="btn btn-info btn-sm w-100 m-1">Cari </button>
             </div>
-        </form>
+        </form> -->
         <br>
         <br>
 
@@ -39,9 +37,9 @@
                              <?php foreach ($affiliate as $value): ?>
 
                             <tr>
-                                <td class="id"><?= $value['id']  ?></td>
-                                <td ><?= $value['username']  ?></td>
-                                <td ><?= $value['affiliate_link']  ?></td>
+                                <td class="id"><?= $value->id  ?></td>
+                                <td ><?= $value->username  ?></td>
+                                <td ><?= $value->affiliate_link  ?></td>
                             </tr>                     
                         <?php endforeach  ?>
 
