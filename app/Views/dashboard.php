@@ -199,7 +199,7 @@
                                 <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-monetization_on"></i></span>
                                 <div class="text">
                                     <h6 class="mb-1 card-title">Dana User</h6>
-                                    <span><?= number_format($user[0]->user_total); ;?></span>
+                                    <span><?= rupiah($user[0]->user_total); ;?></span>
                                    <!--  <span class="text-sm">
                                         Shipping fees are not included
                                     </span> -->
@@ -213,7 +213,7 @@
                             <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
                             <div class="text">
                                 <h6 class="mb-1 card-title">Dana Seller</h6> 
-                                <span><?= number_format($stockist[0]->stockist_total) ;?></span>
+                                <span><?= rupiah($stockist[0]->stockist_total) ;?></span>
                                 <!-- <span class="text-sm">
                                     Excluding orders in transit
                                 </span> -->
@@ -227,7 +227,7 @@
                             <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-qr_code"></i></span>
                             <div class="text">
                                 <h6 class="mb-1 card-title">Dana Affiliate</h6> 
-                                <span><?= number_format($affiliate[0]->affiliate_total) ;?></span>
+                                <span><?= rupiah($affiliate[0]->affiliate_total) ;?></span>
                             <!--     <span class="text-sm">
                                     In 19 Categories
                                 </span> -->
@@ -241,7 +241,7 @@
                             <span class="icon icon-sm rounded-circle bg-info-light"><i class="text-info material-icons md-shopping_basket"></i></span>
                             <div class="text">
                                 <h6 class="mb-1 card-title">Dana Admin</h6>
-                                <span><?= number_format($admin[0]['admin_total']) ;?></span>
+                                <span><?= rupiah($admin[0]['admin_total']) ;?></span>
                                <!--  <span class="text-sm">
                                     Based in your local time.
                                 </span> -->
@@ -300,7 +300,7 @@
                                 <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-monetization_on"></i></span>
                                 <div class="text">
                                     <h6 class="mb-1 card-title">Dana User</h6>
-                                    <span><?= number_format($user[0]->user_total); ;?></span>
+                                    <span><?= rupiah($user[0]->user_total); ;?></span>
                                    <!--  <span class="text-sm">
                                         Shipping fees are not included
                                     </span> -->
@@ -315,7 +315,7 @@
                             <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
                             <div class="text">
                                 <h6 class="mb-1 card-title">Dana Pending</h6> 
-                            <span><?= number_format($pending_stockist[0]->pending_stockist_total) ;?></span>
+                            <span><?= rupiah($pending_stockist[0]->pending_stockist_total) ;?></span>
                                 <!-- <span class="text-sm">
                                     Excluding orders in transit
                                 </span> -->
@@ -329,7 +329,7 @@
                             <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
                             <div class="text">
                                 <h6 class="mb-1 card-title">Dana Seller</h6> 
-                                <span><?= number_format($stockist[0]->stockist_total) ;?></span>
+                                <span><?= rupiah($stockist[0]->stockist_total) ;?></span>
                                 <!-- <span class="text-sm">
                                     Excluding orders in transit
                                 </span> -->
@@ -343,7 +343,7 @@
                             <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-qr_code"></i></span>
                             <div class="text">
                                 <h6 class="mb-1 card-title">Dana Affiliate</h6> 
-                                <span><?= number_format($affiliate[0]->affiliate_total) ;?></span>
+                                <span><?= rupiah($affiliate[0]->affiliate_total) ;?></span>
                             <!--     <span class="text-sm">
                                     In 19 Categories
                                 </span> -->
@@ -358,7 +358,7 @@
                             <span class="icon icon-sm rounded-circle bg-info-light"><i class="text-info material-icons md-shopping_basket"></i></span>
                             <div class="text">
                                 <h6 class="mb-1 card-title">Dana Admin</h6>
-                                <span><?= number_format($admin[0]['admin_total']) ;?></span>
+                                <span><?= rupiah($admin[0]['admin_total']) ;?></span>
                                <!--  <span class="text-sm">
                                     Based in your local time.
                                 </span> -->
@@ -389,7 +389,7 @@
                                                         <td><?= $bill->bank_name ?></td>
                                                         <td><?= $bill->bank_number ?></td>
                                                         <td><?= $bill->owner ?></td>
-                                                        <td><?= number_format($bill->total); ?></td>
+                                                        <td><?= rupiah($bill->total); ?></td>
                                                     </tr>
                                                 <?php endforeach;  ?>
                                             </tbody>  
@@ -418,7 +418,7 @@
                             <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-qr_code"></i></span>
                             <div class="text">
                                 <h6 class="mb-1 card-title">Dana Pending</h6> 
-                                <span><?= number_format($pending_affiliate[0]->pending_affiliate_total) ;?></span>
+                                <span><?= rupiah($pending_affiliate[0]->pending_affiliate_total) ;?></span>
                             <!--     <span class="text-sm">
                                     In 19 Categories
                                 </span> -->
@@ -432,7 +432,7 @@
                             <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-qr_code"></i></span>
                             <div class="text">
                                 <h6 class="mb-1 card-title">Dana Affiliate</h6> 
-                                <span><?= number_format($affiliate[0]->affiliate_total) ;?></span>
+                                <span><?= rupiah($affiliate[0]->affiliate_total) ;?></span>
                             <!--     <span class="text-sm">
                                     In 19 Categories
                                 </span> -->
