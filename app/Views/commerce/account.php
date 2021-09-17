@@ -57,9 +57,9 @@
                             <?php if (in_groups(3)) {?>
                                  <li class="nav-item">
                                     <?php if(count($segments) > 1): ?>
-                                    <a class="nav-link <?= ($segments[1] == "stockist" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/stockist') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Halaman Distributor</a>
+                                    <a class="nav-link <?= ($segments[1] == "stockist" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('seller') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Halaman Distributor</a>
                                     <?php else : ?>
-                                    <a class="nav-link <?= ($segments[0] == "stockist" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/stockist') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-store mr-15"></i>Halaman Distributor</a> 
+                                    <a class="nav-link <?= ($segments[0] == "stockist" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('seller') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-store mr-15"></i>Halaman Distributor</a> 
                                     <?php endif; ?>
                                 </li>
                             <?php } ?>

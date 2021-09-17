@@ -242,10 +242,15 @@
                     <!-- mobile menu end -->
                 </div>
                 <div class="mobile-social-icon">
-                    <a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="twitter" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="tumblr" href="#"><i class="fab fa-tumblr"></i></a>
-                    <a class="instagram" href="#"><i class="fab fa-instagram"></i></a>
+                    <?php foreach ($sosial as $key => $value) {?>
+                                <a class="<?php
+                                    if ($value->name=='youtube') {
+                                        echo 'instagram';
+                                    }else{
+                                       echo $value->name ;
+                                    }
+                                    ?>" href="<?= $value->link?>"><i class="fab fa-<?= $value->name?>"></i></a>
+                    <?php }?>
                 </div>
             </div>
         </div>
