@@ -38,7 +38,7 @@
                             <tr>
                                 <td><b><?= $wd['id'] ?></b></td>
                                 <td><b><?= $wd['username'] ?></b></td>
-                                <td><b><?= $wd['jumlah_wd'] ?></b></td>
+                                <td><b><?= rupiah($wd['jumlah_wd']) ?></b></td>
                                 <td><b><?= $wd['status_dana'] ?></b></td>
                                 <td><b><?= $wd['status_wd'] ?></b></td>
                                 <td><b><?= $wd['bank_name'] ?> - <?= $wd['owner'] ?></b></td>

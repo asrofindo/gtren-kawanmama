@@ -106,7 +106,7 @@
                                                                         <span class="badge rounded-pill alert-danger">di gagalkan</span>
                                                                     <?php endif; ?>
                                                                 </td>
-                                                                <td><?= $transaksi->total; ?></td>
+                                                                <td><?= rupiah($transaksi->total); ?></td>
                                                                 <td><?= $transaksi->bank_name; ?> - <?= $transaksi->bank_number; ?> - <?= $transaksi->owner; ?></td>
                                                                 <td><?= $transaksi->alamat; ?></td>
                                                                 <td>
@@ -286,7 +286,7 @@
                                         <div class="row">
                                             <h5>Nomor Transaksi : <?= $transaksi->id?></h5>
                                             <h5>Tanggal Transaksi : <?= $transaksi->created_at?></h5>
-                                            <h5>Total Tagihan : <?= $transaksi->total?></h5>
+                                            <h5>Total Tagihan : <?= rupiah($transaksi->total)?></h5>
 
                                         </div>
                                         <br>
@@ -299,7 +299,7 @@
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Jumlah Transfer <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name=total type="text"  value="<?=$konfirmasi->total?>">
+                                                            <input required="" class="form-control square" name=total type="text"  value="<?= rupiah($konfirmasi->total)?>">
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Bank Tujuan<span class="required">*</span></label>
@@ -676,14 +676,14 @@
                                                  Username Kamu <b><?= user()->username; ?></b>
                                             </p>
                                                 <p class="pb-5 mb-20">
-                                                     Biaya Affiliate : Rp <b><?= 50000 ?></b>
+                                                     Biaya Affiliate : <b><?= rupiah(50000) ?></b>
                                                 </p>
                                                 <p class="pb-5 mb-20">
                                                     <?php $kode = 50000 + $generate; ?>
                                                     Kode Unik : <b><?= substr($kode, 2, 5) ?></b>
                                                 </p>
                                                 <p class="pb-5 mb-20">
-                                                     Total Tagihan : Rp <b><?= 50000 + $generate ?></b>
+                                                     Total Tagihan : <b><?= rupiah(50000 + $generate) ?></b>
                                                 </p>
                                             <?php endif; ?>
                                             <?php if($segments[1] == "affiliate" && !empty(session()->getFlashdata('success'))){ ?>
@@ -692,7 +692,7 @@
                                                 <p>Registrasi program affiliasi Anda <b><?= $konfirmasi == null ? 'Menunggu Pembayaran' : 'sedang di tinjau' ?><b>.</p>
                                                 
                                                 <?php if($konfirmasi == null): ?>
-                                                <p>Mohon dilakukan pembayaran <strong>Rp <strong><b><?= 50000 + ($generate - 1) ?></strong></b></strong></p>
+                                                <p>Mohon dilakukan pembayaran <strong><strong><b><?= rupiah(50000 + ($generate - 1)) ?></strong></b></strong></p>
                                                 <p>ke Rekening Bank Dibawah ini :<br>
                                                     Rekening : <strong><?= $bill->bank_name?></strong> <br> Nomor : <strong><?= $bill->bank_number?></strong> <br> A/N : <strong><?= $bill->owner?>.</strong> 
                                                 </p>
@@ -741,7 +741,7 @@
                                                                 </div>
                                                                 <div class="form-group col-md-12">
                                                                     <label>Jumlah Transfer <span class="required">*</span></label>
-                                                                    <input readonly required="" class="form-control square" name=total type="text"  value="<?=$konfirmasi->total?>">
+                                                                    <input readonly required="" class="form-control square" name=total type="text"  value="<?= rupiah($konfirmasi->total)?>">
                                                                 </div>
                                                                 <div class="form-group col-md-12">
                                                                     <label>Bank Tujuan<span class="required">*</span></label>
@@ -771,7 +771,7 @@
                                             <?php if(count($upgrades) < 1 && !in_groups(4)): ?>
                                                 <form method="post" action="<?= base_url()  ?>/upgrades/<?= $id  ?>" enctype="multipart/form-data">
                                                     <div class="form-group col-md-12">
-                                                        <input  value="<?= 50000 + $generate ?>" required class="form-control square" name="total" id="total" style="display: none;" type="text">
+                                                        <input  value="<?= rupiah(50000 + $generate) ?>" required class="form-control square" name="total" id="total" style="display: none;" type="text">
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <input type="text" name="type" value="affiliate" style="display: none;">

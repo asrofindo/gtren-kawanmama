@@ -35,7 +35,7 @@
                                     <p class="product-name"><a href="shop-product-right.html"><?= $cart->name; ?></a></p>
 
                                 </td>
-                                <td class="price" data-title="Harga"><span>Rp. <?= number_format($cart->sell_price); ?></span></td>
+                                <td class="price" data-title="Harga"><span><?= rupiah($cart->sell_price); ?></span></td>
                                 <td class="text-center" data-title="Jumlah Barang">
                                     <div class="detail-qty border radius  m-auto">
                                         <a href="<?= base_url() ?>/cart/substruct/<?= $cart->id ?>" style="width:100px"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
@@ -44,7 +44,7 @@
                                     </div>
                                 </td>
                                 <td class="text-right" data-title="Sub Total">
-                                    <span>Rp. <?= number_format($cart->total); ?></span>
+                                    <span><?= rupiah($cart->total); ?></span>
                                 </td>
                                 <td class="action" data-title="Hapus"><a href="<?= base_url() ?>/cart/delete/<?= $cart->id ?>" class="text-muted"><i class="fa fa-trash-alt"></i></a></td>
                                 <?php endforeach ?>
@@ -67,7 +67,7 @@
                         <table class="table">      
                             <tr>
                                 <td class="cart_total_label">Total</td>
-                                <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">Rp. <?= number_format($total);  ?></span></strong></td>
+                                <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand"><?= rupiah($total);  ?></span></strong></td>
                             </tr>
                             </tbody>
                         </table>

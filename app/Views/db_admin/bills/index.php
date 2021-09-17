@@ -124,7 +124,7 @@
                             <td><?= $bill->bank_name ?></td>
                             <td><?= $bill->bank_number ?></td>
                             <td><?= $bill->owner ?></td>
-                            <td><?= $bill->total ?></td>
+                            <td><?= rupiah($bill->total) ?></td>
                             <td>
                                 <a class="btn btn-light rounded btn-sm font-sm" href="<?= base_url('bills/edit/'.$bill->id) ?>">Edit</a> 
                             </td>
@@ -136,7 +136,7 @@
                             <td><?= $bill->bank_name ?></td>
                             <td><?= $bill->bank_number ?></td>
                             <td><?= $bill->owner ?></td>
-                            <td><?= $bill->total ?></td>
+                            <td><?= rupiah($bill->total)?></td>
                             
                             <td>
                                 <a class="btn btn-light rounded btn-sm font-sm" href="<?= base_url('bills/edit/'.$bill->id) ?>">Edit</a> 

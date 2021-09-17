@@ -47,7 +47,7 @@
                         <tr>
                             <td><?= $order->id; ?></td>
                             <td><b><?php echo $order->fullname; ?></b></td>
-                            <td><?php echo $order->total ?></td>
+                            <td><?php echo rupiah($order->total) ?></td>
                             <td>
                                 <?php if($order->status_pembayaran == 'pending'): ?>
                                     <span class="badge rounded-pill alert-warning">Menunggu Pembayaran</span>

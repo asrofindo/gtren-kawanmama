@@ -41,7 +41,7 @@
                             <td><b><?= $value->name?></b></td>
                             <td><b><?= $value->bill?></b></td>
                             <td><b><?= $value->date?></b></td>
-                            <td><?= $value->total ?></td>
+                            <td><?= rupiah($value->total) ?></td>
                             <td><?= $value->keterangan ?></td>
                             <td class="text-end">
                             <div class="dropdown">
