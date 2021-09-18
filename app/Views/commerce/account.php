@@ -741,7 +741,7 @@
                                                                 </div>
                                                                 <div class="form-group col-md-12">
                                                                     <label>Jumlah Transfer <span class="required">*</span></label>
-                                                                    <input readonly required="" class="form-control square" name=total type="text"  value="<?= rupiah($konfirmasi->total)?>">
+                                                                    <input readonly required="" class="form-control square" name=total type="text"  value="<?= $konfirmasi->total?>">
                                                                 </div>
                                                                 <div class="form-group col-md-12">
                                                                     <label>Bank Tujuan<span class="required">*</span></label>
@@ -771,7 +771,7 @@
                                             <?php if(count($upgrades) < 1 && !in_groups(4)): ?>
                                                 <form method="post" action="<?= base_url()  ?>/upgrades/<?= $id  ?>" enctype="multipart/form-data">
                                                     <div class="form-group col-md-12">
-                                                        <input  value="<?= rupiah(50000 + $generate) ?>" required class="form-control square" name="total" id="total" style="display: none;" type="text">
+                                                        <input  value="<?= 50000 + $generate ?>" required class="form-control square" name="total" id="total" style="display: none;" type="text">
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <input type="text" name="type" value="affiliate" style="display: none;">
