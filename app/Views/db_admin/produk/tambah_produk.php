@@ -1,6 +1,6 @@
-<?php Rpthis->extend('dashboard') ?>
+<?php $this->extend('dashboard') ?>
 
-<?php Rpthis->section('content') ?>
+<?php $this->section('content') ?>
 <form action="<?= base_url('/tambahproduk') ?>" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col-9">
@@ -13,10 +13,10 @@
             </div>
         </div>
         <div class="col-lg-6">
-            <?php if (! empty(Rperrors)) : ?>
+            <?php if (! empty($errors)) : ?>
                 <div class="alert bg-danger text-white">
-                <?php foreach (Rperrors as Rpfield => Rperror) : ?>
-                    <p><?= Rperror ?></p>
+                <?php foreach ($errors as $field => $error) : ?>
+                    <p><?= $error ?></p>
                 <?php endforeach ?>
                 </div>
             <?php endif ?>
@@ -147,11 +147,11 @@
                 <div class="card-body">
                         <div class="mb-4">
                             <label class="form-label">Kategori</label>
-                            <?php foreach (Rpcategories as Rpcategory): ?>
+                            <?php foreach ($categories as $category): ?>
 
                                 <div class="custom-control custom-radio">
-                                  <input type="checkbox" id="customRadio1" name="category[]" value="<?= Rpcategory->id ?>" class="custom-control-input">
-                                  <label class="custom-control-label" for="customRadio1"><?= Rpcategory->category ?></label>
+                                  <input type="checkbox" id="customRadio1" name="category[]" value="<?= $category->id ?>" class="custom-control-input">
+                                  <label class="custom-control-label" for="customRadio1"><?= $category->category ?></label>
                               </div>
 
                             <?php endforeach ?>
@@ -164,4 +164,4 @@
     </div>
 </form>
 
-<?php Rpthis->endSection() ?>
+<?php $this->endSection() ?>
