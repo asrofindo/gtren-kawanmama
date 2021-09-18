@@ -358,7 +358,7 @@
 
                                             <?php } ?>
 
-                                            <p>Untuk melacak pesanan Anda, silakan masukkan ID Pesanan Anda di kotak di bawah ini dan tekan tombol "Lacak". Ini diberikan kepada Anda pada tanda terima Anda dan dalam email konfirmasi yang seharusnya Anda terima.</p>
+                                            <p>Untuk melacak pesanan Anda, silakan masukkan nomor resi Anda di kotak di bawah ini dan tekan tombol "Lacak". Selanjutnya cek email Anda.</p>
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <form class="contact-form-style mt-30 mb-50" action="<?php base_url() ?>/track" method="post">
