@@ -358,7 +358,7 @@
 
                                             <?php } ?>
 
-                                            <p>To track your order please enter your OrderID in the box below and press "Track" button. This was given to you on your receipt and in the confirmation email you should have received.</p>
+                                            <p>Untuk melacak pesanan Anda, silakan masukkan ID Pesanan Anda di kotak di bawah ini dan tekan tombol "Lacak". Ini diberikan kepada Anda pada tanda terima Anda dan dalam email konfirmasi yang seharusnya Anda terima.</p>
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <form class="contact-form-style mt-30 mb-50" action="<?php base_url() ?>/track" method="post">
@@ -377,9 +377,9 @@
 
                                                         <div class="input-style mb-20">
                                                             <label>Nomor Resi</label>
-                                                            <input name="awb" placeholder="Found in your order confirmation email" type="text" class="square">
+                                                            <input name="awb" placeholder="Nomor Resi" type="text" class="square">
                                                         </div>
-                                                        <button class="btn-sm submit submit-auto-width" type="submit"><i class="fa fa-paper-plane mr-15"></i>Track</button>
+                                                        <button class="btn-sm submit submit-auto-width" type="submit"><i class="fa fa-paper-plane mr-15"></i>Lacak</button>
                                                     </form>
                                                 </div>
                                             </div>
