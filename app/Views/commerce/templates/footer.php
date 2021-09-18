@@ -22,10 +22,10 @@
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3 d-none d-sm-block">
-                    <h5 class="widget-title mb-30 wow fadeIn animated">Halaman</h5>
+                    <h5 class="widget-title mb-30 wow fadeIn animated">Transaksi</h5>
                     <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
-                        <li><a href="<?= base_url()?>/about">About Us</a></li>
-                        <li><a href="<?= base_url()?>/contact">Contact Us</a></li>
+                        <li><a href="<?= base_url()?>/orders">Pesanan</a></li>
+                        <li><a href="<?= base_url()?>/tracking">Cek Pesanan</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2  col-md-3 d-none d-sm-block">

@@ -252,7 +252,7 @@
                                         <div class="product-img product-img-zoom">
                                             <a href="<?= base_url('product/'. $product->slug)?>">
                                                 <?php for($i = 0; $i < 2; $i++): ?>
-                                                    <img class="<?= $i == 0 ? 'default-img' : 'hover-img'  ?>" src="<?=$product->photos[$i]?>" alt="">
+                                                    <img class="<?= $i == 0 ? 'default-img' : 'hover-img'  ?>" src="<?php base_url(); ?>/public/uploads/product_photos/<?=$product->photos[$i]?>" alt="">
                                                 <?php endfor ?>
                                             </a>
                                         </div>
@@ -432,7 +432,7 @@
     <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close btn-sm btn " data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Pilih Distributor</h4>
           </div>
           <div class="modal-body">

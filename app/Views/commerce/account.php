@@ -358,7 +358,7 @@
 
                                             <?php } ?>
 
-                                            <p>To track your order please enter your OrderID in the box below and press "Track" button. This was given to you on your receipt and in the confirmation email you should have received.</p>
+                                            <p>Untuk melacak pesanan Anda, silakan masukkan nomor resi Anda di kotak di bawah ini dan tekan tombol "Lacak". Selanjutnya cek email Anda.</p>
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <form class="contact-form-style mt-30 mb-50" action="<?php base_url() ?>/track" method="post">
@@ -377,9 +377,9 @@
 
                                                         <div class="input-style mb-20">
                                                             <label>Nomor Resi</label>
-                                                            <input name="awb" placeholder="Found in your order confirmation email" type="text" class="square">
+                                                            <input name="awb" placeholder="Nomor Resi" type="text" class="square">
                                                         </div>
-                                                        <button class="btn-sm submit submit-auto-width" type="submit"><i class="fa fa-paper-plane mr-15"></i>Track</button>
+                                                        <button class="btn-sm submit submit-auto-width" type="submit"><i class="fa fa-paper-plane mr-15"></i>Lacak</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -741,7 +741,11 @@
                                                                 </div>
                                                                 <div class="form-group col-md-12">
                                                                     <label>Jumlah Transfer <span class="required">*</span></label>
+<<<<<<< HEAD
                                                                     <input readonly required="" class="form-control square" name=total type="text"  value="<?= $konfirmasi->total?>">
+=======
+                                                                    <input readonly required="" class="form-control square" name=total type="text"  value="<?= $konfirmasi->total ?>">
+>>>>>>> 7f77e5fd8c29adfacd70d43255ae92d61591894f
                                                                 </div>
                                                                 <div class="form-group col-md-12">
                                                                     <label>Bank Tujuan<span class="required">*</span></label>

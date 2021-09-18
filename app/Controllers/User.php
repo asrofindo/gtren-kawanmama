@@ -66,7 +66,6 @@ class User extends BaseController
 	{
 		$data = $this->data;
 		
-		dd($this->upgrade->find());
 		return view('db_affiliate/market_affiliate', $data);
 	}
 
