@@ -131,7 +131,7 @@
                                             <th><img src="<?php base_url() ?>/public/uploads/product_photos/<?= $photo[0]; ?>" style="width:60px; height:60px"></th>
                                             <td><?= $product->name ?></td>
                                             <td><?= $product->amount ?></td>
-                                            <td>Rp. <?= number_format($product->sell_price) ?></td>
+                                            <td> <?= rupiah($product->sell_price) ?></td>
                                         </tr>
                                         
                                     <?php endforeach; ?>
@@ -171,7 +171,7 @@
                                             <?= $cart['kurir'] ?>
                                         </td>
                                         <td >
-                                            Rp. <?= number_format($cart['ongkir']); ?> 
+                                             <?= rupiah($cart['ongkir']); ?> 
                                             <?php if($cart['etd'] == 'Tidak temukan'): ?> 
                                                 <span></span>
                                             <?php else: ?>
@@ -181,7 +181,7 @@
                                     </tr>
                                     <tr>
                                         <th>sub total</th>
-                                        <td colspan="3" class="product-subtotal"><span>Rp. <?= number_format($cart['subtotal'][0]);?></span></td>
+                                        <td colspan="3" class="product-subtotal"><span> <?= rupiah($cart['subtotal'][0]);?></span></td>
                                     </tr>
                                     
                                     <tr>
@@ -191,7 +191,7 @@
                                 <?php endforeach; ?>
                                     <tr>
                                         <th>Total</th>
-                                        <td><b>Rp. <?= number_format($total);  ?></b></td>
+                                        <td><b> <?= rupiah($total);  ?></b></td>
                                     </tr>
                             </tbody>
                         </table>
