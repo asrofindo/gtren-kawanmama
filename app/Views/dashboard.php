@@ -167,7 +167,6 @@
             <span class="text">Setting</span>
         </a>
         <div class="submenu">
-            <a href="<?= base_url() ?>/banner">banner</a>
             <a href="<?= base_url() ?>/notifikasi">notifikasi</a> 
             <a href="<?= base_url() ?>/setting/api/get">Setting Api</a> 
             <a href="<?= base_url() ?>/sosial">sosial media</a>  

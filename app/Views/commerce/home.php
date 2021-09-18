@@ -4,7 +4,7 @@
         <!-- <div class="container"> -->
             <section class="home-slider bg-grey-9 position-relative">
                 <div class="hero-slider-1 style-2 dot-style-1 dot-style-1-position-1">
-                    <?php foreach ($banners as $banner): ?>
+                    <!-- <?php foreach ($banners as $banner): ?>
                     <div class="single-hero-slider single-animation-wrap">
                         <div class="container">
                             <div class="slider-1-height-2 slider-animated-1">
@@ -20,7 +20,7 @@
                             </div>
                         </div>
                     </div>
-                    <?php endforeach ?>
+                    <?php endforeach ?> -->
                 </div>
                 <div class="slider-arrow hero-slider-1-arrow"></div>
             </section>
