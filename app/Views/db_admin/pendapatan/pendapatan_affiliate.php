@@ -36,7 +36,7 @@
                             <td><?php echo rupiah($pendapatan->masuk) ?></td>
                             <td><?php echo rupiah($pendapatan->keluar) ?></td>
                             <td><?php echo rupiah($pendapatan->total); ?></td>
-                            <td><?php echo rupiah($pendapatan->penarikan_dana); ?></td>
+                            <td><?php echo $pendapatan->penarikan_dana; ?></td>
                             <td class="text-end">
                                 <div class="dropdown">
                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
