@@ -299,7 +299,7 @@
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Jumlah Transfer <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name=total type="text"  value="<?= rupiah($konfirmasi->total)?>">
+                                                            <input required="" class="form-control square" name=total type="text"  value="<?= $konfirmasi->total?>">
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Bank Tujuan<span class="required">*</span></label>
