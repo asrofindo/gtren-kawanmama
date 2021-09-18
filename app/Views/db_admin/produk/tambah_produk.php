@@ -93,7 +93,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-4">
-                                    <label class="form-label">Komisi Stokis</label>
+                                    <label class="form-label">Komisi Distributor</label>
                                     <?php if(isset(session('errors')['stockist_commission'])): ?>
                                         <input name="stockist_commission" type="number" placeholder="Rp" class="form-control is-invalid" id="product_name">
                                         <div class="invalid-feedback">
