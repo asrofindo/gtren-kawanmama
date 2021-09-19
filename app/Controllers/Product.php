@@ -76,8 +76,17 @@ class Product extends BaseController
 		return view('db_stokis/products', $data);
 	}
 
-	public function commerce()
+	public function commerce($id=null)
 	{
+		if ($id != null) {
+			$user =	$this->user->where('affiliate_link','/src/'.$id)->find();
+			if (empty($user)) {
+				return redirect()->to('/');
+			}
+			set_cookie("affiliate",(string)$id,(((3600*24)*30)*6));
+		}
+
+
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor HP');
 			return redirect()->to('/profile');

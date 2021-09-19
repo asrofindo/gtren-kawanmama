@@ -40,7 +40,6 @@ $routes->resource('verifyotp');
 
 $routes->get('/notifikasi', 'Admin::notifikasi');
 $routes->post('/notifikasi', 'Admin::notifikasi');
-$routes->get('/invite/(:num)', 'User::register/$1');
 
 $routes->get('/notifikasi/delete/(:num)', 'Admin::notifikasi_delete/$1');
 
@@ -58,6 +57,8 @@ $routes->get('/make/admin/(:num)', 'User::admin/$1');
 $routes->get('/delete/admin/(:num)', 'User::admin/$1');
 
 $routes->get('/','Product::commerce');
+$routes->get('/src/(:num)','Product::commerce/$1');
+
 // $routes->get('cart', 'User::cart', ['filter' => 'login']);
 $routes->get('account', 'User::account', ['filter' => 'login']);
 $routes->get('rekening', 'User::rekening', ['filter' => 'login']);
