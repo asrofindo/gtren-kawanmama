@@ -246,6 +246,7 @@
                                                             <th>Bank </th>
                                                             <th>No Rekening </th>
                                                             <th>Nama</th>
+                                                            <th>Total</th>
                                                             <th>Aksi</th>
                                                         </tr>
                                                     </thead>
@@ -257,6 +258,9 @@
                                                                 </td>
                                                                 <td>
                                                                     <?= $value->number?>    
+                                                                </td>
+                                                                <td>                                             
+                                                                    <?= $value->total?>
                                                                 </td>
                                                                 <td>                                             
                                                                     <?= $value->owner?>
