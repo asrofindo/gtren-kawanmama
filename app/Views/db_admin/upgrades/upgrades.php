@@ -1,3 +1,4 @@
+
 <?php $this->extend('dashboard') ?>
 <?php $this->section('content') ?>
 

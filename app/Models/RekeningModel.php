@@ -14,7 +14,7 @@ class RekeningModel extends Model
 	protected $returnType           = 'object';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['user_id','bank','number','owner'];
+	protected $allowedFields        = ['user_id','bank','number','owner', 'total'];
 
 	// Dates
 	protected $useTimestamps        = false;

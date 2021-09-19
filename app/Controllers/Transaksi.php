@@ -191,16 +191,17 @@ class Transaksi extends BaseController
 			$data = [
 				"id" => $cart->cart_id,
 				"status" => "checkout"
-			];
+			];	
+
 
 			$this->cart->save($data);
 
 			$data = [
 				"cart_id" => $cart->cart_id, 
-				"affiliate_commission" => $cart->affiliate_link ? $cart->affiliate_commission : $cart->affiliate_link  , 
+				"affiliate_commission" => $cart->affiliate_link ? ($cart->affiliate_commission * $cart->amount)  : $cart->affiliate_link  , 
 				"distributor_id" => $cart->distributor_id, 
-				"stockist_commission" => $cart->stockist_commission +  $cart->fixed_price + $cart->ongkir_produk, 
-				"admin_commission" => $cart->affiliate_link ?  $cart->sell_price - $cart->fixed_price - $cart->stockist_commission - $cart->affiliate_commission : $cart->sell_price - $cart->fixed_price - $cart->stockist_commission,
+				"stockist_commission" => ($cart->stockist_commission * $cart->amount) +  ($cart->fixed_price * $cart->amount) + $cart->ongkir_produk, 
+				"admin_commission" => $cart->affiliate_link ?  ($cart->sell_price * $cart->amount) - ($cart->fixed_price * $cart->amount) - ($cart->stockist_commission * $cart->amount) - ($cart->affiliate_commission * $cart->amount) : ($cart->sell_price * $cart->amount) - ($cart->fixed_price * $cart->amount) - ($cart->stockist_commission * $cart->amount),
 				"transaksi_id" => $this->transaksi->getInsertID(), 
 			];
 

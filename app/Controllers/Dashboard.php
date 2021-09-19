@@ -44,7 +44,7 @@ class Dashboard extends BaseController
 
 		$data['admin'] = [["admin_total" => $data['admin'][0]->admin_total + $data['upgrades'][0]->total_upgrades + $kode_unik]];
 
-		$data['stockist'] = $this->model->select('sum(COALESCE(stockist_commission,0) - COALESCE(pendapatan.keluar,0)) AS stockist_total')
+		$data['stockist'] = $this->model->select('sum(COALESCE(stockist_commission,0)) - COALESCE(pendapatan.keluar,0) AS stockist_total')
 		->join('distributor', 'distributor.id = detailtransaksi.distributor_id ', 'left')
 		->join('pendapatan', 'pendapatan.user_id = distributor.user_id ', 'left')
 		->where('status_barang =', 'diterima_pembeli')
@@ -53,17 +53,17 @@ class Dashboard extends BaseController
 
 		// jika user role nya adalah stockist
 
-		$data['affiliate'] = $this->model->select('sum(COALESCE(affiliate_commission,0) - COALESCE(pendapatan.keluar,0)) AS affiliate_total')
+		$data['affiliate'] = $this->model->select('sum(COALESCE(affiliate_commission,0)) - COALESCE(pendapatan.keluar,0) AS affiliate_total')
 		->join('cart_item', 'cart_item.id = detailtransaksi.cart_id ', 'left')
 		->join('users', 'users.affiliate_link = cart_item.affiliate_link', 'left')
 		->join('pendapatan', 'pendapatan.user_id = users.id', 'left')
 		->where('status_barang =', 'diterima_pembeli')
 		->where('pendapatan.status_dana =', 'affiliate')
 		->find();
-
+		
 		if(in_groups(3,4)){
 
-			$data['stockist'] = $this->model->select('sum(COALESCE(stockist_commission,0) - COALESCE(pendapatan.keluar,0)) AS stockist_total')
+			$data['stockist'] = $this->model->select('sum(COALESCE(stockist_commission,0)) - COALESCE(pendapatan.keluar,0) AS stockist_total')
 			->join('distributor', 'distributor.id = detailtransaksi.distributor_id ', 'left')
 			->join('pendapatan', 'pendapatan.user_id = distributor.user_id ', 'left')
 			->where('status_barang =', 'diterima_pembeli')
@@ -101,7 +101,7 @@ class Dashboard extends BaseController
 			->orWhere('status_barang =', 'dipantau')
 	      	->findAll();
 
-	      	$data['affiliate'] = $this->model->select('sum(COALESCE(affiliate_commission,0) - COALESCE(pendapatan.keluar,0)) AS affiliate_total')
+	      	$data['affiliate'] = $this->model->select('sum(COALESCE(affiliate_commission,0)) - COALESCE(pendapatan.keluar,0) AS affiliate_total')
 			->join('cart_item', 'cart_item.id = detailtransaksi.cart_id ', 'left')
 			->join('users', 'users.affiliate_link = cart_item.affiliate_link', 'left')
 			->join('pendapatan', 'pendapatan.user_id = users.id', 'left')
