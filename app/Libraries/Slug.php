@@ -24,7 +24,7 @@ class Slug
 
         // lowercase
         $text = strtolower($text);
-
+        $text = $text.rand(1000,9999);
         if (empty($text)) {
             return 'n-a';
         }

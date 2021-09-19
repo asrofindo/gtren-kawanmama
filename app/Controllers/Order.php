@@ -298,22 +298,25 @@ class Order extends BaseController
 			->where('transaksi.id', $id_transaksi)
 			->find();
 
+			$dis = '';
 			for($i = 0; $i < count($distributors); $i++){
 
 				
-				$user=$this->user->where('id',$distributors[$i]->user_id)->first();
-				
-				$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Selamat! Pesanan Anda *sudah dikirim*\nNo Transaksi: ".$id."\nNomor Resi: ".$resi."\nSilahkan Cek Transaksi di \n".base_url('/dashboard');
-				
-				wawoo($user->phone,$msg);
 				
 				$productdistributor_id = $this->productdistributor->where('distributor_id', $distributors[$i]->distributor_id)->where('product_id', $distributors[$i]->product_id)->find();
-
+				
 				$this->productdistributor->save([
 					"id" => $productdistributor_id[0]->id,
 					"jumlah" => $productdistributor_id[0]->jumlah - $distributors[$i]->amount
 				]);
+				$dis = $distributors[$i]->user_id;
 			}
+			
+			$user=$this->user->where('id',$dis)->first();
+			
+			$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Selamat! Pesanan Anda *sudah dikirim*\nNo Transaksi: ".$id."\nNomor Resi: ".$resi."\nSilahkan Cek Transaksi di \n".base_url('/dashboard');
+			
+			wawoo($user->phone,$msg);
 
 			// dan yang terakhir adalah redirect back
 			session()->setFlashdata('success', 'Sukses Menginput Resi');
