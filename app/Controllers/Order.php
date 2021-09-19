@@ -15,6 +15,7 @@ use App\Models\NotifModel;
 use App\Models\CartItemModel;
 use App\Models\SosialModel;
 use App\Models\ProductModel;
+use App\Controllers\PendaptanType;
 
 class Order extends BaseController
 {
@@ -140,8 +141,10 @@ class Order extends BaseController
 
 	public function order_refund($transaksi_id, $id)
 	{
+
+
 		// data produk dan ongkir yang akan di refund
-		$data['detailtransaksi'] = $this->detailtransaksi->select('*, pengiriman.id as p_id')
+		$data['detailtransaksi'] = $this->detailtransaksi->select('*, pengiriman.id as p_id, detailtransaksi.admin_commission, detailtransaksi.affiliate_commission, detailtransaksi.stockist_commission, detailpengiriman.ongkir_produk')
 		->join('cart_item', 'cart_item.id = cart_id')
 		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id')
 		->join('products', 'products.id = cart_item.product_id')
@@ -199,6 +202,13 @@ class Order extends BaseController
 
 		$this->bills->save($data['bills']);
 
+		$pendapatan = new PendapatanType();
+		$initializePendapatan = $pendapatan->initializePendapatan($data['detailtransaksi'], 'refund');
+		$initializePendapatan->save();
+
+		$initializeBank = $pendapatan->initializeBank($data['detailtransaksi'], 'refund');
+		$initializeBank->save();
+		
 		// ubah status detail transaksi
 		$data['detailtransaksi'] = [
 			"id" => $id,
@@ -208,6 +218,13 @@ class Order extends BaseController
 			"admin_commission" => null,
 			"stockist_commission" => null,
 		];
+
+		$data['saveDetailTransaksi'] = [
+			"user_id" => $id,
+			"masuk" => "",
+
+		];
+
 		$transaksi = $this->model->where('id',$transaksi_id)->first();
 		$user = $this->user->where('id',$transaksi->user_id)->first();
 
@@ -217,11 +234,12 @@ class Order extends BaseController
 		->where('detailtransaksi.id',$id)
 		->first();
 
+		
+		$this->detailtransaksi->save($data['detailtransaksi']);
+		
 		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Pesanan Anda No Transaksi: ".$transaksi_id."\ndetail product".$product->product."\nsudah dilakukan *PENGEMBALIAN DANA*\nSilakan cek rekening Anda.\nAnda dapat melakukan pesan ulang ke distributor lain.";
 
 		wawoo($user->phone,$msg);
-		
-		$this->detailtransaksi->save($data['detailtransaksi']);
 
 		return redirect()->back();
 

@@ -14,7 +14,7 @@ use App\Models\RekeningModel;
 use App\Models\SosialModel;
 use Myth\Auth\Models\UserModel;
 use Myth\Auth\Authorization\GroupModel;
-
+use App\Controllers\OtpType;
 class User extends BaseController
 {
 	protected $data;
@@ -549,6 +549,48 @@ class User extends BaseController
 		session()->setFlashdata('success', 'data berhasil dihapus');
 
 		return redirect()->back();
+	}
+
+
+	public function request_otp($value='')
+	{
+		$OTP = new OtpType();
+
+		$initializeOtp = $OTP->initializeOtp('data', 'validate');
+		$validateOtp = $initializeOtp->validate();
+		if($validateOtp['user']->find() != null){
+
+			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->find() ){
+				$initializeOtp = $OTP->initializeOtp($validateOtp['user']->first()->id, 'delete');
+				$deleteOtp = $initializeOtp->delete();
+
+				$initializeOtp = $OTP->initializeOtp('data', 'request');
+				$requestOtp = $initializeOtp->request();	
+
+				$sendOtp = $OTP->initializeOtp($requestOtp, 'send');
+				$sendOtp->send();
+				session()->setFlashdata('success', 'OTP Sudah Dikirim');
+				return redirect()->back();
+				
+			} else {
+
+				$sendOtp = $OTP->initializeOtp($validateOtp['user']->first()->otp, 'send');
+				$sendOtp->send();
+				session()->setFlashdata('success', 'OTP Sudah Dikirim');
+				return redirect()->back();
+			}	
+
+		} else {
+
+				$initializeOtp = $OTP->initializeOtp('data', 'request');
+				$requestOtp = $initializeOtp->request();	
+
+				$sendOtp = $OTP->initializeOtp($requestOtp, 'send');
+				$sendOtp->send();
+				session()->setFlashdata('success', 'OTP Sudah Dikirim');
+				return redirect()->back();
+		}
+
 	}
 	
 

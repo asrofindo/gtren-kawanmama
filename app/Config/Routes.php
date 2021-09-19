@@ -35,6 +35,8 @@ $routes->resource('province');
 $routes->resource('subdistrict');
 $routes->resource('cron');
 $routes->resource('wacron');
+$routes->resource('verifywa');
+$routes->resource('verifyotp');
 
 $routes->get('/notifikasi', 'Admin::notifikasi');
 $routes->post('/notifikasi', 'Admin::notifikasi');
@@ -285,6 +287,10 @@ $routes->group('', function($routes)
 	$routes->get('/setting/api/(:any)', 'Admin::api/$1');
 	$routes->get('/api/edit/(:any)', 'Admin::api_edit/$1');
 	$routes->get('/api/delete/(:any)', 'Admin::api_delete/$1');
+
+
+	// OTP
+	$routes->post('/request/otp', 'User::request_otp');
 }
 );
 
