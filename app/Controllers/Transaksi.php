@@ -202,7 +202,7 @@ class Transaksi extends BaseController
 			"kode_unik" => $kode_unik, 
 			"bill_id" => $bill, 
 			"status_pembayaran" => $rekening != null ? "paid" : "pending", 
-			"total" => $total - $kode_unik, 
+			"total" => $total, 
 			"alamat" => $alamat]);
 		
 		foreach($data['carts'] as $cart){
