@@ -143,6 +143,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 
     <!-- Modal -->
+    <?php if(user() != null): ?>
     <?php if(user()->status_message == null && user()->phone != null): ?>
     <form action="<?php base_url() ?>/verifyotp" method="post">
       <div class="attention">
@@ -151,7 +152,9 @@ h1 { font-size: 1.5em; margin: 10px; }
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Verifikasi WA</h5>
+              <h5 class="modal-title" id="exampleModalCenterTitle">Verifikasi WA <?= user()->phone; ?></h5>
+
+              <h5><a href="<?php base_url() ?>/verifyotp/<?=  user()->id ?>">ganti Nomer WA Disini ?</a></h5>
             </div>
             <div class="modal-body">
             <?php if(!empty(session()->getFlashdata('success'))){ ?>
@@ -172,6 +175,7 @@ h1 { font-size: 1.5em; margin: 10px; }
               <div class="d-flex flex-row mt-5"><input name="valOne"  style="margin:8px" type="text" class="form-control" autofocus=""><input name="valTwo"  style="margin:8px" type="text" class="form-control"><input name="valTree"  style="margin:8px" type="text" class="form-control"><input name="valFour"  style="margin:8px" type="text" class="form-control"><input name="valFive"  style="margin:8px" type="text" class="form-control"></div>
             </div>
             <div class="modal-footer">
+              <a href="<?php base_url() ?>/verifywa/<?= user()->id ?>">Klik Disini Untuk Minta Kode OTP Baru</a>
               <button type="submit" class="btn btn-primary">Kirim</button>
             </div>
           </div>
@@ -184,7 +188,8 @@ h1 { font-size: 1.5em; margin: 10px; }
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Input Nomor Wa</h5>
+              <h5 class="modal-title" id="exampleModalCenterTitle">Anda Belum Memasukan Nomor WA.</h5>
+              <h5 class="modal-title" id="exampleModalCenterTitle">Silahkan Masukan Nomor WA Anda Disini.</h5>
             </div>
             <div class="modal-body">
               <div class="d-flex flex-row mt-5"><input name="wa"  style="margin:8px" type="number" class="form-control">
@@ -200,6 +205,7 @@ h1 { font-size: 1.5em; margin: 10px; }
       </div>
     </form>
   <?php endif; ?>
+<?php endif; ?>
     <script type="text/javascript">
       $(document).ready(function() {
        $('#myModal').modal({backdrop:'static'})  

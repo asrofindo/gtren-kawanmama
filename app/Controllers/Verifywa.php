@@ -65,4 +65,13 @@ class Verifywa extends ResourceController
 		return redirect()->back();
 		
     }
+
+    public function show($value='')
+    {
+    	
+    	$OTP = new OtpType();
+    	$sendOtp = $OTP->initializeOtp($requestOtp, 'send');
+		$sendOtp->send();
+		return redirect()->back();
+    }
 }

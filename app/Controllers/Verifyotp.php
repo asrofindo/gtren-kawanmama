@@ -38,20 +38,29 @@ class Verifyotp extends ResourceController
 		if($validateOtp['user']->find() != null){
 
 			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->find() ){
-				session()->setFlashdata('danger', 'Gagal Harap Melakukan Request ulang kode otp');
+				session()->setFlashdata('danger', 'Gagal ! Cek Kembali OTP Anda');
 				return redirect()->back();
 			}
 			if($validateOtp['user']->first()->otp != $otp){
-				session()->setFlashdata('danger', 'Kode OTP Salah');
+				session()->setFlashdata('danger', 'Gagal ! Cek Kembali OTP Anda');
 				return redirect()->back();
 			}
 		} else {
-			session()->setFlashdata('danger', 'Gagal Harap Melakukan Request ulang kode otp');
+			session()->setFlashdata('danger', 'Gagal ! Cek Kembali OTP Anda');
 			return redirect()->back();
 		}
 
 		$builder->where('id', user()->id)->update(["status_message" => 'verified']);
-		wawoo(user()->phone, 'selamat anda sudah terverifikasi');
+		wawoo(user()->phone, "Selamat ! Anda Sudah Terverifikasi Di {base_url()}");
+		return redirect()->back();
+    }
+
+     public function show($value='')
+    {
+    	$db      = \Config\Database::connect();
+		$builder = $db->table('users');
+
+		$builder->where('id', $value)->update(["phone" => null]);
 		return redirect()->back();
     }
 }

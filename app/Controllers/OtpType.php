@@ -68,7 +68,7 @@ class SendOtp  implements OTPSend {
   public function send(){
         $user_id = user()->id;
         $phone = $this->model->join('users', "users.id = user_id", 'left')->where('user_id', $user_id)->first()->phone;
-        wawoo($phone, "Kode OTP {$this->otp}");
+        wawoo($phone, "Kode OTP Anda Adalah {$this->otp}");
         return 'berhasil';
   }
 }
