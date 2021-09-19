@@ -216,6 +216,14 @@
                                 </div>
                                 <input type="number" style="display: none" name="total" value="<?= $total;  ?>">
                                 <input type="number" style="display: none" name="kode_unik" value="<?= $generate[0]['nomor'];  ?>">
+                                <?php if($rekening != null): ?>
+                                    <select name="rekening_id" class="form-control bg-light" required="true">
+                                        <option selected disabled>
+                                            Bayar dengan Saldo
+                                        </option>
+                                            <option value="<?= $rekening->id ?>">Rp <?= number_format($rekening->total); ?> - Bank <?= $rekening->bank; ?> <?= $rekening->number; ?></option>
+                                    </select>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-fill-out btn-block mt-30">Pesan Sekarang</button>

@@ -34,7 +34,8 @@
     <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
     
 </head>
-<body>
+<body id="body">
+
   <style>
  @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
@@ -139,6 +140,89 @@ h1 { font-size: 1.5em; margin: 10px; }
       }
       getLocation();
     </script>
-</body>
+
+
+    <!-- Modal -->
+    <?php if(user()->status_message == null && user()->phone != null): ?>
+    <form action="<?php base_url() ?>/verifyotp" method="post">
+      <div class="attention">
+      </div>
+      <div style="" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Verifikasi WA</h5>
+            </div>
+            <div class="modal-body">
+            <?php if(!empty(session()->getFlashdata('success'))){ ?>
+
+                <div class="alert alert-success bg-success text-white">
+                    <?php echo session()->getFlashdata('success');?>
+                </div>
+
+            <?php } ?>
+
+            <?php if(!empty(session()->getFlashdata('danger'))){ ?>
+
+                <div class="alert alert-danger bg-danger text-white">
+                    <?php echo session()->getFlashdata('danger');?>
+                </div>
+
+            <?php } ?>
+              <div class="d-flex flex-row mt-5"><input name="valOne"  style="margin:8px" type="text" class="form-control" autofocus=""><input name="valTwo"  style="margin:8px" type="text" class="form-control"><input name="valTree"  style="margin:8px" type="text" class="form-control"><input name="valFour"  style="margin:8px" type="text" class="form-control"><input name="valFive"  style="margin:8px" type="text" class="form-control"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Kirim</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <?php elseif(user()->phone == null): ?>
+    <form action="<?php base_url() ?>/verifywa" method="post">
+      <div style="" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Input Nomor Wa</h5>
+            </div>
+            <div class="modal-body">
+              <div class="d-flex flex-row mt-5"><input name="wa"  style="margin:8px" type="number" class="form-control">
+
+                <input name="user_id"  style="margin:8px" type="hidden" value="<?= user()->id ?>" class="form-control">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Kirim OTP</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  <?php endif; ?>
+    <script type="text/javascript">
+      $(document).ready(function() {
+       $('#myModal').modal({backdrop:'static'})  
+       $('#myModal').modal('show')  
+
+       $(":input[type='text']").keyup(function(event){
+
+          if ($(this).next('[type="text"]').length > 0){
+             $(this).next('[type="text"]')[0].focus();
+          }
+          else{
+             if ($(this).parent().next().find('[type="text"]').length > 0){
+                $(this).parent().next().find('[type="text"]')[0].focus();
+             }
+             // else {
+             //   alert('no more text input found !');
+             // }
+          }
+
+    });
+      });
+      
+    </script>
+    </body>
 
 </html>

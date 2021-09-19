@@ -17,6 +17,7 @@ use App\Models\GenerateModel;
 use App\Controllers\BaseController;
 use App\Models\SosialModel;
 use App\Models\OtpModel;
+use App\Models\RekeningModel;
 use App\Controllers\OtpType;
 
 class Transaksi extends BaseController
@@ -39,6 +40,7 @@ class Transaksi extends BaseController
 		$this->pendapatan = new PendapatanModel();
 		$this->wd = new WDModel();
 		$this->otp = new OtpModel();
+		$this->rekening = new RekeningModel();
 		$this->generate = new GenerateModel();
 	}
 
@@ -132,6 +134,7 @@ class Transaksi extends BaseController
 		$data['total'] = $total + $data['generate'][0]['nomor'];
 		$data['category'] = $this->category->findAll();
 		$data['address'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find();
+		$data['rekening'] = $this->rekening->where('total >', 50000)->where('user_id', user()->id)->first();
 
 		$data['billing'] = $this->address
 		->where('user_id', user()->id)->where('address.type', 'billing')
@@ -146,12 +149,16 @@ class Transaksi extends BaseController
 	{
 		$total = $this->request->getPost('total');
 		$bill = $this->request->getPost('bill');
+		$rekening = $this->request->getPost('rekening_id');
 
+
+		
 		$kode_unik = $this->request->getPost('kode_unik');
 		
 		$data['carts'] = $this->cart->select('*, distributor.id as distributor_id, detailtransaksi.id as d_id, cart_item.id as cart_id, products.stockist_commission, products.affiliate_commission')
 		->join('products', 'products.id = product_id')
 		->join('distributor', 'distributor.id = distributor_id')
+		->join('users', 'users.id = distributor.user_id')
 		->join('address', 'address.user_id = distributor.user_id AND address.type = "distributor"')
 		->join('city', 'city.kode_pos = address.kode_pos')
 		->join('detailtransaksi', 'detailtransaksi.cart_id = cart_item.id', 'left')
@@ -181,16 +188,25 @@ class Transaksi extends BaseController
 		$data['alamat'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find()[0];
 		$alamat = "{$data['alamat']->provinsi}, {$data['alamat']->kabupaten}, {$data['alamat']->kecamatan}, {$data['alamat']->kode_pos}, {$data['alamat']->detail_alamat}";
 		
+		if($rekening != null){
+			$data_rek = $this->rekening->find($rekening);
+
+			$this->rekening->save([
+				"id" => $rekening,
+				"total" => $data_rek->total - $total
+			]);
+		}
+
 		$this->transaksi->insert([
 			"user_id" => user()->id, 
 			"kode_unik" => $kode_unik, 
 			"bill_id" => $bill, 
-			"status_pembayaran" => "pending", 
-			"total" => $total, 
+			"status_pembayaran" => $rekening != null ? "paid" : "pending", 
+			"total" => $total - $kode_unik, 
 			"alamat" => $alamat]);
 		
 		foreach($data['carts'] as $cart){
-
+			dd($cart);
 			$data = [
 				"id" => $cart->cart_id,
 				"status" => "checkout"
