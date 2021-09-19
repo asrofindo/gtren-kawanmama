@@ -206,7 +206,7 @@ class Transaksi extends BaseController
 			"alamat" => $alamat]);
 		
 		foreach($data['carts'] as $cart){
-			dd($cart);
+	
 			$data = [
 				"id" => $cart->cart_id,
 				"status" => "checkout"
