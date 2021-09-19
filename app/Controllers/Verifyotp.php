@@ -51,7 +51,7 @@ class Verifyotp extends ResourceController
 		}
 
 		$builder->where('id', user()->id)->update(["status_message" => 'verified']);
-		wawoo(user()->phone, "Selamat ! Anda Sudah Terverifikasi Di {base_url()}");
+		wawoo(user()->phone, "Selamat ! Anda Sudah Terverifikasi Di ".'\n'.base_url());
 		return redirect()->back();
     }
 

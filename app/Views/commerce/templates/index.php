@@ -172,33 +172,11 @@ h1 { font-size: 1.5em; margin: 10px; }
                 </div>
 
             <?php } ?>
-              <div class="d-flex flex-row mt-5"><input name="valOne"  style="margin:8px" type="text" class="form-control" autofocus=""><input name="valTwo"  style="margin:8px" type="text" class="form-control"><input name="valTree"  style="margin:8px" type="text" class="form-control"><input name="valFour"  style="margin:8px" type="text" class="form-control"><input name="valFive"  style="margin:8px" type="text" class="form-control"></div>
+              <div class="d-flex flex-row mt-5"><input maxlength="1" name="valOne"  style="margin:8px" type="text" class="form-control" autofocus=""><input maxlength="1" name="valTwo"  style="margin:8px" type="text" class="form-control"><input maxlength="1" name="valTree"  style="margin:8px" type="text" class="form-control"><input maxlength="1" name="valFour"  style="margin:8px" type="text" class="form-control"><input maxlength="1" name="valFive"  style="margin:8px" type="text" class="form-control"></div>
             </div>
             <div class="modal-footer">
-              <a href="<?php base_url() ?>/verifywa/<?= user()->id ?>">Klik Disini Untuk Minta Kode OTP Baru</a>
+              <a href="<?php base_url() ?>/verifywa/<?= user()->id ?>">Klik Di sini Untuk Minta Kode OTP Baru</a>
               <button type="submit" class="btn btn-primary">Kirim</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
-    <?php elseif(user()->phone == null): ?>
-    <form action="<?php base_url() ?>/verifywa" method="post">
-      <div style="" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Anda Belum Memasukan Nomor WA.</h5>
-              <h5 class="modal-title" id="exampleModalCenterTitle">Silahkan Masukan Nomor WA Anda Disini.</h5>
-            </div>
-            <div class="modal-body">
-              <div class="d-flex flex-row mt-5"><input name="wa"  style="margin:8px" type="number" class="form-control">
-
-                <input name="user_id"  style="margin:8px" type="hidden" value="<?= user()->id ?>" class="form-control">
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-primary">Kirim OTP</button>
             </div>
           </div>
         </div>
