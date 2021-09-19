@@ -49,6 +49,18 @@ class User extends BaseController
 		return view('commerce/account', $data);
 	}
 
+	public function register($id)
+	{
+		$user = $this->User->where('id',$id)->first();
+		if ($user==[]) {
+			return redirect()->to('/register');
+		}
+
+		setCookie("parent",$id);
+		
+		return redirect()->to('/register');
+	}
+	
 	public function orders()
 	{
 		$data = $this->data;

@@ -745,11 +745,7 @@
                                                                 </div>
                                                                 <div class="form-group col-md-12">
                                                                     <label>Jumlah Transfer <span class="required">*</span></label>
-<<<<<<< HEAD
-                                                                    <input readonly required="" class="form-control square" name=total type="text"  value="<?= $konfirmasi->total?>">
-=======
                                                                     <input readonly required="" class="form-control square" name=total type="text"  value="<?= $konfirmasi->total ?>">
->>>>>>> 7f77e5fd8c29adfacd70d43255ae92d61591894f
                                                                 </div>
                                                                 <div class="form-group col-md-12">
                                                                     <label>Bank Tujuan<span class="required">*</span></label>
@@ -898,7 +894,6 @@
                                                     }?>
                                                 </p>
                                                
-
                                             </div>
                                             <?php if(in_groups(3)){?>
                                             <div class="roe m-1">
@@ -921,7 +916,10 @@
                                                 </div>
                                             </div>
                                             <?php }?>
-                                        
+                                            <div class="row">
+                                                <input type="text" value="<?=base_url()?>/invite/<?= user()->id?>" id="copy" readonly />
+                                                <button type="button" onclick="copy_text()" class="btn btn-sm m-1" id="copy">Copy Untuk Mengajak</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -940,6 +938,12 @@
 
 </script>
 <script type="text/javascript">
+
+    function copy_text() {
+            document.getElementById("copy").select();
+            document.execCommand("copy");
+            alert("Text berhasil dicopy");
+        }
     $.get( "/province",
         function( data ) {
 

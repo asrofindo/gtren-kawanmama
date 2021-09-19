@@ -40,6 +40,7 @@ $routes->resource('verifyotp');
 
 $routes->get('/notifikasi', 'Admin::notifikasi');
 $routes->post('/notifikasi', 'Admin::notifikasi');
+$routes->get('/invite/(:num)', 'User::register/$1');
 
 $routes->get('/notifikasi/delete/(:num)', 'Admin::notifikasi_delete/$1');
 
