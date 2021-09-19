@@ -60,7 +60,7 @@ class Verifyotp extends ResourceController
     	$db      = \Config\Database::connect();
 		$builder = $db->table('users');
 
-		$builder->where('id', $value)->update(["phone" => null]);
-		return redirect()->back();
+		$builder->where('id', $value)->update(["phone" => null, "status_message" => null]);
+		return redirect()->to('/profile');
     }
 }

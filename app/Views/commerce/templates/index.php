@@ -172,7 +172,7 @@ h1 { font-size: 1.5em; margin: 10px; }
                 </div>
 
             <?php } ?>
-              <div class="d-flex flex-row mt-5"><input maxlength="1" name="valOne"  style="margin:8px" type="text" class="form-control" autofocus=""><input maxlength="1" name="valTwo"  style="margin:8px" type="text" class="form-control"><input maxlength="1" name="valTree"  style="margin:8px" type="text" class="form-control"><input maxlength="1" name="valFour"  style="margin:8px" type="text" class="form-control"><input maxlength="1" name="valFive"  style="margin:8px" type="text" class="form-control"></div>
+              <div class="d-flex flex-row mt-5"><input maxlength="1" name="valOne"  style="margin:8px" type="text" class="form-control input-class" autofocus=""><input maxlength="1" name="valTwo"  style="margin:8px" type="text" class="form-control input-class"><input maxlength="1" name="valTree"  style="margin:8px" type="text" class="form-control input-class"><input maxlength="1" name="valFour"  style="margin:8px" type="text" class="form-control input-class"><input maxlength="1" name="valFive"  style="margin:8px" type="text" class="form-control input-class"></div>
             </div>
             <div class="modal-footer">
               <a href="<?php base_url() ?>/verifywa/<?= user()->id ?>">Klik Di sini Untuk Minta Kode OTP Baru</a>
@@ -189,21 +189,23 @@ h1 { font-size: 1.5em; margin: 10px; }
        $('#myModal').modal({backdrop:'static'})  
        $('#myModal').modal('show')  
 
-       $(":input[type='text']").keyup(function(event){
+       $(".input-class").keyup(function(event){
 
-          if ($(this).next('[type="text"]').length > 0){
-             $(this).next('[type="text"]')[0].focus();
+          if ($(this).next('.input-class').length > 0){
+             $(this).next('.input-class')[0].focus();
           }
           else{
-             if ($(this).parent().next().find('[type="text"]').length > 0){
-                $(this).parent().next().find('[type="text"]')[0].focus();
+             if ($(this).parent().next().find('.input-class').length > 0){
+                $(this).parent().next().find('.input-class')[0].focus();
              }
              // else {
              //   alert('no more text input found !');
              // }
           }
 
-    });
+        });
+
+
       });
       
     </script>

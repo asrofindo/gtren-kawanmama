@@ -249,10 +249,49 @@ class User extends BaseController
 			'password' => $request->getPost('password'),
 			'phone' => $request->getPost('phone'),
 			'greeting' => $request->getPost('greeting'),
+			'status_message' => $request->getPost('phone') == user()->phone ? 'verified' : null,
 		];
 
 		if (user()->phone==null) {
 			user()->setProfile($data);
+
+
+			$OTP = new OtpType();
+
+	    	$initializeOtp = $OTP->initializeOtp('data', 'validate');
+			$validateOtp = $initializeOtp->validate();
+
+			if($validateOtp['user']->find() != null){
+
+				if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->find() ){
+					$initializeOtp = $OTP->initializeOtp($validateOtp['user']->first()->id, 'delete');
+					$deleteOtp = $initializeOtp->delete();
+
+					$initializeOtp = $OTP->initializeOtp('data', 'request');
+					$requestOtp = $initializeOtp->request();	
+
+					$sendOtp = $OTP->initializeOtp($requestOtp, 'send');
+					$sendOtp->send();
+
+					session()->setFlashdata('success', 'OTP Sudah Dikirim');
+					return redirect()->back();
+					
+				} else {
+					$sendOtp = $OTP->initializeOtp($validateOtp['user']->first()->otp, 'send');
+					$sendOtp->send();
+
+					session()->setFlashdata('success', 'OTP Sudah Dikirim');
+					return redirect()->back();
+				}	
+
+			} else {
+
+				$initializeOtp = $OTP->initializeOtp('data', 'request');
+				$requestOtp = $initializeOtp->request();	
+
+				$sendOtp = $OTP->initializeOtp($requestOtp, 'send');
+				$sendOtp->send();
+			}
 			
 			$msg = "Nomor WA ini telah didaftarkan oleh ".user()->greeting." ".user()->fullname."\ndi ".base_url()."\nJika Anda bukan ".user()->greeting." ".user()->fullname." silakan hubungi kami untuk PENGHAPUSAN DATA : \n[link kontak ".base_url()."/contact]";
 			wawoo($data['phone'],$msg);

@@ -426,6 +426,7 @@
         </div>
     </div>
 </section>
+<?php if(user() != null): ?>
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -436,7 +437,7 @@
             <h4 class="modal-title">Pilih Distributor</h4>
           </div>
           <div class="modal-body">
-              <?php if (user() !=null) { ?>
+            <?php if (user() !=null) { ?>
             <ul style="z-index: -1" class="list-group">
                 <?php foreach($product_distributors as $distributor): ?>  
                     <?php if (get_cookie('affiliate') != null) {?>
@@ -465,6 +466,7 @@
         </div>
     </div>
 </div>
+<?php endif; ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
