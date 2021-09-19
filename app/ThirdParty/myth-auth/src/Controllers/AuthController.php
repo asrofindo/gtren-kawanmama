@@ -160,12 +160,13 @@ class AuthController extends Controller
 		// Validate here first, since some things,
 		// like the password, can only be validated properly here.
 		$rules = [
-			'username'  	=> [
-				'rules' => 'required|alpha_numeric_space|min_length[3]|max_length[30]|is_unique[users.username]', 'errors' => ['required' => "Nama Pengguna harus diisi"]],
+			'username'  	=> ['rules' => 'required|alpha_numeric_space|min_length[3]|max_length[30]|is_unique[users.username]', 'errors' => ['required' => "Nama Pengguna harus diisi"]],
 			'email'			=> ['rules' =>'required|valid_email|is_unique[users.email]', 'errors' => ['required' => "Email harus diisi"]],
 			'password'	 	=> ['rules' =>'required|strong_password', 'errors' => ['required' => " Password harus diisi"]],
 			'pass_confirm' 	=> ['rules' =>'required|matches[password]', 'errors' => ['required' => " Ulangi Password harus diisi", "matches" => "Password Tidak Sama"]],
 		];
+
+		$this->request;
 
 		if (! $this->validate($rules))
 		{
@@ -173,7 +174,12 @@ class AuthController extends Controller
 		}
 
 		// Save the user
-		$allowedPostFields = array_merge(['password'], $this->config->validFields, $this->config->personalFields);
+		if (empty($this->request->getPost('parent'))) {
+			$allowedPostFields = array_merge(['password'], $this->config->validFields, $this->config->personalFields);
+		}else{
+			$allowedPostFields = array_merge(['password','parent'], $this->config->validFields, $this->config->personalFields);
+		}
+		
 		$user = new User($this->request->getPost($allowedPostFields));
 
 		$this->config->requireActivation === null ? $user->activate : $user->generateActivateHash();
@@ -185,7 +191,7 @@ class AuthController extends Controller
         }
 
 		// Ensure default group gets assigned if set
-        if (! empty($this->config->defaultUserGroup)) {
+        if (!empty($this->config->defaultUserGroup)) {
             $users = $users->withGroup($this->config->defaultUserGroup);
         }
 
@@ -193,7 +199,7 @@ class AuthController extends Controller
 		{
 			return redirect()->back()->withInput()->with('errors', $users->errors());
 		}
-
+		
 		if ($this->config->requireActivation !== null)
 		{
 			$activator = service('activator');

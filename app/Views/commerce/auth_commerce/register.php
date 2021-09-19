@@ -54,6 +54,7 @@
                                         <label for="pass_confirm"><?=lang('Auth.repeatPassword')?></label>
                                         <input type="password" name="pass_confirm" class="form-control <?php if(session('errors.pass_confirm')) : ?>is-invalid<?php endif ?>" placeholder="<?=lang('Auth.repeatPassword')?>" autocomplete="off">
                                     </div>
+                                    <input value="<?= get_cookie('parent')?>" type="text" name="parent" hidden placeholder="" autocomplete="off">
 
                                     <button type="submit" class="btn btn-primary btn-block"><?=lang('Auth.register')?></button>
                                 </form>
