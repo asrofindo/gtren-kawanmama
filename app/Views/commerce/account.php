@@ -917,7 +917,7 @@
                                             </div>
                                             <?php }?>
                                             <div class="row">
-                                                <input type="text" value="<?=base_url()?>/invite/<?= user()->id?>" id="copy" readonly />
+                                                <input type="text" value="<?=base_url()?>/src/<?= user()->id?>" id="copy" readonly />
                                                 <button type="button" onclick="copy_text()" class="btn btn-sm m-1" id="copy">Copy Untuk Mengajak</button>
                                             </div>
                                         </div>
