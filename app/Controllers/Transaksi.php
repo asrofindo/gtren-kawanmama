@@ -16,6 +16,8 @@ use App\Models\WDModel;
 use App\Models\GenerateModel;
 use App\Controllers\BaseController;
 use App\Models\SosialModel;
+use App\Models\OtpModel;
+use App\Controllers\OtpType;
 
 class Transaksi extends BaseController
 {
@@ -36,6 +38,7 @@ class Transaksi extends BaseController
 		$this->detail_transaksi = new DetailTransaksiModel();
 		$this->pendapatan = new PendapatanModel();
 		$this->wd = new WDModel();
+		$this->otp = new OtpModel();
 		$this->generate = new GenerateModel();
 	}
 
@@ -466,6 +469,7 @@ class Transaksi extends BaseController
 		// data yang akan di wd
 		$jumlah_wd = $this->request->getPost('jumlah_wd');
 		$status_dana = $this->request->getPost('status_dana');
+		$otp = $this->request->getPost('otp');
 
 		// user id
 		$id = user()->id;
@@ -480,6 +484,7 @@ class Transaksi extends BaseController
 		$data['pendapatan_affiliate'] = $this->pendapatan->select('total')->where('status_dana', 'affiliate')->where('user_id', user()->id)->findAll();
 		$data['pendapatan_stockist'] = $this->pendapatan->select('sum(total) as total')->where('status_dana', 'distributor')->where('user_id', user()->id)->findAll();
 		
+	
 		// jika ditemukan wd sebelumnya dan status nya adalah belum dikonfirmasi
       
       	if($penarikan == null && $status_dana != null){
@@ -525,6 +530,26 @@ class Transaksi extends BaseController
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
 			session()->setFlashdata('danger', 'Dana Tidak Cukup');
 			return view('db_stokis/wd', $data);
+		}
+
+			// check apakah kode otp benar / atau masih aktif/ atau tidak expired
+		$OTP = new OtpType();
+
+		$initializeOtp = $OTP->initializeOtp('data', 'validate');
+		$validateOtp = $initializeOtp->validate();
+		if($validateOtp['user']->find() != null){
+
+			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->find() ){
+				session()->setFlashdata('danger', 'Gagal Harap Melakukan Request ulang koe otp');
+				return redirect()->back();
+			}
+			if($validateOtp['user']->first()->otp != $otp){
+				session()->setFlashdata('danger', 'Kode OTP Salah');
+				return redirect()->back();
+			}
+		} else {
+			session()->setFlashdata('danger', 'Gagal Harap Melakukan Request ulang koe otp');
+			return redirect()->back();
 		}
 
 		$this->wd->save([

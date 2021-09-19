@@ -9,6 +9,9 @@
             <p><?= rupiah($pendapatan[0]->total); ?></p>
         <?php endif; ?>
     </div>
+    <form method="post" action="<?php base_url() ?>/request/otp">
+        <button type="submit" class="btn btn-primary btn-sm rounded">Request Kode OTP</button>
+    </form>
 </div>
 <div class="content-header" style="justify-content: left; ">
      <div>
@@ -53,6 +56,9 @@
                 <div class="row gx-3">
                         <div class="col-lg-3 col-md-2">
                             <input name="jumlah_wd" type="text" placeholder="Masukan Nominal Dana" class="form-control bg-white">
+                        </div>
+                        <div class="col-lg-3 col-md-2">
+                            <input name="otp" type="text" placeholder="Masukan Kode OTP" class="form-control bg-white">
                         </div>
                         <div class="col-lg-3 col-md-2">
                             <select class="form-control bg-white" name="status_dana">

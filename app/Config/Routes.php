@@ -284,6 +284,10 @@ $routes->group('', function($routes)
 	$routes->get('/setting/api/(:any)', 'Admin::api/$1');
 	$routes->get('/api/edit/(:any)', 'Admin::api_edit/$1');
 	$routes->get('/api/delete/(:any)', 'Admin::api_delete/$1');
+
+
+	// OTP
+	$routes->post('/request/otp', 'User::request_otp');
 }
 );
 
