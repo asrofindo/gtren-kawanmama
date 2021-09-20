@@ -25,6 +25,8 @@ class AuthController extends Controller
 	protected $data;
 	public function __construct()
 	{
+		$this->user = new UserModel();
+
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
 		// Most services in this controller require
@@ -178,6 +180,15 @@ class AuthController extends Controller
 			$allowedPostFields = array_merge(['password'], $this->config->validFields, $this->config->personalFields);
 		}else{
 			$allowedPostFields = array_merge(['password','parent'], $this->config->validFields, $this->config->personalFields);
+			
+			function notif($parent = null){
+				$user = $this->user->where('id',$parent)->first();
+				if ($user!=null) {
+					wawoo($user->phone,base_url()."\n\n".$user->greeting." ".$user->fullname."Selamat Anda *Mendapatkan Affiliasi Baru*\nSilahkan Cek Di : ".base_url('/affiliate'));
+					notif($user->parent);
+				}
+			}
+			notif($this->request->getPost("parent"));
 		}
 		
 		$user = new User($this->request->getPost($allowedPostFields));

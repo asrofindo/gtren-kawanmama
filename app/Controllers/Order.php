@@ -50,7 +50,7 @@ class Order extends BaseController
 		$this->model->save(["id" => $id, "status_pembayaran" => $status, "batas_pesanan" => date( "Y-m-d H:i:s", strtotime( "+2 days" )),	
 		]);
 
-		$detail =$this->detailtransaksi->where('transaksi_id',$id)->find();
+		$detail =$this->detailtransaksi->where('transaksi_id',$id)->groupBy('distributor_id')->get()->getResult();
 		
 		foreach ($detail as $key => $value) {
 			$dostributor = $this->distributor->where('id',$value->distributor_id)->first();
