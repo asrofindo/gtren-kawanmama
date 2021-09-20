@@ -7,15 +7,22 @@ use App\Models\SosialModel;
 class Member extends BaseController
 {
 	protected $user;
+	protected $datauser;
+
 	public function __construct(){
 		$this->sosial = new SosialModel();
 		$this->data['sosial']    = $this->sosial->findAll();
 		$this->rekening = new  RekeningModel();
 		$this->user = new  UserModel();
+		$this->datauser=[];
+
 	}
 	public function index()
 	{
-		
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		// $data['data'] = $this->user->findAll();
 		// $user = $this->user->select('id, email');
 
@@ -70,6 +77,10 @@ class Member extends BaseController
 
 	public function affiliate()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data['affiliate'] = $this->user->where('affiliate_link !=', null)->findAll();
 
 		$data['pager'] = $this->user->paginate(5, 'affiliates');
@@ -79,6 +90,10 @@ class Member extends BaseController
 
 	public function search()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$db = db_connect();
 		$users = $db->table('users');
 
@@ -96,6 +111,10 @@ class Member extends BaseController
 
 	public function detail($id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data['user'] = $this->user
 		->where('users.id',$id)
 		->first();
@@ -117,6 +136,10 @@ class Member extends BaseController
 
 	public function deleteRole($id,$role)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$db = db_connect();
 		$data = $db->table('auth_groups_users');
 		$r = $db->table('auth_groups')->where('name',$role)->get()->getResultArray();
@@ -158,6 +181,29 @@ class Member extends BaseController
 		$data = $db->table('users');
 		$data->where('id',$id)->update(['active'=>0]);
 		return redirect()->back();	
+	}
+
+	public function jaringan()
+	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
+		$user = [];
+
+		$user=$this->user_rekursif(user()->id);
+
+		$data['users'] = $this->datauser;
+		return view('db_admin/members/jaringan', $data);
+	}
+	
+	public function user_rekursif($parent=null){
+			$model = $this->user;
+			$data = $model->where('parent',$parent)->find();
+				foreach ($data as $key => $value) {
+					array_push($this->datauser,$value);
+					$this->user_rekursif($value->id);
+				}
 	}
 }
 

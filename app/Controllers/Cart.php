@@ -19,6 +19,10 @@ class Cart extends BaseController
 
 	public function save($id=null)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		if (user()==null) {
 			return redirect()->to('/login');		}
 		
@@ -92,6 +96,10 @@ class Cart extends BaseController
 
 	public function add($id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 
 
 		$transaksi = $this->cart->find($id);
@@ -120,6 +128,10 @@ class Cart extends BaseController
 
 	public function substruct($id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = $this->cart->select('*, detailpengiriman.id as dp_id')->join('distributor', 'distributor.id = distributor_id')
 		->join('product_distributor', 'product_distributor.product_id = cart_item.product_id')
 		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')

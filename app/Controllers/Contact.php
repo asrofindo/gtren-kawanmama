@@ -15,6 +15,10 @@ class Contact extends BaseController
 
 	public function index()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data['title']='Contact | Gtren';
 
 		$data['contacts'] = $this->model->paginate(2, 'contacts');

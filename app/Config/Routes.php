@@ -208,6 +208,7 @@ $routes->group('', function($routes)
 	$routes->get('members', 'Member::index', ['as' => 'member']);
 	$routes->post('members', 'Member::index');
 	$routes->get('members/(:any)', 'Member::detail/$1');
+	$routes->get('jaringan', 'Member::jaringan');
 
 	$routes->post('add/role/(:any)', 'Member::addRole/$1');
 

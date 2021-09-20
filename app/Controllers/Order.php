@@ -40,6 +40,10 @@ class Order extends BaseController
 	}
 	public function update($id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$status = $this->request->getPost("status");
 		$data['transaksi'] = $this->model->find($id);
 		$data['bills'] = $this->bills->find($data['transaksi']->bill_id);
@@ -75,6 +79,10 @@ class Order extends BaseController
 
 	public function order_acc($id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = [
 			"id" => $id,
 			"status_barang" => "diterima_seller"
@@ -104,6 +112,10 @@ class Order extends BaseController
 
 	public function order_ignore($id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = [
 			"id" => $id,
 			"status_barang" => "ditolak"
@@ -140,7 +152,10 @@ class Order extends BaseController
 
 	public function order_refund($transaksi_id, $id)
 	{
-
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 
 		// data produk dan ongkir yang akan di refund
 		$data['detailtransaksi'] = $this->detailtransaksi->select('*, pengiriman.id as p_id, detailtransaksi.admin_commission, detailtransaksi.affiliate_commission, detailtransaksi.stockist_commission, detailpengiriman.ongkir_produk')
@@ -246,6 +261,10 @@ class Order extends BaseController
 
 	public function save_resi()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		// data yang akan di input kan ke database
 		$resi = $this->request->getPost('resi');
 		$order_id = $this->request->getPost('order_id');
@@ -334,7 +353,10 @@ class Order extends BaseController
 
 	public function order_verify($id)
 	{
-
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		// ubah status detail transaksi 
 		$data = [
 			"id" => $id,
@@ -417,7 +439,7 @@ class Order extends BaseController
 		}
 
 		$user = $this->user->where('id',$transaksis[0]->penjual_id)->first();
-		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Selamat!\nTransaksi No : ".$id."*sudah selesai*.\nSilahkan Cek Tabungan Anda di sin: \n".base_url('/request/wd');
+		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Selamat!\nTransaksi No : ".$id." *sudah selesai*.\nSilahkan Cek Tabungan Anda di sini: \n".base_url('/request/wd');
 		wawoo($user->phone,$msg);
 
 		// uang masuk ke dompet stockis / affiliate / admin

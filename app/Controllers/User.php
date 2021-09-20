@@ -40,6 +40,10 @@ class User extends BaseController
 	}
 	public function account()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 
 		helper(['greeting_helper', 'user']);
 
@@ -52,6 +56,10 @@ class User extends BaseController
 	
 	public function orders()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = $this->data;
 
 		$data['segments'] = $this->request->uri->getSegments();
@@ -65,6 +73,10 @@ class User extends BaseController
 
 	public function affiliate()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = $this->data;
 		
 		return view('db_affiliate/market_affiliate', $data);
@@ -72,6 +84,10 @@ class User extends BaseController
 
 	public function order_detail($transaksi_id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = $this->data;
 
 		$data['segments'] = $this->request->uri->getSegments();
@@ -91,6 +107,10 @@ class User extends BaseController
 
 	public function konfirmasi($id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = $this->data;
 		$bill_id = $this->request->getPost('bill_id');
 
@@ -138,6 +158,10 @@ class User extends BaseController
 
 	public function tracking()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = $this->data;
 
 		$data['segments'] = $this->request->uri->getSegments();
@@ -156,6 +180,10 @@ class User extends BaseController
 
 	public function track()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = $this->data;
 
 		$curl    = curl_init();
@@ -207,7 +235,10 @@ class User extends BaseController
 
 	public function address()
 	{
-
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = $this->data;
 
 
@@ -227,6 +258,7 @@ class User extends BaseController
 
 	public function profile()
 	{
+		
 		$data = $this->data;
 
 		$data['segments'] = $this->request->uri->getSegments();
@@ -280,6 +312,10 @@ class User extends BaseController
 
 	public function upgrade_affiliate()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = $this->data;
 
 		$data['segments'] = $this->request->uri->getSegments();
@@ -321,6 +357,10 @@ class User extends BaseController
 
 	public function upgrade_stockist()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = $this->data;
 
 
@@ -337,7 +377,10 @@ class User extends BaseController
 
 	public function upgrade()
 	{
-		
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = $this->data;
 
 		helper(['status_upgrade_helper']);
@@ -348,6 +391,10 @@ class User extends BaseController
 
 	public function action($value, $id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = $this->data;
 
 		$authorize = service('authorization');
@@ -382,6 +429,10 @@ class User extends BaseController
 
 	public function save_billing($id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = $this->data;
 
 		$data = [
@@ -412,6 +463,10 @@ class User extends BaseController
 
 	public function save_shipping($id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = $this->data;
 
 		$data = [
@@ -436,6 +491,10 @@ class User extends BaseController
 
 	public function edit_billing($id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = $this->data;
 
 		$user_id = user()->id;
@@ -462,6 +521,14 @@ class User extends BaseController
 
 	public function edit_shipping($id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = $this->data;
 
 		$user_id = user()->id;
@@ -495,6 +562,10 @@ class User extends BaseController
 	}
 
 	public function admin($id){
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$segment = $this->request->uri->getSegments();
 
 		if($segment[0] == 'make'){
@@ -510,6 +581,10 @@ class User extends BaseController
 
 	public function rekening()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = $this->data;
 
 		if ($this->request->getPost('number')!=null) {

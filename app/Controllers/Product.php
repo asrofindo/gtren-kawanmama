@@ -29,6 +29,7 @@ class Product extends BaseController
 
 	public function __construct()
 	{
+
 		helper(['form', 'url','wawoo']);
 		$this->model    = new ProductModel();
 		$this->photo    = new ProductPhoto();
@@ -44,12 +45,15 @@ class Product extends BaseController
 		$this->data['category']    = $this->category->findAll();
 		$this->sosial = new SosialModel();
 		$this->data['sosial']    = $this->sosial->findAll();
-
+		
 	}
 
 	public function index()
 	{
-
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 
 		$data['categories'] = $this->category->findAll();
 
@@ -63,7 +67,10 @@ class Product extends BaseController
 
 	public function stockist()
 	{
-
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		
 		$data['categories'] = $this->category->findAll();
 		$this->model->select('products.id as id, name, description, categories, photos, slug, fixed_price, sell_price');
@@ -88,7 +95,7 @@ class Product extends BaseController
 
 
 		if (user()!=null && user()->phone == null) {
-			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor HP');
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
 		}
 		$data = $this->data;
@@ -110,6 +117,10 @@ class Product extends BaseController
 
 	public function detail($slug,$id=null)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		helper("cookie");
 		$data= $this->data;
 		$data['product'] = $this->model->where('slug', $slug)->first();
@@ -203,6 +214,10 @@ class Product extends BaseController
 	public function edit($id)
 
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$db = \Config\Database::connect();
 		$builder = $db->table('categories');
 
@@ -231,6 +246,10 @@ class Product extends BaseController
 
 	public function edit_distributor_produk($id, $distributor_id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		if($this->request->getPost('jumlah')!=null){
 
 			$data = [
@@ -278,7 +297,6 @@ class Product extends BaseController
 	}
 
 	public function update($id)
-
 	{
 		$product    = new \App\Entities\Product();
 		$slug       = new Slug();

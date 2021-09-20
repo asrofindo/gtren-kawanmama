@@ -46,6 +46,10 @@ class Transaksi extends BaseController
 
 	public function index()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data=$this->data;
 		$data['distributor'] = $this->distributor->findAll();
 		
@@ -147,6 +151,10 @@ class Transaksi extends BaseController
 
 	public function save_transaction()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$total = $this->request->getPost('total');
 		$bill = $this->request->getPost('bill');
 		$rekening = $this->request->getPost('rekening_id');
@@ -249,6 +257,10 @@ class Transaksi extends BaseController
 
 	public function check()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$r = $this->request;
 
 		// Query BUilder Males BIkin Model
@@ -370,6 +382,10 @@ class Transaksi extends BaseController
 
 	public function hutang_stockist()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data['pendapatans'] = $this->pendapatan->select('*, pendapatan.id as id')
 		->join('distributor', 'distributor.user_id = pendapatan.user_id')
 		->join('users', 'users.id = pendapatan.user_id')
@@ -383,6 +399,10 @@ class Transaksi extends BaseController
 
 	public function hutang_affiliate()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data['pendapatans'] = $this->pendapatan->select('*, pendapatan.id as id')
 		->join('users', 'users.id = pendapatan.user_id')
 		->where('pendapatan.status_dana', 'affiliate')
@@ -461,7 +481,10 @@ class Transaksi extends BaseController
 
 	public function keuangan()
 	{
-		
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}	
 
 		$data['pendapatan_seller'] = $this->pendapatan->where('user_id', user()->id)->where('status_dana', 'distributor')->find();
 		$data['detailtransaksi'] = $this->detail_transaksi
@@ -482,6 +505,10 @@ class Transaksi extends BaseController
 
 	public function request_wd()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		// data yang akan di wd
 		$jumlah_wd = $this->request->getPost('jumlah_wd');
 		$status_dana = $this->request->getPost('status_dana');
