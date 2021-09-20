@@ -556,7 +556,7 @@ class Transaksi extends BaseController
 		if($validateOtp['user']->find() != null){
 
 			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->find() ){
-				session()->setFlashdata('danger', 'Gagal Harap Melakukan Request ulang koe otp');
+				session()->setFlashdata('danger', 'Gagal Harap Melakukan Request ulang kode otp');
 				return redirect()->back();
 			}
 			if($validateOtp['user']->first()->otp != $otp){
@@ -564,7 +564,7 @@ class Transaksi extends BaseController
 				return redirect()->back();
 			}
 		} else {
-			session()->setFlashdata('danger', 'Gagal Harap Melakukan Request ulang koe otp');
+			session()->setFlashdata('danger', 'Gagal Harap Melakukan Request ulang kode otp');
 			return redirect()->back();
 		}
 
