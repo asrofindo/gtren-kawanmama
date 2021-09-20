@@ -252,10 +252,8 @@ class User extends BaseController
 			'status_message' => $request->getPost('phone') == user()->phone ? 'verified' : null,
 		];
 
-		if (user()->phone==null) {
-			user()->setProfile($data);
-
-
+		if($request->getPost('phone') != user()->phone){
+			
 			$OTP = new OtpType();
 
 	    	$initializeOtp = $OTP->initializeOtp('data', 'validate');
@@ -293,6 +291,10 @@ class User extends BaseController
 				$sendOtp->send();
 			}
 			
+		}
+
+		if (user()->phone==null) {
+			user()->setProfile($data);
 
 			$msg="Selamat!\nAda *user baru* di ".base_url()."\nNama User :".user()->greeting." ".user()->fullname."\nNo. Wa: ".$data['phone'];			
 			$notif = $this->notif->findAll();
