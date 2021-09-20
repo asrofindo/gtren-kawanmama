@@ -42,14 +42,14 @@ class Verifywa extends ResourceController
 				$sendOtp = $OTP->initializeOtp($requestOtp, 'send');
 				$sendOtp->send();
 
-				session()->setFlashdata('success', 'OTP Sudah Dikirim');
+				session()->setFlashdata('success-otp', 'OTP Sudah Dikirim');
 				return redirect()->back();
 				
 			} else {
 				$sendOtp = $OTP->initializeOtp($validateOtp['user']->first()->otp, 'send');
 				$sendOtp->send();
 
-				session()->setFlashdata('success', 'OTP Sudah Dikirim');
+				session()->setFlashdata('success-otp', 'OTP Sudah Dikirim');
 				return redirect()->back();
 			}	
 
@@ -86,14 +86,14 @@ class Verifywa extends ResourceController
 				$sendOtp = $OTP->initializeOtp($requestOtp, 'send');
 				$sendOtp->send();
 
-				session()->setFlashdata('success', 'OTP Sudah Dikirim');
+				session()->setFlashdata('success-otp', 'OTP Sudah Dikirim');
 				return redirect()->back();
 				
 			} else {
 				$sendOtp = $OTP->initializeOtp($validateOtp['user']->first()->otp, 'send');
 				$sendOtp->send();
 
-				session()->setFlashdata('success', 'OTP Sudah Dikirim');
+				session()->setFlashdata('success-otp', 'OTP Sudah Dikirim');
 				return redirect()->back();
 			}	
 

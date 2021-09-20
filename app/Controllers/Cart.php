@@ -3,6 +3,8 @@
 namespace App\Controllers;
 use App\Models\CartItemModel;
 use App\Models\ProductModel;
+use App\Models\PengirimanModel;
+use App\Models\DetailPengirimanModel;
 
 use App\Controllers\BaseController;
 
@@ -11,6 +13,8 @@ class Cart extends BaseController
 	public function __construct(){
 		$this->cart = new CartItemModel();
 		$this->product = new ProductModel();
+		$this->pengiriman = new PengirimanModel();
+		$this->detailpengiriman = new DetailPengirimanModel(); 
 	}
 
 	public function save($id=null)
@@ -41,6 +45,7 @@ class Cart extends BaseController
 		->where('distributor_id', $distributor_id)->find();
 
 		if(count($transaksi) > 0){
+
 			if ($id!=null) {
 				$data=["affiliate_link" => '/src/'.$id];
 			}
@@ -54,6 +59,16 @@ class Cart extends BaseController
 				"total" => $transaksi[0]->total * ($amount + $transaksi[0]->amount)
 			];
 
+			$data_transaksi = $this->cart->where('user_id', user()->id)
+			->where('product_id', $product_id)
+			->where('status', null)
+			->where('distributor_id', $distributor_id)->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')->first();
+			
+			if($data_transaksi->pengiriman_id != null){
+				$pengiriman_id = $data_transaksi->pengiriman_id;
+				$this->detailpengiriman->whereIn('pengiriman_id', [$pengiriman_id])->delete();
+				$this->pengiriman->delete($pengiriman_id);
+			}
 			$this->cart->where('user_id', user()->id)
 			->where('product_id', $product_id)
 			->where('distributor_id', $distributor_id)->replace($data);
@@ -77,12 +92,19 @@ class Cart extends BaseController
 
 	public function add($id)
 	{
+
+
 		$transaksi = $this->cart->find($id);
 		
-		$data = $this->cart->join('distributor', 'distributor.id = distributor_id')
+		$data = $this->cart->select('*, detailpengiriman.id as dp_id')->join('distributor', 'distributor.id = distributor_id')
 		->join('product_distributor', 'product_distributor.product_id = cart_item.product_id')
+		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id')
 		->where('cart_item.id', $id)->find();
-
+		if($data[0]->dp_id != null){
+			$pengiriman_id = $data[0]->pengiriman_id;
+			$this->detailpengiriman->whereIn('pengiriman_id', [$pengiriman_id])->delete();
+			$this->pengiriman->delete($pengiriman_id);
+		}
 		if($data[0]->amount == $data[0]->jumlah){
 			return redirect()->back();
 		}
@@ -98,6 +120,16 @@ class Cart extends BaseController
 
 	public function substruct($id)
 	{
+		$data = $this->cart->select('*, detailpengiriman.id as dp_id')->join('distributor', 'distributor.id = distributor_id')
+		->join('product_distributor', 'product_distributor.product_id = cart_item.product_id')
+		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id')
+		->where('cart_item.id', $id)->find();
+		if($data[0]->dp_id != null){
+			$pengiriman_id = $data[0]->pengiriman_id;
+			$this->detailpengiriman->whereIn('pengiriman_id', [$pengiriman_id])->delete();
+			$this->pengiriman->delete($pengiriman_id);
+		}
+
 		$transaksi = $this->cart->find($id);
 		if($transaksi->amount == 1){
 			return redirect()->back();	

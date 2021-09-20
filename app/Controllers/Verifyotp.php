@@ -38,15 +38,15 @@ class Verifyotp extends ResourceController
 		if($validateOtp['user']->find() != null){
 
 			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->find() ){
-				session()->setFlashdata('danger', 'Gagal ! Cek Kembali OTP Anda');
+				session()->setFlashdata('danger-otp', 'Gagal ! Cek Kembali OTP Anda');
 				return redirect()->back();
 			}
 			if($validateOtp['user']->first()->otp != $otp){
-				session()->setFlashdata('danger', 'Gagal ! Cek Kembali OTP Anda');
+				session()->setFlashdata('danger-otp', 'Gagal ! Cek Kembali OTP Anda');
 				return redirect()->back();
 			}
 		} else {
-			session()->setFlashdata('danger', 'Gagal ! Cek Kembali OTP Anda');
+			session()->setFlashdata('danger-otp', 'Gagal ! Cek Kembali OTP Anda');
 			return redirect()->back();
 		}
 

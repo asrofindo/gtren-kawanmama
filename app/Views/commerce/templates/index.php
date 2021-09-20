@@ -157,7 +157,7 @@ h1 { font-size: 1.5em; margin: 10px; }
               <h5><a href="<?php base_url() ?>/verifyotp/<?=  user()->id ?>">ganti Nomer WA Disini ?</a></h5>
             </div>
             <div class="modal-body">
-            <?php if(!empty(session()->getFlashdata('success'))){ ?>
+            <?php if(!empty(session()->getFlashdata('success-otp'))){ ?>
 
                 <div class="alert alert-success bg-success text-white">
                     <?php echo session()->getFlashdata('success');?>
@@ -165,7 +165,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 
             <?php } ?>
 
-            <?php if(!empty(session()->getFlashdata('danger'))){ ?>
+            <?php if(!empty(session()->getFlashdata('danger-otp'))){ ?>
 
                 <div class="alert alert-danger bg-danger text-white">
                     <?php echo session()->getFlashdata('danger');?>
