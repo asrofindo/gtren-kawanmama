@@ -617,6 +617,7 @@ class Transaksi extends BaseController
 		->join('bills', 'bills.id = penarikan_dana.bill_id', 'inner')
 		->join('users', 'users.id = penarikan_dana.user_id', 'inner')
 		->where('penarikan_dana.status', 'sudah')
+		->orderBy('penarikan_dana.id', "DESC")
 		->find();
 
 		return view('db_admin/pendapatan/riwayat_wd', $data);
