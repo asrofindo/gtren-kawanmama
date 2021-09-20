@@ -3,7 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Gtren</title>
+    <?php if(in_groups(1)) {?>
+        <title>Gtren dashboard Admin</title>
+    <?php }elseif(in_groups(3)) {?>
+        <title>Gtren dashboard Seller</title>
+    <?php }elseif(in_groups(4)) {?>
+        <title>Gtren dashboard Affiliate</title>
+    <?php }?>
+
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">

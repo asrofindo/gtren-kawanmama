@@ -59,7 +59,7 @@ class Order extends BaseController
 			$dostributor = $this->distributor->where('id',$value->distributor_id)->first();
 			$user = $this->user->where('id',$dostributor['user_id'])->first();
 			
-			$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Selamat! Anda mendapat pesanan baru,\nNo Transaksi: ".$id."\nAnda harus *menerima* atau *menolak* pesanan ini di dasbor distributor. Batas waktu 2 hari.\nSilahkan Cek Transaksi di \n".base_url('/dashboard');
+			$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Selamat! Anda mendapat pesanan baru,\nNo Transaksi: ".$id."\nAnda harus *menerima* atau *menolak* pesanan ini di dasbor distributor. Batas waktu 2 hari.\nSilahkan Cek Transaksi di \n".base_url('/order/stockist');
 			wawoo($user->phone,$msg);
 		}
 		
