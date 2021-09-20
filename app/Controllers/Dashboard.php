@@ -61,7 +61,7 @@ class Dashboard extends BaseController
 		->where('pendapatan.status_dana =', 'affiliate')
 		->find();
 		
-		if(in_groups(3,4)){
+		if(in_groups(3)){
 
 			$data['stockist'] = $this->model->select('sum(COALESCE(stockist_commission,0)) - COALESCE(pendapatan.keluar,0) AS stockist_total')
 			->join('distributor', 'distributor.id = detailtransaksi.distributor_id ', 'left')
@@ -70,7 +70,6 @@ class Dashboard extends BaseController
 			->where('pendapatan.status_dana =', 'distributor')
 			->where('distributor.user_id', user()->id)
 			->find();
-
 			$data['affiliate'] = $this->model->select('sum(COALESCE(affiliate_commission,0) - COALESCE(pendapatan.keluar,0)) AS affiliate_total')
 			->join('cart_item', 'cart_item.id = detailtransaksi.cart_id ', 'left')
 			->join('users', 'users.affiliate_link = cart_item.affiliate_link', 'left')
@@ -80,14 +79,13 @@ class Dashboard extends BaseController
 			->where('users.id', user()->id)
 			->find();
 
-			$data['pending_stockist'] = $this->model->select('sum(COALESCE(admin_commission,0)) + sum(COALESCE(stockist_commission,0)) + sum(COALESCE(affiliate_commission,0)) as pending_stockist_total')
+			$data['pending_stockist'] = $this->model->select('sum(COALESCE(stockist_commission,0)) as pending_stockist_total')
 			->join('distributor', 'distributor.id = detailtransaksi.distributor_id ', 'left')
           	->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id AND transaksi.status_pembayaran = "paid"')
 			->where('distributor.user_id', user()->id)
 			->where('status_barang =', 'dikirim')
 			->orWhere('status_barang =', 'dipantau')
           	->findAll();
-
           	
 		}
 		if(in_groups(4)){
