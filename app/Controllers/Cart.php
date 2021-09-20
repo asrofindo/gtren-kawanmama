@@ -98,7 +98,7 @@ class Cart extends BaseController
 		
 		$data = $this->cart->select('*, detailpengiriman.id as dp_id')->join('distributor', 'distributor.id = distributor_id')
 		->join('product_distributor', 'product_distributor.product_id = cart_item.product_id')
-		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id')
+		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
 		->where('cart_item.id', $id)->find();
 		if($data[0]->dp_id != null){
 			$pengiriman_id = $data[0]->pengiriman_id;
@@ -122,7 +122,7 @@ class Cart extends BaseController
 	{
 		$data = $this->cart->select('*, detailpengiriman.id as dp_id')->join('distributor', 'distributor.id = distributor_id')
 		->join('product_distributor', 'product_distributor.product_id = cart_item.product_id')
-		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id')
+		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
 		->where('cart_item.id', $id)->find();
 		if($data[0]->dp_id != null){
 			$pengiriman_id = $data[0]->pengiriman_id;
