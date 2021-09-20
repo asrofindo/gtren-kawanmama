@@ -158,7 +158,7 @@ class Order extends BaseController
 		}
 
 		// data produk dan ongkir yang akan di refund
-		$data['detailtransaksi'] = $this->detailtransaksi->select('*, pengiriman.id as p_id, detailtransaksi.admin_commission, detailtransaksi.affiliate_commission, detailtransaksi.stockist_commission, detailpengiriman.ongkir_produk')
+		$data['detailtransaksi'] = $this->detailtransaksi->select('*, pengiriman.id as p_id, detailtransaksi.admin_commission, detailtransaksi.affiliate_commission, detailtransaksi.stockist_commission, detailpengiriman.ongkir_produk, detailpengiriman.id as dp_id')
 		->join('cart_item', 'cart_item.id = cart_id')
 		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id')
 		->join('products', 'products.id = cart_item.product_id')
@@ -191,10 +191,15 @@ class Order extends BaseController
 			"id" => $data['detailtransaksi']->p_id,
 			"ongkir" => $data['detailtransaksi']->ongkir -  $data['detailtransaksi']->ongkir_produk
 		];
-
-		
+	
 		$this->pengiriman->save($data['pengiriman']);
 
+		$data['detailpengiriman'] = [
+			"id" => $data['detailtransaksi']->dp_id,
+			"ongkir_produk" => null
+		];
+
+		$total = $this->detailpengiriman->save($data['detailpengiriman']);
 		// ubah total transaksi 
 		$total = $this->model->find($transaksi_id)->total;
 
@@ -231,7 +236,6 @@ class Order extends BaseController
 			"affiliate_commission" => null,
 			"admin_commission" => null,
 			"stockist_commission" => null,
-			"ongkir_produk" => null,
 		];
 
 		$data['saveDetailTransaksi'] = [
