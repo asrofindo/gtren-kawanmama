@@ -37,7 +37,7 @@ class Verifyotp extends ResourceController
 		$validateOtp = $initializeOtp->validate();
 		if($validateOtp['user']->find() != null){
 
-			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->find() ){
+			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->where('user_id', user()->id)->find() ){
 				session()->setFlashdata('danger-otp', 'Gagal ! Cek Kembali OTP Anda');
 				return redirect()->back();
 			}
