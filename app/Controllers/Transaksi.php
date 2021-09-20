@@ -582,16 +582,16 @@ class Transaksi extends BaseController
 		$validateOtp = $initializeOtp->validate();
 		if($validateOtp['user']->find() != null){
 
-			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->find() ){
-				session()->setFlashdata('danger', 'Gagal Harap Melakukan Request ulang kode otp');
+			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->where('user_id', user()->id)->find() ){
+				session()->setFlashdata('danger', 'OTP sudah Kadaluarsa');
 				return redirect()->back();
 			}
-			if($validateOtp['user']->first()->otp != $otp){
+			if($validateOtp['user']->where('user_id', user()->id)->first()->otp != $otp){
 				session()->setFlashdata('danger', 'Kode OTP Salah');
 				return redirect()->back();
 			}
 		} else {
-			session()->setFlashdata('danger', 'Gagal Harap Melakukan Request ulang kode otp');
+			session()->setFlashdata('danger', 'Anda Belum Memiliki Kode OTP');
 			return redirect()->back();
 		}
 

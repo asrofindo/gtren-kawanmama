@@ -284,47 +284,10 @@ class User extends BaseController
 			'status_message' => $request->getPost('phone') == user()->phone ? 'verified' : null,
 		];
 
+		session()->setFlashdata('success', 'Silahkan  Minta Kode OTP Anda');
+
 		if (user()->phone==null) {
 			user()->setProfile($data);
-
-
-			$OTP = new OtpType();
-
-	    	$initializeOtp = $OTP->initializeOtp('data', 'validate');
-			$validateOtp = $initializeOtp->validate();
-
-			if($validateOtp['user']->find() != null){
-
-				if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->find() ){
-					$initializeOtp = $OTP->initializeOtp($validateOtp['user']->first()->id, 'delete');
-					$deleteOtp = $initializeOtp->delete();
-
-					$initializeOtp = $OTP->initializeOtp('data', 'request');
-					$requestOtp = $initializeOtp->request();	
-
-					$sendOtp = $OTP->initializeOtp($requestOtp, 'send');
-					$sendOtp->send();
-
-					session()->setFlashdata('success', 'OTP Sudah Dikirim');
-					return redirect()->back();
-					
-				} else {
-					$sendOtp = $OTP->initializeOtp($validateOtp['user']->first()->otp, 'send');
-					$sendOtp->send();
-
-					session()->setFlashdata('success', 'OTP Sudah Dikirim');
-					return redirect()->back();
-				}	
-
-			} else {
-
-				$initializeOtp = $OTP->initializeOtp('data', 'request');
-				$requestOtp = $initializeOtp->request();	
-
-				$sendOtp = $OTP->initializeOtp($requestOtp, 'send');
-				$sendOtp->send();
-			}
-			
 
 			$msg="Selamat!\nAda *user baru* di ".base_url()."\nNama User :".user()->greeting." ".user()->fullname."\nNo. Wa: ".$data['phone'];			
 			$notif = $this->notif->findAll();
@@ -661,8 +624,9 @@ class User extends BaseController
 		$validateOtp = $initializeOtp->validate();
 		if($validateOtp['user']->find() != null){
 
-			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->find() ){
-				$initializeOtp = $OTP->initializeOtp($validateOtp['user']->first()->id, 'delete');
+			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->where('user_id', user()->id)->find() ){
+
+				$initializeOtp = $OTP->initializeOtp($validateOtp['user']->where('user_id', user()->id)->first()->id, 'delete');
 				$deleteOtp = $initializeOtp->delete();
 
 				$initializeOtp = $OTP->initializeOtp('data', 'request');

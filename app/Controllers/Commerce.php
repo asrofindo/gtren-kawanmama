@@ -58,9 +58,11 @@ class Commerce extends BaseController
 		$data=$this->data;
 		
 		$data['title']='Cart | Gtren';
-		$data['carts'] = $this->cart->select('*, cart_item.id as id, detailtransaksi.id as d_id')
+		$data['carts'] = $this->cart->select('*, cart_item.id as id, detailtransaksi.id as d_id, detailpengiriman.id as dp_id')
 	      ->join('products', "products.id = cart_item.product_id ", 'left')
 	      ->join('detailtransaksi', "cart_item.id = detailtransaksi.cart_id ", 'left')
+	      ->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
+
 	      ->where('cart_item.user_id', user()->id)
 	      ->where('cart_item.status', null)->findAll();
 	    $data_cart = [];

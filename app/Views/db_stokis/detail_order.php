@@ -132,7 +132,11 @@
                                             </dl>
                                             <dl class="dlist">
                                                 <dt>total tagihan:</dt>
-                                                <dd> <b class="h5"><?= rupiah($order['total_transaksi']);  ?></b> </dd>
+                                                <dd> <b class="h5"><?= rupiah($order['total_transaksi'] - $product->kode_unik);  ?></b> </dd>
+                                            </dl>
+                                            <dl class="dlist">
+                                                <dt>Uang Yang Akan Anda Terima:</dt>
+                                                <dd> <b class="h5"><?= rupiah($order['stockist_commission']);  ?></b> </dd>
                                             </dl>
                                         </article>
                                     </td>

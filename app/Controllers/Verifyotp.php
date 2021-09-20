@@ -35,18 +35,18 @@ class Verifyotp extends ResourceController
 
 		$initializeOtp = $OTP->initializeOtp('data', 'validate');
 		$validateOtp = $initializeOtp->validate();
-		if($validateOtp['user']->find() != null){
+		if($validateOtp['user']->where('user_id', user()->id)->find() != null){
 
-			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->find() ){
-				session()->setFlashdata('danger', 'Gagal ! Cek Kembali OTP Anda');
+			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->where('user_id', user()->id)->find() ){
+				session()->setFlashdata('danger-otp', 'Gagal ! Cek Kembali OTP Anda');
 				return redirect()->back();
 			}
-			if($validateOtp['user']->first()->otp != $otp){
-				session()->setFlashdata('danger', 'Gagal ! Cek Kembali OTP Anda');
+			if($validateOtp['user']->where('user_id', user()->id)->first()->otp != $otp){
+				session()->setFlashdata('danger-otp', 'Gagal ! Cek Kembali OTP Anda');
 				return redirect()->back();
 			}
 		} else {
-			session()->setFlashdata('danger', 'Gagal ! Cek Kembali OTP Anda');
+			session()->setFlashdata('danger-otp', 'Gagal ! Cek Kembali OTP Anda');
 			return redirect()->back();
 		}
 

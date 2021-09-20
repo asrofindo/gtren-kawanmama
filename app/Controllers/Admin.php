@@ -83,7 +83,7 @@ class Admin extends BaseController
 	{
 		$id = user()->id;
 		$data['orders'] = $this->transaksi
-		->select('*, transaksi.total as total_transaksi, transaksi.id as id, detailtransaksi.id as detail_id, transaksi.created_at as created_at')
+		->select('*, transaksi.total as total_transaksi, transaksi.id as id, detailtransaksi.id as detail_id, transaksi.created_at as created_at, detailtransaksi.stockist_commission')
 		->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
 		->join("cart_item", 'cart_item.id = cart_id')
 		->join("products", 'products.id = cart_item.product_id')
@@ -106,7 +106,7 @@ class Admin extends BaseController
 	{
 
 		$data['detail_orders'] = $this->transaksi
-		->select('*, transaksi.total as total_transaksi, detailtransaksi.id as id')
+		->select('*, transaksi.total as total_transaksi, detailtransaksi.id as id, detailtransaksi.stockist_commission')
 		->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
 		->join("bills", 'bills.id = bill_id')
 		->join("users", 'users.id = transaksi.user_id')
@@ -137,6 +137,7 @@ class Admin extends BaseController
 		    $etd = $value->etd;
 		 
 		    $bank_name = $value->bank_name;
+		    $stockist_commission = $value->stockist_commission;
 		    $bank_number = $value->bank_number;
 		    $total_transaksi = $value->total_transaksi;
 		 
@@ -153,6 +154,7 @@ class Admin extends BaseController
 		            $outer_array[$fid_value]['username'] = $username;
 		            $outer_array[$fid_value]['fullname'] = $fullname;
 		            $outer_array[$fid_value]['phone'] = $phone;
+		            $outer_array[$fid_value]['stockist_commission'] = $stockist_commission;
 		            $outer_array[$fid_value]['alamat'] = $alamat;
 		            $outer_array[$fid_value]['email'] = $email;
 		            $outer_array[$fid_value]['kurir'] = $kurir;
