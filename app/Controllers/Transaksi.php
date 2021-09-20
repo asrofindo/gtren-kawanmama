@@ -197,6 +197,7 @@ class Transaksi extends BaseController
 		$alamat = "{$data['alamat']->provinsi}, {$data['alamat']->kabupaten}, {$data['alamat']->kecamatan}, {$data['alamat']->kode_pos}, {$data['alamat']->detail_alamat}";
 		
 		if($rekening != null){
+			
 			$data_rek = $this->rekening->find($rekening);
 
 			$this->rekening->save([

@@ -98,6 +98,8 @@
 
             <?php } ?>
 
+            <?php if(count($carts) > 0 ): ?>
+
             <div class="col-md-12">
                 <?php if(!empty(session()->getFlashdata('expidisi'))){ ?>
                 <div class="alert alert-success bg-warning text-white">
@@ -230,6 +232,7 @@
                     </form>
                 </div>
             </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
