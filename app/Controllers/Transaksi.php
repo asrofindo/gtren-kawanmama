@@ -19,6 +19,7 @@ use App\Models\SosialModel;
 use App\Models\OtpModel;
 use App\Models\RekeningModel;
 use App\Controllers\OtpType;
+use App\Models\SettingWd;
 
 class Transaksi extends BaseController
 {
@@ -40,6 +41,7 @@ class Transaksi extends BaseController
 		$this->pendapatan = new PendapatanModel();
 		$this->wd = new WDModel();
 		$this->otp = new OtpModel();
+		$this->setting_wd = new SettingWd();
 		$this->rekening = new RekeningModel();
 		$this->generate = new GenerateModel();
 	}
@@ -197,7 +199,7 @@ class Transaksi extends BaseController
 		$alamat = "{$data['alamat']->provinsi}, {$data['alamat']->kabupaten}, {$data['alamat']->kecamatan}, {$data['alamat']->kode_pos}, {$data['alamat']->detail_alamat}";
 		
 		if($rekening != null){
-			
+
 			$data_rek = $this->rekening->find($rekening);
 
 			$this->rekening->save([
@@ -429,7 +431,7 @@ class Transaksi extends BaseController
 		$user_id = $this->pendapatan->find($id)->user_id;
 
 		$id_wd = $this->wd->where('user_id', $user_id)->where('status_dana', $status_dana)->where('status', 'belum')->find()[0]['id'];
-    
+
 
 		if($data_bill->total == null){
 			return redirect()->back();
@@ -530,7 +532,15 @@ class Transaksi extends BaseController
 		
 	
 		// jika ditemukan wd sebelumnya dan status nya adalah belum dikonfirmasi
-      
+		$minimal_wd = $this->setting_wd->first()->minimal;
+		$minimal_wd = number_format($minimal_wd);
+      	if($jumlah_wd < $minimal_wd || $otp != null){
+      		$data['wds'] = $this->wd->where('user_id', user()->id)->find();	
+			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->findAll();
+			session()->setFlashdata('danger', "Minimal Penarikan Dana Adalah Rp. {$minimal_wd}");
+			return view('db_stokis/wd', $data);
+      	}
+
       	if($penarikan == null && $status_dana != null){
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
