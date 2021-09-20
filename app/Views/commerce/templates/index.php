@@ -148,7 +148,7 @@ h1 { font-size: 1.5em; margin: 10px; }
     <form action="<?php base_url() ?>/verifyotp" method="post">
       <div class="attention">
       </div>
-      <div style="" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div style="" class="modal fade" id="modalKita" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -186,8 +186,8 @@ h1 { font-size: 1.5em; margin: 10px; }
 <?php endif; ?>
     <script type="text/javascript">
       $(document).ready(function() {
-       $('#myModal').modal({backdrop:'static'})  
-       $('#myModal').modal('show')  
+       $('#modalKita').modal({backdrop:'static'})  
+       $('#modalKita').modal('show')  
 
        $(".input-class").keyup(function(event){
 
