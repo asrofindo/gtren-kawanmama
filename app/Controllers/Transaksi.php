@@ -587,7 +587,7 @@ class Transaksi extends BaseController
 				return redirect()->back();
 			}
 			if($validateOtp['user']->where('user_id', user()->id)->first()->otp != $otp){
-				session()->setFlashdata('danger', 'Kode OTP Salah');
+				session()->setFlashdata('danger', 'Gagal! Mohon dicek kembali kode OTP Anda.');
 				return redirect()->back();
 			}
 		} else {

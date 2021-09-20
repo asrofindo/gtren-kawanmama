@@ -231,6 +231,7 @@ class Order extends BaseController
 			"affiliate_commission" => null,
 			"admin_commission" => null,
 			"stockist_commission" => null,
+			"ongkir_produk" => null,
 		];
 
 		$data['saveDetailTransaksi'] = [
