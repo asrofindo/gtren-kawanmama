@@ -3,7 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Gtren</title>
+    <?php if(in_groups(1)) {?>
+        <title>Gtren dashboard Admin</title>
+    <?php }elseif(in_groups(3)) {?>
+        <title>Gtren dashboard Seller</title>
+    <?php }elseif(in_groups(4)) {?>
+        <title>Gtren dashboard Affiliate</title>
+    <?php }?>
+
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,137 +38,162 @@
         </div>
         <nav>
            <ul class="menu-aside">
+    <?php if(in_groups(1)) {?>
+        <li class="menu-item">
+            <a class="menu-link" href="<?= base_url() ?>/admin"> <i class="icon material-icons md-home"></i>
+                <span class="text">Dashboard Admin</span>
+            </a>
+        </li>
+        <li class="menu-item has-submenu" >
+            <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
+                <span class="text">Produk</span>
+            </a>
+            <div class="submenu">
+                <a href="<?= base_url()?>/products">Daftar Produk</a>
+                <a href="<?= base_url()?>/category">Kategori</a>
+            </div>
+        </li>
+        <li class="menu-item has-submenu">
+            <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-shopping_cart"></i>
+                <span class="text">Pesanan</span>
+            </a>
+            <div class="submenu">
+                <a href="<?= base_url() ?>/order">Data Pesanan</a>
+                <a class="" href="<?php base_url() ?>/upgrades">Upgrade Akun</span></a>
+            </div>
+        </li>
+        <li class="menu-item has-submenu">
+            <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-monetization_on"></i>
+                <span class="text">Keuangan</span>
 
-    <?php if(in_groups(1)): ?>
-    <li class="menu-item">
-        <a class="menu-link" href="<?= base_url() ?>/admin"> <i class="icon material-icons md-home"></i>
-            <span class="text">Dashboard Admin</span>
-        </a>
-    </li>
-    <?php endif; ?>
+            </a>
+            <div class="submenu">
+                    <a href="<?php base_url() ?>/bills"><span class="text">Rekening Admin</span></a> 
+                    <a href="<?php base_url() ?>/riwayat/wd"><span class="text">Riwayat Withdraw</span></a>
+                    <a href="<?php base_url() ?>/hutang/affiliate"><span class="text">Dana Affiliate</span></a> 
+                    <a href="<?php base_url() ?>/hutang/stockist"><span class="text">Dana Distributor</span></a> 
+                    <a href="<?php base_url() ?>/admin/konfirmasi"><span class="text">Konfirmasi Pembayaran</span></a> 
+            </div>
+        </li>
+        <li class="menu-item has-submenu">
+            <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-people"></i>
+                <span class="text">Data Member</span>
+            </a>
+            <div class="submenu">
+                    <a href="<?php base_url() ?>/members"><span class="text">Semua Pengguna</span></a> 
+                    <a href="<?php base_url() ?>/distributor/list"><span class="text">Distributor</span></a>
+                    <a href="<?php base_url() ?>/affiliate/list"><span class="text">Affiliate</span></a>
+            </div>
+        </li>
+    <?php }elseif(in_groups(3)) {?>
+        <li class="menu-item">
+            <a class="menu-link" href="<?= base_url() ?>/seller"> <i class="icon material-icons md-home"></i>
+                <span class="text">Dashboard Seller</span>
+            </a>
+        </li>  
+        <li class="menu-item">
+            <a class="menu-link" href="<?= base_url() ?>/order/stockist"> <i class="icon material-icons md-shopping_cart"></i>
+                <span class="text">Pesanan</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a class="menu-link" href="<?= base_url() ?>/affiliate"> <i class="icon material-icons md-home"></i>
+                <span class="text">Dashboard Affiliate</span>
+            </a>
+        </li>  
+        <li class="menu-item">
+            <a class="menu-link" href="<?= base_url() ?>/market/affiliate"> <i class="icon material-icons md-assignment"></i>
+                <span class="text">Market Affiliate</span>
+            </a>
+        </li>
+        <li class="menu-item has-submenu" >
+            <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
+                <span class="text">Stok</span>
+            </a>
+            <div class="submenu">
+                <a href="<?= base_url() ?>/products/stockist">Produk Anda</a>
+                <a href="<?= base_url() ?>/products">Produk</a>
+            </div>
+        </li>
+        <li class="menu-item">
+            <a class="menu-link" href="<?= base_url() ?>/jaringan"> <i class="icon material-icons md-public"></i>
+                <span class="text">Jaringan Anda</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a class="menu-link" href="<?= base_url() ?>/market/affiliate"> <i class="icon material-icons md-assignment"></i>
+                <span class="text">Affiliate Tools</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a class="menu-link" href="<?php base_url() ?>/keuangan"> <i class="icon material-icons md-monetization_on"></i>
+                <span class="text">Keuangan</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a class="menu-link" href="<?php base_url() ?>/request/wd"> <i class="icon material-icons md-account_balance_wallet"></i>
+                <span class="text">Penarikan Dana</span>
+            </a>
+        </li>
+        <li class="menu-item" >
+            <a class="menu-link" href="<?php base_url() ?>/distributor"> <i class="icon material-icons md-store"></i>
+                <span class="text">Setting Distributor</span>
+            </a>
+        </li>
+    <?php }elseif(in_groups(4)) {?>
+        <li class="menu-item">
+            <a class="menu-link" href="<?= base_url() ?>/affiliate"> <i class="icon material-icons md-home"></i>
+                <span class="text">Dashboard Affiliate</span>
+            </a>
+        </li>
+        
+        <li class="menu-item">
+            <a class="menu-link" href="<?= base_url() ?>/market/affiliate"> <i class="icon material-icons md-assignment"></i>
+                <span class="text">Market Affiliate</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a class="menu-link" href="<?= base_url() ?>/jaringan"> <i class="icon material-icons md-public"></i>
+                <span class="text">Jaringan Anda</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a class="menu-link" href="<?= base_url() ?>/market/affiliate"> <i class="icon material-icons md-assignment"></i>
+                <span class="text">Affiliate Tools</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a class="menu-link" href="<?php base_url() ?>/keuangan"> <i class="icon material-icons md-monetization_on"></i>
+                <span class="text">Keuangan</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a class="menu-link" href="<?php base_url() ?>/request/wd"> <i class="icon material-icons md-account_balance_wallet"></i>
+                <span class="text">Penarikan Dana</span>
+            </a>
+        </li>
+    <?php }?>
 
-    <?php if(in_groups(3)): ?>
-    <li class="menu-item">
-        <a class="menu-link" href="<?= base_url() ?>/seller"> <i class="icon material-icons md-home"></i>
-            <span class="text">Dashboard Seller</span>
-        </a>
-    </li>
-    <?php endif; ?>
-    <?php if(in_groups(4) && !in_groups(3)): ?>
-    <li class="menu-item">
-        <a class="menu-link" href="<?= base_url() ?>/affiliate"> <i class="icon material-icons md-home"></i>
-            <span class="text">Dashboard Affiliate</span>
-        </a>
-    </li>
-    <li class="menu-item">
-        <a class="menu-link" href="<?= base_url() ?>/market/affiliate"> <i class="icon material-icons md-assignment"></i>
-            <span class="text">Market Affiliate</span>
-        </a>
-    </li>
-    <?php endif; ?>
-    <?php if(in_groups(1)): ?>
-    <li class="menu-item has-submenu" >
-        <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
-            <span class="text">Produk</span>
-        </a>
-        <div class="submenu">
-            <a href="<?= base_url()?>/products">Daftar Produk</a>
-            <a href="<?= base_url()?>/category">Kategori</a>
-        </div>
-    </li>
-    <?php endif ?>
 
-    <?php if(in_groups(1)):?>
-    <li class="menu-item has-submenu">
-        <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-shopping_cart"></i>
-            <span class="text">Pesanan</span>
-        </a>
-        <div class="submenu">
-            <a href="<?= base_url() ?>/order">Data Pesanan</a>
-            <a class="" href="<?php base_url() ?>/upgrades">Upgrade Akun</span></a>
-        </div>
-    </li>
-    <?php endif; ?>
 
-    <?php if(in_groups(3) && !in_groups(1)): ?>
-    <li class="menu-item">
-        <a class="menu-link" href="<?= base_url() ?>/order/stockist"> <i class="icon material-icons md-shopping_cart"></i>
-            <span class="text">Pesanan</span>
-        </a>
-    </li>
-    <?php endif; ?>
 
-    <?php if(in_groups(3,4)): ?>
-    <li class="menu-item">
-        <a class="menu-link" href="<?= base_url() ?>/market/affiliate"> <i class="icon material-icons md-assignment"></i>
-            <span class="text">Affiliate Tools</span>
-        </a>
-    </li>
-    <?php endif; ?>
 
-    <?php if(in_groups(1)):?>
-    <li class="menu-item has-submenu">
-        <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-monetization_on"></i>
-            <span class="text">Keuangan</span>
+  
 
-        </a>
-        <div class="submenu">
-                <a href="<?php base_url() ?>/bills"><span class="text">Rekening Admin</span></a> 
-                <a href="<?php base_url() ?>/riwayat/wd"><span class="text">Riwayat Withdraw</span></a>
-                <a href="<?php base_url() ?>/hutang/affiliate"><span class="text">Dana Affiliate</span></a> 
-                <a href="<?php base_url() ?>/hutang/stockist"><span class="text">Dana Distributor</span></a> 
-                <a href="<?php base_url() ?>/admin/konfirmasi"><span class="text">Konfirmasi Pembayaran</span></a> 
-        </div>
-    </li>
-    <li class="menu-item has-submenu">
-        <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-people"></i>
-            <span class="text">Data Member</span>
-        </a>
-        <div class="submenu">
-                <a href="<?php base_url() ?>/members"><span class="text">Semua Pengguna</span></a> 
-                <a href="<?php base_url() ?>/distributor/list"><span class="text">Distributor</span></a>
-                <a href="<?php base_url() ?>/affiliate/list"><span class="text">Affiliate</span></a>
-        </div>
-    </li>
-    <?php endif; ?>
 
-    <?php if(in_groups(3) || in_groups(4)): ?>
-    <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/keuangan"> <i class="icon material-icons md-monetization_on"></i>
-            <span class="text">Keuangan</span>
-        </a>
-    </li>
-    <?php endif; ?>
 
-      <?php if(in_groups(3) || in_groups(4)): ?>
-    <li class="menu-item">
-        <a class="menu-link" href="<?php base_url() ?>/request/wd"> <i class="icon material-icons md-account_balance_wallet"></i>
-            <span class="text">Penarikan Dana</span>
-        </a>
-    </li>
-    <?php endif; ?>
 
-    <?php if(in_groups(3) && !in_groups(1)): ?>
-    <li class="menu-item has-submenu" >
-        <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
-            <span class="text">Stok</span>
-        </a>
-        <div class="submenu">
-            <a href="<?= base_url() ?>/products/stockist">Produk Anda</a>
-            <a href="<?= base_url() ?>/products">Produk</a>
-        </div>
-    </li>
-    <li class="menu-item" >
-        <a class="menu-link" href="<?php base_url() ?>/distributor"> <i class="icon material-icons md-store"></i>
-            <span class="text">Setting Distributor</span>
-        </a>
-    </li>
-    <?php endif ?>
+
+
+
+
+
+
 </ul>
 <hr>
 
-<?php if(in_groups(1)): ?>
 <ul class="menu-aside">
+    <?php if(in_groups(1)){?>
     <li class="menu-item has-submenu">
         <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-settings"></i>
             <span class="text">Setting</span>
@@ -176,8 +208,15 @@
     
         </div>
     </li>
+    <?php }if(in_groups(3)){ ?>
+    <li class="menu-item" >
+            <a class="menu-link" href="<?php base_url() ?>/distributor"> <i class="icon material-icons md-settings"></i>
+                <span class="text">Setting Distributor</span>
+            </a>
+    </li>
+    <?php } ?>
+
 </ul>
-<?php endif; ?>
 <br>
 <br>
         </nav>

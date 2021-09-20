@@ -192,16 +192,32 @@ class Member extends BaseController
 		$user = [];
 
 		$user=$this->user_rekursif(user()->id);
-
+		if (user()->parent!=null) {
+			$data['sponsor'] = $this->user->where('id',user()->parent)->first();
+		}else{
+			$data['sponsor'] = $this->user
+			->select("users.fullname as fullname,users.created_at as created_at,ag.name as role,users.phone as phone")
+			->join("auth_groups_users as agu", "agu.user_id=users.id")
+			->join("auth_groups as ag", "agu.group_id=ag.id")
+			->orderBy('ag.id',"ASC")
+			->where('users.id',user()->id)->first();
+		}
+		
 		$data['users'] = $this->datauser;
 		return view('db_admin/members/jaringan', $data);
 	}
-	
+
 	public function user_rekursif($parent=null){
 			$model = $this->user;
 			$data = $model->where('parent',$parent)->find();
 				foreach ($data as $key => $value) {
-					array_push($this->datauser,$value);
+					$data = $this->user
+					->select("users.username as username,users.created_at as created_at,ag.name as role,users.phone as phone")
+					->join("auth_groups_users as agu", "agu.user_id=users.id")
+					->join("auth_groups as ag", "agu.group_id=ag.id")
+					->orderBy('ag.id',"ASC")
+					->where('users.id',$value->id)->first();
+					array_push($this->datauser,$data);
 					$this->user_rekursif($value->id);
 				}
 	}
