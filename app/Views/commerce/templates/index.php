@@ -160,7 +160,7 @@ h1 { font-size: 1.5em; margin: 10px; }
             <?php if(!empty(session()->getFlashdata('success-otp'))){ ?>
 
                 <div class="alert alert-success bg-success text-white">
-                    <?php echo session()->getFlashdata('success');?>
+                    <?php echo session()->getFlashdata('success-otp');?>
                 </div>
 
             <?php } ?>
@@ -168,7 +168,7 @@ h1 { font-size: 1.5em; margin: 10px; }
             <?php if(!empty(session()->getFlashdata('danger-otp'))){ ?>
 
                 <div class="alert alert-danger bg-danger text-white">
-                    <?php echo session()->getFlashdata('danger');?>
+                    <?php echo session()->getFlashdata('danger-otp');?>
                 </div>
 
             <?php } ?>

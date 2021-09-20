@@ -46,7 +46,7 @@ class Verifywa extends ResourceController
 				return redirect()->back();
 				
 			} else {
-				$sendOtp = $OTP->initializeOtp($validateOtp['user']->first()->otp, 'send');
+				$sendOtp = $OTP->initializeOtp($validateOtp['user']->where('user_id', user()->id)->first()->otp, 'send');
 				$sendOtp->send();
 
 				session()->setFlashdata('success-otp', 'OTP Sudah Dikirim');
