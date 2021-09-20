@@ -252,47 +252,6 @@ class User extends BaseController
 			'status_message' => $request->getPost('phone') == user()->phone ? 'verified' : null,
 		];
 
-		if($request->getPost('phone') != user()->phone){
-			
-			$OTP = new OtpType();
-
-	    	$initializeOtp = $OTP->initializeOtp('data', 'validate');
-			$validateOtp = $initializeOtp->validate();
-
-			if($validateOtp['user']->find() != null){
-
-				if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->where('user_id', user()->id)->find() ){
-					$initializeOtp = $OTP->initializeOtp($validateOtp['user']->where('user_id', user()->id)->first()->id, 'delete');
-					$deleteOtp = $initializeOtp->delete();
-
-					$initializeOtp = $OTP->initializeOtp('data', 'request');
-					$requestOtp = $initializeOtp->request();	
-
-					$sendOtp = $OTP->initializeOtp($requestOtp, 'send');
-					$sendOtp->send();
-
-					session()->setFlashdata('success', 'OTP Sudah Dikirim');
-					return redirect()->back();
-					
-				} else {
-					$sendOtp = $OTP->initializeOtp($validateOtp['user']->where('user_id', user()->id)->first()->otp, 'send');
-					$sendOtp->send();
-
-					session()->setFlashdata('success', 'OTP Sudah Dikirim');
-					return redirect()->back();
-				}	
-
-			} else {
-
-				$initializeOtp = $OTP->initializeOtp('data', 'request');
-				$requestOtp = $initializeOtp->request();	
-
-				$sendOtp = $OTP->initializeOtp($requestOtp, 'send');
-				$sendOtp->send();
-			}
-			
-		}
-
 		if (user()->phone==null) {
 			user()->setProfile($data);
 
