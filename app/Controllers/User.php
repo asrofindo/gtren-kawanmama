@@ -252,6 +252,8 @@ class User extends BaseController
 			'status_message' => $request->getPost('phone') == user()->phone ? 'verified' : null,
 		];
 
+		session()->setFlashdata('success', 'Silahkan  Minta Kode OTP Anda');
+
 		if (user()->phone==null) {
 			user()->setProfile($data);
 
