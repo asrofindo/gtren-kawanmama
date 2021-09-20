@@ -33,7 +33,7 @@ class Verifywa extends ResourceController
 		if($validateOtp['user']->find() != null){
 
 			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->where('user_id', user()->id)->find()){
-				$initializeOtp = $OTP->initializeOtp($validateOtp['user']->where('user_id', user()->id)->find()[0]->id, 'delete');
+				$initializeOtp = $OTP->initializeOtp($validateOtp['user']->where('user_id', user()->id)->fisrt()->id, 'delete');
 				$deleteOtp = $initializeOtp->delete();
 
 				$initializeOtp = $OTP->initializeOtp('data', 'request');
@@ -46,7 +46,7 @@ class Verifywa extends ResourceController
 				return redirect()->back();
 				
 			} else {
-				$sendOtp = $OTP->initializeOtp($validateOtp['user']->where('user_id', user()->id)->find()[0]->otp, 'send');
+				$sendOtp = $OTP->initializeOtp($validateOtp['user']->otp, 'send');
 				$sendOtp->send();
 
 				session()->setFlashdata('success-otp', 'OTP Sudah Dikirim');
@@ -76,8 +76,8 @@ class Verifywa extends ResourceController
 
 		if($validateOtp['user']->find() != null){
 
-			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->find() ){
-				$initializeOtp = $OTP->initializeOtp($validateOtp['user']->first()->id, 'delete');
+			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->where('user_id', user()->id)->find() ){
+				$initializeOtp = $OTP->initializeOtp($validateOtp['user']->where('user_id', user()->id)->first()->id, 'delete');
 				$deleteOtp = $initializeOtp->delete();
 
 				$initializeOtp = $OTP->initializeOtp('data', 'request');
