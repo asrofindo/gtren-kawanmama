@@ -586,8 +586,9 @@ class User extends BaseController
 		$validateOtp = $initializeOtp->validate();
 		if($validateOtp['user']->find() != null){
 
-			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->find() ){
-				$initializeOtp = $OTP->initializeOtp($validateOtp['user']->first()->id, 'delete');
+			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->where('user_id', user()->id)->find() ){
+
+				$initializeOtp = $OTP->initializeOtp($validateOtp['user']->where('user_id', user()->id)->first()->id, 'delete');
 				$deleteOtp = $initializeOtp->delete();
 
 				$initializeOtp = $OTP->initializeOtp('data', 'request');
