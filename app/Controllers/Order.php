@@ -163,7 +163,7 @@ class Order extends BaseController
 		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id')
 		->join('products', 'products.id = cart_item.product_id')
 		->join('users', 'users.id = cart_item.user_id')
-		->join('pengiriman', 'pengiriman.user_id = cart_item.user_id')
+		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id')
 		->join('address', 'address.user_id = users.id')
 		->join('city', 'city.kode_pos = address.kode_pos')
 		->find($id);
