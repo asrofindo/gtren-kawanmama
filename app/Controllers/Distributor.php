@@ -12,6 +12,10 @@ class Distributor extends BaseController
 	}
 	public function index()
 	{	
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data['address'] = $this->address->where('user_id', user()->id)->where('type', 'distributor')->find();
 		$data['toko'] = $this->distributor->where('user_id', user()->id)->first();
 		return view('db_stokis/distributor', $data);
@@ -19,7 +23,10 @@ class Distributor extends BaseController
 
 	public function save()
 	{
-
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data = [
 			'user_id'       => user()->id,
 			'provinsi'      => explode(",", $this->request->getPost('provinsi'))[1],
@@ -41,6 +48,10 @@ class Distributor extends BaseController
 
 	public function edit($id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 
 		$data = [
 			'id'			=> $id,
@@ -64,6 +75,10 @@ class Distributor extends BaseController
 
 	public function save_toko()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$name = $this->request->getPost('name');
 		$id = $this->distributor->where('user_id', user()->id)->first()['id'];
 
@@ -84,7 +99,10 @@ class Distributor extends BaseController
 
 	public function save_level()
 	{
-
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$id=$this->request->getPost('user');
 		$this->distributor->update($id,['level'=>$this->request->getPost('level')]);
 		return redirect()->back();

@@ -12,7 +12,10 @@ class Testing extends BaseController
 	}
 	public function testfoto()
 	{
-		
+				if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$imagefile = $this->request->getFileMultiple('photos');
 
 		foreach ($imagefile as $img) {

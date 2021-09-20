@@ -34,6 +34,10 @@ class upgrades extends BaseController
 
 	public function index()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$this->model->select('status_request, type, code, photo, upgrades.total, bill, bills.total as bill_total, bills.bank_name, bills.owner');
 		$this->model->select('users.username, users.affiliate_link, users.id as id_user, upgrades.user_id as id');
 		$this->model->join('users', 'users.id = upgrades.user_id', 'left');
@@ -45,6 +49,10 @@ class upgrades extends BaseController
 
 	public function save($id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$request = $this->request;
 
 		if($this->model->where('user_id', $id)->find()){
@@ -137,6 +145,10 @@ class upgrades extends BaseController
 
 	public function delete($id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$delete = $this->model->delete($id);
 		if(!$delete){
 			$delete['upgrades'] = $this->model->findAll();
@@ -152,6 +164,10 @@ class upgrades extends BaseController
 
 	public function edit($id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$data['upgrades'] = $this->model->find($id);
 		
 		return view('db_admin/upgrades/edit_upgrades', $data);
@@ -160,6 +176,10 @@ class upgrades extends BaseController
 
 	public function update($id)
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$bill_id = $this->model->where('user_id', $id)->first()->bill;
 		$total = $this->model->where('user_id', $id)->first()->total;
 		$total_bill = $this->bill->find($bill_id)->total;
@@ -210,6 +230,10 @@ class upgrades extends BaseController
 
 	public function search()
 	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
 		$keyword            = $this->request->getPost('keyword');
 		$this->model->select('status_request, type, code, photo');
 		$this->model->select('users.username, users.id as id_user, upgrades.user_id as id');
@@ -221,6 +245,11 @@ class upgrades extends BaseController
 	}
 
 	public function upload($id){
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
+		
 		$file = $this->request->getFile('photo');
 
 		$new_name = $file->getRandomName();
