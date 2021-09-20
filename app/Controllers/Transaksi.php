@@ -556,7 +556,7 @@ class Transaksi extends BaseController
 
 		if(count($this->pendapatan->where('user_id', user()->id)->find()) == 0 ){
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
-			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
+			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_iroutd', user()->id)->find();
 
 			return view('db_stokis/wd', $data);
 		}
@@ -616,8 +616,8 @@ class Transaksi extends BaseController
 		$data['wds'] = $this->wd->select('*, penarikan_dana.status as status_wd')
 		->join('bills', 'bills.id = penarikan_dana.bill_id', 'inner')
 		->join('users', 'users.id = penarikan_dana.user_id', 'inner')
+		->orderBy('penarikan_dana.id', 'DESC')
 		->where('penarikan_dana.status', 'sudah')
-		->orderBy('penarikan_dana.id', "DESC")
 		->find();
 
 		return view('db_admin/pendapatan/riwayat_wd', $data);
