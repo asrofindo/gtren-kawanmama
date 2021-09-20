@@ -78,6 +78,7 @@ class Cart extends BaseController
 			->where('distributor_id', $distributor_id)->replace($data);
 			return redirect()->to('/cart');
 		} 
+		
 		else {
 			$this->cart->save($data);
 

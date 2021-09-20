@@ -131,11 +131,7 @@ class Order extends BaseController
 		->first();
 
 		$msg=base_url()." \n\n"
-		.$user->greeting." ".$user->fullname.
-		"\n"."Kami informasikan, Pesanan Anda *ditolak oleh distributor* \nNo Transaksi: "
-		.$transaksi->id."\n".
-		'Dengan detail product'.$product->product;
-
+		.$user->greeting." ".$user->fullname."\n"."Kami informasikan, Pesanan Anda *ditolak oleh distributor* \nNo Transaksi: ".$transaksi->id."\n".'Dengan detail product'.$product->product.'\n*Dana Anda Akan Segera Dikembalikan* oleh Admin.\nSetelah itu Anda dapat memesan kembali ke distributor yang berbeda.';
 		wawoo($user->phone,$msg);
 
 		$msg=base_url()." \n\n"."Pesanan ini *DITOLAK OLEH SELLER*\nSegera lakukan *REFUND* kepada pembeli.\nNo Transaksi: ".$transaksi->id."\nNama pembeli: ".$user->fullname."\nKunjungi: ".base_url('/order');

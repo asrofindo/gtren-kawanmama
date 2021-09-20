@@ -192,11 +192,16 @@ class Member extends BaseController
 		$user = [];
 
 		$user=$this->user_rekursif(user()->id);
-
+		if (user()->parent!=null) {
+			$data['sponsor'] = $this->user->where('id',user()->parent)->first();
+		}else{
+			$data['sponsor'] = $this->user->where('id',user()->id)->first();
+		}
+		
 		$data['users'] = $this->datauser;
 		return view('db_admin/members/jaringan', $data);
 	}
-	
+
 	public function user_rekursif($parent=null){
 			$model = $this->user;
 			$data = $model->where('parent',$parent)->find();

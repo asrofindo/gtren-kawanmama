@@ -58,6 +58,11 @@
             <span class="text">Market Affiliate</span>
         </a>
     </li>
+    <li class="menu-item">
+        <a class="menu-link" href="<?= base_url() ?>/jaringan"> <i class="icon material-icons md-public"></i>
+            <span class="text">Jaringan Anda</span>
+        </a>
+    </li>
     <?php endif; ?>
     <?php if(in_groups(1)): ?>
     <li class="menu-item has-submenu" >
