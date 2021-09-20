@@ -293,8 +293,6 @@ class User extends BaseController
 				$sendOtp->send();
 			}
 			
-			$msg = "Nomor WA ini telah didaftarkan oleh ".user()->greeting." ".user()->fullname."\ndi ".base_url()."\nJika Anda bukan ".user()->greeting." ".user()->fullname." silakan hubungi kami untuk PENGHAPUSAN DATA : \n[link kontak ".base_url()."/contact]";
-			wawoo($data['phone'],$msg);
 
 			$msg="Selamat!\nAda *user baru* di ".base_url()."\nNama User :".user()->greeting." ".user()->fullname."\nNo. Wa: ".$data['phone'];			
 			$notif = $this->notif->findAll();

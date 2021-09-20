@@ -44,14 +44,13 @@ class Order extends BaseController
 		$data['transaksi'] = $this->model->find($id);
 		$data['bills'] = $this->bills->find($data['transaksi']->bill_id);
 		if($status == 'paid'){
-			
 			$this->bills->save(["id" => $data['transaksi']->bill_id, "total" => $data['bills']->total + $data['transaksi']->total]);
 		}
 		$this->model->save(["id" => $id, "status_pembayaran" => $status, "batas_pesanan" => date( "Y-m-d H:i:s", strtotime( "+2 days" )),	
 		]);
 
 		$detail =$this->detailtransaksi->where('transaksi_id',$id)->groupBy('distributor_id')->get()->getResult();
-		
+		dd($detail);
 		foreach ($detail as $key => $value) {
 			$dostributor = $this->distributor->where('id',$value->distributor_id)->first();
 			$user = $this->user->where('id',$dostributor['user_id'])->first();
@@ -417,7 +416,9 @@ class Order extends BaseController
 
 		}
 
-
+		$user = $this->user->where('id',$transaksis[0]->penjual_id)->first();
+		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Selamat!\nTransaksi No : ".$id."*sudah selesai*.\nSilahkan Cek Tabungan Anda di sin: \n".base_url('/request/wd');
+		wawoo($user->phone,$msg);
 
 		// uang masuk ke dompet stockis / affiliate / admin
 		return redirect()->back();

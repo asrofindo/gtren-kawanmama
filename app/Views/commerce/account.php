@@ -649,7 +649,7 @@
                                                         </div>
                                                     
                                                     <div class="form-group col-md-12">
-                                                        <label>Nomer Hp<span class="required">*</span></label>
+                                                        <label>Nomer Whatsapp<span class="required">*</span></label>
                                                         <input required="" class="form-control square" value="<?= user()->phone ?>" name="phone" type="text">
                                                     </div>
                                                     
