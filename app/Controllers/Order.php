@@ -50,7 +50,7 @@ class Order extends BaseController
 		]);
 
 		$detail =$this->detailtransaksi->where('transaksi_id',$id)->groupBy('distributor_id')->get()->getResult();
-		dd($detail);
+
 		foreach ($detail as $key => $value) {
 			$dostributor = $this->distributor->where('id',$value->distributor_id)->first();
 			$user = $this->user->where('id',$dostributor['user_id'])->first();

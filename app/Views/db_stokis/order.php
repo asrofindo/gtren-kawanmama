@@ -60,7 +60,8 @@
                                     <span class="badge rounded-pill alert-danger">di gagalkan</span>
                                 <?php endif; ?>
                             </td>
-                            <td><?php echo rupiah($order->total + $order->ongkir + $order->admin_commission); ?></td>
+
+                            <td><?php echo rupiah($order->stockist_commission + $order->ongkir_produk); ?></td>
                             <td><?php echo $order->resi; ?></td>
                             <td><?php echo $order->alamat; ?></td>
                             <td><?php echo $order->batas_pesanan; ?></td>
