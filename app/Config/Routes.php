@@ -293,6 +293,14 @@ $routes->group('', function($routes)
 
 	// OTP
 	$routes->post('/request/otp', 'User::request_otp');
+
+
+	// setting wd 
+	$routes->post('/setting/wd/(:any)', 'Admin::wd/$1');
+	$routes->get('/setting/wd/(:any)', 'Admin::wd/$1');
+	$routes->get('/wd/edit/(:any)', 'Admin::wd_edit/$1');
+	$routes->get('/wd/delete/(:any)', 'Admin::wd_delete/$1');
+
 }
 );
 
