@@ -327,7 +327,7 @@ class Order extends BaseController
 			
 			$user=$this->user->where('id',$dis)->first();
 			
-			$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Selamat! Pesanan Anda *sudah dikirim*\nNo Transaksi: ".$id."\nNomor Resi: ".$resi."\nSilahkan Cek Transaksi di \n".base_url('/dashboard');
+			$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Selamat! Pesanan Anda *sudah dikirim*\nNo Transaksi: ".$id."\nNomor Resi: ".$resi."\nSilahkan Cek Transaksi di \n".base_url('/tracking');
 			
 			wawoo($user->phone,$msg);
 
