@@ -196,7 +196,7 @@ class Order extends BaseController
 
 		$data['detailpengiriman'] = [
 			"id" => $data['detailtransaksi']->dp_id,
-			"ongkir_produk" => null
+			"ongkir_produk" => '0'
 		];
 
 		$total = $this->detailpengiriman->save($data['detailpengiriman']);
@@ -232,16 +232,10 @@ class Order extends BaseController
 		$data['detailtransaksi'] = [
 			"id" => $id,
 			"status_barang" => "refund",
-			"stockist_commission" => null,
-			"affiliate_commission" => null,
-			"admin_commission" => null,
-			"stockist_commission" => null,
-		];
-
-		$data['saveDetailTransaksi'] = [
-			"user_id" => $id,
-			"masuk" => "",
-
+			"stockist_commission" => '0',
+			"affiliate_commission" => '0',
+			"admin_commission" => '0',
+			"stockist_commission" => '0',
 		];
 
 		$transaksi = $this->model->where('id',$transaksi_id)->first();
