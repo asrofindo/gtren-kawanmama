@@ -91,7 +91,13 @@
                                 <td><b><?= $wd['id'] ?></b></td>
                                 <td><b><?= $wd['jumlah_wd'] ?></b></td>
                                 <td><b><?= $wd['created_at'] ?></b></td>
-                                <td><b><?= $wd['status'] ?></b></td>
+                                <td>
+                                    <?php if($wd['status'] == 'sudah'): ?>
+                                        <b><span class="badge rounded-pill alert-success"><?= $wd['status'] ?></span></b>
+                                    <?php else: ?>
+                                        <b><span class="badge rounded-pill alert-warning"><?= $wd['status'] ?></span></b>
+                                    <?php endif; ?>
+                                </td>
                                 <td><b><?= $wd['status_dana'] ?></b></td>
                             </tr>
                         <?php endforeach ?>

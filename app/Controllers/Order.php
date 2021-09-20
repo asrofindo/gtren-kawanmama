@@ -154,12 +154,12 @@ class Order extends BaseController
 		}
 
 		// data produk dan ongkir yang akan di refund
-		$data['detailtransaksi'] = $this->detailtransaksi->select('*, pengiriman.id as p_id, detailtransaksi.admin_commission, detailtransaksi.affiliate_commission, detailtransaksi.stockist_commission, detailpengiriman.ongkir_produk')
+		$data['detailtransaksi'] = $this->detailtransaksi->select('*, pengiriman.id as p_id, detailtransaksi.admin_commission, detailtransaksi.affiliate_commission, detailtransaksi.stockist_commission, detailpengiriman.ongkir_produk, detailpengiriman.id as dp_id')
 		->join('cart_item', 'cart_item.id = cart_id')
 		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id')
 		->join('products', 'products.id = cart_item.product_id')
 		->join('users', 'users.id = cart_item.user_id')
-		->join('pengiriman', 'pengiriman.user_id = cart_item.user_id')
+		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id')
 		->join('address', 'address.user_id = users.id')
 		->join('city', 'city.kode_pos = address.kode_pos')
 		->find($id);
@@ -187,10 +187,15 @@ class Order extends BaseController
 			"id" => $data['detailtransaksi']->p_id,
 			"ongkir" => $data['detailtransaksi']->ongkir -  $data['detailtransaksi']->ongkir_produk
 		];
-
-		
+	
 		$this->pengiriman->save($data['pengiriman']);
 
+		$data['detailpengiriman'] = [
+			"id" => $data['detailtransaksi']->dp_id,
+			"ongkir_produk" => '0'
+		];
+
+		$total = $this->detailpengiriman->save($data['detailpengiriman']);
 		// ubah total transaksi 
 		$total = $this->model->find($transaksi_id)->total;
 
@@ -223,16 +228,10 @@ class Order extends BaseController
 		$data['detailtransaksi'] = [
 			"id" => $id,
 			"status_barang" => "refund",
-			"stockist_commission" => null,
-			"affiliate_commission" => null,
-			"admin_commission" => null,
-			"stockist_commission" => null,
-		];
-
-		$data['saveDetailTransaksi'] = [
-			"user_id" => $id,
-			"masuk" => "",
-
+			"stockist_commission" => '0',
+			"affiliate_commission" => '0',
+			"admin_commission" => '0',
+			"stockist_commission" => '0',
 		];
 
 		$transaksi = $this->model->where('id',$transaksi_id)->first();

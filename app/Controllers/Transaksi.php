@@ -197,6 +197,7 @@ class Transaksi extends BaseController
 		$alamat = "{$data['alamat']->provinsi}, {$data['alamat']->kabupaten}, {$data['alamat']->kecamatan}, {$data['alamat']->kode_pos}, {$data['alamat']->detail_alamat}";
 		
 		if($rekening != null){
+			
 			$data_rek = $this->rekening->find($rekening);
 
 			$this->rekening->save([
@@ -556,7 +557,7 @@ class Transaksi extends BaseController
 
 		if(count($this->pendapatan->where('user_id', user()->id)->find()) == 0 ){
 			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
-			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
+			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_iroutd', user()->id)->find();
 
 			return view('db_stokis/wd', $data);
 		}
@@ -587,7 +588,7 @@ class Transaksi extends BaseController
 				return redirect()->back();
 			}
 			if($validateOtp['user']->where('user_id', user()->id)->first()->otp != $otp){
-				session()->setFlashdata('danger', 'Kode OTP Salah');
+				session()->setFlashdata('danger', 'Gagal! Mohon dicek kembali kode OTP Anda.');
 				return redirect()->back();
 			}
 		} else {
@@ -616,6 +617,7 @@ class Transaksi extends BaseController
 		$data['wds'] = $this->wd->select('*, penarikan_dana.status as status_wd')
 		->join('bills', 'bills.id = penarikan_dana.bill_id', 'inner')
 		->join('users', 'users.id = penarikan_dana.user_id', 'inner')
+		->orderBy('penarikan_dana.id', 'DESC')
 		->where('penarikan_dana.status', 'sudah')
 		->find();
 
