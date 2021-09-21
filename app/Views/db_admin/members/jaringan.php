@@ -13,7 +13,6 @@
             <div class="col-lg-4 col-6 col-md-4">
                 <h3>Sponsor Anda</h3>
                 <h5>Nama : <?=$sponsor->fullname?></h5>
-                <?php?>
                 <h5>Status : <?php if ($sponsor->role == "stockist") {
                     echo "distributor";
                 }else{
