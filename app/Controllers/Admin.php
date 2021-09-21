@@ -162,8 +162,8 @@ class Admin extends BaseController
 		            $outer_array[$fid_value]['ongkir'] = $ongkir;
 		            
 		            if($value->status_barang != 'refund'){
-		            	$outer_array[$fid_value]['total_transaksi'] = $total + $ongkir;
-		            }
+		            	$outer_array[$fid_value]['total_transaksi'] = $total + $ongkir_produk;
+		            }							
 		            $outer_array[$fid_value]['bank'] = "{$bank_name} - {$bank_number} ";
 		            $outer_array[$fid_value]['products'] = $inner_array;
 		           
@@ -173,7 +173,7 @@ class Admin extends BaseController
 		           	$outer_array[$fid_value]['stockist_commission'] += $stockist_commission;
 
 		            if($value->status_barang != 'refund'){
-		            	$outer_array[$fid_value]['total_transaksi'] = $total;
+		            	$outer_array[$fid_value]['total_transaksi'] += $total;
 		            }
 		         
 		    }
