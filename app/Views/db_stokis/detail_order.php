@@ -97,7 +97,7 @@
                                                 <?php elseif($product->status_barang == 'dikirim'): ?>
                                                     <span class="badge rounded-pill alert-success">Sudah Dikirim Oleh Seler</span>
                                                 <?php elseif($product->status_barang == 'refund'): ?>
-                                                    <span class="badge rounded-pill alert-warning">Dana Dikembalikan oleh user</span>
+                                                    <span class="badge rounded-pill alert-primary">Dana Dikembalikan Kepada Pembeli</span>
                                                 <?php elseif($product->status_barang == 'ditolak'): ?>
                                                     <span class="badge rounded-pill alert-danger">Pesanan Di Tolak Oleh distributor</span>
                                                 <?php elseif($product->status_barang == 'diterima_seller'): ?>
