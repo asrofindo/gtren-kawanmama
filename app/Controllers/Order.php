@@ -195,7 +195,7 @@ class Order extends BaseController
 			"ongkir_produk" => '0'
 		];
 
-		$total = $this->detailpengiriman->save($data['detailpengiriman']);
+		$total = $this->detail_pengiriman->save($data['detailpengiriman']);
 		// ubah total transaksi 
 		$total = $this->model->find($transaksi_id)->total;
 
