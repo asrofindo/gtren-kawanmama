@@ -246,7 +246,7 @@
                         </div>
                         <div class="row">
                         <?php  foreach ($products as $product): ?>
-                            <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                            <div class="col-lg-4 col-md-4 col-6 col-sm-6">
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
