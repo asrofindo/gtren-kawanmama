@@ -39,9 +39,9 @@
                             <?php if (!in_groups(4)) {?>
                                 <li class="nav-item">
                                     <?php if(count($segments) > 1) : ?>
-                                    <a class="nav-link <?= ($segments[1] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Daftar Program Referal</a>
+                                    <a class="nav-link <?= ($segments[1] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Daftar Affiliate</a>
                                     <?php else : ?>
-                                    <a class="nav-link <?= ($segments[0] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Daftar Program Referal</a>    
+                                    <a class="nav-link <?= ($segments[0] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Daftar Affiliate</a>    
                                     <?php endif; ?>
                                 </li>
                             <?php } ?>
@@ -936,7 +936,7 @@
                                             <?php if(!in_groups(4)){?>
                                             <div class="roe m-1">
                                                 <div class="col-12">
-                                                    <a href="<?= base_url('/upgrade/affiliate') ?>"><button class="btn btn-lg w-100  bg-warning">klik Daftar Program Referal</button></a>
+                                                    <a href="<?= base_url('/upgrade/affiliate') ?>"><button class="btn btn-lg w-100  bg-warning">klik Daftar Affiliate</button></a>
                                                 </div>
                                             </div>
                                             <?php }?>
