@@ -96,16 +96,11 @@
                 <span class="text">Pesanan</span>
             </a>
         </li>
-        <li class="menu-item">
+        <!-- <li class="menu-item">
             <a class="menu-link" href="<?= base_url() ?>/affiliate"> <i class="icon material-icons md-home"></i>
                 <span class="text">Dashboard Affiliate</span>
             </a>
-        </li>  
-        <li class="menu-item">
-            <a class="menu-link" href="<?= base_url() ?>/market/affiliate"> <i class="icon material-icons md-assignment"></i>
-                <span class="text">Market Affiliate</span>
-            </a>
-        </li>
+        </li>   -->
         <li class="menu-item has-submenu" >
             <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
                 <span class="text">Stok</span>
@@ -115,14 +110,15 @@
                 <a href="<?= base_url() ?>/products">Produk</a>
             </div>
         </li>
+        <hr>
         <li class="menu-item">
-            <a class="menu-link" href="<?= base_url() ?>/jaringan"> <i class="icon material-icons md-public"></i>
-                <span class="text">Jaringan Anda</span>
+            <a class="menu-link" href="<?= base_url() ?>/market/affiliate"> <i class="icon material-icons md-assignment"></i>
+                <span class="text">Market Affiliate</span>
             </a>
         </li>
         <li class="menu-item">
-            <a class="menu-link" href="<?= base_url() ?>/market/affiliate"> <i class="icon material-icons md-assignment"></i>
-                <span class="text">Affiliate Tools</span>
+            <a class="menu-link" href="<?= base_url() ?>/jaringan"> <i class="icon material-icons md-public"></i>
+                <span class="text">Jaringan Anda</span>
             </a>
         </li>
         <li class="menu-item">
@@ -135,21 +131,10 @@
                 <span class="text">Penarikan Dana</span>
             </a>
         </li>
-        <li class="menu-item" >
-            <a class="menu-link" href="<?php base_url() ?>/distributor"> <i class="icon material-icons md-store"></i>
-                <span class="text">Setting Distributor</span>
-            </a>
-        </li>
     <?php }elseif(in_groups(4)) {?>
         <li class="menu-item">
             <a class="menu-link" href="<?= base_url() ?>/affiliate"> <i class="icon material-icons md-home"></i>
                 <span class="text">Dashboard Affiliate</span>
-            </a>
-        </li>
-        
-        <li class="menu-item">
-            <a class="menu-link" href="<?= base_url() ?>/market/affiliate"> <i class="icon material-icons md-assignment"></i>
-                <span class="text">Market Affiliate</span>
             </a>
         </li>
         <li class="menu-item">
