@@ -83,7 +83,7 @@ class Admin extends BaseController
 	{
 		$id = user()->id;
 		$data['orders'] = $this->transaksi
-		->select('*, transaksi.total as total_transaksi, transaksi.id as id, detailtransaksi.id as detail_id, transaksi.created_at as created_at, detailtransaksi.stockist_commission')
+		->select('*, transaksi.total as total_transaksi, transaksi.id as id, detailtransaksi.id as detail_id, transaksi.created_at as created_at, sum(detailtransaksi.stockist_commission) as stockist_commission')
 		->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
 		->join("cart_item", 'cart_item.id = cart_id')
 		->join("products", 'products.id = cart_item.product_id')
@@ -167,6 +167,7 @@ class Admin extends BaseController
 
 		    }else{		            
 		            array_push($outer_array[$fid_value]['products'], $value);
+		           	$stockist_commission += $value->stockist_commission;
 		           	$outer_array[$fid_value]['total_transaksi'] += $total ;
 		         
 		    }
