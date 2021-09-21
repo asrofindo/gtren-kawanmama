@@ -106,7 +106,7 @@ class Admin extends BaseController
 	{
 
 		$data['detail_orders'] = $this->transaksi
-		->select('*, transaksi.total as total_transaksi, detailtransaksi.id as id, detailtransaksi.stockist_commission')
+		->select('*, transaksi.total as total_transaksi, detailtransaksi.id as id, detailtransaksi.stockist_commission, detailtransaksi.total as total_detail')
 		->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
 		->join("bills", 'bills.id = bill_id')
 		->join("users", 'users.id = transaksi.user_id')
@@ -139,7 +139,7 @@ class Admin extends BaseController
 		    $bank_name = $value->bank_name;
 		    $stockist_commission = $value->stockist_commission;
 		    $bank_number = $value->bank_number;
-		    $total = $value->total;
+		    $total = $value->total_detail;
 		 
 
 		    if(!in_array($value->user_id, $unique_array))
