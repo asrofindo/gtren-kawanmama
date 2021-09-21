@@ -106,7 +106,7 @@ class Admin extends BaseController
 	{
 
 		$data['detail_orders'] = $this->transaksi
-		->select('*, transaksi.total as total_transaksi, detailtransaksi.id as id, detailtransaksi.stockist_commission, detailtransaksi.total as total_detail')
+		->select('*, transaksi.total as total_transaksi, detailtransaksi.id as id, detailtransaksi.stockist_commission, transaksi.total as total_detail')
 		->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
 		->join("bills", 'bills.id = bill_id')
 		->join("users", 'users.id = transaksi.user_id')
