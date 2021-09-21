@@ -244,6 +244,8 @@ class Admin extends BaseController
 
 		    }else{		            
 		            array_push($outer_array[$fid_value]['products'], $value);
+		            $outer_array[$fid_value]['ongkir'] += $ongkir;
+
 
 		         
 		    }
