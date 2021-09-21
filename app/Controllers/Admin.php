@@ -116,7 +116,20 @@ class Admin extends BaseController
 		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
 		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
 		->where('detailtransaksi.transaksi_id', $id)->where('distributor.user_id', user()->id)->findAll();
-	
+		
+      
+      $data['total_transaksi'] = $this->transaksi
+		->select('*, sum(COALESCE(detailtransaksi.stockist_commission, 0) + COALESCE(detailtransaksi.affiliate_commission, 0) + COALESCE(detailtransaksi.admin_commission, 0) + COALESCE(detailpengiriman.ongkir_produk,0)) as total_transaksi, distributor.id as id')
+		->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
+		->join("bills", 'bills.id = bill_id')
+		->join("users", 'users.id = transaksi.user_id')
+		->join("cart_item", 'cart_item.id = cart_id')
+		->join('distributor', 'distributor.id = detailtransaksi.distributor_id', 'left')
+		->join("products", 'products.id = cart_item.product_id')
+		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
+		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
+		->where('detailtransaksi.transaksi_id', $id)->where('distributor.user_id', user()->id)->findAll();
+		      
 		$outer_array = array();
 		$unique_array = array();
 
@@ -139,8 +152,12 @@ class Admin extends BaseController
 		    $bank_name = $value->bank_name;
 		    $stockist_commission = $value->stockist_commission;
 		    $bank_number = $value->bank_number;
-		    $total = $value->total;
-		 
+		    $total = $value->total;		    
+          	$sell_price = $value->sell_price;          	
+          	$amount = $value->amount;          	
+          	$ongkir_produk = $value->ongkir_produk;
+
+
 
 		    if(!in_array($value->user_id, $unique_array))
 		    {
@@ -160,26 +177,15 @@ class Admin extends BaseController
 		            $outer_array[$fid_value]['kurir'] = $kurir;
 		            $outer_array[$fid_value]['etd'] = $etd;
 		            $outer_array[$fid_value]['ongkir'] = $ongkir;
-		            $outer_array[$fid_value]['total_transaksi'] = '';
-		            
-		            if($value->status_barang != 'refund'){
-		            	$outer_array[$fid_value]['total_transaksi'] = $total + $ongkir_produk;
-		            } else {
-		            	$outer_array[$fid_value]['total_transaksi'];
-		            }			
+              
 		            $outer_array[$fid_value]['bank'] = "{$bank_name} - {$bank_number} ";
 		            $outer_array[$fid_value]['products'] = $inner_array;
 		           
-
 		    }else{		            
 		            array_push($outer_array[$fid_value]['products'], $value);
 		           	$outer_array[$fid_value]['stockist_commission'] += $stockist_commission;
-
-		            if($value->status_barang != 'refund'){
-		            	$outer_array[$fid_value]['total_transaksi'] += $total;
-		            } else {
-		            	$outer_array[$fid_value]['total_transaksi'];
-		            }
+		
+		            
 		         
 		    }
 		}
