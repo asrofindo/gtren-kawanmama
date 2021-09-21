@@ -160,6 +160,7 @@ class Admin extends BaseController
 		            $outer_array[$fid_value]['kurir'] = $kurir;
 		            $outer_array[$fid_value]['etd'] = $etd;
 		            $outer_array[$fid_value]['ongkir'] = $ongkir;
+		            $outer_array[$fid_value]['total_transaksi'] = '';
 		            
 		            if($value->status_barang != 'refund'){
 		            	$outer_array[$fid_value]['total_transaksi'] = $total + $ongkir_produk;
