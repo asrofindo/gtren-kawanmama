@@ -534,7 +534,7 @@ class Transaksi extends BaseController
 		// jika ditemukan wd sebelumnya dan status nya adalah belum dikonfirmasi
 		$minimal_wd = $this->setting_wd->first()->minimal;
 		$minimal_wd = number_format($minimal_wd);
-      	if($jumlah_wd < $minimal_wd || $otp != null){
+      	if($jumlah_wd < $minimal_wd && $jumlah_wd != null){
       		$data['wds'] = $this->wd->where('user_id', user()->id)->find();	
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->findAll();
 			session()->setFlashdata('danger', "Minimal Penarikan Dana Adalah Rp. {$minimal_wd}");
