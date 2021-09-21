@@ -185,7 +185,7 @@ class Order extends BaseController
 		//  ubah ongkir
 		$data['pengiriman'] = [
 			"id" => $data['detailtransaksi']->p_id,
-			"ongkir" => $data['detailtransaksi']->ongkir !=  $data['detailtransaksi']->ongkir_produk ? $data['detailtransaksi']->ongkir -  $data['detailtransaksi']->ongkir_produk : ==  $data['detailtransaksi']->ongkir
+			"ongkir" => $data['detailtransaksi']->ongkir !=  $data['detailtransaksi']->ongkir_produk ? $data['detailtransaksi']->ongkir -  $data['detailtransaksi']->ongkir_produk :  $data['detailtransaksi']->ongkir
 		];
 	
 		$this->pengiriman->save($data['pengiriman']);
