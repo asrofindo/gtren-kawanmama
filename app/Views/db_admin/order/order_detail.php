@@ -123,7 +123,7 @@
                                                  <?php elseif($product->status_pembayaran == 'paid' && $product->status_barang == null): ?>
                                                     <span class="badge rounded-pill alert-warning">Menunggu Konfirmasi Dari DIstributor</span>
                                                 <?php elseif($product->status_barang == 'refund'): ?>
-                                                    <span class="badge rounded-pill alert-warning">Dana Dikembalikan Kepada Pembeli</span>
+                                                    <span class="badge rounded-pill alert-danger">Dana Dikembalikan Kepada Pembeli</span>
                                                 <?php elseif($product->status_barang == 'ditolak'): ?>
                                                     <span class="badge rounded-pill alert-danger">Pesanan Di Tolak Oleh distributor</span>
                                                 <?php elseif($product->status_barang == 'dikirim'): ?>
