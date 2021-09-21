@@ -38,7 +38,7 @@ class RequestOtp implements  OTPRequest {
     $this->model->save([
       "user_id" => user()->id,
       "otp" => $randOtp,
-      "expired" => date( "Y-m-d H:i:s", strtotime( "+1 minutes"))
+      "expired" => date( "Y-m-d H:i:s", strtotime( "+30 minutes"))
     ]);
     return $randOtp;
   }
