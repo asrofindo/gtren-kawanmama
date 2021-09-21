@@ -161,7 +161,6 @@ class Admin extends BaseController
 		            $outer_array[$fid_value]['kurir'] = $kurir;
 		            $outer_array[$fid_value]['etd'] = $etd;
 		            $outer_array[$fid_value]['ongkir'] = $ongkir;
-		            $outer_array[$fid_value]['kode_unikk'] = $kode_unik;
 		            $outer_array[$fid_value]['total_transaksi'] = $total - $kode_unik;
 		            $outer_array[$fid_value]['bank'] = "{$bank_name} - {$bank_number} ";
 		            $outer_array[$fid_value]['products'] = $inner_array;
