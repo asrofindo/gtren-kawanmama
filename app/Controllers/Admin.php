@@ -212,8 +212,7 @@ class Admin extends BaseController
 		    $kurir = $value->kurir;
 		    $ongkir = $value->ongkir;
 		    $etd = $value->etd;
-		   
-		    
+		    $kode_unik = $value->kode_unik;
 		    $bank_name = $value->bank_name;
 		    $bank_number = $value->bank_number;
 		    $status_pembayaran = $value->status_pembayaran;
@@ -232,6 +231,7 @@ class Admin extends BaseController
 		           
 		            $outer_array[$fid_value]['fullname'] = $fullname;
 		            $outer_array[$fid_value]['phone'] = $phone;
+		            $outer_array[$fid_value]['kode_unik'] = $kode_unik;
 		            $outer_array[$fid_value]['email'] = $email;
 		            $outer_array[$fid_value]['kurir'] = $kurir;
 		            $outer_array[$fid_value]['etd'] = $etd;

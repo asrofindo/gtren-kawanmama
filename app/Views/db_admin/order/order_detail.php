@@ -160,6 +160,9 @@
                                     <td colspan="4">
                                         <article class="float-end">
                                             <dl class="dlist">
+                                                <dt>Kode Unik:</dt>
+                                                <dd><?= $order->kode_unik;  ?></dd>
+                                            </dl>
                                                 <dt>Ongkos Kirim:</dt>
                                                 <dd><?= rupiah($order['ongkir']);  ?></dd>
                                             </dl>
