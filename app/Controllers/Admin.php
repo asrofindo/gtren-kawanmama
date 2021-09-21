@@ -210,7 +210,7 @@ class Admin extends BaseController
 		    $alamat = $value->alamat;
 		    $email = $value->email;
 		    $kurir = $value->kurir;
-		    $ongkir = $value->ongkir;
+		    $ongkir = $value->ongkir_produk;
 		    $etd = $value->etd;
 		    $kode_unik = $value->kode_unik;
 		    $bank_name = $value->bank_name;

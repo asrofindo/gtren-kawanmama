@@ -110,7 +110,12 @@
                                                 </a>
                                             </td>
                                             <td> <?= $product->locate; ?> </td>
-                                            <td> <?= rupiah($product->total / $product->amount); ?> </td>
+                                            <td>
+                                                <?php if($product->status_barang == 'refund'): ?>
+                                                    Rp. 0
+                                                <?php else: ?>
+                                                    <?= rupiah($product->total / $product->amount); ?> </td>
+                                                <?php endif; ?> 
                                             <td class="text-end"><?= rupiah($product->ongkir_produk);  ?> </td>
                                             <td> <?= $product->amount; ?> </td>
                                             <td> 
@@ -137,7 +142,13 @@
                                                 <?php endif; ?>
 
                                             </td>
-                                            <td class="text-end"> <?= rupiah($product->total);  ?> </td>
+                                            <td class="text-end"> 
+                                                <?php if($product->status_barang == 'refund'): ?>
+                                                    Rp. 0
+                                                <?php else: ?>
+                                                    <?= rupiah($product->total);  ?> 
+                                                <?php endif; ?> 
+                                            </td>
                                             <td class="text-end">
                                                 <div class="dropdown">
                                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
