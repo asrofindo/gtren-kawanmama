@@ -119,7 +119,7 @@ class Admin extends BaseController
 		
       
       $data['total_transaksi'] = $this->transaksi
-		->select('*, sum(COALESCE(detailtransaksi.stockist_commission, 0) + COALESCE(detailtransaksi.affiliate_commission, 0) + COALESCE(detailtransaksi.admin_commission, 0) + COALESCE(detailpengiriman.ongkir_produk,0)) as total_transaksi, distributor.id as id')
+		->select('*, sum(COALESCE(detailtransaksi.stockist_commission, 0) + COALESCE(detailtransaksi.admin_commission, 0) + COALESCE(detailtransaksi.affiliate_commission, 0)) as total_transaksi, distributor.id as id')
 		->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
 		->join("bills", 'bills.id = bill_id')
 		->join("users", 'users.id = transaksi.user_id')
