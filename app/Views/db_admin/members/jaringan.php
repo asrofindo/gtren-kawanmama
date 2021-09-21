@@ -13,7 +13,12 @@
             <div class="col-lg-4 col-6 col-md-4">
                 <h3>Sponsor Anda</h3>
                 <h5>Nama : <?=$sponsor->fullname?></h5>
-                <h5>Status : <?=$sponsor->role?></h5>
+                <?php?>
+                <h5>Status : <?php if ($sponsor->role == "stockist") {
+                    echo "distributor";
+                }else{
+                    echo $sponsor->role;
+                }?></h5>
                 <h5>Whatsapp : <a href="https://api.whatsapp.com/send?phone=<?=$sponsor->phone?>"><?=$sponsor->phone?></a></h5>
             </div>
 
@@ -47,7 +52,11 @@
                                 </td>
                                 <td><b><?= $user->created_at ?></b></td>
                                 <td ><?= $user->username ?></td>
-                                <td ><?= $user->role ?></td>
+                                <td ><?php if ($sponsor->role == "stockist") {
+                                        echo "distributor";
+                                    }else{
+                                        echo $sponsor->role;
+                                    }?></td>
                                 <td ><a href="https://api.whatsapp.com/send?phone=<?=$user->phone?>"><?= $user->phone ?></a></td>
                             </tr>
                         <?php endforeach  ?>
