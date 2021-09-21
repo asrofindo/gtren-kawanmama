@@ -180,8 +180,8 @@ class AuthController extends Controller
 			$allowedPostFields = array_merge(['password'], $this->config->validFields, $this->config->personalFields);
 		}else{
 			$allowedPostFields = array_merge(['password','parent'], $this->config->validFields, $this->config->personalFields);
-			
-				$user = $this->user->where('id',$parent)->first();
+			helper('wawoo');
+				$user = $this->user->where('id',$this->request->getPost('parent'))->first();
 					wawoo($user->phone,base_url()."\n\n".$user->greeting." ".$user->fullname."Selamat Anda *Mendapatkan Affiliasi Baru*\nSilahkan Cek Di : ".base_url('/affiliate'));
 					if ($user!=null && $user->parent != null) {
 						$user = $this->user->where('id',$user->parent)->first();
