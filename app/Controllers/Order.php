@@ -183,10 +183,18 @@ class Order extends BaseController
 		->find();
 		
 		//  ubah ongkir
-		$data['pengiriman'] = [
-			"id" => $data['detailtransaksi']->p_id,
-			"ongkir" => $data['detailtransaksi']->ongkir !=  $data['detailtransaksi']->ongkir_produk ? $data['detailtransaksi']->ongkir -  $data['detailtransaksi']->ongkir_produk :  $data['detailtransaksi']->ongkir
-		];
+		if($data['detailtransaksi']->amount >= 1 && $data['detailtransaksi']->ongkir == $data['detailtransaksi']->ongkir_produk){
+
+			$data['pengiriman'] = [
+				"id" => $data['detailtransaksi']->p_id,
+				"ongkir" => $data['detailtransaksi']->ongkir
+			];
+		} else {
+			$data['pengiriman'] = [
+				"id" => $data['detailtransaksi']->p_id,
+				"ongkir" => $data['detailtransaksi']->ongkir -  $data['detailtransaksi']->ongkir_produk
+			];
+		}
 	
 		$this->pengiriman->save($data['pengiriman']);
 
