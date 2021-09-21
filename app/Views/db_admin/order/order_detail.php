@@ -163,7 +163,7 @@
                                                 <dt>Kode Unik:</dt>
                                                 <dd><?= $order['kode_unik'];  ?></dd>
                                             </dl>
-                                            <dl>
+                                            <dl class="dlist">
                                                 <dt>Ongkos Kirim:</dt>
                                                 <dd><?= rupiah($order['ongkir']);  ?></dd>
                                             </dl>
