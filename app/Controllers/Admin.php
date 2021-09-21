@@ -106,7 +106,7 @@ class Admin extends BaseController
 	{
 
 		$data['detail_orders'] = $this->transaksi
-		->select('*, transaksi.total as total_transaksi, detailtransaksi.id as id, detailtransaksi.stockist_commission, detailtransaksi.total as total_detail')
+		->select('*, transaksi.total as total_transaksi, detailtransaksi.id as id, detailtransaksi.stockist_commission')
 		->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
 		->join("bills", 'bills.id = bill_id')
 		->join("users", 'users.id = transaksi.user_id')
@@ -135,11 +135,12 @@ class Admin extends BaseController
 		    $phone = $value->phone;
 		    $alamat = $value->alamat;
 		    $etd = $value->etd;
+		    $kode_unik = $value->kode_unik;
 		 
 		    $bank_name = $value->bank_name;
 		    $stockist_commission = $value->stockist_commission;
 		    $bank_number = $value->bank_number;
-		    $total = $value->total_detail;
+		    $total = $value->total_transaksi;
 		 
 
 		    if(!in_array($value->user_id, $unique_array))
@@ -160,7 +161,7 @@ class Admin extends BaseController
 		            $outer_array[$fid_value]['kurir'] = $kurir;
 		            $outer_array[$fid_value]['etd'] = $etd;
 		            $outer_array[$fid_value]['ongkir'] = $ongkir;
-		            $outer_array[$fid_value]['total_transaksi'] = $total + $ongkir;
+		            $outer_array[$fid_value]['total_transaksi'] = $total - $kode_unik;
 		            $outer_array[$fid_value]['bank'] = "{$bank_name} - {$bank_number} ";
 		            $outer_array[$fid_value]['products'] = $inner_array;
 		           
@@ -168,7 +169,6 @@ class Admin extends BaseController
 		    }else{		            
 		            array_push($outer_array[$fid_value]['products'], $value);
 		           	$outer_array[$fid_value]['stockist_commission'] += $stockist_commission;
-		           	$outer_array[$fid_value]['total_transaksi'] += $total ;
 		         
 		    }
 		}
