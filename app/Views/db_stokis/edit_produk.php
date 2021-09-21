@@ -23,12 +23,12 @@
                     <div class="mb-4">
                         <label for="product_name" class="form-label">Nama Produk</label>
                         <?php if(isset(session('errors')['name'])): ?>
-                            <input name="name" type="text" placeholder="Type here" class="form-control is-invalid" id="product_name" value="<?= old('name') ?? $product->name ?>">
+                            <input readonly name="name" type="text" placeholder="Type here" class="form-control is-invalid" id="product_name" value="<?= old('name') ?? $product->name ?>">
                             <div class="invalid-feedback">
                                 <?= session('errors')['name'] ?>
                             </div>
                         <?php else: ?>
-                            <input name="name" type="text" placeholder="Type here" class="form-control" id="product_name" value="<?= old('name') ?? $product->name ?>">
+                            <input readonly name="name" type="text" placeholder="Type here" class="form-control" id="product_name" value="<?= old('name') ?? $product->name ?>">
                         <?php endif ?>
                     </div>
                       
@@ -48,7 +48,7 @@
                                 <a class="d-inline btn-sm btn-primary" href="<?= base_url('/products/delete_photo')?>/<?= $product->id ?>/<?= $i ?>">Hapus</a>     
                                 <?php endif; ?>        
                                 <img
-                                  src="<?= $product->photos[$i] ?>"
+                                    src="<?= base_url() ?>/public/uploads/product_photos/<?= $product->photos[$i] ?>"
                                   class="w-100 shadow-1-strong mb-4"
                                   alt="jkkj"
                                 />
