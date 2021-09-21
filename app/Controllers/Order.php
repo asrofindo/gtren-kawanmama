@@ -185,7 +185,7 @@ class Order extends BaseController
 		//  ubah ongkir
 		$data['pengiriman'] = [
 			"id" => $data['detailtransaksi']->p_id,
-			"ongkir" => $data['detailtransaksi']->ongkir -  $data['detailtransaksi']->ongkir_produk
+			"ongkir" => $data['detailtransaksi']->ongkir !=  $data['detailtransaksi']->ongkir_produk ? $data['detailtransaksi']->ongkir -  $data['detailtransaksi']->ongkir_produk :  $data['detailtransaksi']->ongkir
 		];
 	
 		$this->pengiriman->save($data['pengiriman']);
@@ -195,7 +195,7 @@ class Order extends BaseController
 			"ongkir_produk" => '0'
 		];
 
-		$total = $this->detailpengiriman->save($data['detailpengiriman']);
+		$total = $this->detail_pengiriman->save($data['detailpengiriman']);
 		// ubah total transaksi 
 		$total = $this->model->find($transaksi_id)->total;
 

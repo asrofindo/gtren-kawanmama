@@ -83,7 +83,7 @@ class Admin extends BaseController
 	{
 		$id = user()->id;
 		$data['orders'] = $this->transaksi
-		->select('*, transaksi.total as total_transaksi, transaksi.id as id, detailtransaksi.id as detail_id, transaksi.created_at as created_at, detailtransaksi.stockist_commission')
+		->select('*, transaksi.total as total_transaksi, transaksi.id as id, detailtransaksi.id as detail_id, transaksi.created_at as created_at, sum(detailtransaksi.stockist_commission) as stockist_commission')
 		->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
 		->join("cart_item", 'cart_item.id = cart_id')
 		->join("products", 'products.id = cart_item.product_id')
@@ -167,6 +167,7 @@ class Admin extends BaseController
 
 		    }else{		            
 		            array_push($outer_array[$fid_value]['products'], $value);
+		           	$outer_array[$fid_value]['stockist_commission'] += $stockist_commission;
 		           	$outer_array[$fid_value]['total_transaksi'] += $total ;
 		         
 		    }
@@ -209,10 +210,9 @@ class Admin extends BaseController
 		    $alamat = $value->alamat;
 		    $email = $value->email;
 		    $kurir = $value->kurir;
-		    $ongkir = $value->ongkir;
+		    $ongkir = $value->ongkir_produk;
 		    $etd = $value->etd;
-		   
-		    
+		    $kode_unik = $value->kode_unik;
 		    $bank_name = $value->bank_name;
 		    $bank_number = $value->bank_number;
 		    $status_pembayaran = $value->status_pembayaran;
@@ -231,6 +231,7 @@ class Admin extends BaseController
 		           
 		            $outer_array[$fid_value]['fullname'] = $fullname;
 		            $outer_array[$fid_value]['phone'] = $phone;
+		            $outer_array[$fid_value]['kode_unik'] = $kode_unik;
 		            $outer_array[$fid_value]['email'] = $email;
 		            $outer_array[$fid_value]['kurir'] = $kurir;
 		            $outer_array[$fid_value]['etd'] = $etd;
@@ -243,6 +244,8 @@ class Admin extends BaseController
 
 		    }else{		            
 		            array_push($outer_array[$fid_value]['products'], $value);
+		            $outer_array[$fid_value]['ongkir'] += $ongkir;
+
 
 		         
 		    }

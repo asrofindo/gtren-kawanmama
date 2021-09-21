@@ -187,6 +187,7 @@
             <a href="<?= base_url() ?>/notifikasi">notifikasi</a> 
             <a href="<?= base_url() ?>/setting/api/get">Setting Api</a> 
             <a href="<?= base_url() ?>/sosial">sosial media</a>  
+            <a href="<?= base_url() ?>/setting/wd/get">setting Minimal Wd</a>  
             <a href="<?php base_url() ?>/empty"  onclick="return confirm('Kamu Yakin ?')">
                 <span class="text">Hancurkan Transaksi</span>
             </a>

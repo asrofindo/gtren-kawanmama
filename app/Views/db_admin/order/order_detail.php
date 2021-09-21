@@ -110,7 +110,12 @@
                                                 </a>
                                             </td>
                                             <td> <?= $product->locate; ?> </td>
-                                            <td> <?= rupiah($product->total / $product->amount); ?> </td>
+                                            <td>
+                                                <?php if($product->status_barang == 'refund'): ?>
+                                                    Rp. 0
+                                                <?php else: ?>
+                                                    <?= rupiah($product->total / $product->amount); ?> </td>
+                                                <?php endif; ?> 
                                             <td class="text-end"><?= rupiah($product->ongkir_produk);  ?> </td>
                                             <td> <?= $product->amount; ?> </td>
                                             <td> 
@@ -123,7 +128,7 @@
                                                  <?php elseif($product->status_pembayaran == 'paid' && $product->status_barang == null): ?>
                                                     <span class="badge rounded-pill alert-warning">Menunggu Konfirmasi Dari DIstributor</span>
                                                 <?php elseif($product->status_barang == 'refund'): ?>
-                                                    <span class="badge rounded-pill alert-warning">Dana Dikembalikan Kepada Pembeli</span>
+                                                    <span class="badge rounded-pill alert-primary">Dana Dikembalikan Kepada Pembeli</span>
                                                 <?php elseif($product->status_barang == 'ditolak'): ?>
                                                     <span class="badge rounded-pill alert-danger">Pesanan Di Tolak Oleh distributor</span>
                                                 <?php elseif($product->status_barang == 'dikirim'): ?>
@@ -137,7 +142,13 @@
                                                 <?php endif; ?>
 
                                             </td>
-                                            <td class="text-end"> <?= rupiah($product->total);  ?> </td>
+                                            <td class="text-end"> 
+                                                <?php if($product->status_barang == 'refund'): ?>
+                                                    Rp. 0
+                                                <?php else: ?>
+                                                    <?= rupiah($product->total);  ?> 
+                                                <?php endif; ?> 
+                                            </td>
                                             <td class="text-end">
                                                 <div class="dropdown">
                                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
@@ -160,11 +171,15 @@
                                     <td colspan="4">
                                         <article class="float-end">
                                             <dl class="dlist">
+                                                <dt>Kode Unik:</dt>
+                                                <dd><?= $order['kode_unik'];  ?></dd>
+                                            </dl>
+                                            <dl class="dlist">
                                                 <dt>Ongkos Kirim:</dt>
                                                 <dd><?= rupiah($order['ongkir']);  ?></dd>
                                             </dl>
                                             <dl class="dlist">
-                                                <dt>total tagihan:</dt>
+                                                <dt>Total Tagihan:</dt>
                                                 <dd> <b class="h5"><?= rupiah($order['total_transaksi']);  ?></b> </dd>
                                             </dl>
                                         </article>
