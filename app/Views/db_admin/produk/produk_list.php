@@ -5,9 +5,8 @@
         <?php if (in_groups(1)){?>
             <h2 class="content-title card-title">Data Produk</h2>
         <?php } else { ?>
-        <h2 class="content-title card-title">Produk Baru</h2>
+            <h2 class="content-title card-title">Produk Baru</h2>
         <?php } ?>
-
     </div>
     <div><!-- 
         <a href="#" class="btn btn-light rounded font-md">Export</a>
