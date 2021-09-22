@@ -176,16 +176,18 @@
                 </div>
                 <div class="card-body">
                     <div class="input-upload">
-                        <img src="<?= base_url() ?>/backend/imgs/theme/upload.svg" alt="">
+                        <p>Tambah Foto Product</p>
                         <?php if(isset(session('errors')['file'])): ?>
                             <input name="file[]" class="form-control is-invalid" type="file" id="file" multiple>
                             <div class="invalid-feedback">
                                 <?= session('errors')['file'] ?>
                             </div>
                         <?php else: ?>
-                            <input name="file[]" class="form-control" type="file" id="file" multiple>
+                            <label class="btn btn-info" for="gallery-photo-add">Pilih Foto</label>
+                            <input hidden name="file[]" class="" type="file" id="gallery-photo-add" multiple>
                         <?php endif ?>
                     </div>
+                    <div class="row gallery p-1"></div>
                 </div>
             </div>
 
