@@ -26,6 +26,91 @@
             </section> -->
 
         <!-- </div> -->
+        <div class="container d-block d-xl-none d-md-none d-lg-none">
+            <div class="row p-3">
+                <div class="card col-3 p-0">
+                    <a href="<?=base_url()?>/kategori">
+                        <img src="<?=base_url()?>/public/uploads/banner/kategori.png" alt="" class="p-2">
+                    </a>
+                        <div class="card-body p-0 text-center">
+                            <h6 class="card-title">kategori</h6>
+                        </div>
+                </div>
+                <div class="card col-3 p-0">
+                    <a href="<?=base_url()?>/about">
+                        <img src="<?=base_url()?>/public/uploads/banner/gtren.png" alt="" class="p-2">
+                    </a>
+                    <div class="card-body p-0 text-center">
+                        <h6 class="card-title">tentang Gtren</h6>
+                    </div>
+                </div>
+                <?php if (user()!=null) {?>
+                    <?php if (!in_groups(3)) {?>
+                    <div class="card col-3 p-0">
+                        <a href="<?=base_url()?>/upgrade/affiliate">
+                            <img src="<?=base_url()?>/public/uploads/banner/tas.png" alt="" class="p-2">
+                        </a>
+                        <div class="card-body p-0 text-center">
+                            <h6 class="card-title">jadi distributor</h6>
+                        </div>
+                    </div>
+                    <?php }else{?>
+                        <div class="card col-3 p-0">
+                        <a href="<?=base_url()?>/affiliate">
+                            <img src="<?=base_url()?>/public/uploads/banner/tas.png" alt="" class="p-2">
+                        </a>
+                        <div class="card-body p-0 text-center">
+                                <h6 class="card-title">distributor</h6>
+                        </div>
+                    </div>
+                    <?php }?>
+                    <?php if (!in_groups(4)) {?>
+                    <div class="card col-3 p-0">
+                        <a href="<?=base_url()?>/upgrade/affiliate">
+                            <img src="<?=base_url()?>/public/uploads/banner/affiliate.png" alt="" class="p-2">
+                        </a>
+                        <div class="card-body p-0 text-center">
+                                <h6 class="card-title">daftar affiliate</h6>
+                        </div>
+                    </div>
+                    <?php }else{?>
+                        <div class="card col-3 p-0">
+                        <a href="<?=base_url()?>/affiliate">
+                            <img src="<?=base_url()?>/public/uploads/banner/affiliate.png" alt="" class="p-2">
+                        </a>
+                        <div class="card-body p-0 text-center">
+                                <h6 class="card-title">affiliasi</h6>
+                        </div>
+                    </div>
+                    <?php }?>
+                    <div class="card col-3 p-0">
+                        <a href="<?=base_url()?>/products/cart">
+                            <img src="<?=base_url()?>/public/uploads/banner/keranjang.png" alt="" class="p-2">
+                        </a>
+                            <div class="card-body p-0 text-center">
+                                <h6 class="card-title">keranjang</h6>
+                            </div>
+                    </div>
+                <?php }else{?>
+                    <div class="card col-3 p-0">
+                        <a href="<?=base_url()?>/login">
+                            <img src="<?=base_url()?>/public/uploads/banner/masuk.png" alt="" class="p-2">
+                        </a>
+                            <div class="card-body p-0 text-center">
+                                <h6 class="card-title">masuk</h6>
+                            </div>
+                    </div>
+                <?php }?>
+                <div class="card col-3 p-0">
+                        <a href="<?=base_url()?>/products/search_p?search=">
+                            <img src="<?=base_url()?>/public/uploads/banner/cari.png" alt="" class="p-2">
+                        </a>
+                            <div class="card-body p-0 text-center">
+                                <h6 class="card-title">cari</h6>
+                            </div>
+                </div>
+            </div>
+        </div>
         <section class="product-tabs pt-30 pb-30 wow fadeIn animated">
             <div class="container">
                 
@@ -37,9 +122,9 @@
                             <div class="product-img-action-wrap">
                                 <div class="product-img product-img-zoom">
                                     <a href="<?= base_url('product/'. $product->slug)?>">
-                                        <?php for($i = 0; $i < 2; $i++): ?>
+                                    <?php for($i = 0; $i < 2; $i++): ?>
                                             <img class="<?= $i == 0 ? 'default-img' : 'hover-img'  ?>" src="<?= base_url() ?>/public/uploads/product_photos/<?= $product->photos[$i]; ?>" alt="">
-                                        <?php endfor ?>
+                                            <?php endfor ?>
                                     </a>
                                 </div>
                                 <div class="product-badges product-badges-position product-badges-mrg">

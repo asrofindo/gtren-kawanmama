@@ -223,7 +223,7 @@
                 </div>
             <div class="mobile-header-content-area">
                 <div class="mobile-search search-style-3 mobile-header-border">
-                    <form action="<?= base_url() ?>/products/search" method="get">
+                    <form action="<?= base_url() ?>/products/search_p" method="get">
                         <input type="text" placeholder="Cari" name="search">
                         <button type="submit"> <i class="far fa-search"></i> </button>
                     </form>

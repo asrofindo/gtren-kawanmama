@@ -64,7 +64,30 @@ class Product extends BaseController
 		return view('db_admin/produk/produk_list', $data);
 	}
 
+	public function kategori()
+	{
 
+
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
+		$data = $this->data;
+
+		$data['products']   = $this->model->orderBy('id', 'desc')->paginate(8, 'products');
+		
+		$data['kategori'] = $this->category->findAll();
+
+		$data['banners'] = $this->banner->findAll();
+
+		$data['offers'] = $this->offer->findAll();
+
+		$data['contacts'] = $this->contact->findAll();
+
+		$data['pager']      = $this->model->pager;
+	
+		return view('commerce/kategori', $data);
+	}
 	public function stockist()
 	{
 		if (user()!=null && user()->phone == null) {

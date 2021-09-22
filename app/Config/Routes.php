@@ -209,6 +209,7 @@ $routes->group('', function($routes)
 	$routes->post('members', 'Member::index');
 	$routes->get('members/(:any)', 'Member::detail/$1');
 	$routes->get('jaringan', 'Member::jaringan');
+	$routes->get('kategori', 'Product::kategori');
 
 	$routes->post('add/role/(:any)', 'Member::addRole/$1');
 
