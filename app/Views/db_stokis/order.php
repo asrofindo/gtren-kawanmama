@@ -5,7 +5,9 @@
         <h2 class="content-title card-title">Pesanan Masuk</h2>
     </div>
     <div>
-        <input type="text" placeholder="Search order ID" class="form-control bg-white">
+        <form action="post" method="<?= base_url()?>/order/stockist"></form>
+        <input type="text" placeholder="cari nomor transaksi" class="form-control" name="id">
+        <button hidden type="submit">cari</button>
     </div>
 </div>
 <div class="attention">
