@@ -46,6 +46,9 @@
                                 <th>Produk</th>
                                 <th class="d-none d-sm-block">Harga Jual</th>
                                 <th >Harga Member</th>
+                                <?php if (in_groups(3)) {?>
+                                    <th >Fee Seller</th>
+                                <?php } ?>
                                 <th class="text-end">Action</th>
                             </tr>
                         </thead>
@@ -62,7 +65,9 @@
                                 </td>
                                 <td class="d-none d-sm-block"><?= rupiah($product->sell_price); ?></td>
                                 <td ><?= rupiah($product->fixed_price); ?></td>
-          
+                                <?php if (in_groups(3)) {?>
+                                    <td ><?= rupiah($product->stockist_commission); ?></td>
+                                <?php } ?>
                                 <td class="text-end">
                                     <div class="dropdown">
                                         <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_vert"></i> </a>
