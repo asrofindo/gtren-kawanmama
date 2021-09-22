@@ -125,7 +125,7 @@ class Product extends BaseController
 
 		$data['products']   = $this->model->orderBy('id', 'desc')->paginate(8, 'products');
 		
-		$data['kategori'] = $this->category->findAll();
+		$data['kategori'] = $this->category->limit(3)->find();
 
 		$data['banners'] = $this->banner->findAll();
 
