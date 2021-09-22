@@ -57,7 +57,18 @@ class Product extends BaseController
 
 		$data['categories'] = $this->category->findAll();
 
-		$data['products']   = $this->model->paginate(15, 'products');
+		if (in_groups(3) && !in_groups(1)) {
+
+			$distributor = $this->distributor->where("user_id",user()->id)->first();
+			$product = $this->productDistributor->where("distributor_id",$distributor['id'])->find();
+			$data['products'] = $this->model;
+			foreach ($product  as $key => $value) {
+				$data['products'] =$data['products']->Where("id !=",$value->product_id);
+			}
+			$data['products'] =$data['products']->paginate(15, 'products');
+		}else{
+			$data['products']   = $this->model->paginate(15, 'products');
+		}
 
 		$data['pager']      = $this->model->pager;
 	

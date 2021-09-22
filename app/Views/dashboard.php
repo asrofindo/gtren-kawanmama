@@ -188,7 +188,7 @@
             <a href="<?= base_url() ?>/setting/api/get">Setting Api</a> 
             <a href="<?= base_url() ?>/sosial">sosial media</a>  
             <a href="<?= base_url() ?>/setting/wd/get">setting Minimal Wd</a>  
-            <a href="<?php base_url() ?>/kosong"  onclick="return confirm('Kamu Yakin ?')">
+            <a href="<?php base_url() ?>/kosong" >
                 <span class="text">Hancurkan Transaksi</span>
             </a>
     

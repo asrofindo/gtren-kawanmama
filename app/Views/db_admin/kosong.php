@@ -8,7 +8,7 @@
 <div class="card mb-4 p-3">
         <div class="row m-4">
             <h5> Peringatan!!</h5>
-            <p> Data akan di hancurkan secara permanen ,dimohon setelah menghancurkan data untuk mengisi lagi data-data yang penting</p>
+            <p> Semua data transaksi (data pesanan dan keuangan) akan dihapus secara permanen!</p>
 
         </div>
         <br>
