@@ -278,6 +278,7 @@ $routes->group('', function($routes)
 
 	// delete all data
 	$routes->get('empty', 'Admin::empty');
+	$routes->get('kosong', 'Admin::kosong');
 
 
 	// affiliate

@@ -370,6 +370,12 @@ class Admin extends BaseController
 		return redirect()->to('/admin');
 	}
 
+	public function kosong()
+	{
+		
+		return view('db_admin/kosong');
+	}
+
 	public function admin_konfirmasi(){
 		$data['konfirmasi'] = $this->konfirmasi
 		->select('konfirmasi.id as id ,users.fullname as name,konfirmasi.date as date,konfirmasi.total as total,konfirmasi.bill as bill,konfirmasi.transaksi_id as transaksi_id,konfirmasi.keterangan as keterangan,konfirmasi.bill as bill')

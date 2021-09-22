@@ -188,13 +188,13 @@
             <a href="<?= base_url() ?>/setting/api/get">Setting Api</a> 
             <a href="<?= base_url() ?>/sosial">sosial media</a>  
             <a href="<?= base_url() ?>/setting/wd/get">setting Minimal Wd</a>  
-            <a href="<?php base_url() ?>/empty"  onclick="return confirm('Kamu Yakin ?')">
+            <a href="<?php base_url() ?>/kosong"  onclick="return confirm('Kamu Yakin ?')">
                 <span class="text">Hancurkan Transaksi</span>
             </a>
     
         </div>
     </li>
-    <?php }if(in_groups(3)){ ?>
+    <?php }if(in_groups(3) && !in_groups(1)){ ?>
     <li class="menu-item" >
             <a class="menu-link" href="<?php base_url() ?>/distributor"> <i class="icon material-icons md-settings"></i>
                 <span class="text">Setting Distributor</span>
