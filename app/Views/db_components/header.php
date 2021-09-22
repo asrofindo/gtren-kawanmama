@@ -9,7 +9,7 @@
                 <a class="nav-link btn-icon darkmode" href="#"> <i class="material-icons md-nights_stay"></i> </a>
             </li>
             <li class="dropdown nav-item">
-                <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="<?= base_url('backend/imgs/people/avatar2.jpg') ?>" alt="User"></a>
+                <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="<?= base_url('/public/uploads/photo.svg') ?>" alt="User"></a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
                     <a class="dropdown-item" href="<?php base_url() ?>/account"><i class="material-icons md-perm_identity"></i>Profil Saya</a>
                     <a class="dropdown-item" href="<?php base_url() ?>/profile"><i class="material-icons md-perm_identity"></i>Edit Profil</a>
