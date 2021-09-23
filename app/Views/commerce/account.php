@@ -217,7 +217,7 @@
                                 <div class="tab-pane fade active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5 class="mb-0">Saldo Anda : <?= number_format($saldo); ?></h5>    
+                                            <h5 class="mb-0">Saldo Anda : Rp. <?= number_format($saldo); ?></h5>     <br>
                                         </div>
                                             <form method="post" action="<?= base_url()?>/rekening">
                                                 <div class="row m-2">
@@ -241,8 +241,7 @@
                                             </form>
                                         <?php endif; ?>
                                         <div class="card-body">
-                                             <h5 class="mb-0">Saldo Anda</h5>
-                                            <h5 class="mb-0"><?= number_format($saldo); ?></h5>
+                                             <h5 class="mb-0">Saldo Anda : Rp. <?= number_format($saldo); ?></h5> <br>
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <thead>
@@ -294,7 +293,40 @@
                                                             </div>
                                                     </div>
                                                 </form>
-                                            </header> <!-- card-header end// --> 
+                                            </header>
+                                             <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-sm table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>#ID</th>
+                                                                <th scope="col">Jumlah Diminta</th>
+                                                                <th scope="col">Tanggal Permintaan</th>
+                                                                <th scope="col">Status Pencairan</th>
+                                                                <th scope="col">Jenis Tabungan</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php foreach ($wds as $wd): ?>  
+                                                                <tr>
+                                                                    <td><b><?= $wd['id'] ?></b></td>
+                                                                    <td><b><?= $wd['jumlah_wd'] ?></b></td>
+                                                                    <td><b><?= $wd['created_at'] ?></b></td>
+                                                                    <td>
+                                                                        <?php if($wd['status'] == 'sudah'): ?>
+                                                                            <b><span class="badge rounded-pill alert-success"><?= $wd['status'] ?></span></b>
+                                                                        <?php else: ?>
+                                                                            <b><span class="badge rounded-pill alert-warning"><?= $wd['status'] ?></span></b>
+                                                                        <?php endif; ?>
+                                                                    </td>
+                                                                    <td><b><?= $wd['status_dana'] ?></b></td>
+                                                                </tr>
+                                                            <?php endforeach ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div> <!-- table-responsive //end -->
+        </div>
+                                             <!-- card-header end// --> 
                                         </div>
                                     </div>
                                 </div>
