@@ -602,8 +602,14 @@ class User extends BaseController
 
 		$data['segments'] = $this->request->uri->getSegments();
 		$data['rekening'] = $this->rekening->where('user_id',user()->id)->find();
-		$data['saldo']  = $this->pendapatan->where('user_id', user()->id)->first()->total;
-		
+
+		if($this->pendapatan->where('user_id', user()->id)->first() != null){
+			$data['saldo']  = $this->pendapatan->where('user_id', user()->id)->first()->total;
+		} else {
+			$data['saldo']  = 0;
+
+		}
+
 		return view('commerce/account', $data);
 	}
 
