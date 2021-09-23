@@ -277,29 +277,31 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <br>
+                                    <div class="card mb-4 col-md-12">
+                                        <header class="card-header">
+                                            <h5>Tarik Dana</h5><br>
+                                            <form method="post" action="<?php base_url() ?>/request/otp">
+                                                <button type="submit" class="btn btn-primary btn-sm rounded">Request Kode OTP</button>
+                                            </form> <br>
+                                            <form method="POST" action="<?= base_url() ?>/request/wd">
+                                                <div class="row gx-3">
+                                                        <div class="col-lg-3 col-md-2">
+                                                            <input name="jumlah_wd" type="text" placeholder="Masukan Nominal Dana" class="form-control bg-white">
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-2">
+                                                            <input name="otp" type="text" placeholder="Masukan Kode OTP" class="form-control bg-white">
+                                                        </div>
+                                                        <div class="col-lg-2 col-md-2 me-auto">
+                                                            <button type="submit" class="btn btn-primary btn-sm rounded">Tarik</button>
+                                                        </div>
+                                                </div>
+                                            </form>
+                                        </header> <!-- card-header end// -->
+                                
+                                    </div>
                                 </div>
-                                <br>
-                                 <div class="card mb-4 col-md-12">
-                                    <header class="card-header">
-                                        <form method="post" action="<?php base_url() ?>/request/otp">
-                                            <button type="submit" class="btn btn-primary btn-sm rounded">Request Kode OTP</button>
-                                        </form> <br>
-                                        <form method="POST" action="<?= base_url() ?>/request/wd">
-                                            <div class="row gx-3">
-                                                    <div class="col-lg-3 col-md-2">
-                                                        <input name="jumlah_wd" type="text" placeholder="Masukan Nominal Dana" class="form-control bg-white">
-                                                    </div>
-                                                    <div class="col-lg-3 col-md-2">
-                                                        <input name="otp" type="text" placeholder="Masukan Kode OTP" class="form-control bg-white">
-                                                    </div>
-                                                    <div class="col-lg-2 col-md-2 me-auto">
-                                                        <button type="submit" class="btn btn-primary btn-sm rounded">Tarik</button>
-                                                    </div>
-                                            </div>
-                                        </form>
-                                    </header> <!-- card-header end// -->
-                            
-                                </div>
+                                
                             <?php elseif($segments[0] == "konfirmasi"): ?>
                                 <div class="tab-pane fade active show" id="upgrade" role="tabpanel" aria-labelledby="upgrade-tab">
                                     <div class="card p-3">
