@@ -29,8 +29,12 @@
                         <table>
                             <?php foreach ($roles as $key => $value) {?>
                                 <tr>
-                                    <td><p><?= $value->name?></p></td>
-                                    <td>||</td>
+                                    <td><p><?php if ($value->name=="stockist") {
+                                        echo "distributor";
+                                    }else{
+                                        echo $value->name;
+                                    } ?></p></td>
+                                    <td> || </td>
                                     <td><a href="<?=base_url()?>/role/delete/<?=$user->id?>/<?= $value->name?>">(delete)</a></td>
                                 </tr>
                             <?php } ?>
@@ -42,11 +46,12 @@
                                 <form action="<?= base_url() ?>/add/role/<?=$user->id?>" method="post" class="w-100">
                                     <select name="role">
                                         <?php foreach ($group as $key => $value) {?>
-                                            <?php if($value['name'] == 'stockist'): ?>
-                                                <option value="<?= $value['id']?>">Distributor</option>
-                                            <?php endif; ?>
-                                            <option value="<?= $value['id']?>"><?= $value['name']?></option>
-                                        <?php }?>
+                                            <?php if($value['name'] == 'stockist') { ?>
+                                                <option value="<?= $value['id']?>">distributor</option>
+                                            <?php } else {?>
+                                                <option value="<?= $value['id']?>"><?= $value['name']?></option>
+                                            <?php }?>
+                                            <?php } ?>
                                     </select>              
                                   <button type="submit"> <i class="far fa-search"></i>save </button>
                                 </form>

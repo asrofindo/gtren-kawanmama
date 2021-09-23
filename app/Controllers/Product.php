@@ -99,6 +99,7 @@ class Product extends BaseController
 	
 		return view('commerce/kategori', $data);
 	}
+	
 	public function stockist()
 	{
 		if (user()!=null && user()->phone == null) {
@@ -484,7 +485,7 @@ class Product extends BaseController
 		$validation =  \Config\Services::validation();
 		$validation->setRules(
 			[
-				'name'                 => 'required|is_unique[products.name]',
+				'name'                 => 'required',
 				'description'          => 'required',
 				'fixed_price'          => 'required',
 				'sell_price'           => 'required',
