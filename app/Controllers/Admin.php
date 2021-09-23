@@ -43,7 +43,7 @@ class Admin extends BaseController
 		if ($this->request->getPost('name')!=null) {
 			$set=[
 				'name'=>$this->request->getPost('name'),
-				'phone'=>$this->request->getPost('phone'),
+				'phone'=>hp($request->getPost('phone')),
 			];
 			$this->notif->save($set);
 		}

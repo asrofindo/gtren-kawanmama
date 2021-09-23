@@ -273,13 +273,12 @@ class User extends BaseController
 		helper(['user']);
 
 		$request = $this->request;
-
 		$data = [
 			'id' => user()->id,
 			'fullname' => $request->getPost('fullname'),
 			'email' => $request->getPost('email'),
 			'password' => $request->getPost('password'),
-			'phone' => $request->getPost('phone'),
+			'phone' => hp($request->getPost('phone')),
 			'greeting' => $request->getPost('greeting'),
 			'status_message' => $request->getPost('phone') == user()->phone ? 'verified' : null,
 		];
