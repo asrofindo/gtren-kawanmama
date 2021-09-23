@@ -149,7 +149,7 @@ class User extends BaseController
 			$msg = base_url()."\n".user()->greeting." ".user()->fullname."\nTerimakasih, konfirmasi pembayaranan dari Anda sudah kami catat. Team Admin akan segera memverifikasi. Mohon ditunggu.\n";
 			wawoo(user()->phone,$msg);
 
-			$msg="Pembeli ini mengisi *KONFIRMASI PEMBAYARAN*\nSegera cek rekening!\nKunjungi: ".base_url('/admin/konfirmasi');			
+			$msg="Pembeli ini mengisi *KONFIRMASI PEMBAYARAN*\nSegera cek rekening!\nKunjungi : ".base_url('/admin/konfirmasi')."\nDan order detail : ".base_url("/orderdetail/".$id);			
 			$notif = $this->notif->findAll();
 			foreach ($notif as $key => $value) {
 				wawoo($value['phone'],$msg);

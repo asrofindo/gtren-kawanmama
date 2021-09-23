@@ -251,7 +251,7 @@ class Order extends BaseController
 		
 		$this->detailtransaksi->save($data['detailtransaksi']);
 		
-		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Pesanan Anda No Transaksi: ".$transaksi_id."\ndetail product".$product->product."\nsudah dilakukan *PENGEMBALIAN DANA*\nSilakan cek rekening Anda.\nAnda dapat melakukan pesan ulang ke distributor lain.";
+		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Pesanan Anda No Transaksi : ".$transaksi_id."\ndetail product : ".$product->product."\nsudah dilakukan *PENGEMBALIAN DANA*\nSilakan cek halaman keuangan anda di : ".base_url("/rekening").".\nAnda dapat melakukan pesan ulang ke distributor lain.";
 
 		wawoo($user->phone,$msg);
 
