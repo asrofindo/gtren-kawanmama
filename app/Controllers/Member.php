@@ -193,7 +193,13 @@ class Member extends BaseController
 
 		$user=$this->user_rekursif(user()->id);
 		if (user()->parent!=null) {
-			$data['sponsor'] = $this->user->where('id',user()->parent)->first();
+			$data['sponsor'] = $this->user
+			->select("users.fullname as fullname,users.created_at as created_at,ag.name as role,users.phone as phone")
+			->join("auth_groups_users as agu", "agu.user_id=users.id")
+			->join("auth_groups as ag", "agu.group_id=ag.id")
+			->where('users.id',user()->parent)
+			->orderBy('ag.id',"ASC")
+			->first();
 		}else{
 			$data['sponsor'] = $this->user
 			->select("users.fullname as fullname,users.created_at as created_at,ag.name as role,users.phone as phone")
