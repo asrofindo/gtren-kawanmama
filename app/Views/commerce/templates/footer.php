@@ -1,4 +1,4 @@
-<footer class="main ">
+<footer class="main d-none d-xl-block d-md-block d-lg-block">
     <section class="section-padding-60">
         <div class="container">
             <div class="row">
