@@ -181,11 +181,11 @@ class AuthController extends Controller
 		}else{
 			$allowedPostFields = array_merge(['password','parent'], $this->config->validFields, $this->config->personalFields);
 			helper('wawoo');
-				$user = $this->user->where('id',$this->request->getPost('parent'))->first();
-					wawoo($user->phone,base_url()."\n\n".$user->greeting." ".$user->fullname."\nSelamat Anda *Mendapatkan Affiliasi Baru*\nSilahkan Cek Di : ".base_url('/jaringan'));
-					if ($user!=null && $user->parent != null) {
-						$user = $this->user->where('id',$user->parent)->first();
-						wawoo($user->phone,base_url()."\n\n".$user->greeting." ".$user->fullname."\nSelamat Anda *Mendapatkan Affiliasi Baru*\nSilahkan Cek Di : ".base_url('/jaringan'));
+				$user1 = $this->user1->where('id',$this->request->getPost('parent'))->first();
+				wawoo($user1->phone,base_url()."\n\n".$user1->greeting." ".$user1->fullname.",\nSelamat Anda *Mendapatkan Affiliate Baru*\nSilahkan Cek Di : ".base_url('/jaringan'));
+					if ($user1!=null && $user1->parent != null) {
+						$user = $this->user->where('id',$user1->parent)->first();
+						wawoo($user->phone,base_url()."\n\n".$user->greeting." ".$user->fullname.",\nAffiliate Anda ( ".$user1->fullname." / ".$user1->phone." ) *Mendapatkan Prospek Baru*.\nSilahkan Dibimbing");
 					}
 		}
 		

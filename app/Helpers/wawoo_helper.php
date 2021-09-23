@@ -39,6 +39,7 @@ function wawoo($phone='+6281232312288',$message='permisi kami dari Gtren')
 function hp($nohp) {
 	// kadang ada penulisan no hp 0811 239 345
 	$nohp = str_replace(" ","",$nohp);
+	$nohp = str_replace("-","",$nohp);
 	// kadang ada penulisan no hp (0274) 778787
 	$nohp = str_replace("(","",$nohp);
 	// kadang ada penulisan no hp (0274) 778787
