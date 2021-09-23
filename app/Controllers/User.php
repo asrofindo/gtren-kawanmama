@@ -639,7 +639,7 @@ class User extends BaseController
 				
 			} else {
 
-				$sendOtp = $OTP->initializeOtp($validateOtp['user']->first()->otp, 'send');
+				$sendOtp = $OTP->initializeOtp($validateOtp['user']->where('user_id', user()->id)->first()->otp, 'send');
 				$sendOtp->send();
 				session()->setFlashdata('success', 'OTP Sudah Dikirim');
 				return redirect()->back();
