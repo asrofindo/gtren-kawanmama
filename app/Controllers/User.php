@@ -12,6 +12,7 @@ use App\Models\KonfirmasiModel;
 use App\Models\NotifModel;
 use App\Models\RekeningModel;
 use App\Models\SosialModel;
+use App\Models\PendapatanModel;
 use Myth\Auth\Models\UserModel;
 use Myth\Auth\Authorization\GroupModel;
 use App\Controllers\OtpType;
@@ -600,6 +601,7 @@ class User extends BaseController
 
 		$data['segments'] = $this->request->uri->getSegments();
 		$data['rekening'] = $this->rekening->where('user_id',user()->id)->find();
+		$data['saldo']  = $this->pendapatan->wherer('user_id', user()->id)->first()->total;
 		
 		return view('commerce/account', $data);
 	}
