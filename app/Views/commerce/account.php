@@ -719,7 +719,7 @@
                                                 <p>Registrasi program affiliasi Anda <b><?= $konfirmasi == null ? 'Menunggu Pembayaran' : 'sedang di tinjau' ?><b>.</p>
                                                 
                                                 <?php if($konfirmasi == null): ?>
-                                                <p>Mohon dilakukan pembayaran <strong><strong><b><?= rupiah(50000 + ($generate - 1)) ?></strong></b></strong></p>
+                                                <p>Mohon dilakukan pembayaran <strong><strong><b><?= rupiah(50000 + ($generate)) ?></strong></b></strong></p>
                                                 <p>ke Rekening Bank Dibawah ini :<br>
                                                     Rekening : <strong><?= $bill->bank_name?></strong> <br> Nomor : <strong><?= $bill->bank_number?></strong> <br> A/N : <strong><?= $bill->owner?>.</strong> 
                                                 </p>
