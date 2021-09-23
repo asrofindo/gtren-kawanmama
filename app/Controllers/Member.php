@@ -140,6 +140,11 @@ class Member extends BaseController
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
 		}
+		if ($role=='affiliate') {
+			$db = db_connect();
+			$user = $db->table('users');
+			$user->where('id',$id)->update(["affiliate_link"=>null]);
+		}
 		$db = db_connect();
 		$data = $db->table('auth_groups_users');
 		$r = $db->table('auth_groups')->where('name',$role)->get()->getResultArray();
@@ -165,6 +170,10 @@ class Member extends BaseController
 			'user_id'=>$id,
 			'group_id'=>$this->request->getPost('role')
 		];
+		if ($this->request->getPost('role')=="4") {
+			$user = $db->table('users');
+			$user->where('id',$id)->update(["affiliate_link"=>"/src/".$id]);	
+		}
 		$data->insert($set);
 
 		return redirect()->back();
