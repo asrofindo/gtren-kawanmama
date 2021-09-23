@@ -528,6 +528,7 @@ class Transaksi extends BaseController
 
 		// function untuk memperoleh semua dana stockist atau affiliate dari table pendapatan 
 		$data['pendapatan_affiliate'] = $this->pendapatan->select('total')->where('status_dana', 'affiliate')->where('user_id', user()->id)->findAll();
+		$data['pendapatan_user'] = $this->pendapatan->select('total')->where('status_dana', 'user')->where('user_id', user()->id)->findAll();
 		$data['pendapatan_stockist'] = $this->pendapatan->select('sum(total) as total')->where('status_dana', 'distributor')->where('user_id', user()->id)->findAll();
 		
 	

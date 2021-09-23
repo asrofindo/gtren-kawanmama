@@ -71,7 +71,7 @@
                             </tr>
                             </tbody>
                         </table>
-                    </div>
+                    </div>*
                     <a href="<?=base_url()?>/checkout" class="btn btn-rounded"> <i class="fa fa-share-square mr-10"></i>Lanjutkan</a>
                 </div>
             </div>
