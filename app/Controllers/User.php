@@ -12,6 +12,7 @@ use App\Models\KonfirmasiModel;
 use App\Models\NotifModel;
 use App\Models\RekeningModel;
 use App\Models\SosialModel;
+use App\Models\PendapatanModel;
 use Myth\Auth\Models\UserModel;
 use Myth\Auth\Authorization\GroupModel;
 use App\Controllers\OtpType;
@@ -36,6 +37,7 @@ class User extends BaseController
 		$this->generate = new GenerateModel();
 		$this->bill = new BillModel();
 		$this->address = new AddressModel();
+		$this->pendapatan = new PendapatanModel();
 
 	}
 	public function account()
@@ -600,7 +602,14 @@ class User extends BaseController
 
 		$data['segments'] = $this->request->uri->getSegments();
 		$data['rekening'] = $this->rekening->where('user_id',user()->id)->find();
-		
+
+		if($this->pendapatan->where('user_id', user()->id)->first() != null){
+			$data['saldo']  = $this->pendapatan->where('user_id', user()->id)->first()->total;
+		} else {
+			$data['saldo']  = 0;
+
+		}
+
 		return view('commerce/account', $data);
 	}
 
@@ -638,7 +647,7 @@ class User extends BaseController
 				
 			} else {
 
-				$sendOtp = $OTP->initializeOtp($validateOtp['user']->first()->otp, 'send');
+				$sendOtp = $OTP->initializeOtp($validateOtp['user']->where('user_id', user()->id)->first()->otp, 'send');
 				$sendOtp->send();
 				session()->setFlashdata('success', 'OTP Sudah Dikirim');
 				return redirect()->back();

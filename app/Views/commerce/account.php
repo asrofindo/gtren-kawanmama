@@ -217,7 +217,8 @@
                                 <div class="tab-pane fade active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5 class="mb-0">Rekening Anda</h5>
+                                            <h5 class="mb-0">Saldo Anda</h5>
+                                            <h5 class="mb-0"><?= number_format($saldo); ?></h5>
                                         </div>
                                             <form method="post" action="<?= base_url()?>/rekening">
                                                 <div class="row m-2">
@@ -241,6 +242,8 @@
                                             </form>
                                         <?php endif; ?>
                                         <div class="card-body">
+                                             <h5 class="mb-0">Saldo Anda</h5>
+                                            <h5 class="mb-0"><?= number_format($saldo); ?></h5>
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <thead>
@@ -248,7 +251,6 @@
                                                             <th>Bank </th>
                                                             <th>No Rekening </th>
                                                             <th>Nama</th>
-                                                            <th>Total</th>
                                                             <th>Aksi</th>
                                                         </tr>
                                                     </thead>
@@ -263,9 +265,6 @@
                                                                 </td>
                                                                 <td>                                             
                                                                    <?= $value->owner?>
-                                                                </td>
-                                                                <td>                                             
-                                                                    Rp. <?= number_format($value->total)?>
                                                                 </td>
                                                                 <td>      
                                                                     <a href="<?=base_url()?>/rekening/delete/<?= $value->id?>">hapus</a>                                       
