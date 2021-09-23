@@ -191,9 +191,9 @@ class upgrades extends BaseController
 
 		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\nStatus Program Referal Anda *sudah aktif* \nAkses Halaman Affiliate :".base_url('upgrade/affiliate');
 
-		wawoo(user()->phone,$msg);	
+		wawoo($user->phone,$msg);	
 		
-		$msg="Selamat!\n".base_url()."\nNama : ".$user->greeting." ".$user->fullname."\nNo. Wa: ".user()->phone." \nStatus Program Referal *sudah aktif*";
+		$msg=base_url()."\nSelamat!\n"."\nAffiliate baru *sudah aktif*"."\nNama : ".$user->greeting." ".$user->fullname."\nNo. Wa: ".user()->phone;
 			
 		$notif = $this->notif->findAll();
 		foreach ($notif as $key => $value) {
