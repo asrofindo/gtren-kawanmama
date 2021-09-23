@@ -217,7 +217,7 @@
                                 <div class="tab-pane fade active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5 class="mb-0">Saldo Anda : <?= number_format($saldo); ?></h5>    
+                                            <h5 class="mb-0">Saldo Anda : Rp. <?= number_format($saldo); ?></h5>    
                                         </div>
                                             <form method="post" action="<?= base_url()?>/rekening">
                                                 <div class="row m-2">
@@ -241,8 +241,7 @@
                                             </form>
                                         <?php endif; ?>
                                         <div class="card-body">
-                                             <h5 class="mb-0">Saldo Anda</h5>
-                                            <h5 class="mb-0"><?= number_format($saldo); ?></h5>
+                                             <h5 class="mb-0">Saldo Anda : Rp. <?= number_format($saldo); ?></h5>
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <thead>
