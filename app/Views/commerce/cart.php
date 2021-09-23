@@ -2,7 +2,7 @@
 <?= $this->section('content') ?>
 <div class="page-header breadcrumb-wrap">
     <div class="container">
-        <div class="breadcrumb">
+        <div class="breadcrumb d-none d-xl-block d-md-block d-lg-block">
             <a href="index.html" rel="nofollow">Home</a>
             <span></span> Shop
             <span></span> Your Cart
