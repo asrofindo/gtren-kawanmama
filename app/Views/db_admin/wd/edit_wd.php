@@ -60,10 +60,7 @@
 		                                        <i class="material-icons md-edit"></i>
 		                                        Edit
 		                                    </a>
-		                                    <a href="<?= base_url('setting/delete/'.$setting->id) ?>" class="btn btn-light btn-sm font-sm rounded">
-		                                        <i class="material-icons md-delete_forever"></i>
-		                                        Hapus
-		                                    </a>
+		                                
 		                                </td>
 		                            </tr>
                             </tbody>

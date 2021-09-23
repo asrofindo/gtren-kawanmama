@@ -257,7 +257,7 @@
                             <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/affiliate">Dashboard Affiliate</a></li>
                             <?php }?>
                             <?php if (!in_groups(4)) {?>
-                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/upgrade/affiliate">Daftar Program Reveral</a></li>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/upgrade/affiliate">Daftar Affiliate</a></li>
                             <?php }?>
                             <?php if (in_groups(3)) {?>
                             <li class="menu-item-has-children"><span class="menu-expand"></span><a href="<?= base_url()?>/seller">Dashboard Distributor</a></li>

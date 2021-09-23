@@ -53,12 +53,12 @@
                                 <td><b><?= $user->created_at ?></b></td>
                                 <td ><?= $user->fullname ?></td>
                                 <td ><?= $user->email ?></td>
+                                <td ><a href="https://api.whatsapp.com/send?phone=<?=$user->phone?>"><?= $user->phone ?></a></td>
                                 <td ><?php if ($user->role == "stockist") {
                                         echo "distributor";
                                     }else{
                                         echo $user->role;
                                     }?></td>
-                                <td ><a href="https://api.whatsapp.com/send?phone=<?=$user->phone?>"><?= $user->phone ?></a></td>
                             </tr>
                         <?php endforeach  ?>
 
