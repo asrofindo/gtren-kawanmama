@@ -191,7 +191,7 @@ class upgrades extends BaseController
 		]);
 		$bill = $this->bill->find($bill_id)->bank_name;
 		$request = $this->request;
-		// $this->group->addUserToGroup($id, 4);
+		$this->group->addUserToGroup($id, 4);
 
 		$user=$this->user->where('id',$id)->first();
 
@@ -199,7 +199,7 @@ class upgrades extends BaseController
 
 		wawoo(user()->phone,$msg);	
 		
-		$msg="Selamat!\n".base_url()."\nNama : ".user()->greeting." ".user()->fullname."\nNo. Wa: ".user()->phone."/nStatus Program Referal *sudah aktif*";
+		$msg="Selamat!\n".base_url()."\nNama : ".$user->greeting." ".$user->fullname."\nNo. Wa: ".user()->phone." \nStatus Program Referal *sudah aktif*";
 			
 		$notif = $this->notif->findAll();
 		foreach ($notif as $key => $value) {
