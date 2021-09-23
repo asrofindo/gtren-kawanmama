@@ -77,12 +77,6 @@ class upgrades extends BaseController
 
 			wawoo(user()->phone,$msg);
 
-			$msg="Selamat!\nAda *upgrade affiliate* di ".base_url()."\nNama affiliate: ".user()->greeting." ".user()->fullname."\nNo. Wa: ".user()->phone;
-			
-			$notif = $this->notif->findAll();
-			foreach ($notif as $key => $value) {
-				wawoo($value['phone'],$msg);
-			}
 
 			$generate = $this->generate->find()[0]['nomor'];
 			// $this->generate->save(['id' => 1, 'nomor' => $generate + 1]);
