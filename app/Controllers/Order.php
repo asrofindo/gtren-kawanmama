@@ -228,9 +228,6 @@ class Order extends BaseController
 		$pendapatan = new PendapatanType();
 		$initializePendapatan = $pendapatan->initializePendapatan($data['detailtransaksi'], 'refund');
 		$initializePendapatan->save();
-
-		$initializeBank = $pendapatan->initializeBank($data['detailtransaksi'], 'refund');
-		$initializeBank->save();
 		
 		// ubah status detail transaksi
 		$data['detailtransaksi'] = [
