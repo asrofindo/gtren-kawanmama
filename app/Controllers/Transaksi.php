@@ -417,6 +417,23 @@ class Transaksi extends BaseController
 		return view('db_admin/pendapatan/pendapatan_affiliate', $data);
 	}
 
+	public function hutang_user()
+	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
+		$data['pendapatans'] = $this->pendapatan->select('*, pendapatan.id as id')
+		->join('users', 'users.id = pendapatan.user_id')
+		->where('pendapatan.status_dana', 'user')
+		->find();
+	
+		$data['bills'] = $this->bill->findAll();
+		$data['pager'] = $this->transaksi->paginate(5, 'pendapatan');
+		$data['pager'] = $this->transaksi->pager;
+		return view('db_admin/pendapatan/pendapatan_user', $data);
+	}
+
 	public function wd()
 	{
 		$id = $this->request->getPost('pendapatan_id');
@@ -528,6 +545,7 @@ class Transaksi extends BaseController
 
 		// function untuk memperoleh semua dana stockist atau affiliate dari table pendapatan 
 		$data['pendapatan_affiliate'] = $this->pendapatan->select('total')->where('status_dana', 'affiliate')->where('user_id', user()->id)->findAll();
+		$data['pendapatan_user'] = $this->pendapatan->select('total')->where('status_dana', 'user')->where('user_id', user()->id)->findAll();
 		$data['pendapatan_stockist'] = $this->pendapatan->select('sum(total) as total')->where('status_dana', 'distributor')->where('user_id', user()->id)->findAll();
 		
 	

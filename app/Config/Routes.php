@@ -267,6 +267,7 @@ $routes->group('', function($routes)
 
 	$routes->get('hutang/stockist', 'Transaksi::hutang_stockist');
 	$routes->get('hutang/affiliate', 'Transaksi::hutang_affiliate');
+	$routes->get('hutang/user', 'Transaksi::hutang_user');
 	$routes->post('transaksi/wd', 'Transaksi::wd');
 	$routes->post('transaksi/tarik_dana', 'Transaksi::tarik_dana');
 

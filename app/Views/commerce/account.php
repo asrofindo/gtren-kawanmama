@@ -217,7 +217,7 @@
                                 <div class="tab-pane fade active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5 class="mb-0">Saldo Anda : <?= number_format($saldo); ?></h5>
+                                            <h5 class="mb-0">Saldo Anda : <?= number_format($saldo); ?></h5>    
                                         </div>
                                             <form method="post" action="<?= base_url()?>/rekening">
                                                 <div class="row m-2">
@@ -284,6 +284,7 @@
                                                     <div class="row gx-3">
                                                             <div class="col-lg-3 col-md-2">
                                                                 <input name="jumlah_wd" type="text" placeholder="Masukan Nominal Dana" class="form-control bg-white">
+                                                                <input name="status_dana" type="hidden" placeholder="Masukan Nominal Dana" value="user" class="form-control bg-white">
                                                             </div>
                                                             <div class="col-lg-3 col-md-2">
                                                                 <input name="otp" type="text" placeholder="Masukan Kode OTP" class="form-control bg-white">
