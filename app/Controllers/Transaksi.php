@@ -417,6 +417,23 @@ class Transaksi extends BaseController
 		return view('db_admin/pendapatan/pendapatan_affiliate', $data);
 	}
 
+	public function hutang_user()
+	{
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
+		$data['pendapatans'] = $this->pendapatan->select('*, pendapatan.id as id')
+		->join('users', 'users.id = pendapatan.user_id')
+		->where('pendapatan.status_dana', 'user')
+		->find();
+	
+		$data['bills'] = $this->bill->findAll();
+		$data['pager'] = $this->transaksi->paginate(5, 'pendapatan');
+		$data['pager'] = $this->transaksi->pager;
+		return view('db_admin/pendapatan/pendapatan_user', $data);
+	}
+
 	public function wd()
 	{
 		$id = $this->request->getPost('pendapatan_id');
