@@ -189,7 +189,7 @@ class upgrades extends BaseController
 
 		$user=$this->user->where('id',$id)->first();
 
-		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\nStatus Program Referal Anda *sudah aktif* \nAkses Halaman Affiliate :".base_url('upgrade/affiliate');
+		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\nStatus Program Referal Anda *sudah aktif* \nAkses Halaman Affiliate :".base_url('/affiliate');
 
 		wawoo($user->phone,$msg);	
 		
