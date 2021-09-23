@@ -60,7 +60,7 @@ function hp($nohp) {
 			$hp = '+62'.substr(trim($nohp), 1);
 		}
 		else{
-			$hp = '+62'.trim($nohp);
+			$hp = trim($nohp);
 		}
 	}
 	return $hp;
