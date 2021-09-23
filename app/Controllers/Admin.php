@@ -82,21 +82,39 @@ class Admin extends BaseController
 	public function order_stockist()
 	{
 		$id = user()->id;
-		$data['orders'] = $this->transaksi
-		->select('*, transaksi.total as total_transaksi, transaksi.id as id, detailtransaksi.id as detail_id, transaksi.created_at as created_at, sum(detailtransaksi.stockist_commission) as stockist_commission')
-		->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
-		->join("cart_item", 'cart_item.id = cart_id')
-		->join("products", 'products.id = cart_item.product_id')
-		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
-		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
-		->join('distributor', 'distributor.id = cart_item.distributor_id')
-		->join('users', 'users.id = transaksi.user_id')
-		->where('distributor.user_id', user()->id)
-		->where('transaksi.batas_pesanan >', date( "Y-m-d H:i:s"))
-		->where('transaksi.status_pembayaran', 'paid')->groupBy('transaksi.id')->orderBy('transaksi.id', 'DESC')
-		->findAll();
+
+		if ($this->request->getPost('id')!=null) {
+			$data['orders'] = $this->transaksi
+			->select('*, transaksi.total as total_transaksi, transaksi.id as id, detailtransaksi.id as detail_id, transaksi.created_at as created_at, sum(detailtransaksi.stockist_commission) as stockist_commission')
+			->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
+			->join("cart_item", 'cart_item.id = cart_id')
+			->join("products", 'products.id = cart_item.product_id')
+			->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
+			->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
+			->join('distributor', 'distributor.id = cart_item.distributor_id')
+			->join('users', 'users.id = transaksi.user_id')
+			->where('distributor.user_id', user()->id)
+			->where('transaksi.id', $this->request->getPost('id'))
+			->where('transaksi.batas_pesanan >', date( "Y-m-d H:i:s"))
+			->where('transaksi.status_pembayaran', 'paid')->groupBy('transaksi.id')->orderBy('transaksi.id', 'DESC')
+			->findAll();
+		}else{
+			$data['orders'] = $this->transaksi
+			->select('*, transaksi.total as total_transaksi, transaksi.id as id, detailtransaksi.id as detail_id, transaksi.created_at as created_at, sum(detailtransaksi.stockist_commission) as stockist_commission')
+			->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
+			->join("cart_item", 'cart_item.id = cart_id')
+			->join("products", 'products.id = cart_item.product_id')
+			->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
+			->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
+			->join('distributor', 'distributor.id = cart_item.distributor_id')
+			->join('users', 'users.id = transaksi.user_id')
+			->where('distributor.user_id', user()->id)
+			->where('transaksi.batas_pesanan >', date( "Y-m-d H:i:s"))
+			->where('transaksi.status_pembayaran', 'paid')->groupBy('transaksi.id')->orderBy('transaksi.id', 'DESC')
+			->findAll();
+		}
 		
-		$data['pager'] = $this->transaksi->paginate(5, 'orders');
+		$data['pager'] = $this->transaksi->paginate(10, 'orders');
 		$data['pager'] = $this->transaksi->pager;
 		return view('db_stokis/order', $data);
 	}
@@ -368,6 +386,12 @@ class Admin extends BaseController
 		}
 		
 		return redirect()->to('/admin');
+	}
+
+	public function kosong()
+	{
+		
+		return view('db_admin/kosong');
 	}
 
 	public function admin_konfirmasi(){

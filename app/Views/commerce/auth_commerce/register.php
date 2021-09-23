@@ -2,7 +2,7 @@
 <?= $this->section('content') ?>
 <div class="page-header breadcrumb-wrap">
     <div class="container">
-        <div class="breadcrumb">
+    <div class="breadcrumb d-none d-xl-block d-md-block d-lg-block">
             <a href="<?php base_url() ?>" rel="nofollow">Home</a>
             <span></span> Pages
             <span></span> Login / Register
@@ -35,26 +35,26 @@
 
                                     <div class="form-group">
                                         <label for="email"><?=lang('Auth.email')?></label>
-                                        <input type="email" class="form-control <?php if(session('errors.email')) : ?>is-invalid<?php endif ?>"
+                                        <input required type="email" class="form-control <?php if(session('errors.email')) : ?>is-invalid<?php endif ?>"
                                                name="email" aria-describedby="emailHelp" placeholder="<?=lang('Auth.email')?>" value="<?= old('email') ?>">
 <!--                                         <small id="emailHelp" class="form-text text-muted"><?=lang('Auth.weNeverShare')?></small>
  -->                                    </div>
 
                                     <div class="form-group">
                                         <label for="username"><?=lang('Auth.username')?></label>
-                                        <input type="text" class="form-control <?php if(session('errors.username')) : ?>is-invalid<?php endif ?>" name="username" placeholder="<?=lang('Auth.username')?>" value="<?= old('username') ?>">
+                                        <input required type="text" class="form-control <?php if(session('errors.username')) : ?>is-invalid<?php endif ?>" name="username" placeholder="<?=lang('Auth.username')?>" value="<?= old('username') ?>">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="password"><?=lang('Auth.password')?></label>
-                                        <input type="password" name="password" class="form-control <?php if(session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="<?=lang('Auth.password')?>" autocomplete="off">
+                                        <input required type="password" name="password" class="form-control <?php if(session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="<?=lang('Auth.password')?>" autocomplete="off">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="pass_confirm"><?=lang('Auth.repeatPassword')?></label>
                                         <input type="password" name="pass_confirm" class="form-control <?php if(session('errors.pass_confirm')) : ?>is-invalid<?php endif ?>" placeholder="<?=lang('Auth.repeatPassword')?>" autocomplete="off">
                                     </div>
-                                    <input value="<?= get_cookie('affiliate')?>" type="text" name="parent" hidden placeholder="" autocomplete="off">
+                                    <input required value="<?= get_cookie('affiliate')?>" type="text" name="parent" hidden placeholder="" autocomplete="off">
 
                                     <button type="submit" class="btn btn-primary btn-block"><?=lang('Auth.register')?></button>
                                 </form>

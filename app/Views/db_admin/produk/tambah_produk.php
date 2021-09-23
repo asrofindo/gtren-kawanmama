@@ -1,6 +1,7 @@
 <?php $this->extend('dashboard') ?>
 
 <?php $this->section('content') ?>
+
 <form action="<?= base_url('/tambahproduk') ?>" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col-9">
@@ -127,17 +128,23 @@
                     <h4>Media</h4>
                 </div>
                 <div class="card-body">
+                    <p>Pilih minimal 2 foto product</p>
+                    <p>Foto pertama dan kedua akan menjadi tumbnail</p>
+
                     <div class="input-upload">
-                        <img src="<?= base_url() ?>/backend/imgs/theme/upload.svg" alt="">
                         <?php if(isset(session('errors')['file'])): ?>
-                            <input name="file[]" class="form-control is-invalid" type="file" id="file" multiple>
+                            <input name="file[]" class="form-control is-invalid" type="file" id="file" onchange="preview_image();" multiple>
                             <div class="invalid-feedback">
                                 <?= session('errors')['file'] ?>
                             </div>
                         <?php else: ?>
-                            <input name="file[]" class="form-control" type="file" id="file" multiple>
+                            <label class="btn btn-info" for="gallery-photo-add">Pilih Foto</label>
+                            <input hidden name="file[]" class="" type="file" id="gallery-photo-add" multiple>
                         <?php endif ?>
                     </div>
+                    <div class="row gallery p-1"></div>
+
+                    
                 </div>
             </div> <!-- card end// -->
             <div class="card mb-4">

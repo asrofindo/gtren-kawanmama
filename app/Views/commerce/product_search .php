@@ -2,6 +2,14 @@
 <?= $this->section('content') ?>
 <div class="page-header breadcrumb-wrap">
     <div class="container">
+        <div class="row m-2 d-block d-xl-none d-md-none d-lg-none">
+            <div class="search-style-1 w-100">
+                        <form action="<?= base_url() ?>/products/search_p" method="get" class="w-100">
+                            <input type="text" placeholder="Cari Produk" name="search" class="rounded-3">
+                            <button type="submit"> <i class="far fa-search"></i> </button>
+                        </form>
+            </div>
+        </div>
     <div class="row product-grid-4">
                     <!-- Start -->
                     <?php  foreach ($products as $product): ?>

@@ -199,8 +199,9 @@ class Member extends BaseController
 			->select("users.fullname as fullname,users.created_at as created_at,ag.name as role,users.phone as phone")
 			->join("auth_groups_users as agu", "agu.user_id=users.id")
 			->join("auth_groups as ag", "agu.group_id=ag.id")
+			->where('users.id',user()->id)
 			->orderBy('ag.id',"ASC")
-			->where('users.id',user()->id)->first();
+			->first();
 		}
 		
 		$data['users'] = $this->datauser;
@@ -212,11 +213,13 @@ class Member extends BaseController
 			$data = $model->where('parent',$parent)->find();
 				foreach ($data as $key => $value) {
 					$data = $this->user
-					->select("users.username as username,users.created_at as created_at,ag.name as role,users.phone as phone")
+					->select("users.email as email,users.fullname as fullname,users.created_at as created_at,ag.name as role,users.phone as phone")
 					->join("auth_groups_users as agu", "agu.user_id=users.id")
 					->join("auth_groups as ag", "agu.group_id=ag.id")
+					->where('agu.user_id',$value->id)
+					->where('users.id',$value->id)
 					->orderBy('ag.id',"ASC")
-					->where('users.id',$value->id)->first();
+					->first();
 					array_push($this->datauser,$data);
 					$this->user_rekursif($value->id);
 				}

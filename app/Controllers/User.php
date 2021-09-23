@@ -368,7 +368,7 @@ class User extends BaseController
 
 		if(in_groups(3))
 		{			
-			session()->setFlashdata('successs', 'Anda Adalah Stockist');
+			session()->setFlashdata('successs', 'Anda adalah distributor');
 			return view('commerce/account', $data);
 		}
 

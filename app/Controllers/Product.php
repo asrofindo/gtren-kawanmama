@@ -57,14 +57,48 @@ class Product extends BaseController
 
 		$data['categories'] = $this->category->findAll();
 
-		$data['products']   = $this->model->paginate(15, 'products');
+		if (in_groups(3) && !in_groups(1)) {
+
+			$distributor = $this->distributor->where("user_id",user()->id)->first();
+			$product = $this->productDistributor->where("distributor_id",$distributor['id'])->find();
+			$data['products'] = $this->model;
+			foreach ($product  as $key => $value) {
+				$data['products'] =$data['products']->Where("id !=",$value->product_id);
+			}
+			$data['products'] =$data['products']->paginate(15, 'products');
+		}else{
+			$data['products']   = $this->model->paginate(15, 'products');
+		}
 
 		$data['pager']      = $this->model->pager;
 	
 		return view('db_admin/produk/produk_list', $data);
 	}
 
+	public function kategori()
+	{
 
+
+		if (user()!=null && user()->phone == null) {
+			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+			return redirect()->to('/profile');
+		}
+		$data = $this->data;
+
+		$data['products']   = $this->model->orderBy('id', 'desc')->paginate(8, 'products');
+		
+		$data['kategori'] = $this->category->findAll();
+
+		$data['banners'] = $this->banner->findAll();
+
+		$data['offers'] = $this->offer->findAll();
+
+		$data['contacts'] = $this->contact->findAll();
+
+		$data['pager']      = $this->model->pager;
+	
+		return view('commerce/kategori', $data);
+	}
 	public function stockist()
 	{
 		if (user()!=null && user()->phone == null) {
@@ -102,7 +136,7 @@ class Product extends BaseController
 
 		$data['products']   = $this->model->orderBy('id', 'desc')->paginate(8, 'products');
 		
-		$data['kategori'] = $this->category->findAll();
+		$data['kategori'] = $this->category->limit(3)->find();
 
 		$data['banners'] = $this->banner->findAll();
 

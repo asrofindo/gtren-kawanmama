@@ -107,7 +107,7 @@
             </a>
             <div class="submenu">
                 <a href="<?= base_url() ?>/products/stockist">Produk Anda</a>
-                <a href="<?= base_url() ?>/products">Produk</a>
+                <a href="<?= base_url() ?>/products">Produk Baru</a>
             </div>
         </li>
         <hr>
@@ -159,21 +159,6 @@
         </li>
     <?php }?>
 
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
 </ul>
 <hr>
 
@@ -188,20 +173,19 @@
             <a href="<?= base_url() ?>/setting/api/get">Setting Api</a> 
             <a href="<?= base_url() ?>/sosial">sosial media</a>  
             <a href="<?= base_url() ?>/setting/wd/get">setting Minimal Wd</a>  
-            <a href="<?php base_url() ?>/empty"  onclick="return confirm('Kamu Yakin ?')">
+            <a href="<?php base_url() ?>/kosong" >
                 <span class="text">Hancurkan Transaksi</span>
             </a>
     
         </div>
     </li>
-    <?php }if(in_groups(3)){ ?>
+    <?php }if(in_groups(3) && !in_groups(1)){ ?>
     <li class="menu-item" >
             <a class="menu-link" href="<?php base_url() ?>/distributor"> <i class="icon material-icons md-settings"></i>
                 <span class="text">Setting Distributor</span>
             </a>
     </li>
     <?php } ?>
-
 </ul>
 <br>
 <br>
@@ -479,6 +463,33 @@
     <!-- Main Script -->
     <script src="<?= base_url() ?>/backend/js/main.js" type="text/javascript"></script>
     <script src="<?= base_url() ?>/backend/js/custom-chart.js" type="text/javascript"></script>
+    <script>
+        $(function() {
+            // Multiple images preview in browser
+            var imagesPreview = function(input, placeToInsertImagePreview) {
+
+                if (input.files) {
+                    var filesAmount = input.files.length;
+
+                    for (i = 0; i < filesAmount; i++) {
+                        var reader = new FileReader();
+
+                        reader.onload = function(event) {
+                            $($.parseHTML('<img style="wight:50" class="poto m-1">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                        }
+
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
+
+            };
+
+            $('#gallery-photo-add').on('change', function() {
+                $( ".poto" ).remove();
+                imagesPreview(this, 'div.gallery');
+            });
+        });
+</script>
 </body>
 
 </html>
