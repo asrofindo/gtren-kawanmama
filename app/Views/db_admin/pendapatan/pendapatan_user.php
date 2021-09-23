@@ -72,7 +72,7 @@
             <form action="<?php base_url()  ?>/transaksi/wd" method="post">
                 <div class="mb-4">
                     <input type="hidden" id="pendapatan_id" name="pendapatan_id">
-                    <input type="hidden" name="status_dana" value="distributor">
+                    <input type="hidden" name="status_dana" value="user">
                     <input type="hidden" name="wd" id="wd">
                     Total : Rp<h5 id="total_wd"> </h5>
                     <select class="form-control"  name="bill">
