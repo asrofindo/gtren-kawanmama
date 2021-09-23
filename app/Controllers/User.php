@@ -13,6 +13,7 @@ use App\Models\NotifModel;
 use App\Models\RekeningModel;
 use App\Models\SosialModel;
 use App\Models\PendapatanModel;
+use App\Models\WDModel;
 use Myth\Auth\Models\UserModel;
 use Myth\Auth\Authorization\GroupModel;
 use App\Controllers\OtpType;
@@ -36,6 +37,7 @@ class User extends BaseController
 		$this->group = new GroupModel();
 		$this->generate = new GenerateModel();
 		$this->bill = new BillModel();
+		$this->wd = new WDModel();
 		$this->address = new AddressModel();
 		$this->pendapatan = new PendapatanModel();
 
@@ -599,7 +601,7 @@ class User extends BaseController
 			session()->setFlashdata('success', 'data berhasil disimpan');
 
 		}
-
+		$data['wds'] = $this->wd->where('user_id', user()->id)->find();	
 		$data['segments'] = $this->request->uri->getSegments();
 		$data['rekening'] = $this->rekening->where('user_id',user()->id)->find();
 
