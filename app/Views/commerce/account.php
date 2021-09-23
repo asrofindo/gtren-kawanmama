@@ -15,7 +15,7 @@
                                     <a class="nav-link <?= ($segments[0] == "orders" ? "active" : null) ?>" id="orders-tab" href="<?= base_url('orders') ?>"><i class="fa fa-shopping-basket mr-15"></i>Pembelian</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link <?= ($segments[0] == "rekening" ? "active" : null) ?>" id="rekening-tab" href="<?= base_url('rekening') ?>"><i class="fa fa-money-bill mr-15"></i>Rekening Anda</a>
+                                    <a class="nav-link <?= ($segments[0] == "rekening" ? "active" : null) ?>" id="rekening-tab" href="<?= base_url('rekening') ?>"><i class="fa fa-money-bill mr-15"></i>Keuangan Anda</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link <?= ($segments[0] == "tracking" ? "active" : null) ?>" id="track-orders-tab" href="<?= base_url('tracking') ?>" role="tab" aria-controls="track-orders" aria-selected="false"><i class="fa fa-paper-plane mr-15"></i>Cek Pesanan</a>
