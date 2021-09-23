@@ -37,6 +37,7 @@ class User extends BaseController
 		$this->generate = new GenerateModel();
 		$this->bill = new BillModel();
 		$this->address = new AddressModel();
+		$this->pendapatan = new PendapatanModel();
 
 	}
 	public function account()
