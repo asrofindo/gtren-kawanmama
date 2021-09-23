@@ -77,12 +77,6 @@ class upgrades extends BaseController
 
 			wawoo(user()->phone,$msg);
 
-			$msg="Selamat!\nAda *upgrade affiliate* di ".base_url()."\nNama affiliate: ".user()->greeting." ".user()->fullname."\nNo. Wa: ".user()->phone;
-			
-			$notif = $this->notif->findAll();
-			foreach ($notif as $key => $value) {
-				wawoo($value['phone'],$msg);
-			}
 
 			$generate = $this->generate->find()[0]['nomor'];
 			// $this->generate->save(['id' => 1, 'nomor' => $generate + 1]);
@@ -191,15 +185,15 @@ class upgrades extends BaseController
 		]);
 		$bill = $this->bill->find($bill_id)->bank_name;
 		$request = $this->request;
-		// $this->group->addUserToGroup($id, 4);
+		$this->group->addUserToGroup($id, 4);
 
 		$user=$this->user->where('id',$id)->first();
 
-		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\nStatus Program Referal Anda *sudah aktif* \nAkses Halaman Affiliate :".base_url('upgrade/affiliate');
+		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\nStatus Program Referal Anda *sudah aktif* \nAkses Halaman Affiliate :".base_url('/affiliate');
 
-		wawoo(user()->phone,$msg);	
+		wawoo($user->phone,$msg);	
 		
-		$msg="Selamat!\n".base_url()."\nNama : ".user()->greeting." ".user()->fullname."\nNo. Wa: ".user()->phone."/nStatus Program Referal *sudah aktif*";
+		$msg=base_url()."\nSelamat!\n"."\nAffiliate baru *sudah aktif*"."\nNama : ".$user->greeting." ".$user->fullname."\nNo. Wa: ".user()->phone;
 			
 		$notif = $this->notif->findAll();
 		foreach ($notif as $key => $value) {

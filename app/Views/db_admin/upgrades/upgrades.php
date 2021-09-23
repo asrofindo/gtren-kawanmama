@@ -47,7 +47,6 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>   
-                                    <th>Bukti TF</th>
                                     <th>Name</th> 
                                     <th>status</th>
                                     <th>type</th>
@@ -60,7 +59,6 @@
                             <tbody>
                                 <?php foreach ($upgrades as $upgrade): ?>  
 		                            <tr>
-                                        <td><img style="width:100px; height:80px" class="w-10 d-inline-block p-0" src="<?= base_url()  ?>/uploads/bukti/<?= $upgrade->photo ?>"></td>
 		                                <td><b><?= $upgrade->username ?></b></td>
                                         <?php if($upgrade->status_request == 'pending'): ?>
                                             <td><b class="badge rounded-pill alert-warning"><?= $upgrade->status_request ?></b></td>
