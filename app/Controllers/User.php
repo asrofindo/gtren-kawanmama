@@ -602,7 +602,7 @@ class User extends BaseController
 
 		$data['segments'] = $this->request->uri->getSegments();
 		$data['rekening'] = $this->rekening->where('user_id',user()->id)->find();
-		$data['saldo']  = $this->pendapatan->wherer('user_id', user()->id)->first()->total;
+		$data['saldo']  = $this->pendapatan->where('user_id', user()->id)->first()->total;
 		
 		return view('commerce/account', $data);
 	}
