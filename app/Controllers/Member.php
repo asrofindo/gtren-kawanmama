@@ -236,7 +236,6 @@ class Member extends BaseController
 					->orderBy('ag.id',"ASC")
 					->first();
 					array_push($this->datauser,$data);
-					$this->user_rekursif($value->id);
 				}
 	}
 }
