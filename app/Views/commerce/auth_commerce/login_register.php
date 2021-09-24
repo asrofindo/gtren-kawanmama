@@ -1,8 +1,8 @@
 <?= $this->extend('commerce/templates/index') ?>
 <?= $this->section('content') ?>
-<div class="page-header breadcrumb-wrap">
-    <div class="container">
-        <div class="breadcrumb d-none d-xl-block d-md-block d-lg-block">
+<div class="page-header breadcrumb-wrap d-none d-xl-block d-md-block d-lg-block">
+    <div class="container ">
+        <div class="breadcrumb">
             <a href="<?= base_url()?>">Home</a>
             <span></span> Pages
             <span></span> Login / Register

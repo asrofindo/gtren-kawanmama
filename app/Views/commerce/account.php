@@ -231,7 +231,7 @@
                                                     </div> 
                                                     <div class="form-group col-md-12">
                                                         <label>Nomor Rekening<span class="required">*</span></label>
-                                                        <input required="" class="form-control square" name="number" type="text" value="">
+                                                        <input required="" class="form-control square" name="number" type="number" value="">
                                                     </div> 
                                                     <div class="col-md-12">
                                                         <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Simpan</button>
@@ -281,11 +281,11 @@
                                                 <form method="POST" action="<?= base_url() ?>/request/wd">
                                                     <div class="row gx-3">
                                                             <div class="col-lg-3 col-md-2">
-                                                                <input name="jumlah_wd" type="text" placeholder="Masukan Nominal Dana" class="form-control bg-white">
+                                                                <input name="jumlah_wd" type="number" placeholder="Masukan Nominal Dana" class="form-control bg-white">
                                                                 <input name="status_dana" type="hidden" placeholder="Masukan Nominal Dana" value="user" class="form-control bg-white">
                                                             </div>
                                                             <div class="col-lg-3 col-md-2">
-                                                                <input name="otp" type="text" placeholder="Masukan Kode OTP" class="form-control bg-white">
+                                                                <input name="otp" type="number" placeholder="Masukan Kode OTP" class="form-control bg-white">
                                                             </div>
                                                             <div class="col-lg-2 col-md-2 me-auto">
                                                                 <button type="submit" class="btn btn-primary btn-sm rounded">Tarik</button>
@@ -357,7 +357,7 @@
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Jumlah Transfer <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name=total type="text"  value="<?= $konfirmasi->total?>">
+                                                            <input required="" class="form-control square" name=total type="number"  value="<?= $konfirmasi->total?>">
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Bank Tujuan<span class="required">*</span></label>
@@ -377,7 +377,7 @@
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Jumlah Transfer <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name=total type="text"  value="">
+                                                            <input required="" class="form-control square" name=total type="number"  value="">
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Bank Tujuan<span class="required">*</span></label>

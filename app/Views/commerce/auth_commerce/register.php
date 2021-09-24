@@ -1,7 +1,7 @@
 <?= $this->extend('commerce/templates/index') ?>
 <?= $this->section('content') ?>
-<div class="page-header breadcrumb-wrap">
-    <div class="container">
+<div class="page-header breadcrumb-wrap d-none d-xl-block d-md-block d-lg-block">
+    <div class="container d-none d-xl-block d-md-block d-lg-block">
     <div class="breadcrumb d-none d-xl-block d-md-block d-lg-block">
             <a href="<?php base_url() ?>" rel="nofollow">Home</a>
             <span></span> Pages

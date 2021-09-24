@@ -1,6 +1,6 @@
 <?= $this->extend('commerce/templates/index') ?>
 <?= $this->section('content') ?>
-<div class="page-header breadcrumb-wrap">
+<div class="page-header breadcrumb-wrap d-none d-xl-block d-md-block d-lg-block">
     <div class="container">
         <div class="breadcrumb">
             <a href="index.html" rel="nofollow">Home</a>
