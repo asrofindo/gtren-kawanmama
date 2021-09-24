@@ -247,23 +247,23 @@
                     <nav>
                         <ul class="mobile-menu">
                         <?php if (user()!=null) {?>
-                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/account"><li class="menu-item-has-children"><span class="menu-expand"></span>Dashboard</li></a>
-                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/orders"><li class="menu-item-has-children"><span class="menu-expand"></span>Pembelian</li></a>
-                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/rekening"><li class="menu-item-has-children"><span class="menu-expand"></span>Rekening Anda</li></a>
-                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/tracking"><li class="menu-item-has-children"><span class="menu-expand"></span>Cek Pesanan</li></a>
-                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/address"><li class="menu-item-has-children"><span class="menu-expand"></span>Alamat</li></a>
-                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/profile"><li class="menu-item-has-children"><span class="menu-expand"></span>Profile Saya</li></a>
+                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/account"><li class="menu-item-has-children <?php if (uri_string()=="account") { echo "active";}?>"><span class="menu-expand"></span>Dashboard</li></a>
+                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/orders"><li class="menu-item-has-children <?php if (uri_string()=="orders") { echo "active";}?>"><span class="menu-expand"></span>Pembelian</li></a>
+                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/rekening"><li class="menu-item-has-children <?php if (uri_string()=="rekening") { echo "active";}?>"><span class="menu-expand"></span>Rekening Anda</li></a>
+                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/tracking"><li class="menu-item-has-children <?php if (uri_string()=="tracking") { echo "active";}?>"><span class="menu-expand"></span>Cek Pesanan</li></a>
+                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/address"><li class="menu-item-has-children <?php if (uri_string()=="address") { echo "active";}?>"><span class="menu-expand"></span>Alamat</li></a>
+                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/profile"><li class="menu-item-has-children <?php if (uri_string()=="profile") { echo "active";}?>"><span class="menu-expand"></span>Profile Saya</li></a>
                             <?php if (in_groups(4)) {?>
-                                <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/affiliate"><li class="menu-item-has-children"><span class="menu-expand"></span>Dashboard Affiliate</li></a>
+                                <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/affiliate"><li class="menu-item-has-children <?php if (uri_string()=="affiliate") { echo "active";}?>"><span class="menu-expand"></span>Dashboard Affiliate</li></a>
                             <?php }?>
                             <?php if (!in_groups(4)) {?>
-                                <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/upgrade/affiliate"><li class="menu-item-has-children"><span class="menu-expand"></span>Daftar Affiliate</li></a>
+                                <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/upgrade/affiliate"><li class="menu-item-has-children <?php if (uri_string()=="upgrade/affiliate") { echo "active";}?>"><span class="menu-expand"></span>Daftar Affiliate</li></a>
                             <?php }?>
                             <?php if (in_groups(3)) {?>
-                                <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/seller"><li class="menu-item-has-children"><span class="menu-expand"></span>Dashboard Distributor</li></a>
+                                <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/seller"><li class="menu-item-has-children <?php if (uri_string()=="seller") { echo "active";}?>"><span class="menu-expand"></span>Dashboard Distributor</li></a>
                             <?php }?>
                             <?php if (!in_groups(3)) {?>
-                                <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/upgrade/stockist"><li class="menu-item-has-children"><span class="menu-expand"></span>Jadi Distributor</li></a>
+                                <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/upgrade/stockist"><li class="menu-item-has-children <?php if (uri_string()=="upgrade/stockist") { echo "active";}?>"><span class="menu-expand"></span>Jadi Distributor</li></a>
                             <?php }?>
                             <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/logout"><li class="menu-item-has-children"><span class="menu-expand"></span>Keluar</li></a>
                         <?php } ?>

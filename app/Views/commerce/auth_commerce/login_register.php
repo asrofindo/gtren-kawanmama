@@ -59,7 +59,7 @@
                                         </label>
                                     </div>
                                 <?php endif; ?>
-                                    <button type="submit" class="btn btn-primary btn-block">masuk</button>
+                                    <button type="submit" class="btn btn-primary btn-block submit">masuk</button>
                                 </form>
                                 <hr>
 
