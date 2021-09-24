@@ -75,14 +75,6 @@
                         </div>
                     </div>
                     <?php }?>
-                    <div class="card col-3 p-0">
-                        <a href="<?=base_url()?>/products/cart">
-                            <img src="<?=base_url()?>/public/uploads/banner/keranjang.png" alt="" class="p-2">
-                        </a>
-                            <div class="card-body p-0 text-center">
-                                <h6 class="card-title">keranjang</h6>
-                            </div>
-                    </div>
                 <?php }else{?>
                     <div class="card col-3 p-0">
                         <a href="<?=base_url()?>/login">
@@ -97,7 +89,7 @@
                             <img src="<?=base_url()?>/public/uploads/banner/gtren.png" alt="" class="p-2">
                         </a>
                         <div class="card-body p-0 text-center">
-                            <h6 class="card-title">Daftar Gtren</h6>
+                            <h6 class="card-title">daftar</h6>
                         </div>
                     </div>
                 <?php }?>
