@@ -114,7 +114,7 @@
         <hr>
         <li class="menu-item">
             <a class="menu-link" href="<?= base_url() ?>/market/affiliate"> <i class="icon material-icons md-assignment"></i>
-                <span class="text">Market Affiliate</span>
+                <span class="text">Affiliate Tools</span>
             </a>
         </li>
         <li class="menu-item">
