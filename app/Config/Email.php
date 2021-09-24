@@ -9,12 +9,12 @@ class Email extends BaseConfig
 	/**
 	 * @var string
 	 */
-	public $fromEmail = "imronpuji5@gmail.com";
+	public $fromEmail = "support@kawanmama.com";
 
 	/**
 	 * @var string
 	 */
-	public $fromName = "Gtren Team";
+	public $fromName = "Gtren Baru";
 
 	/**
 	 * @var string
@@ -61,7 +61,7 @@ class Email extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $SMTPPass = 'support123';
+	public $SMTPPass = 'imronkendal';
 
 	/**
 	 * SMTP Port
