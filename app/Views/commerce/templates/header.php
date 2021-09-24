@@ -247,29 +247,29 @@
                     <nav>
                         <ul class="mobile-menu">
                         <?php if (user()!=null) {?>
-                            <a href="<?= base_url()?>/account"><li class="menu-item-has-children"><span class="menu-expand"></span>Dashboard</li></a>
-                            <a href="<?= base_url()?>/orders"><li class="menu-item-has-children"><span class="menu-expand"></span>Pembelian</li></a>
-                            <a href="<?= base_url()?>/rekening"><li class="menu-item-has-children"><span class="menu-expand"></span>Rekening Anda</li></a>
-                            <a href="<?= base_url()?>/tracking"><li class="menu-item-has-children"><span class="menu-expand"></span>Cek Pesanan</li></a>
-                            <a href="<?= base_url()?>/address"><li class="menu-item-has-children"><span class="menu-expand"></span>Alamat</li></a>
-                            <a href="<?= base_url()?>/profile"><li class="menu-item-has-children"><span class="menu-expand"></span>Profile Saya</li></a>
+                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/account"><li class="menu-item-has-children"><span class="menu-expand"></span>Dashboard</li></a>
+                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/orders"><li class="menu-item-has-children"><span class="menu-expand"></span>Pembelian</li></a>
+                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/rekening"><li class="menu-item-has-children"><span class="menu-expand"></span>Rekening Anda</li></a>
+                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/tracking"><li class="menu-item-has-children"><span class="menu-expand"></span>Cek Pesanan</li></a>
+                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/address"><li class="menu-item-has-children"><span class="menu-expand"></span>Alamat</li></a>
+                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/profile"><li class="menu-item-has-children"><span class="menu-expand"></span>Profile Saya</li></a>
                             <?php if (in_groups(4)) {?>
-                                <a href="<?= base_url()?>/affiliate"><li class="menu-item-has-children"><span class="menu-expand"></span>Dashboard Affiliate</li></a>
+                                <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/affiliate"><li class="menu-item-has-children"><span class="menu-expand"></span>Dashboard Affiliate</li></a>
                             <?php }?>
                             <?php if (!in_groups(4)) {?>
-                                <a href="<?= base_url()?>/upgrade/affiliate"><li class="menu-item-has-children"><span class="menu-expand"></span>Daftar Affiliate</li></a>
+                                <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/upgrade/affiliate"><li class="menu-item-has-children"><span class="menu-expand"></span>Daftar Affiliate</li></a>
                             <?php }?>
                             <?php if (in_groups(3)) {?>
-                                <a href="<?= base_url()?>/seller"><li class="menu-item-has-children"><span class="menu-expand"></span>Dashboard Distributor</li></a>
+                                <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/seller"><li class="menu-item-has-children"><span class="menu-expand"></span>Dashboard Distributor</li></a>
                             <?php }?>
                             <?php if (!in_groups(3)) {?>
-                                <a href="<?= base_url()?>/upgrade/stockist"><li class="menu-item-has-children"><span class="menu-expand"></span>Jadi Distributor</li></a>
+                                <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/upgrade/stockist"><li class="menu-item-has-children"><span class="menu-expand"></span>Jadi Distributor</li></a>
                             <?php }?>
-                            <a href="<?= base_url()?>/logout"><li class="menu-item-has-children"><span class="menu-expand"></span>Keluar</li></a>
+                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/logout"><li class="menu-item-has-children"><span class="menu-expand"></span>Keluar</li></a>
                         <?php } ?>
                         <?php if (user()==null) { ?>
-                            <a href="<?= base_url()?>/login"><li class="menu-item-has-children"><span class="menu-expand"></span>Masuk</li></a>
-                            <a href="<?= base_url()?>/register"><li class="menu-item-has-children"><span class="menu-expand"></span>Daftar</li></a>
+                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/login"><li class="menu-item-has-children"><span class="menu-expan"></span>Masuk</li></a>
+                            <a style="text-decoration: none;color:#ffff;" href="<?= base_url()?>/register"><li class="menu-item-has-children"><span class="menu-expand"></span>Daftar</li></a>
                         <?php }?>
                         </ul>
                     </nav>

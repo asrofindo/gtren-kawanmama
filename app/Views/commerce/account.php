@@ -63,7 +63,6 @@
                                     <?php endif; ?>
                                 </li>
                             <?php } ?>
-
                                 <li class="nav-item bg-danger">
                                     <a class="nav-link text-white" href="/logout"><i class="text-white fa fa-sign-out mr-15"></i>Keluar</a>
                                 </li>
