@@ -218,12 +218,12 @@ class Order extends BaseController
 		$bill_id = $this->model->find($transaksi_id)->bill_id;
 		$total = $this->bills->find($bill_id)->total;
 
-		$data['bills'] = [
-			"id" => $bill_id,
-			"total" => $total - ($data['detailtransaksi']->total + $data['detailtransaksi']->ongkir_produk)
-		];
+		// $data['bills'] = [
+		// 	"id" => $bill_id,
+		// 	"total" => $total - ($data['detailtransaksi']->total + $data['detailtransaksi']->ongkir_produk)
+		// ];
 
-		$this->bills->save($data['bills']);
+		// $this->bills->save($data['bills']);
 
 		$pendapatan = new PendapatanType();
 		$initializePendapatan = $pendapatan->initializePendapatan($data['detailtransaksi'], 'user');
