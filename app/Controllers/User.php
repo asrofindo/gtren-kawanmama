@@ -107,6 +107,8 @@ class User extends BaseController
 		->join('pengiriman', 'detailpengiriman.pengiriman_id = pengiriman.id')
 		->where('transaksi.id', $transaksi_id)
 		->find();
+		$admin = $this->notif->findAll();
+		$data['admin']=$admin[rand()%(count($admin))]['phone'];
 
 		return view('commerce/account', $data);
 	}

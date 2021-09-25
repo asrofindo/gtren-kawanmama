@@ -9,9 +9,7 @@
             <p><?= rupiah($pendapatan[0]->total); ?></p>
         <?php endif; ?>
     </div>
-    <form method="post" action="<?php base_url() ?>/request/otp">
-        <button type="submit" class="btn btn-primary btn-sm rounded">Request Kode OTP</button>
-    </form>
+
 </div>
 <div class="content-header" style="justify-content: left; ">
      <div>
@@ -51,20 +49,25 @@
 <?php } ?>
 <div class="row">
     <div class="card mb-4 col-md-12">
+        <div class="row m-2">
+            <form method="post" action="<?php base_url() ?>/request/otp">
+                    <button type="submit" class="btn btn-primary btn-sm rounded">Request Kode OTP</button>
+            </form>
+        </div>
         <header class="card-header">
             <form method="POST" action="<?= base_url() ?>/request/wd">
                 <div class="row gx-3">
                         <div class="col-lg-3 col-md-2">
-                            <input name="jumlah_wd" type="number" placeholder="Masukan Nominal Dana" class="form-control bg-white">
+                            <input name="jumlah_wd" type="number" placeholder="Masukan Nominal Dana" class="form-control">
                         </div>
                         <div class="col-lg-3 col-md-2">
-                            <input name="otp" type="number" placeholder="Masukan Kode OTP" class="form-control bg-white">
+                            <input name="otp" type="number" placeholder="Masukan Kode OTP" class="form-control">
                         </div>
                         <div class="col-lg-3 col-md-2">
-                            <select class="form-control bg-white" name="status_dana">
-                                <option disabled selected class="form-control bg-white">Pilih Jenis Tabungan</option>
-                                <option value="affiliate" class="form-control bg-white">Affiliate</option>
-                                <?php if(in_groups(3)): ?><option value="distributor" class="form-control bg-white">Distributor</option><?php endif; ?>
+                            <select class="form-control" name="status_dana">
+                                <option disabled selected class="form-control">Pilih Jenis Tabungan</option>
+                                <option value="affiliate" class="form-control">Affiliate</option>
+                                <?php if(in_groups(3)): ?><option value="distributor" class="form-control">Distributor</option><?php endif; ?>
                             </select>
                         </div>
                         <div class="col-lg-2 col-md-2 me-auto">
