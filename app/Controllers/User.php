@@ -10,6 +10,7 @@ use App\Models\TransaksiModel;
 use App\Models\CategoryModel;
 use App\Models\KonfirmasiModel;
 use App\Models\NotifModel;
+use App\Models\BankModel;
 use App\Models\RekeningModel;
 use App\Models\SosialModel;
 use App\Models\PendapatanModel;
@@ -30,6 +31,7 @@ class User extends BaseController
 		$this->transaksi = new TransaksiModel();
 		$this->konfirmasi = new KonfirmasiModel();
 		$this->notif = new NotifModel();
+		$this->bank = new BankModel();
 
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
@@ -604,6 +606,7 @@ class User extends BaseController
 		$data['wds'] = $this->wd->where('user_id', user()->id)->find();	
 		$data['segments'] = $this->request->uri->getSegments();
 		$data['rekening'] = $this->rekening->where('user_id',user()->id)->find();
+		$data['bank'] = $this->bank->find();
 
 		if($this->pendapatan->where('user_id', user()->id)->first() != null){
 			$data['saldo']  = $this->pendapatan->where('user_id', user()->id)->first()->total;

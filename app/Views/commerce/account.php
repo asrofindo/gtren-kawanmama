@@ -63,7 +63,6 @@
                                     <?php endif; ?>
                                 </li>
                             <?php } ?>
-
                                 <li class="nav-item bg-danger">
                                     <a class="nav-link text-white" href="/logout"><i class="text-white fa fa-sign-out mr-15"></i>Keluar</a>
                                 </li>
@@ -227,7 +226,13 @@
                                                     </div>   
                                                     <div class="form-group col-md-12">
                                                         <label>Nama Bank <span class="required">*</span></label>
-                                                        <input required="" class="form-control square" name="bank" type="text" value="">
+                                                        <select class="form-select square" name="bank">
+                                                                    <?php foreach ($bank as $key=> $b): ?>
+                                                                        <option value="<?= $b->nama_lain?>">
+                                                                        <?= $b->nama_lain ?>
+                                                                        </option>
+                                                                    <?php endforeach ?>
+                                                        </select>
                                                     </div> 
                                                     <div class="form-group col-md-12">
                                                         <label>Nomor Rekening<span class="required">*</span></label>
@@ -949,28 +954,35 @@
                                                 </p>
                                                
                                             </div>
-                                            <?php if(in_groups(3)){?>
+                                            <?php if(in_groups(3) && !in_groups(1)){?>
                                             <div class="roe m-1">
                                                 <div class="col-12">
                                                     <a href="<?= base_url('/seller') ?>"><button class="btn btn-lg w-100">Klik Untuk Kunjungi Dashboard</button></a>
                                                 </div>
                                             </div>
                                             <?php }?>
-                                            <?php if(!in_groups(3)){?>
+                                            <?php if(in_groups(1)){?>
+                                            <div class="roe m-1">
+                                                <div class="col-12">
+                                                    <a href="<?= base_url('/admin') ?>"><button class="btn btn-lg w-100">Dashboard Admin</button></a>
+                                                </div>
+                                            </div>
+                                            <?php }?>
+                                            <?php if(!in_groups(3) && !in_groups(1)){?>
                                             <div class="roe m-1">
                                                 <div class="col-12">
                                                     <a href="<?= base_url('/upgrade/stockist') ?>"><button class="btn btn-lg w-100">klik Untuk Jadi Distributor</button></a>
                                                 </div>
                                             </div>
                                             <?php }?>
-                                            <?php if(!in_groups(4)){?>
+                                            <?php if(!in_groups(4) && !in_groups(1)){?>
                                             <div class="roe m-1">
                                                 <div class="col-12">
                                                     <a href="<?= base_url('/upgrade/affiliate') ?>"><button class="btn btn-lg w-100  bg-warning">klik Daftar Affiliate</button></a>
                                                 </div>
                                             </div>
                                             <?php }?>
-                                            <?php if(in_groups(4)){?>
+                                            <?php if(in_groups(4) && !in_groups(1)){?>
                                             <div class="row m-1">
                                                 <input type="text" value="<?=base_url()?>/src/<?= user()->id?>" id="copy" readonly />
                                                 <button type="button" onclick="copy_text()" class="btn btn-sm m-1" id="copy">Copy Untuk Mengajak</button>

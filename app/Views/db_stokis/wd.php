@@ -55,10 +55,10 @@
             <form method="POST" action="<?= base_url() ?>/request/wd">
                 <div class="row gx-3">
                         <div class="col-lg-3 col-md-2">
-                            <input name="jumlah_wd" type="text" placeholder="Masukan Nominal Dana" class="form-control bg-white">
+                            <input name="jumlah_wd" type="number" placeholder="Masukan Nominal Dana" class="form-control bg-white">
                         </div>
                         <div class="col-lg-3 col-md-2">
-                            <input name="otp" type="text" placeholder="Masukan Kode OTP" class="form-control bg-white">
+                            <input name="otp" type="number" placeholder="Masukan Kode OTP" class="form-control bg-white">
                         </div>
                         <div class="col-lg-3 col-md-2">
                             <select class="form-control bg-white" name="status_dana">

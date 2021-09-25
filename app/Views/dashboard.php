@@ -6,7 +6,7 @@
     <?php if(in_groups(1)) {?>
         <title>Gtren dashboard Admin</title>
     <?php }elseif(in_groups(3)) {?>
-        <title>Gtren dashboard Seller</title>
+        <title>Gtren dashboard Distributor</title>
     <?php }elseif(in_groups(4)) {?>
         <title>Gtren dashboard Affiliate</title>
     <?php }?>
@@ -89,7 +89,7 @@
     <?php }elseif(in_groups(3)) {?>
         <li class="menu-item">
             <a class="menu-link" href="<?= base_url() ?>/seller"> <i class="icon material-icons md-home"></i>
-                <span class="text">Dashboard Seller</span>
+                <span class="text">Dashboard Distributor</span>
             </a>
         </li>  
         <li class="menu-item">
@@ -114,7 +114,7 @@
         <hr>
         <li class="menu-item">
             <a class="menu-link" href="<?= base_url() ?>/market/affiliate"> <i class="icon material-icons md-assignment"></i>
-                <span class="text">Market Affiliate</span>
+                <span class="text">Affiliate Tools</span>
             </a>
         </li>
         <li class="menu-item">
@@ -235,7 +235,7 @@
                         <article class="icontext">
                             <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
                             <div class="text">
-                                <h6 class="mb-1 card-title">Dana Seller</h6> 
+                                <h6 class="mb-1 card-title">Dana Distributor</h6> 
                                 <span><?= rupiah($stockist[0]->stockist_total) ;?></span>
                                 <!-- <span class="text-sm">
                                     Excluding orders in transit
@@ -351,7 +351,7 @@
                         <article class="icontext">
                             <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
                             <div class="text">
-                                <h6 class="mb-1 card-title">Dana Seller</h6> 
+                                <h6 class="mb-1 card-title">Dana Distributor</h6> 
                                 <span><?= rupiah($stockist[0]->stockist_total) ;?></span>
                                 <!-- <span class="text-sm">
                                     Excluding orders in transit

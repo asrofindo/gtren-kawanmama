@@ -37,7 +37,7 @@
 <body id="body">
 
   <style>
- @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
 fieldset, label { margin: 0; padding: 0; }
 h1 { font-size: 1.5em; margin: 10px; }
@@ -113,6 +113,19 @@ h1 { font-size: 1.5em; margin: 10px; }
     <script src="<?= base_url()  ?>/./frontend/js/main.js"></script>
     <script src="<?= base_url()  ?>/./frontend/js/shop.js"></script>
     <script type="text/javascript">
+        $(document).ready(function() {
+          $('.btn').on('click', function() {
+            var $this = $(this);
+            var loadingText = '<span class="spinner-border spinner-border-sm " role="status" aria-hidden="true"></span><i class="fa fa-circle-o-notch fa-spin"></i> loading...';
+            if ($(this).html() !== loadingText) {
+              $this.data('original-text', $(this).html());
+              $this.html(loadingText);
+            }
+            setTimeout(function() {
+              $this.html($this.data('original-text'));
+            }, 1000*10);
+          });
+        })
         const locate = document.getElementById('location');
 
         function getLocation() {
