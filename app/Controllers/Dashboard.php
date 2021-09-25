@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Models\DetailTransaksiModel;
 use App\Models\TransaksiModel;
 use App\Models\BillModel;
+use App\Models\PendapatanModel;
 use App\Models\UpgradesModel;
 class Dashboard extends BaseController
 {
@@ -13,6 +14,7 @@ class Dashboard extends BaseController
 		$this->bill = new BillModel();
 		$this->transaksi = new TransaksiModel();
 		$this->upgrades = new UpgradesModel();
+		$this->pendapatan = new PendapatanModel();
 	}
 	public function index()
 	{
@@ -43,6 +45,8 @@ class Dashboard extends BaseController
 		$kode_unik  = $data['kode_unik'][0]->kode_unik_admin;
 
 		$data['admin'] = [["admin_total" => $data['admin'][0]->admin_total + $data['upgrades'][0]->total_upgrades + $kode_unik]];
+
+		$data['pendapatan'] = $this->pendapatan->select('sum(COALESCE(total,0)) as total')->where('status_dana', 'user')->findAll();
 
 		$data['stockist'] = $this->model->select('sum(COALESCE(stockist_commission,0)) - COALESCE(pendapatan.keluar,0) AS stockist_total')
 		->join('distributor', 'distributor.id = detailtransaksi.distributor_id ', 'left')
