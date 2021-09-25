@@ -202,20 +202,34 @@
             <?php if(isset($segments) && $segments[0] == 'admin'): ?>
             <div class="row">
                 <?php if(in_groups(1)): ?>
-                    <div class="col-lg-3">
-                        <div class="card card-body mb-4">
-                            <article class="icontext">
-                                <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-monetization_on"></i></span>
-                                <div class="text">
-                                    <h6 class="mb-1 card-title">Dana User</h6>
-                                    <span><?= rupiah($user[0]->user_total); ;?></span>
-                                   <!--  <span class="text-sm">
-                                        Shipping fees are not included
-                                    </span> -->
-                                </div>
-                            </article>
-                        </div>
+                <div class="col-lg-3">
+                    <div class="card card-body mb-4">
+                        <article class="icontext">
+                            <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-monetization_on"></i></span>
+                            <div class="text">
+                                <h6 class="mb-1 card-title">Dana User</h6>
+                                <span><?= rupiah($user[0]->user_total); ;?></span>
+                               <!--  <span class="text-sm">
+                                    Shipping fees are not included
+                                </span> -->
+                            </div>
+                        </article>
                     </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card card-body mb-4">
+                        <article class="icontext">
+                            <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-monetization_on"></i></span>
+                            <div class="text">
+                                <h6 class="mb-1 card-title">Dompet User</h6>
+                                <span><?= rupiah($pendapatan[0]->total); ;?></span>
+                               <!--  <span class="text-sm">
+                                    Shipping fees are not included
+                                </span> -->
+                            </div>
+                        </article>
+                    </div>
+                </div>
                 <div class="col-lg-3">
                     <div class="card card-body mb-4">
                         <article class="icontext">
