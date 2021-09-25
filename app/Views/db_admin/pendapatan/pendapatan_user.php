@@ -2,8 +2,8 @@
 <?php $this->section('content') ?>
 <div class="content-header">
     <div>
-        <h2 class="content-title card-title">Stockist </h2>
-        <p>dana Semua Stockist</p>
+        <h2 class="content-title card-title">User </h2>
+        <p>Dana Semua User</p>
     </div>
 </div>
 <div class="card mb-4">
@@ -36,7 +36,7 @@
                             <td><?php echo rupiah($pendapatan->masuk) ?></td>
                             <td><?php echo rupiah($pendapatan->keluar) ?></td>
                             <td><?php echo rupiah($pendapatan->total); ?></td>
-                            <td><?php echo $pendapatan->penarikan_dana; ?></td>
+                            <td class="<?php if ($pendapatan->penarikan_dana>0) { echo 'bg-danger'; } ?>"><?php echo $pendapatan->penarikan_dana; ?></td>
                             <td class="text-end">
                                 <div class="dropdown">
                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
