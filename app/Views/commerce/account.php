@@ -709,7 +709,7 @@
                                                     
                                                     <div class="form-group col-md-12">
                                                         <label>Nomer Whatsapp<span class="required">*</span></label>
-                                                        <input required="" class="form-control square" value="<?= user()->phone ?>" name="phone" type="text">
+                                                        <input required="" class="form-control square" value="<?= user()->phone ?>" name="phone" type="number">
                                                     </div>
                                                     
                                                         <div class="form-group col-md-12">

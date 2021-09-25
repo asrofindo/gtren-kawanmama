@@ -294,12 +294,7 @@ class User extends BaseController
 		if (user()->phone==null) {
 			user()->setProfile($data);
 
-			$msg="Selamat!\nAda *user baru* di ".base_url()."\nNama User :".user()->greeting." ".user()->fullname."\nNo. Wa: ".$data['phone'];			
-			$notif = $this->notif->findAll();
-
-			foreach ($notif as $key => $value) {
-				wawoo($value['phone'],$msg);
-			}
+			
 		}else{
 			user()->setProfile($data);
 		}
