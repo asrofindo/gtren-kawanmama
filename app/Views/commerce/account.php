@@ -917,7 +917,7 @@
                                             </form>
 
                                             <?php else: ?>
-                                                <a href="<?= base_url('/seller') ?>"><button class="btn btn-lg btn">Klik Untuk Kunjungi Dashboard</button></a>    
+                                                <a href="<?= base_url('/seller') ?>"><button class="btn btn-lg btn">BUKA DASHBOARD DISTRIBUTOR</button></a>    
                                             <?php endif; ?>
                                             </div>
                                        <!--  <div class="card-body">
@@ -961,7 +961,7 @@
                                             <?php if(in_groups(3) && !in_groups(1)){?>
                                             <div class="roe m-1">
                                                 <div class="col-12">
-                                                    <a href="<?= base_url('/seller') ?>"><button class="btn btn-lg w-100">Klik Untuk Kunjungi Dashboard</button></a>
+                                                    <a href="<?= base_url('/seller') ?>"><button class="btn btn-lg w-100">BUKA DASHBOARD DISTRIBUTOR</button></a>
                                                 </div>
                                             </div>
                                             <?php }?>

@@ -553,21 +553,21 @@ class Transaksi extends BaseController
 		$minimal_wd = $this->setting_wd->first()->minimal;
 		$minimal_wd = $minimal_wd;
       	if($jumlah_wd < $minimal_wd && $jumlah_wd != null){
-      		$data['wds'] = $this->wd->where('user_id', user()->id)->find();	
+      		$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();	
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->findAll();
 			session()->setFlashdata('danger', "Minimal Penarikan Dana Adalah Rp. {$minimal_wd}");
 			return view('db_stokis/wd', $data);
       	}
 
       	if($penarikan == null && $status_dana != null){
-			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
+			$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
 			session()->setFlashdata('danger', 'Dana Tidak Cukup');
 			return view('db_stokis/wd', $data);
         }
 
 		if(count($wd_belum) > 0){
-			$data['wds'] = $this->wd->where('user_id', user()->id)->find();	
+			$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();	
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->findAll();
 			session()->setFlashdata('danger', 'Anda Harus Menunggu Pencairan Dana Sebelumnya');
 			return view('db_stokis/wd', $data);
@@ -576,7 +576,7 @@ class Transaksi extends BaseController
 		//jika jumlah wd nya tidak lebih besar dari 0 
 		if(!$jumlah_wd > 0){
 
-			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
+			$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
 
 			return view('db_stokis/wd', $data);
@@ -584,21 +584,21 @@ class Transaksi extends BaseController
 		
 
 		if(count($this->pendapatan->where('user_id', user()->id)->find()) == 0 ){
-			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
+			$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_iroutd', user()->id)->find();
 
 			return view('db_stokis/wd', $data);
 		}
 
 		if($this->pendapatan->where('user_id', user()->id)->where('status_dana', $status_dana)->find()[0]->total == 0){			
-			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
+			$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
 			session()->setFlashdata('danger', 'Dana Tidak Cukup');
 			return view('db_stokis/wd', $data);
 		}
 
 		if($this->pendapatan->where('user_id', user()->id)->where('status_dana', $status_dana)->find()[0]->total < $jumlah_wd){			
-			$data['wds'] = $this->wd->where('user_id', user()->id)->find();
+			$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
 			session()->setFlashdata('danger', 'Dana Tidak Cukup');
 			return view('db_stokis/wd', $data);
