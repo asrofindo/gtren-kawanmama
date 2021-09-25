@@ -10,6 +10,7 @@ use App\Models\TransaksiModel;
 use App\Models\CategoryModel;
 use App\Models\KonfirmasiModel;
 use App\Models\NotifModel;
+use App\Models\ProductModel;
 use App\Models\BankModel;
 use App\Models\RekeningModel;
 use App\Models\SosialModel;
@@ -32,6 +33,7 @@ class User extends BaseController
 		$this->konfirmasi = new KonfirmasiModel();
 		$this->notif = new NotifModel();
 		$this->bank = new BankModel();
+		$this->product = new ProductModel();
 
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
@@ -79,12 +81,20 @@ class User extends BaseController
 
 	public function affiliate()
 	{
+
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
 		}
 		$data = $this->data;
-		
+		if ($this->request->getPost('keyword')!=null) {
+			$data['products']   = $this->product->like('name',$this->request->getPost('keyword'))->orderBy('id', 'desc')->paginate(8, 'products');
+		}else{
+
+			$data['products']   = $this->product->orderBy('id', 'desc')->paginate(8, 'products');
+		}
+		$data['pager']      = $this->product->pager;
+
 		return view('db_affiliate/market_affiliate', $data);
 	}
 
