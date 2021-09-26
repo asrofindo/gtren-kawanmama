@@ -52,7 +52,6 @@ class User extends BaseController
 			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
 			return redirect()->to('/distributor');
 		}
-		dd(count($this->address->where('type','distributor')->where('user_id',user()->id)->find()));
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
