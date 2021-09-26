@@ -610,9 +610,9 @@ class User extends BaseController
 			session()->setFlashdata('success', 'data berhasil disimpan');
 
 		}
-		$data['wds'] = $this->wd->where('user_id', user()->id)->find();	
+		$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();	
 		$data['segments'] = $this->request->uri->getSegments();
-		$data['rekening'] = $this->rekening->where('user_id',user()->id)->find();
+		$data['rekening'] = $this->rekening->where('user_id',user()->id)->orderBy('id','DESC')->find();
 		$data['bank'] = $this->bank->find();
 
 		if($this->pendapatan->where('user_id', user()->id)->first() != null){
