@@ -29,7 +29,7 @@ class Dashboard extends BaseController
 			session()->setFlashdata('danger', 'Akun Bank Wajib Diisi Terlebih Dahulu');
 			return redirect()->to('/bills');
 		}
-		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+		if(count($this->address->where('type','distributor')->where('user_id',user()->id)->find()) < 1 && in_groups(3)){
 			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
 			return redirect()->to('/distributor');
 		}
