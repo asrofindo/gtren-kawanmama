@@ -18,6 +18,7 @@ use App\Controllers\BaseController;
 use App\Models\SosialModel;
 use App\Models\OtpModel;
 use App\Models\NotifModel;
+use App\Models\UserModel;
 use App\Models\RekeningModel;
 use App\Controllers\OtpType;
 use App\Models\SettingWd;
@@ -46,6 +47,7 @@ class Transaksi extends BaseController
 		$this->setting_wd = new SettingWd();
 		$this->rekening = new RekeningModel();
 		$this->generate = new GenerateModel();
+		$this->user = new UserModel();
 
 		helper('wawoo');
 	}
@@ -478,7 +480,12 @@ class Transaksi extends BaseController
 		$this->pendapatan->save($data);
 
 		$this->wd->save(["id" => $id_wd, "status" => "sudah", "bill_id" => $bill_id]);
-		
+
+		$user = $this->user->where('id',$user_id)->first();
+		$msg = $user->greeting." ".$user->fullname.", \n
+		Permintaan penarikan dana Anda ".rupiah($wd)." *sudah ditransfer*.\nSilakan cek rekening Anda.";	
+
+		wawoo($user->phone, $msg);
 
 		return redirect()->back();
 	}
