@@ -697,7 +697,7 @@ class Product extends BaseController
 		$data['products'] = $this->model->like('name', $request)->paginate(8, 'products');
 		$data['pager']      = $this->model->pager;
 
-		return view('commerce/product_search', $data);
+		return view('commerce/s', $data);
 	}
 
 	public function search_p(){
@@ -707,7 +707,6 @@ class Product extends BaseController
 
 		$data['products'] = $this->model->like('name', $request)->paginate(8, 'products');
 		$data['pager']      = $this->model->pager;
-
-		return view('commerce/product_search', $data);
+		return view('commerce/s',$data);
 	}
 }
