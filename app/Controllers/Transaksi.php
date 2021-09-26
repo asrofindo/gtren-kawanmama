@@ -647,7 +647,7 @@ class Transaksi extends BaseController
 
 		wawoo(user()->phone, $msg);
 
-		$msg="*Permintaan Withdraw*\n\nJenis Uang  : ".$status_dana."\nNama User : ".user()->greeting." ".user()->fullname."\nJumlah Uang : ".rupiah($jumlah_wd)."\nCek di :\n\nDistributor : \n\n".base_url('/hutang/stockist')."\n\nAffiliate : \n\n".base_url('/hutang/affiliate')."\n\nDana Refaund : \n\n".base_url('/hutang/user')."\n";
+		$msg="*Permintaan Withdraw*\n\nJenis Uang  : ".$status_dana."\nNama User : ".user()->greeting." ".user()->fullname."\nJumlah Uang : ".rupiah($jumlah_wd)."\nCek di :\n\nDistributor : \n\n".base_url('/hutang/stockist')."\n\nAffiliate : \n\n".base_url('/hutang/affiliate')."\n\nDana Refund : \n\n".base_url('/hutang/user')."\n";
 
 		$notif = $this->notif->findAll();
 		foreach ($notif as $key => $value) {
