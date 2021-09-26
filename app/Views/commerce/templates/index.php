@@ -188,8 +188,8 @@ h1 { font-size: 1.5em; margin: 10px; }
               <div class="d-flex flex-row mt-5"><input maxlength="1" name="valOne"  style="margin:8px" type="number" class="form-control input-class" autofocus=""><input maxlength="1" name="valTwo"  style="margin:8px" type="number" class="form-control input-class"><input maxlength="1" name="valTree"  style="margin:8px" type="number" class="form-control input-class"><input maxlength="1" name="valFour"  style="margin:8px" type="number" class="form-control input-class"><input maxlength="1" name="valFive"  style="margin:8px" type="number" class="form-control input-class"></div>
             </div>
             <div class="modal-footer">
-              <a href="<?php base_url() ?>/verifywa/<?= user()->id ?>">Klik Di sini Untuk Minta Kode OTP Baru</a>
-              <button type="submit" class="btn btn-primary">Kirim</button>
+              <a class="btn btn-sm btn-warning" href="<?php base_url() ?>/verifywa/<?= user()->id ?>">Minta Kode OTP</a>
+              <button type="submit" class="btn btn-sm">Kirim</button>
             </div>
           </div>
         </div>
