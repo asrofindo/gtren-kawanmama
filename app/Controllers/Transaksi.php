@@ -654,7 +654,7 @@ class Transaksi extends BaseController
 			wawoo($value['phone'],$msg);
 		}
 		session()->setFlashdata('success', 'Sukses Meminta Pencairan Dana Mohon Ditunggu');
-		return view('db_stokis/wd',$data);;
+		return view('db_stokis/wd',$data);
 	}	
 
 	public function riwayat_wd()
