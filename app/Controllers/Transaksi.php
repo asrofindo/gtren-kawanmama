@@ -17,6 +17,7 @@ use App\Models\GenerateModel;
 use App\Controllers\BaseController;
 use App\Models\SosialModel;
 use App\Models\OtpModel;
+use App\Models\NotifModel;
 use App\Models\RekeningModel;
 use App\Controllers\OtpType;
 use App\Models\SettingWd;
@@ -41,6 +42,7 @@ class Transaksi extends BaseController
 		$this->pendapatan = new PendapatanModel();
 		$this->wd = new WDModel();
 		$this->otp = new OtpModel();
+		$this->notif = new NotifModel();
 		$this->setting_wd = new SettingWd();
 		$this->rekening = new RekeningModel();
 		$this->generate = new GenerateModel();
@@ -646,7 +648,7 @@ class Transaksi extends BaseController
 		wawoo(user()->phone, $msg);
 
 		$msg="*Permintaan Withdraw*\n\nJenis Uang  : ".$status_dana."\nNama User : ".user()->greeting." ".user()->fullname."\nJumlah Uang : ".rupiah($jumlah_wd)."\nCek di :\nDistributor : ".base_url('/hutang/stockist')."\nAffiliate : ".base_url('/hutang/affiliate')."\n Data Refaund : ".base_url('/hutang/stockist')."\n";
-		
+
 		$notif = $this->notif->findAll();
 		foreach ($notif as $key => $value) {
 			wawoo($value['phone'],$msg);
