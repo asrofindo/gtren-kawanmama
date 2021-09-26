@@ -364,19 +364,19 @@
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Tanggal Transfer <span class="required">*</span></label>
-                                                            <input readonly required="" class="form-control square" name="date" type="date" value="<?=$konfirmasi->date?>">
+                                                            <input required="" class="form-control square" name="date" type="date" value="<?=$konfirmasi->date?>">
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Jumlah Transfer <span class="required">*</span></label>
-                                                            <input readonly required="" class="form-control square" name=total type="number"  value="<?= $konfirmasi->total?>">
+                                                            <input required="" class="form-control square" name=total type="number"  value="<?= $konfirmasi->total?>">
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Bank Tujuan<span class="required">*</span></label>
-                                                            <input readonly required="" class="form-control square" name="bill" type="text"  value="<?="(".$bill->id.")-".$bill->bank_name."-".$bill->bank_number."-".$bill->owner?>">
+                                                            <input required="" class="form-control square" name="bill" type="text"  value="<?="(".$bill->id.")-".$bill->bank_name."-".$bill->bank_number."-".$bill->owner?>">
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Keterangan<span class="required">*</span></label>
-                                                            <input readonly required="" class="form-control square" name="keterangan" type="text"  value="<?=$konfirmasi->keterangan?>">
+                                                            <input required="" class="form-control square" name="keterangan" type="text"  value="<?=$konfirmasi->keterangan?>">
                                                         </div>
                                                         <div class="col-md-12">
                                                             <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Konfirmasi</button>
@@ -384,11 +384,11 @@
                                                     <?php }else{?>
                                                         <div class="form-group col-md-12">
                                                             <label>Tanggal Transfer <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="date" type="date" value="">
+                                                            <input readonly required="" class="form-control square" name="date" type="date" value="">
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Jumlah Transfer <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name=total type="number"  value="">
+                                                            <input readonly required="" class="form-control square" name=total type="number"  value="">
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Bank Tujuan<span class="required">*</span></label>
@@ -396,7 +396,7 @@
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Keterangan<span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="keterangan" type="text"  value="">
+                                                            <input readonly required="" class="form-control square" name="keterangan" type="text"  value="">
                                                         </div>
 
                                                     <?php }?>
