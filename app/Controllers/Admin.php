@@ -64,6 +64,10 @@ class Admin extends BaseController
 	
 	public function order()
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 
 		$data['orders'] = $this->transaksi->select('*, group_concat(detailtransaksi.status_barang),transaksi.id as id,transaksi.created_at')
 		->join('users', 'users.id = transaksi.user_id', 'left')
@@ -81,6 +85,10 @@ class Admin extends BaseController
 
 	public function order_stockist()
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		$id = user()->id;
 
 		if ($this->request->getPost('id')!=null) {
@@ -122,6 +130,10 @@ class Admin extends BaseController
 	// order detaiil stockist
 	public function order_detail_stockist($id)
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 
 		$data['detail_orders'] = $this->transaksi
 		->select('*, transaksi.total as total_transaksi, detailtransaksi.id as id, detailtransaksi.stockist_commission')
@@ -217,7 +229,10 @@ class Admin extends BaseController
 
 	public function order_detail($id)
 	{
-
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		$data['detail_orders'] = $this->transaksi
 		->select('*, transaksi.total as total_transaksi, detailtransaksi.id as id')
 		->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
@@ -316,6 +331,10 @@ class Admin extends BaseController
 
 	public function member_distributor()
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		$data['distributor']=$this->distributor->select('*,distributor.id as id')
 		->join('users', 'distributor.user_id=users.id','inner')
 		->orderBy('level','ASC')
@@ -343,6 +362,10 @@ class Admin extends BaseController
 
 	public function order_search()
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		$keyword = $this->request->getPost('keyword');	
 		$status = $this->request->getPost('status');	
 		if($status){
