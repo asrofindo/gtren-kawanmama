@@ -32,6 +32,7 @@ class Product extends BaseController
 
 		helper(['form', 'url','wawoo']);
 		$this->model    = new ProductModel();
+		$this->address    = new AddressModel();
 		$this->photo    = new ProductPhoto();
 		$this->banner    = new BannerModel();
 		$this->offer    = new OfferModel();

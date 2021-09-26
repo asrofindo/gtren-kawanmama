@@ -8,7 +8,7 @@ use App\Models\DistributorModel;
 use App\Models\NotifModel;
 use App\Models\SosialModel;
 use App\Models\KonfirmasiModel;
-
+use App\Models\AddressModel;
 use Myth\Auth\Authorization\GroupModel;
 
 class Admin extends BaseController
@@ -26,6 +26,7 @@ class Admin extends BaseController
 		$this->user = new UserModel();
 		$this->transaksi = new TransaksiModel();
 		$this->konfirmasi = new KonfirmasiModel();
+		$this->address = new AddressModel();
 
 		$this->distributor = new DistributorModel();
 		$this->notif = new NotifModel();

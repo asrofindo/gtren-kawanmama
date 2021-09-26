@@ -12,6 +12,7 @@ use App\Models\DistributorModel;
 use App\Controllers\BaseController;
 use Myth\Auth\Models\UserModel;
 use App\Models\NotifModel;
+use App\Models\AddressModel;
 use App\Models\CartItemModel;
 use App\Models\SosialModel;
 use App\Models\ProductModel;
@@ -35,6 +36,7 @@ class Order extends BaseController
 		$this->cart = new CartItemModel();
 		$this->product = new ProductModel();
 		$this->notif = new NotifModel();
+		$this->address = new AddressModel();
 
 
 	}
