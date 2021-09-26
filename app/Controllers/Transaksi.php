@@ -641,9 +641,16 @@ class Transaksi extends BaseController
 			"penarikan_dana" => $jumlah_wd,
 		]);	
 
-		$msg = 'kepada penarik: Penarikan dana Anda sudah disampaikan kepada Admin, mohon ditunggu pencairannya. Terimakasih.';	
+		$msg = base_url()."\n\nPenarikan dana Anda sudah disampaikan kepada Admin, mohon ditunggu pencairannya. Terimakasih.";	
 
 		wawoo(user()->phone, $msg);
+
+		$msg="*Permintaan Withdraw*\n\nJenis Uang  : ".$status_dana."\nNama User : ".user()->greeting." ".user()->fullname."\nJumlah Uang : ".rupiah($jumlah_wd)."\nCek di :\nDistributor : ".base_url('/hutang/stockist')."\nAffiliate : ".base_url('/hutang/affiliate')."\n Data Refaund : ".base_url('/hutang/stockist')."\n";
+		
+		$notif = $this->notif->findAll();
+		foreach ($notif as $key => $value) {
+			wawoo($value['phone'],$msg);
+		}
 		session()->setFlashdata('success', 'Sukses Meminta Pencairan Dana Mohon Ditunggu');
 		return view('db_stokis/wd',$data);;
 	}	
