@@ -44,6 +44,8 @@ class Transaksi extends BaseController
 		$this->setting_wd = new SettingWd();
 		$this->rekening = new RekeningModel();
 		$this->generate = new GenerateModel();
+
+		helper('wawoo');
 	}
 
 	public function index()
@@ -638,8 +640,11 @@ class Transaksi extends BaseController
 		$this->pendapatan->save([
 			"id" => $penarikan->id,
 			"penarikan_dana" => $jumlah_wd,
-		]);		
+		]);	
 
+		$msg = 'kepada penarik: Penarikan dana Anda sudah disampaikan kepada Admin, mohon ditunggu pencairannya. Terimakasih.'	
+
+		wawoo(user()->phone, $msg);
 		session()->setFlashdata('success', 'Sukses Meminta Pencairan Dana Mohon Ditunggu');
 		return redirect()->back();
 	}	
