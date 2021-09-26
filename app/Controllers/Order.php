@@ -42,7 +42,7 @@ class Order extends BaseController
 	}
 	public function update($id)
 	{
-		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+		if(count($this->address->where('type','distributor')->where('user_id',user()->id)->find()) < 1 && in_groups(3)){
 			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
 			return redirect()->to('/distributor');
 		}
@@ -85,7 +85,7 @@ class Order extends BaseController
 
 	public function order_acc($id)
 	{
-		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+		if(count($this->address->where('type','distributor')->where('user_id',user()->id)->find()) < 1 && in_groups(3)){
 			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
 			return redirect()->to('/distributor');
 		}
@@ -122,7 +122,7 @@ class Order extends BaseController
 
 	public function order_ignore($id)
 	{
-		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+		if(count($this->address->where('type','distributor')->where('user_id',user()->id)->find()) < 1 && in_groups(3)){
 			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
 			return redirect()->to('/distributor');
 		}
@@ -162,7 +162,7 @@ class Order extends BaseController
 
 	public function order_refund($transaksi_id, $id)
 	{
-		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+		if(count($this->address->where('type','distributor')->where('user_id',user()->id)->find()) < 1 && in_groups(3)){
 			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
 			return redirect()->to('/distributor');
 		}
@@ -279,7 +279,7 @@ class Order extends BaseController
 
 	public function save_resi()
 	{
-		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+		if(count($this->address->where('type','distributor')->where('user_id',user()->id)->find()) < 1 && in_groups(3)){
 			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
 			return redirect()->to('/distributor');
 		}

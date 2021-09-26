@@ -12,6 +12,10 @@ class Distributor extends BaseController
 	}
 	public function index()
 	{	
+		if(count($this->address->where('type','distributor')->where('user_id',user()->id)->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -23,6 +27,7 @@ class Distributor extends BaseController
 
 	public function save()
 	{
+		
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');

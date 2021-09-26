@@ -559,39 +559,38 @@ class Transaksi extends BaseController
       		$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();	
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->findAll();
 			session()->setFlashdata('danger', "Minimal Penarikan Dana Adalah Rp. {$minimal_wd}");
-			return redirect()->back();
+			return view('db_stokis/wd',$data);
       	}
-
       	if($penarikan == null && $status_dana != null){
-			$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();
-			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
-			session()->setFlashdata('danger', 'Dana Tidak Cukup');
-			return redirect()->back();
-        }
-
-		if(count($wd_belum) > 0){
-          dd('lk');
-			$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();	
-			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->findAll();
-			session()->setFlashdata('danger', 'Anda Harus Menunggu Pencairan Dana Sebelumnya');
-			return redirect()->back();
-		}
-
-		//jika jumlah wd nya tidak lebih besar dari 0 
-		if(!$jumlah_wd > 0){
-          
-			$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();
-			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
-
-			return redirect()->back();
-		}
+			  $data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();
+			  $data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
+			  session()->setFlashdata('danger', 'Dana Tidak Cukup');
+			  return view('db_stokis/wd',$data);
+			}
+			
+			if(count($wd_belum) > 0){
+				dd('lk');
+				$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();	
+				$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->findAll();
+				session()->setFlashdata('danger', 'Anda Harus Menunggu Pencairan Dana Sebelumnya');
+				return view('db_stokis/wd',$data);
+			}
+			
+			//jika jumlah wd nya tidak lebih besar dari 0 
+			if(!$jumlah_wd > 0){
+				
+				$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();
+				$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
+				
+				return view('db_stokis/wd',$data);
+			}
 		
 
 		if(count($this->pendapatan->where('user_id', user()->id)->find()) == 0 ){
 			$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
 
-			return redirect()->back();
+			return view('db_stokis/wd',$data);
 		}
 
       
@@ -599,14 +598,14 @@ class Transaksi extends BaseController
 			$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
 			session()->setFlashdata('danger', 'Dana Tidak Cukup');
-			return redirect()->back();
+			return view('db_stokis/wd',$data);
 		}
 
 		if($this->pendapatan->where('user_id', user()->id)->where('status_dana', $status_dana)->find()[0]->total < $jumlah_wd){			
 			$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
 			session()->setFlashdata('danger', 'Dana Tidak Cukup');
-			return redirect()->back();
+			return view('db_stokis/wd',$data);
 		}
 		
 
@@ -619,15 +618,15 @@ class Transaksi extends BaseController
 
 			if($validateOtp['user']->where('expired <', date("Y-m-d H:i:s"))->where('user_id', user()->id)->find() ){
 				session()->setFlashdata('danger', 'OTP sudah Kadaluarsa');
-				return redirect()->back();
+				return view('db_stokis/wd',$data);
 			}
 			if($validateOtp['user']->where('user_id', user()->id)->first()->otp != $otp){
 				session()->setFlashdata('danger', 'Gagal! Mohon dicek kembali kode OTP Anda.');
-				return redirect()->back();
+				return view('db_stokis/wd',$data);
 			}
 		} else {
 			session()->setFlashdata('danger', 'Anda Belum Memiliki Kode OTP');
-			return redirect()->back();
+			return view('db_stokis/wd',$data);
 		}
 
 		$this->wd->save([
@@ -646,7 +645,7 @@ class Transaksi extends BaseController
 
 		wawoo(user()->phone, $msg);
 		session()->setFlashdata('success', 'Sukses Meminta Pencairan Dana Mohon Ditunggu');
-		return redirect()->back();
+		return view('db_stokis/wd',$data);;
 	}	
 
 	public function riwayat_wd()
