@@ -378,7 +378,9 @@
                                                             <label>Keterangan<span class="required">*</span></label>
                                                             <input readonly required="" class="form-control square" name="keterangan" type="text"  value="<?=$konfirmasi->keterangan?>">
                                                         </div>
-                                                       
+                                                        <div class="col-md-12">
+                                                            <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Konfirmasi</button>
+                                                        </div>
                                                     <?php }else{?>
                                                         <div class="form-group col-md-12">
                                                             <label>Tanggal Transfer <span class="required">*</span></label>
@@ -396,9 +398,7 @@
                                                             <label>Keterangan<span class="required">*</span></label>
                                                             <input required="" class="form-control square" name="keterangan" type="text"  value="">
                                                         </div>
-                                                        <div class="col-md-12">
-                                                            <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Konfirmasi</button>
-                                                        </div>
+
                                                     <?php }?>
 
                                                 </div>
