@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Models\DetailTransaksiModel;
 use App\Models\TransaksiModel;
 use App\Models\BillModel;
+use App\Models\AddressModel;
 use App\Models\PendapatanModel;
 use App\Models\UpgradesModel;
 class Dashboard extends BaseController
@@ -15,6 +16,8 @@ class Dashboard extends BaseController
 		$this->transaksi = new TransaksiModel();
 		$this->upgrades = new UpgradesModel();
 		$this->pendapatan = new PendapatanModel();
+		$this->address = new AddressModel();
+
 	}
 	public function index()
 	{
@@ -25,6 +28,10 @@ class Dashboard extends BaseController
 			$data['bills'] = [];
 			session()->setFlashdata('danger', 'Akun Bank Wajib Diisi Terlebih Dahulu');
 			return redirect()->to('/bills');
+		}
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
 		}
 
 		$data['segments'] = $this->request->uri->getSegments();

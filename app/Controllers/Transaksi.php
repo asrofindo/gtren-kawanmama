@@ -642,7 +642,7 @@ class Transaksi extends BaseController
 			"penarikan_dana" => $jumlah_wd,
 		]);	
 
-		$msg = 'kepada penarik: Penarikan dana Anda sudah disampaikan kepada Admin, mohon ditunggu pencairannya. Terimakasih.'	
+		$msg = 'kepada penarik: Penarikan dana Anda sudah disampaikan kepada Admin, mohon ditunggu pencairannya. Terimakasih.';	
 
 		wawoo(user()->phone, $msg);
 		session()->setFlashdata('success', 'Sukses Meminta Pencairan Dana Mohon Ditunggu');

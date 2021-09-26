@@ -48,6 +48,10 @@ class User extends BaseController
 	}
 	public function account()
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -81,7 +85,10 @@ class User extends BaseController
 
 	public function affiliate()
 	{
-
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -100,6 +107,10 @@ class User extends BaseController
 
 	public function order_detail($transaksi_id)
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -125,6 +136,10 @@ class User extends BaseController
 
 	public function konfirmasi($id)
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -176,6 +191,10 @@ class User extends BaseController
 
 	public function tracking()
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -198,6 +217,10 @@ class User extends BaseController
 
 	public function track()
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -253,6 +276,10 @@ class User extends BaseController
 
 	public function address()
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -276,6 +303,10 @@ class User extends BaseController
 
 	public function profile()
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		
 		$data = $this->data;
 
@@ -324,6 +355,10 @@ class User extends BaseController
 
 	public function upgrade_affiliate()
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -369,6 +404,10 @@ class User extends BaseController
 
 	public function upgrade_stockist()
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -389,6 +428,10 @@ class User extends BaseController
 
 	public function upgrade()
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -403,6 +446,10 @@ class User extends BaseController
 
 	public function action($value, $id)
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -441,6 +488,10 @@ class User extends BaseController
 
 	public function save_billing($id)
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -475,6 +526,10 @@ class User extends BaseController
 
 	public function save_shipping($id)
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -533,6 +588,10 @@ class User extends BaseController
 
 	public function edit_shipping($id)
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -593,6 +652,10 @@ class User extends BaseController
 
 	public function rekening()
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -627,6 +690,10 @@ class User extends BaseController
 
 	public function rekening_delete($id)
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		$data = $this->data;
 
 		$this->rekening->delete($id);
@@ -638,6 +705,10 @@ class User extends BaseController
 
 	public function request_otp($value='')
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		$OTP = new OtpType();
 
 		$initializeOtp = $OTP->initializeOtp('data', 'validate');

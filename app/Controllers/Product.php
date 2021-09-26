@@ -50,6 +50,10 @@ class Product extends BaseController
 
 	public function index()
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -77,7 +81,10 @@ class Product extends BaseController
 
 	public function kategori()
 	{
-
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
@@ -102,6 +109,10 @@ class Product extends BaseController
 	
 	public function stockist()
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -120,6 +131,10 @@ class Product extends BaseController
 
 	public function commerce($id=null)
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if ($id != null) {
 			$user =	$this->user->where('affiliate_link','/src/'.$id)->find();
 			if (empty($user)) {
@@ -152,6 +167,10 @@ class Product extends BaseController
 
 	public function detail($slug,$id=null)
 	{
+		if(count($this->address->where('type','distributor')->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');

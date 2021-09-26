@@ -12,7 +12,7 @@ class Testing extends BaseController
 	}
 	public function testfoto()
 	{
-				if (user()!=null && user()->phone == null) {
+		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
 		}
