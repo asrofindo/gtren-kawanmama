@@ -14,9 +14,8 @@
             <div class="col-lg-4 col-md-6 me-auto">
                 <input type="text" placeholder="cari nama toko..." class="form-control" name="locate">
             </div>
-
             <div class="col-lg-2 col-6 col-md-3">
-                <button type="submit" class="btn btn-info btn-sm w-100 m-1">Cari </button>
+                <button type="submit" class="bt btn-primary btn-sm w-100 m-1">Cari </button>
             </div>
         </form>
         <br>

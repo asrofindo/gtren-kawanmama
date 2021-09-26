@@ -324,9 +324,10 @@ class Admin extends BaseController
 		if ($this->request->getPost('locate')!=null) {
 			$data['distributor']=$this->distributor->select('*,distributor.id as id')
 			->join('users', 'distributor.user_id=users.id','inner')
-			->where('locate','ASC')
+			->like('locate',$this->request->getPost('locate'))
 			->orderBy('level','ASC')
-			->findAll();		}
+			->findAll();
+			}
 
 		$data['pager'] = $this->transaksi->paginate(10, 'distributor');
 		$data['pager'] = $this->transaksi->pager;
