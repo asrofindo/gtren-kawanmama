@@ -170,7 +170,7 @@
             <span class="text">Setting</span>
         </a>
         <div class="submenu">
-            <a href="<?= base_url() ?>/notifikasi">notifikasi</a> 
+            <a href="<?= base_url() ?>/notifikasi">Notifikasi Admin</a> 
             <a href="<?= base_url() ?>/setting/api/get">Setting Api</a> 
             <a href="<?= base_url() ?>/sosial">sosial media</a>  
             <a href="<?= base_url() ?>/setting/wd/get">setting Minimal Wd</a>  
@@ -478,7 +478,14 @@
     <!-- Main Script -->
     <script src="<?= base_url() ?>/backend/js/main.js" type="text/javascript"></script>
     <script src="<?= base_url() ?>/backend/js/custom-chart.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script>
+        function copy_text(data) {
+            document.getElementById(data).select();
+            document.execCommand("copy");
+            alert("Text berhasil dicopy");
+        }
         $(function() {
             // Multiple images preview in browser
             var imagesPreview = function(input, placeToInsertImagePreview) {

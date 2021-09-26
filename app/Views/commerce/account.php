@@ -185,7 +185,10 @@
                                                                 <td>
                                                                     <?php if($order->status_barang == 'dikirim' || $order->status_barang == 'dipantau'): ?>
                                                                         <a class="btn btn-sm btn-primary" href="<?= base_url() ?>/order/verify/<?= $order->id ?>" class="btn-small d-block">
-                                                                            Sudah Terima Barang ?
+                                                                            Saya Sudah Terima
+                                                                        </a>
+                                                                        <a class="btn btn-sm btn-primary" href="https://wa.me/<?=$admin?>" class="btn-small d-block">
+                                                                            WA Admin
                                                                         </a>
                                                                     <?php elseif($order->status_barang == null): ?>
                                                                         <span class="badge rounded-pill alert-danger">Menunggu Konfirmasi</span>
@@ -356,13 +359,16 @@
                                     <form method="post" action="<?= base_url()?>/konfirmasi/<?=$transaksi->id?>">
                                                 <div class="row">
                                                     <?php if ($konfirmasi!=[]) {?>
+                                                        <div class="alert alert-success bg-info text-white">
+                                                            Menunggu Konfirmasi Admin
+                                                        </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Tanggal Transfer <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="date" type="date" value="<?=$konfirmasi->date?>">
+                                                            <input readonly required="" class="form-control square" name="date" type="date" value="<?=$konfirmasi->date?>">
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Jumlah Transfer <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name=total type="number"  value="<?= $konfirmasi->total?>">
+                                                            <input readonly required="" class="form-control square" name=total type="number"  value="<?= $konfirmasi->total?>">
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Bank Tujuan<span class="required">*</span></label>
@@ -370,11 +376,9 @@
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Keterangan<span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="keterangan" type="text"  value="<?=$konfirmasi->keterangan?>">
+                                                            <input readonly required="" class="form-control square" name="keterangan" type="text"  value="<?=$konfirmasi->keterangan?>">
                                                         </div>
-                                                        <div class="col-md-12">
-                                                            <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Konfirmasi</button>
-                                                        </div>
+                                                       
                                                     <?php }else{?>
                                                         <div class="form-group col-md-12">
                                                             <label>Tanggal Transfer <span class="required">*</span></label>
@@ -709,7 +713,7 @@
                                                     
                                                     <div class="form-group col-md-12">
                                                         <label>Nomer Whatsapp<span class="required">*</span></label>
-                                                        <input required="" class="form-control square" value="<?= user()->phone ?>" name="phone" type="text">
+                                                        <input required="" class="form-control square" value="<?= user()->phone ?>" name="phone" type="number">
                                                     </div>
                                                     
                                                         <div class="form-group col-md-12">
@@ -913,7 +917,7 @@
                                             </form>
 
                                             <?php else: ?>
-                                                <a href="<?= base_url('/seller') ?>"><button class="btn btn-lg btn">Klik Untuk Kunjungi Dashboard</button></a>    
+                                                <a href="<?= base_url('/seller') ?>"><button class="btn btn-lg btn">BUKA DASHBOARD DISTRIBUTOR</button></a>    
                                             <?php endif; ?>
                                             </div>
                                        <!--  <div class="card-body">
@@ -957,7 +961,7 @@
                                             <?php if(in_groups(3) && !in_groups(1)){?>
                                             <div class="roe m-1">
                                                 <div class="col-12">
-                                                    <a href="<?= base_url('/seller') ?>"><button class="btn btn-lg w-100">Klik Untuk Kunjungi Dashboard</button></a>
+                                                    <a href="<?= base_url('/seller') ?>"><button class="btn btn-lg w-100">BUKA DASHBOARD DISTRIBUTOR</button></a>
                                                 </div>
                                             </div>
                                             <?php }?>

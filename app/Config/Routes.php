@@ -286,6 +286,7 @@ $routes->group('', function($routes)
 	// affiliate
 
 	$routes->get('/market/affiliate', 'User::affiliate');
+	$routes->post('/market/affiliate', 'User::affiliate');
 
 
 	// setting api

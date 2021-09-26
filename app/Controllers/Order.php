@@ -67,7 +67,7 @@ class Order extends BaseController
 		$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Terimakasih, Pesanan Anda *sudah dibayar* \nNo Transaksi: ".$id."\nMohon ditunggu *konfirmasi dari distributor*. \n";
 		wawoo($user->phone,$msg);
 
-		$msg="Selamat!\n\nPesanan No.".$id." sudah dibayar.\n"."Cek di ".base_url('/admin');
+		$msg="Selamat!\n\nPesanan No.".$id." sudah dibayar.\n"."Cek di ".base_url('/order');
 		$notif = $this->notif->findAll();
 		foreach ($notif as $key => $value) {
 			wawoo($value['phone'],$msg);

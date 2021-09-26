@@ -14,7 +14,7 @@ class Email extends BaseConfig
 	/**
 	 * @var string
 	 */
-	public $fromName = "Gtren Baru";
+	public $fromName = "Gtren Team";
 
 	/**
 	 * @var string
@@ -26,7 +26,7 @@ class Email extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $userAgent = 'CodeIgniter';
+	public $userAgent = 'ruas digital solusiindo';
 
 	/**
 	 * The mail sending protocol: mail, sendmail, smtp
@@ -61,7 +61,7 @@ class Email extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $SMTPPass = 'imronkendal';
+	public $SMTPPass = 'kendal12345';
 
 	/**
 	 * SMTP Port

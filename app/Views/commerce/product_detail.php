@@ -80,11 +80,11 @@
                                     </div>
                                 </div>
                                 <div class="bt-1 border-color-1 mt-15 mb-15"></div>
-                                <div class="short-desc mb-30">
+                                <!-- <div class="short-desc mb-30">
                                     <p>
                                         <?= $product->description ?>
                                     </p>
-                                </div>
+                                </div> -->
                                 <!-- <div class="product_sort_info font-xs mb-30">
                                     <ul>
                                         <li class="mb-10"><i class="far fa-hourglass mr-5 text-brand"></i> 1 Year AL Jazeera Brand Warranty</li>

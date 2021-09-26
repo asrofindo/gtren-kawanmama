@@ -10,6 +10,7 @@ use App\Models\TransaksiModel;
 use App\Models\CategoryModel;
 use App\Models\KonfirmasiModel;
 use App\Models\NotifModel;
+use App\Models\ProductModel;
 use App\Models\BankModel;
 use App\Models\RekeningModel;
 use App\Models\SosialModel;
@@ -32,6 +33,7 @@ class User extends BaseController
 		$this->konfirmasi = new KonfirmasiModel();
 		$this->notif = new NotifModel();
 		$this->bank = new BankModel();
+		$this->product = new ProductModel();
 
 		$this->category = new CategoryModel();
 		$this->data['category']    = $this->category->findAll();
@@ -79,12 +81,20 @@ class User extends BaseController
 
 	public function affiliate()
 	{
+
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
 		}
 		$data = $this->data;
-		
+		if ($this->request->getPost('keyword')!=null) {
+			$data['products']   = $this->product->like('name',$this->request->getPost('keyword'))->orderBy('id', 'desc')->paginate(8, 'products');
+		}else{
+
+			$data['products']   = $this->product->orderBy('id', 'desc')->paginate(8, 'products');
+		}
+		$data['pager']      = $this->product->pager;
+
 		return view('db_affiliate/market_affiliate', $data);
 	}
 
@@ -107,6 +117,8 @@ class User extends BaseController
 		->join('pengiriman', 'detailpengiriman.pengiriman_id = pengiriman.id')
 		->where('transaksi.id', $transaksi_id)
 		->find();
+		$admin = $this->notif->findAll();
+		$data['admin']=$admin[rand()%(count($admin))]['phone'];
 
 		return view('commerce/account', $data);
 	}
@@ -294,12 +306,7 @@ class User extends BaseController
 		if (user()->phone==null) {
 			user()->setProfile($data);
 
-			$msg="Selamat!\nAda *user baru* di ".base_url()."\nNama User :".user()->greeting." ".user()->fullname."\nNo. Wa: ".$data['phone'];			
-			$notif = $this->notif->findAll();
-
-			foreach ($notif as $key => $value) {
-				wawoo($value['phone'],$msg);
-			}
+			
 		}else{
 			user()->setProfile($data);
 		}
@@ -603,9 +610,9 @@ class User extends BaseController
 			session()->setFlashdata('success', 'data berhasil disimpan');
 
 		}
-		$data['wds'] = $this->wd->where('user_id', user()->id)->find();	
+		$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();	
 		$data['segments'] = $this->request->uri->getSegments();
-		$data['rekening'] = $this->rekening->where('user_id',user()->id)->find();
+		$data['rekening'] = $this->rekening->where('user_id',user()->id)->orderBy('id','DESC')->find();
 		$data['bank'] = $this->bank->find();
 
 		if($this->pendapatan->where('user_id', user()->id)->first() != null){
