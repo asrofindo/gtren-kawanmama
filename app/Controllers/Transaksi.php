@@ -18,7 +18,7 @@ use App\Controllers\BaseController;
 use App\Models\SosialModel;
 use App\Models\OtpModel;
 use App\Models\NotifModel;
-use App\Models\UserModel;
+use Myth\Auth\Models\UserModel;
 use App\Models\RekeningModel;
 use App\Controllers\OtpType;
 use App\Models\SettingWd;
@@ -559,6 +559,7 @@ class Transaksi extends BaseController
 		$data['pendapatan_user'] = $this->pendapatan->select('total')->where('status_dana', 'user')->where('user_id', user()->id)->findAll();
 		$data['pendapatan_stockist'] = $this->pendapatan->select('sum(total) as total')->where('status_dana', 'distributor')->where('user_id', user()->id)->findAll();
 		
+		$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
 	
 		// jika ditemukan wd sebelumnya dan status nya adalah belum dikonfirmasi
 		$minimal_wd = $this->setting_wd->first()->minimal;
