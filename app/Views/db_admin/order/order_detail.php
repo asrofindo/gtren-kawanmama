@@ -109,7 +109,7 @@
                                                     <div class="info"><?= $product->name;  ?></div>
                                                 </a>
                                             </td>
-                                            <td> <?= $product->locate; ?> </td>
+                                            <td> <?= $product->locate ;?> </td>
                                             <td>
                                                 <?php if($product->status_barang == 'refund'): ?>
                                                     Rp. 0

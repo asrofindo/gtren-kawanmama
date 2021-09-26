@@ -245,7 +245,7 @@ class Admin extends BaseController
 		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
 		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
 		->where('detailtransaksi.transaksi_id', $id)->findAll();
-	
+		
 		$outer_array = array();
 		$unique_array = array();
 

@@ -27,10 +27,10 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                             
                                 <th>id</th>
                                 <th>pemilik</th>
                                 <th>nama distributor</th>
+                                <th>Nomor Whatsapp</th>
                                 <th>level</th>
                                 <th class="text-end">Action</th>
                             </tr>
@@ -44,6 +44,7 @@
                                 <td class="id"><?= $value['id']  ?></td>
                                 <td ><?= $value['username']  ?></td>
                                 <td ><?= $value['locate']  ?></td>
+                                <td ><a href="https://wa.me/<?= $value['phone']?>"> <?= $value['phone']?></a></td>
                                 <td > 
                                     <input type="hidden" id="user_id" name="user" value="<?= $value['id']?>">
                                     <select id="inputState" class="form-control" name="level">
