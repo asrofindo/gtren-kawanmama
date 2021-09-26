@@ -609,7 +609,7 @@ class User extends BaseController
 		$data['bank'] = $this->bank->find();
 
 		if($this->pendapatan->where('user_id', user()->id)->first() != null){
-			$data['saldo']  = $this->pendapatan->where('user_id', user()->id)->first()->total;
+			$data['saldo']  = $this->pendapatan->where('user_id', user()->id)->where('status_dana', 'user')->first()->total;
 		} else {
 			$data['saldo']  = 0;
 
