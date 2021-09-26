@@ -536,7 +536,7 @@ class Transaksi extends BaseController
 
 		// user id
 		$id = user()->id;
-
+		
 		// 
 		$penarikan = $this->pendapatan->where('user_id', user()->id)->where('status_dana', $status_dana)->first();
 
@@ -553,6 +553,7 @@ class Transaksi extends BaseController
 		$minimal_wd = $this->setting_wd->first()->minimal;
 		$minimal_wd = $minimal_wd;
       	if($jumlah_wd < $minimal_wd && $jumlah_wd != null){
+          
       		$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();	
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->findAll();
 			session()->setFlashdata('danger', "Minimal Penarikan Dana Adalah Rp. {$minimal_wd}");
@@ -567,6 +568,7 @@ class Transaksi extends BaseController
         }
 
 		if(count($wd_belum) > 0){
+          dd('lk');
 			$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();	
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->findAll();
 			session()->setFlashdata('danger', 'Anda Harus Menunggu Pencairan Dana Sebelumnya');
@@ -575,22 +577,23 @@ class Transaksi extends BaseController
 
 		//jika jumlah wd nya tidak lebih besar dari 0 
 		if(!$jumlah_wd > 0){
-
+          
 			$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
 
-			return redirect()->back();
+			return view('db_stokis/wd', $data);
 		}
 		
 
 		if(count($this->pendapatan->where('user_id', user()->id)->find()) == 0 ){
 			$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();
-			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_iroutd', user()->id)->find();
+			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
 
 			return redirect()->back();
 		}
 
-		if($this->pendapatan->where('user_id', user()->id)->where('status_dana', $status_dana)->find()[0]->total == 0){			
+      
+      	if($this->pendapatan->where('user_id', user()->id)->where('status_dana', $status_dana)->find()[0]->total == 0){			
 			$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
 			session()->setFlashdata('danger', 'Dana Tidak Cukup');
@@ -603,6 +606,7 @@ class Transaksi extends BaseController
 			session()->setFlashdata('danger', 'Dana Tidak Cukup');
 			return redirect()->back();
 		}
+		
 
 			// check apakah kode otp benar / atau masih aktif/ atau tidak expired
 		$OTP = new OtpType();
