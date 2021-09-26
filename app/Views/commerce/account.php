@@ -359,9 +359,7 @@
                                     <form method="post" action="<?= base_url()?>/konfirmasi/<?=$transaksi->id?>">
                                                 <div class="row">
                                                     <?php if ($konfirmasi!=[]) {?>
-                                                        <div class="alert alert-success bg-info text-white">
-                                                            Menunggu Konfirmasi Admin
-                                                        </div>
+                                                        
                                                         <div class="form-group col-md-12">
                                                             <label>Tanggal Transfer <span class="required">*</span></label>
                                                             <input required="" class="form-control square" name="date" type="date" value="<?=$konfirmasi->date?>">
@@ -382,6 +380,9 @@
                                                             <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Konfirmasi</button>
                                                         </div>
                                                     <?php }else{?>
+                                                        <div class="alert alert-success bg-info text-white">
+                                                            Menunggu Konfirmasi Admin
+                                                        </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Tanggal Transfer <span class="required">*</span></label>
                                                             <input readonly required="" class="form-control square" name="date" type="date" value="">
