@@ -82,7 +82,7 @@
     <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close btn-sm btn-primary" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Kirim Dana</h4>
           </div>
           <div class="modal-body">
@@ -125,6 +125,10 @@
                 $('#myModal').modal('show'); 
             }
             
+        });
+
+         $('.close').on('click',function(data){
+            $('#myModal').modal('hide');
         });
 
          

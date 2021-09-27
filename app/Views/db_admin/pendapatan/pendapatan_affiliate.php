@@ -127,6 +127,10 @@
             
         });
 
+        $('.close').on('click',function(data){
+            $('#myModal').modal('hide');
+        });
+
          
     });
 
