@@ -21,6 +21,8 @@ use App\Models\RekeningModel;
 use App\Controllers\OtpType;
 use App\Models\SettingWd;
 use App\Models\NotifModel;
+use Myth\Auth\Models\UserModel;
+
 
 class Transaksi extends BaseController
 {
@@ -46,6 +48,8 @@ class Transaksi extends BaseController
 		$this->setting_wd = new SettingWd();
 		$this->rekening = new RekeningModel();
 		$this->generate = new GenerateModel();
+		$this->user = new UserModel();
+
 
 		// helper('wawoo');
 	}
@@ -144,7 +148,7 @@ class Transaksi extends BaseController
 		$data['total'] = $total + $data['generate'][0]['nomor'];
 		$data['category'] = $this->category->findAll();
 		$data['address'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find();
-		$data['rekening'] = $this->pendapatan->where('status_dana', 'user')->where('user_id', user()->id)->first();
+		$data['rekening'] = $this->pendapatan->where('status_dana', 'user')->where('total >', $data['total'])->where('user_id', user()->id)->first();
 
 		$data['billing'] = $this->address
 		->where('user_id', user()->id)->where('address.type', 'billing')
@@ -202,15 +206,7 @@ class Transaksi extends BaseController
 		$data['alamat'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find()[0];
 		$alamat = "{$data['alamat']->provinsi}, {$data['alamat']->kabupaten}, {$data['alamat']->kecamatan}, {$data['alamat']->kode_pos}, {$data['alamat']->detail_alamat}";
 		
-		if($rekening != null){
-
-			$data_rek = $this->pendapatan->find($rekening);
-
-			$this->pendapatan->save([
-				"id" => $rekening,
-				"total" => $data_rek->total - $total
-			]);
-		}
+	
 
 		$this->transaksi->insert([
 			"user_id" => user()->id, 
@@ -221,7 +217,7 @@ class Transaksi extends BaseController
 			"alamat" => $alamat]);
 		
 		foreach($data['carts'] as $cart){
-	
+			
 			$data = [
 				"id" => $cart->cart_id,
 				"status" => "checkout"
@@ -242,10 +238,41 @@ class Transaksi extends BaseController
 			$this->detail_transaksi->save($data);
 		}
 
-		$bill = $this->bill->where('id',$this->request->getPost('bill'))->first();
-		$msg = base_url()." \n\n".user()->greeting." ".user()->fullname."\n"."Pesanan Anda *menunggu pembayaran* \nTagihan Total: ".$total."\nNomor Transaksi : ".$this->transaksi->getInsertID()."\nRekening ".$bill->bank_name."-".$bill->bank_number."-".$bill->owner."\nCek Pesanan Anda Di ".base_url('/orders');
 
-		wawoo(user()->phone,$msg);
+		if($rekening != null){
+
+			$data_rek = $this->pendapatan->find($rekening);
+
+			$id = $this->transaksi->getInsertID();
+			$this->pendapatan->save([
+				"id" => $rekening,
+				"total" => $data_rek->total - $total
+			]);
+
+			$detail =$this->detail_transaksi->where('transaksi_id',$this->transaksi->getInsertID())->groupBy('distributor_id')->get()->getResult();
+			foreach ($detail as $key => $value) {
+				$distributor = $this->distributor->where('id',$value->distributor_id)->first();
+				$user = $this->user->where('id',$distributor['user_id'])->first();
+				
+				$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Selamat! Anda mendapat pesanan baru,\nNo Transaksi: ".$id."\nAnda harus *menerima* atau *menolak* pesanan ini di dasbor distributor. Batas waktu 2 hari.\nSilahkan Cek Transaksi di \n".base_url('/order/stockist');
+				wawoo($user->phone,$msg);
+			}
+			
+			$user = $this->user->where('id',user()->id)->first();
+			$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Terimakasih, Pesanan Anda *sudah dibayar* \nNo Transaksi: ".$id."\nMohon ditunggu *konfirmasi dari distributor*. \n";
+			wawoo($user->phone,$msg);
+
+			$msg="Selamat!\n\nPesanan No.".$id." sudah dibayar.\n"."Cek di ".base_url('/order');
+			$notif = $this->notif->findAll();
+			foreach ($notif as $key => $value) {
+				wawoo($value['phone'],$msg);
+			}
+		} else {
+			$bill = $this->bill->where('id',$this->request->getPost('bill'))->first();
+			$msg = base_url()." \n\n".user()->greeting." ".user()->fullname."\n"."Pesanan Anda *menunggu pembayaran* \nTagihan Total: ".$total."\nNomor Transaksi : ".$this->transaksi->getInsertID()."\nRekening ".$bill->bank_name."-".$bill->bank_number."-".$bill->owner."\nCek Pesanan Anda Di ".base_url('/orders');
+			wawoo(user()->phone,$msg);
+		}
+
 
 		$data['generate'] = $this->generate->find();
 		$this->generate->save(["id" => 1, "nomor" => $data['generate'][0]['nomor'] + 1]);
