@@ -486,6 +486,19 @@
             document.execCommand("copy");
             alert("Text berhasil dicopy");
         }
+        $(document).ready(function() {
+          $('.btn').on('click', function() {
+            var $this = $(this);
+            var loadingText = '<span class="spinner-border spinner-border-sm " role="status" aria-hidden="true"></span><i class="fa fa-circle-o-notch fa-spin"></i> loading...';
+            if ($(this).html() !== loadingText) {
+              $this.data('original-text', $(this).html());
+              $this.html(loadingText);
+            }
+            setTimeout(function() {
+              $this.html($this.data('original-text'));
+            }, 1000*15);
+          });
+        })
         $(function() {
             // Multiple images preview in browser
             var imagesPreview = function(input, placeToInsertImagePreview) {
