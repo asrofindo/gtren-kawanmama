@@ -486,7 +486,7 @@ class Transaksi extends BaseController
 			return redirect()->back();
 		}
 
-		if($data_bill->total < $data_pendapatan->total){
+		if($data_bill->total < $wd){
 			session()->setFlashdata('danger', 'Gagal!, Maaf Saldo rekening Tidak Cukup');
 			return redirect()->back();
 		}
@@ -606,7 +606,7 @@ class Transaksi extends BaseController
         }
 
 		if(count($wd_belum) > 0){
-          dd('lk');
+     
 			$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();	
 			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->findAll();
 			session()->setFlashdata('danger', 'Anda Harus Menunggu Pencairan Dana Sebelumnya');
