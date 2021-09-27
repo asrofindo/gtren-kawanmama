@@ -432,11 +432,11 @@
                                                         <form class="contact-form-style mt-30 mb-50" action="<?php base_url() ?>/track" method="post">
                                                             <div class="input-style mb-20">
                                                                 <label class="form-label">Kurir</label>
-                                                                <input value="<?= $c->kurir  ?>" name="courier" type="text" class="square">
+                                                                <input readonly value="<?= $c->kurir  ?>" name="courier" type="text" class="square">
                                                             </div>
                                                             <div class="input-style mb-20">
                                                                 <label>Nomor Resi</label>
-                                                                <input name="awb" value="<?= $c->resi ?>" type="text" class="square">
+                                                                <input readonly name="awb" value="<?= $c->resi ?>" type="text" class="square">
                                                             </div>
                                                             <button class="btn-sm submit submit-auto-width" type="submit"><i class="fa fa-paper-plane mr-15"></i>Lacak</button>
                                                         </form>
