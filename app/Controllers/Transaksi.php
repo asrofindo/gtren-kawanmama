@@ -144,7 +144,7 @@ class Transaksi extends BaseController
 		$data['total'] = $total + $data['generate'][0]['nomor'];
 		$data['category'] = $this->category->findAll();
 		$data['address'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find();
-		$data['rekening'] = $this->rekening->where('total >', 50000)->where('user_id', user()->id)->first();
+		$data['rekening'] = $this->pendapatan->where('status_dana', 'user')->where('user_id', user()->id)->first();
 
 		$data['billing'] = $this->address
 		->where('user_id', user()->id)->where('address.type', 'billing')
@@ -204,9 +204,9 @@ class Transaksi extends BaseController
 		
 		if($rekening != null){
 
-			$data_rek = $this->rekening->find($rekening);
+			$data_rek = $this->pendapatan->find($rekening);
 
-			$this->rekening->save([
+			$this->pendapatan->save([
 				"id" => $rekening,
 				"total" => $data_rek->total - $total
 			]);

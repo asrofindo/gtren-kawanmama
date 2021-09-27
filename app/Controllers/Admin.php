@@ -95,7 +95,7 @@ class Admin extends BaseController
 
 		if ($this->request->getPost('id')!=null) {
 			$data['orders'] = $this->transaksi
-			->select('*, group_concat(detailtransaksi.status_barang) as status_barang, transaksi.total as total_transaksi, transaksi.id as id, detailtransaksi.id as detail_id, transaksi.created_at as created_at, sum(detailtransaksi.stockist_commission) as stockist_commission')
+			->select('*, group_concat(detailtransaksi.status_barang) as status_barangs, transaksi.total as total_transaksi, transaksi.id as id, detailtransaksi.id as detail_id, transaksi.created_at as created_at, sum(detailtransaksi.stockist_commission) as stockist_commission')
 			->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
 			->join("cart_item", 'cart_item.id = cart_id')
 			->join("products", 'products.id = cart_item.product_id')
@@ -110,7 +110,7 @@ class Admin extends BaseController
 			->findAll();
 		}else{
 			$data['orders'] = $this->transaksi
-			->select('*, group_concat(detailtransaksi.status_barang) as status_barang, transaksi.total as total_transaksi, transaksi.id as id, detailtransaksi.id as detail_id, transaksi.created_at as created_at, sum(detailtransaksi.stockist_commission) as stockist_commission')
+			->select('*, group_concat(detailtransaksi.status_barang) as status_barangs, transaksi.total as total_transaksi, transaksi.id as id, detailtransaksi.id as detail_id, transaksi.created_at as created_at, sum(detailtransaksi.stockist_commission) as stockist_commission')
 			->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
 			->join("cart_item", 'cart_item.id = cart_id')
 			->join("products", 'products.id = cart_item.product_id')

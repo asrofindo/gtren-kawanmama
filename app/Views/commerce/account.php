@@ -427,28 +427,21 @@
 
                                             <p>Untuk melacak pesanan Anda, silakan masukkan nomor resi Anda di kotak di bawah ini dan tekan tombol "Lacak". Selanjutnya cek email Anda.</p>
                                             <div class="row">
-                                                <div class="col-lg-12">
-                                                    <form class="contact-form-style mt-30 mb-50" action="<?php base_url() ?>/track" method="post">
-
+                                                <?php foreach ($courier as $c): ?>                                                        
+                                                    <div class="col-lg-4">
+                                                        <form class="contact-form-style mt-30 mb-50" action="<?php base_url() ?>/track" method="post">
                                                             <div class="input-style mb-20">
-                                                                 <label class="form-label">Kurir</label>
-                                                                <select class="form-select" name="courier">
-                                                                    <?php foreach ($couries as $courier): ?>
-                                                                        <option value="<?= $courier['code'] ?>">
-                                                                            <?= $courier['description'] ?>
-                
-                                                                        </option>
-                                                                    <?php endforeach ?>
-                                                                </select>
+                                                                <label class="form-label">Kurir</label>
+                                                                <input value="<?= $c->kurir  ?>" name="courier" type="text" class="square">
                                                             </div>
-
-                                                        <div class="input-style mb-20">
-                                                            <label>Nomor Resi</label>
-                                                            <input name="awb" placeholder="Nomor Resi" type="text" class="square">
-                                                        </div>
-                                                        <button class="btn-sm submit submit-auto-width" type="submit"><i class="fa fa-paper-plane mr-15"></i>Lacak</button>
-                                                    </form>
-                                                </div>
+                                                            <div class="input-style mb-20">
+                                                                <label>Nomor Resi</label>
+                                                                <input name="awb" value="<?= $c->resi ?>" type="text" class="square">
+                                                            </div>
+                                                            <button class="btn-sm submit submit-auto-width" type="submit"><i class="fa fa-paper-plane mr-15"></i>Lacak</button>
+                                                        </form>
+                                                    </div>
+                                                <?php endforeach ?>
                                             </div>
                                         </div>
                                     </div>

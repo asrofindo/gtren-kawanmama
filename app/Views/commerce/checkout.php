@@ -223,7 +223,7 @@
                                         <option selected disabled>
                                             Bayar dengan Saldo
                                         </option>
-                                            <option value="<?= $rekening->id ?>">Rp <?= number_format($rekening->total); ?> - Bank <?= $rekening->bank; ?> <?= $rekening->number; ?></option>
+                                            <option value="<?= $rekening->id ?>">Rp <?= number_format($rekening->total); ?></option>
                                     </select>
                                 <?php endif; ?>
                             </div>

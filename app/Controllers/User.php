@@ -184,15 +184,17 @@ class User extends BaseController
 
 		$data['segments'] = $this->request->uri->getSegments();
 
-		$curl = curl_init();
+		// $curl = curl_init();
 
-		$url = "https://api.binderbyte.com/v1/list_courier?api_key=336e8e201c4c0bf28ff277c6251c50347d2646c3caffbd36ff865ec1e11743bf";
+		// $url = "https://api.binderbyte.com/v1/list_courier?api_key=336e8e201c4c0bf28ff277c6251c50347d2646c3caffbd36ff865ec1e11743bf";
 		
-		curl_setopt($curl, CURLOPT_URL, $url);
-		curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
-		$response        = curl_exec($curl);
-		$set_to_array    = json_decode($response, TRUE);
-		$data['couries'] = $set_to_array;
+		// curl_setopt($curl, CURLOPT_URL, $url);
+		// curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
+		// $response        = curl_exec($curl);
+		// $set_to_array    = json_decode($response, TRUE);
+		// $data['couries'] = $set_to_array;
+
+		$data['courier'] = $this->transaksi->join('detailtransaksi', 'detailtransaksi.transaksi_id = transaksi.id')->where('transaksi.user_id', user()->id)->where('detailtransaksi.status_barang', 'dikirim')->groupBy('detailtransaksi.distributor_id')->join('detailpengiriman', 'detailpengiriman.cart_id = detailtransaksi.cart_id', 'left')->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left')->find();
 		return view('commerce/account', $data);
 	}
 
