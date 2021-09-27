@@ -512,7 +512,11 @@ class Transaksi extends BaseController
 		$this->pendapatan->save($data);
 
 		$this->wd->save(["id" => $id_wd, "status" => "sudah", "bill_id" => $bill_id]);
-		
+
+		$user = $this->user->where('id',$user_id)->first();
+		$msg = "Permintaan penarikan dana Anda ".rupiah($wd)."sudah ditransfer.Silakan cek rekening Anda.";	
+		wawoo($user->phone, $msg);
+
 		session()->setFlashdata('success', 'Berhasil Melakukan Transfer Pencairan Dana');
 		return redirect()->back();
 	}
@@ -533,7 +537,6 @@ class Transaksi extends BaseController
 		}
 		
 		$this->pendapatan->save($data);
-
 		return redirect()->back();
 	}
 
@@ -678,25 +681,18 @@ class Transaksi extends BaseController
 			"penarikan_dana" => $jumlah_wd,
 		]);	
 
-		// $msg = 'kepada penarik: Penarikan dana Anda sudah disampaikan kepada Admin, mohon ditunggu pencairannya. Terimakasih.'	
+		$msg = "Penarikan dana Anda sudah disampaikan kepada Admin,\nmohon ditunggu pencairannya. Terimakasih.";	
+		wawoo(user()->phone, $msg);
 
-		// wawoo(user()->phone, $msg);
-
-		// $admin_notif = $this->notif->findAll();
-		// $sapaan = user()->sapaan;
-		// $fullname = user()->fullname;
-		// foreach ($admin_notif as $notif) {
-		// 	$msg = "kepada admin:
-		// 			*Permintaan Withdraw*
-		// 			Jenis Uang: {$status_dana}
-		// 			Nama User: {$sapaan} {$fullname}
-		// 			Jumlah Uang: {$jumla}
-		// 			Link Withdraw: (berikan salah satu kalau bisa, disesuaikan dgn request, kalau gak bisa tampilkan semua saja di bawah ini:)
-		// 			(1) Distributor: /hutang/stockist
-		// 			(2) Affiliate: /hutang/affiliate
-		// 			(3) Dana Refund: /hutang/user";
-		// 	wawoo('')
-		// }
+	
+		
+		$msg="*Permintaan Withdraw*\nJenis Uang : ".$status_dana."\nNama User : ".user()->greeting." ".user()->fullname."\nJumlah Uang : ".$jumlah_wd."\nLink Withdraw : \n\n(1) Distributor : \n".base_url('/hutang/stockist')."\n\n(2) Affiliate : \n".base_url('/hutang/affiliate')."\n\n(3) Dana Refund : \n".base_url('/hutang/user');
+		
+		$notif = $this->notif->findAll();
+		foreach ($notif as $key => $value) {
+			wawoo($value['phone'],$msg);
+		}
+		
 		session()->setFlashdata('success', 'Sukses Meminta Pencairan Dana Mohon Ditunggu');
 		return redirect()->back();
 	}	
