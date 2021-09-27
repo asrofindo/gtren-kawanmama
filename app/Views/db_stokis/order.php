@@ -66,7 +66,27 @@
 
                             <td><?php echo rupiah($order->stockist_commission ); ?></td>
                             <td><?php echo $order->resi; ?></td>
-                            <td><?php echo $order->alamat; ?></td>
+                            
+                            <?php $status_barang = explode(',', $order->status_barang); ?>
+                            <td>
+                                <?php $i = 0;  foreach ($status_barang as $s): ?>
+                                    <?php if($s == 'ditolak'): ?>
+                                        <span class="badge  rounded-pill alert-warning"><?php echo "tolak"; ?></span>
+                                    <?php endif; ?>
+                                    <?php if($s == 'refund'): ?>
+                                        <span class="badge  rounded-pill alert-warning"><?php echo "refund"; ?></span>
+                                    <?php endif; ?>
+                                    <?php if($s == 'diterima_seller'): ?>
+                                        <span class="badge  rounded-pill alert-primary"><?php echo "dikonfirmasi"; ?></span>
+                                    <?php endif; ?>
+                                    <?php if($s == 'diterima_pembeli'): ?>
+                                        <span class="badge  rounded-pill alert-success"><?php echo "selesai"; ?></span>
+                                    <?php endif; ?>
+                                    <?php if($s == 'dipantau'): ?>
+                                        <span class="badge  rounded-pill alert-warning"><?php echo "dipantau"; ?></span>
+                                    <?php endif; ?>
+                                <?php endforeach ?>
+                            </td>
                             <td><?php echo $order->batas_pesanan; ?></td>
                             <td><?php echo $order->created_at; ?></td>
                             <td class="text-end">
