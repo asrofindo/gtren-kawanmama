@@ -218,38 +218,17 @@ class User extends BaseController
 		$response      = curl_exec($curl);
 		$set_to_array  = json_decode($response, TRUE);
 		$data['track'] = $set_to_array;
-
 		if($data['track']['status'] == 400){
 
 			session()->setFlashdata('danger', 'Data Tidak Ditemukan');
 			return redirect()->back();
 		}
 
-		$email = \Config\Services::email();
+		$data['segments'] = $this->request->uri->getSegments();
 
-		// $email->setHeader('MIME-Version', '1.0; charset=utf-8');
-		// $email->setHeader('Content-type', 'text/html');
-
-		$email->setFrom('team@gtren.co.id', 'Gtren Team');
-		$email->setTo(user()->email);
-		// $email->setTo('pujiselamat6@gmail.com');
-		// $email->setTo('m.hilmimubarok@gmail.com');
-
-		$email->setSubject('Detail of ur track');
-
-		$msg = view('track/index', $data);
-		$email->setMessage($msg);
-
-		if ($email->send()) {
-			session()->setFlashdata('success', 'Sukses!. Silahkan cek email anda.');
-			return redirect()->back();
-		}
-		else 
-		{
-            $data = $email->printDebugger(['headers']);
-            print_r($data);
-        }
-
+		session()->setFlashdata('success', 'Sukses!. Silahkan cek email anda.');
+		return view('commerce/account', $data);
+		
 		// return view('track/index', $data);
 		// return view('track/index');
 	}

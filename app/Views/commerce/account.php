@@ -446,6 +446,34 @@
                                         </div>
                                     </div>
                                 </div>
+                            <?php elseif ($segments[0] == 'track'):?>
+                                <?php if($track != null): ?>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tanggal </th>
+                                                    <th>Deskripsi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($track['data']['history'] as $value) {?>
+                                                    <tr>
+                                                        <td>
+                                                        
+                                                            <?= $value['date']?>
+                                                        </td>
+                                                        <td>
+                                                            <?= $value['desc']?>    
+                                                        </td>
+                                                  
+                                                    </tr>
+                                                <?php }?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                <?php endif; ?>
                             <?php elseif($segments[0] == "address"): ?>
                                 <div class="tab-pane fade active show" id="address" role="tabpanel" aria-labelledby="address-tab">
                                     <div class="row mb-3">
