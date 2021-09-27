@@ -123,7 +123,7 @@ h1 { font-size: 1.5em; margin: 10px; }
             }
             setTimeout(function() {
               $this.html($this.data('original-text'));
-            }, 1000*10);
+            }, 1000*15);
           });
         })
         const locate = document.getElementById('location');

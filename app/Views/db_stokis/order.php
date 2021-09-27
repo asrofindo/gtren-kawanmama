@@ -132,7 +132,7 @@
                 <div class="mb-4">
                     <input type="hidden" id="order_id" name="order_id">
                     <input class="form-control" type="text" name="resi" placeholder="Masukan Nomor Resi">
-                    <button class="btn-sm btn-primary" type="submit">Simpan</button>
+                    <button class="btn btn-sm btn-primary" type="submit">Simpan</button>
                 </div>
             </form>
         </div>

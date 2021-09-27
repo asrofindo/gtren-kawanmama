@@ -58,7 +58,7 @@
                                 <div class="dropdown">
                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item btn-acc">TF Dana</a>
+                                        <a class="dropdown-item btn-acc">Transfer Dana</a>
                                     </div>
                                 </div> <!-- dropdown //end -->
                             </td>
