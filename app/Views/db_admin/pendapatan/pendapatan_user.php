@@ -6,6 +6,23 @@
         <p>Dana Semua User</p>
     </div>
 </div>
+<div class="attention">
+    <?php if(!empty(session()->getFlashdata('success'))){ ?>
+
+        <div class="alert alert-success bg-success text-white">
+            <?php echo session()->getFlashdata('success');?>
+        </div>
+
+    <?php } ?>
+
+    <?php if(!empty(session()->getFlashdata('danger'))){ ?>
+
+        <div class="alert alert-danger bg-danger text-white">
+            <?php echo session()->getFlashdata('danger');?>
+        </div>
+
+    <?php } ?>
+</div>
 <div class="card mb-4">
     <header class="card-header">
         <div class="row gx-3">
@@ -36,7 +53,7 @@
                             <td><?php echo rupiah($pendapatan->masuk) ?></td>
                             <td><?php echo rupiah($pendapatan->keluar) ?></td>
                             <td><?php echo rupiah($pendapatan->total); ?></td>
-                            <td class="<?php if ($pendapatan->penarikan_dana>0) { echo 'bg-danger'; } ?>"><?php echo $pendapatan->penarikan_dana; ?></td>
+                            <td class="<?php if ($pendapatan->penarikan_dana>0) { echo 'bg-danger text-white'; } ?>"><?php echo $pendapatan->penarikan_dana; ?></td>
                             <td class="text-end">
                                 <div class="dropdown">
                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
@@ -65,7 +82,7 @@
     <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class=" btn-primary btn-sm" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Kirim Dana</h4>
           </div>
           <div class="modal-body">
@@ -77,10 +94,10 @@
                     Total : Rp<h5 id="total_wd"> </h5>
                     <select class="form-control"  name="bill">
                         <?php foreach ($bills as $bill): ?>
-                                <option value="<?php echo $bill->id ?>"><?php echo $bill->bank_name ?> - <?php echo $bill->owner ?></option>
+                                <option value="<?php echo $bill->id ?>"><?php echo $bill->bank_name ?> - <?php echo $bill->owner ?> - <?php echo rupiah($bill->total) ?></option>
                         <?php endforeach ?>
-                    </select>
-                    <button class="btn-sm btn-primary" type="submit">Kirim</button>
+                    </select><br>
+                    <button class="btn btn-sm btn-primary" type="submit">Kirim</button>
                 </div>
             </form>
         </div>

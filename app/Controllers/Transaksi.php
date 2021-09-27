@@ -455,10 +455,17 @@ class Transaksi extends BaseController
 
 
 		if($data_bill->total == null){
+			session()->setFlashdata('danger', 'Gagal!, Maaf Saldo rekening Kosong');
+			return redirect()->back();
+		}
+
+		if($data_bill->total < $data_pendapatan->total){
+			session()->setFlashdata('danger', 'Gagal!, Maaf Saldo rekening Tidak Cukup');
 			return redirect()->back();
 		}
 
 		if($data_pendapatan->total == 0){
+			session()->setFlashdata('danger', 'Maaf Saldo Pendapatan Kosong');
 			return redirect()->back();
 		}
 
@@ -479,7 +486,7 @@ class Transaksi extends BaseController
 
 		$this->wd->save(["id" => $id_wd, "status" => "sudah", "bill_id" => $bill_id]);
 		
-
+		session()->setFlashdata('success', 'Berhasil Melakukan Transfer Pencairan Dana');
 		return redirect()->back();
 	}
 
