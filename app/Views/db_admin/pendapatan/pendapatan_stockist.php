@@ -94,7 +94,7 @@
                     Total : Rp<h5 id="total_wd"> </h5>
                     <select class="form-control"  name="bill">
                         <?php foreach ($bills as $bill): ?>
-                                <option value="<?php echo $bill->id ?>"><?php echo $bill->bank_name ?> - <?php echo $bill->owner ?></option>
+                                <option value="<?php echo $bill->id ?>"><?php echo $bill->bank_name ?> - <?php echo $bill->owner ?> - <?php echo rupiah($bill->total) ?></option>
                         <?php endforeach ?>
                     </select>
                     <button class="btn-sm btn-primary" type="submit">Kirim</button>
