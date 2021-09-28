@@ -394,7 +394,7 @@
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Keterangan<span class="required">*</span></label>
-                                                            <input  required="" class="form-control square" name="keterangan" type="text"  value="">
+                                                            <input class="form-control square" name="keterangan" type="text"  value="">
                                                         </div>
                                                         <div class="col-md-12">
                                                             <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Konfirmasi</button>
