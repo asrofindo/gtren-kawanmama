@@ -114,7 +114,9 @@
                             <div class="product-img-action-wrap">
                                 <div class="product-img product-img-zoom">
                                     <a href="<?= base_url('product/'. $product->slug)?>">
-                                        <img style="height:200px" class="default-img" src="<?= base_url() ?>/public/uploads/product_photos/<?= $product->photos[0] ==null ? 'avatar-2.jpg' : $product->photos[0]; ?>" alt="">
+                                    <?php for($i = 0; $i < 2; $i++): ?>
+                                            <img class="<?= $i == 0 ? 'default-img' : 'hover-img'  ?>" src="<?= base_url() ?>/public/uploads/product_photos/<?= $product->photos[$i]; ?>" alt="">
+                                            <?php endfor ?>
                                     </a>
                                 </div>
                                 <div class="product-badges product-badges-position product-badges-mrg">
@@ -185,7 +187,9 @@
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img product-img-zoom">
                                                     <a href="shop-product-right.html">
-                                                     <img style="height:200px" class="default-img" src="<?= base_url() ?>/public/uploads/product_photos/<?= $p->photos[0] ==null ? 'avatar-2.jpg' : $p->photos[0]; ?>" alt="">
+                                                     <?php for($i = 0; $i < 2; $i++): ?>
+                                                        <img class="<?= $i == 0 ? 'default-img' : 'hover-img'  ?>" src="<?= base_url() ?>/public/uploads/product_photos/<?= $p->photos[$i] ?>" alt="">
+                                                    <?php endfor ?>
                                                     </a>
                                                 </div>
                                                 <!-- <div class="product-badges product-badges-position product-badges-mrg">
