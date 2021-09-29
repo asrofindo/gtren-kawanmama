@@ -348,6 +348,7 @@ class User extends BaseController
 		}
 
 		
+		$this->generate->save(["id" => 1, "nomor" => $data['generate'] + 1]);
 
 		return view('commerce/account', $data);
 	}
