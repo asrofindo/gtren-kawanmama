@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    <div class="bg-danger " style=" color:white; text-align: center;  line-height: 20px"><h4 class="red-alert"></h4></div>
+    <div class="bg-danger red-alert text-white" style="text-align:center">Anda harus melengkapi pengaturan NOMOR WA ADMIN, <a href="/notifikasi">klik disini<a/> untuk manambah nomor WA</div>
 
     <div class="screen-overlay"></div>
     <aside class="navbar-aside" id="offcanvas_aside">
@@ -488,7 +488,9 @@
         $.get( "/notif",
             function( data ) {
                 if(data.length == 0){
-                    $('.red-alert').text('Harap Isi Notifikasi Terlebih Dahulu')
+                    $('.red-alert').show()
+                } else {
+                    $('.red-alert').hide()
                 }
         });
 
