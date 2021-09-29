@@ -26,6 +26,8 @@
 </head>
 
 <body>
+    <div class="bg-danger " style=" color:white; text-align: center;  line-height: 20px"><h4 class="red-alert"></h4></div>
+
     <div class="screen-overlay"></div>
     <aside class="navbar-aside" id="offcanvas_aside">
         <div class="aside-top">
@@ -481,6 +483,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
+
+
+        $.get( "/notif",
+            function( data ) {
+                if(data.length == 0){
+                    $('.red-alert').text('Harap Isi Notifikasi Terlebih Dahulu')
+                }
+        });
+
         function copy_text(data) {
             document.getElementById(data).select();
             document.execCommand("copy");

@@ -37,6 +37,7 @@ $routes->resource('cron');
 $routes->resource('wacron');
 $routes->resource('verifywa');
 $routes->resource('verifyotp');
+$routes->resource('notif');
 
 $routes->get('/notifikasi', 'Admin::notifikasi');
 $routes->post('/notifikasi', 'Admin::notifikasi');
