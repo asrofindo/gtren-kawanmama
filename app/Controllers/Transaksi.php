@@ -514,7 +514,7 @@ class Transaksi extends BaseController
 		$this->wd->save(["id" => $id_wd, "status" => "sudah", "bill_id" => $bill_id]);
 
 		$user = $this->user->where('id',$user_id)->first();
-		$msg = "Permintaan penarikan dana Anda ".rupiah($wd)."sudah ditransfer.Silakan cek rekening Anda.";	
+		$msg = "Permintaan penarikan dana Anda ".rupiah($wd)." sudah ditransfer. Silakan cek rekening Anda.";	
 		wawoo($user->phone, $msg);
 
 		session()->setFlashdata('success', 'Berhasil Melakukan Transfer Pencairan Dana');
