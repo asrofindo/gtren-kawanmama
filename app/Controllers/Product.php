@@ -559,7 +559,7 @@ class Product extends BaseController
 				'description'          => $this->request->getPost('description'),
 				'categories'           => $categories,
 				'slug'                 => $this->request->getPost('name'),
-				'photos'               => $photos,
+				'photos'               => $photos == null ? ['avatar-2.jpeg', 'avatar-2.jpeg'] : $photos,
 				'fixed_price'          => $this->request->getPost('fixed_price'),
 				'sell_price'           => $this->request->getPost('sell_price'),
 				'affiliate_commission' => $this->request->getPost('affiliate_commission'),
