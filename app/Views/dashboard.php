@@ -489,11 +489,6 @@
             function( data ) {
                 if(data.length == 0){
                     $('.red-alert').text('Harap Isi Notifikasi Terlebih Dahulu')
-                    if(window.location.pathname == '/notifikasi'){
-                        return false;
-                    } else {
-                        window.location.href = '/notifikasi'
-                    }
                 }
         });
 
