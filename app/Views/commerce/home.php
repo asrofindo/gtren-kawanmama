@@ -27,6 +27,7 @@
 
         <!-- </div> -->
         <div class="container d-block d-xl-none d-md-none d-lg-none">
+            <h1>lkjlkjlkjlkjlkjlkj</h1>
             <div class="row p-3">
                 <div class="card col-3 p-0">
                     <a href="<?=base_url()?>/kategori">
