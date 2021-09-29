@@ -11,6 +11,6 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.1.0
       with:
-        server: kawandesanusantara.com
-        username: gtren@kawandesanusantara.com
-        password: AsrofiRudy123
+        server: ftp.trenbisnis.net
+        username: git-sementara@trenbisnis.net
+        password: NotepadGitPrancisKendal
