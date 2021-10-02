@@ -6,7 +6,7 @@
 <!--         <p>Details for Order ID: 3453012</p>
  -->    </div>
 </div>
-<div class="card">
+<div class="card" id="pesanan">
  <!-- card-header end// -->
     <div class="card-body">
         <div class="row mb-50 mt-20 order-info-wrap">
@@ -150,4 +150,22 @@
         </div>
     </div> <!-- card-body end// -->
 </div>
+
+<script type="text/javascript">  
+$('#divId').print({
+    globalStyles : true,
+    mediaPrint : false,
+    stylesheet : null,
+    noPrintSelector : '.no-print',
+    iframe : true,
+    append : null,
+    prepend : null,
+    manuallyCopyFormValues : true,
+    deferred : jQuery.Deferred(),
+    timeout : 750,
+    title : null,
+    doctype : '<!doctype html>'
+});
+
+</script>
 <?php $this->endSection() ?>

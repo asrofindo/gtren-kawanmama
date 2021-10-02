@@ -28,13 +28,13 @@
         <!-- </div> -->
         <div class="container d-block d-xl-none d-md-none d-lg-none">
             <div class="row p-3">
-                <div class="card col-3 p-0">
+                <div class="card col-3" style="margin:30px !important">
                     <a href="<?=base_url()?>/kategori">
                         <img src="<?=base_url()?>/public/uploads/banner/kategori.png" alt="" class="p-2">
                     </a>
-                        <div class="card-body p-0 text-center">
-                            <h6 class="card-title">kategori</h6>
-                        </div>
+                    <div class="card-body p-0 text-center">
+                        <h6 class="card-title">kategori</h6>
+                    </div>
                 </div>
                 <?php if (user()!=null) {?>
                     <?php if (!in_groups(3)) {?>
@@ -52,7 +52,7 @@
                             <img src="<?=base_url()?>/public/uploads/banner/tas.png" alt="" class="p-2">
                         </a>
                         <div class="card-body p-0 text-center">
-                                <h6 class="card-title">distributor</h6>
+                            <h6 class="card-title">distributor</h6>
                         </div>
                     </div>
                     <?php }?>
@@ -62,7 +62,7 @@
                             <img src="<?=base_url()?>/public/uploads/banner/affiliate.png" alt="" class="p-2">
                         </a>
                         <div class="card-body p-0 text-center">
-                                <h6 class="card-title">daftar affiliate</h6>
+                            <h6 class="card-title">daftar affiliate</h6>
                         </div>
                     </div>
                     <?php }else{?>
@@ -71,7 +71,7 @@
                             <img src="<?=base_url()?>/public/uploads/banner/affiliate.png" alt="" class="p-2">
                         </a>
                         <div class="card-body p-0 text-center">
-                                <h6 class="card-title">affiliasi</h6>
+                            <h6 class="card-title">affiliasi</h6>
                         </div>
                     </div>
                     <?php }?>
@@ -80,9 +80,9 @@
                         <a href="<?=base_url()?>/login">
                             <img src="<?=base_url()?>/public/uploads/banner/masuk.png" alt="" class="p-2">
                         </a>
-                            <div class="card-body p-0 text-center">
-                                <h6 class="card-title">masuk</h6>
-                            </div>
+                        <div class="card-body p-0 text-center">
+                            <h6 class="card-title">masuk</h6>
+                        </div>
                     </div>
                     <div class="card col-3 p-0">
                         <a href="<?=base_url()?>/register">
@@ -94,12 +94,12 @@
                     </div>
                 <?php }?>
                 <div class="card col-3 p-0">
-                        <a href="<?=base_url()?>/products/search_p?search=">
-                            <img src="<?=base_url()?>/public/uploads/banner/cari.png" alt="" class="p-2">
-                        </a>
-                            <div class="card-body p-0 text-center">
-                                <h6 class="card-title">cari</h6>
-                            </div>
+                    <a href="<?=base_url()?>/products/search_p?search=">
+                        <img src="<?=base_url()?>/public/uploads/banner/cari.png" alt="" class="p-2">
+                    </a>
+                    <div class="card-body p-0 text-center">
+                        <h6 class="card-title">cari</h6>
+                    </div>
                 </div>
             </div>
         </div>
