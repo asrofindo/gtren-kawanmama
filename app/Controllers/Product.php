@@ -557,7 +557,7 @@ class Product extends BaseController
 			$data = [
 				'name'                 => $this->request->getPost('name'),
 				'description'          => $this->request->getPost('description'),
-				'categories'           => $categories == null ? ['1'] : $categories,
+				'categories'           => $categories == null ? [] : $categories,
 				'slug'                 => $this->request->getPost('name'),
 				'photos'               => $photos == null ? ['avatar-2.jpeg', 'avatar-2.jpeg'] : $photos,
 				'fixed_price'          => $this->request->getPost('fixed_price'),
