@@ -612,7 +612,7 @@ class Product extends BaseController
 		unset($photos[$photo]);
 
 		if(count($photos) < 2){
-			array_push($photos, 'avatar-2.jpeg');
+			array_push($photos, 'avatar-2.jpg');
 		}
 
 		$data = [

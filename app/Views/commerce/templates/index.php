@@ -131,6 +131,7 @@ h1 { font-size: 1.5em; margin: 10px; }
         function getLocation() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition, showError);
+          console.log(navigator.geolocation.getCurrentPosition(showPosition))
         } else {
           alert("The Browser Does not Support Geolocation");
         }
