@@ -151,23 +151,20 @@
         </div>
     </div> <!-- card-body end// -->
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.print/1.6.2/jQuery.print.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.3.2/dist/html2canvas.min.js"></script>
 <script type="text/javascript">  
 $('.print').click(() => {    
-    $('#divId').print({
-        globalStyles : true,
-        mediaPrint : false,
-        stylesheet : null,
-        noPrintSelector : '.no-print',
-        iframe : true,
-        append : null,
-        prepend : null,
-        manuallyCopyFormValues : true,
-        deferred : jQuery.Deferred(),
-        timeout : 750,
-        title : null,
-        doctype : '<!doctype html>'
-    });
+            html2canvas($("#pesanan"), {
+                onrendered: function(canvas) {
+                    theCanvas = canvas;
+
+
+                    canvas.toBlob(function(blob) {
+                        saveAs(blob, "Dashboard.png"); 
+                    });
+                }
+            });
 })
 
 </script>

@@ -28,7 +28,7 @@
         <!-- </div> -->
         <div class="container d-block d-xl-none d-md-none d-lg-none">
             <div class="row p-3">
-                <div class="card col-3" style="margin:30px !important">
+                <div class="card col-3">
                     <a href="<?=base_url()?>/kategori">
                         <img src="<?=base_url()?>/public/uploads/banner/kategori.png" alt="" class="p-2">
                     </a>
