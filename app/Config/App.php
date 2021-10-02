@@ -24,7 +24,7 @@ class App extends BaseConfig
 	 * @var string
 	 */
 
-	public $baseURL = 'https://trenbisnis.net';
+	public $baseURL = 'https://g.trenbisnis.net';
 
 	/**
 	 * --------------------------------------------------------------------------
