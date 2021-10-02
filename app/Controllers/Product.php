@@ -497,7 +497,7 @@ class Product extends BaseController
 				'affiliate_commission' => 'required',
 				'stockist_commission'  => 'required',
 				'weight'  			   => 'required',
-				'file'                 => 'uploaded[file]|max_size[file,1024]|ext_in[file,png,jpg]',
+				// 'file'                 => 'uploaded[file]|max_size[file,1024]|ext_in[file,png,jpg]',
 			],
 			[
 	        	'name' => [
@@ -522,11 +522,6 @@ class Product extends BaseController
     			'weight' => [
     				'required' => 'Weight Harus Diisi'
     			],
-    			'file' => [
-					'uploaded' => 'Anda Harus Menyertakan Gambar Produk',
-					'max_size' => 'Ukuran Gambar Maksimal 1Mb',
-					'ext_in'   => 'Ekstensi Gambar Tidak Diizinkan',
-    			],
 	        ]
 		);
 
@@ -536,9 +531,12 @@ class Product extends BaseController
         	
 
 			$photos     = [];
-			$categories = array(
-			    'categories' => implode(",", $this->request->getPost('category'))
-			);
+
+			if($this->request->getPost('category') != null){
+				$categories = array(
+				    'categories' => implode(",", $this->request->getPost('category'))
+				);
+			}
 
 			if ($this->request->getFileMultiple('file')) {
 
@@ -559,7 +557,7 @@ class Product extends BaseController
 				'description'          => $this->request->getPost('description'),
 				'categories'           => $categories == null ? [] : $categories,
 				'slug'                 => $this->request->getPost('name'),
-				'photos'               => $photos == null ? ['avatar-2.jpeg', 'avatar-2.jpeg'] : $photos,
+				'photos'               => $photos == null ? ['avatar-2.jpg', 'avatar-2.jpg'] : $photos,
 				'fixed_price'          => $this->request->getPost('fixed_price'),
 				'sell_price'           => $this->request->getPost('sell_price'),
 				'affiliate_commission' => $this->request->getPost('affiliate_commission'),
