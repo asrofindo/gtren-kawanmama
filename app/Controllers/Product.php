@@ -601,15 +601,16 @@ class Product extends BaseController
 		$path   = $_SERVER['DOCUMENT_ROOT'] . '/uploads/product_photos/';
 		
 		
-		if(file_exists($path.$uns)){
-
-			unlink($path.$uns); 
-
-		}
+		
 
 		if($uns != 'avatar-2.jpg'){
-			unset($photos[$photo]);
+			if(file_exists($path.$uns)){
+
+				unlink($path.$uns); 
+
+			}
 		}
+			unset($photos[$photo]);
 
 		if(count($photos) < 2){
 			array_push($photos, 'avatar-2.jpg');
