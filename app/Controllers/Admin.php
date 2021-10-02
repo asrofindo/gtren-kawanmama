@@ -337,7 +337,6 @@ class Admin extends BaseController
 
 		$data['address'] = $this->address->where('user_id', user()->id)->where('type','distributor')->first();
 		
-		dd($data);
 		// instantiate and use the dompdf class
 		$dompdf = new Dompdf();
 		$dompdf->loadHtml(view('db_stokis/pdf', $data));
@@ -350,7 +349,7 @@ class Admin extends BaseController
 
 		// Output the generated PDF to Browser
 
-        $dompdf->stream('transaksi.pdf', array('Attachment'=>1));
+        $dompdf->stream('transaksi.pdf', array('Attachment'=>0));
 
 		return redirect()->back();
 		
