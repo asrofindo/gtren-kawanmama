@@ -10,7 +10,7 @@ use App\Models\SosialModel;
 use App\Models\KonfirmasiModel;
 use App\Models\AddressModel;
 use Myth\Auth\Authorization\GroupModel;
-use Dompdf\Dompdf;
+use Mpdf\Mpdf;
 
 class Admin extends BaseController
 {
@@ -254,7 +254,7 @@ class Admin extends BaseController
 		->join("products", 'products.id = cart_item.product_id')
 		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
 		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
-		->where('detailtransaksi.transaksi_id', $id)->where('distributor.user_id', user()->id)->findAll();
+		->where('detailtransaksi.transaksi_id', $id)->where('status_barang', 'diterima_seller')->where('distributor.user_id', user()->id)->findAll();
 		
       
       $data['total_transaksi'] = $this->transaksi
@@ -336,23 +336,24 @@ class Admin extends BaseController
 		$data['transaksi_id'] = $id;
 
 		$data['address'] = $this->address->where('user_id', user()->id)->where('type','distributor')->first();
+
+       	$mpdf = new \Mpdf\Mpdf();
+
+		// Buffer the following html with PHP so we can store it to a variable later
+		ob_start();
+
+		// This is where your script would normally output the HTML using echo or print
+		echo view('db_stokis/pdf',$data);
+
+		// Now collect the output buffer into a variable
+		$html = ob_get_contents();
+		ob_end_clean();
+
+		// send the captured HTML from the output buffer to the mPDF class for processing
+		$mpdf->WriteHTML($html);
+		$mpdf->Output('transaksi.pdf', 'D');
+
 		
-		// instantiate and use the dompdf class
-		$dompdf = new Dompdf();
-
-		$dompdf->loadHtml(view('db_stokis/pdf', $data));
-
-		// (Optional) Setup the paper size and orientation
-		$dompdf->setPaper('A4', 'landscape');
-
-		// Render the HTML as PDF
-		$dompdf->render();
-
-		// Output the generated PDF to Browser
-
-        $dompdf->stream('transaksi.pdf', array('Attachment'=>2));
-
-		return redirect()->back();
 		
 	}
 

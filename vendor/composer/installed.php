@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'e15062c44d197f9c97920c55ef20908cd0092059',
+    'reference' => 'fb955ac53fb85d645a156ca558171c30162dc1bf',
     'name' => 'codeigniter4/framework',
   ),
   'versions' => 
@@ -27,7 +27,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'e15062c44d197f9c97920c55ef20908cd0092059',
+      'reference' => 'fb955ac53fb85d645a156ca558171c30162dc1bf',
     ),
     'doctrine/instantiator' => 
     array (
@@ -92,6 +92,15 @@
       ),
       'reference' => '231c73783ebb7dd9ec77916c10037eff5a2b6efe',
     ),
+    'mpdf/mpdf' => 
+    array (
+      'pretty_version' => 'v8.0.13',
+      'version' => '8.0.13.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '42f145615cfe830fd432474da1d2e1f927efe402',
+    ),
     'myclabs/deep-copy' => 
     array (
       'pretty_version' => '1.10.2',
@@ -113,6 +122,15 @@
       array (
       ),
       'reference' => '4432ba399e47c66624bc73c8c0f811e5c109576f',
+    ),
+    'paragonie/random_compat' => 
+    array (
+      'pretty_version' => 'v9.99.100',
+      'version' => '9.99.100.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '996434e5492cb4c3edcb9168db6fbb1359ef965a',
     ),
     'phar-io/manifest' => 
     array (
@@ -419,6 +437,15 @@
       array (
       ),
       'reference' => 'c6c1022351a901512170118436c764e473f6de8c',
+    ),
+    'setasign/fpdi' => 
+    array (
+      'pretty_version' => 'v2.3.6',
+      'version' => '2.3.6.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6231e315f73e4f62d72b73f3d6d78ff0eed93c31',
     ),
     'squizlabs/php_codesniffer' => 
     array (
