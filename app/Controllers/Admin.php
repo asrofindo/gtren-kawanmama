@@ -349,7 +349,7 @@ class Admin extends BaseController
 
 		// Output the generated PDF to Browser
 
-        $dompdf->stream('transaksi.pdf', array('Attachment'=>0));
+        $dompdf->stream('transaksi.pdf', array('Attachment'=>2));
 
 		return redirect()->back();
 		
