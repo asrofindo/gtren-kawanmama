@@ -337,7 +337,7 @@ class Admin extends BaseController
 
 		$data['address'] = $this->address->where('user_id', user()->id)->where('type','distributor')->first();
 		
-
+		dd($data);
 		// instantiate and use the dompdf class
 		$dompdf = new Dompdf();
 		$dompdf->loadHtml(view('db_stokis/pdf', $data));
