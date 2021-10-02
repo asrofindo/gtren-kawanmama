@@ -764,14 +764,14 @@
                                                  Username Kamu <b><?= user()->username; ?></b>
                                             </p>
                                                 <p class="pb-5 mb-20">
-                                                     Biaya Affiliate : <b><?= rupiah($biaya->minimal) ?></b>
+                                                     Biaya Affiliate : <b><?= rupiah($biaya == null ? 0  : $biaya->minimal) ?></b>
                                                 </p>
                                                 <p class="pb-5 mb-20">
-                                                    <?php $kode = $biaya->minimal + $generate; ?>
+                                                    <?php $kode = $biaya == null ? 0  : $biaya->minimal+ $generate; ?>
                                                     Kode Unik : <b><?= substr($kode, 2, 5) ?></b>
                                                 </p>
                                                 <p class="pb-5 mb-20">
-                                                     Total Tagihan : <b><?= rupiah($biaya->minimal + $generate) ?></b>
+                                                     Total Tagihan : <b><?= rupiah($biaya == null ? 0  : $biaya->minimal + $generate) ?></b>
                                                 </p>
                                             <?php endif; ?>
                                             <?php if($segments[1] == "affiliate" && !empty(session()->getFlashdata('success'))){ ?>
@@ -859,7 +859,7 @@
                                             <?php if(count($upgrades) < 1 && !in_groups(4)): ?>
                                                 <form method="post" action="<?= base_url()  ?>/upgrades/<?= $id  ?>" enctype="multipart/form-data">
                                                     <div class="form-group col-md-12">
-                                                        <input  value="<?= $biaya->minimal + $generate ?>" required class="form-control square" name="total" id="total" style="display: none;" type="text">
+                                                        <input  value="<?= $biaya == null ? 0  : $biaya->minimal + $generate ?>" required class="form-control square" name="total" id="total" style="display: none;" type="text">
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <input type="text" name="type" value="affiliate" style="display: none;">
