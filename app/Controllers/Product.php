@@ -609,7 +609,9 @@ class Product extends BaseController
 
 		}
 
-		unset($photos[$photo]);
+		if($uns != 'avatar-2.jpg'){
+			unset($photos[$photo]);
+		}
 
 		if(count($photos) < 2){
 			array_push($photos, 'avatar-2.jpg');
