@@ -307,6 +307,12 @@ $routes->group('', function($routes)
 	$routes->get('/wd/edit/(:any)', 'Admin::wd_edit/$1');
 	$routes->get('/wd/delete/(:any)', 'Admin::wd_delete/$1');
 
+	// setting affiliate 
+	$routes->post('/setting/affiliate/(:any)', 'Admin::setting_affiliate/$1');
+	$routes->get('/setting/affiliate/(:any)', 'Admin::setting_affiliate/$1');
+	$routes->get('/affiliate/edit/(:any)', 'Admin::affiliate_edit/$1');
+	$routes->get('/affiliate/delete/(:any)', 'Admin::affiliate_delete/$1');
+
 }
 );
 

@@ -19,6 +19,7 @@ use App\Models\WDModel;
 use Myth\Auth\Models\UserModel;
 use Myth\Auth\Authorization\GroupModel;
 use App\Controllers\OtpType;
+use App\Models\AffiliateModel;
 class User extends BaseController
 {
 	protected $data;
@@ -44,6 +45,7 @@ class User extends BaseController
 		$this->wd = new WDModel();
 		$this->address = new AddressModel();
 		$this->pendapatan = new PendapatanModel();
+		$this->affiliate = new AffiliateModel();
 
 	}
 	public function account()
@@ -94,6 +96,8 @@ class User extends BaseController
 			$data['products']   = $this->product->orderBy('id', 'desc')->paginate(8, 'products');
 		}
 		$data['pager']      = $this->product->pager;
+		$data['biaya']      = $this->affiliate->first();
+
 
 		return view('db_affiliate/market_affiliate', $data);
 	}
@@ -317,6 +321,7 @@ class User extends BaseController
 
 		$data['segments'] = $this->request->uri->getSegments();
 		$data['bills'] = $this->bill->findAll();
+		$data['biaya'] = $this->affiliate->first();
 		$data['generate'] = $this->generate->find()[0]['nomor'];
 		$data['upgrades'] = $this->upgrade->where('user_id', user()->id)->findAll();
 		$data['konfirmasi'] = $this->konfirmasi->where('user_id', user()->id)->where('transaksi_id', null)->first();

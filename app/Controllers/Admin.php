@@ -595,4 +595,66 @@ class Admin extends BaseController
 		return redirect()->back();
 	}
 
+
+	// setting Affiliate
+
+	public function setting_affiliate($status)
+	{
+		$db      = \Config\Database::connect();
+		$builder = $db->table('setting_affiliate');
+
+		if($status == 'add'){
+			$minimal = $this->request->getPost('minimal');
+
+			$data = [
+				"minimal" => $minimal
+			];
+
+			$builder->insert($data);
+			return redirect()->back();
+
+		}
+		if($status == 'edit'){
+
+			$minimal = $this->request->getPost('minimal');
+			$id = $this->request->getPost('id');
+
+			$data = [
+				"minimal" => $minimal,
+			];
+
+			$builder->where("id", $id);
+			$builder->update($data);
+
+			$data['settings'] = $builder->get()->getResult();
+
+			return view("db_admin/affiliate/setting_affiliate", $data);
+		}
+
+		$data['settings'] = $builder->get()->getResult();
+
+		return view("db_admin/affiliate/setting_affiliate", $data);
+		
+	}
+
+	public function affiliate_edit($id)
+	{
+		$db      = \Config\Database::connect();
+		$builder = $db->table('setting_affiliate');
+
+		$data['setting'] = $builder->where('id', $id)->get()->getResultObject()[0];
+
+		return view("db_admin/affiliate/edit_affiliate", $data);
+	}
+
+	public function affiliate_delete($id)
+	{
+		$db      = \Config\Database::connect();
+		$builder = $db->table('setting_affiliate');
+
+		$builder->delete(["id" => $id]);
+
+		return redirect()->back();
+	}
+
 }
