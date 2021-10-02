@@ -9,12 +9,12 @@ class Email extends BaseConfig
 	/**
 	 * @var string
 	 */
-	public $fromEmail = "support@kawanmama.com";
+	public $fromEmail = "sistem@trenbisnis.net";
 
 	/**
 	 * @var string
 	 */
-	public $fromName = "Gtren Team";
+	public $fromName = "Tren Bisnis";
 
 	/**
 	 * @var string
@@ -26,7 +26,7 @@ class Email extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $userAgent = 'ruas digital solusiindo';
+	public $userAgent = 'Ruas Digital Solusindo';
 
 	/**
 	 * The mail sending protocol: mail, sendmail, smtp
@@ -47,21 +47,21 @@ class Email extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $SMTPHost = 'server04.kendalhosting.net';
+	public $SMTPHost = 'mail.trenbisnis.net';
 
 	/**
 	 * SMTP Username
 	 *
 	 * @var string
 	 */
-	public $SMTPUser = 'support@kawanmama.com';
+	public $SMTPUser = 'sistem@trenbisnis.net';
 
 	/**
 	 * SMTP Password
 	 *
 	 * @var string
 	 */
-	public $SMTPPass = 'kendal12345';
+	public $SMTPPass = 'JamalKendal';
 
 	/**
 	 * SMTP Port
