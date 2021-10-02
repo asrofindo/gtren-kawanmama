@@ -39,6 +39,8 @@ $routes->resource('verifywa');
 $routes->resource('verifyotp');
 $routes->resource('notif');
 
+// pdf
+
 $routes->get('/notifikasi', 'Admin::notifikasi');
 $routes->post('/notifikasi', 'Admin::notifikasi');
 
@@ -195,7 +197,8 @@ $routes->group('', function($routes)
 
 	// order stockist
 		// order
-	$routes->get('order/detail/stockist/(:num)', 'Admin::order_detail_stockist/$1');
+	$routes->get('order/detail/stockist/(:any)', 'Admin::order_detail_stockist/$1');
+	$routes->get('order/stockist/print/(:any)', 'Admin::print/$1');
 	$routes->get('order/stockist', 'Admin::order_stockist');
 	$routes->post('order/stockist', 'Admin::order_stockist');
 	$routes->get('order/verify/(:num)', 'Order::order_verify/$1');

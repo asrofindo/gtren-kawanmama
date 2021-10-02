@@ -10,6 +10,7 @@ use App\Models\SosialModel;
 use App\Models\KonfirmasiModel;
 use App\Models\AddressModel;
 use Myth\Auth\Authorization\GroupModel;
+use Dompdf\Dompdf;
 
 class Admin extends BaseController
 {
@@ -126,11 +127,117 @@ class Admin extends BaseController
 		
 		$data['pager'] = $this->transaksi->paginate(10, 'orders');
 		$data['pager'] = $this->transaksi->pager;
+
 		return view('db_stokis/order', $data);
+
 	}
 
 	// order detaiil stockist
 	public function order_detail_stockist($id)
+	{
+		if(count($this->address->where('type','distributor')->where('user_id',user()->id)->find()) < 1 && in_groups(3)){
+			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+			return redirect()->to('/distributor');
+		}
+
+		$data['detail_orders'] = $this->transaksi
+		->select('*, transaksi.total as total_transaksi, detailtransaksi.id as id, detailtransaksi.stockist_commission')
+		->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
+		->join("bills", 'bills.id = bill_id')
+		->join("users", 'users.id = transaksi.user_id')
+		->join("cart_item", 'cart_item.id = cart_id')
+		->join('distributor', 'distributor.id = cart_item.distributor_id', 'left')
+		->join("products", 'products.id = cart_item.product_id')
+		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
+		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
+		->where('detailtransaksi.transaksi_id', $id)->where('distributor.user_id', user()->id)->findAll();
+		
+      
+      $data['total_transaksi'] = $this->transaksi
+		->select('*, sum(COALESCE(detailtransaksi.stockist_commission, 0) + COALESCE(detailtransaksi.admin_commission, 0) + COALESCE(detailtransaksi.affiliate_commission, 0)) as total_transaksi, distributor.id as id')
+		->join("detailtransaksi", "detailtransaksi.transaksi_id = transaksi.id", 'left')
+		->join("bills", 'bills.id = bill_id')
+		->join("users", 'users.id = transaksi.user_id')
+		->join("cart_item", 'cart_item.id = cart_id')
+		->join('distributor', 'distributor.id = detailtransaksi.distributor_id', 'left')
+		->join("products", 'products.id = cart_item.product_id')
+		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
+		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
+		->where('detailtransaksi.transaksi_id', $id)->where('distributor.user_id', user()->id)->findAll();
+		      
+		$outer_array = array();
+		$unique_array = array();
+		$data['id'] = $data['total_transaksi'][0]->transaksi_id;
+		foreach($data['detail_orders'] as $key => $value)
+		{
+
+		    $inner_array = array();
+
+		    $fid_value = $value->user_id;
+		  
+		    $username = $value->username;
+		    $email = $value->email;
+		    $kurir = $value->kurir;
+		    $ongkir = $value->ongkir;
+		    $fullname = $value->fullname;
+		    $phone = $value->phone;
+		    $alamat = $value->alamat;
+		    $etd = $value->etd;
+		    $kode_unik = $value->kode_unik;
+		    $id = $value->id;
+		    $bank_name = $value->bank_name;
+		    $stockist_commission = $value->stockist_commission;
+		    $bank_number = $value->bank_number;
+		    $total = $value->total;		    
+          	$sell_price = $value->sell_price;          	
+          	$amount = $value->amount;          	
+          	$ongkir_produk = $value->ongkir_produk;
+
+
+
+		    if(!in_array($value->user_id, $unique_array))
+		    {
+		            array_push($unique_array, $fid_value);
+		            array_push($inner_array, $value);
+		           
+		            $outer_array[$fid_value]['user_id'] = $fid_value;
+		         
+		          
+		           
+		            $outer_array[$fid_value]['username'] = $username;
+		            $outer_array[$fid_value]['fullname'] = $fullname;
+		            $outer_array[$fid_value]['id'] = $id;
+		            $outer_array[$fid_value]['phone'] = $phone;
+		            $outer_array[$fid_value]['stockist_commission'] = $stockist_commission;
+		            $outer_array[$fid_value]['alamat'] = $alamat;
+		            $outer_array[$fid_value]['email'] = $email;
+		            $outer_array[$fid_value]['kurir'] = $kurir;
+		            $outer_array[$fid_value]['etd'] = $etd;
+		            $outer_array[$fid_value]['ongkir'] = $ongkir;
+		            $outer_array[$fid_value]['kode_unik'] = $kode_unik;
+              
+		            $outer_array[$fid_value]['bank'] = "{$bank_name} - {$bank_number} ";
+		            $outer_array[$fid_value]['products'] = $inner_array;
+		           
+		    }else{		            
+		            array_push($outer_array[$fid_value]['products'], $value);
+		           	$outer_array[$fid_value]['stockist_commission'] += $stockist_commission;
+		
+		            
+		         
+		    }
+		}
+		$data['detail_orders'] = $outer_array;
+
+		$data['transaksi_id'] = $id;
+
+		$data['address'] = $this->address->where('user_id', user()->id)->where('type','distributor')->first();
+
+		return view('db_stokis/detail_order', $data);
+		
+	}
+
+	public function print($id)
 	{
 		if(count($this->address->where('type','distributor')->where('user_id',user()->id)->find()) < 1 && in_groups(3)){
 			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
@@ -181,6 +288,7 @@ class Admin extends BaseController
 		    $alamat = $value->alamat;
 		    $etd = $value->etd;
 		    $kode_unik = $value->kode_unik;
+		    $id = $value->id;
 		    $bank_name = $value->bank_name;
 		    $stockist_commission = $value->stockist_commission;
 		    $bank_number = $value->bank_number;
@@ -202,6 +310,7 @@ class Admin extends BaseController
 		           
 		            $outer_array[$fid_value]['username'] = $username;
 		            $outer_array[$fid_value]['fullname'] = $fullname;
+		            $outer_array[$fid_value]['id'] = $id;
 		            $outer_array[$fid_value]['phone'] = $phone;
 		            $outer_array[$fid_value]['stockist_commission'] = $stockist_commission;
 		            $outer_array[$fid_value]['alamat'] = $alamat;
@@ -209,6 +318,7 @@ class Admin extends BaseController
 		            $outer_array[$fid_value]['kurir'] = $kurir;
 		            $outer_array[$fid_value]['etd'] = $etd;
 		            $outer_array[$fid_value]['ongkir'] = $ongkir;
+		            $outer_array[$fid_value]['kode_unik'] = $kode_unik;
               
 		            $outer_array[$fid_value]['bank'] = "{$bank_name} - {$bank_number} ";
 		            $outer_array[$fid_value]['products'] = $inner_array;
@@ -225,7 +335,24 @@ class Admin extends BaseController
 
 		$data['transaksi_id'] = $id;
 
-		return view('db_stokis/detail_order', $data);
+		$data['address'] = $this->address->where('user_id', user()->id)->where('type','distributor')->first();
+		
+
+		// instantiate and use the dompdf class
+		$dompdf = new Dompdf();
+		$dompdf->loadHtml(view('db_stokis/pdf', $data));
+
+		// (Optional) Setup the paper size and orientation
+		$dompdf->setPaper('A4', 'landscape');
+
+		// Render the HTML as PDF
+		$dompdf->render();
+
+		// Output the generated PDF to Browser
+
+        $dompdf->stream('transaksi');
+
+		return redirect()->back();
 		
 	}
 

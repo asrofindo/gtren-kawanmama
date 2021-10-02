@@ -17,6 +17,7 @@ use App\Models\CartItemModel;
 use App\Models\SosialModel;
 use App\Models\ProductModel;
 use App\Controllers\PendaptanType;
+use Dompdf\Dompdf;
 
 class Order extends BaseController
 {
@@ -466,6 +467,23 @@ class Order extends BaseController
 
 		// uang masuk ke dompet stockis / affiliate / admin
 		return redirect()->back();
+	}
+
+	public function pdf($value='')
+	{
+
+		// instantiate and use the dompdf class
+		$dompdf = new Dompdf();
+		$dompdf->loadHtml(view('db_stokis/detail_order'));
+
+		// (Optional) Setup the paper size and orientation
+		$dompdf->setPaper('A4', 'landscape');
+
+		// Render the HTML as PDF
+		$dompdf->render();
+
+		// Output the generated PDF to Browser
+		$dompdf->stream();
 	}
 
 }

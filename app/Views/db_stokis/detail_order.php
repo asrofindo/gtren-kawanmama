@@ -4,10 +4,10 @@
     <div>
         <h2 class="content-title card-title">Detail Pesanan</h2>
 <!--         <p>Details for Order ID: 3453012</p>
- -->     <a class="btn btn-secondary print ms-2" href="#"><i class="icon material-icons md-print"></i></a> 
+ -->     <a class="btn btn-secondary print ms-2" href="<?php base_url() ?>/order/stockist/print/<?= $id ?>"><i class="icon material-icons md-print"></i></a> 
     </div>
 </div>
-<div class="card" id="pesanan">
+<div class="card" id="capture">
  <!-- card-header end// -->
     <div class="card-body">
         <div class="row mb-50 mt-20 order-info-wrap">
@@ -149,23 +149,8 @@
             </div> <!-- col// -->
             <div class="col-lg-1"></div> <!-- col// -->
         </div>
+         <div id="output"></div>
     </div> <!-- card-body end// -->
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.3.2/dist/html2canvas.min.js"></script>
-<script type="text/javascript">  
-$('.print').click(() => {    
-            html2canvas($("#pesanan"), {
-                onrendered: function(canvas) {
-                    theCanvas = canvas;
 
-
-                    canvas.toBlob(function(blob) {
-                        saveAs(blob, "Dashboard.png"); 
-                    });
-                }
-            });
-})
-
-</script>
 <?php $this->endSection() ?>
