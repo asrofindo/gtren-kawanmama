@@ -24,7 +24,7 @@
     <link href="<?= base_url() ?>/backend/css/main.css" rel="stylesheet" type="text/css" />
 
 </head>
-
+// test
 <body>
     <div style="display: none; text-align:center" class="bg-danger red-alert text-white ">Anda harus melengkapi pengaturan NOMOR WA ADMIN, <a href="/notifikasi">klik disini<a/> untuk manambah nomor WA</div>
 
