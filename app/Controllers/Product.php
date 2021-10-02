@@ -600,7 +600,6 @@ class Product extends BaseController
 		
 		$uns    = $photos[$photo];
 
-
 		$path   = $_SERVER['DOCUMENT_ROOT'] . '/uploads/product_photos/';
 		
 		
@@ -612,6 +611,10 @@ class Product extends BaseController
 
 		unset($photos[$photo]);
 
+		if(count($photos) < 2){
+			array_push($photos, 'avatar-2.jpeg')
+		}
+		
 		$data = [
 		    'id'       => $id,
 		    'photos' => implode(",", $photos)
