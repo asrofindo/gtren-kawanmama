@@ -1,3 +1,2 @@
 .env
-/vendor
 /app/Config/App.php
