@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    <div class="bg-danger red-alert text-white" style="text-align:center">Anda harus melengkapi pengaturan NOMOR WA ADMIN, <a href="/notifikasi">klik disini<a/> untuk manambah nomor WA</div>
+    <div style="display: none; text-align:center" class="bg-danger red-alert text-white ">Anda harus melengkapi pengaturan NOMOR WA ADMIN, <a href="/notifikasi">klik disini<a/> untuk manambah nomor WA</div>
 
     <div class="screen-overlay"></div>
     <aside class="navbar-aside" id="offcanvas_aside">
@@ -486,12 +486,12 @@
 
 
         $.get( "/notif",
-            function( data ) {
-                if(data.length == 0){
-                    $('.red-alert').show()
-                } else {
-                    $('.red-alert').hide()
-                }
+           async function( data ) {
+                console.log(data);
+                    await $('.red-alert').hide()
+                if(data.length < 1){
+                    await $('.red-alert').show()
+                } 
         });
 
         function copy_text(data) {

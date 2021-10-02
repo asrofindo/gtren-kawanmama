@@ -144,7 +144,7 @@ class Transaksi extends BaseController
 		}
 
 		$data['generate'] = $this->generate->find();
-		$this->generate->save(["id" => 1, "nomor" => $data['generate'] + 1]);
+		$this->generate->save(["id" => 1, "nomor" => $data['generate'][0]['nomor'] + 1]);
 		
 		$data['total'] = $total + $data['generate'][0]['nomor'];
 		$data['category'] = $this->category->findAll();
