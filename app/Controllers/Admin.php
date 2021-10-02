@@ -254,7 +254,7 @@ class Admin extends BaseController
 		->join("products", 'products.id = cart_item.product_id')
 		->join('detailpengiriman', 'detailpengiriman.cart_id = cart_item.id', 'left outer')
 		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
-		->where('detailtransaksi.transaksi_id', $id)->where('status_barang', 'diterima')->orWhere('status_barang', 'dikirim')->where('distributor.user_id', user()->id)->findAll();
+		->where('detailtransaksi.transaksi_id', $id)->where('status_barang', 'diterima')->where('distributor.user_id', user()->id)->findAll();
 		
       
       $data['total_transaksi'] = $this->transaksi
