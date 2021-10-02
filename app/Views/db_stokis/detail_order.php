@@ -4,7 +4,8 @@
     <div>
         <h2 class="content-title card-title">Detail Pesanan</h2>
 <!--         <p>Details for Order ID: 3453012</p>
- -->    </div>
+ -->     <a class="btn btn-secondary print ms-2" href="#"><i class="icon material-icons md-print"></i></a> 
+    </div>
 </div>
 <div class="card" id="pesanan">
  <!-- card-header end// -->
@@ -152,20 +153,22 @@
 </div>
 
 <script type="text/javascript">  
-$('#divId').print({
-    globalStyles : true,
-    mediaPrint : false,
-    stylesheet : null,
-    noPrintSelector : '.no-print',
-    iframe : true,
-    append : null,
-    prepend : null,
-    manuallyCopyFormValues : true,
-    deferred : jQuery.Deferred(),
-    timeout : 750,
-    title : null,
-    doctype : '<!doctype html>'
-});
+$('.print').click(() => {    
+    $('#divId').print({
+        globalStyles : true,
+        mediaPrint : false,
+        stylesheet : null,
+        noPrintSelector : '.no-print',
+        iframe : true,
+        append : null,
+        prepend : null,
+        manuallyCopyFormValues : true,
+        deferred : jQuery.Deferred(),
+        timeout : 750,
+        title : null,
+        doctype : '<!doctype html>'
+    });
+})
 
 </script>
 <?php $this->endSection() ?>
