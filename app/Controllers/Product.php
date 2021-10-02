@@ -531,14 +531,14 @@ class Product extends BaseController
         	
 
 			$photos     = [];
-
+			$categories = null;
 			if($this->request->getPost('category') != null){
 				$categories = array(
 				    'categories' => implode(",", $this->request->getPost('category'))
 				);
 			}
 
-			if ($this->request->getFileMultiple('file')) {
+			if (count($this->request->getFileMultiple('file')) > 1) {
 
 				foreach($this->request->getFileMultiple('file') as $file)
 				{   
