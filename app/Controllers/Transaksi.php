@@ -143,6 +143,7 @@ class Transaksi extends BaseController
 			$total += $cart['subtotal'][0];
 		}
 
+		// ini adalah generate number
 		$data['generate'] = $this->generate->find();
 		$this->generate->save(["id" => 1, "nomor" => $data['generate'][0]['nomor'] + 1]);
 		
