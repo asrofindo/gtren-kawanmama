@@ -61,7 +61,7 @@
             </a>
             <div class="submenu">
                 <a href="<?= base_url() ?>/order">Data Pesanan</a>
-                <a class="" href="<?php base_url() ?>/upgrades">Upgrade Akun</span></a>
+                <a class="" href="<?php base_url() ?>/upgrades">Upgrade Affiliate</span></a>
             </div>
         </li>
         <li class="menu-item has-submenu">
