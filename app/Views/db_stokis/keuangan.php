@@ -87,7 +87,7 @@
                         <thead>
                             <tr>
                                 <th>#ID</th>
-                                <th scope="col">Komisi Distributor</th>
+                                <th scope="col">Nilai Barang + ongkir + Komisi Distributor</th>
                             </tr>
                         </thead>
                         <tbody>
