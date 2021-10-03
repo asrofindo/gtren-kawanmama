@@ -111,7 +111,7 @@ class Product extends BaseController
 		}
 		
 		$data['categories'] = $this->category->findAll();
-		$this->model->select('products.id as id, name, description, categories, photos, slug, fixed_price, sell_price');
+		$this->model->select('products.id as id, name, description, categories, photos, slug, fixed_price, sell_price, stockist_commission');
 		$this->model->select('product_distributor.id as id_pd, product_distributor.product_id, product_distributor.distributor_id, product_distributor.jumlah, distributor.id');
 		$this->model->select('distributor.id as d_id');
 		$this->model->join('product_distributor', 'product_distributor.product_id = products.id ', 'right');
