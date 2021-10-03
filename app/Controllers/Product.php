@@ -686,7 +686,7 @@ class Product extends BaseController
 
 	public function search(){
 		$data = $this->data;
-		$request = $this->request->getPost('search');
+		$request = $this->request->getPost('keyword');
 		if(in_groups(3)){
 			$data['products'] = $this->model
 			->join('product_distributor', 'product_distributor.product_id = products.id', 'left')
