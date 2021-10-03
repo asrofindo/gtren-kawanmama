@@ -94,7 +94,7 @@
                             <?php foreach ($detailtransaksi as $detail): ?>
                                 <tr>
                                     <td class="id"><?= $detail->id; ?></td>
-                                    <td><?= intval($detail->stockist_commission); ?></td>
+                                    <td><?= rupiah($detail->stockist_commission); ?></td>
                               </tr>
                             <?php endforeach ?>
                         </tbody>
