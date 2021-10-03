@@ -335,7 +335,7 @@ class Order extends BaseController
 			
 			$distributors = $this->detailtransaksi
 			->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id')
-			->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')
+			->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')->where('detailtransaksi.status_barang', 'diterima_seller')
 			->where('transaksi.id', $id_transaksi)
 			->find();
 
