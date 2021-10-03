@@ -48,7 +48,7 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Minimal</th>
+                                    <th>Biaya</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
