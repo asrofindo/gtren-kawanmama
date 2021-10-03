@@ -175,7 +175,7 @@ class Transaksi extends BaseController
 		
 		$kode_unik = $this->request->getPost('kode_unik');
 		
-		$data['carts'] = $this->cart->select('*, distributor.id as distributor_id, detailtransaksi.id as d_id, cart_item.id as cart_id, products.stockist_commission, products.affiliate_commission')
+		$data['carts'] = $this->cart->select('*, distributor.id as distributor_id, detailtransaksi.id as d_id, cart_item.id as cart_id, cart.affiliate_link, products.stockist_commission, products.affiliate_commission')
 		->join('products', 'products.id = product_id')
 		->join('distributor', 'distributor.id = distributor_id')
 		->join('users', 'users.id = distributor.user_id')
@@ -230,10 +230,10 @@ class Transaksi extends BaseController
 
 			$data = [
 				"cart_id" => $cart->cart_id, 
-				"affiliate_commission" => $cart->affiliate_link ? ($cart->affiliate_commission * $cart->amount)  : $cart->affiliate_link  , 
+				"affiliate_commission" => $cart->affiliate_link != null ? ($cart->affiliate_commission * $cart->amount)  : $cart->affiliate_link  , 
 				"distributor_id" => $cart->distributor_id, 
 				"stockist_commission" => ($cart->stockist_commission * $cart->amount) +  ($cart->fixed_price * $cart->amount) + $cart->ongkir_produk, 
-				"admin_commission" => $cart->affiliate_link ?  ($cart->sell_price * $cart->amount) - ($cart->fixed_price * $cart->amount) - ($cart->stockist_commission * $cart->amount) - ($cart->affiliate_commission * $cart->amount) : ($cart->sell_price * $cart->amount) - ($cart->fixed_price * $cart->amount) - ($cart->stockist_commission * $cart->amount),
+				"admin_commission" => $cart->affiliate_link != null ?  ($cart->sell_price * $cart->amount) - ($cart->fixed_price * $cart->amount) - ($cart->stockist_commission * $cart->amount) - ($cart->affiliate_commission * $cart->amount) : ($cart->sell_price * $cart->amount) - ($cart->fixed_price * $cart->amount) - ($cart->stockist_commission * $cart->amount),
 				"transaksi_id" => $this->transaksi->getInsertID(), 
 			];
 
