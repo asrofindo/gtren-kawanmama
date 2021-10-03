@@ -218,8 +218,8 @@ class User extends BaseController
 		$builder = $db->table('api_key');
 	
 		$api 	 = $builder->where('name', 'binderbyte')->get()->getResultObject()[0];
-		dd($api);
-		$url     = "https://api.binderbyte.com/v1/track?api_key={$api}&courier={$courier}&awb={$awb}";
+
+		$url     = "https://api.binderbyte.com/v1/track?api_key={$api->token}&courier={$courier}&awb={$awb}";
 		// 336e8e201c4c0bf28ff277c6251c50347d2646c3caffbd36ff865ec1e11743bf
 		curl_setopt($curl, CURLOPT_URL, $url);
 		curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
