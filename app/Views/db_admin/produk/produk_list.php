@@ -51,6 +51,10 @@
                                 <th >Harga Member</th>
                                 <?php if (in_groups(3)) {?>
                                     <th >Fee Seller</th>
+                                <?php }else{?>
+                                    <th >Fee Seller</th>
+                                    <th >Fee Affiliate</th>
+                                    <th >Fee Admin</th>
                                 <?php } ?>
                                 <th class="text-end">Action</th>
                             </tr>
@@ -70,6 +74,10 @@
                                 <td ><?= rupiah($product->fixed_price); ?></td>
                                 <?php if (in_groups(3)) {?>
                                     <td ><?= rupiah($product->stockist_commission); ?></td>
+                                <?php }else{ ?>
+                                    <td ><?= rupiah($product->stockist_commission); ?></td>
+                                    <td ><?= rupiah($product->affiliate_commission); ?></td>
+                                    <td ><?= rupiah($product->sell_price-$product->stockist_commission).' || '.rupiah($product->sell_price-$product->stockist_commission-$product->affiliate_commission); ?></td>
                                 <?php } ?>
                                 <td class="text-end">
                                     <div class="dropdown">
