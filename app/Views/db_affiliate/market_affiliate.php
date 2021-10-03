@@ -57,7 +57,7 @@
                                 </td>
                                 <td ><?= rupiah($product->affiliate_commission) ;?></td>
                                 <td > 
-                                   <input type="text" value="<?=base_url()."/product".$product->slug."/src/".user()->id?>" id="<?=$product->slug?>" class="form-control" readonly />
+                                   <input type="text" value="<?=base_url()."/product/".$product->slug."/src/".user()->id?>" id="<?=$product->slug?>" class="form-control" readonly />
                                 </td>
                                 <td class="text-end">
                                         <a onclick="copy_text('<?=$product->slug?>')" class="btn btn-light rounded btn-sm font-sm"> Copy </a>
