@@ -185,7 +185,7 @@
                                                                 <td>
                                                                     <?php if($order->status_barang == 'dikirim' || $order->status_barang == 'dipantau'): ?>
                                                                         <a onclick="return  confirm('Apakah Anda Sudah Terima ?')" class="btn btn-sm btn-primary" href="<?= base_url() ?>/order/verify/<?= $order->id ?>" class="btn-small d-block">
-                                                                             Sudah Terima ?
+                                                                             Sudah Terima?
                                                                         </a>
                                                                         <a class="btn btn-sm btn-primary" href="https://wa.me/<?=$admin?>" class="btn-small d-block">
                                                                             WA Admin
