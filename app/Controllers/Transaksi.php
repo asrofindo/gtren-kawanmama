@@ -232,8 +232,8 @@ class Transaksi extends BaseController
 				"cart_id" => $cart->cart_id, 
 				"affiliate_commission" => $cart->affiliate_link != null ? ($cart->affiliate_commission * $cart->amount)  : $cart->affiliate_link  , 
 				"distributor_id" => $cart->distributor_id, 
-				"stockist_commission" => ($cart->stockist_commission * $cart->amount) +  ($cart->fixed_price * $cart->amount) + $cart->ongkir_produk, 
-				"admin_commission" => $cart->affiliate_link != null ?  ($cart->sell_price * $cart->amount) - ($cart->fixed_price * $cart->amount) - ($cart->stockist_commission * $cart->amount) - ($cart->affiliate_commission * $cart->amount) : ($cart->sell_price * $cart->amount) - ($cart->fixed_price * $cart->amount) - ($cart->stockist_commission * $cart->amount),
+				"stockist_commission" => $cart->affiliate_link == null ? ($cart->affiliate_commission * $cart->amount) + ($cart->stockist_commission * $cart->amount) +  ($cart->fixed_price * $cart->amount) + $cart->ongkir_produk : ($cart->stockist_commission * $cart->amount) +  ($cart->fixed_price * $cart->amount) + $cart->ongkir_produk , 
+				"admin_commission" => ($cart->sell_price * $cart->amount) - ($cart->fixed_price * $cart->amount) - ($cart->stockist_commission * $cart->amount) - ($cart->affiliate_commission * $cart->amount),
 				"transaksi_id" => $this->transaksi->getInsertID(), 
 			];
 
