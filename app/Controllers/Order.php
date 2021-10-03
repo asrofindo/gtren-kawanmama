@@ -315,6 +315,12 @@ class Order extends BaseController
 		if(count($data_null) == 0){
 			
 			// looping dan mengubah data resi dan status barang di dalam table detail transaksi 
+			$distributors = $this->detailtransaksi
+			->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id')
+			->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')->where('detailtransaksi.status_barang', 'diterima_seller')
+			->where('transaksi.id', $id_transaksi)
+			->find();
+
 			foreach ($data_transaksis as $data_transaksi) {
 	          	
 				$id = $data_transaksi->id;
@@ -333,12 +339,6 @@ class Order extends BaseController
                   
                   		// mengurangi jumlah barang dari distributor dan data distributor
 			
-			$distributors = $this->detailtransaksi
-			->join('transaksi', 'transaksi.id = detailtransaksi.transaksi_id')
-			->join('cart_item', 'cart_item.id = detailtransaksi.cart_id')->where('detailtransaksi.status_barang', 'diterima_seller')
-			->where('transaksi.id', $id_transaksi)
-			->find();
-
 			$dis = '';
 			for($i = 0; $i < count($distributors); $i++){
 
@@ -353,8 +353,9 @@ class Order extends BaseController
 				$dis = $distributors[$i]->user_id;
 			}
 			
+	
 			$user=$this->user->where('id',$dis)->first();
-			
+			dd($user->greeting);
 			$msg=base_url()." \n\n".$user->greeting." ".$user->fullname."\n"."Selamat! Pesanan Anda *sudah dikirim*\nNo Transaksi: ".$id."\nNomor Resi: ".$resi."\nSilahkan Cek Transaksi di \n".base_url('/tracking');
 			
 			wawoo($user->phone,$msg);
