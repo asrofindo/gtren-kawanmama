@@ -175,7 +175,7 @@ class Transaksi extends BaseController
 		
 		$kode_unik = $this->request->getPost('kode_unik');
 		
-		$data['carts'] = $this->cart->select('*, distributor.id as distributor_id, detailtransaksi.id as d_id, cart_item.id as cart_id, cart.affiliate_link, products.stockist_commission, products.affiliate_commission')
+		$data['carts'] = $this->cart->select('*, distributor.id as distributor_id, detailtransaksi.id as d_id, cart_item.id as cart_id, cart_item.affiliate_link, products.stockist_commission, products.affiliate_commission')
 		->join('products', 'products.id = product_id')
 		->join('distributor', 'distributor.id = distributor_id')
 		->join('users', 'users.id = distributor.user_id')
