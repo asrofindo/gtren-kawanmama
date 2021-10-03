@@ -44,9 +44,6 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th class="text-center">
-                                    Foto
-                                </th>
                                 <th>Produk</th>
                                 <th class="d-none d-sm-block">Harga Member Gtren</th>
                                 <th >Harga Jual</th>
@@ -58,11 +55,7 @@
                         <tbody>
                             <?php foreach ($products as $product): ?>
                             <tr>
-                                <td class="text-center">
-                                    <?php for($i = 0; $i < 1; $i++): ?>
-                                        <img class="img-sm img-thumbnail" src="<?php base_url() ?>/public/uploads/product_photos/<?= $product->photos[$i] ?>" alt="">
-                                    <?php endfor ?>
-                                </td>
+                    
                                 <td>
                                     <h6 class=""><?= $product->name ?></h6>
                                 </td>
@@ -72,7 +65,7 @@
                                 <td ><?= $product->jumlah?></td>
                                 <td class="text-end">
                                     <div class="dropdown">
-                                        <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_vert"></i> </a>
+                                        <a href="#" data-bs-toggle="dropdown" class="btn btn-sm btn-light rounded font-sm"> <i class="material-icons md-more_vert"></i> </a>
                                         <div class="dropdown-menu">
                                             
                                             <a class="dropdown-item" href="<?= base_url('products/stockist/edit/'.$product->product_id)?>/<?= $product->d_id?>">Edit Stok</a>
