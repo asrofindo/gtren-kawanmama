@@ -99,7 +99,7 @@ class UserCreatePendapatan implements SavePendapatan {
 
 class UserPendapatan implements SavePendapatan {
 
-  public function __construct($val = '', $type = '', $data = '')
+  public function __construct($data = '', $type = '', $val = '')
     {
       $this->pendapatan = new PendapatanModel();
       $this->data = $data;
@@ -110,9 +110,9 @@ class UserPendapatan implements SavePendapatan {
     public function save() {
 
       $data = [
-        "id" => $this->data->id,
-        "masuk" => $this->data->masuk + $this->val->kode_unik ,
-        "total" => $this->data->total + $this->val->kode_unik ,
+        "id" => $this->val->id,
+        "masuk" => $this->val->masuk + $this->data->kode_unik ,
+        "total" => $this->val->total + $this->data->kode_unik ,
       ];
 
       $this->pendapatan->save($data);
