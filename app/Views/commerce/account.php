@@ -282,6 +282,7 @@
                                             </div>
                                         </div>
                                         <div class="card mb-4 col-md-12">
+                                            <?php if($rekening != null): ?>
                                             <header class="card-header">
                                                 <form method="post" action="<?php base_url() ?>/request/otp">
                                                     <button type="submit" class="btn btn-primary btn-sm rounded">Request Kode OTP</button>
@@ -332,7 +333,10 @@
                                                         </tbody>
                                                     </table>
                                                 </div> <!-- table-responsive //end -->
-        </div>
+                                            <?php else : ?>
+                                                <h3>Untuk Melakuan Penarikan Dana, Harap Lengkapi Rekening Bank Anda !</h3>
+                                            <?php endif ?>
+                                        </div>
                                              <!-- card-header end// --> 
                                         </div>
                                     </div>
