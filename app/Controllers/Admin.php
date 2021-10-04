@@ -171,61 +171,64 @@ class Admin extends BaseController
 		foreach($data['detail_orders'] as $key => $value)
 		{
 
-		    $inner_array = array();
+			if($value->status_barang != 'ditolak'){
 
-		    $fid_value = $value->user_id;
-		  
-		    $username = $value->username;
-		    $email = $value->email;
-		    $kurir = $value->kurir;
-		    $ongkir = $value->ongkir;
-		    $fullname = $value->fullname;
-		    $phone = $value->phone;
-		    $alamat = $value->alamat;
-		    $etd = $value->etd;
-		    $kode_unik = $value->kode_unik;
-		    $id = $value->id;
-		    $bank_name = $value->bank_name;
-		    $stockist_commission = $value->stockist_commission;
-		    $bank_number = $value->bank_number;
-		    $total = $value->total;		    
-          	$sell_price = $value->sell_price;          	
-          	$amount = $value->amount;          	
-          	$ongkir_produk = $value->ongkir_produk;
+			    $inner_array = array();
+
+			    $fid_value = $value->user_id;
+			  
+			    $username = $value->username;
+			    $email = $value->email;
+			    $kurir = $value->kurir;
+			    $ongkir = $value->ongkir;
+			    $fullname = $value->fullname;
+			    $phone = $value->phone;
+			    $alamat = $value->alamat;
+			    $etd = $value->etd;
+			    $kode_unik = $value->kode_unik;
+			    $id = $value->id;
+			    $bank_name = $value->bank_name;
+			    $stockist_commission = $value->stockist_commission;
+			    $bank_number = $value->bank_number;
+			    $total = $value->total;		    
+	          	$sell_price = $value->sell_price;          	
+	          	$amount = $value->amount;          	
+	          	$ongkir_produk = $value->ongkir_produk;
 
 
 
-		    if(!in_array($value->user_id, $unique_array))
-		    {
-		            array_push($unique_array, $fid_value);
-		            array_push($inner_array, $value);
-		           
-		            $outer_array[$fid_value]['user_id'] = $fid_value;
-		         
-		          
-		           
-		            $outer_array[$fid_value]['username'] = $username;
-		            $outer_array[$fid_value]['fullname'] = $fullname;
-		            $outer_array[$fid_value]['id'] = $id;
-		            $outer_array[$fid_value]['phone'] = $phone;
-		            $outer_array[$fid_value]['stockist_commission'] = $stockist_commission;
-		            $outer_array[$fid_value]['alamat'] = $alamat;
-		            $outer_array[$fid_value]['email'] = $email;
-		            $outer_array[$fid_value]['kurir'] = $kurir;
-		            $outer_array[$fid_value]['etd'] = $etd;
-		            $outer_array[$fid_value]['ongkir'] = $ongkir;
-		            $outer_array[$fid_value]['kode_unik'] = $kode_unik;
-              
-		            $outer_array[$fid_value]['bank'] = "{$bank_name} - {$bank_number} ";
-		            $outer_array[$fid_value]['products'] = $inner_array;
-		           
-		    }else{		            
-		            array_push($outer_array[$fid_value]['products'], $value);
-		           	$outer_array[$fid_value]['stockist_commission'] += $stockist_commission;
-		
-		            
-		         
-		    }
+			    if(!in_array($value->user_id, $unique_array))
+			    {
+			            array_push($unique_array, $fid_value);
+			            array_push($inner_array, $value);
+			           
+			            $outer_array[$fid_value]['user_id'] = $fid_value;
+			         
+			          
+			           
+			            $outer_array[$fid_value]['username'] = $username;
+			            $outer_array[$fid_value]['fullname'] = $fullname;
+			            $outer_array[$fid_value]['id'] = $id;
+			            $outer_array[$fid_value]['phone'] = $phone;
+			            $outer_array[$fid_value]['stockist_commission'] = $stockist_commission;
+			            $outer_array[$fid_value]['alamat'] = $alamat;
+			            $outer_array[$fid_value]['email'] = $email;
+			            $outer_array[$fid_value]['kurir'] = $kurir;
+			            $outer_array[$fid_value]['etd'] = $etd;
+			            $outer_array[$fid_value]['ongkir'] = $ongkir;
+			            $outer_array[$fid_value]['kode_unik'] = $kode_unik;
+	              
+			            $outer_array[$fid_value]['bank'] = "{$bank_name} - {$bank_number} ";
+			            $outer_array[$fid_value]['products'] = $inner_array;
+			           
+			    }else{		            
+			            array_push($outer_array[$fid_value]['products'], $value);
+			           	$outer_array[$fid_value]['stockist_commission'] += $stockist_commission;
+			
+			            
+			         
+			    }
+			}
 		}
 		$data['detail_orders'] = $outer_array;
 
