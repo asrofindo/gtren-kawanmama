@@ -605,7 +605,7 @@ class User extends BaseController
 		$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();	
 		$data['segments'] = $this->request->uri->getSegments();
 		$data['rekening'] = $this->rekening->where('user_id',user()->id)->orderBy('id','DESC')->find();
-		$data['bank'] = $this->bank->find();
+		$data['bank'] = $this->BankModel->find();
 
 		if($this->pendapatan->where('user_id', user()->id)->where('status_dana', 'user')->first() != null){
 			$data['saldo']  = $this->pendapatan->where('user_id', user()->id)->where('status_dana', 'user')->first()->total;
