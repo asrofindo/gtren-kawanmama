@@ -59,7 +59,8 @@ class Order extends BaseController
 		if($status == 'paid'){
 			$this->bills->save(["id" => $data['transaksi']->bill_id, "total" => $data['bills']->total + $data['transaksi']->total]);
 			$pendapatanType = new PendapatanType();
-			$initializePendapatan = $pendapatanType->initializePendapatan($data['tran'])
+			$initializePendapatan = $pendapatanType->initializePendapatan($data['transaksi'], 'user');
+			$initializePendapatan->save();
 		}
 		$this->model->save(["id" => $id, "status_pembayaran" => $status, "batas_pesanan" => date( "Y-m-d H:i:s", strtotime( "+2 days" )),	
 		]);
@@ -236,7 +237,14 @@ class Order extends BaseController
 		];
 
 		$this->model->save($data['transaksi']);
+		if($this->model->find($transaksi_id)->total < 1){
+			$data['transaksi'] = [
+				"id" => $transaksi_id,
+				"kode_unik" => '0'
+			];
 
+			$this->model->save($data['transaksi']);
+		}
 		// Ubah total bank
 		$bill_id = $this->model->find($transaksi_id)->bill_id;
 		$total = $this->bills->find($bill_id)->total;
