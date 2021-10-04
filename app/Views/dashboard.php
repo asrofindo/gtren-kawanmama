@@ -73,7 +73,7 @@
                     <a href="<?php base_url() ?>/admin/konfirmasi"><span class="text">Konfirmasi Pembayaran</span></a> 
                     <a href="<?php base_url() ?>/hutang/affiliate"><span class="text">Dana Affiliate</span></a> 
                     <a href="<?php base_url() ?>/hutang/stockist"><span class="text">Dana Distributor</span></a> 
-                    <a href="<?php base_url() ?>/hutang/user"><span class="text">Dana Refund</span></a> 
+                    <a href="<?php base_url() ?>/hutang/user"><span class="text">Dompet User</span></a> 
                     <a href="<?php base_url() ?>/riwayat/wd"><span class="text">Riwayat Withdraw</span></a>
                     <a href="<?php base_url() ?>/setting/affiliate/get"><span class="text">Setting Biaya Affiliate</span></a> 
                     <a href="<?php base_url() ?>/bills"><span class="text">Rekening Admin</span></a> 
