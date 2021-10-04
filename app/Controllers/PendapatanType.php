@@ -130,7 +130,7 @@ class PendapatanType extends BaseController
     if($data['data_pendapatan'] == null && $type == 'user'){
       return new UserCreatePendapatan($value, $type);
     } 
-    if($data['data_pendapatan'] != null && $type == 'user') {
+    if($data['data_pendapatan'] != null && $type == 'user' && !$data['data_pendapatan']->kode_unik) {
       return new UserPendapatan($value, $type, $data['data_pendapatan']);
     }
 		if($data['data_pendapatan'] == null){
