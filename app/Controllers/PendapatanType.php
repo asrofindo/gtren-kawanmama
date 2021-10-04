@@ -111,8 +111,8 @@ class UserPendapatan implements SavePendapatan {
 
       $data = [
         "id" => $this->val->id,
-        "masuk" => $this->data->kode_unik + $this->val->masuk,
-        "total" => $this->data->kode_unik + $this->val->total,
+        "masuk" => $this->val->masuk + $this->data->kode_unik ,
+        "total" => $this->val->total + $this->data->kode_unik ,
       ];
 
       $this->pendapatan->save($data);
