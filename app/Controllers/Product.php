@@ -692,7 +692,7 @@ class Product extends BaseController
 			->join('product_distributor', 'product_distributor.product_id = products.id', 'left')
 			->join('distributor', 'distributor.id = product_distributor.distributor_id')
 			->where('distributor.user_id', user()->id)
-			->like('name', $request)->paginate(5, 'products');
+			->like('name', $request)->paginate(2, 'products');
 			$data['pager']      = $this->model->pager;
 
 			return view('db_stokis/products', $data);
