@@ -27,10 +27,10 @@
     <header class="card-header">
         <div class="row align-items-center">
             <div class="col-md-12 col-12 me-auto mb-md-0 mb-3">
-                <form method="POST" action="<?= base_url() ?>/products/search">
+                <form method="get" action="<?= base_url() ?>/products/search">
                 <div class="row gx-3">
                     <div class="col-lg-3 col-md-2">
-                        <input name="keyword" type="text" placeholder="Cari Produk..." class="form-control bg-white">
+                        <input name="search" type="text" placeholder="Cari Produk..." class="form-control bg-white">
                     </div>
                     <div class="col-lg-6 col-md-2 me-auto">
                         <button type="submit" class="btn btn-primary btn-sm rounded">Cari</button>
@@ -44,6 +44,9 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
+                            <th class="text-center d-none d-sm-block">
+                                    Foto
+                                </th>
                                 <th>Produk</th>
                                 <th class="d-none d-sm-block">Harga Member Gtren</th>
                                 <th >Harga Jual</th>
@@ -55,7 +58,11 @@
                         <tbody>
                             <?php foreach ($products as $product): ?>
                             <tr>
-                    
+                                <td class="text-center d-none d-sm-block">
+                                    <?php for($i = 0; $i < 1; $i++): ?>
+                                        <img class="img-sm img-thumbnail" src="<?php base_url() ?>/public/uploads/product_photos/<?= $product->photos[$i] ?>" alt="">
+                                    <?php endfor ?>
+                                </td>
                                 <td>
                                     <h6 class=""><?= $product->name ?></h6>
                                 </td>

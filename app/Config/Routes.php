@@ -170,6 +170,7 @@ $routes->group('', function($routes)
 	$routes->get('products/edit/(:num)', 'Product::edit/$1', ['filter' => 'login','filter' => 'role:admin, stockist']);
 	$routes->get('products', 'Product::index');
 	$routes->post('products/search', 'Product::search');
+	$routes->get('products/search', 'Product::search');
 	$routes->get('products/search_p', 'Product::search_p');
 	$routes->post('products/search_p', 'Product::search_p');
 
