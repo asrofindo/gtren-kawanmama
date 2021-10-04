@@ -224,6 +224,7 @@ class Admin extends BaseController
 		    }else{		            
 		            array_push($outer_array[$fid_value]['products'], $value);
 		           	$outer_array[$fid_value]['stockist_commission'] += $status_barang == 'ditolak' ? 0 : $stockist_commission;
+		           	$outer_array[$fid_value]['ongkir'] += $status_barang == 'ditolak' ? 0 : $ongkir;
 		
 		          
 		    }
