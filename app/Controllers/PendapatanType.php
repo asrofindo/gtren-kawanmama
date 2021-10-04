@@ -97,27 +97,7 @@ class UserCreatePendapatan implements SavePendapatan {
     }
 }
 
-class UserPendapatan implements SavePendapatan {
 
-  public function __construct($data = '', $type = '', $val = '')
-    {
-      $this->pendapatan = new PendapatanModel();
-      $this->data = $data;
-      $this->type = $type;
-      $this->val = $val;
-    }
-
-    public function save() {
-
-      $data = [
-        "id" => $this->data->id,
-        "masuk" => $this->val->kode_unik + $this->data->masuk,
-        "total" => $this->val->kode_unik + $this->data->total,
-      ];
-
-      $this->pendapatan->save($data);
-    }
-}
 
 
 class PendapatanType extends BaseController
@@ -129,9 +109,7 @@ class PendapatanType extends BaseController
 		$data['data_pendapatan'] = $pendapatan->where('status_dana', $type)->where('user_id', $value->user_id)->first();
     if($data['data_pendapatan'] == null && $type == 'user'){
       return new UserCreatePendapatan($value, $type);
-    } else {
-      return new UserPendapatan($value, $type, $data['data_pendapatan']);
-    }
+    } 
 		if($data['data_pendapatan'] == null){
 			return new UserSavePendapatan($value, $type);
 		} else {
