@@ -321,63 +321,67 @@
             <div class="row">
                 <?php if(in_groups(1)): ?>
                     <div class="col-lg-3">
-                        <a href="<?php base_url() ?>/order/stockist">
-                            <div class="card card-body mb-4">
-                                <article class="icontext">
-                                    <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-monetization_on"></i></span>
-                                    <div class="text">
-                                        <h6 class="mb-1 card-title">Dana User</h6>
-                                        <span><?= rupiah($user[0]->user_total);?></span>
-                                       <!--  <span class="text-sm">
-                                            Shipping fees are not included
-                                        </span> -->
-                                    </div>
-                                </article>
-                            </div>
-                        </a>
+                        <div class="card card-body mb-4">
+                            <article class="icontext">
+                                <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-monetization_on"></i></span>
+                                <div class="text">
+                                    <h6 class="mb-1 card-title">Dana User</h6>
+                                    <span><?= rupiah($user[0]->user_total);?></span>
+                                   <!--  <span class="text-sm">
+                                        Shipping fees are not included
+                                    </span> -->
+                                </div>
+                            </article>
+                        </div>
                     </div>
                 <?php endif; ?>
                 <div class="col-lg-3">
-                    <div class="card card-body mb-4">
-                        <article class="icontext">
-                            <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
-                            <div class="text">
-                                <h6 class="mb-1 card-title">Dana Pending</h6> 
-                            <span><?= rupiah($pending_stockist[0]->pending_stockist_total) ;?></span>
-                                <!-- <span class="text-sm">
-                                    Excluding orders in transit
-                                </span> -->
-                            </div>
-                        </article>
-                    </div>
+                    <a href="<?php base_url() ?>/order/stockist">
+                        <div class="card card-body mb-4">
+                            <article class="icontext">
+                                <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
+                                <div class="text">
+                                    <h6 class="mb-1 card-title">Dana Pending</h6> 
+                                <span><?= rupiah($pending_stockist[0]->pending_stockist_total) ;?></span>
+                                    <!-- <span class="text-sm">
+                                        Excluding orders in transit
+                                    </span> -->
+                                </div>
+                            </article>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-lg-3">
-                    <div class="card card-body mb-4">
-                        <article class="icontext">
-                            <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
-                            <div class="text">
-                                <h6 class="mb-1 card-title">Dana Distributor</h6> 
-                                <span><?= rupiah($stockist[0]->stockist_total) ;?></span>
-                                <!-- <span class="text-sm">
-                                    Excluding orders in transit
-                                </span> -->
-                            </div>
-                        </article>
-                    </div>
+                    <a href="<?php base_url() ?>/keuangan">
+                        <div class="card card-body mb-4">
+                            <article class="icontext">
+                                <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
+                                <div class="text">
+                                    <h6 class="mb-1 card-title">Dana Distributor</h6> 
+                                    <span><?= rupiah($stockist[0]->stockist_total) ;?></span>
+                                    <!-- <span class="text-sm">
+                                        Excluding orders in transit
+                                    </span> -->
+                                </div>
+                            </article>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-lg-3">
-                    <div class="card card-body mb-4">
-                        <article class="icontext">
-                            <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-qr_code"></i></span>
-                            <div class="text">
-                                <h6 class="mb-1 card-title">Dana Affiliate</h6> 
-                                <span><?= rupiah($affiliate[0]->affiliate_total) ;?></span>
-                            <!--     <span class="text-sm">
-                                    In 19 Categories
-                                </span> -->
-                            </div>
-                        </article>
-                    </div>
+                    <a href="<?php base_url() ?>/keuangan">
+                        <div class="card card-body mb-4">
+                            <article class="icontext">
+                                <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-qr_code"></i></span>
+                                <div class="text">
+                                    <h6 class="mb-1 card-title">Dana Affiliate</h6> 
+                                    <span><?= rupiah($affiliate[0]->affiliate_total) ;?></span>
+                                <!--     <span class="text-sm">
+                                        In 19 Categories
+                                    </span> -->
+                                </div>
+                            </article>
+                        </div>
+                    </a>
                 </div>
                 <?php if(in_groups(1)): ?>
                 <div class="col-lg-3">
