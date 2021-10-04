@@ -61,10 +61,10 @@
                             <td>
                                 <?php $i = 0;  foreach ($status_barang as $s): ?>
                                     <?php if($s == 'ditolak'): ?>
-                                        <span class="badge  rounded-pill alert-warning"><?php echo "tolak"; ?></span>
+                                        <span class="badge  rounded-pill alert-danger"><?php echo "tolak"; ?></span>
                                     <?php endif; ?>
                                     <?php if($s == 'refund'): ?>
-                                        <span class="badge  rounded-pill alert-warning"><?php echo "refund"; ?></span>
+                                        <span class="badge  rounded-pill alert-warning"><?php echo "refunded"; ?></span>
                                     <?php endif; ?>
                                     <?php if($s == 'diterima_seller'): ?>
                                         <span class="badge  rounded-pill alert-primary"><?php echo "dikonfirmasi"; ?></span>
