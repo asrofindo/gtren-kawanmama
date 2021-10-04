@@ -237,14 +237,7 @@ class Order extends BaseController
 		];
 
 		$this->model->save($data['transaksi']);
-		if($this->model->find($transaksi_id)->total < 1){
-			$data['transaksi'] = [
-				"id" => $transaksi_id,
-				"kode_unik" => '0'
-			];
 
-			$this->model->save($data['transaksi']);
-		}
 		// Ubah total bank
 		$bill_id = $this->model->find($transaksi_id)->bill_id;
 		$total = $this->bills->find($bill_id)->total;
