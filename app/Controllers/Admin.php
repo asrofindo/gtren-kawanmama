@@ -353,7 +353,7 @@ class Admin extends BaseController
 
 		// send the captured HTML from the output buffer to the mPDF class for processing
 		$mpdf->WriteHTML($html);
-		$mpdf->Output('transaksi.pdf', 'D');
+		$mpdf->Output("Transaksi - {$data['transaksi_id']}", 'D');
 
 		
 		
