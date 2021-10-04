@@ -132,7 +132,7 @@
                                                 <dd><?= rupiah($order['ongkir']);  ?></dd>
                                             </dl>
                                             <dl class="dlist">
-                                                <dt>total tagihan:</dt>
+                                                <dt>Total tagihan:</dt>
                                                 <dd> <b class="h5"><?= rupiah($total_transaksi[0]->total_transaksi);  ?></b> </dd>
                                             </dl>
                                             <dl class="dlist">
