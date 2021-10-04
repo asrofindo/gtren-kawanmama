@@ -122,7 +122,7 @@ class UserPendapatan implements SavePendapatan {
 
 class PendapatanType extends BaseController
 {
-	public function initializePendapatan($value='', $type = '')
+	public function initializePendapatan($value='', $type = '', $p = '')
 	{
 		$pendapatan = new PendapatanModel();
 
@@ -130,7 +130,7 @@ class PendapatanType extends BaseController
     if($data['data_pendapatan'] == null && $type == 'user'){
       return new UserCreatePendapatan($value, $type);
     } 
-    if($data['data_pendapatan'] != null && $type == 'user' && !$data['data_pendapatan']->kode_unik) {
+    if($data['data_pendapatan'] != null && $type == 'user' && $p == '' {
       return new UserPendapatan($value, $type, $data['data_pendapatan']);
     }
 		if($data['data_pendapatan'] == null){
