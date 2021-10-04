@@ -74,6 +74,29 @@ class UserSaveToRekening implements SavePendapatan {
 	}
 }
 
+class UserCreatePendapatan implements SavePendapatan {
+
+  public function __construct($data = '', $type = '')
+    {
+      $this->pendapatan = new PendapatanModel();
+      $this->data = $data;
+      $this->type = $type;
+    }
+
+    public function save() {
+
+      $data = [
+        "user_id" => $this->data->user_id,
+        "masuk" => $this->data->kode_unik,
+        "keluar" => null,
+        "total" => $this->data->kode_unik,
+        "status_dana" => $this->type,
+      ];
+
+      $this->pendapatan->save($data);
+    }
+}
+
 
 class PendapatanType extends BaseController
 {
@@ -82,13 +105,17 @@ class PendapatanType extends BaseController
 		$pendapatan = new PendapatanModel();
 
 		$data['data_pendapatan'] = $pendapatan->where('status_dana', $type)->where('user_id', $value->user_id)->first();
-
+    if($data['data_pendapatan'] == null && $type == 'user'){
+      return new UserCreatePendapatan($value, $type);
+    }
 		if($data['data_pendapatan'] == null){
 			return new UserSavePendapatan($value, $type);
 		} else {
 			return new UserUpdatePendapatan($value, $type, $data['data_pendapatan']);
 		}
 	}
+
+
 
 	public function initializeBank($value='', $type = '')
 	{
@@ -98,6 +125,6 @@ class PendapatanType extends BaseController
 
 		if($data['data_rekening'] != null){
 			return new UserSaveToRekening($value, $data['data_rekening']);
-		}
+		} 
 	}
 }

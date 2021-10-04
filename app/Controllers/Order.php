@@ -52,10 +52,14 @@ class Order extends BaseController
 			return redirect()->to('/profile');
 		}
 		$status = $this->request->getPost("status");
+
+
 		$data['transaksi'] = $this->model->find($id);
 		$data['bills'] = $this->bills->find($data['transaksi']->bill_id);
 		if($status == 'paid'){
 			$this->bills->save(["id" => $data['transaksi']->bill_id, "total" => $data['bills']->total + $data['transaksi']->total]);
+			$pendapatanType = new PendapatanType();
+			$initializePendapatan = $pendapatanType->initializePendapatan($data['tran'])
 		}
 		$this->model->save(["id" => $id, "status_pembayaran" => $status, "batas_pesanan" => date( "Y-m-d H:i:s", strtotime( "+2 days" )),	
 		]);

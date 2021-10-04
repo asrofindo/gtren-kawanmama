@@ -77,7 +77,7 @@
                                 <?php }else{ ?>
                                     <td ><?= rupiah($product->stockist_commission); ?></td>
                                     <td ><?= rupiah($product->affiliate_commission); ?></td>
-                                    <td ><?= rupiah($product->sell_price-$product->stockist_commission).' || '.rupiah($product->sell_price-$product->stockist_commission-$product->affiliate_commission); ?></td>
+                                    <td ><?= rupiah($product->sell_price-$product->fixed_price+$product->stockist_commission+$product->affiliate_commission); ?></td>
                                 <?php } ?>
                                 <td class="text-end">
                                     <div class="dropdown">
