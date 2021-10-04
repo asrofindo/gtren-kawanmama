@@ -4,6 +4,9 @@
     <div>
         <h2 class="content-title card-title">Keuangan</h2>
     </div>
+    <div>
+        <a class="btn btn-primary" href="<?php base_url() ?>/request/wd">Penarikan Dana</a>
+    </div>
   
 </div>
 <div class="row">
