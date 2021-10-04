@@ -334,7 +334,7 @@
                                                     </table>
                                                 </div> <!-- table-responsive //end -->
                                             <?php else : ?>
-                                                <h3>Untuk Melakuan Penarikan Dana, Harap Lengkapi Rekening Bank Anda !</h3>
+                                                <h5>Untuk Melakuan Penarikan Dana, Harap Lengkapi Rekening Bank Anda !</h5>
                                             <?php endif ?>
                                         </div>
                                              <!-- card-header end// --> 
