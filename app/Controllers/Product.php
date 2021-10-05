@@ -686,22 +686,17 @@ class Product extends BaseController
 
 	public function search(){
 		$data = $this->data;
-		$request = $this->request->getPost('keyword');
-		if(in_groups(3)){
+		$request = $this->request->getVar('search');
+
 			$data['products'] = $this->model
 			->join('product_distributor', 'product_distributor.product_id = products.id', 'left')
 			->join('distributor', 'distributor.id = product_distributor.distributor_id')
 			->where('distributor.user_id', user()->id)
-			->like('name', $request)->paginate(2, 'products');
+			->like('name', $request)->paginate(5, 'products');
 			$data['pager']      = $this->model->pager;
 
 			return view('db_stokis/products', $data);
-		}
 
-		$data['products'] = $this->model->like('name', $request)->paginate(8, 'products');
-		$data['pager']      = $this->model->pager;
-
-		return view('commerce/s', $data);
 	}
 
 	public function search_p(){
