@@ -49,7 +49,7 @@
                                 </th>
                                 <th>Produk</th>
                                 <th class="d-none d-sm-block">Harga Member Gtren</th>
-                                <th >Harga Jual</th>
+                                <th  class="d-none d-sm-block">Harga Jual</th>
                                 <th >Komisi Distributor</th>
                                 <th >Stock Yang Anda Punya</th>
                                 <th class="text-end">Aksi</th>
