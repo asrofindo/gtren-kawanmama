@@ -511,7 +511,7 @@
             alert("Text berhasil dicopy");
         }
         $(document).ready(function() {
-          $('.btn').on('click', function() {
+          $(':submit').on('click', function() {
             var $this = $(this);
             var loadingText = '<span class="spinner-border spinner-border-sm " role="status" aria-hidden="true"></span><i class="fa fa-circle-o-notch fa-spin"></i> loading...';
             if ($(this).html() !== loadingText) {
