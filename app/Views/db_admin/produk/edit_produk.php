@@ -45,12 +45,12 @@
                     <div class="mb-4">
                         <label class="form-label">Deskripsi</label>
                         <?php if(isset(session('errors')['description'])): ?>
-                            <textarea name="description" placeholder="Type here" class="is-invalid form-control" rows="4"><?= old('description') ?? $product->description ?></textarea>
+                            <textarea id="summernote" name="description" placeholder="Type here" class="is-invalid form-control" rows="4"><?= old('description') ?? $product->description ?></textarea>
                             <div class="invalid-feedback">
                                 <?= session('errors')['description'] ?>
                             </div>
                         <?php else: ?>
-                            <textarea name="description" placeholder="Type here" class="form-control" rows="4"><?= old('description') ?? $product->description ?></textarea>
+                            <textarea id="summernote" name="description" placeholder="Type here" class="form-control" rows="4"><?= old('description') ?? $product->description ?></textarea>
                         <?php endif ?>
                     </div>
                     <div class="row">
@@ -212,4 +212,17 @@
     </div>
 </form>
 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.css">
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.css">
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js" defer></script>
+<script type="text/javascript">
+   $(document).ready(function() {
+  $('#summernote').summernote();
+});
+</script>
 <?php $this->endSection() ?>
