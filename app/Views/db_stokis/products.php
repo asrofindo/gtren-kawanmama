@@ -66,7 +66,7 @@
                                 <td>
                                     <h6 class=""><?= $product->name ?></h6>
                                 </td>
-                                <td ><?= rupiah($product->fixed_price) ;?></td>
+                                <td class="d-none d-sm-block"><?= rupiah($product->fixed_price) ;?></td>
                                 <td class="d-none d-sm-block"><?=  rupiah($product->sell_price); ?></td>
                                 <td><?=  rupiah($product->stockist_commission); ?></td>
                                 <td ><?= $product->jumlah?></td>
