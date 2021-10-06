@@ -18,7 +18,7 @@
                                 <?php if (in_groups(4)) {?>
                                 <li><a href="<?php base_url() ?>/affiliate">Affiliate</a></li>
                                 <?php }?>
-                                <li>Download</li>
+                                <li><a href="https://play.google.com/store/apps/details?id=com.gtrenid"></a>Download</li>
                             </ul>
                         </div>
                     </div>

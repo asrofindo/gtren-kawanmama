@@ -50,7 +50,7 @@
                     <h5 class="widget-title mb-30 wow fadeIn animated">Unduh Aplikasi</h5>
                     <div class="row">
                         <div class="col-md-8 col-lg-12">
-                            <p class="wow fadeIn animated">From App Store or Google Play</p>
+                            <a href="https://play.google.com/store/apps/details?id=com.gtrenid"><p class="wow fadeIn animated">From App Store or Google Play</p></a>
                             <!-- <div class="download-app wow fadeIn animated">
                                 <a href="#" class="hover-up mb-sm-4"><img src="<?= base_url() ?>/frontend/imgs/theme/app-store.jpg" alt=""></a>
                                 <a href="#" class="hover-up"><img src="<?= base_url() ?>/frontend/imgs/theme/google-play.jpg" alt=""></a>
