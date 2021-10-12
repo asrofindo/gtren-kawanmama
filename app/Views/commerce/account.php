@@ -997,7 +997,7 @@
                                                 </div>
                                             </div>
                                             <?php }?>
-                                            <?php if(!in_groups(3) && !in_groups(1)){?>
+                                            <?php if(!in_groups(3)){?>
                                             <div class="roe m-1">
                                                 <div class="col-12">
                                                     <a href="<?= base_url('/upgrade/stockist') ?>"><button class="btn btn-lg w-100">klik Untuk Jadi Distributor</button></a>
