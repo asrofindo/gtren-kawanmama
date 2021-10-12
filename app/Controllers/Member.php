@@ -175,7 +175,7 @@ class Member extends BaseController
 			$distributor = $db->table('distributor');
 			$fullname = $this->user->where('id', $id)->first()->fullname;
 
-			if(count($distriutor->where('user_id', $id)->get()->getResultArray()) == 0){
+			if(count($distributor->where('user_id', $id)->get()->getResultArray()) == 0){
 				$distributor->insert(["user_id" => $id, "locate" => $fullname]);
 			}
 		}
