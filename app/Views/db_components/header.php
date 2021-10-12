@@ -1,7 +1,7 @@
 <header class="main-header navbar">
     <div class="col-search"></div>
     <div class="col-nav">
-        <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i> </button>
+        <div class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i> </div>
         <ul class="nav">
             <li class="nav-item">
             </li>
