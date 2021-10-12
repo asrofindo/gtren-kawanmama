@@ -173,8 +173,10 @@ class Member extends BaseController
 		$db = db_connect();
 		if($this->request->getPost('role') == '3'){
 			$distributor = $db->table('distributor');
-			if(count($distributor->where('user_id', $id)->get()->getResultArray()) == 0){
-				$distributor->insert(["user_id" => $id, "locate" => "kosong"]);
+			$user = $db->table('user');
+			$fullname = $user->where('id', $id)->get()->getResultArray()[0]->fullname;
+			if(count($distriutor->where('user_id', $id)->get()->getResultArray()) == 0){
+				$distributor->insert(["user_id" => $id, "locate" => $fullname]);
 			}
 		}
 		$data = $db->table('auth_groups_users');
