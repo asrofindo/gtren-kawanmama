@@ -51,10 +51,9 @@
                     <div class="row">
                         <div class="col-md-8 col-lg-12">
                             <a href="https://play.google.com/store/apps/details?id=com.gtrenid"><p class="wow fadeIn animated">From App Store or Google Play</p></a>
-                            <!-- <div class="download-app wow fadeIn animated">
-                                <a href="#" class="hover-up mb-sm-4"><img src="<?= base_url() ?>/frontend/imgs/theme/app-store.jpg" alt=""></a>
-                                <a href="#" class="hover-up"><img src="<?= base_url() ?>/frontend/imgs/theme/google-play.jpg" alt=""></a>
-                            </div> -->
+                            <div class="download-app wow fadeIn animated">
+                                <a href="https://play.google.com/store/apps/details?id=com.gtrenid" class="hover-up"><img src="<?= base_url() ?>/frontend/imgs/theme/google-play.jpg" alt=""></a>
+                            </div>
                         </div>
                        <!--  <div class="col-md-4 col-lg-12">
                             <p class="mb-20 wow fadeIn animated mt-md-3">Secured Payment Gateways</p>

@@ -3,7 +3,7 @@
 <div class="page-header breadcrumb-wrap d-none d-xl-block d-md-block d-lg-block">
     <div class="container">
         <div class="breadcrumb">
-            <a href="index.html" rel="nofollow">Home</a>
+            <a href="<?php base_url() ?>l" rel="nofollow">Home</a>
             <span></span> Shop
             <span></span> Your Cart
         </div>
