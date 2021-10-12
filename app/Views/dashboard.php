@@ -80,6 +80,7 @@
                     <a href="<?php base_url() ?>/hutang/user"><span class="text">Dompet User</span></a> 
                     <a href="<?php base_url() ?>/riwayat/wd"><span class="text">Riwayat Withdraw</span></a>
                     <a href="<?php base_url() ?>/setting/affiliate/get"><span class="text">Setting Biaya Affiliate</span></a> 
+                    <a href="<?= base_url() ?>/setting/wd/get">setting Minimal Wd</a>  
                     <a href="<?php base_url() ?>/bills"><span class="text">Rekening Admin</span></a> 
             </div>
         </li>
@@ -180,7 +181,6 @@
             <a href="<?= base_url() ?>/notifikasi">Notifikasi Admin</a> 
             <a href="<?= base_url() ?>/setting/api/get">Setting Api</a> 
             <a href="<?= base_url() ?>/sosial">sosial media</a>  
-            <a href="<?= base_url() ?>/setting/wd/get">setting Minimal Wd</a>  
             <a href="<?php base_url() ?>/kosong" >
                 <span class="text">Hancurkan Transaksi</span>
             </a>
