@@ -173,7 +173,7 @@ class Member extends BaseController
 		$db = db_connect();
 		if($this->request->getPost('role') == '3'){
 			$distributor = $db->table('distributor');
-			$user = $db->table('user');
+			$user = $db->table('users');
 			$fullname = $user->getWhere('id', $id);
 			dd($fullname);
 			if(count($distriutor->where('user_id', $id)->get()->getResultArray()) == 0){
