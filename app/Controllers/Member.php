@@ -140,6 +140,7 @@ class Member extends BaseController
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
 		}
+		
 		if ($role=='affiliate') {
 			$db = db_connect();
 			$user = $db->table('users');
@@ -150,6 +151,11 @@ class Member extends BaseController
 		$r = $db->table('auth_groups')->where('name',$role)->get()->getResultArray();
 		$data->where('group_id',$r[0]['id'])->where('user_id',$id)->delete();
 
+		if($role == 'stockist'){
+			$db = db_connect();
+			$distributor = $db->table('distributor');
+			$distributor->where('user_id',$id)->delete();			
+		}
 		return redirect()->back();
 	}
 
@@ -165,6 +171,12 @@ class Member extends BaseController
 	public function addRole($id)
 	{
 		$db = db_connect();
+		if($this->request->getPost('role') == '3'){
+			$distributor = $db->table('distributor');
+			if(count($distributor->where('user_id', $id)->get()->getResultArray()) == 0){
+				$distributor->insert(["user_id" => $id, "locate" => "kosong"]);
+			}
+		}
 		$data = $db->table('auth_groups_users');
 		$set=[
 			'user_id'=>$id,
