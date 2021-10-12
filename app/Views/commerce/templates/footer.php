@@ -50,7 +50,7 @@
                     <h5 class="widget-title mb-30 wow fadeIn animated">Unduh Aplikasi</h5>
                     <div class="row">
                         <div class="col-md-8 col-lg-12">
-                            <a href="https://play.google.com/store/apps/details?id=com.gtrenid"><p class="wow fadeIn animated">From App Store or Google Play</p></a>
+
                             <div class="download-app wow fadeIn animated">
                                 <a href="https://play.google.com/store/apps/details?id=com.gtrenid" class="hover-up"><img src="<?= base_url() ?>/frontend/imgs/theme/google-play.jpg" alt=""></a>
                             </div>
@@ -70,7 +70,7 @@
                 <div class="footer-bottom"></div>
             </div>
             <div class="col-lg-6">
-                <p class="float-md-left font-sm text-muted mb-0">&copy; 2021, <strong class="text-brand"> KDN</strong> </p>
+                <p class="float-md-left font-sm text-muted mb-0">&copy; 2021, <strong class="text-brand"> Gtren</strong> </p>
             </div>
             <div class="col-lg-6">
                 <p class="text-lg-end text-start font-sm text-muted mb-0">
