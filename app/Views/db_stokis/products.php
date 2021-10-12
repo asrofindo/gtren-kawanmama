@@ -49,8 +49,8 @@
                                 </th>
                                 <th>Produk</th>
                                 <th class="d-none d-sm-block">Harga Member Gtren</th>
+                                <th>Harga Jual</th>
                                 <th >Komisi Distributor</th>
-                                <th  class="d-none d-sm-block">Harga Jual</th>
                                 <th >Stock Yang Anda Punya</th>
                                 <th class="text-end">Aksi</th>
                             </tr>
@@ -67,7 +67,7 @@
                                     <h6 class=""><?= $product->name ?></h6>
                                 </td>
                                 <td class="d-none d-sm-block"><?= rupiah($product->fixed_price) ;?></td>
-                                <td class="d-none d-sm-block"><?=  rupiah($product->sell_price); ?></td>
+                                <td><?=  rupiah($product->sell_price); ?></td>
                                 <td><?=  rupiah($product->stockist_commission); ?></td>
                                 <td ><?= $product->jumlah?></td>
                                 <td class="text-end">
