@@ -622,7 +622,7 @@ class Transaksi extends BaseController
 		if(!$jumlah_wd > 0){
           
 			$data['wds'] = $this->wd->where('user_id', user()->id)->orderBy('id','DESC')->find();
-			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('user_id', user()->id)->find();
+			$data['pendapatan'] = $this->pendapatan->select('sum(total) as total')->where('status_dana', 'distributor')->where('user_id', user()->id)->find();
 
 			return view('db_stokis/wd', $data);
 		}
