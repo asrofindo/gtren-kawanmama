@@ -34,8 +34,8 @@
                                     }else{
                                         echo $value->name;
                                     } ?></p></td>
-                                    <td> || </td>
-                                    <td><a href="<?=base_url()?>/role/delete/<?=$user->id?>/<?= $value->name?>">(delete)</a></td>
+                                   <!--  <td> || </td>
+                                    <td><a href="<?=base_url()?>/role/delete/<?=$user->id?>/<?= $value->name?>">(delete)</a></td> -->
                                 </tr>
                             <?php } ?>
                         </table>
@@ -51,7 +51,7 @@
                                             <?php } else {?>
                                                 <option value="<?= $value['id']?>"><?= $value['name']?></option>
                                             <?php }?>
-                                            <?php } ?>
+                                        <?php } ?>
                                     </select>              
                                   <button type="submit"> <i class="far fa-search"></i>save </button>
                                 </form>

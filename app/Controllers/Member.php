@@ -146,6 +146,7 @@ class Member extends BaseController
 			$user = $db->table('users');
 			$user->where('id',$id)->update(["affiliate_link"=>null]);
 		}
+		
 		$db = db_connect();
 		$data = $db->table('auth_groups_users');
 		$r = $db->table('auth_groups')->where('name',$role)->get()->getResultArray();
@@ -173,7 +174,7 @@ class Member extends BaseController
 		$db = db_connect();
 		if($this->request->getPost('role') == '3'){
 			$distributor = $db->table('distributor');
-			$fullname = $this->user->where('id', $id)->first()->fullname;
+			$fullname = $this->user->where('id', $id)->find()->fullname;
 
 			if(count($distributor->where('user_id', $id)->get()->getResultArray()) == 0){
 				$distributor->insert(["user_id" => $id, "locate" => $fullname]);
