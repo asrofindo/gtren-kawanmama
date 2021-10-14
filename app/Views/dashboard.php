@@ -19,7 +19,7 @@
     <meta property="og:url" content="">
     <meta property="og:image" content="">
 
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>/backend/imgs/theme/favico.svg">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>/frontend/imgs/theme/gtren.png">
 
     <link href="<?= base_url() ?>/backend/css/main.css" rel="stylesheet" type="text/css" />
 

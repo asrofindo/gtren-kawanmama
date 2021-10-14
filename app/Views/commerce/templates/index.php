@@ -12,7 +12,7 @@
     <meta property="og:url" content="">
     <meta property="og:image" content="">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url()  ?>/frontend/imgs/theme/favico.svg">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>/frontend/imgs/theme/gtren.png">
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?= base_url()  ?>/frontend/css/main.css">
 
