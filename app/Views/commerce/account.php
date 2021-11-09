@@ -1000,7 +1000,9 @@
                                             <?php if(!in_groups(3)){?>
                                             <div class="roe m-1">
                                                 <div class="col-12">
+                                                    <?php if(!in_groups(1)): ?>
                                                     <a href="<?= base_url('/upgrade/stockist') ?>"><button class="btn btn-lg w-100">klik Untuk Jadi Distributor</button></a>
+                                                    <?php endif;  ?>
                                                 </div>
                                             </div>
                                             <?php }?>
