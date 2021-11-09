@@ -26,6 +26,8 @@ class App extends BaseConfig
 
 	public $baseURL = 'https://g.trenbisnis.net';
 
+	public $serial = 'asdlkasdljk';
+
 	/**
 	 * --------------------------------------------------------------------------
 	 * Index File

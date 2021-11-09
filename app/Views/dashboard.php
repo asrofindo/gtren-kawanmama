@@ -495,7 +495,6 @@
 
     <script>
 
-
         $.get( "/notif",
            async function( data ) {
                 console.log(data);

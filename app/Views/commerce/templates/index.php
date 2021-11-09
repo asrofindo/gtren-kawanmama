@@ -199,6 +199,7 @@ h1 { font-size: 1.5em; margin: 10px; }
   <?php endif; ?>
 <?php endif; ?>
     <script type="text/javascript">
+
       $(document).ready(function() {
        $('#modalKita').modal({backdrop:'static'})  
        $('#modalKita').modal('show')  
