@@ -303,8 +303,8 @@ class Auth extends BaseConfig
 	 */
 	public $userActivators = [
 		'Myth\Auth\Authentication\Activators\EmailActivator' => [
-			'fromEmail' => 'support@kawanmama.com',
-			'fromName' => 'Gtren Team',
+			'fromEmail' => null,
+			'fromName' => null,
 		],
 	];
 

@@ -191,7 +191,7 @@ class AuthController extends Controller
 		
 		$user = new User($this->request->getPost($allowedPostFields));
 
-		$this->config->requireActivation === null ? $user->activate : $user->generateActivateHash();
+		$this->config->requireActivation == null ? $user->activate() : $user->generateActivateHash();
 
 		if ($this->request->getPost('role') !== null) {
             $users = $users->withGroup($this->request->getPost('role'));
