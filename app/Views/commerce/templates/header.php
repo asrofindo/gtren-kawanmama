@@ -9,13 +9,13 @@
                                 <?php if (!in_groups(3) || !in_groups(1)) {?>
                                 <li><a href="<?php base_url() ?>/upgrade/stockist">Distributor</a></li>
                                 <?php }?>
-                                <?php if (in_groups(3) && !in_groups(1)) {?>
+                                <?php if (in_groups(3) || !in_groups(1)) {?>
                                 <li><a href="<?php base_url() ?>/seller">Distributor</a></li>
                                 <?php }?>
                                 <?php if (!in_groups(4) || !in_groups(1)) {?>
                                 <li><a href="<?php base_url() ?>/upgrade/affiliate">Affiliate</a></li>
                                 <?php }?>
-                                <?php if (in_groups(4) && !in_groups(1)) {?>
+                                <?php if (in_groups(4) || !in_groups(1)) {?>
                                 <li><a href="<?php base_url() ?>/affiliate">Affiliate</a></li>
                                 <?php }?>
                                 <li><a href="https://play.google.com/store/apps/details?id=com.gtrenid">Download</a></li>
