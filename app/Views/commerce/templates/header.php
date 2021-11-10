@@ -6,7 +6,7 @@
                     <div class="col-xl-3 col-lg-4">
                         <div class="header-info">
                             <ul>
-                                <?php if(!in_groups(1)) ?>
+                                <?php if(!in_groups(1)) : ?>
                                     <?php if (!in_groups(3)) {?>
                                     <li><a href="<?php base_url() ?>/upgrade/stockist">Distributor</a></li>
                                     <?php }?>
