@@ -997,7 +997,10 @@
                                                 </div>
                                             </div>
                                             <?php }?>
-                                            <?php if(!in_groups(3) || !in_groups(1)){?>
+                                            <?php if(!in_groups(3) || !in_groups(1
+
+
+                                            )){?>
                                             <div class="roe m-1">
                                                 <div class="col-12">
                                                     <?php if(!in_groups(1)): ?>
