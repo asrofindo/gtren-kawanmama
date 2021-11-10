@@ -36,7 +36,7 @@
                                     <?php endif; ?>
                                 </li>
                             <?php } ?>
-                            <?php if (!in_groups(4)) {?>
+                            <?php if (!in_groups(4) && !in_groups(1)) {?>
                                 <li class="nav-item">
                                     <?php if(count($segments) > 1) : ?>
                                     <a class="nav-link <?= ($segments[1] == "affiliate" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/affiliate') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Daftar Affiliate</a>
@@ -45,7 +45,7 @@
                                     <?php endif; ?>
                                 </li>
                             <?php } ?>
-                            <?php if (!in_groups(3)) {?>
+                            <?php if (!in_groups(3) && !in_groups(1)) {?>
                                  <li class="nav-item">
                                     <?php if(count($segments) > 1): ?>
                                     <a class="nav-link <?= ($segments[1] == "stockist" ? "active" : null) ?>" id="upgrade-tab" href="<?= base_url('upgrade/stockist') ?>" role="tab" aria-controls="upgrade" aria-selected="true"><i class="fa fa-upload mr-15"></i>Jadi Distributor</a>
