@@ -1009,7 +1009,7 @@
                                                 </div>
                                             </div>
                                             <?php }?>
-                                            <?php if(!in_groups(4) || !in_groups(1)){?>
+                                            <?php if(!in_groups(4) && !in_groups(1)){?>
                                             <div class="roe m-1">
                                                 <div class="col-12">
                                                     <a href="<?= base_url('/upgrade/affiliate') ?>"><button class="btn btn-lg w-100  bg-warning">klik Daftar Affiliate</button></a>
