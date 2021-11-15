@@ -51,9 +51,7 @@ class Dashboard extends BaseController
 		$data['kode_unik'] = $this->transaksi->select('sum(COALESCE(kode_unik,0)) AS kode_unik_admin')->where('status_pembayaran', 'paid')->find();
 		$kode_unik  = 0;
 
-		$data['bill_total'] = $this->bill->select('sum(COALESCE(total,0)) AS bill_total')->findAll();
-
-		$data['admin'] = [["admin_total" => $data['admin'][0]->admin_total + $data['upgrades'][0]->total_upgrades + $kode_unik + $data['bill_total'][0]->bill_total]];
+		$data['admin'] = [["admin_total" => $data['admin'][0]->admin_total + $data['upgrades'][0]->total_upgrades + $kode_unik]];
 
 		$data['pendapatan'] = $this->pendapatan->select('sum(COALESCE(total,0)) as total')->where('status_dana', 'user')->findAll();
 
