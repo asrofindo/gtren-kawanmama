@@ -126,6 +126,8 @@ $routes->post('testfoto', 'Testing::testfoto');
 
 $routes->get('bills', 'Bill::index');
 $routes->post('bills', 'Bill::index');
+$routes->post('setor', 'Bill::setor');
+$routes->post('tarik', 'Bill::tarik');
 $routes->get('bills/add', 'Bill::add');
 $routes->get('bills/edit/(:num)', 'Bill::edit/$1');
 $routes->post('bills/update/(:num)', 'Bill::update/$1');

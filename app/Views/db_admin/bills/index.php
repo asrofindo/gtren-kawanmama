@@ -113,6 +113,7 @@
                     <th>Nama Bank</th>
                     <th>Nomor Rekening</th>
                     <th>Nama Pemilik</th>
+                    <th>Dana</th>
                     <th>Total</th>
                     <th>Aksi</th>
                 </tr>
@@ -124,6 +125,18 @@
                             <td><?= $bill->bank_name ?></td>
                             <td><?= $bill->bank_number ?></td>
                             <td><?= $bill->owner ?></td>
+                            <td>
+                                <form action="<?php base_url() ?>/tarik" method="post">
+                                    <input type="number" name="money" style="border:1px solid rgba(100,100,100,0.3); width: 100px; display: inline-block;" class=" form-control">
+                                    <input type="hidden" value="<?= $bill->id;?>" name="id" style="border:1px solid rgba(100,100,100,0.3); width: 100px; display: inline-block;" class=" form-control">
+                                    <button type="submit" class="btn btn-primary">tarik</button>
+                                </form>
+                                <form action="<?php base_url() ?>/setor" method="post" class="mt-3">
+                                    <input type="number" name="money" style="border:1px solid rgba(100,100,100,0.3); width: 100px; display: inline-block;" class=" form-control">
+                                    <input type="hidden" name="<?= $bill->id;  ?>" style="border:1px solid rgba(100,100,100,0.3); width: 100px; display: inline-block;" class=" form-control">
+                                    <button type="submit" class="btn btn-primary">setor</button>
+                                </form>
+                            </td>
                             <td><?= rupiah($bill->total) ?></td>
                             <td>
                                 <a class="btn btn-light rounded btn-sm font-sm" href="<?= base_url('bills/edit/'.$bill->id) ?>">Edit</a> 
@@ -136,6 +149,18 @@
                             <td><?= $bill->bank_name ?></td>
                             <td><?= $bill->bank_number ?></td>
                             <td><?= $bill->owner ?></td>
+                            <td>
+                                <form action="<?php base_url() ?>/tarik" method="post">
+                                    <input type="number" name="money" style="border:1px solid rgba(100,100,100,0.3); width: 100px; display: inline-block;" class=" form-control">
+                                    <input type="hidden" value="<?= $bill->id;?>" name="id" style="border:1px solid rgba(100,100,100,0.3); width: 100px; display: inline-block;" class=" form-control">
+                                    <button type="submit" class="btn btn-primary">tarik</button>
+                                </form>
+                                <form action="<?php base_url() ?>/setor" method="post" class="mt-3">
+                                    <input type="number" name="money" style="border:1px solid rgba(100,100,100,0.3); width: 100px; display: inline-block;" class=" form-control">
+                                    <input type="hidden" value="<?= $bill->id;?>" name="id" style="border:1px solid rgba(100,100,100,0.3); width: 100px; display: inline-block;" class=" form-control">
+                                    <button type="submit" class="btn btn-primary">setor</button>
+                                </form>
+                            </td>
                             <td><?= rupiah($bill->total)?></td>
                             
                             <td>

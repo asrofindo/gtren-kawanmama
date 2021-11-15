@@ -76,6 +76,42 @@ class Bill extends BaseController
 		return view('db_admin/bills/index', $data);
 	}
 
+	public function setor()
+	{	
+		$bank_id = $this->request->getPost('id');
+		$setor = $this->request->getPost('money');
+
+		$bank = $this->model->where('id', $bank_id)->first();
+		$total = $bank->total + $setor;
+		$save = $this->model->save(["id" => $bank_id, "total" => $total]);
+
+		if (!$save){
+			return redirect()->back()->withInput()->with('errors', $this->model->errors());
+		} else{
+
+			session()->setFlashdata('success', 'Berhasil Disetor');
+			return redirect()->back();
+		}
+	}
+
+	public function tarik()
+	{	
+		$bank_id = $this->request->getPost('id');
+		$tarik = $this->request->getPost('money');
+
+		$bank = $this->model->where('id', $bank_id)->first();
+		$total = $bank->total > $tarik ? $bank->total - $tarik : 0;
+		$save = $this->model->save(["id" => $bank_id, "total" => $total]);
+
+		if (!$save){
+			return redirect()->back()->withInput()->with('errors', $this->model->errors());
+		} else{
+
+			session()->setFlashdata('success', 'Berhasil Ditarik');
+			return redirect()->back();
+		}
+	}
+
 	public function update($id)
 	{
 		$data = [
