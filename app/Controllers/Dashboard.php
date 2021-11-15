@@ -54,7 +54,7 @@ class Dashboard extends BaseController
 		$kode_unik  = 0;
 		$data['riwayat_bill_tarik'] = $this->riwayat->where('type', 'tarik')->select('sum(COALESCE(money,0)) as tarik')->findAll();
 		$data['riwayat_bill_setor'] = $this->riwayat->where('type', 'setoran')->select('sum(COALESCE(money,0)) as setor')->findAll();
-		$data['riwayat_total'] = $data['riwayat_bill_setor'][0]['setor']- $data['riwayat_bill_tarik'][0]['tarik'];
+		$data['riwayat_total'] = $data['riwayat_bill_setor'][0]['setor'] - $data['riwayat_bill_tarik'][0]['tarik'];
 
 		$data['admin'] = [["admin_total" => $data['admin'][0]->admin_total + $data['upgrades'][0]->total_upgrades + $kode_unik + $data['riwayat_total']]];
 

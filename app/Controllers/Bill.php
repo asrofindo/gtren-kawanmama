@@ -90,7 +90,7 @@ class Bill extends BaseController
 			return redirect()->back()->withInput()->with('errors', $this->model->errors());
 		} else{
 
-			$this->riwayat->save(["bank_id" => $bank_id, "type" => "setoran", "money" => $total]);
+			$this->riwayat->save(["bank_id" => $bank_id, "type" => "setoran", "money" => $setor]);
 			session()->setFlashdata('success', 'Berhasil Disetor');
 			return redirect()->back();
 		}
@@ -108,7 +108,7 @@ class Bill extends BaseController
 		if (!$save){
 			return redirect()->back()->withInput()->with('errors', $this->model->errors());
 		} else{
-			$this->riwayat->save(["bank_id" => $bank_id, "type" => "tarik", "money" => $total]);
+			$this->riwayat->save(["bank_id" => $bank_id, "type" => "tarik", "money" => $tarik]);
 			session()->setFlashdata('success', 'Berhasil Ditarik');
 			return redirect()->back();
 		}
