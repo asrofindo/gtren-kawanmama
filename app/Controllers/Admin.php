@@ -540,6 +540,7 @@ class Admin extends BaseController
 			$db->table('pendapatan')->truncate();
 			$db->table('penarikan_dana')->truncate();
 			$db->table('konfirmasi')->truncate();
+			$db->table('riwayat_bill')->truncate();
 			$db->table('auth_groups_users')->truncate();
 		}
 		
