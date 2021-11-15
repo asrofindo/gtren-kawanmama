@@ -5,6 +5,7 @@ use App\Models\DetailTransaksiModel;
 use App\Models\TransaksiModel;
 use App\Models\BillModel;
 use App\Models\AddressModel;
+use App\Models\RiwayatBill;
 use App\Models\PendapatanModel;
 use App\Models\UpgradesModel;
 class Dashboard extends BaseController
@@ -17,6 +18,7 @@ class Dashboard extends BaseController
 		$this->upgrades = new UpgradesModel();
 		$this->pendapatan = new PendapatanModel();
 		$this->address = new AddressModel();
+		$this->riwayat = new RiwayatBill();
 
 	}
 	public function index()
@@ -50,8 +52,11 @@ class Dashboard extends BaseController
 
 		$data['kode_unik'] = $this->transaksi->select('sum(COALESCE(kode_unik,0)) AS kode_unik_admin')->where('status_pembayaran', 'paid')->find();
 		$kode_unik  = 0;
+		$data['riwayat_bill_tarik'] = $this->riwayat->where('type', 'tarik')->select('sum(COALESCE(money,0)) as tarik')->findAll();
+		$data['riwayat_bill_setor'] = $this->riwayat->where('type', 'setoran')->select('sum(COALESCE(money,0)) as setor')->findAll();
+		$data['riwayat_total'] = $data['riwayat_bill_setor'][0]['setor']- $data['riwayat_bill_tarik'][0]['tarik'];
 
-		$data['admin'] = [["admin_total" => $data['admin'][0]->admin_total + $data['upgrades'][0]->total_upgrades + $kode_unik]];
+		$data['admin'] = [["admin_total" => $data['admin'][0]->admin_total + $data['upgrades'][0]->total_upgrades + $kode_unik + $data['riwayat_total']]];
 
 		$data['pendapatan'] = $this->pendapatan->select('sum(COALESCE(total,0)) as total')->where('status_dana', 'user')->findAll();
 

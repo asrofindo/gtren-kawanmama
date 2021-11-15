@@ -4,12 +4,14 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\BillModel;
+use App\Models\RiwayatBill;
 
 class Bill extends BaseController
 {
 	public function __construct()
 	{
 		$this->model = new BillModel();
+		$this->riwayat = new RiwayatBill();
 	}
 	public function index()
 	{
@@ -84,11 +86,11 @@ class Bill extends BaseController
 		$bank = $this->model->where('id', $bank_id)->first();
 		$total = $bank->total + $setor;
 		$save = $this->model->save(["id" => $bank_id, "total" => $total]);
-
 		if (!$save){
 			return redirect()->back()->withInput()->with('errors', $this->model->errors());
 		} else{
 
+			$this->riwayat->save(["bank_id" => $bank_id, "type" => "setoran", "money" => $total]);
 			session()->setFlashdata('success', 'Berhasil Disetor');
 			return redirect()->back();
 		}
@@ -106,7 +108,7 @@ class Bill extends BaseController
 		if (!$save){
 			return redirect()->back()->withInput()->with('errors', $this->model->errors());
 		} else{
-
+			$this->riwayat->save(["bank_id" => $bank_id, "type" => "tarik", "money" => $total]);
 			session()->setFlashdata('success', 'Berhasil Ditarik');
 			return redirect()->back();
 		}
