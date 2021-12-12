@@ -30,6 +30,7 @@ class Commerce extends BaseController
 		}
 		$model = new OfferModel();
 		$data['offers'] = $model->findAll();
+		
 		return view('commerce/home', $data);
 	}
 

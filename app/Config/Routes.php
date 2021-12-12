@@ -236,6 +236,14 @@ $routes->group('', function($routes)
 	$routes->get('banner/edit/(:num)', 'Banner::edit/$1');
 	$routes->post('banner/update/(:num)', 'Banner::update/$1');
 
+
+	// profile
+	$routes->get('factory', 'Factory::index');
+	$routes->post('factory', 'Factory::save');
+	$routes->get('factory/delete/(:num)', 'Factory::delete/$1');
+	$routes->get('factory/edit/(:num)', 'Factory::edit/$1');
+	$routes->post('factory/update/(:num)', 'Factory::update/$1');
+
 		// offer
 	$routes->get('offer', 'Offer::index');
 	$routes->post('offer', 'Offer::save');

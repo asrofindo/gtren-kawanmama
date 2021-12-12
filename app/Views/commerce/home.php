@@ -30,7 +30,7 @@
             <div class="row p-3">
                 <div class="card col-3 p-0">
                     <a href="<?=base_url()?>/kategori">
-                        <img src="<?=base_url()?>/public/uploads/banner/kategori.png" alt="" class="p-2">
+                        <img src="<?=base_url()?>/public/uploads/banner/<?= $profile->photo  ?>" alt="" class="p-2">
                     </a>
                     <div class="card-body p-0 text-center">
                         <h6 class="card-title">kategori</h6>

@@ -16,6 +16,9 @@ use App\Libraries\Slug;
 use Myth\Auth\Models\UserModel;
 use App\Models\CommentModel;
 use App\Models\SosialModel;
+use App\Models\Profiles;
+use App\Models\CartItemModel;
+
 
 
 class Product extends BaseController
@@ -30,7 +33,7 @@ class Product extends BaseController
 	public function __construct()
 	{
 
-		helper(['form', 'url','wawoo']);
+		helper(['form', 'url','wawoo', 'profile']);
 		$this->model    = new ProductModel();
 		$this->address    = new AddressModel();
 		$this->photo    = new ProductPhoto();
@@ -46,6 +49,8 @@ class Product extends BaseController
 		$this->data['category']    = $this->category->findAll();
 		$this->sosial = new SosialModel();
 		$this->data['sosial']    = $this->sosial->findAll();
+		$this->profile = new Profiles();
+		$this->cart = new CartItemModel();
 		
 	}
 
@@ -147,9 +152,13 @@ class Product extends BaseController
 
 		$data['offers'] = $this->offer->findAll();
 
+		$data['carts'] = $this->cart->findAll();
+
 		$data['contacts'] = $this->contact->findAll();
 
 		$data['pager']      = $this->model->pager;
+
+		$data['profile'] = $this->profile->first();
 		// dd($data['categories']);
 		return view('commerce/home', $data);
 	}

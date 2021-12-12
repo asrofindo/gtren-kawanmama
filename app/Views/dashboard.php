@@ -19,7 +19,7 @@
     <meta property="og:url" content="">
     <meta property="og:image" content="">
 
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>/frontend/imgs/theme/gtren.png">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>/uploads/banner/<?= profile()->favicon; ?>">
 
     <link href="<?= base_url() ?>/backend/css/main.css" rel="stylesheet" type="text/css" />
 
@@ -36,7 +36,7 @@
     <aside class="navbar-aside" id="offcanvas_aside">
         <div class="aside-top">
             <a href="<?= base_url() ?>/dashboard" class="brand-wrap">
-            <a href="<?= base_url() ?>"><img class="w-25" src="<?= base_url() ?>/public/frontend/imgs/theme/gtren-t.png" alt="logo"></a>
+            <a href="<?= base_url() ?>"><img class="w-25" src="<?= base_url() ?>/uploads/banner/<?= profile()->photo; ?>" alt="logo"></a>
             </a>
             <div>
                 <div class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i></div>
@@ -105,11 +105,6 @@
                 <span class="text">Pesanan</span>
             </a>
         </li>
-        <!-- <li class="menu-item">
-            <a class="menu-link" href="<?= base_url() ?>/affiliate"> <i class="icon material-icons md-home"></i>
-                <span class="text">Dashboard Affiliate</span>
-            </a>
-        </li>   -->
         <li class="menu-item has-submenu" >
             <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
                 <span class="text">Stok</span>
@@ -181,6 +176,7 @@
             <a href="<?= base_url() ?>/notifikasi">Notifikasi Admin</a> 
             <a href="<?= base_url() ?>/setting/api/get">Setting Api</a> 
             <a href="<?= base_url() ?>/sosial">sosial media</a>  
+            <a href="<?= base_url() ?>/factory">Setting Perusahaan</a>  
             <a href="<?php base_url() ?>/kosong" >
                 <span class="text">Hancurkan Transaksi</span>
             </a>

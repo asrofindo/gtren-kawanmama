@@ -21,7 +21,7 @@ class AuthController extends Controller
 	 */
 	protected $session;
 
-	protected $helpers = ['auth'];
+	protected $helpers = ['auth','profile'];
 	protected $data;
 	public function __construct()
 	{

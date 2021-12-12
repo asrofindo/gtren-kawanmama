@@ -53,8 +53,8 @@
         <div class="header-middle header-middle-ptb-1 d-none d-md-block ">
             <div class="container">
                 <div class="header-wrap header-space-between">
-                    <div class="logo logo-width-1">
-                        <a href="<?= base_url() ?>"><img class="w-25" src="<?= base_url() ?>/frontend/imgs/theme/gtren.png" alt="logo"></a>
+                    <div class="logo logo-width-4" style=" width: 300px">
+                        <a href="<?= base_url() ?>" class="w-100 p-0 d-flex align-items-center"><img class="w-25" src="<?= base_url() ?>/uploads/banner/<?= profile()->photo ?>" alt="logo"><h5 style="margin-left:10px">Gtren Indonesia</h5></a>
                     </div>
                     <div class="search-style-1 w-100">
                         <form action="<?= base_url() ?>/products/search_p" method="get" class="w-100">
@@ -67,7 +67,7 @@
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="/cart">
                                     <img alt="wowy" src="<?= base_url() ?>/frontend/imgs/theme/icons/icon-cart.svg">
-                                    <!-- <span class="pro-count blue">2</span> -->
+                                    <span class="pro-count blue"><?= user() != NULL ? count(cart(user()->id)) : 0; ?></span>
                                 </a>
                                 <!-- <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                     <ul>
