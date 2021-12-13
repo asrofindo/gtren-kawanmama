@@ -3,12 +3,12 @@
 <div class="content-header">
     <div>
         <h2 class="content-title card-title">Setting Perusahaan</h2>
-        <p>Add, edit or delete a profile</p>
+        <p>Add, edit or delete a Perusahaan</p>
     </div>
     <div>
-        <form action="<?= base_url('category/search') ?>" method="post" class="row row-cols-lg-auto g-3 align-items-center">
+        <form action="<?= base_url('factory/search') ?>" method="post" class="row row-cols-lg-auto g-3 align-items-center">
             <div class="col-12">
-                <input type="text" placeholder="Cari profile" class="form-control bg-white" name="keyword">
+                <input type="text" placeholder="Cari Perusahaan" class="form-control bg-white" name="keyword">
             </div>
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">
@@ -44,15 +44,15 @@
                 <hr>
                 <form action="<?= base_url('factory') ?>" method="post" enctype="multipart/form-data">
                     <div class="mb-4">
-                        <label for="profile" class="form-label">Title</label>
+                        <label for="profile" class="form-label">Nama Perusahaan</label>
                         <input type="text" placeholder="Type here" name="title" class="form-control" id="profile" />
                     </div>
                     <div class="mb-4">
-                        <label for="favicon" class="form-label">Favicon</label>
+                        <label for="favicon" class="form-label">Favicon (1x1)</label>
                         <input type="file" placeholder="Type here" name="favicon" class="form-control" id="favicon" />
                     </div>
                     <div class="mb-4">
-                        <label for="photo" class="form-label">Photo</label>
+                        <label for="photo" class="form-label">Logo (200px x 50px)</label>
                         <input type="file" placeholder="Type here" name="photo" class="form-control" id="photo" />
                     </div>
                     <div class="d-grid">
@@ -67,8 +67,8 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th width="80">Photo</th>
-                                <th>Title</th>
+                                <th width="80">Logo</th>
+                                <th>Nama Perusahaan</th>
                                 <th>Favicon</th>
                                 <th>Action</th>
                             </tr>
