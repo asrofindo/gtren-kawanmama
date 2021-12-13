@@ -18,7 +18,7 @@
 
 
 <script>
-   $('#url').text(window.location.protocol + '//:' + window.location.host + '/cron')
+   $('#url').text(window.location.protocol + '//' + window.location.host + '/cron')
 </script>
 
 <?php $this->endSection() ?>
