@@ -30,7 +30,7 @@ class Factory extends BaseController
 
 		$photo = [];
 
-		$new_name = 'logo';
+		$new_name = $file->getRandomName();
 
 		$file->move(ROOTPATH . 'public/uploads/banner', $new_name);
 
@@ -39,7 +39,7 @@ class Factory extends BaseController
 
 		$photo = [];
 
-		$favName = 'favicon';
+		$favName = $fav->getRandomName();
 
 		$fav->move(ROOTPATH . 'public/uploads/banner', $favName);
 
@@ -70,7 +70,7 @@ class Factory extends BaseController
 
 		session()->setFlashdata('success', 'Data Berhasil Dihapus');
 
-		return redirect()->to(base_url('/profile'));
+		return redirect()->to(base_url('/factory'));
 
 	}
 
