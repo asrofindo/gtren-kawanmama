@@ -76,7 +76,7 @@
                         <tbody>
                             <?php foreach ($profiles as $profile): ?>           
                               <tr>
-                                  <td class="w-10" style="width: 100px;"><img style="height: 100px" class="w-10 d-inline-block p-0" src="<?= base_url()  ?>/uploads/banner/<?= $profile->photo ?>"></td>
+                                  <td class="w-10" style="width: 100px;"><img style="height: 50px; width: 200px" class="w-10 d-inline-block p-0" src="<?= base_url()  ?>/uploads/banner/<?= $profile->photo ?>"></td>
                                   <td><b><?= $profile->title ?></b></td>
                                   <td class="w-10" style="width: 100px;"><img class="w-10 d-inline-block p-0" src="<?= base_url()  ?>/uploads/banner/<?= $profile->favicon ?>"></td>
                                   <td>
