@@ -19,7 +19,7 @@
     <meta property="og:url" content="">
     <meta property="og:image" content="">
 
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>/uploads/banner/<?= profile() == null ? '' : profil()->favicon; ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>/uploads/banner/<?= profile() == null ? '' : profile()->favicon; ?>">
 
     <link href="<?= base_url() ?>/backend/css/main.css" rel="stylesheet" type="text/css" />
 
