@@ -36,7 +36,7 @@
     <aside class="navbar-aside" id="offcanvas_aside">
         <div class="aside-top">
             <a href="<?= base_url() ?>/dashboard" class="brand-wrap">
-            <a href="<?= base_url() ?>"><img class="w-25" src="<?= base_url() ?>/uploads/banner/<?= profile()->photo; ?>" alt="logo"></a>
+            <a href="<?= base_url() ?>"><img class="w-25" src="<?= base_url() ?>/uploads/banner/<?= profile() == null ? '' : profile()->photo; ?>" alt="logo"></a>
             </a>
             <div>
                 <div class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i></div>
