@@ -54,7 +54,7 @@
             <div class="container">
                 <div class="header-wrap header-space-between">
                     <div class="logo logo-width-4" style=" width: 300px">
-                        <a href="<?= base_url() ?>" class="w-100 p-0 d-flex align-items-center"><img class="w-25" src="<?= base_url() ?>/uploads/banner/<?= profile() == null ? '': profile()->photo ?>" alt="logo"><h5 style="margin-left:10px"><?= profile() == null ? '' : profile()->title ?></h5></a>
+                        <a href="<?= base_url() ?>" class="w-100 p-0 d-flex align-items-center"><img style="width: 200px; height:50px" src="<?= base_url() ?>/uploads/banner/<?= profile() == null ? '': profile()->photo ?>" alt="logo"></h5></a>
                     </div>
                     <div class="search-style-1 w-100">
                         <form action="<?= base_url() ?>/products/search_p" method="get" class="w-100">
