@@ -177,6 +177,7 @@
             <a href="<?= base_url() ?>/setting/api/get">Setting Api</a> 
             <a href="<?= base_url() ?>/sosial">sosial media</a>  
             <a href="<?= base_url() ?>/factory">Setting Perusahaan</a>  
+            <a href="<?= base_url() ?>/cronjob">Setting Cronjob</a>  
             <a href="<?php base_url() ?>/kosong" >
                 <span class="text">Hancurkan Transaksi</span>
             </a>

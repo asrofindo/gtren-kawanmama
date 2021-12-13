@@ -104,7 +104,6 @@ $routes->post('track', 'User::Track', ['filter' => 'login']);
 $routes->get('/konfirmasi/(:num)', 'User::konfirmasi/$1');
 $routes->post('/konfirmasi/(:num)', 'User::konfirmasi/$1');
 
-
 $routes->get('contact', 'Commerce::Contact');
 $routes->get('about', 'Commerce::About');
 $routes->get('cart', 'Commerce::cart');
@@ -314,7 +313,8 @@ $routes->group('', function($routes)
 	// OTP
 	$routes->post('/request/otp', 'User::request_otp');
 
-
+	// cron jobs
+	$routes->get('/cronjob', 'Cronjob::index');
 	// setting wd 
 	$routes->post('/setting/wd/(:any)', 'Admin::wd/$1');
 	$routes->get('/setting/wd/(:any)', 'Admin::wd/$1');
