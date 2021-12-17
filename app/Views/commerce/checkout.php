@@ -201,34 +201,49 @@
                     <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                     <form action="<?= base_url() ?>/transaksi/save" method="post">
                         <div class="payment_method">
-                            <div class="mb-25">
-                                <h5>Metode Pembayaran</h5>
-                            </div>
-                            <div class="payment_option">
-                                <div class="custome-radio ">
-                                    <select name="bill" class="form-control bg-light" required="true">
-                                        <option selected disabled>
-                                            Transfer
-                                        </option>
-                                        <?php foreach ($bills as $bill): ?>
-                                            <option value="<?= $bill->id  ?>"><?= $bill->bank_name ?> - <?= $bill->bank_number ?> - <?= $bill->owner  ?>
-                                            </option>
+                            <div class="payment_option row">
+                                <div class="col-lg-6">
+                                    <div class="mb-25">
+                                        <h5>Transfer</h5>
+                                    </div>
+                                    <div class="custome-radio">
+                                        <?php foreach ($bills as $bill): ?>  
+                                            <?php if ($bill->bank_name != 'xendit'): ?>
+                                                <div class="d-flex w-100 flex-row justify-content-flex-start align-items-center">
+                                                    <input class="form-check" style="width: 20px; border:2px solid; margin-right: 10px" type="radio" name="payment_channel" value="<?= $bill->id ?>" />
+                                                    <img class="mr-4" style="width:50px" src="<?= base_url() ?>/payment/<?= $bill->bank_name ?>.png">
+                                                </div>
+                                                <h5 class="">
+                                                    <label for="img">
+                                                        <?= $bill->bank_name?>
+                                                    </label> 
+                                                </h5>
+                                            <?php endif ?>
                                         <?php endforeach; ?>
-                                    </select>
+                                        <?php if (count($bills) == 0): ?>
+                                            <h4>Metode Transfer Tidak Tersedia</h4>
+                                        <?php endif ?>
+                                    </div>
                                 </div>
                                 <!-- Xendit -->
-                                <div class="custome-radio ">
-                                    <select name="payment_channel" class="form-control bg-light" required="true">
-                                        <option selected disabled>
-                                            Payment Gateway
-                                        </option>
-                                        <?php foreach ($payment_channels as $channel): ?>
-                                            <?php if($channel['is_enabled'] == true): ?>
-                                                <option value="<?= $channel['channel_code'] ?>"><?= $channel['name']?>
-                                                </option>
-                                            <?php endif; ?>
-                                        <?php endforeach; ?>
-                                    </select>
+
+                                <div class="col-lg-6">
+                                    <div class="mb-25">
+                                        <h5>Payment Gateway</h5>
+                                    </div>
+                                    <div class="custome-radio">
+                                        <?php foreach ($payment_channels as $key => $value): ?>  
+                                            <div class="d-flex w-100 flex-row justify-content-flex-start align-items-center">
+                                                <input class="form-check" style="width: 20px; border:2px solid; margin-right: 10px" type="radio" name="payment_channel" value="<?= $value['channel_code'] ?>" />
+                                                <img class="mr-4" style="width:50px" src="<?= base_url() ?>/payment/<?= $value['channel_code'] ?>.png">
+                                            </div>
+                                            <h5 class="">
+                                                <label for="img">
+                                                    <?= $value['name'] ?>
+                                                </label> 
+                                            </h5>
+                                        <?php endforeach ?>
+                                    </div>
                                 </div>
                                 <!-- xendit -->
                                 <input type="number" style="display: none" name="total" value="<?= $total;  ?>">

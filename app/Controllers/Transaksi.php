@@ -21,6 +21,7 @@ use App\Models\RekeningModel;
 use App\Controllers\OtpType;
 use App\Models\SettingWd;
 use App\Models\NotifModel;
+use App\Models\Payments;
 use Myth\Auth\Models\UserModel;
 use Xendit\Xendit;
 use App\Controllers\Payment;
@@ -52,6 +53,7 @@ class Transaksi extends BaseController
 		$this->generate = new GenerateModel();
 		$this->user = new UserModel();
 		$this->payment = new Payment();
+		$this->payment_channels = new Payments();
 
 
 		helper('api');
@@ -82,7 +84,7 @@ class Transaksi extends BaseController
 		$data['payment_channels'] = [];
 		if(api() != []){
 			Xendit::setApiKey(api()[0]->token);
-			$data['payment_channels'] = \Xendit\PaymentChannels::list();
+			$data['payment_channels'] = $this->payment_channels->findAll();
 		} 
 
 	 	$data_cart = [];

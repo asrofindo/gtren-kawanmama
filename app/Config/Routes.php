@@ -314,6 +314,12 @@ $routes->group('', function($routes)
 	$routes->get('/api/edit/(:any)', 'Admin::api_edit/$1');
 	$routes->get('/api/delete/(:any)', 'Admin::api_delete/$1');
 
+	// setting channels
+	$routes->post('/setting/channels/(:any)', 'Channels::save/$1');
+	$routes->get('/setting/channels/(:any)', 'Channels::index/$1');
+	$routes->get('/channels/edit/(:any)', 'Channels::edit/$1');
+	$routes->get('/channels/delete/(:any)', 'Channels::delete/$1');
+
 
 	// OTP
 	$routes->post('/request/otp', 'User::request_otp');
