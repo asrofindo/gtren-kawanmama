@@ -38,6 +38,11 @@ $routes->resource('wacron');
 $routes->resource('verifywa');
 $routes->resource('verifyotp');
 $routes->resource('notif');
+$routes->resource('pay');
+
+// invoice 
+$routes->get('/invoice/(:any)', 'Invoice::index/$1');
+
 
 // pdf
 

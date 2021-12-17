@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '906565ee3261cbe789d0bece04f6db34c2793c5a',
+    'reference' => 'd87b3737f8d0249a8233cfee912042de545e726a',
     'name' => 'codeigniter4/framework',
   ),
   'versions' => 
@@ -40,7 +40,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '906565ee3261cbe789d0bece04f6db34c2793c5a',
+      'reference' => 'd87b3737f8d0249a8233cfee912042de545e726a',
     ),
     'doctrine/instantiator' => 
     array (
@@ -68,6 +68,33 @@ private static $installed = array (
       array (
       ),
       'reference' => '89c6201c74db25fa759ff16e78a4d8f32547770e',
+    ),
+    'guzzlehttp/guzzle' => 
+    array (
+      'pretty_version' => '7.4.1',
+      'version' => '7.4.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ee0a041b1760e6a53d2a39c8c34115adc2af2c79',
+    ),
+    'guzzlehttp/promises' => 
+    array (
+      'pretty_version' => '1.5.1',
+      'version' => '1.5.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'fe752aedc9fd8fcca3fe7ad05d419d32998a06da',
+    ),
+    'guzzlehttp/psr7' => 
+    array (
+      'pretty_version' => '2.1.0',
+      'version' => '2.1.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '089edd38f5b8abba6cb01567c2a8aaa47cec4c72',
     ),
     'kint-php/kint' => 
     array (
@@ -289,6 +316,54 @@ private static $installed = array (
       ),
       'reference' => '8622567409010282b7aeebe4bb841fe98b58dcaf',
     ),
+    'psr/http-client' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2dfb5f6c5eff0e91e20e913f8c5452ed95b86621',
+    ),
+    'psr/http-client-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0',
+      ),
+    ),
+    'psr/http-factory' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '12ac7fcd07e5b077433f5f2bee95b3a771bf61be',
+    ),
+    'psr/http-factory-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0',
+      ),
+    ),
+    'psr/http-message' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f6561bf28d520154e4b0ec72be95418abe6d9363',
+    ),
+    'psr/http-message-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0',
+      ),
+    ),
     'psr/log' => 
     array (
       'pretty_version' => '1.1.4',
@@ -297,6 +372,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'd49695b909c3b7628b6289db5479a1c204601f11',
+    ),
+    'ralouphie/getallheaders' => 
+    array (
+      'pretty_version' => '3.0.3',
+      'version' => '3.0.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '120b605dfeb996808c31b6477290a714d356e822',
     ),
     'sabberworm/php-css-parser' => 
     array (
@@ -504,6 +588,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '6964c76c7804814a842473e0c8fd15bab0f18e25',
+    ),
+    'xendit/xendit-php' => 
+    array (
+      'pretty_version' => '2.17.1',
+      'version' => '2.17.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2506ff074d3f9ad9d7f979ecfdde12ee76de6def',
     ),
     'zendframework/zend-escaper' => 
     array (

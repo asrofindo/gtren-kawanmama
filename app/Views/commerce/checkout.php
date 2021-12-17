@@ -208,7 +208,7 @@
                                 <div class="custome-radio ">
                                     <select name="bill" class="form-control bg-light" required="true">
                                         <option selected disabled>
-                                            Pilih Bank
+                                            Transfer
                                         </option>
                                         <?php foreach ($bills as $bill): ?>
                                             <option value="<?= $bill->id  ?>"><?= $bill->bank_name ?> - <?= $bill->bank_number ?> - <?= $bill->owner  ?>
@@ -216,6 +216,21 @@
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
+                                <!-- Xendit -->
+                                <div class="custome-radio ">
+                                    <select name="payment_channel" class="form-control bg-light" required="true">
+                                        <option selected disabled>
+                                            Payment Gateway
+                                        </option>
+                                        <?php foreach ($payment_channels as $channel): ?>
+                                            <?php if($channel['is_enabled'] == true): ?>
+                                                <option value="<?= $channel['channel_code'] ?>"><?= $channel['name']?>
+                                                </option>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <!-- xendit -->
                                 <input type="number" style="display: none" name="total" value="<?= $total;  ?>">
                                 <input type="number" style="display: none" name="kode_unik" value="<?= $generate[0]['nomor'];  ?>">
                                 <?php if(2 < 1): ?>

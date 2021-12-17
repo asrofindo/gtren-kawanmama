@@ -113,6 +113,7 @@
                                                                     <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz">...</i> </a>
                                                                         <div class="dropdown-menu">
                                                                             <a href="<?= base_url() ?>/detail/<?= $transaksi->id?>" class="dropdown-item">Detail</a>
+                                                                            <a href="<?= base_url() ?>/invoice/<?= $transaksi->payment_id?>" class="dropdown-item">Invoice</a>
                                                                             <?php if($transaksi->status_pembayaran != 'paid'): ?>
                                                                                 <a href="<?= base_url() ?>/konfirmasi/<?= $transaksi->id?>" class="dropdown-item">Konfirmasi Pembayaran</a>
                                                                             <?php endif; ?>

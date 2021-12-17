@@ -41,17 +41,21 @@ class Order extends BaseController
 
 
 	}
+	// admin konfirmasi sudah dibayar
 	public function update($id)
 	{
-		if(count($this->address->where('type','distributor')->where('user_id',user()->id)->find()) < 1 && in_groups(3)){
-			session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
-			return redirect()->to('/distributor');
+		// if(count($this->address->where('type','distributor')->where('user_id',user()->id)->find()) < 1 && in_groups(3)){
+		// 	session()->setFlashdata('danger', 'Anda harus menyelesaikan SETTING DISTRIBUTOR!');
+		// 	return redirect()->to('/distributor');
+		// }
+		// if (user()!=null && user()->phone == null) {
+		// 	session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
+		// 	return redirect()->to('/profile');
+		// }
+		$status = 'paid';
+		if($this->request != null) {
+			$status = $this->request->getPost("status");
 		}
-		if (user()!=null && user()->phone == null) {
-			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
-			return redirect()->to('/profile');
-		}
-		$status = $this->request->getPost("status");
 
 
 		$data['transaksi'] = $this->model->find($id);
@@ -62,6 +66,7 @@ class Order extends BaseController
 			$initializePendapatan = $pendapatanType->initializePendapatan($data['transaksi'], 'user', '');
 			$initializePendapatan->save();
 		}
+
 		$this->model->save(["id" => $id, "status_pembayaran" => $status, "batas_pesanan" => date( "Y-m-d H:i:s", strtotime( "+2 days" )),	
 		]);
 

@@ -22,12 +22,14 @@ use App\Controllers\OtpType;
 use App\Models\SettingWd;
 use App\Models\NotifModel;
 use Myth\Auth\Models\UserModel;
-
+use Xendit\Xendit;
+use App\Controllers\Payment;
 
 class Transaksi extends BaseController
 {
 	public function __construct()
 	{
+
 		$this->sosial = new SosialModel();
 		$this->data['sosial']    = $this->sosial->findAll();
 		$this->model = new TransaksiModel();
@@ -49,13 +51,17 @@ class Transaksi extends BaseController
 		$this->rekening = new RekeningModel();
 		$this->generate = new GenerateModel();
 		$this->user = new UserModel();
+		$this->payment = new Payment();
 
 
-		// helper('wawoo');
+		helper('api');
 	}
 
 	public function index()
 	{
+
+
+
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -73,6 +79,11 @@ class Transaksi extends BaseController
 		->join('pengiriman', 'pengiriman.id = detailpengiriman.pengiriman_id', 'left outer')
 		->where('cart_item.user_id', user()->id)
 		->where('cart_item.status', null)->findAll();
+		$data['payment_channels'] = [];
+		if(api() != []){
+			Xendit::setApiKey(api()[0]->token);
+			$data['payment_channels'] = \Xendit\PaymentChannels::list();
+		} 
 
 	 	$data_cart = [];
 		foreach ($data['carts'] as $cart ) {
@@ -163,6 +174,8 @@ class Transaksi extends BaseController
 
 	public function save_transaction()
 	{
+		Xendit::setApiKey(api()[0]->token);
+
 		if (user()!=null && user()->phone == null) {
 			session()->setFlashdata('error', 'Perlu Melengkapi Nama Dan Nomor Whatsapp');
 			return redirect()->to('/profile');
@@ -201,44 +214,66 @@ class Transaksi extends BaseController
 
 		}
 
-		if($bill == null){
-			session()->setFlashdata('danger', 'Anda Harus Memilih Metode Pembayaran');
-			return redirect()->back();
-		}
+
+		
 		$data['alamat'] = $this->address->where('user_id', user()->id)->where('type', 'billing')->find()[0];
 		$alamat = "{$data['alamat']->provinsi}, {$data['alamat']->kabupaten}, {$data['alamat']->kecamatan}, {$data['alamat']->kode_pos}, {$data['alamat']->detail_alamat}";
-		
-	
+		$data['transaksi_model'] = $this->transaksi;
+		$data['cart_model'] = $this->cart;
+		$data['bill'] = $this->bill;
+		$data['detail_transaksi_model'] = $this->detail_transaksi;
+		$data['data_checkout'] = ["user_id" => user()->id, "kode_unik" => $kode_unik, "bill_id" => "xendit", "status_pembayaran" => "paid", "total" => $total, "alamat" => $alamat];
 
-		$this->transaksi->insert([
-			"user_id" => user()->id, 
-			"kode_unik" => $kode_unik, 
-			"bill_id" => $bill, 
-			"status_pembayaran" => $rekening != null ? "paid" : "pending", 
-			"total" => $total, 
-			"alamat" => $alamat]);
-		
-		foreach($data['carts'] as $cart){
-			
-			$data = [
-				"id" => $cart->cart_id,
-				"status" => "checkout"
-			];	
-
-
-			$this->cart->save($data);
-
-			$data = [
-				"cart_id" => $cart->cart_id, 
-				"affiliate_commission" => $cart->affiliate_link != null ? ($cart->affiliate_commission * $cart->amount)  : $cart->affiliate_link  , 
-				"distributor_id" => $cart->distributor_id, 
-				"stockist_commission" => $cart->affiliate_link == null ? ($cart->affiliate_commission * $cart->amount) + ($cart->stockist_commission * $cart->amount) +  ($cart->fixed_price * $cart->amount) + $cart->ongkir_produk : ($cart->stockist_commission * $cart->amount) +  ($cart->fixed_price * $cart->amount) + $cart->ongkir_produk , 
-				"admin_commission" => ($cart->sell_price * $cart->amount) - ($cart->fixed_price * $cart->amount) - ($cart->stockist_commission * $cart->amount) - ($cart->affiliate_commission * $cart->amount),
-				"transaksi_id" => $this->transaksi->getInsertID(), 
-			];
-
-			$this->detail_transaksi->save($data);
+		$payment_channel = $this->request->getPost('payment_channel');
+		if($payment_channel != null){
+			$payment_channels = \Xendit\PaymentChannels::list();
+			foreach ($payment_channels as $key => $value) {
+				if($value['channel_code'] == $payment_channel)	$data['payment_channel'] = $value;
+			}
+			// class payment
+			$payment = new Payment();
+			$InitializedPayment = $payment->InitializeCreatePayment($data, $data['payment_channel']['channel_category']);
+			$getIdPayment = $InitializedPayment->createPayment(); 
 		}
+
+		if($bill == null && !$this->request->getPost('payment_channel')){
+			session()->setFlashdata('danger', 'Anda Harus Memilih Metode Pembayaran');
+			return redirect()->back();
+		} 
+		if($bill != null) {
+
+			$this->transaksi->insert([
+				"user_id" => user()->id, 
+				"kode_unik" => $kode_unik, 
+				"bill_id" => $bill, 
+				"status_pembayaran" => $rekening != null ? "paid" : "pending", 
+				"total" => $total, 
+				"alamat" => $alamat]);
+			
+			foreach($data['carts'] as $cart){
+				
+				$data = [
+					"id" => $cart->cart_id,
+					"status" => "checkout"
+				];	
+
+
+				$this->cart->save($data);
+
+				$data = [
+					"cart_id" => $cart->cart_id, 
+					"affiliate_commission" => $cart->affiliate_link != null ? ($cart->affiliate_commission * $cart->amount)  : $cart->affiliate_link  , 
+					"distributor_id" => $cart->distributor_id, 
+					"stockist_commission" => $cart->affiliate_link == null ? ($cart->affiliate_commission * $cart->amount) + ($cart->stockist_commission * $cart->amount) +  ($cart->fixed_price * $cart->amount) + $cart->ongkir_produk : ($cart->stockist_commission * $cart->amount) +  ($cart->fixed_price * $cart->amount) + $cart->ongkir_produk , 
+					"admin_commission" => ($cart->sell_price * $cart->amount) - ($cart->fixed_price * $cart->amount) - ($cart->stockist_commission * $cart->amount) - ($cart->affiliate_commission * $cart->amount),
+					"transaksi_id" => $this->transaksi->getInsertID(), 
+				];
+
+				$this->detail_transaksi->save($data);
+			}
+		}
+			
+
 
 
 		if($rekening != null){
@@ -269,15 +304,21 @@ class Transaksi extends BaseController
 			foreach ($notif as $key => $value) {
 				wawoo($value['phone'],$msg);
 			}
-		} else {
-			$bill = $this->bill->where('id',$this->request->getPost('bill'))->first();
-			$msg = base_url()." \n\n".user()->greeting." ".user()->fullname."\n"."Pesanan Anda *menunggu pembayaran* \nTagihan Total: ".$total."\nNomor Transaksi : ".$this->transaksi->getInsertID()."\nRekening ".$bill->bank_name."-".$bill->bank_number."-".$bill->owner."\nCek Pesanan Anda Di ".base_url('/orders');
-			wawoo(user()->phone,$msg);
-		}
+		} 
+		
 
 
+		$bill = '';
+		// ternary operator
+		if($this->request->getPost('bill') == null) $bill = $this->bill->where('bank_name','xendit')->first();
+		if($this->request->getPost('bill') != null) $bill = $this->bill->where('id',$this->request->getPost('bill'))->first();
+
+		$msg = base_url()." \n\n".user()->greeting." ".user()->fullname."\n"."Pesanan Anda *menunggu pembayaran* \nTagihan Total: ".$total."\nNomor Transaksi : ".$this->transaksi->getInsertID()."\nRekening ".$bill->bank_name."-".$bill->bank_number."-".$bill->owner."\nCek Pesanan Anda Di ".base_url('/orders');
+		wawoo(user()->phone,$msg);
 		$data['generate'] = $this->generate->find();
 		$this->generate->save(["id" => 1, "nomor" => $data['generate'][0]['nomor'] + 1]);
+		if($payment_channel != null) return redirect()->to("/invoice/{$getIdPayment}");
+		
 		return redirect()->to('/orders');
 		
 	}
@@ -710,5 +751,6 @@ class Transaksi extends BaseController
 
 		return view('db_admin/pendapatan/riwayat_wd', $data);
 	}
+
 
 }	
