@@ -84,7 +84,7 @@ class Transaksi extends BaseController
 		$data['payment_channels'] = [];
 		if(api() != []){
 			Xendit::setApiKey(api()[0]->token);
-			$data['payment_channels'] = $this->payment_channels->findAll();
+			$data['payment_channels'] = $this->payment_channels->orderBy('page', 'ASC')->findAll();
 		} 
 
 	 	$data_cart = [];
