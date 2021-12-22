@@ -73,9 +73,9 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="connectedSortable" id="table">
                                 <?php foreach ($channels as $key => $channel): ?>
-                                    <tr>
+                                    <tr style="cursor: move;" class="drag">
                                         <td><b><?= $channel['name'] ?></b></td>
                                         <td>
                                             <img style="width: 50px" class="d-block mr-4" src="<?= base_url() ?>/payment/<?= $channel['channel_code'] ?>.png">

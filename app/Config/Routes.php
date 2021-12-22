@@ -39,6 +39,7 @@ $routes->resource('verifywa');
 $routes->resource('verifyotp');
 $routes->resource('notif');
 $routes->resource('pay');
+$routes->resource('arrange');
 
 // invoice 
 $routes->get('/invoice/(:any)', 'Invoice::index/$1');

@@ -21,7 +21,7 @@ class Channels extends BaseController
 
 		$data['title']='Benner | Gtren';
 
-		$data['channels'] = $this->model->paginate(15, 'channels');
+		$data['channels'] = $this->model->orderBy('page', 'ASC')->paginate(15, 'channels');
 		$data['pager'] = $this->model->pager;
 
 		return view('db_admin/channel/channel', $data);
@@ -50,7 +50,8 @@ class Channels extends BaseController
 				} 
 			}
 		}
-
+		$id = $this->model->getInsertId();
+		$this->model->save(["id" => $id, "page"=> $id]);
 		$data['payment_channels'] = $this->model->findAll();
 
 		session()->setFlashdata('success', 'Data Berhasil Disimpan');

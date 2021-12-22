@@ -40,4 +40,15 @@ class Pay extends ResourceController
 		// end
 
     }
+
+    public function index()
+    {
+    	// database
+	    	$db      = \Config\Database::connect();
+			$builder = $db->table('payments');
+			$result = $builder->orderBy("page", "ASC")->select('*')->get()->getResult();
+		// end
+
+    	return $this->respond($result);
+    }
 }

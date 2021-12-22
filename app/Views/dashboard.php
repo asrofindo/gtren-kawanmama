@@ -19,7 +19,11 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
+    <style type="text/css">
+        .drag:hover {
+            box-shadow: 20px, 4px, 4px, rgba(100,100,100,0.2);
+        }
+    </style>
 </head>
 
 <body>
@@ -481,10 +485,106 @@
     <!-- Main Script -->
     <script src="<?= base_url() ?>/backend/js/main.js" type="text/javascript"></script>
     <script src="<?= base_url() ?>/backend/js/custom-chart.js" type="text/javascript"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+ -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
 
+
+
+        $(document).ready(function () {
+        var startTable = "table";
+        var $tabs = $("#" + startTable);
+
+        // variable for before and after index
+            var b_index = 0
+        // end
+
+        $("tbody.connectedSortable")
+            .sortable({
+            connectWith: ".connectedSortable",
+            items: "> tr",
+            appendTo: $tabs,
+            helper: "clone",
+            cursor: "move",
+            zIndex: 999990,
+            start: function (event, ui) {
+                // alert("start1");
+                console.log(ui.item.index());
+                var start_pos = ui.item.index();
+                b_index = ui.item.index();
+                ui.item.data('start_pos', start_pos);
+            },
+            update : async (event, ui) => {
+
+                $.get( "/pay",
+                    async function( data ) { 
+                        async function moveArrByIndex(arr, b_index, a_index){
+                            let newArr = []
+                            let newestArr = []
+                            if(b_index < a_index){
+                                // return newArr;
+                                if(arr.length > a_index && b_index == 0){
+                                    newArr.push(...arr.slice(b_index + 1, a_index + 1))
+                                    console.log(newArr);
+                                    newArr.push(arr[b_index])
+                                    newestArr.push(...arr.splice(a_index + 1))
+                                    newArr.push(...newestArr)
+                                } 
+
+                                if(b_index > 0){
+                                    newArr.push(...arr.slice(b_index + 1, a_index + 1))
+                                    newArr.push(arr[b_index])
+                                    newestArr.push(...arr.splice(0, b_index))
+                                    newArr.unshift(...newestArr)   
+                                    if(arr.length  > a_index){
+                                        newArr.push(...arr.splice(a_index))
+                                    }
+                                }
+                            }
+
+                            if(b_index > a_index){
+
+                                if(b_index < arr.length - 1 && a_index == 0 || b_index == arr.length - 1 && a_index == 0){
+                                    newArr.push(...arr.slice(a_index, b_index))
+                                    console.log(newArr);
+                                    newArr.unshift(arr[b_index])
+                                    newestArr.push(...arr.splice(b_index + 1))
+                                    newArr.push(...newestArr)
+                                }
+
+                                if(b_index < arr.length - 1 && a_index > 0 || b_index == arr.length - 1 && a_index > 0){
+                                    newArr.push(...arr.slice(a_index, b_index))
+                                    console.log(newArr);
+                                    newArr.unshift(arr[b_index])
+                                    newestArr.push(...arr.slice(0, a_index))
+                                    newArr.unshift(...newestArr)
+                                    newArr.push(...arr.slice(b_index + 1))
+                                }
+                            }
+                            return newArr;
+                        }
+                    let result = await moveArrByIndex(data, b_index, ui.item.index())
+                    console.log(result,'result');
+                    await $.ajax({
+                     type: 'post',
+                     dataType: 'json',
+                     contentType: 'application/json',
+                      url: '/arrange',
+                      data: JSON.stringify(await result),
+                      dataType: 'application/json'
+                    }).then(res => console.log(res.responseText)).catch(err => console.log(err.done()));
+                });
+            }
+
+        });
+    });
+    </script>
     <script>
 
+    
         $.get( "/notif",
            async function( data ) {
                 console.log(data);

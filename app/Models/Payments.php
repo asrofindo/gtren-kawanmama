@@ -14,7 +14,7 @@ class Payments extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['photo', 'channel_code', 'name'];
+	protected $allowedFields        = ['photo', 'channel_code', 'name', 'page'];
 
 	// Dates
 	protected $useTimestamps        = false;
