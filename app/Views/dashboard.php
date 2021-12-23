@@ -172,6 +172,7 @@
         <div class="submenu">
             <a href="<?= base_url() ?>/notifikasi">Notifikasi Admin</a> 
             <a href="<?= base_url() ?>/setting/api/get">Setting Api</a> 
+            <a href="<?= base_url() ?>/setting/channels/get">Setting Payment Channel</a> 
             <a href="<?= base_url() ?>/sosial">sosial media</a>  
             <a href="<?= base_url() ?>/factory">Setting Perusahaan</a>  
             <a href="<?= base_url() ?>/cronjob">Setting Cronjob</a>  
